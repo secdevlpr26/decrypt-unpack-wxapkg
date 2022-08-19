@@ -1,0 +1,16 @@
+<view class="container">
+    <view class="balance-all">
+        <view class="balance-tit">账户余额（元）</view>
+        <view class="balance-amount">{{balance}}</view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="lower" bindscrolltoupper="upper" class="balance-charge-list" upperThreshold="10">
+        <view class="charge-list-item weui-cell" wx:for="{{billList}}" wx:key="time">
+            <view class="weui-cell__bd text">
+                <view>{{item.title}}</view>
+                <view class="time">{{item.time}}</view>
+            </view>
+            <view class="weui-cell__ft amount price">{{item.bill}}</view>
+        </view>
+        <view class="none-data" hidden="{{billList.length>0}}">暂无消费记录</view>
+    </scroll-view>
+</view>

@@ -1,0 +1,14 @@
+<view>
+    <image class="img" src="../../images/order_success.png"></image>
+    <view class="title" style="color:red">维修金额:￥{{order_amount}}元</view>
+    <view class="tip">支付之前,请和维修人员确定好金额</view>
+    <view class="tip">谢谢合作</view>
+    <view class="handler">
+        <view catchtap="home" class="btn">返回</view>
+        <view catchtap="look" class="btn" style="background-color:red;color:#fff;">微信支付</view>
+    </view>
+</view>
+<view class="cart-detail" wx:if="{{show==1}}">
+    <view bindtap="showVerifyPhone" class="mask"></view>
+    <image class="qrcode" src="{{image}}"></image>
+</view>

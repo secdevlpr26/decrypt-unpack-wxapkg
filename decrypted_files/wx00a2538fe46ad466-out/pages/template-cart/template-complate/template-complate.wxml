@@ -1,0 +1,4 @@
+<icon class="Empty" size="Empty" type="Empty"></icon>
+<view class="Empty">Empty</view>
+<view class="Empty" wx:if="Empty">Empty</view>
+<button bindtap="Empty" class="Empty" type="Empty">Empty</button>

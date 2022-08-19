@@ -1,0 +1,33 @@
+<view>{{djlx}}{{djmc}}{{lcbm}}{{nf}}{{zrzxbm}}{{zrzxmc}}{{ztbm}}{{ls_tj}}</view>
+<view class="li">
+    <picker bindchange="datePickerBindchange" end="2999-12-12" mode="date" start="1999-01-01" value="{{ywrq}}">
+    业务日期: {{ywrq}}
+  </picker>
+</view>
+<view class="addrcon">
+    <view class="addrlist" wx:for="{{addressList}}" wx:key="{{item.ID}}">
+        <view class="addr">
+            <text>单号：{{item.ID}}   申请日期：{{item.YWRQ}}</text>
+        </view>
+        <view class="addr">
+            <text>申请部门：{{item.ZRZXBM}}--{{item.ZRZXMC}}   流程编号：{{item.LCBM}}</text>
+        </view>
+        <view class="green">
+            <text>数量：{{item.SQJE}}  </text>
+        </view>
+        <view class="addr">
+            <text>备注：{{item.BZ!=null?item.BZ:''}}</text>
+        </view>
+        <view class="addrb">
+            <navigator url="/pages/jhsqdmx/jhsqdmx?id={{item.ID}}&lcbm={{item.LCBM}}&ztbm={{item.ZTBM}}&djlx={{djlx}}&djmc={{djmc}}&nf={{item.NF}}&zrzxbm={{item.ZRZXBM}}&zrzxmc={{item.ZRZXMC}}&sqje={{item.SQJE}}">
+                <image src="{{hostUrl}}/images/bjico.png"></image>编辑</navigator>
+            <button bindtap="delete" class="delete" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/cross.png"></image>删除</button>
+            <button bindtap="tijiao" class="delete" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/455.png"></image>提交</button>
+        </view>
+    </view>
+</view>
+<view bindtap="addAddress" class="addbtn">新增单据
+  <image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>

@@ -1,0 +1,18 @@
+<view class="mycenter-orderrule">
+    <view class="mycenter-orderrule-header">
+        <image src="/images/bg2.png" style="width:750rpx; height:312rpx;"></image>
+        <text class="orderrule-btxt">请仔细阅读以下条款</text>
+    </view>
+    <view class="mycenter-orderrule-body">
+        <text>1.接单人务必为集卡司机本人；所有注册信息务必真实有效。</text>
+        <text>2.当天接明天或者之后某天的订单，且每天限最多接一单；</text>
+        <text>3.接单成功后，在三十分钟之内可取消或再更换接别的订单，三十分钟之后取消或更换订单需联系客服；</text>
+        <text>4.如果产生额外费用及时录入费用明细。</text>
+        <text>5.请严格按照系统流程执行，及时填写箱封号和上传箱门照片，并确认到厂、离厂、进港等状态。</text>
+        <text>6.额外费用报销请留足报销凭证，如高速发票等。</text>
+        <text>7.充分接受系统人工发送的临时做箱指令的变更。</text>
+        <text>8.做箱完成请将设备单底联存放在取单处，并标注集运58回单。</text>
+        <text>9.运输过程中，需确保运输安全，突发情况及时联系客服。</text>
+        <text>10.做箱之日起，10个工作日后可在系统直接发起收款。</text>
+    </view>
+</view>

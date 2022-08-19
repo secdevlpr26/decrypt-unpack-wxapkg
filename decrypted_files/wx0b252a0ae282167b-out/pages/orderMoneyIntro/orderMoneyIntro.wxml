@@ -1,0 +1,30 @@
+<view class="cost-details">
+    <view class="cost-details-item">
+        <text>费用名称</text>
+        <text>上报金额</text>
+        <text>确认金额</text>
+        <text>确认状态</text>
+        <text>操作</text>
+    </view>
+    <view class="cost-details-item" wx:for="{{result}}" wx:key="index">
+        <text>{{item.name}}</text>
+        <text wx:if="{{item.money}}">￥{{item.money}}</text>
+        <text wx:else></text>
+        <text wx:if="{{item.money2}}">￥{{item.money2}}</text>
+        <text wx:else></text>
+        <text class="green" wx:if="{{item.status==1}}">已确认</text>
+        <text class="red" wx:elif="{{item.status==2}}">已撤回</text>
+        <text class="red" wx:else>未确认</text>
+        <view wx:if="{{item.status==1}}"></view>
+        <view wx:else>
+            <button bindtap="edit" data-id="{{item.id}}">修改</button>
+        </view>
+    </view>
+    <view class="cost-details-item">
+        <text>已确认合计：￥{{money}}</text>
+    </view>
+    <view class="cost-details-item-btn" wx:if="{{status==2}}"></view>
+    <view bindtap="onSubmitCost" class="cost-details-item-btn" wx:else>
+        <button>上报费用</button>
+    </view>
+</view>

@@ -1,0 +1,26 @@
+<view class="address-list">
+    <view class="item" wx:for="{{addressObjects}}">
+        <view class="header">
+            <text class="realname" style="width:100px">{{item.consignee}}</text>
+            <text class="mobile" style="margin-left:40rpx">电话:{{item.mobile}}</text>
+        </view>
+        <view class="summary">{{item.province}}{{item.city}}{{item.region}}{{item.address}}</view>
+        <view class="footer">
+            <view bindtap="setDefault" class="set-default" data-index="{{index}}">
+                <icon type="{{item.is_default==1?'success_circle':'circle'}}"></icon>
+                <text>默认地址</text>
+            </view>
+            <view class="operation">
+                <view bindtap="edit" class="container" data-index="{{index}}">
+                    <image src="../../../images/icon_edit.png"></image>
+                    <text>编辑</text>
+                </view>
+                <view bindtap="delete" class="container" data-index="{{index}}">
+                    <image src="../../../images/icon_delete.png"></image>
+                    <text>删除</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<button bindtap="add" class="address-add" type="primary">添加</button>

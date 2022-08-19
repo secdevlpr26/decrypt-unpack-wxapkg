@@ -1,0 +1,68 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <view class="content">
+        <navigator class="appointment-top" url="/pages/addressList/index?status=select">
+            <view class="address-content weui-cell weui-cell_access" hidden="{{!hasDefaultAddr}}">
+                <image class="address-icon" src="/images/37@3x.png"></image>
+                <view class="weui-cell__bd address-text">
+                    <view class="contact">
+                        <text>联系人： {{defaultAddr.name}}</text>
+                        <text>{{defaultAddr.phone}}</text>
+                    </view>
+                    <view class="addr">
+          {{defaultAddr.address}} {{defaultAddr.detail}}
+        </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <view class="none-address" hidden="{{hasDefaultAddr}}">添加服务地址</view>
+            <image class="address-b" src="/images/45@3x.png"></image>
+        </navigator>
+        <picker bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" mode="multiSelector" range="{{serveTimePicker}}" rangeKey="name" value="[0,0]">
+            <view class="weui-cell weui-cell_access serve-time">
+                <view class="weui-cell__bd">服务时间</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">
+                    <text class="none-time" hidden="{{serveTimeText}}">请选择服务时间</text>
+                    <text class="has-time" hidden="{{!serveTimeText}}">{{serveTimeText}}</text>
+                </view>
+            </view>
+        </picker>
+        <view class="serve-info">
+            <image class="serve-img" src="{{serveData.picture}}"></image>
+            <view class="serev-info-text">
+                <view class="serve-name ellipsls-one">{{serveData.title}}</view>
+                <view class="serve-price">¥{{serveData.price}}</view>
+            </view>
+            <view class="serve-count" wx:if="{{serveData.type.value==1&&serveData.priceType==1}}">
+                <text bindtap="minus">-</text>
+                <text>{{count}}</text>
+                <text bindtap="plus">+</text>
+            </view>
+        </view>
+        <navigator class="weui-cell weui-cell_access serve-coupons" url="../myCoupons/index?select=select&serviceid={{serviceId}}&serviceNum={{count}}" wx:if="{{serveData.type.value==1}}">
+            <view class="weui-cell__bd">优惠券</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">
+                <text class="none" hidden="{{currCoupon.price}}">使用优惠券</text>
+                <text hidden="{{!currCoupon.price}}" style="color: #333;">{{currCoupon.price}}元优惠券</text>
+            </view>
+        </navigator>
+        <view class="serve-price-info" wx:if="{{serveData.type.value==1}}">
+            <view class="weui-cell price-grey">
+                <view class="weui-cell__bd">服务金额</view>
+                <view class="weui-cell__ft">¥{{allServePrice}}</view>
+            </view>
+            <view class="weui-cell price-grey">
+                <view class="weui-cell__bd">优惠金额</view>
+                <view class="weui-cell__ft">-¥{{currCoupon.price}}</view>
+            </view>
+            <view class="weui-cell pay-price">
+                <view class="weui-cell__bd">实付金额</view>
+                <view class="weui-cell__ft price">¥{{allPayPrice}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="submitOrder" class="btn-block appoint">
+    提交预约
+  </view>
+</view>

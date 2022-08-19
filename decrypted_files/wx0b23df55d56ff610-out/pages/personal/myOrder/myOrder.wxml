@@ -1,0 +1,44 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="order-list" wx:if="{{isShow}}">
+    <view bindtap="selectOrder" class="order-item" data-id="{{orderItem.order_id}}" data-idx="{{orderIndex}}" data-ordertype="{{orderItem.type}}" wx:if="{{orderItem.type=='0'&&orderItem.status==0&&orderItem.y_status==1||orderItem.type=='1'||orderItem.type=='0'&&orderItem.status=='1'}}" wx:for="{{orderList}}" wx:for-index="orderIndex" wx:for-item="orderItem" wx:key="order">
+        <view class="order-line">
+            <view class="icon {{orderItem.type=='1'?'icon-huishou':'icon-weixiu'}}"></view>
+            <text class="wx-fw" wx:if="{{orderItem.type=='1'}}">回收服务</text>
+            <text class="wx-fw" wx:elif="{{orderItem.type=='0'&&orderItem.status==0}}">维修服务</text>
+            <text class="wx-fw" wx:elif="{{orderItem.type=='0'&&orderItem.status=='1'}}">商城服务</text>
+            <text class="wx-type" wx:if="{{orderItem.order_status==0&&orderItem.pay_status==0}}">订单未支付</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==0&&orderItem.pay_status==1&&orderItem.status==1}}">订单待确认</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==1&&orderItem.shipping_status==0&&orderItem.status==1}}">订单待发货</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==1&&orderItem.shipping_status==2&&orderItem.status==1}}">订单已发货</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==2&&orderItem.status==1}}">订单已完成</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==1&&orderItem.pay_status==1}}">订单已维修</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==1&&!orderItem.cid}}">订单已预约</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==1&&orderItem.cid}}">工程师已指派</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==2||orderItem.order_status==4}}">订单已完成</text>
+            <text class="wx-type" wx:elif="{{orderItem.order_status==3}}">订单已取消</text>
+        </view>
+        <view class="order-center">
+            <image class="wx-img" src="{{orderItem.model.image}}"></image>
+            <text class="wx-txt" wx:if="{{orderItem.type==1}}">{{orderItem.model.mobile_name}}</text>
+            <text class="wx-txt" wx:elif="{{orderItem.type==0&&orderItem.status==0}}">{{orderItem.brandname}}{{orderItem.modelname}}{{orderItem.spec[0]}}</text>
+            <text class="wx-txt" wx:elif="{{orderItem.type==0&&orderItem.status==1}}">{{orderItem.brandname}}</text>
+        </view>
+        <view class="order-line">
+            <view class="price">价格：
+          <text class="price-txt">{{orderItem.order_amount}}</text>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{showTip}}">
+        <view catchtap="loadOrderList" class="moreView" style="height:100rpx;text-align:center" wx:if="{{hasMore}}">加载更多</view>
+        <view class="moreView" style="height:100rpx; text-align:center" wx:else>已经到底啦~</view>
+    </block>
+</view>
+<view class="refresher" wx:if="{{showRefresher}}">
+    <text>网络开小差了~</text>
+    <button bindtap="onLoad" class="refreshBtn">点击刷新</button>
+</view>
+<view class="refresher" wx:if="{{emptyList}}">
+    <text>暂无数据明细~</text>
+</view>

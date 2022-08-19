@@ -1,0 +1,15 @@
+<view class="container">
+    <image mode="widthFix" src="{{hostUrl}}/images/banner1.jpg" style="width:100%"></image>
+    <view class="con">
+        <block wx:for="{{info_item}}" wx:for-index="idx" wx:key="info_item">
+            <view class="article-title">{{item.TITLE}}</view>
+            <view class="article-time">发布时间：{{item.UPDATETIME}}  浏览量：{{item.HITS}}</view>
+            <import src="/wxParse/wxParse.wxml"></import>
+            <view class="article-con">
+                <view class="wxParse">
+                    <template is="wxParse" data="{{wxParseData:article_content.nodes}}"></template>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="mycenter-withdraw-detail">
+    <view class="detail-bt">提现明细</view>
+    <div class="detail-item" wx:for="{{list}}" wx:key="index">
+        <view class="detail-con" wx:if="{{item.type==1}}">
+            <text class="small-bt">银行卡</text>
+            <text class="date">{{item.create_at}}</text>
+            <text class="number">{{item.bank_account}}</text>
+        </view>
+        <view class="detail-con" wx:else>
+            <text class="small-bt">支付宝</text>
+            <text class="date">{{item.create_at}}</text>
+            <text class="number">{{item.alipay}}</text>
+        </view>
+        <view class="detail-cost">
+            <text class="money">￥{{item.number}}</text>
+            <text class="status">{{item.status}}</text>
+        </view>
+    </div>
+</view>

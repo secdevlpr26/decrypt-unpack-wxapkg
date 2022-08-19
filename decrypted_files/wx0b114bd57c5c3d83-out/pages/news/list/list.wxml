@@ -1,0 +1,6 @@
+<view class="block">
+    <view bindtap="NewsDetail" class="article_list" data-article-id="{{ad[index].article_id}}" wx:for="{{ad}}">
+  {{ad[index].title}}
+  </view>
+</view>
+<checkbox checked="{{false}}"></checkbox>

@@ -1,0 +1,78 @@
+<view class="parent">
+    <view class="view-order">
+        <view class="view-orderstatus">
+            <image src="/images/oorder.png"></image>
+            <view class="view-orderstatus-info">
+                <text class="text-name">订单状态:{{result.order_status_desc}}</text>
+                <text class="text-address">订单号:{{result.order_sn}}</text>
+                <text hidden class="text-address">配送费用:￥{{result.shipping_price}}元</text>
+            </view>
+        </view>
+    </view>
+    <view class="view-address" style="background:#ffffff">
+        <view class="view-addressleft">
+            <image src="/images/payicon.png"></image>
+            <view class="view-addressleft-info">
+                <text class="text-name">所选支付方式 : 微信支付</text>
+                <text class="text-address">应付款金额 : ￥{{result.order_amount}}元</text>
+            </view>
+        </view>
+    </view>
+    <view class="view-address" style="background:#ffffff">
+        <view class="view-addressleft">
+            <image src="/images/icon_address.png"></image>
+            <view class="view-addressleft-info">
+                <text class="text-name">收货人:{{result.consignee}}</text>
+                <text class="text-address">收货地址:{{result.address}}</text>
+            </view>
+        </view>
+        <view class="view-addressright">
+            <text class="text-mobile">{{result.mobile}}</text>
+        </view>
+    </view>
+    <view class="view-address" style="background:#ffffff">
+        <view class="view-addressleft">
+            <image src="/images/wl.png"></image>
+            <view class="view-addressleft-info">
+                <text class="text-name">快递单号:{{result.invoice_no}}</text>
+                <text class="text-address">物流公司:{{result.shipping_name}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="view-title">
+        <image src="/images/icon_order.png"></image>
+        <text>网站自营</text>
+    </view>
+    <view class="class-line"></view>
+    <view class="container carts-list">
+        <view class="carts-item" wx:for="{{result.goods_list}}" wx:key="index">
+            <view>
+                <image class="carts-image" mode="aspectFill" src="{{item.image}}"></image>
+            </view>
+            <view class="carts-text">
+                <text class="carts-title">{{item.goods_name}}</text>
+                <text class="carts-key-name">{{item.spec_key_name}}</text>
+                <view class="carts-subtitle"></view>
+            </view>
+            <view class="carts-right">
+                <text class="text-red">￥{{item.member_goods_price}}</text>
+                <text class="text-price">x{{item.goods_num}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="class-line1"></view>
+    <view class="view-price">
+        <view class="view-price1">
+            <text class="text-price1">商品总额:</text>
+            <text class="text-red">￥{{result.goods_price}}元</text>
+        </view>
+        <view hidden class="view-price1">
+            <text class="text-price1">邮费:</text>
+            <text class="text-red">￥{{result.shipping_price}}元</text>
+        </view>
+        <view class="view-price1">
+            <text class="text-price1">应付总金额:</text>
+            <text class="text-red">￥{{result.order_amount}}元</text>
+        </view>
+    </view>
+</view>

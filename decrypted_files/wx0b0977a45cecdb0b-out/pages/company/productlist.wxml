@@ -1,0 +1,38 @@
+<view class="container">
+    <view class="classcontainer ">
+        <scroll-view class="meal-time-list border1px" scrollLeft="{{offsetDis}}" scrollWithAnimation="true" scrollX="true">
+            <view class="class-list">
+                <view bindtap="onClassChange" class="class-item {{classid==item.ClassID?'active':''}}" data-classid="{{item.ClassID}}" data-index="{{idx}}" wx:for="{{classlist}}" wx:for-index="idx" wx:key="ClassID">{{item.Name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="pro-cls">
+        <view class="productcontainer">
+            <view class="noproducttips" style="display:{{hasproduct?'none':'block'}}">当前条件下搜索不到产品</view>
+            <view class="product-list">
+                <scroll-view bindscrolltolower="onProductListScroll" lowerThreshold="20" scrollTop="{{protop}}" scrollX="fles" scrollY="true">
+                    <view class="product-item" wx:for="{{productlist}}" wx:key="id">
+                        <view bindtap="goProductDetail" class="pro-img" data-productid="{{item.ProductID}}">
+                            <view class="dummy"></view>
+                            <image mode="widthFix" src="{{baseUrl}}{{item.ImgSmall}}"></image>
+                        </view>
+                        <view class="protext">
+                            <view bindtap="goProductDetail" class="pro-name" data-productid="{{item.ProductID}}">{{item.Name}}</view>
+                            <view bindtap="goProductDetail" class="pro-desc" data-productid="{{item.ProductID}}">{{item.ProDesc}}</view>
+                            <view class="shiting">
+                                <view class="">
+                                    <text class="iconfont icon-shiting"></text>
+                                    <text class="shiting-tit">已有{{item.recordcount}}人试听</text>
+                                </view>
+                                <view bindtap="goReserve" class="pro-reserve" data-productid="{{item.ProductID}}">免费试听</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="loading complete" hidden="{{!searchLoadingComplete}}">没有更多内容</view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</view>
+<include src="/pages/template/popupFromShare.wxml"></include>
+<include src="/pages/template/getUserInfo.wxml"></include>

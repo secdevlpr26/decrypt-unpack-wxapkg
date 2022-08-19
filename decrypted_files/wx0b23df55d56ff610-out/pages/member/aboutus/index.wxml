@@ -1,0 +1,5 @@
+<view bindtap="details" class="view_item" data-index="{{index}}" wx:for="{{articles}}">
+    <text class="text_title">{{item.title}}</text>
+    <image class="image_new" src="{{item.itempath}}"></image>
+    <text class="text_date">{{item.updatedat}}</text>
+</view>

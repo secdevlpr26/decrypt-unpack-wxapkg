@@ -1,0 +1,217 @@
+<view class="fixedTopBorder"></view>
+<view class="tab-box border1px">
+    <view catchtap="swichNav" class="tab-item {{currentTab==0?'active':''}}" data-current="0">
+        <form reportSubmit bindsubmit="from_send">
+            <button class="nav-btn" formType="submit">
+                <text class="{{currentTab==0?'item-color':''}}">行为跟踪</text>
+            </button>
+        </form>
+    </view>
+    <view catchtap="swichNav" class="tab-item {{currentTab==1?'active':''}}" data-current="1">
+        <form reportSubmit bindsubmit="from_send">
+            <button class="nav-btn" formType="submit">
+                <text class="{{currentTab==1?'item-color':''}}">名片统计</text>
+            </button>
+        </form>
+    </view>
+    <view catchtap="swichNav" class="tab-item {{currentTab==2?'active':''}}" data-current="2">
+        <form reportSubmit bindsubmit="from_send">
+            <button class="nav-btn" formType="submit">
+                <text class="{{currentTab==2?'item-color':''}}">用户统计</text>
+            </button>
+        </form>
+    </view>
+    <view catchtap="swichNav" class="tab-item {{currentTab==3?'active':''}}" data-current="3">
+        <form reportSubmit bindsubmit="from_send">
+            <button class="nav-btn" formType="submit">
+                <text class="{{currentTab==3?'item-color':''}}">数据统计</text>
+            </button>
+        </form>
+    </view>
+</view>
+<swiper bindchange="switchTab" class="tab-content" current="{{currentTab}}" duration="300" style="height: {{winHeight}}rpx;">
+    <swiper-item>
+        <view class="default-off" wx:if="{{behaviorBlank}}">
+            <image mode="widthFix" src="{{baseUrl}}/images/wxapp/default_xingwei.png"></image>
+            <view class="blank-title">没人有访问过你的名片哦！快去分享您的名片！</view>
+        </view>
+        <view catchtap="refresh" class="new-message {{showMesTipFlag?'showTipBox':'hideTipBox'}}">
+            <text class="iconfont icon-lingdang"></text>
+            <text>您有{{mesNum<=99?mesNum:'99+'}}条新访问记录</text>
+        </view>
+        <scroll-view scrollY bindscrolltolower="loadMoreData" class="tab-con-item" enableBackToTop="true" lowerThreshold="20" style="height: {{!showMesTipFlag?winHeight:winHeight2}}rpx; box-sizing:border-box;margin-top: {{showMesTipFlag?'80':'0'}}rpx;" wx:if="{{!behaviorBlank}}">
+            <view class="time-item" wx:for="{{behaviorList}}" wx:key="index">
+                <view class="visit-time">{{item.time}}</view>
+                <view class="member-list">
+                    <view catchtap="touserdetails" class="member-item" data-headimgurl="{{v.headImgUrl}}" data-nickname="{{v.nickName}}" data-userid="{{v.userId}}" style="margin-bottom: {{item.list.length==i+1?'0':''}}rpx;" wx:for="{{item.list}}" wx:for-index="i" wx:for-item="v" wx:key="i">
+                        <form reportSubmit bindsubmit="from_send">
+                            <button class="member-item-btn" formType="submit">
+                                <view class="member-item-box">
+                                    <view class="unread-circle" wx:if="{{v.status=='0'}}"></view>
+                                    <image src="{{v.headImgUrl}}"></image>
+                                    <view class="item-right">
+                                        <view class="member-nickname">{{v.nickName}}</view>
+                                        <view class="incident">
+                                            <text style="color: #ff7200;" wx:if="{{v.quantity>0}}">第{{v.quantity}}{{v.showwan?'万':''}}次</text>
+                                            <text class="typetext">{{v.text}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                                <text class="iconfont icon-xiangyou"></text>
+                            </button>
+                        </form>
+                    </view>
+                </view>
+            </view>
+            <view class="noMore" wx:if="{{showBehaviorNoDataTip}}">
+                <view class="line"></view>
+                <text class="text">没有更多</text>
+                <view class="line"></view>
+            </view>
+            <view style="height: 40rpx;"></view>
+            <view class="isLoading" wx:if="{{isLoading}}">
+                <image src="{{baseUrl}}/images/wxapp/loadMoreData.gif"></image>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <scroll-view scrollY style="height: 100%;">
+            <view class="card-statistics">
+                <view class="statistics-top">
+                    <text class="filter-tip">我的名片被查看的情况</text>
+                    <view class="day-btn">
+                        <view catchtap="chooseValue" class="sevenDay {{cardFilterDay==7?'isActive':''}}" data-value="7">
+                            <form reportSubmit bindsubmit="from_send">
+                                <button class="normal-btn" formType="submit">
+                  最近7天
+                </button>
+                            </form>
+                        </view>
+                        <view catchtap="chooseValue" class="fifDay {{cardFilterDay==15?'isActive':''}}" data-value="15">
+                            <form reportSubmit bindsubmit="from_send">
+                                <button class="normal-btn" formType="submit">
+                  最近15天
+                </button>
+                            </form>
+                        </view>
+                    </view>
+                </view>
+                <view class="statistics-middle">
+                    <view catchtap="toDataDetails" class="middle-item" data-index="{{item.type}}" data-typeid="{{item.type}}" wx:for="{{statistics.header}}" wx:key="index">
+                        <form reportSubmit bindsubmit="from_send">
+                            <button class="normal-btn" formType="submit">
+                                <view class="middle-item-name">{{item.title}}</view>
+                                <view class="middle-item-num">{{item.number}}</view>
+                            </button>
+                        </form>
+                    </view>
+                </view>
+                <view class="statistics-line"></view>
+                <view class="statistics-bottom">
+                    <view catchtap="toDataDetails" class="bottom-item border1px" data-index="{{item.type}}" data-typeid="{{item.type}}" wx:for="{{statistics.body}}" wx:key="index">
+                        <form reportSubmit bindsubmit="from_send">
+                            <button class="normal-btn bottom-box" formType="submit">
+                                <view class="bottom-item-left">
+                                    <text class="iconfont {{item.icon}}" style="color: {{item.color}}"></text>
+                                    <text class="item-name">{{item.title}}</text>
+                                </view>
+                                <view class="bottom-item-right">
+                                    <text>{{item.number}}</text>
+                                    <text class="iconfont icon-xiangyou"></text>
+                                </view>
+                            </button>
+                        </form>
+                    </view>
+                    <view style="height: 80rpx;"></view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <view class="default-off" wx:if="{{userCountBlank}}">
+            <image mode="widthFix" src="{{baseUrl}}/images/wxapp/default_yonghutongji.png"></image>
+            <view class="blank-title">暂无用户浏览</view>
+        </view>
+        <view class="statistics-top" wx:if="{{!userCountBlank}}">
+            <text class="filter-tip">最近{{userFilterDay}}天内</text>
+            <view class="day-btn">
+                <view catchtap="chooseValue" class="sevenDay {{userFilterDay==7?'isActive':''}}" data-value="7">
+                    <form reportSubmit bindsubmit="from_send">
+                        <button class="normal-btn" formType="submit">
+              最近7天
+            </button>
+                    </form>
+                </view>
+                <view catchtap="chooseValue" class="fifDay {{userFilterDay==15?'isActive':''}}" data-value="15">
+                    <form reportSubmit bindsubmit="from_send">
+                        <button class="normal-btn" formType="submit">
+              最近15天
+            </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+        <scroll-view scrollY bindscrolltolower="loadMoreData" enableBackToTop="true" lowerThreshold="20" scrollTop="{{userTop}}" scrollWithAnimation="true" style="height: {{userCountHeight}}px;" wx:if="{{!userCountBlank}}">
+            <view class="userCount">
+                <form reportSubmit bindsubmit="from_send">
+                    <view catchtap="touserdetails" class="userCountList flexBox flexAlign" data-headimgurl="{{item.avatar}}" data-nickname="{{item.nickname}}" data-userid="{{item.user_id}}" wx:for="{{userCountList}}" wx:key="{{item.user_id}}">
+                        <button class="saveFormID flexBox flexAlign" formType="submit">
+                            <image class="userCountImg" src="{{item.avatar}}"></image>
+                            <view class="userCountText">
+                                <view>{{item.nickname}}在您的名片上互动了
+                  <text class="InteractionCount">{{item.number}}{{item.showwan?'万':''}}</text>次
+                </view>
+                            </view>
+                            <view class="userCountArrow flexBox flexAlign">
+                                <i class="arrow-right icon iconfont icon-xiangyou"></i>
+                            </view>
+                        </button>
+                    </view>
+                </form>
+                <view class="noMore" wx:if="{{noMoreUserdataTip}}">
+                    <view class="line"></view>
+                    <text class="text">没有更多</text>
+                    <view class="line"></view>
+                </view>
+            </view>
+            <view class="isLoading" wx:if="{{isLoading}}">
+                <image src="{{baseUrl}}/images/wxapp/loadMoreData.gif"></image>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <view class="statistics-top">
+            <text class="filter-tip">最近{{dataFilterDay}}天内</text>
+            <view class="day-btn">
+                <view catchtap="chooseValue" class="sevenDay {{dataFilterDay==7?'isActive':''}}" data-value="7">
+                    <form reportSubmit bindsubmit="from_send">
+                        <button class="normal-btn" formType="submit">
+              最近7天
+            </button>
+                    </form>
+                </view>
+                <view catchtap="chooseValue" class="fifDay {{dataFilterDay==15?'isActive':''}}" data-value="15">
+                    <form reportSubmit bindsubmit="from_send">
+                        <button class="normal-btn" formType="submit">
+              最近15天
+            </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+        <view class="dataCount">
+            <form reportSubmit bindsubmit="from_send">
+                <view catchtap="initRankingList" class="dataCountList flexBox flexAlign {{index!=dataCountList.length-1?'border1px':''}}" data-initname="{{item.title}}" data-type="{{item.type}}" wx:for="{{dataCountList}}" wx:key="{{index}}">
+                    <button class="saveFormID flexBox flexAlign" formType="submit">
+                        <i class="introduceIcon iconfont {{item.iconfont}}"></i>
+                        <view class="dataCountText">{{item.title}}</view>
+                        <view class="dataCountArrow flexBox flexAlign">
+                            <text class="InteractionCount">{{item.number}}</text>
+                            <i class="arrow-right icon iconfont icon-xiangyou"></i>
+                        </view>
+                    </button>
+                </view>
+            </form>
+        </view>
+    </swiper-item>
+</swiper>

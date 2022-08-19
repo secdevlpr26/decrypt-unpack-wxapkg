@@ -1,0 +1,75 @@
+<view class="cabinet-container">
+    <i class="iconfont icon-icon-weizhi-big"></i>
+  {{cabinetName}}
+</view>
+<view class="book-list" wx:for="{{books}}" wx:for-item="book">
+    <view class="book-line">
+        <view class="book-details">
+            <image binderror="imgError" data-index="{{index}}" src="{{book.pic1=='no_cover'?noCover:imgRootPath+book.pic1}}"></image>
+            <view class="book-info">
+                <view class="book-name">{{book.bookName}}</view>
+                <view class="book-info-line">作者：<i>{{book.author?book.author:'匿名'}}</i>
+                </view>
+                <view class="book-info-line">出版社：<i>{{book.press?book.press:'无'}}</i>
+                </view>
+                <view class="book-info-line">出版时间：<i>{{book.pubDate}}</i>
+                </view>
+            </view>
+        </view>
+        <view class="book-price">
+            <view class="price-left">
+        价格 ￥ 
+        <text class="price">{{tools.getPrice(book.price)}}</text>
+                <text class="ccc"> x {{book.quantity}}</text>
+            </view>
+            <view class="price-right">
+                <text class="price">￥{{book.price*book.quantity}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="exchange box-sd fs26" wx:if="{{scoreConfig!=null&&scoreConfig.open=='1'&&integral!=null&&integral.score>0&&isReader}}">
+    <image src="../../images/integr.png"></image>
+    <block wx:if="{{scoreConfig.money<=integral.score*1/scoreConfig.rate}}">
+        <view class="msg">最多可用{{scoreData.score}}积分兑换{{scoreData.scoreMoney}}元</view>
+        <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox score">
+                <checkbox value="{{scoreData.scoreMoney}}"></checkbox>
+            </label>
+        </checkbox-group>
+    </block>
+    <block wx:else>
+        <view class="msg">可用{{scoreData.score}}积分兑换{{scoreData.scoreMoney}}元</view>
+        <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox score">
+                <checkbox value="{{scoreData.scoreMoney}}"></checkbox>
+            </label>
+        </checkbox-group>
+    </block>
+</view>
+<view style="height:100rpx;"></view>
+<view class="footer">
+    <view class="page__bd page__bd_spacing">
+        <view class="weui-flex">
+            <view class="weui-flex__item heji">
+                合计:
+                <text class="num">
+                    <text>{{bookPays.count}}</text>本
+                </text>
+            </view>
+            <view class="onsale" wx:if="{{bookPays.dicount!=null&&bookPays.dicount!=10}}">
+                    优惠 <text class="cf41">{{bookPays.dicount}}</text>折
+                </view>
+            <view class="allpay-money">
+                <view class="cf41">
+                    ￥{{tools.getPrice( bookPays.totalRealPay-coupon-(discounts?discounts:0)<0?0:bookPays.totalRealPay-coupon-(discounts?discounts:0) )}}
+                </view>
+            </view>
+            <view class="app-borrow">
+                <button bindtap="toOrder" disabled="{{buttonClicked}}">结算</button>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="tools" src="../../utils/appUtils.wxs" />
+<wxs module="tool" src="../../utils/appDate.wxs" />

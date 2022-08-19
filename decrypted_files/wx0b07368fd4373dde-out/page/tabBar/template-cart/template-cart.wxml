@@ -1,0 +1,125 @@
+<template name="footprint-goods-list">
+    <view class="goodsList">
+        <view class="a-gooods" wx:for="{{goodsList.list}}" wx:key="{{index}}">
+            <view class="edit">
+                <view class="edit-left">{{item.createtime}}</view>
+                <view class="edit-right">{{item.merchname}}</view>
+            </view>
+            <view bindtap="selectTap" bindtouchend="touchE" bindtouchmove="touchM" bindtouchstart="touchS" class="a-goods-cont {{item.active?'active':'actives'}}" data-index="{{index}}">
+                <view catchtap="bottonImg" class="goodsnone" data-index="{{index}}"></view>
+                <view class="goods-info">
+                    <view class="img-box">
+                        <image class="img" src="{{item.thumb}}"></image>
+                    </view>
+                    <view class="text-box">
+                        <view class="goods-title">{{item.title}}</view>
+                        <view class="goods-label">{{item.optiontitle}}</view>
+                        <view class="goods-price">¥ {{item.marketprice}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="jiesuan-box" hidden="{{goodsList.saveHidden}}">
+        <view class="left-price">
+            <view bindtap="bindAllSelect" class="all-selected  {{goodsList.allSelect?'active':''}}">全选</view>
+        </view>
+        <view bindtap="deleteSelected" class="to-pay-btn {{goodsList.noSelect?'no-select':''}}" hidden="{{goodsList.saveHidden}}">删除</view>
+    </view>
+</template>
+<template name="focus-goods-list">
+    <view class="list-top">
+        <view class="label">{{goodsList.list[0].merchname}}</view>
+    </view>
+    <view class="goodsList">
+        <view class="a-gooods" wx:for="{{goodsList.list}}" wx:key="{{index}}">
+            <view bindtap="selectTap" bindtouchend="touchE" bindtouchmove="touchM" bindtouchstart="touchS" class="a-goods-cont {{item.active?'active':'actives'}}" data-index="{{index}}">
+                <view catchtap="bottonImg" class="goodsnone" data-index="{{index}}"></view>
+                <view class="goods-info">
+                    <view class="img-box">
+                        <image class="img" src="{{item.thumb}}"></image>
+                    </view>
+                    <view class="text-box">
+                        <view class="goods-title">{{item.title}}</view>
+                        <view class="goods-label">{{item.optiontitle?item.optiontitle:''}}</view>
+                        <view class="goods-price">¥ {{item.marketprice}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="jiesuan-box" hidden="{{goodsList.saveHidden}}">
+        <view class="left-price">
+            <view bindtap="bindAllSelect" class="all-selected  {{goodsList.allSelect?'active':''}}">全选</view>
+        </view>
+        <view bindtap="deleteSelected" class="to-pay-btn {{goodsList.noSelect?'no-select':''}}" hidden="{{goodsList.saveHidden}}">删除</view>
+    </view>
+</template>
+<template name="foot-no-goods">
+    <view class="focus-title-box">
+        <image src="/images/heart.png"></image>
+         您还没有浏览过任何商品，何不现在就去逛逛~
+    </view>
+    <view bindtap="toIndexPage" class="to-index-btn">
+            去逛逛
+    </view>
+</template>
+<template name="focus-no-goods">
+    <view class="focus-title-box">
+        <image src="/images/heart.png"></image>
+        您还没有关注任何商品，何不现在就去逛逛~
+    </view>
+    <view bindtap="toIndexPage" class="to-index-btn">
+            去逛逛
+    </view>
+</template>
+<template name="cart-goods-list">
+    <view class="list-top">
+        <view class="label"></view>
+        <view bindtap="editTap" class="edit-btn" hidden="{{!goodsList.saveHidden}}">编辑</view>
+        <view bindtap="saveTap" class="edit-btn" hidden="{{goodsList.saveHidden}}">完成</view>
+    </view>
+    <view class="goodsList">
+        <view class="shopitems" wx:for="{{goodsList.list}}" wx:key="key">
+            <view class="shopname">{{item.merch_user.merchname}}</view>
+            <view class="a-gooods" wx:for="{{item.merch}}" wx:key=" ">
+                <view bindtap="selectTap" class="a-goods-conts {{item.active?'active':''}}" data-id="{{item.id}}" data-index="{{index}}" data-shopindex="{{item.shopindex}}"></view>
+                <view bindtap="go_grouds" class="goods-info" data-id="{{item.goodsid}}">
+                    <view class="img-box">
+                        <image class="img" src="{{item.thumb}}"></image>
+                    </view>
+                    <view class="text-box">
+                        <view class="goods-title">{{item.title}}</view>
+                        <view class="goods-label">{{item.optiontitle?item.optiontitle:''}}</view>
+                        <view class="goods-price">¥ {{item.marketprice}}</view>
+                        <view class="buy-num">
+                            <view catchtap="jianBtnTap" class="jian-btn {{item.total==1?'disabled':''}}" data-id="{{item.id}}" data-index="{{index}}" data-shopindex="{{item.shopindex}}">-</view>
+                            <input disabled type="number" value="{{item.total}}"></input>
+                            <view catchtap="jiaBtnTap" class="jia-btn {{item.total==10?'disabled':''}}" data-id="{{item.id}}" data-index="{{index}}" data-shopindex="{{item.shopindex}}">+</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="jiesuan-box">
+        <view class="left-price">
+            <view bindtap="bindAllSelect" class="all-selected  {{goodsList.allSelect?'active':''}}">全选</view>
+            <view class="total" hidden="{{goodsList.noSelect}}">
+                <view>合计： <text style="color:red;">¥ {{goodsList.totalPrice}}</text>
+                </view>
+                <view>不含运费</view>
+            </view>
+        </view>
+        <button bindtap="toPayOrder" class="to-pay-btn {{goodsList.noSelect?'no-select':''}}" disabled="{{goodsList.noSelect?true:false}}" hidden="{{!goodsList.saveHidden}}">去结算</button>
+        <button bindtap="deleteSelected" class="to-pay-btn {{goodsList.noSelect?'no-select':''}}" disabled="{{goodsList.noSelect?true:false}}" hidden="{{goodsList.saveHidden}}">删除</button>
+    </view>
+</template>
+<template name="no-goods">
+    <view class="title-box">
+        购物车空空如也～
+    </view>
+    <view bindtap="toIndexPage" class="to-index-btn">
+            去逛逛
+    </view>
+</template>

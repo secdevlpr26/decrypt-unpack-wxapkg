@@ -1,0 +1,34 @@
+<view class="gywmtitle">
+   服务流程
+</view>
+<view class="fwlc">
+    <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/fuwuliucheng.gif"></image>
+    <view class="fwlctitle">一、填写信息</view>
+    <view class="fwlctxt">1.首先您需要在Hi维修网站上创建订单，您可以直接在页面点选需要维修的机型及故障信息，并填写您的详细地址及联系方式。</view>
+    <view class="fwlctxt">
+        2.同时，您还可以通过以下三种渠道进行订单预约，
+        <view>①.官方客服400-017-1010；</view>
+        <view>②.手机APP ；</view>
+        <view>③.Hi维修官方微信公众号；</view>
+    </view>
+    <view class="fwlctxt">3.通过官网下单“预约维修”的客户，可在选择好机型及故障后，直接看到手机的初步维修方案及价格</view>
+    <view class="fwlctitle">二、预约下单</view>
+    <view class="fwlctxt">1.在信息填写完毕后，点击“下单”，即完成订单的预约操作；</view>
+    <view class="fwlctxt">2.下单成功后，Hi维修客服人员会在第一时间给您回电，核实订单信息，并将订单指派给工程师进为您进行后续的维修服务。</view>
+    <view class="fwlctitle">三、工程师接单</view>
+    <view class="fwlctxt">Hi维修工程师在接到您的订单后，会在第一时间和您联系，就手机机型及故障问题进行确认，并和您约定具体上门维修的服务时间。</view>
+    <view class="fwlctitle">四、上门维修</view>
+    <view class="fwlctxt">1.维修工程师会在和您约定的时间范围内，为您上门进行手机设备维修服务</view>
+    <view class="fwlctxt">2.维修工程师届时会着公司统一工装、工具包，以便您能较快的辨认出我们的服务人员</view>
+    <view class="fwlctitle">五、确认维修方案</view>
+    <view class="fwlctxt">1.工程师在上门后，会现场对您的设备进行检测，并告知您的设备具体存在的故障问题，和您在预约下单中选择的机型故障是否相符</view>
+    <view class="fwlctxt">2.如若故障相符，工程师会和您核对具体的维修方案和价格，相应的维修方案和价格都可以在官网中进行查询。</view>
+    <view class="fwlctxt">3.如若故障不符，工程师会将检测后的实际故障告知于您，并会将由于故障变更而导致维修方案和价格的差异和您进行解释和确认</view>
+    <view class="fwlctxt">4.待您同意维修方案和价格后，工程师会开始为您的设备进行维修</view>
+    <view class="fwlctitle">六、确认维修结果</view>
+    <view class="fwlctxt">1.工程师在维修完毕后，会当面向您展示，并请您确认设备故障是否已经处理完成。</view>
+    <view class="fwlctxt">2.在维修结果确认期间，工程师同时也会请你确认设备在维修完毕后的基本功能是否正常，包括显示、触摸、通话等。</view>
+    <view class="fwlctitle">七、现场支付</view>
+    <view class="fwlctxt">1.在您确认维修结果完毕后，现场向工程师支付此次设备维修的款项</view>
+    <view class="fwlctxt">2.目前Hi维修为您提供的付款方式有现金、支付宝和微信，您可以选择任意一种方式进行付款。</view>
+</view>

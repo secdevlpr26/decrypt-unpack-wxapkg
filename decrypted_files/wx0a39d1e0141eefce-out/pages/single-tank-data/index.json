@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "zy-modal": "/components/zy-modal/zy-modal"
+    },
+    "backgroundColor": "#ffffff",
+    "navigationBarTitleText": "单罐数据"
+}

@@ -1,0 +1,87 @@
+<scroll-view class="container" scrollTop="{{scrollTop}}" scrollY="true" style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">
+    <view class="index_banner">
+        <view class="block1"></view>
+        <view class="count_hd">
+            <view class="count_bd">
+                <text class="Info">年度利息(元)</text>
+                <text class="num fs2">{{form.monthBack}}</text>
+            </view>
+            <view class="count_bd text-center" style="padding-top:.5em;">
+                <text class="Info">每月利息(元)</text>
+                <text class="num">{{form.decrease}}</text>
+            </view>
+        </view>
+        <view class="block1"></view>
+        <view class="block1"></view>
+        <view class="count_hd">
+            <view class="count_bd">
+                <text class="Info">还款总额(元)</text>
+                <text class="num">{{form.totalInterest}}</text>
+            </view>
+            <view class="count_bd text-center">
+                <text class="Info">总支付利息(元)</text>
+                <text class="num">{{form.totalBack}}</text>
+            </view>
+        </view>
+        <button bindtap="onLoan" class="myloanBtn" hidden="{{form.monthBack=='00.00'}}" plain="true">我要贷款</button>
+    </view>
+    <form bindreset="formReset" class="main">
+        <view class="weui-cells">
+            <view class="weui-cell">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">房产总值(万元)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input bindinput="onHoseCount" class="weui-input" maxlength="5" placeholder="请输入房产总值" type="number" value="{{houseCount}}"></input>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">贷款金额(万元)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input bindinput="oninput" class="weui-input" maxlength="3" placeholder="请输入贷款金额" type="number" value="{{loan||''}}"></input>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <text>贷款抵押率(%)</text>
+                </view>
+                <view class="weui-cell__ft_in-access after">
+                    {{tableIndex!=null?table[tableIndex].pledge:''}}
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <text>贷款年利率(%)</text>
+                </view>
+                <view class="weui-cell__ft_in-access after">
+                    {{lilv?lilv+'%':''}}
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <text>贷款年限</text>
+                </view>
+                <view class="weui-cell__ft_in-access">
+                    <picker bindchange="yearChange" range="{{years}}" rangeKey="name" value="{{yearIndex}}">
+                        {{years[yearIndex]['name']||'请选择贷款年限'}}
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <text>还款方式</text>
+                </view>
+                <view class="weui-cell__ft_in-access after">
+                    先息后本
+                </view>
+            </view>
+        </view>
+        <text class="main_info">计算金额仅供参考,具体咨询办理人员</text>
+        <view class="btns">
+            <button class="clear" formType="reset">清零</button>
+            <button bindtap="onCompute" class="compute" type="primary">计算</button>
+        </view>
+    </form>
+</scroll-view>

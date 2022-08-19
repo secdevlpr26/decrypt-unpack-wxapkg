@@ -1,0 +1,11 @@
+<view class="header">
+    <image src="/images/58_logo.png"></image>
+</view>
+<form bindreset="bindAtCode" bindsubmit="bindAtCode">
+    <view class="content">
+        <input class="weui-input" name="at_code" placeholder="请输入激活码" type="text" value=""></input>
+    </view>
+    <button class="bottom" formType="submit" lang="zh_CN" type="primary">
+        激活
+    </button>
+</form>

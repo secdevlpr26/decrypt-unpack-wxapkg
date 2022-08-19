@@ -1,0 +1,55 @@
+<view class="page-index">
+    <view class="slice1">
+        <view class="banner">
+            <image mode="scaleToFill" src="/images/banner2.jpg"></image>
+        </view>
+    </view>
+    <view bindtap="" class="content">
+        <view class="tablename">库存变更记录</view>
+        <view class="mid">
+            <view bindtap="changetime" class="li time" style="width:50%;height:27px;">
+                <navigator class="sectime xiala" openType="reLaunch" style="border-left:0px solid #9095A5;border-right:0px solid #9095A5;border-right:0.5px solid #9095A5">{{year}}年{{conditionmonth}}月<view class="down_content"></view>
+                </navigator>
+                <view class="{{showtime?'':'timehide'}}" style="">
+                    <navigator class="sectime xiala" openType="reLaunch" url="/pages/stock/index?time={{year+'-'+item}}" wx:for="{{month}}" wx:key="{{code}}">{{year}}年{{item}}月 </navigator>
+                </view>
+            </view>
+            <view bindtap="changeshop" class="li name" style="width:50%;height:27px;">
+                <view>
+                    <navigator class="sectime xiala" openType="reLaunch" style="border-left:0px solid #9095A5;border-right:0px solid #9095A5;">{{conditionname}}<view class="down_content"></view>
+                    </navigator>
+                </view>
+                <view class="{{showshop?'':'shophide'}}">
+                    <navigator class="xiala shopname" hoverClass="none" openType="reLaunch" url="/pages/stock/index?shopid={{item.id}}" wx:for="{{shopnamelist}}" wx:key="{{code}}">{{item.name}}</navigator>
+                </view>
+            </view>
+        </view>
+        <scroll-view scrollX class="scroll-header">
+            <view class="table scroll-view-item">
+                <view class="tr bg-w" style="color:#9095A5;background:#f3f3f3;">
+                    <view class="th" style="background:#f3f3f3;">变更时间</view>
+                    <view class="th" style="background:#f3f3f3;width:7rem">商品名称</view>
+                    <view class="th" style="background:#f3f3f3;">操作类型</view>
+                    <view class="th" style="background:#f3f3f3;">单价(元)</view>
+                    <view class="th" style="background:#f3f3f3;">数量</view>
+                    <view class="th" style="background:#f3f3f3;">单位</view>
+                    <view class="th" style="background:#f3f3f3;">总金额(元)</view>
+                    <view class="th" style="background:#f3f3f3;">备注</view>
+                </view>
+                <view class="tr con" style="color:#9095A5;" wx:for="{{listData}}" wx:key="{{code}}">
+                    <view class="td">{{item.operation_createtime}}</view>
+                    <view class="td" style="width:7rem">{{item.operation_stock}}</view>
+                    <view class="td ">{{item.operation_type}}</view>
+                    <view class="td">{{item.operation_price}}</view>
+                    <view class="td">{{item.operation_sum}}</view>
+                    <view class="td ">{{item.stock_unit}}</view>
+                    <view class="td ">{{item.count_money}}</view>
+                    <view class="td ">{{item.operation_memo||'无'}}</view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="more">
+            <button bindtap="click" class="btn {{showbtn?'showbtn':'hidebtn'}}">查看更多 >></button>
+        </view>
+    </view>
+</view>

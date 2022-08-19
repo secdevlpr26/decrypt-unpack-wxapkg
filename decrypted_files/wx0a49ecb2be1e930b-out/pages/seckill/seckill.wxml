@@ -1,0 +1,74 @@
+<view class="nav">
+    <view class="nav-frame">
+        <view bindtap="navtap" class="nav-item" data-index="{{index}}" style="{{activityList.length==1?'width: 100%':''}}" wx:for="{{activityList}}" wx:key="{{item.groupsId}}">
+            <view class="item-title {{index==navCurIdx?'active':''}}">{{item.title}}</view>
+        </view>
+    </view>
+</view>
+<view class="main" hidden="{{!isEndLoading}}">
+    <view class="remain-time">
+        <view class="line"></view>
+        <view class="time-box">
+            <view class="begin-time{{activityInfo.activityStart?'':' color-yellow'}}">
+                <text class="iconfont {{activityInfo.activityStart?'icon-shandian':'icon-time'}}"></text>
+                {{activityInfo.begin}}{{activityInfo.activityStart?'正在疯抢':'开抢'}}
+            </view>
+            <view class="end-time">
+                <view>{{activityInfo.activityStart?'距结束':'距开始'}}<text class="day">{{countDownData.day}}</text>天</view>
+                <view class="countdown">
+                    <view class="countdown-time">
+                        <view class="countdown-bg">
+                            <view></view>
+                            <view></view>
+                        </view>
+                        <view class="time-value">{{countDownData.hours}}</view>
+                    </view>
+                    <view>:</view>
+                    <view class="countdown-time">
+                        <view class="countdown-bg">
+                            <view></view>
+                            <view></view>
+                        </view>
+                        <view class="time-value">{{countDownData.minute}}</view>
+                    </view>
+                    <view>:</view>
+                    <view class="countdown-time">
+                        <view class="countdown-bg">
+                            <view></view>
+                            <view></view>
+                        </view>
+                        <view class="time-value">{{countDownData.second}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="line"></view>
+    </view>
+    <image bindtap="toGroupIntroduce" class="activity-image" lazyLoad="{{true}}" mode="widthFix" src="{{activityInfo.groupsAdverts}}"></image>
+    <view class="wrap">
+        <view bindtap="toProdetail" class="pro-item" data-pid="{{item.produceId}}" wx:for="{{productList}}">
+            <image lazyLoad="{{true}}" src="{{item.image}}"></image>
+            <view class="pro-info">
+                <view class="pro-name">{{item.produceName}}</view>
+                <view class="progress-frame">
+                    <progress active activeColor="#ff7475" backgroundColor="#fffafa" percent="{{item.percent}}"></progress>
+                    <view class="salecount">已售{{item.saleCount}}件</view>
+                </view>
+                <view class="group-count">库存：{{item.stock}}</view>
+                <view class="pro-bottom">
+                    <view class="bottom-left">
+                        <text>￥{{item.groupsPrice}}</text>
+                        <text>￥{{item.price}}</text>
+                    </view>
+                    <view class="btn-group{{activityInfo.activityStart?'':' bgcolor-yellow'}}">
+                        <text>{{activityInfo.activityStart?'去抢购':'查看商品'}}</text>
+                        <text class="iconfont icon-arrow-right"></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="group-null" hidden="{{!isGroupNull}}">
+    <text>暂无秒杀活动！</text>
+</view>

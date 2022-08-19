@@ -1,0 +1,20 @@
+<import src="../template-cart/template-cart.wxml"></import>
+<view class="container">
+    <template is="{{goodsList.list.length>0?'cart-goods-list':'no-goods'}}" data="{{goodsList:goodsList}}"></template>
+</view>
+<import src="../../../wxParse/wxParse.wxml"></import>
+<view class="toastwrap" hidden="{{maskhidden}}">
+    <view class="toast">
+        <view class="mask" hidden="{{maskhidden}}"></view>
+        <view class="title">
+            <image src="{{photo_url}}images/alert2.png"></image>
+        </view>
+        <view class="content">
+            <scroll-view scrollY style="height:auto; display:inline;">
+                <view class="wxParse">
+                    <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,31 @@
+<view>
+    <view class="testBlock">
+        <view class="blockTitle">检测结果</view>
+        <view class="blockContent">
+            <view class="flex-between">
+                <text class="col666">当前网络类型</text>
+                <text>{{networkType}}</text>
+            </view>
+            <view class="flex-between">
+                <text class="col666">当前蓝牙状态</text>
+                <text class="{{bluetooth?'':'colorange'}}">{{bluetooth?'正常':'异常'}}</text>
+            </view>
+            <view class="tipText">重新打开WIFI和蓝牙，判断功能是否正常</view>
+        </view>
+    </view>
+    <view class="testBlock">
+        <view class="blockTitle errTitle">WIFI和蓝牙功能是否正常？</view>
+        <view class="blockContent">
+            <view>
+                <view bindtap="errItemBind" class="flex-between errItem {{faultArr[index].val==1?'on':''}}" data-index="{{index}}" wx:for="{{['WIFI','蓝牙']}}" wx:key="{{index}}">
+                    <text class="col666">{{item}}异常</text>
+                    <text class="circle"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottomBtns">
+        <view bindtap="errBtnBind" class="submitErrBtn">提交异常</view>
+        <view bindtap="setResult" class="okBtn">全部正常</view>
+    </view>
+</view>

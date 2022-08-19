@@ -1,0 +1,23 @@
+<template name="merchnogoods">
+    <view class="Empty" wx:if="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+        </view>
+        <view class="Empty">Empty</view>
+    </view>
+</template>
+<template name="goodslist">
+    <view bindtap="Empty" class="Empty" data-id="Empty" wx:for="Empty">
+        <view class="Empty">
+            <image mode="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <text>Empty</text>
+                <text>Empty</text>
+                <text>Empty</text>
+            </view>
+        </view>
+    </view>
+</template>

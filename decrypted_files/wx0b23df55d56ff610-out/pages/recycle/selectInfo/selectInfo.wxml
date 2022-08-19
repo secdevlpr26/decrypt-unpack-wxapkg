@@ -1,0 +1,49 @@
+<view wx:if="{{showView}}">
+    <view class="progressView">
+        <progress activeColor="#ff5000" backgroundColor="#f5f5f5" percent="{{progressNum}}"></progress>
+    </view>
+    <view class="classname">
+        <view class="placeholderTopView"></view>
+        <scroll-view scrollY scrollTop="{{scrollTop}}" style="height: {{scrollHeight}};">
+            <view class="selectItem {{editId==idxItem.id?'selected':''}} {{idx<length?'done':''}}" wx:if="{{!news||nindex+1>idx}}" wx:for="{{spec}}" wx:for-index="idx" wx:for-item="idxItem" wx:key="idx">
+                <view bindtap="topItemTap" class="topBlock" data-fid="{{idxItem.id}}" data-index="{{idx}}">
+                    <view class="left">{{idxItem.name}}</view>
+                    <view class="mid">{{faultList[idx].info}}</view>
+                    <view class="right">修改</view>
+                </view>
+                <view class="downBlock">
+                    <view bindtap="downBlockItemTap" class="downBlockItem {{faultList[idx].detailid==item.item_id?'selected':''}}" data-detailid="{{item.item_id}}" data-fid="{{item.attr_fault_id}}" data-fname="{{idxItem.name}}" data-idx="{{idx}}" data-index="{{index}}" data-info="{{item.item}}" wx:for="{{idxItem.items}}" wx:key="index">
+                        <text>{{item.item}}</text>
+                        <view catchtap="tipTap" class="tipView" data-finfo="{{item.attr_fault_info}}" data-photoinfo="{{item.photo_info}}" data-photopath="{{item.photo_path}}" wx:if="{{item.photo_path}}">
+                            <image class="tip" src="https://pic.hiweixiu.com/images/mrecy.hiweixiu.com/tips.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="selectItem otherFault {{showOther?'selectOther':''}}" wx:if="{{!news}}">
+                <view class="topBlock" data-id="{{otherFault.id}}">
+          {{otherFault.name}}<text>是否存在以下问题(可多选)（若无问题，直接估价）</text>
+                </view>
+                <view class="downBlock">
+                    <view bindtap="otherFaultItemTap" class="downBlockItem {{otherFaultList[index].detailid==item[0].item_id?'selected':''}}" data-detailid="{{item[0].item_id}}" data-fid="{{item.attr_fault_id}}" data-fname="{{otherFault.name}}" data-index="{{index}}" data-info="{{item[0].item}}" wx:for="{{other}}" wx:key="index">
+                        <text>{{item[0].item}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="placeholderBottomView"></view>
+    </view>
+    <view class="toResultBtn">
+        <button bindtap="toResultBtnTap" disabled="{{disabled}}">立即估价</button>
+    </view>
+</view>
+<view catchtap="stopTap" catchtouchmove="stopTouchMove" class="mask animated fadeIn" wx:if="{{showMask}}">
+    <view class="midBlock">
+        <icon catchtap="iconTap" color="#000" size="30" type="cancel"></icon>
+        <image class="topImg" src="{{tipList.imgUrl}}"></image>
+        <view class="downView">
+            <text class="title">{{tipList.title}}</text>
+            <text class="content">{{tipList.content}}</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,48 @@
+<view class="header">
+    <view class="img">
+        <image src="../../../images/bg.png"></image>
+    </view>
+    <view class="page_xxb">
+        <text class="page_count">{{readerAccount.score}}</text>
+        <view class="page_name">当前积分</view>
+    </view>
+</view>
+<view class="bill-condition">
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">
+                <picker bindchange="bindDateChange" end="2020-09" fields="month" mode="date" start="2015-09" value="{{date}}">
+                    <text>{{date}}</text>
+                </picker>
+                <image class="data-image" src="../../../images/date.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="bill-list">
+    <view class="noData" wx:if="{{none}}">
+        <image src="../../../images/no-data.png"></image>
+        <view>暂无记录哦！</view>
+    </view>
+    <view class="bill-item" data-id="{{item.id}}" wx:for="{{recordList}}" wx:for-index="key">
+        <view class="weui-flex">
+            <view class="w100">
+                <view class="mx">
+                    {{item.dictName}}
+                    <i class="list-date ml20"></i>
+                </view>
+                <view class="list-date">{{item.createDate}}</view>
+            </view>
+            <view class="weui-flex__item text-right ">
+                <block wx:if="{{item.income!=0}}">
+                    <view class="payInMoney {{item.income>0?'c00ca':'cf40'}}">{{item.income>0?'+'+item.income:item.income}}</view>
+                    <view class="currentMoney">{{item.after}}</view>
+                </block>
+                <block wx:if="{{item.outcome!=0}}">
+                    <view class="payInMoney {{item.outcome>0?'c00ca':'cf40'}}">{{item.outcome>0?'+'+item.outcome:item.outcome}}</view>
+                    <view class="currentMoney">{{item.after}}</view>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>

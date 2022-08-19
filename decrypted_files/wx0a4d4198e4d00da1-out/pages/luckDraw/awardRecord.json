@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "中奖记录",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index",
+        "wxc-abnor": "../../packages/@minui/wxc-abnor/dist/index",
+        "wxc-loadmore": "../../packages/@minui/wxc-loadmore/dist/index"
+    },
+    "enablePullDownRefresh": true
+}

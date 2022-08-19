@@ -1,0 +1,135 @@
+<view class="order-wrap">
+    <view bindtap="toAddress" class="address-wrap" hidden="{{status=='booking'}}">
+        <view class="address-frame no-address" wx:if="{{!addressInfo.contactPerson}}">
+            <view class="iconfont icon-location"></view>
+            <text>添加收货地址</text>
+            <view class="iconfont icon-arrow-right"></view>
+        </view>
+        <view class="address-frame has-address" wx:else>
+            <view class="address-info">
+                <text>{{addressInfo.contactPerson}} {{addressInfo.mobilePhone}}</text>
+                <text>{{addressInfo.proName}} {{addressInfo.cityName}} {{addressInfo.disName}} {{addressInfo.address}}</text>
+            </view>
+            <view class="iconfont icon-arrow-right"></view>
+        </view>
+    </view>
+    <view class="order-frame">
+        <view class="order-item" wx:for="{{orderList}}" wx:key="{{item.branchInfoId}}">
+            <view class="store-name">{{item.branchName}}</view>
+            <view class="pro-item" wx:for="{{item.pro}}" wx:for-item="proItem" wx:key="{{proItem.moduleId}}">
+                <image lazyLoad="{{true}}" src="{{proItem.pic_url==''?'.../../img/img-default.png':proItem.pic_url}}"></image>
+                <view class="pro-info">
+                    <text class="pro-name">{{proItem.productName}}</text>
+                    <text class="pro-attr">{{proItem.proAttrName}}</text>
+                </view>
+                <view class="pro-info1">
+                    <text class="pro-price">
+                        <text>￥</text>{{proItem.price}}</text>
+                    <text class="count">x{{proItem.count}}</text>
+                </view>
+            </view>
+            <view class="price-frame">
+                <view bindtap="branchCoupontap" class="price-item coupon-info" data-index="{{index}}" hidden="{{!item.couponList.length}}">
+                    <text>商家优惠</text>
+                    <view class="coupon-txt">{{item.couponInfo}}<text class="iconfont icon-arrow-right"></text>
+                    </view>
+                </view>
+                <view class="price-item pro-all-price">
+                    <text>商品金额</text>
+                    <text>￥{{proPrice[index]}}</text>
+                </view>
+                <view class="price-item pro-all-price" hidden="{{status=='booking'}}">
+                    <text>运费</text>
+                    <text class="red" wx:if="{{failReason[index]=='0'}}">该地区不支持配送!</text>
+                    <text wx:else>{{'￥'+transportFee[index]}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="price-item pay-price">
+        <text>合计：</text>
+        <text class="red">
+            <text>￥</text>{{totalPrice}}</text>
+    </view>
+    <input bindinput="remarkInput" class="remark" maxlength="50" placeholder="选填：买家留言（50字以内）"></input>
+    <input bindinput="billInput" class="bill" hidden="{{status=='booking'}}" placeholder="选填：是否开发票（此处填写发票抬头及个人信息）"></input>
+    <view bindtap="platformCouTap" class="platform-coupon" hidden="{{!platformCouponList.length}}">
+        <text>平台优惠</text>
+        <text>{{isSelectBraCou?'已选择了商家优惠':platformCouponInfo.tipName}}<text class="iconfont icon-arrow-right"></text>
+        </text>
+    </view>
+    <form bindsubmit="formSubmit" hidden="{{status!='booking'}}">
+        <view bindtap="selectBookingTime" class="hotel-booking" wx:if="{{mtype==1}}">
+            <view class="come-frame">
+                <view class="come-txt">入住</view>
+                <view>
+                    <text class="come-date">{{comeDateInfo.date}}</text>
+                    <text class="come-week">{{comeDateInfo.date==nowDate?'今天':comeDateInfo.week}}</text>
+                </view>
+            </view>
+            <view class="totaltime">
+                <text>共{{totalDays}}晚</text>
+            </view>
+            <view class="leave-frame">
+                <view class="leave-txt">离店</view>
+                <view>
+                    <text class="leave-date">{{leaveDateInfo.date}}</text>
+                    <text class="leave-week">{{leaveDateInfo.week}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="time-wrap" wx:else>
+            <view class="date">
+                <text>选择日期：</text>
+                <picker bindchange="bindDateChange" mode="date" name="date" value="{{date}}">
+                    <view class="date">{{date}}</view>
+                </picker>
+            </view>
+            <view class="time">
+                <text>选择时间：</text>
+                <picker bindchange="bindTimeChange" mode="time" name="time" value="{{time}}">
+                    <view class="time">{{time}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="booking-info">
+            <view class="booking-item">
+                <text>预约人:</text>
+                <input name="name" placeholder="请输入姓名"></input>
+            </view>
+            <view class="booking-item">
+                <text>手机号码:</text>
+                <input maxlength="11" name="phone" placeholder="请输入号码" type="number"></input>
+            </view>
+            <view class="booking-item remarks">
+                <text>备注:</text>
+                <textarea name="remarks"></textarea>
+            </view>
+        </view>
+        <button class="btn-booking" formType="submit" type="warn">提交预约</button>
+    </form>
+    <view class="pay-type" hidden="{{status=='booking'}}">
+        <button bindtap="wxPay" data-type="1" hidden="{{!isWeb}}" type="warn">在线支付</button>
+        <button bindtap="wxPay" data-type="1" hidden="{{isWeb||!hasWxPay}}" type="warn">微信支付</button>
+        <button bindtap="wxPay" class="prePayType" data-type="0" wx:if="{{isShowPrePay&&cardNo}}">预存支付</button>
+        <button bindtap="offlinePay" hidden="{{!offlinePayHidden}}" plain="true">货到付款</button>
+    </view>
+    <view class="branch-coupon-box" hidden="{{hiddenCouponList}}">
+        <view bindtap="closebranchCoupon" class="branch-coupon-bg"></view>
+        <view class="branch-coupon">
+            <view class="bc-title">{{coupontype==1?'店铺优惠':'平台优惠'}}</view>
+            <view class="bc-list">
+                <view bindtap="selectCoupon" class="bc-item" data-cidx="{{index}}" wx:for="{{coupontype==1?branchCouponList:platformCouponList}}">
+                    <view>{{item.tipName}}</view>
+                    <view class="iconfont {{item.isSelected?'icon-checkbox1':'icon-checkBox'}}"></view>
+                </view>
+                <view bindtap="selectCoupon" class="bc-item" data-cidx="">
+                    <view>不使用优惠</view>
+                    <view class="iconfont {{orderList[curBranchCouponIdx].couponPrice==0?'icon-checkbox1':'icon-checkBox'}}" wx:if="{{coupontype==1}}"></view>
+                    <view class="iconfont {{platformCouponInfo.couponPrice==0?'icon-checkbox1':'icon-checkBox'}}" wx:else></view>
+                </view>
+            </view>
+            <view bindtap="closebranchCoupon" class="btn-close">关闭</view>
+        </view>
+    </view>
+</view>

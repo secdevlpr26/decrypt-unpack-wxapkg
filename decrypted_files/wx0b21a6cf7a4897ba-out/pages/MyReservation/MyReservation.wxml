@@ -1,0 +1,45 @@
+<scroll-view>
+    <view class="headView">
+        <image class="headImg" mode="aspectFill" src="{{avatarUrl.length>0?avatarUrl:iconimg.default_pic}}"></image>
+        <text class="nickName">{{nickName}}</text>
+    </view>
+    <view class="cell padding_spacing" wx:for="{{list}}" wx:for-index="idx" wx:key="index">
+        <view class="horiz" style="justify-content: space-between; margin-top:20px;">
+            <text class="cell-time">{{item.addTime}}</text>
+            <text class="cell-time" wx:if="{{item.status==0}}">处理中</text>
+            <text class="cell-time" wx:if="{{item.status==1}}">已预约</text>
+            <text class="cell-time" wx:if="{{item.status==2}}">已完成</text>
+            <text class="cell-time" wx:if="{{item.status==3}}">已取消</text>
+        </view>
+        <view class="horiz" style="justify-content: space-between; margin-top:20px;">
+            <view style="display:flex; flex-direction:column;">
+                <view class="horiz" style="height:13px;">
+                    <view style="height:6px;width:6px;background:#6191ff;border-radius: 3px;"></view>
+                    <view class="cell-date-time">预约日期：{{item.date}}</view>
+                </view>
+                <view class="horiz" style="height:13px; margin-top:10px;">
+                    <view style="height:6px;width:6px;background:#fc9153;border-radius: 3px;"></view>
+                    <view class="cell-date-time">预约时间：{{item.time}}</view>
+                </view>
+            </view>
+            <view bindtap="cancelEvent" class="cell-cancelBtn" data-value="{{idx}}" hoverClass="weui-cell_active" wx:if="{{item.status<2}}">取消</view>
+        </view>
+        <text class="cell-content">{{item.content}}</text>
+    </view>
+</scroll-view>
+<view class="popView-backView" wx:if="{{showPopView}}"></view>
+<view bindtap="hidePop" class="popView" wx:if="{{showPopView}}">
+    <view class="popView-content">
+        <view class="pop-title horiz">请选择取消原因</view>
+        <view class="weui-panel">
+            <view catchtap="selectedReason" class="weui-cell horiz" data-value="{{item}}" hoverClass="weui-cell_active" wx:for="{{poplist}}" wx:for-index="idx" wx:key="index">
+                <view class="weui-cell__bd">{{item}}</view>
+                <image mode="aspectFit" src="{{popSelectedReason==item?iconimg.selected_2:iconimg.select_2}}" style="width:20px; height: 20px;"></image>
+            </view>
+        </view>
+        <view catchtap="popSubmit" class="popView-bottomBtn" hoverClass="weui-cell_active">提交</view>
+    </view>
+</view>
+<view class="msgPopView" wx:if="{{errorMsg.length>0}}">
+    <view class="errorMsg">{{errorMsg}}</view>
+</view>

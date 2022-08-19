@@ -1,0 +1,15 @@
+<view class="pro-list">
+    <view bindtap="toProductDetail" class="disPro-item" data-pid="{{item.produceId}}" wx:for="{{productList}}">
+        <image src="{{item.image}}"></image>
+        <view class="disPro-main">
+            <view class="disPro-name">{{item.produceName}}</view>
+            <view>
+                <text class="disPro-price">￥{{item.groupsPrice}}</text>
+            </view>
+            <view class="disPro-bottom">
+                <text class="disPro-new">{{item.newArrival?'新上架':'库存：'+item.stock}}</text>
+                <text class="disPro-saleCount">销量：{{item.saleCount}}</text>
+            </view>
+        </view>
+    </view>
+</view>

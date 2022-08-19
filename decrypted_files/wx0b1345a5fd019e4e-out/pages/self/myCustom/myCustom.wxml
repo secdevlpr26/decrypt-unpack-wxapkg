@@ -1,0 +1,15 @@
+<view class="wrap">
+    <view class="item" wx:for="{{customArr}}" wx:key="{{item.id}}">
+        <image lazyLoad="{{true}}" src="{{item.imagePath}}"></image>
+        <view class="item-right">
+            <text class="item-title">{{item.storeName}}</text>
+            <text class="name-phone">姓名：{{item.name}}  电话：{{item.phone}}</text>
+            <text class="describe">描述：{{item.detail}}</text>
+            <text class="date">提交时间：{{item.date}}</text>
+        </view>
+    </view>
+    <view class="myCustom-null" hidden="{{customArr.length}}">
+        <view class="iconfont icon-vz-null"></view>
+        <text>您还没有添加定制</text>
+    </view>
+</view>

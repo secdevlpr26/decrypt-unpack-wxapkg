@@ -1,0 +1,84 @@
+<view class="container">
+    <view class="detail">
+        <view class="avatar-box"></view>
+        <image class="avatar" src="{{pickUser.pic_url}}"></image>
+        <view class="name">{{pickUser.name}}</view>
+        <view class="score">
+            人气 <text>{{pickUser.show_num}}</text> | 
+            <block wx:if="{{pickUser.count<3}}">
+            总榜 <text>Top {{pickUser.count+1}}</text>
+            </block>
+            <block wx:if="{{pickUser.count>2}}">
+            总榜 <text>{{pickUser.count+1}}</text>
+            </block>
+        </view>
+        <view bindtap="addScore" class="call">
+            人气点 x{{score}} | 为Ta打Call
+        </view>
+        <view class="audio" wx:if="{{pickUser.music_url}}">
+            <audio bindtimeupdate="timeupdate" id="myAudio" src="{{pickUser.music_url}}"></audio>
+            <view class="play-box">
+                <image bindtap="play" class="play" src="/images/play.png" wx:if="{{status=='pause'}}"></image>
+                <image bindtap="pause" class="pause" src="/images/pause.png" wx:if="{{status=='play'}}"></image>
+            </view>
+            <view class="audio-box">
+                <view class="progress-track">
+                    <view class="progress-play" style="width:{{width}}%"></view>
+                    <view class="progress-seek" style="left:{{left}}%"></view>
+                </view>
+            </view>
+        </view>
+        <view class="music-title">
+            {{pickUser.music_name}}
+        </view>
+        <view class="title">
+            <view class="left-line-box">
+                <view class="line"></view>
+                <view class="left-line"></view>
+            </view>
+            <text>为Ta赢代言</text>
+            <view class="right-line-box">
+                <view class="line"></view>
+                <view class="right-line"></view>
+            </view>
+        </view>
+        <view class="share-detail">
+            今日已分享{{share_count}}次，剩余<text>{{5-share_count}}</text>次
+        </view>
+        <view class="banner-box">
+            <image class="player-bg" src="/images/player-bg.png"></image>
+            <image class="player-banner" src="{{pickUser.pic_url}}"></image>
+            <view class="music-title" style="margin-top:84rpx;">为Ta打Call，赢代言！</view>
+            <button bindgetuserinfo="getUserInfo" class="call" openType="{{buttonType}}" style="width:230rpx;">Share yooo!</button>
+        </view>
+        <view class="remark">
+            <view>* 每日可分享5次，为pick的rapper赢代言！</view>
+            <view>* 每次分享可获得3个人气点，每日上限15点。</view>
+        </view>
+    </view>
+    <view class="comment">
+        <view class="title" style="text-align:center;">
+            <view class="left-line-box">
+                <view class="line"></view>
+                <view class="left-line"></view>
+            </view>
+            <text>HOMIE留言</text>
+            <view class="right-line-box">
+                <view class="line"></view>
+                <view class="right-line"></view>
+            </view>
+        </view>
+        <view class="comment-list">
+            <view class="item" wx:for="{{comments}}" wx:key="index">
+                <image class="comment-avatar" src="{{item.avatar}}"></image>
+                <view class="comment-name">{{item.user_name}}</view>
+                <view class="content">{{item.content}}</view>
+                <view class="comment-time">{{item.created_at}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="comment-send-box" wx:if="{{user}}">
+        <input bindinput="comment" confirmType="Send" maxlength="50" placeholder="对Ta说点什么..."></input>
+        <button bindtap="saveComment" class="send">Send</button>
+    </view>
+</view>

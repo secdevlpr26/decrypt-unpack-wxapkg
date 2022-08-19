@@ -1,0 +1,22 @@
+<form bindsubmit="enterSystem" bindtap="enter" reportSubmit="true">
+    <button formType="submit">
+        <view class="box">
+            <form bindsubmit="enterS" reportSubmit="true">
+                <button formType="submit">
+                    <view class="box">
+                        <form bindsubmit="rSystem" reportSubmit="true">
+                            <button formType="submit">
+                                <view class="box">
+                                    <view class="system-page">
+                                        <image src="../../images/inlet.png" style="width:100%;height:1201rpx;"></image>
+                                        <image class="logo" src="../../images/logo.png"></image>
+                                    </view>
+                                </view>
+                            </button>
+                        </form>
+                    </view>
+                </button>
+            </form>
+        </view>
+    </button>
+</form>

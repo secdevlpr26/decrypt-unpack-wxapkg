@@ -1,0 +1,5 @@
+<import src="../../components/loading.wxml"></import>
+<template is="loading" data wx:if="{{isLoads}}"></template>
+<import src="../../components/showModal.wxml"></import>
+<template is="showModal" data wx:if="{{!isLogin}}"></template>
+<view class="top-line"></view>

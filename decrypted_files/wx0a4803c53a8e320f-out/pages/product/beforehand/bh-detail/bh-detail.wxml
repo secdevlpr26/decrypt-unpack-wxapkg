@@ -1,0 +1,14 @@
+<view class="detail" style="border: 2rpx solid {{styleConfig.isWhite?'#95D9FA':styleConfig.mainColor}};">
+    <view class="title">预约单详情</view>
+    <view>预约时间：{{detailList[2].inputValue}} {{detailList[3].inputValue}}</view>
+    <view wx:if="{{detailList[0].status==1}}">预约状态：已提交</view>
+    <view wx:elif="{{detailList[0].status==2}}">预约状态：预约成功</view>
+    <view wx:else>预约状态：预约失败</view>
+    <view class="text">姓名：</view>
+    <view>{{detailList[0].inputValue}}</view>
+    <view class="text">电话：</view>
+    <view>{{detailList[1].inputValue}}</view>
+    <view class="text">留言：</view>
+    <view>{{detailList[4].inputValue}}</view>
+</view>
+<view bindtap="toHome" class="iconfont icon-arrow-left btn-home" style="background-color: {{styleConfig.isWhite?'#E50029':styleConfig.mainColor}};">返回首页</view>

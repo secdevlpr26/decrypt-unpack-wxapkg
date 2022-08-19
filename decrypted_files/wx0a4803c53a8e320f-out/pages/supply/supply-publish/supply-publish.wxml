@@ -1,0 +1,31 @@
+<view class="nav">
+    <view bindtap="navtap" class="nav-item " data-index="2" style="{{navIndex==2?'color: #000;border-bottom: 4rpx solid '+styleConfig.mainColor+';':''}}">供应</view>
+    <view bindtap="navtap" class="nav-item " data-index="1" style="{{navIndex==1?'color: #000;border-bottom: 4rpx solid '+styleConfig.mainColor+';':''}}">求购</view>
+</view>
+<form bindreset="formReset" bindsubmit="formSubmit" class="main">
+    <view class="top">
+        <view class="item">
+            <text>标题</text>
+            <input name="title" value="{{title}}"></input>
+        </view>
+        <view class="item">
+            <text>手机号码</text>
+            <input maxlength="11" name="phone" value="{{phone}}"></input>
+        </view>
+    </view>
+    <view class="picture">
+        <text class="ftsm">附图说明</text>
+        <view class="photo">
+            <image lazyLoad="{{true}}" src="{{imagePath}}"></image>
+        </view>
+        <view bindtap="takephoto" class="photograph" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">上传图片</view>
+    </view>
+    <view class="description-frame">
+        <text>描述信息</text>
+        <textarea autoHeight class="description" name="describe" value="{{describe}}"></textarea>
+    </view>
+    <view class="button">
+        <button class="reset" formType="reset" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">重置</button>
+        <button class="submit" formType="submit" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">提交</button>
+    </view>
+</form>

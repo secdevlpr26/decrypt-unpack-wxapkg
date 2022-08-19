@@ -1,0 +1,1 @@
+<form bindreset="formReset" bindsubmit="formSubmit"></form>

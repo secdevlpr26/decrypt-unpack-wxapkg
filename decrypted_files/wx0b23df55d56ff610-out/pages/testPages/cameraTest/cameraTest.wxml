@@ -1,0 +1,31 @@
+<view>
+    <view class="testBlock" wx:if="{{!btnClicked}}">
+        <view class="blockTitle">摄像头及闪光灯检测</view>
+        <view class="blockContent">
+            <view bindtap="openCamera" class="testBtn">开始检测</view>
+            <view class="tipText">点击开始检测，打开摄像头，观察是否有问题，记得将闪光灯打开！！！</view>
+        </view>
+    </view>
+    <view class="testBlock" wx:if="{{btnClicked}}">
+        <view class="blockTitle errTitle">摄像头及闪光灯功能是否正常？</view>
+        <view class="blockContent">
+            <view>
+                <view bindtap="errItemBind" class="flex-between errItem {{faultArr[index].val==1?'on':''}}" data-index="{{index}}" wx:for="{{['主摄像头','前置摄像头','闪光灯']}}" wx:key="{{index}}">
+                    <text class="col666">{{item}}异常</text>
+                    <text class="circle"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottomBtns" wx:if="{{btnClicked}}">
+        <view bindtap="errBtnBind" class="submitErrBtn">提交异常</view>
+        <view bindtap="setResult" class="okBtn">全部正常</view>
+    </view>
+</view>
+<view style="position: fixed; top:0; bottom:0; left: 0; right: 0; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;" wx:if="{{!btnClicked}}">
+    <view style="margin-top: 150rpx;font-size: 32rpx; text-align: center; padding: 0 80rpx; color: #333;">点击按钮，打开摄像头，观察是否有问题</view>
+    <view style="font-size: 28rpx; text-align: center;color: #333;margin-top: 20rpx;">记得打开<text style="color:#ff5000;">闪光灯</text>，别忘了<text style="color:#ff5000;">前置摄像头</text>
+    </view>
+    <image src="./12.png" style="display: block;margin: 140rpx 0;height: 286.5rpx; width: 382rpx;"></image>
+    <view bindtap="openCamera" style="width: 650rpx; height: 100rpx; text-align: center; line-height: 100rpx; background: #ff5000;color: #fff; border-radius: 4px; font-size: 32rpx;">开始检测</view>
+</view>

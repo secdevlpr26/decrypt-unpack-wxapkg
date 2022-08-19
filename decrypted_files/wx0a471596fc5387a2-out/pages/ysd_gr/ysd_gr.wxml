@@ -1,0 +1,41 @@
+<view class="tr" style=" padding-top:180rpx;">
+    <block wx:for="{{list}}" wx:key="{{item.id}}">
+        <view class="order_hao">
+            <text class="left">{{item.DJMC}}号: {{item.ID}}</text>
+            <text class="icon" wx:if="{{item.BXJS=='W'}}">{{item.BXJS=='W'?'超':''}}</text>
+            <text class="right"> {{item.YWRQ}}</text>
+        </view>
+        <view class="order_zt">
+            <image class="order_img" src="{{item.HEADIMGURL}}"></image>
+            <view class="order_zt_top">
+                <text>部门：</text>
+                <text>{{item.MC}}</text>
+            </view>
+            <view class="order_zt_top">
+                <text>申请人：</text>
+                <text>{{item.BXR}}</text>
+            </view>
+            <view class="order_zt_top">
+                <text>摘要：</text>
+                <text>{{item.ZY}}</text>
+            </view>
+            <view class="order_zt_top">
+                <text>金额：</text>
+                <text class="f00">￥{{item.JE}}</text>
+            </view>
+            <navigator url="/pages/ysd_details/ysd_details?id={{item.ID}}&ztbm={{item.ZTBM}}&lx={{lx}}">查看明细</navigator>
+        </view>
+    </block>
+    <image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+    <include src="../footer/footer.wxml"></include>
+</view>
+<view style="position:fixed; top:0;width: 750rpx;opacity:1.0;background:white;">
+    <view class="search">
+        <image src="{{hostUrl}}/images/search.jpg"></image>
+        <input bindblur="searchSubmit" bindinput="searchActiveChangeinput" placeholder="请输入单据号码" type="text" value="{{keyWord}}"></input>
+    </view>
+    <view class="switch_box">
+        <navigator bindtap="switchTab" class="{{switchTabTwo==true?'active':''}}" data-order="2" hoverClass="none">已提交</navigator>
+        <navigator bindtap="switchTab" class="{{switchTabThree==true?'active':''}}" data-order="3" hoverClass="none">流程完成</navigator>
+    </view>
+</view>

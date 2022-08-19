@@ -1,0 +1,253 @@
+<view class="self">
+    <view bindtap="headtap" class="self-head">
+        <image animation="{{animationData}}" class="bg-image" lazyLoad="{{true}}" src="{{iconPath}}"></image>
+    </view>
+    <view class="member-info">
+        <view class="a-head">
+            <image lazyLoad="{{true}}" src="{{iconPath}}"></image>
+        </view>
+        <view class="name">{{nickName?nickName:'点击获取头像'}}</view>
+        <button bindgetuserinfo="bindGetUserInfo" openType="getUserInfo"></button>
+    </view>
+    <view class="func-wrap" wx:if="{{!isPerson}}">
+        <view class="self-func1">
+            <view class="func1-left">
+                <view catchtap="toOrderList" class="func1-item" data-index="0">
+                    <view class="count" wx:if="{{orderCount.waitPayOrderCount>0}}">{{orderCount.waitPayOrderCount}}</view>
+                    <view class="iconfont icon-daifukuan"></view>
+                    <text class="cost-text">待付款</text>
+                </view>
+                <view catchtap="toOrderList" class="func1-item" data-index="1">
+                    <view class="count" wx:if="{{orderCount.waitDeliverOrderCount>0}}">{{orderCount.waitDeliverOrderCount}}</view>
+                    <view class="iconfont icon-daifahuo"></view>
+                    <text class="cost-text">待发货</text>
+                </view>
+            </view>
+            <view class="func1-right">
+                <view catchtap="toOrderList" class="func1-item" data-index="2">
+                    <view class="count" wx:if="{{orderCount.waitSignOrderCount>0}}">{{orderCount.waitSignOrderCount}}</view>
+                    <view class="iconfont icon-wuliu"></view>
+                    <text class="cost-text">待收货</text>
+                </view>
+                <view catchtap="toOrderList" class="func1-item" data-index="3">
+                    <view class="iconfont icon-undetermined"></view>
+                    <text class="cost-text">待评价</text>
+                </view>
+            </view>
+        </view>
+        <view class="list-style">
+            <view bindtap="toOrderList" class="func-item" data-index="0" wx:if="{{showCustomizeTabId.ZXMarketModuleOrder}}">
+                <view class="item-left">
+                    <i class="iconfont icon-order"></i>
+                    <text>我的订单</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="coupontap" class="func-item" wx:if="{{showCustomizeTabId.Activity}}">
+                <view class="item-left">
+                    <i class="iconfont icon-youhuiquan"></i>
+                    <text>我的优惠券</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toMyGroup" class="func-item" wx:if="{{showCustomizeTabId['Activity-Group']}}">
+                <view class="item-left">
+                    <i class="iconfont icon-guanyuwomen"></i>
+                    <text>我的拼团</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toMyCustom" class="func-item" wx:if="{{showCustomizeTabId['Flexi-Form']}}">
+                <view class="item-left">
+                    <i class="iconfont icon-customized"></i>
+                    <text>我的定制</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toCollect" class="func-item">
+                <view class="item-left">
+                    <i class="iconfont icon-star"></i>
+                    <text>我的收藏</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="cardtap" class="func-item" wx:if="{{showCustomizeTabId.CardNo}}">
+                <view class="item-left">
+                    <view class="iconfont icon-vip"></view>
+                    <text>电子会员卡</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toSupply" class="func-item" wx:if="{{showCustomizeTabId.LynxPhoto_Info_Post_Tab}}">
+                <view class="item-left">
+                    <i class="iconfont icon-mysupply"></i>
+                    <text>我的供求</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toDistribute" class="func-item" wx:if="{{showCustomizeTabId['Activity-Distribution']}}">
+                <view class="item-left">
+                    <i class="iconfont icon-distribute"></i>
+                    <text>{{actDistribution.distribuctionName?actDistribution.distribuctionName:'分销员中心'}}</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+        </view>
+        <view class="list-style" style="width: 100%;background-color: #fff;margin-bottom: 10px;">
+            <view bindtap="toCart" class="func-item">
+                <view class="item-left">
+                    <i class="iconfont icon-cart"></i>
+                    <text>购物车</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toMyBeforehand" class="func-item">
+                <view class="item-left">
+                    <i class="iconfont icon-xin"></i>
+                    <text>我的预约</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="bindphone" class="func-item">
+                <view class="item-left">
+                    <view class="iconfont icon-shouji"></view>
+                    <text>{{phone&&phone.length>0?'换绑手机':'绑定手机'}}</text>
+                </view>
+                <view class="bindphone-right">
+                    <text>{{phone}}</text>
+                    <text class="iconfont icon-arrow-right"></text>
+                </view>
+            </view>
+            <view bindtap="abouttap" class="func-item">
+                <view class="item-left">
+                    <i class="iconfont icon-about-us"></i>
+                    <text>关于我们</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="jointap" class="func-item" wx:if="{{showCustomizeTabId.LynxApplyFor_About_Merchant}}">
+                <view class="item-left">
+                    <i class="iconfont icon-brand"></i>
+                    <text>商家入驻</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+        </view>
+    </view>
+    <view class="func-wrap" wx:else>
+        <view class="self-func1" wx:if="{{!isQuery}}">
+            <view class="func1-left">
+                <view catchtap="toCollect" class="func1-item">
+                    <view class="iconfont icon-star"></view>
+                    <text class="cost-text">我的收藏</text>
+                </view>
+                <view bindtap="toSupply" class="func1-item" wx:if="{{showCustomizeTabId.LynxPhoto_Info_Post_Tab}}">
+                    <view class="iconfont icon-supply"></view>
+                    <text class="cost-text">我的供求</text>
+                </view>
+            </view>
+            <view class="func1-right">
+                <view bindtap="toMyGroup" class="func1-item" wx:if="{{showCustomizeTabId['Activity-Group']}}">
+                    <view class="iconfont icon-guanyuwomen"></view>
+                    <text class="cost-text">我的拼团</text>
+                </view>
+                <view bindtap="jointap" class="func1-item" wx:if="{{showCustomizeTabId.LynxApplyFor_About_Merchant}}">
+                    <view class="iconfont icon-brand"></view>
+                    <text class="cost-text">商家入驻</text>
+                </view>
+            </view>
+        </view>
+        <view class="self-func" wx:if="{{!isQuery}}">
+            <view bindtap="toOrderList" class="func-item" wx:if="{{showCustomizeTabId.ZXMarketModuleOrder}}">
+                <view class="item-left">
+                    <i class="iconfont icon-order"></i>
+                    <text>订单管理</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toCart" class="func-item" wx:if="{{showCustomizeTabId.ZXMarketModuleOrder}}">
+                <view class="item-left">
+                    <i class="iconfont icon-cart"></i>
+                    <text>购物车</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="catetap" class="func-item">
+                <view class="item-left">
+                    <i class="iconfont icon-more"></i>
+                    <text>分类</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toStore" class="func-item" wx:if="{{showCustomizeTabId.LynxAbout_Merchant}}">
+                <view class="item-left">
+                    <i class="iconfont icon-store"></i>
+                    <text>商家</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="coupontap" class="func-item" wx:if="{{showCustomizeTabId.Activity}}">
+                <view class="item-left">
+                    <view class="iconfont icon-youhui"></view>
+                    <text>我的优惠券</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+        </view>
+        <view class="self-func" wx:if="{{!isQuery}}">
+            <view bindtap="toMyCustom" class="func-item" wx:if="{{showCustomizeTabId['Flexi-Form']}}">
+                <view class="item-left">
+                    <i class="iconfont icon-customized"></i>
+                    <text>我的定制</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="toMyBeforehand" class="func-item">
+                <view class="item-left">
+                    <i class="iconfont icon-xin1"></i>
+                    <text>我的预约</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+            <view bindtap="bindphone" class="func-item">
+                <view class="item-left">
+                    <view class="iconfont icon-shouji"></view>
+                    <text>{{phone&&phone.length>0?'换绑手机':'绑定手机'}}</text>
+                </view>
+                <view class="bindphone-right">
+                    <text>{{phone}}</text>
+                    <text class="iconfont icon-arrow-right"></text>
+                </view>
+            </view>
+        </view>
+        <view class="self-func self-func3" wx:if="{{isQuery}}">
+            <view bindtap="bindphone" class="func-item">
+                <view class="item-left">
+                    <view class="iconfont icon-shouji"></view>
+                    <text>{{phone&&phone.length>0?'换绑手机':'绑定手机'}}</text>
+                </view>
+                <view class="bindphone-right">
+                    <text>{{phone}}</text>
+                    <text class="iconfont icon-arrow-right"></text>
+                </view>
+            </view>
+            <view bindtap="abouttap" class="func-item">
+                <view class="item-left">
+                    <view class="iconfont icon-about-us"></view>
+                    <text>关于我们</text>
+                </view>
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="authorize-mb" wx:if="{{!phone&&!isPerson}}">
+    <view class="authorize-dialog">
+        <text>{{projectName}}小程序获取您的手机号</text>
+        <text class="authorize-txt">请授权登录</text>
+        <view class="btn-authorize">
+            <button bindgetphonenumber="getPhoneNumber" openType="getPhoneNumber">授权登录</button>
+            <button bindtap="cancelAuth">取消</button>
+        </view>
+    </view>
+</view>

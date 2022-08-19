@@ -1,0 +1,60 @@
+<view class="pay-wrap">
+    <view bindtap="toaddressbook" class="address-container">
+        <image class="address-back" src="./icons/address-back.png"></image>
+        <view class="address-info">
+            <view class="icon">
+                <image src="./icons/address-icon.png"></image>
+            </view>
+            <view class="info">
+                <view class="user-info">
+                    <text>{{address.consignee}}</text>
+                    <text>{{address.mobile}}</text>
+                </view>
+                <view class="city">
+                    <text>{{address.pname}}</text>
+                    <text>{{address.cname?address.cname:''}}</text>
+                    <text>{{address.dname?address.dname:''}}</text>
+                    <text>{{address.ename?address.ename:''}}</text>
+                </view>
+                <view class="address">
+                    <text>{{address.address}}</text>
+                </view>
+            </view>
+            <image class="arrow" src="../../assets/icons/arrows_03.png"></image>
+        </view>
+    </view>
+    <view class="goods-list">
+        <view class="goods-item" wx:for="{{goodsList}}" wx:key="{{index}}">
+            <view class="pic">
+                <image src="{{item.original_img}}"></image>
+            </view>
+            <view class="info">
+                <view class="name">
+                    <text>{{item.goods_name}}</text>
+                </view>
+                <view class="price">
+                    <text>¥{{item.goods_price||item.shop_price}}</text>
+                </view>
+                <view class="count">
+                    <text>X{{item.goods_num}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="goods-info">
+        <view class="info-list">
+            <view class="info-item">
+                <text>商品总额: <text class="c-1">¥{{totalPrice.total_fee}}</text>元</text>
+            </view>
+            <view class="info-item">
+                <text>配送费用: <text class="c-1">¥{{freight}}</text>元</text>
+            </view>
+            <view class="info-item">
+                <text>实际付款: <text class="c-1">¥{{sum}}</text>元</text>
+            </view>
+        </view>
+        <view bindtap="submit" class="btn-default submit-btn">
+            <text>提交订单</text>
+        </view>
+    </view>
+</view>

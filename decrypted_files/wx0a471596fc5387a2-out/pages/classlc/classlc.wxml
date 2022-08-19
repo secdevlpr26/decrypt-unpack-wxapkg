@@ -1,0 +1,51 @@
+<view class="box">
+    <view class="top">
+        <view class="location">
+            <image class="dwico" src="{{hostUrl}}/images/syico1.png"></image>
+            <text>提单部门</text>
+            <image class="rightico" src="{{hostUrl}}/images/syico2.png"></image>
+        </view>
+        <view hidden="TRUE">
+            <text>{{NF}}{{ZRZXBM}}{{ZTBM}}{{LX}}{{MBLX}}</text>
+        </view>
+        <view class="search">
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+            <text>{{ZRZXMC}}</text>
+        </view>
+    </view>
+    <view class="list">
+        <view class="li" wx:for="{{typeList}}" wx:key="{{item.ID}}">
+            <navigator url="/pages/jkd/jkd?lcbm={{item.ID}}&ztbm={{item.ZTBM}}&djlx={{item.LX}}&djmc={{item.MC}}&nf={{item.NF}}&zrzxbm={{item.ZRZXBM}}&zrzxmc={{item.ZRZXMC}}" wx:if="{{item.LX=='02'||item.LX=='06'}}">
+                <view class="li_img">
+                    <image class="pic" src="{{hostUrl}}/images/{{item.CODE}}"></image>
+                </view>
+          {{item.MC}}
+        </navigator>
+            <navigator url="/pages/yssy/yssy?lcbm={{item.ID}}&ztbm={{item.ZTBM}}&djlx={{item.LX}}&djmc={{item.MC}}&nf={{item.NF}}&zrzxbm={{item.ZRZXBM}}&zrzxmc={{item.ZRZXMC}}" wx:if="{{item.LX=='01'&&item.MBLX=='1'}}">
+                <view class="li_img">
+                    <image class="pic" src="{{hostUrl}}/images/{{item.CODE}}"></image>
+                </view>
+          {{item.MC}}
+        </navigator>
+            <navigator url="/pages/yssycl/yssycl?lcbm={{item.ID}}&ztbm={{item.ZTBM}}&djlx={{item.LX}}&djmc={{item.MC}}&nf={{item.NF}}&zrzxbm={{item.ZRZXBM}}&zrzxmc={{item.ZRZXMC}}" wx:if="{{item.LX=='01'&&item.MBLX=='4'}}">
+                <view class="li_img">
+                    <image class="pic" src="{{hostUrl}}/images/{{item.CODE}}"></image>
+                </view>
+          {{item.MC}}
+        </navigator>
+            <navigator url="/pages/skd/skd?lcbm={{item.ID}}&ztbm={{item.ZTBM}}&djlx={{item.LX}}&djmc={{item.MC}}&nf={{item.NF}}&zrzxbm={{item.ZRZXBM}}&zrzxmc={{item.ZRZXMC}}" wx:if="{{item.LX=='57'||item.LX=='43'}}">
+                <view class="li_img">
+                    <image class="pic" src="{{hostUrl}}/images/{{item.CODE}}"></image>
+                </view>
+          {{item.MC}}
+        </navigator>
+            <navigator url="/pages/jhsqd/jhsqd?lcbm={{item.ID}}&ztbm={{item.ZTBM}}&djlx={{item.LX}}&djmc={{item.MC}}&nf={{item.NF}}&zrzxbm={{item.ZRZXBM}}&zrzxmc={{item.ZRZXMC}}" wx:if="{{item.LX=='09'}}">
+                <view class="li_img">
+                    <image class="pic" src="{{hostUrl}}/images/{{item.CODE}}"></image>
+                </view>
+          {{item.MC}}
+        </navigator>
+        </view>
+    </view>
+    <include src="../footer/footer.wxml"></include>
+</view>

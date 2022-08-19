@@ -1,0 +1,1 @@
+<web-view src="https://xcx189.ycdongxu.com/index.php?m=Api&c=WapBaodan&a=add&user_id={{userInfo.user_id}}"></web-view>

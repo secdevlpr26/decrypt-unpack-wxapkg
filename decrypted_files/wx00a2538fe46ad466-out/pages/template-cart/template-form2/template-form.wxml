@@ -1,0 +1,3 @@
+<template name="tip">
+    <view id="Empty" wx:if="Empty">Empty</view>
+</template>

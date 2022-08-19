@@ -1,0 +1,3 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container"></view>

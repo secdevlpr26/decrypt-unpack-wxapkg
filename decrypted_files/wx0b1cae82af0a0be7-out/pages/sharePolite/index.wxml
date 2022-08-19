@@ -1,0 +1,28 @@
+<view class="container">
+    <image class="share_bg" mode="widthFix" src="/images/sa@3x.png"></image>
+    <view class="share_body">
+        <view class="share_title">新人注册即可获取优惠</view>
+        <button class="share_btn" openType="share">
+      分享新人领50元优惠
+    </button>
+        <image class="invite" src="/images/ad-01.png"></image>
+        <view class="new_people">
+            <view class="people_body">
+                <view class="list_body">
+                    <view class="list" wx:for="{{invitedList}}">
+                        <image class="list_heard" src="{{item.headImage}}"></image>
+                        <view class="list_title">
+                            <text class="title_top">{{item.nickName}}</text>
+                            <text class="title_bottom">{{item.shareTime}}</text>
+                        </view>
+                    </view>
+                    <view class="none-invite" wx:if="{{invitedList.length<1}}">您暂时还没有发出过邀请哦!</view>
+                </view>
+            </view>
+            <view class="left_top"></view>
+            <view class="left_bottom"></view>
+            <view class="right_top"></view>
+            <view class="right_bottom"></view>
+        </view>
+    </view>
+</view>

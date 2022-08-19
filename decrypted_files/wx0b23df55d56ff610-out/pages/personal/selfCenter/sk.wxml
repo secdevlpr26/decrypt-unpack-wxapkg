@@ -1,0 +1,5 @@
+<view class="content">
+    <text class="title">收款中心</text>
+    <input bindinput="money" class="input" placeholder="请输入您支付的金额" type="number"></input>
+    <text bindtap="pay" class="button">确定支付</text>
+</view>

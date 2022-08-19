@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "提交需求",
+    "usingComponents": {
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

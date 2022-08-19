@@ -1,0 +1,46 @@
+<view class="wrap">
+    <view class="oreder-item">
+        <view class="goods-info">
+            <view class="pic">
+                <image src="{{detail.original_img}}"></image>
+            </view>
+            <view class="info">
+                <view class="name text-ellipsis">
+                    <text class="text-ellipsis">{{detail.goods_name}}</text>
+                </view>
+                <view class="specification">{{detail.spec_key_name}}</view>
+                <view class="goods-status">
+                    <view class="price">
+                        <text>¥{{detail.goods_price}}</text>
+                    </view>
+                    <view class="count">
+                        <text>{{detail.goods_num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="comment-container">
+        <view class="caption">
+            <text>售后类型</text>
+            <text class="typename">{{detail.type_name}}</text>
+        </view>
+        <view class="caption">
+            <text>问题描述</text>
+        </view>
+        <view class="content">
+            <textarea bindinput="editComment">{{detail.reason}}
+            </textarea>
+        </view>
+    </view>
+    <view class="images-container">
+        <view class="caption">
+            <text>上传图片</text>
+        </view>
+        <view class="images-list">
+            <view bindtap="chooseImage" class="uploading" wx:for="{{detail.imgs}}">
+                <image src="{{item}}"></image>
+            </view>
+        </view>
+    </view>
+</view>

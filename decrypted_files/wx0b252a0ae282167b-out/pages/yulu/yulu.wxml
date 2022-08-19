@@ -1,0 +1,66 @@
+<view class="presco">
+    <view class="presco-pay"></view>
+    <form class="presco-form">
+        <view class="presco-file">
+            <image catchtap="chooseImageTap" class="xd-img-user1" src="{{logo}}"></image>
+        </view>
+        <view class="presco-file-txt">
+            <image src="/images/zhu.png"></image>
+            <text>将运营人，箱皮重量，各种箱型及是否高代平、冷代干的情况，清晰的写在装箱单上。</text>
+            <text>如预录错包改单，改单以外的费用自理！</text>
+        </view>
+        <button bindtap="send">发送装箱单</button>
+    </form>
+    <view class="presco-body">
+        <view class="my-presco">
+            <text>我的预录</text>
+        </view>
+        <view class="presco-item" wx:for="{{rst}}" wx:key="index">
+            <view class="li">
+                <view bindtap="changeToggle" class="li-bt" data-index="0">
+                    <view class="left">{{item.create_at}}</view>
+                    <view class="right">【{{item.status}}】  </view>
+                </view>
+                <view class="li-con" wx:if="{{item.status=='预录成功'}}">
+                    <text style="padding-top:10px;">进箱码头：{{item.docks}}</text>
+                    <text>箱号：{{item.contNo}}</text>
+                    <text>箱型：{{item.contType}}</text>
+                    <text>封志号：{{item.sealNo}}</text>
+                    <text>船名：{{item.shipName}}</text>
+                    <text>航次：{{item.voyNo}}</text>
+                    <text>持箱人：{{item.cntrOptr}}/{{item.ctnOperator}}</text>
+                    <text>卸货港：{{item.portDischargeCode}}</text>
+                    <view style="padding-top:20px;">
+                        <view style="display: flex;flex-direction: column;" wx:for="{{item.rstArr}}" wx:for-item="row" wx:key="index2">
+                            <text>提单号：{{row.arrbillNo}}</text>
+                            <text>件数：{{row.arrPackages}}</text>
+                            <text>毛重：{{row.arrGW}}</text>
+                            <text>尺码：{{row.arrMEAS}}</text>
+                        </view>
+                    </view>
+                    <text style="padding-top:20px;">总件数：{{item.totalPackages}}</text>
+                    <text>总货重：{{item.totalOfCargo}}</text>
+                    <text>总尺码：{{item.totalOfMeasurement}}</text>
+                    <text>箱皮重：{{item.contTareWt}}</text>
+                    <text>总重：{{item.totalWeight}}</text>
+                    <text style="padding-top:20px;">冷藏温度：{{item.temperatureSetting}}</text>
+                    <text>危险品等级：{{item.dangerousClass}}</text>
+                    <text>联合国编号：{{item.undgNoCtn}}</text>
+                    <text>前超：{{item.overLengthFront}}</text>
+                    <text>后超：{{item.overLengthBack}}</text>
+                    <text>左超：{{item.overWidthLeft}}</text>
+                    <text>右超：{{item.overWidthRight}}</text>
+                    <text>超高：{{item.overHeight}}</text>
+                    <text>运输方式：{{item.shippingType}}</text>
+                    <text style="padding-top:20px;">开港时间：{{item.jxTime1}}</text>
+                    <text>截港时间：{{item.jxTime2}}</text>
+                    <text style="padding-top:20px;">预录站电话：{{item.phone}}</text>
+                    <text>预录时间：{{item.create_at_clp}}</text>
+                </view>
+                <view class="li-con" wx:if="{{item.status=='退回'}}">
+                    <text style="padding-top:10px;">退回原因：{{item.remake}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

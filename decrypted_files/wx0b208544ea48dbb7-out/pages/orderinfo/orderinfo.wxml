@@ -1,0 +1,103 @@
+<view class="main-wrap">
+    <view class="address-container">
+        <image class="address-back" src="./icons/address-back.png"></image>
+        <view class="address-info">
+            <view class="icon">
+                <image src="./icons/address-icon.png"></image>
+            </view>
+            <view class="info">
+                <view class="user-info">
+                    <text>{{orderInfo.consignee}}</text>
+                    <text>{{orderInfo.mobile}}</text>
+                </view>
+                <view class="city">
+                    <text>{{orderInfo.provincename}}</text>
+                    <text>{{orderInfo.cityname?orderInfo.cityname:''}}</text>
+                    <text>{{orderInfo.districtname?orderInfo.districtname:''}}</text>
+                    <text>{{orderInfo.twonname?orderInfo.twonname:''}}</text>
+                </view>
+                <view class="address">
+                    <text>{{orderInfo.address}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="goods-container">
+        <view class="goods-item" wx:for="{{orderInfo.goods_list}}" wx:key="{{index}}">
+            <view class="pic">
+                <image src="{{item.original_img}}"></image>
+            </view>
+            <view class="info">
+                <view class="name text-ellipsis">
+                    <text>{{item.goods_name}}</text>
+                </view>
+                <view class="specification">
+                    <view class="size  text-ellipsis">{{item.spec_key_name}}</view>
+                    <view class="count">x{{item.goods_num}}</view>
+                </view>
+                <view class="price">
+                    <text>{{item.goods_price}}</text>
+                </view>
+            </view>
+            <view class="btns-wrapper">
+                <view bindtap="toaftersale" class="aftersale btn" data-goodid="{{item.goods_id}}" data-orderid="{{orderInfo.order_id}}" data-ordersn="{{orderInfo.order_sn}}" data-speckey="{{item.spec_key}}" wx:if="{{orderInfo.order_status_code=='WAITRECEIVE'||orderInfo.order_status_code=='FINISH'}}">申请售后</view>
+            </view>
+        </view>
+    </view>
+    <view class="cost-container">
+        <view class="item">
+            <view class="cost-name">
+                商品总价
+            </view>
+            <view class="cost-count">
+                 ¥{{orderInfo.order_amount}}
+            </view>
+        </view>
+        <view class="item">
+            <view class="cost-name">
+                运费
+            </view>
+            <view class="cost-count">
+                ¥0.00
+            </view>
+        </view>
+        <view class="item">
+            <view class="cost-name">
+                订单总价
+            </view>
+            <view class="cost-count">
+                ¥{{orderInfo.order_amount}}
+            </view>
+        </view>
+        <view class="item">
+            <view class="cost-name">
+                实际付款
+            </view>
+            <view class="cost-count">
+                ¥{{orderInfo.order_amount}}
+            </view>
+        </view>
+    </view>
+    <view class="order-status">
+        <view class="item">
+            <text>订单编号:{{orderInfo.order_sn}}</text>
+        </view>
+        <view class="item">
+            <text>创建时间:{{orderInfo.add_time}}</text>
+        </view>
+        <view class="item">
+            <text>订单状态:{{orderInfo.order_status_desc}}</text>
+        </view>
+    </view>
+    <view class="foot" wx:if="{{orderInfo.order_status_code=='WAITPAY'||'WAITRECEIVE'?true:false}}">
+        <view bindtap="cancel" class="cancel-btn" wx:if="{{orderInfo.order_status_code=='WAITPAY'}}">
+            删除订单
+        </view>
+        <view bindtap="pay" class="pay-btn" wx:if="{{orderInfo.order_status_code=='WAITPAY'}}">
+            去支付
+        </view>
+        <view bindtap="sure" class="sure-btn" wx:if="{{orderInfo.order_status_code=='WAITRECEIVE'}}">
+            确认收货
+        </view>
+    </view>
+</view>

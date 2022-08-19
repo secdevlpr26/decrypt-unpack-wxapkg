@@ -1,0 +1,50 @@
+<view class="mycenter-authenticationl">
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="mycenter-authentication-body">
+            <view class="authentication-item">
+                <view class="">
+                提单号：{{result.bl_num}}
+            </view>
+                <view class="item-bt">
+                    <text>箱号：</text>
+                    <view class="ipt">
+                        <input class="weui-input" name="box_num" placeholder="请输入箱号" type="text" value="{{result.box_num}}"></input>
+                    </view>
+                </view>
+                <view class="item-pic">
+                    <view bindtap="upload" class="userinfo">
+                        <image src="/images/pho.png"></image>
+                        <text>上传装箱单照片(必传)</text>
+                    </view>
+                    <image bindtap="listenerButtonPreviewImage" data-index="{{index}}" src="{{item}}" wx:for="{{tempFilePaths}}" wx:key="{{index}}"></image>
+                </view>
+            </view>
+            <view class="authentication-item">
+                <view class="item-bt">
+                    <text>封号：</text>
+                    <view class="ipt">
+                        <input class="weui-input" name="seal_num" placeholder="请输入封号" type="text" value="{{result.seal_num}}"></input>
+                    </view>
+                </view>
+                <view class="item-pic">
+                    <view bindtap="upload1" class="userinfo">
+                        <image src="/images/pho.png"></image>
+                        <text>上传封号照片(必传)</text>
+                    </view>
+                    <image bindtap="listenerButtonPreviewImage1" data-index="{{index}}" src="{{item}}" wx:for="{{tempFilePaths1}}" wx:key="{{index}}"></image>
+                </view>
+            </view>
+            <view class="authentication-item last">
+                <view class="item-bt">
+                    <text>空箱皮重：</text>
+                    <view class="ipt">
+                        <input class="weui-input" name="void_box_weight" placeholder="请输入空箱皮重" type="number" value="{{result.void_box_weight}}"></input>
+                    </view>
+                </view>
+            </view>
+            <view class="submit-btn">
+                <button formType="submit"> 确认提交 </button>
+            </view>
+        </view>
+    </form>
+</view>

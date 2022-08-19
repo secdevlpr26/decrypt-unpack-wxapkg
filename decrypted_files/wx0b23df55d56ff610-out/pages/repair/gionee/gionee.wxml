@@ -1,0 +1,24 @@
+<view class="banner">
+    <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/jinli_banner.png"></image>
+    <image class="shouquan" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/gionee.png"></image>
+    <view class="bannertxt">金立通信设备有限公司</view>
+</view>
+<view class="detail">
+    <view class="title">关于金立</view>
+    <text>金立是深圳市金立通信设备有限公司旗下的品牌，成立于2002年9月16日，金立以“金品质，立天下”为使命，致力于打造科技的、国际的、跨界的新金立，不仅仅提供手机产品，更会围绕人对信息、金融、社交、娱乐、健康、工作、生活方式等需求，向全世界的人们，以正确的方式提供拥有极致用户体验的智能终端设备和服务。</text>
+    <view class="title">关于Hi维修</view>
+    <text>在Hi维修成立以来，就是为了用快乐方式解决“手机维修难”让更多的人分享快乐、让更多的人传播快乐！用透明价、成本价、免费上门、全程录像、售后质保等多项措施去保护顾客的利益，用电话回访、录像查看、地点定位等措施去维护顾客权益！一切以顾客的体验为前提去打造、转型大家对手机维修行业的认知!</text>
+    <view class="title">官方授权</view>
+    <text>2016年8月金立官方正式授权“Hi维修”成为其唯一一家线上O2O手机维修商，意向—接洽—考察—合作，每一个步骤都经历了月余的光阴，Hi维修凭借其创新的模式、对待客户认真和负责的态度，一致赢得金立官方的高度满意和赞赏！</text>
+    <view class="title">我们的优势</view>
+    <view class="youshititle">官方授权</view>
+    <text class="youshi">金立手机官方授权线上O2O手机维修商，官方认证，品质有保障!</text>
+    <view class="youshititle">覆盖全国</view>
+    <text class="youshi">Hi维修已经开通上海、北京、深圳、杭州等14个城市的，数十万用户口碑赞誉！</text>
+    <view class="youshititle">便捷服务</view>
+    <text class="youshi">再也不用为手机售后烦忧了，动动手指一键下单，Hi维修为您免费上门服务！</text>
+    <view class="youshititle">安全保障</view>
+    <text class="youshi">担心被换零件？担心隐私泄露？一对一当面维修，维修过程全程录像保障你的隐私安全！</text>
+    <view class="youshititle">透明价格</view>
+    <text class="youshi">Hi维修作为金立官方授权商，价格透明公开，从此告别黑心奸商！</text>
+</view>

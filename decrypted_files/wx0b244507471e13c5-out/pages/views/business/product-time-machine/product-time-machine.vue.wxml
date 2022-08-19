@@ -1,0 +1,14 @@
+<template name="1bd92d26">
+    <view class="_view M1bd92d26">
+        <view class="_view M1bd92d26 page-body">
+            <view class="_view M1bd92d26 text-box">
+                <text class="_text M1bd92d26">点击下方图标<view class="_br M1bd92d26"></view>扫描产品二维码</text>
+            </view>
+            <view class="_view M1bd92d26 page-section">
+                <view class="_view M1bd92d26 page-section-ctn">
+                    <image bindtap="handleProxy" class="_image M1bd92d26 image" data-comkey="{{$k}}" data-eventid="{{'1bd92d26-0'}}" src="../../../../static/scan.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

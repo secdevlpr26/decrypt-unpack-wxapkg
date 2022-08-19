@@ -1,0 +1,42 @@
+<view bindtap="toSearch" class="top" id="top" wx:if="{{changeclass==1}}">
+    <view class="search-frame">
+        <text class="iconfont icon-search"></text>
+        <text>搜索商品</text>
+    </view>
+</view>
+<view class="pro-type" wx:if="{{changeclass==1}}">
+    <scroll-view class="pro-big-type" id="haha" scrollIntoView="{{bigCateId}}" scrollWithAnimation="true" scrollY="true" style="height: {{windowHeight-searchFrameHeight}}px">
+        <view catchtap="bigCateTap" class="pro-type-item " data-bigcode="{{item.code}}" data-id="{{item.id}}" data-index="{{index}}" style="{{showItem==index?'font-size: 34rpx;font-weight: bold;border-left: 8rpx solid '+styleConfig.mainColor+';background-color: #FFF;':''}}" wx:for="{{bigCateArr}}" wx:key="item.id">
+            <view>{{item.itemName}}</view>
+        </view>
+    </scroll-view>
+    <scroll-view bindscroll="scroll" class="smallCate-frame" scrollIntoView="{{bigCateId}}" scrollWithAnimation="true" scrollY="true" style="height: {{windowHeight-searchFrameHeight}}px">
+        <block wx:for="{{bigCateArr}}">
+            <view class="bigCate-name" id="bigcate{{index}}">
+                <image lazyLoad="{{true}}" src="{{item.categoryPicture}}"></image>
+                <view>{{item.itemName}}</view>
+            </view>
+            <view class="pro-sm-type clearfix">
+                <view bindtap="toProductList" class="pst-item" data-code="{{cateItem.code}}" data-flag="{{cateItem.subCategoryList.length>0}}" data-id="{{cateItem.id}}" data-title="{{cateItem.itemName}}" wx:for="{{item.subCategoryList}}" wx:for-item="cateItem" wx:key="{{item.id}}">
+                    <image lazyLoad="{{true}}" src="{{cateItem.categoryPicture}}" wx:if="{{cateItem.categoryPicture!=''}}"></image>
+                    <image lazyLoad="{{true}}" src="../../img/img-default.png" wx:else></image>
+                    <view class="title">{{cateItem.itemName}}</view>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+</view>
+<view class="pro-type1" wx:else>
+    <view class="pro-big-type1">
+        <view catchtap="oldBigCateTap" class="pro-type-item1 " data-bigcode="{{item.code}}" data-id="{{item.id}}" data-index="{{index}}" style="{{showItem==index?'font-size: 34rpx;font-weight: bold;border-left: 8rpx solid '+styleConfig.mainColor+';background-color: #FFF;':''}}" wx:for="{{bigCateArr}}" wx:key="item.id">
+            <text>{{item.itemName}}</text>
+        </view>
+    </view>
+    <view class="pro-sm-type1 clearfix">
+        <view bindtap="toProductList" class="pst-item1" data-code="{{item.code}}" data-flag="{{item.subCategoryList.length>0}}" data-id="{{item.id}}" data-title="{{item.itemName}}" wx:for="{{smallCateArr}}" wx:key="{{item.id}}">
+            <image src="{{item.categoryPicture}}" wx:if="{{item.categoryPicture!=''}}"></image>
+            <image src="../../img/img-default.png" wx:else></image>
+            <text>{{item.itemName}}</text>
+        </view>
+    </view>
+</view>

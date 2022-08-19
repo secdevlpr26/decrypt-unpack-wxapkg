@@ -1,0 +1,10 @@
+<view class="container">
+    <view class="recharge-menus">
+        <view bindtap="changeMenus" class="recharge-item {{currIndex==index?'active':''}}" data-index="{{index}}" wx:for="{{rechargeMenus}}" wx:key="templateId">{{item.price}}</view>
+    </view>
+    <view class="recharge-num">
+  金额：¥
+  <input bindfocus="focus" bindinput="validatePhone" class="recharge-input " focus="{{focusStatus}}" maxlength="6" type="number" value="{{recharge}}"></input>
+    </view>
+    <button bindtap="recharge" class="btn-dafault btn-recharge">微信支付</button>
+</view>

@@ -1,0 +1,29 @@
+<view class="container">
+    <view class="user-info">
+        <image class="user-avatar" src="{{userInfo.avatarUrl}}"></image>
+        <view class="user-nickname">
+      {{userInfo.nickName}}
+    </view>
+    </view>
+    <view class="learn">
+        <ul>
+            <li class="lli1">
+                <p>积分:{{totalPoint}}</p>
+            </li>
+            <li>
+                <p>钱包:0</p>
+            </li>
+        </ul>
+    </view>
+    <scroll-view scrollY="true">
+        <view class="item-avatar" wx:if="{{auth==false}}">
+            <view bindtap="goPage" class="item-avatar-xs">
+                <image src="../../dist/images/note_2.png"></image>
+                <view style="padding-left:10px;width:100%">
+                    <span class="title">实名认证</span>
+                    <text class="jiantou">〉</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

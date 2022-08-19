@@ -1,0 +1,43 @@
+<view class="page">
+    <view wx:if="{{!nodata}}">
+        <view class="weui-panel">
+            <navigator class="weui-media-box weui-media-box_text" style="flex-direction:row; display: flex;align-items:center;" url="../CaseDetail/CaseDetail?tempId={{item.Id}}" wx:for="{{anliList}}" wx:key="index">
+                <view style="margin-right:15px;" wx:if="{{item.imgpath!=null&&item.imgpath.length>0}}">
+                    <image class="icon100" src="{{item.imgpath}}"></image>
+                </view>
+                <view style="flex-direction:column; display: flex;">
+                    <view class="weui-media-box__desc">{{item.title}}</view>
+                    <view class="weui-media-box__info">{{item.addTime}}</view>
+                </view>
+            </navigator>
+        </view>
+        <view class="pageControlView" wx:if="{{loadState=='success'}}">
+            <view bindtap="leftPageTap" class="pageBtnView" hover="{{leftPageHover}}" hoverClass="button-hover">
+                <image class="pageBtn" mode="aspectFit" src="{{leftPageHover?'../../images/left_black.png':'../../images/left_gray.png'}}"></image>
+            </view>
+            <view class="pageTextView">
+                <text class="pageText">{{pageindex+1}}</text>
+            </view>
+            <view bindtap="rightPageTap" class="pageBtnView" hover="{{rightPageHover}}" hoverClass="button-hover">
+                <image class="pageBtn" mode="aspectFit" src="{{rightPageHover?'../../images/right_black.png':'../../images/right_gray.png'}}"></image>
+            </view>
+        </view>
+        <view class="weui-loadmore weui-loadmore_line" wx:if="{{loadState=='fail'}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{msg}}</view>
+        </view>
+    </view>
+    <view class="nodataView" wx:if="{{nodata&&loadState=='success'}}">
+        <image class="nodataImage" src="../../images/nodata.png"></image>
+        <text class="nodataText">{{nodataTips}}</text>
+    </view>
+    <view bindtap="goback" class="backBottom" hover="true" hoverClass="button-hover">
+        <image class="backImg" mode="aspectFit" src="../../images/left_black.png"></image>
+        <text class="backtxt">返回至首页</text>
+    </view>
+    <view class="weui-footer">
+        <view class="weui-footer__links">
+            <text class="txt24">{{year}}©{{info.pronviceName}}{{info.cityName}}律师{{info.officeName}}</text>
+        </view>
+        <text class="txt24">技术支持：华律网</text>
+    </view>
+</view>

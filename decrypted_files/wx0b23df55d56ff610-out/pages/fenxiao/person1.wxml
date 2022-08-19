@@ -1,0 +1,33 @@
+<view class="order-item" wx:for="{{comments}}">
+    <view bindtap="details" class="carts-item" data-index="{{index}}">
+        <view>
+            <image class="carts-image" mode="aspectFill" src="{{item.head_pic}}"></image>
+        </view>
+        <view class="carts-text">
+            <view class="classname" style="display:flex;flex-direction: column;">
+                <text class="carts-title">{{item.nick_name}}</text>
+                <text class="carts-title" style="color:red;margin-top:20rpx;">推荐人:{{item.tname}}</text>
+                <view class="carts-subtitle" style="margin-top:20rpx;">
+                    <text>注册时间:{{item.created_at}}</text>
+                </view>
+            </view>
+            <view hidden class="order-footer">
+                <text>{{item.order}}个订单</text>
+                <text>{{item.person}}个成员</text>
+            </view>
+        </view>
+    </view>
+    <view class="order-down" wx:if="{{item.is_comment==1}}">
+        <text>评价:</text>
+        <image class="stars" src="/images/stars4.gif" wx:if="{{item.service_rank==4}}"></image>
+        <image class="stars" src="/images/stars1.gif" wx:if="{{item.service_rank==1}}"></image>
+        <image class="stars" src="/images/stars2.gif" wx:if="{{item.service_rank==2}}"></image>
+        <image class="stars" src="/images/stars3.gif" wx:if="{{item.service_rank==3}}"></image>
+        <image class="stars" src="/images/stars5.gif" wx:if="{{item.service_rank==5}}"></image>
+        <text style="margin-left:20rpx">{{item.content}}</text>
+    </view>
+</view>
+<view class="view-tint" wx:if="{{comments.length==0}}">
+    <image src="/images/icon_empty.png"></image>
+    <text>亲,没有数据</text>
+</view>

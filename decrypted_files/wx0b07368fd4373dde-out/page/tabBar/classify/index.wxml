@@ -1,0 +1,26 @@
+<view class="container">
+    <scroll-view class="nav_left" scrollY="true">
+        <view bindtap="switchRightTab" class="nav_left_items {{curNav==item.id?'active':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{parents}}" wx:key="key">
+        {{item.name}}</view>
+    </scroll-view>
+    <scroll-view class="nav_right" scrollY="true" style="display:{{display}}">
+        <view wx:for="{{children}}" wx:for-index="indexcss" wx:key="keyc">
+            <view wx:if="{{indexcss==curNav}}">
+                <view wx:if="{{item.length>0}}">
+                    <view class="nav_right_items" wx:for="{{item}}" wx:for-item="childrenMenu" wx:key="key">
+                        <navigator url="/page/shop/pages/search/index?type=classify&cate={{childrenMenu.id}}">
+                            <view>
+                                <image src="{{childrenMenu.thumb}}" wx:if="{{childrenMenu.thumb}}"></image>
+                            </view>
+                            <view wx:if="{{childrenMenu.name}}">
+                                <text>{{childrenMenu.name}}</text>
+                            </view>
+                        </navigator>
+                    </view>
+                </view>
+                <view wx:else>暂无数据</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<loading hidden="{{hiddenLoading}}">正在加载</loading>

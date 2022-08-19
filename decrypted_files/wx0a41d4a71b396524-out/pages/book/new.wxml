@@ -1,0 +1,10 @@
+<view class="type-list" wx:for="{{inList}}" wx:for-item="il">
+    <view bindtap="toArticle" class="borrow-most" data-id="{{il.id}}">
+        <image binderror="imgError" data-index="{{index}}" mode="aspectFill" src="{{il.pic1=='no_cover'?noCover:imgRootPath+il.pic1}}"></image>
+        <view class="box-sd">
+            <text class="title">{{il.bookName}}</text>
+            <view class="author line-one">作者：{{il.author==null?'--':il.author}}</view>
+            <view class="book-intro line-one">{{il.bookintr==null?'':il.bookintr}}</view>
+        </view>
+    </view>
+</view>

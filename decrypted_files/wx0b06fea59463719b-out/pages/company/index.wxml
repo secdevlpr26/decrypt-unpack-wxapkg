@@ -1,0 +1,55 @@
+<view class="container">
+    <yz-loader loader="{{loading}}"></yz-loader>
+    <block wx:if="{{loading}}">
+        <import src="/pages/template/modules.wxml"></import>
+        <view class="homeWrapper {{copyrightInfo.contentClassName}}" style="height: {{showAuthGetUserInfoBtn?height:''}}px">
+            <template is="modules" data="{{modules:modules,globaldata:globaldata}}"></template>
+        </view>
+    </block>
+</view>
+<include src="/pages/template/copyright.wxml"></include>
+<include src="/pages/template/floatLayer.wxml"></include>
+<include src="/pages/template/getUserInfo.wxml"></include>
+<view catchtap="goToCardDetail" class="share-card-box" style="left: {{cardBoxLeft}}rpx;" wx:if="{{businessCardInfo.user&&!isClose&&isFirstEnter}}">
+    <view class="share-card-img">
+        <image class="PersonImg" mode="widthFix" src="{{businessCardInfo.PersonImg}}"></image>
+    </view>
+    <view class="share-card-info">
+        <view class="share-msg-adminUserName">{{businessCardInfo.adminUserName}}</view>
+        <view class="share-msg-text">{{businessCardInfo.text}}</view>
+    </view>
+    <view catchtap="closeCardLayer" class="close-btn">
+        <text class="iconfont icon-guanbi-copy"></text>
+    </view>
+</view>
+<view class="notice-info" style="display:{{notice?'block':'none'}}" wx:if="{{notice.Title}}">
+    <view class="notice-title">{{notice.Title}}</view>
+    <view class="notice-image" wx:if="{{notice.Image}}">
+        <image src="{{baseUrl}}/{{notice.Image}}"></image>
+    </view>
+    <view class="notice-item">
+        <view class="notice-intro">{{notice.Intro}}</view>
+    </view>
+    <view class="notice-detailbtn">
+        <view bindtap="onNoticeClick" class="button" data-redirect="{{notice.RedirectTo}}" data-redirectid="{{notice.RedirectToID}}">{{notice.ButtonValue}}</view>
+    </view>
+    <view class="notice-closebtn">
+        <view bindtap="closeNotic" class="button-t">
+            <text class="iconfont icon-guanbi"></text>
+        </view>
+    </view>
+</view>
+<view class="official" wx:if="{{officialscene&&scene&&isOfficialscene}}">
+    <view class="del">
+        <view bindtap="officialDel" class="del-content">x</view>
+    </view>
+    <official-account></official-account>
+</view>
+<view class="guidettention" wx:if="{{isShowLeadCollection&&isCollection}}">
+    <view class="dels">
+        <view bindtap="isShowLeadCollection" class="iconfont icon-guanbi-copy"></view>
+    </view>
+    <view class="text">点击” <text class="iconfont icon-wxmore"></text>“添加到我的小程序，微信首页下拉即可快速访问店铺</view>
+</view>
+<include src="/pages/common/popout/index.wxml"></include>
+<include src="/pages/common/phoneauthorization/index.wxml"></include>

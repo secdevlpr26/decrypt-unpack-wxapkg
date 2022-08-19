@@ -1,0 +1,99 @@
+<view class="wx_page">
+    <view bindtap="gotoExpress" class="express_area area_box" wx:if="{{express.nick_name&&express.traces[0]}}">
+        <view class="express_info wx_flex_wrp">
+            <view class="icon_wrp">
+                <image class="express_icon" src="/images/Logistics@3x.png"></image>
+            </view>
+            <view class="wx_flex_item">
+                <view class="express_addr">{{express.traces[0].accept_address}}</view>
+                <view class="express_time">{{express.traces[0].accept_time}}</view>
+            </view>
+            <view class="icon_more_wrp" wx:if="{{express.nick_name&&express.traces[0]}}">
+                <icon class="icon_arrow" type=""></icon>
+            </view>
+        </view>
+    </view>
+    <view class="express_area area_box" wx:else>
+        <view class="express_info wx_flex_wrp">
+            <view class="icon_wrp">
+                <image class="express_icon" src="/images/Logistics@3x.png"></image>
+            </view>
+            <view class="wx_flex_item">
+                <view class="empty_box">暂无物流信息</view>
+            </view>
+        </view>
+    </view>
+    <view class="addr_area area_box">
+        <view class="addr_info wx_flex_wrp">
+            <view class="icon_wrp">
+                <image class="express_icon" src="/images/address@3x.png"></image>
+            </view>
+            <view class="addr_info_main wx_flex_item">
+                <view class="addr_info_hd wx_flex_wrp">
+                    <view class="addr_info_name wx_flex_item">{{order.receiver_name}}</view>
+                    <view class="addr_info_phone">{{order.receiver_phone}}</view>
+                </view>
+                <view class="addr_info_detail">{{order.receiver_province}}{{order.receiver_city}}{{order.receiver_zone}}{{order.receiver_address}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="order_area area_box">
+        <view class="order_area_box">
+            <view class="order_state">
+                <block wx:if="{{order.status==0}}">预下单</block>
+                <block wx:if="{{order.status==1}}">待支付</block>
+                <block wx:if="{{order.status==2}}">待发货</block>
+                <block wx:if="{{order.status==3}}">待收货</block>
+                <block wx:if="{{order.status==4}}">待签收</block>
+                <block wx:if="{{order.status==5}}">已完成</block>
+                <block wx:if="{{order.status==6}}">订单取消</block>
+                <block wx:if="{{order.status==7}}">系统自动取消订单</block>
+            </view>
+        </view>
+        <view class="goods_list">
+            <navigator class="goods_item" url="/pages/product/detail/detail?pid={{product.product_id}}" wx:for="{{order.product_list}}" wx:for-item="product" wx:key="index">
+                <view class="goods_cover">
+                    <image class="goods_cover_img" mode="aspectFill" src="{{product.pic_path}}"></image>
+                </view>
+                <view class="goods_info">
+                    <view class="goods_title">{{product.product_name}}</view>
+                    <view class="goods_description">
+                        <text class="goods_description_item" wx:for="{{product.skuname_list}}" wx:for-item="name" wx:key="index">{{name}}</text>
+                    </view>
+                    <view class="goods_cost">
+                        <text class="goods_price">¥{{product.product_fee/100}}</text>
+                        <text class="goods_num">x{{product.num}}</text>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="order_price_list order_area_box">
+            <view class="wx_flex_wrp order_price_item">
+                <view class="wx_key">商品合计：</view>
+                <view class="wx_value wx_flex_item">¥ {{(order.total_fee-order.post_fee)/100}}</view>
+            </view>
+            <view class="wx_flex_wrp order_price_item">
+                <view class="wx_key">运费：</view>
+                <view class="wx_value wx_flex_item">¥ {{order.post_fee/100}}</view>
+            </view>
+        </view>
+        <view class="order_area_box">
+            <view class="wx_flex_wrp">
+                <view class="wx_key">实付：</view>
+                <view class="wx_value wx_flex_item">¥ {{order.total_fee/100}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="order_detail_area area_box">
+        <view class="order_area_box">
+            <view class="wx_flex_wrp order_price_item">
+                <view class="wx_key">订单号：</view>
+                <view class="wx_value wx_flex_item">{{order.order_id}}</view>
+            </view>
+            <view class="wx_flex_wrp order_price_item">
+                <view class="wx_key">日期：</view>
+                <view class="wx_value wx_flex_item">{{order.createTimeStr}}</view>
+            </view>
+        </view>
+    </view>
+</view>

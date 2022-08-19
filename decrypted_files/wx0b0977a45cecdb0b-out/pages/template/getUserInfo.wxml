@@ -1,0 +1,5 @@
+<view class="panel-mark" wx:if="{{showAuthGetUserInfoBtn}}"></view>
+<view class="panel-getUserInfo" wx:if="{{showAuthGetUserInfoBtn}}">
+    <view class="panel-tips border1px">未登录，请授权登录</view>
+    <button bindgetuserinfo="getUserInfoCallback" openType="getUserInfo" type="primary">授权登录</button>
+</view>

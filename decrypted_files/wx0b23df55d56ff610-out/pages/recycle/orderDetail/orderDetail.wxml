@@ -1,0 +1,100 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="container bgf5 pb100 animated fadeIn" wx:if="{{isShow}}">
+    <view class="bgred w100">
+        <view class="pt20 pr20 pl20 pb20">
+            <view class="bgw ddzt">
+                <image class="img88 ddzticon" src="{{info.icon}}"></image>
+                <view class="ft32 colorange lh50" wx:if="{{info.order_status==0}}">订单已提交</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==1&&info.pay_status==1}}">订单已维修</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==1&&!info.cid}}">订单已预约</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==1&&info.cid}}">工程师出发</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==2||info.order_status==4}}">回收完成</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==3}}">订单已取消</view>
+                <view class="ft24 col999 lh40" wx:if="{{info.order_status==2||info.order_status==4}}">订单完全,合作愉快。</view>
+                <view class="ft24 col999 lh40" wx:else>请注意客服来电,与您进一步确认信息</view>
+            </view>
+            <view wx:if="{{order.order_status==2}}">
+                <map latitude="{{workerLoc.lat}}" longitude="{{workerLoc.lng}}" markers="{{workerLoc.markers}}" scale="14" style="width: 100%; height: 320rpx;"></map>
+            </view>
+            <view class="ddjd ft22 oh">
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==0}}">订单已提交</view>
+                <view class="fl w25 txtc colgray" wx:else>订单已提交</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==1&&!info.cid}}">订单已预约</view>
+                <view class="fl w25 txtc colgray" wx:else>订单已预约</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==1&&info.cid}}">工程师出发</view>
+                <view class="fl w25 txtc colgray" wx:else>工程师出发</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==2||info.order_status==4}}">回收完成</view>
+                <view class="fl w25 txtc colgray" wx:else>回收完成</view>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">订单：{{info.order_sn}}</view>
+            <view class="bb col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">回收机型</text>
+                    <text class="col333">{{info.modelname}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">回收报价</text>
+                    <text class="col333">¥{{info.order_amount}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">收款方式</text>
+                    <text class="col333">{{info.payment}}</text>
+                </view>
+                <view class="lh34 dingdan" wx:if="{{order.account_number}}">
+                    <text class="col999 dingdanl">{{order.account_method}}账号</text>
+                    <text class="col333">{{order.account_number}}</text>
+                </view>
+            </view>
+            <view class="ht100 lh100">
+                <text class="fr ft28 pr25 colgreen">{{order.payment}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.cid}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">工程师信息</view>
+            <view class="pt40 pb40 oh">
+                <view class="fl pl30">
+                    <view class="ft32 col333 lh60">{{info.customer_name}}</view>
+                    <view hidden class="ft24 col999 lh28">工号 {{order.rName}}</view>
+                </view>
+                <image bindtap="connectEngineer" class="fr mt10 mr20 icon80" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/phone.png" wx:if="{{order.status!=5&&order.status!=4}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 mb20 bgw w100">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">回收信息</view>
+            <view class="col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">联系人</text>
+                    <text class="col333">{{info.consignee}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">服务电话</text>
+                    <text class="col333">{{info.mobile}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">服务地址</text>
+                    <text class="col333">{{info.address}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">下单时间</text>
+                    <text class="col333">{{info.add_time}}</text>
+                </view>
+                <view class="lh34 dingdan" style="white-space: nowrap;">
+                    <text class="col999 dingdanl">预约时间</text>
+                    <text class="col333">{{info.ordertime}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="fixedb w100  bgf8">
+        <button bindtap="connectService" class="xiadanbtn fr lh100 ft30">联系客服</button>
+    </view>
+</view>

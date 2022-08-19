@@ -1,0 +1,73 @@
+<scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">
+    <view class="container">
+        <view class="header">
+            <view class="pic">
+                <image src="{{data.thumb}}"></image>
+            </view>
+            <view class="list">
+                <view class="item">{{data.name}}</view>
+                <view class="item">联系电话 : {{data.tel}}</view>
+                <view bindtap="doCall" class="item" data-tel="{{data.tel}}">
+                    <image src="../../resource/img/wphone.png"></image>
+                </view>
+                <view class="item">服务门店 : {{data.introname}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="midd">TA的房源</view>
+    <view class="type-container">
+        <scroll-view class="type-navbar" scrollX="true">
+            <view class="type-box">
+                <view bindtap="tabClick" class="type-navbar-item {{activeCategoryId==1?'type-item-on':''}}" id="1">
+                    二手房源
+                </view>
+            </view>
+            <view class="type-box">
+                <view bindtap="tabClick" class="type-navbar-item {{activeCategoryId==2?'type-item-on':''}} " id="2">
+                  出租房源
+                </view>
+            </view>
+            <view class="type-box">
+                <view bindtap="tabClick" class="type-navbar-item {{activeCategoryId==3?'type-item-on':''}}" id="3">
+                   新楼盘
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="container">
+        <block wx:if="{{list}}">
+            <view class="newslist" wx:for="{{list}}">
+                <view bindtap="toHouseDetail" class="pic" data-id="{{item.id}}">
+                    <image src="{{item.thumb}}"></image>
+                </view>
+                <view bindtap="toHouseDetail" class="title" data-id="{{item.id}}">
+                    <view class="address">
+                        <view>{{item.title}}</view>
+                    </view>
+                    <view class="housestyle">
+                        <text>{{item.housestyle}}</text>
+                        <text>{{item.housearea}}</text>
+                    </view>
+                    <view class="money">
+                        <block wx:if="{{activeCategoryId==1}}">
+                                             {{item.money}}万
+                                          </block>
+                        <block wx:elif="{{activeCategoryId==2}}">
+                                            {{item.money}}元/月
+                                           </block>
+                        <block wx:else>
+                                            {{item.money}}元/m²
+                                            </block>
+                    </view>
+                    <view class="price">
+                        <view>
+                            <text>{{item.area}}</text>
+                            <text>{{item.housetype}}</text>
+                            <text>{{item.payway}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</scroll-view>

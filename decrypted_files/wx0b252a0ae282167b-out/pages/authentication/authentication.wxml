@@ -1,0 +1,75 @@
+<view class="mycenter-authenticationl">
+    <view class="mycenter-authenticationl-header">
+        <image src="/images/bg2.png" style="width:750rpx; height:312rpx;"></image>
+        <view class="authentication-btn">
+            <image src="/images/renzheng1.png"></image>
+            <text class="text-jiedan">{{certification}}</text>
+        </view>
+        <image class="authentication-img" src="/images/wei_renzheng.png" style="width:139rpx; height:168rpx;"></image>
+    </view>
+    <view class="mycenter-authentication-body">
+        <view class="authentication-item">
+            <view class="item-bt">
+                <text>身份证正面(必传)</text>
+            </view>
+            <view class="item-pic">
+                <view bindtap="upload1" class="userinfo">
+                    <image src="/images/pho.png"></image>
+                    <text>上传身份证正面(必传)</text>
+                </view>
+                <image bindtap="listenerButtonPreviewImage1" data-index="{{index}}" src="{{item}}" wx:for="{{tempFilePath1}}" wx:key="{{index}}"></image>
+            </view>
+        </view>
+        <view class="authentication-item">
+            <view class="item-bt">
+                <text>身份证反面(必传)</text>
+            </view>
+            <view class="item-pic">
+                <view bindtap="upload2" class="userinfo">
+                    <image src="/images/pho.png"></image>
+                    <text>上传身份证反面(必传)</text>
+                </view>
+                <image bindtap="listenerButtonPreviewImage2" data-index="{{index}}" src="{{item}}" wx:for="{{tempFilePath2}}" wx:key="{{index}}"></image>
+            </view>
+        </view>
+        <view class="authentication-item">
+            <view class="item-bt">
+                <text>驾驶证(必传)</text>
+            </view>
+            <view class="item-pic">
+                <view bindtap="upload3" class="userinfo">
+                    <image src="/images/pho.png"></image>
+                    <text>上传驾驶证(必传)</text>
+                </view>
+                <image bindtap="listenerButtonPreviewImage3" data-index="{{index}}" src="{{item}}" wx:for="{{tempFilePath3}}" wx:key="{{index}}"></image>
+            </view>
+        </view>
+        <view class="authentication-item">
+            <view class="item-bt">
+                <text>车头的行驶证照片(必传)</text>
+            </view>
+            <view class="item-pic">
+                <view bindtap="upload4" class="userinfo">
+                    <image src="/images/pho.png"></image>
+                    <text>车头的行驶证照片(必传)</text>
+                </view>
+                <image bindtap="listenerButtonPreviewImage4" data-index="{{index}}" src="{{item}}" wx:for="{{tempFilePath4}}" wx:key="{{index}}"></image>
+            </view>
+        </view>
+        <view class="authentication-item">
+            <view class="item-bt">
+                <text>挂车的行驶证照片(必传)</text>
+            </view>
+            <view class="item-pic">
+                <view bindtap="upload5" class="userinfo">
+                    <image src="/images/pho.png"></image>
+                    <text>上传挂车的行驶证照片(必传)</text>
+                </view>
+                <image bindtap="listenerButtonPreviewImage5" data-index="{{index}}" src="{{item}}" wx:for="{{tempFilePath5}}" wx:key="{{index}}"></image>
+            </view>
+        </view>
+        <view class="submit-btn">
+            <button bindtap="onenter" type="submit"> 返回个人中心 </button>
+        </view>
+    </view>
+</view>

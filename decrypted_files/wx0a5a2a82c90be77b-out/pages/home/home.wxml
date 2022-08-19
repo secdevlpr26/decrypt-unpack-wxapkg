@@ -1,0 +1,118 @@
+<view class="page-view {{isIpx?'ipx-page-view':''}}">
+    <view class="mod-addr">
+        <view class="addr">{{address}}</view>
+    </view>
+    <view class="mod-banner">
+        <swiper autoplay="{{true}}" bindchange="bannerChange" circular="true" class="mod-swiper" interval="{{5000}}" nextMargin="30rpx" previousMargin="30rpx">
+            <swiper-item wx:for="{{listBanner}}" wx:key="{{item.NAME}}">
+                <navigator class="swiper-box {{index==swiperCurrent?'act-swiper':''}}" hoverClass="none" url="{{item.URL}}">
+                    <image class="swiper-image" src="{{item.PATH}}"></image>
+                </navigator>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="mod-introduce">
+        <view class="int-item">精选保养衣有型</view>
+        <view class="int-item">精选保养衣有型</view>
+        <view class="int-item">精选保养衣有型</view>
+    </view>
+    <scroll-view scrollX class="mod-server">
+        <view class="server-list clearfix" style="width: {{listMinService.length*180-20}}rpx;">
+            <view bindtap="jumpServer" class="nav-item" data-appId="{{item.NAME}}" data-type="{{item.open_type}}" data-url="{{item.URL}}" wx:for="{{listMinService}}" wx:key="{{item.TITLE}}">
+                <view class="nav-box">
+                    <image class="img-nav" src="{{item.PATH}}"></image>
+                    <text class="txt-nav">{{item.TITLE}}</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="mod-member">
+        <image class="member-bg-item" src="../../images/home/member-msg.png"></image>
+        <view bindtap="toLogin" class="member-bg">
+            <view class="head-img">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <view class="msg">
+                <view class="phone">{{phone}}</view>
+                <view class="desc">
+                    <view class="desc-cp">
+                        <image src="../../images/home/icon-cp-msg.png"></image>优惠券<text>{{couponCount||0}}</text>
+                    </view>
+                    <view class="desc-friend">
+                        <image src="../../images/home/icon-frinds-msg.png"></image>邀请的好友<text>{{invitecount||0}}</text>
+                    </view>
+                </view>
+            </view>
+            <button class="invite" openType="{{logined&&phone?'share':''}}">
+                <image src="../../images/home/icon-friend.png"></image>
+                <text>邀请好友</text>
+            </button>
+        </view>
+    </view>
+    <view class="mod-nav">
+        <view class="title">
+            <text>高端生态洗涤</text>
+        </view>
+        <view class="nav-list">
+            <view bindtap="toNav" class="nav-item" data-path="{{item.name}}" wx:for="{{listCategorys}}" wx:key="{{item.id}}">
+                <image src="{{item.logo}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="mod-coupon" wx:if="{{listCouponMake.length}}">
+        <view class="title">
+            <text>推荐优惠券</text>
+        </view>
+        <view class="cp-item" wx:for="{{listCouponMake}}" wx:key="item.id">
+            <view class="cp-msg">
+                <view class="cp-box">
+                    <view class="cp-img">
+                        <image class="cp-img-icon" src="../../images/home/icon-coupon.png"></image>
+                    </view>
+                    <view class="cp-detail">
+                        <view class="cp-name">{{item.couponName}}</view>
+                        <view class="cp-desc">
+                            <view class="cp-price-item">￥<text class="cp-price">{{item.amount}}</text>
+                            </view>
+                            <view class="cp-desc-item">满{{item.minQuota}}使用</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="cp-progess">
+                    <view class="mod-progess">
+                        <custom-progress step="{{item.applyCount/item.quantity}}"></custom-progress>
+                    </view>
+                    <view bindtap="getCoupon" class="ui-button cp-btn" data-cpId="{{item.batchNo}}">立即领取</view>
+                </view>
+            </view>
+            <image class="cp-line" src="../../images/home/cp-line.png"></image>
+            <view class="cp-rule">
+                <view bindtap="changeRuleShow" class="rule-desc" data-index="{{index}}">
+                    <view class="rule-title">
+                        <text class="cp-dot"></text>
+                        <text class="rule-title-txt">使用规则</text>
+                    </view>
+                    <view class="rule-more">
+                        <image class="rule-more-img" src="{{item.isShow?'../../images/home/icon-up-arrow.png':'../../images/home/icon-down-arrow.png'}}"></image>
+                    </view>
+                </view>
+                <view class="rule-more-desc" wx:if="{{item.isShow}}">
+                    <text>{{tools.replaceBr(item.useRule)}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mod-foot">
+        <view class="foot-item">
+            <image src="../../images/home/foot.png"></image>
+            <text>已经到底了</text>
+        </view>
+    </view>
+    <view class="mod-customer {{isIpx?'ipxCustomer':''}}">
+        <button openType="contact"></button>
+        <image class="cst-img" src="../../images/home/icon-customer.png"></image>
+    </view>
+    <tab-bar cartNum="{{shopCartCount}}"></tab-bar>
+    <login-dialog bindonlogin="eventLogin" loginHidden="{{isLogin}}"></login-dialog>
+</view>
+<wxs module="tools" src="home.wxs" />

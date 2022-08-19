@@ -1,0 +1,49 @@
+<view class="weui-tab">
+    <view class="weui-navbar">
+        <view bindtap="tabClick" class="weui-navbar__item {{activeIndex==index?'weui-bar__item_on':''}}" data-idx="{{index}}" id="{{index}}" wx:for="{{tabs}}" wx:key="*this">
+            <view class="weui-navbar__title">{{item}}</view>
+        </view>
+    </view>
+</view>
+<block wx:if="{{activeIndex===0}}">
+    <view bind:tap="tobuy" class="myCoupon" data-couponid="{{item.id}}" data-couponnum="{{item.money}}" wx:for="{{myCoupon}}">
+        <view class="myCoupon-top">
+            <view>
+                <text class="fs24">￥</text>
+                <text class="fs38">{{item.money}}</text>
+            </view>
+            <view style="flex:1;margin-left:30rpx;">
+                <view class="fs38">{{item.couponName}}</view>
+                <view class="fs24" wx:if="{{item.type==0}}">{{item.money}}元现金劵</view>
+                <view class="fs24" wx:if="{{item.type==1}}">满{{item.standardMoney}}可用</view>
+            </view>
+            <view class="touse" wx:if="{{money}}">去使用</view>
+        </view>
+        <view class="myCoupon-bottom">
+            <image class="img" src="../../images/discount-bg.png"></image>
+            <view>有限日期：{{item.endExpire}}前有效</view>
+            <view>适用范围：全场有效</view>
+        </view>
+    </view>
+</block>
+<block wx:if="{{activeIndex===1}}">
+    <view class="myCoupon" wx:for="{{couponList}}">
+        <view class="myCoupon-top">
+            <view>
+                <text class="fs24">￥</text>
+                <text class="fs38">{{item.money}}</text>
+            </view>
+            <view style="flex:1;margin-left:30rpx;">
+                <view class="fs38">{{item.couponName}}</view>
+                <view class="fs24" wx:if="{{item.type==0}}">{{item.money}}元现金劵</view>
+                <view class="fs24" wx:if="{{item.type==1}}">满{{item.standardMoney}}可用</view>
+            </view>
+            <view bindtap="receiveCoupon" class="touse" data-id="{{item.id}}">立即领取</view>
+        </view>
+        <view class="myCoupon-bottom">
+            <image class="img" src="../../images/discount-bg.png"></image>
+            <view>有限日期：{{item.endExpire}}前有效</view>
+            <view>适用范围：全场有效</view>
+        </view>
+    </view>
+</block>

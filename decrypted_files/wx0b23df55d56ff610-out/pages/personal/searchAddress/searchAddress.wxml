@@ -1,0 +1,30 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="search-box">
+    <input autoFocus bindinput="setKeyword" class="search-inp" maxlength="20" placeholder="输入服务地址" type="text" value="{{keyword}}"></input>
+    <view bindtap="searchAddress" class="search-btn">搜索</view>
+</view>
+<block wx:if="{{addressList.length}}">
+    <view class="addressContainer" wx:for="{{addressList}}" wx:for-index="addressIndex" wx:for-item="addressItem" wx:key="address">
+        <view bindtap="selectAddress" class="address-item" data-id="{{addressItem.id}}" data-idx="{{addressIndex}}">
+            <view class="info">
+                <text class="name">{{addressItem.title}}</text>
+                <text class="area">{{addressItem.address}}</text>
+            </view>
+        </view>
+    </view>
+</block>
+<view class="address-error" wx:else>
+    <view class="error">
+        <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/170204018.png"></image>
+        <view class="tips">
+        找不到地址？
+      </view>
+        <view class="tips">
+        请尝试输入小区、写字楼学校名字
+      </view>
+        <view class="tips">
+        详细地址（如门牌号）可稍后输入哦
+      </view>
+    </view>
+</view>

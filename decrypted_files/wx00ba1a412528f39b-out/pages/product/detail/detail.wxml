@@ -1,0 +1,139 @@
+<view class="wx_page">
+    <view class="wx_body">
+        <block wx:if="{{isLoading==0}}">
+            <block wx:if="{{isError==0}}">
+                <view class="detail_hd">
+                    <swiper autoplay="false" class="detail_images" duration="500" indicatorDots="true" interval="5000">
+                        <swiper-item wx:for="{{product.base_attr.img_info}}" wx:key="{{item}}">
+                            <image catchtap="tapImg" class="slide-image" data-idx="{{index}}" mode="aspectFill" src="{{item}}"></image>
+                        </swiper-item>
+                    </swiper>
+                    <view class="detail_summary">
+                        <view class="detail_title">{{product.base_attr.name}}</view>
+                        <view class="detail_summary_bd">
+                            <text class="detail_price">
+                                <block wx:if="{{product.base_attr.up_price!=product.base_attr.low_price}}">
+                  {{feeTxt}}{{product.base_attr.low_price_txt}} - {{feeTxt}}{{product.base_attr.up_price_txt}}
+                </block>
+                                <block wx:else>{{feeTxt}}{{product.base_attr.low_price_txt}}</block>
+                            </text>
+                            <text class="detail_old_price" wx:if="{{product.base_attr.ori_price>0&&product.base_attr.ori_price!=product.base_attr.low_price}}">
+                ￥{{product.base_attr.ori_price_txt}}
+              </text>
+                        </view>
+                    </view>
+                </view>
+                <view class="parameter_box area_box">
+                    <view class="detail_box_title">商品参数</view>
+                    <view class="detail_box_content" wx:if="{{product.base_attr.property.length>0}}">
+                        <view class="table_wrp detail_box_bd">
+                            <view class="table">
+                                <view class="tr" wx:if="{{idx<3}}" wx:for="{{product.base_attr.property}}" wx:for-index="idx" wx:key="{{item.name}}">
+                                    <view class="td td_name">{{item.name}}</view>
+                                    <view class="td td_value">{{item.value}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="detail_box_ft" wx:if="{{product.base_attr.property.length>3}}">
+                            <navigator class="detail_extra_link" url="/pages/product/attr/attr">
+                                <text>详细参数</text>
+                                <icon class="icon_arrow" type=""></icon>
+                            </navigator>
+                        </view>
+                    </view>
+                    <view class="empty_area" wx:else>暂无内容</view>
+                </view>
+                <view class="detail_box area_box">
+                    <view class="detail_box_title">商品详情</view>
+                    <view wx:if="{{descList.length>0}}">
+                        <block wx:for="{{descList}}" wx:key="{{index}}">
+                            <view class="detail_static_desc" wx:if="{{item.type==1}}">
+                                <text>{{item.value}}</text>
+                            </view>
+                            <view class="detail_image_area" wx:if="{{item.type==2}}">
+                                <image class="detail_static_image" mode="widthFix" src="{{item.value}}"></image>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="empty_area" wx:if="{{!descList||descList.length==0}}">暂无内容</view>
+                </view>
+            </block>
+            <view class="error_box" wx:if="{{isError==1}}">
+                <image class="icon_reload" mode="aspectFit" src="/images/reload.png"></image>
+                <view class="reload_desc">加载失败</view>
+                <view catchtap="doLoad" class="reload_link">重新加载</view>
+            </view>
+        </block>
+        <view class="loading_box" wx:if="{{isLoading==1}}">
+            <image class="icon_loading" mode="aspectFit" src="/images/loadin.png"></image>
+        </view>
+    </view>
+    <view class="wx_footer">
+        <button class="footer_item service_btn" openType="contact" plain="true" type="">
+            <image src="/images/kf_icon@3x.png"></image>
+        </button>
+        <button catchtap="tapBtnCart" class="footer_item shoppingcar_btn {{cartCount>0?'active':''}}" plain="true" type="">
+            <image src="/images/SC_icon_HL.png"></image>
+            <view class="shoppingcar_count">{{cartCount}}</view>
+        </button>
+        <button catchtap="tapAddCart" class="footer_item add_btn" plain="true" type="">加入购物车</button>
+        <button class="footer_item buy_btn buy_btn_disabled" disabled="true">立即购买</button>
+    </view>
+    <view class="sku_area {{isShowSku==1?'show':''}}">
+        <view catchtap="hideSku" class="sku_mask"></view>
+        <view class="sku_area_box">
+            <view class="sku_hd goods_item">
+                <view class="goods_item_hd">
+                    <image src="{{skuImg||product.base_attr.img_info[0]}}" style="width:60px;height:60px;"></image>
+                </view>
+                <view class="goods_item_bd">
+                    <view class="goods_item_title">{{product.base_attr.name}}</view>
+                    <view class="goods_item_price">
+                        <block wx:if="{{upPrice!=lowPrice}}">{{feeTxt}}{{lowPriceTxt}}-{{upPriceTxt}}</block>
+                        <block wx:else>￥{{lowPriceTxt}}</block>
+                    </view>
+                </view>
+            </view>
+            <view class="sku_bd">
+                <view wx:if="{{product.base_attr.sku_table.length>0}}">
+                    <view class="sku_group">
+                        <view class="sku_group_item" wx:for="{{skuGroup}}" wx:for-index="groupName" wx:for-item="group" wx:key="{{catName}}">
+                            <view class="sku_group_item_title">{{groupName}}</view>
+                            <view catchtap="tapBtnSkuAttr" class="sku_choose_item {{attr.selected?'selected':''}} {{attr.enabled==0?'disabled':''}}" data-attr="{{attrName}}" data-group="{{groupName}}" data-id="{{attr.id}}" wx:for="{{group}}" wx:for-index="attrName" wx:for-item="attr" wx:key="{{attr.key}}">
+                {{attrName}}
+              </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="sku_froup_count">
+                    <view class="sku_group_title">
+                        <text>数量</text>
+                        <text class="quantity_Limit">
+              （库存 {{quantityMaxLimit}} 件
+              <text wx:if="{{product.base_attr.buy_limit>0}}">
+                ; 限购 {{product.base_attr.buy_limit}} 件
+              </text>
+              ）
+            </text>
+                    </view>
+                    <view class="sku_group_box">
+                        <view catchtap="tapChangeQuantity" class="editor editor_remove {{canChangeQuantityDown?'':'disabled'}}" data-delta="-1">
+              -
+            </view>
+                        <input bindblur="inputChangeQuantity" class="editor editor_input" type="number" value="{{selectedQuantity}}"></input>
+                        <view catchtap="tapChangeQuantity" class="editor editor_add {{canChangeQuantityUp?'':'disabled'}}" data-delta="1">
+              +
+            </view>
+                    </view>
+                </view>
+            </view>
+            <view class="sku_ft">
+                <button bindtap="tapSkuConfirm" class="sku_ft_comfirm" disabled="{{!canBuy}}" type="">
+                    <block wx:if="{{skuTo=='cart'}}">加入购物车</block>
+                    <block wx:elif="{{skuTo=='order'}}">购买</block>
+                    <block wx:else>加入购物车</block>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

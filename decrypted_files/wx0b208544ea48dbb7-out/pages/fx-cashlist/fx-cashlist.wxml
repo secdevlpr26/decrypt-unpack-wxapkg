@@ -1,0 +1,23 @@
+<view class="page-fxcashlist">
+    <view class="header">
+        <view class="title">我的提现记录</view>
+        <view class="row fixHeader">
+            <text class="col">金额</text>
+            <text class="col">提现方式</text>
+            <text class="col">提现账号</text>
+            <text class="col">状态</text>
+            <text class="col">日期</text>
+        </view>
+    </view>
+    <scroll-view bindscrolltolower="loadMore" class="scroll-body list-container" scrollY="true" style="height:{{listHeight}}px">
+        <view class="row" wx:for="{{cashlist}}">
+            <view class="col text-ellipsis">{{item.balance}}</view>
+            <view class="col text-ellipsis">{{item.cashtypename}}</view>
+            <view class="col text-ellipsis">
+                <text class="text-ellipsis">{{item.cash_user}}</text>
+            </view>
+            <view class="col text-ellipsis">{{item.statusname}}</view>
+            <view class="col text-ellipsis">{{item.add_time}}</view>
+        </view>
+    </scroll-view>
+</view>

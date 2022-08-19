@@ -1,0 +1,67 @@
+<view class="view-head">
+    <image src="{{user.head_pic}}"></image>
+    <view class="head-right">
+        <text>{{user.nick_name}}</text>
+        <text style="color:#ffff00">推荐人:{{user.first_leader_name}}</text>
+    </view>
+</view>
+<view class="view-money">
+    <view class="money-left">
+        <view class="left-item">
+            <text>累计佣金</text>
+            <text style="font-size:33rpx">¥ {{user.distribut_money}}元</text>
+        </view>
+        <view class="left-item">
+            <text>可提现余额</text>
+            <text style="font-size:31rpx">¥ {{user.user_money}}元</text>
+        </view>
+    </view>
+    <text bindtap="crash" class="text_crash">提现</text>
+</view>
+<view class="classname">
+    <view class="item">
+        <image src="/images/icon_fx.png"></image>
+        <text>分销佣金</text>
+        <view>
+            <text style="color:#ea9518">{{user.distribut_money}}</text>
+            <text>元</text>
+        </view>
+    </view>
+    <view bindtap="order" class="item">
+        <image src="/images/icon_qr.png"></image>
+        <text>分销订单</text>
+        <view>
+            <text style="color:#ea9518">{{orders}}</text>
+            <text>笔</text>
+        </view>
+    </view>
+    <view bindtap="crashinfo" class="item">
+        <image src="/images/icon_fxorder.png"></image>
+        <text>提现明细</text>
+        <view>
+            <text style="color:#ea9518">{{crashs}}</text>
+            <text>笔</text>
+        </view>
+    </view>
+    <view bindtap="person" class="item">
+        <image src="/images/icon_crash.png"></image>
+        <text>我的下线</text>
+        <view>
+            <text style="color:#ea9518">{{person}}</text>
+            <text>人</text>
+        </view>
+    </view>
+    <view bindtap="qrcode" class="item">
+        <image src="/images/icon_xx.png"></image>
+        <text>推广二维码</text>
+        <view></view>
+    </view>
+</view>
+<view class="cart-detail" hidden="{{crash}}">
+    <view bindtap="showVerifyPhone" class="mask"></view>
+    <view class="verify-phone">
+        <text class="phone-hint">输入提现金额</text>
+        <input bindinput="getPhoneNum" class="input-phone" placeholder="输入提现金额" placeholderClass="input-pphone" type="number"></input>
+        <text bindtap="bind" class="bind">提现</text>
+    </view>
+</view>

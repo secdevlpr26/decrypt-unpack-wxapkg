@@ -1,0 +1,38 @@
+<view class="quickorder">
+    <view class="quickorder-header">
+        <picker bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" mode="multiSelector" range="{{multiArray}}" value="{{multiIndex}}">
+            <view class="picker">
+                {{multiArray[0][ multiIndex[0] ]}} {{multiArray[1][ multiIndex[1] ]}}
+            </view>
+        </picker>
+        <picker bindchange="bindPickerChang" range="{{array}}" value="{{index}}">
+            <view class="picker_one">
+                {{array[index]}}
+            </view>
+        </picker>
+        <picker bindchange="bindPickerDate" mode="date" value="{{data}}">
+            <view>
+                {{data}}
+            </view>
+        </picker>
+        <image bindtap="resRst" src="/images/search.png"></image>
+    </view>
+    <view class="quickorder-body">
+        <view bindtap="actionSheetTap" class="team" id="{{item.id}}" wx:for="{{list_data}}" wx:key="index">
+            <view class="order-txt">
+                <text>{{item.area_1}}{{item.area_2}}{{item.area_3}}{{item.area_4}}</text>
+                <text>做箱日期：{{item.do_box_time}} {{item.do_box_time_remake}}</text>
+                <text>上海港区：{{item.port}}</text>
+                <text>箱型：{{item.box_type}}</text>
+                <text>货重：{{item.kgs}}</text>
+                <text>提箱点：{{item.box_take_yard}}</text>
+                <text wx:if="{{item.db_remark}}">备注：{{item.db_remark}}</text>
+                <text wx:else></text>
+            </view>
+            <view class="price-btn">
+                <text class="price-1">￥{{item.money}}</text>
+                <text bindtap="jiedan" class="price-2" data-index="{{index}}" id="{{item.id}}">接单</text>
+            </view>
+        </view>
+    </view>
+</view>

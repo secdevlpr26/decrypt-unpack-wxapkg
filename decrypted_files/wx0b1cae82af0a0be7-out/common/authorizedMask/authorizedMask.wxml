@@ -1,0 +1,10 @@
+<view catchtouchmove="stopSlide" class="auth-bg">
+    <view class="showPop">
+        <view>
+            <view style="margin-bottom:32rpx;">登录小程序</view>
+            <view>您尚未登录请进行登录</view>
+        </view>
+        <button bindgetuserinfo="wxLogin" openType="getUserInfo" wx:if="{{!isSetting}}">登录</button>
+    </view>
+    <button openType="openSetting" wx:if="{{isSetting}}"></button>
+</view>

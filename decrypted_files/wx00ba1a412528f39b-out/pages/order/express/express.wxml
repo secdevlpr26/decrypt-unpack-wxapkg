@@ -1,0 +1,23 @@
+<view class="wx_page">
+    <view class="area_box">
+        <view class="cell_box">
+            <text>物流公司：</text>
+            <text>{{nick_name||'查询失败'}}</text>
+        </view>
+        <view class="cell_box">
+            <text>物流单号：</text>
+            <text>{{track_no}}</text>
+        </view>
+    </view>
+    <view class="area_box express_info_list">
+        <view wx:if="{{traces&&traces.length>0}}">
+            <view class="express_info_item" wx:for="{{traces}}" wx:for-item="trace" wx:key="index">
+                <view class="express_info_desc">{{trace.accept_address}}</view>
+                <view class="express_info_time">{{trace.accept_time}}</view>
+            </view>
+        </view>
+        <view class="express_info_item" wx:else>
+            <view class="express_info_desc">暂无物流信息</view>
+        </view>
+    </view>
+</view>

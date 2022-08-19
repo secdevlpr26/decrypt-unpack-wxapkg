@@ -1,0 +1,23 @@
+<view class="top">
+    <image src="{{imgurl+imageurl}}" style="width:100%;height:100%;"></image>
+</view>
+<form bindsubmit="tijiao" class="form">
+    <view class="item">
+        <view style="font-size:26rpx">姓名</view>
+        <input class="input" name="name" placeholder="请输入姓名" placeholderStyle="margin-left:40rpx;font-size:26rpx" value="{{name1}}"></input>
+    </view>
+    <view class="item">
+        <view style="font-size:26rpx">手机</view>
+        <input class="input" name="phone" placeholder="请输入手机号" placeholderStyle="margin-left:40rpx;font-size:26rpx" value="{{tel}}"></input>
+    </view>
+    <view class="item">
+        <view style="font-size:26rpx">预约参观时间</view>
+        <picker bindchange="binddatechange" mode="date" name="time" start="{{date}}">
+            <input class="input" disabled="disabled" placeholder="请选择时间" placeholderStyle="margin-left:40rpx;font-size:26rpx" value="{{val}}"></input>
+        </picker>
+    </view>
+    <view class="bottom">
+        <button class="btn" formType="submit">立即预约</button>
+        <button bindtap="Myyuyeu" class="btn">我的预约</button>
+    </view>
+</form>

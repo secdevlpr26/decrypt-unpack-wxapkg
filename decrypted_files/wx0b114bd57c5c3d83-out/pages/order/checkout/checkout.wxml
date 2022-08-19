@@ -1,0 +1,3 @@
+<view class="parent" style="height:{{height-100}}px;">
+    <image src="/images/load.gif"></image>
+</view>

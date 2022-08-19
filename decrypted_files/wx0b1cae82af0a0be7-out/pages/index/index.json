@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "首页",
+    "usingComponents": {
+        "authorized-mask": "/common/authorizedMask/authorizedMask"
+    }
+}

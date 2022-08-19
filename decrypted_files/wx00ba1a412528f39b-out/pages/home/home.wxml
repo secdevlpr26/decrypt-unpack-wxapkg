@@ -1,0 +1,41 @@
+<view class="home_page">
+    <view class="home_hd">
+        <image class="user_avatar" mode="aspectFit" src="{{avatarUrl}}"></image>
+        <view class="user_name">{{nickName}}</view>
+    </view>
+    <view class="order_area">
+        <view class="order_hd">
+            <navigator class="order_hd_link" url="/pages/order/list/list?status=0_2_3_4_5_6_7_8">
+                <view class="order_title">我的订单</view>
+                <view class="order_title_extra">
+                    <text class="order_title_desc">查看全部订单</text>
+                    <icon class="icon_arrow" type=""></icon>
+                </view>
+            </navigator>
+        </view>
+        <view class="order_bd">
+            <view class="order_tabs">
+                <navigator class="order_tab_item" url="/pages/order/list/list?status=2">
+                    <view class="tab_icon_wrp">
+                        <view class="tab_num" wx:if="{{!!count['2']}}">{{count['2']}}</view>
+                        <image class="tab_icon" src="/images/dfh_icon@3x.png"></image>
+                    </view>
+                    <view class="tab_title">待发货</view>
+                </navigator>
+                <navigator class="order_tab_item" url="/pages/order/list/list?status=3_4">
+                    <view class="tab_icon_wrp">
+                        <view class="tab_num" wx:if="{{!!count['3_4']}}">{{count['3_4']}}</view>
+                        <image class="tab_icon" src="/images/dsh_icon@3x.png"></image>
+                    </view>
+                    <view class="tab_title">待收货</view>
+                </navigator>
+                <navigator class="order_tab_item" url="/pages/order/list/list?status=5">
+                    <view class="tab_icon_wrp">
+                        <image class="tab_icon" src="/images/ywc_icon@3x.png"></image>
+                    </view>
+                    <view class="tab_title">已完成</view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="mycenter-integral">
+    <view class="mycenter-integral-header">
+        <image src="/images/bg2.png" style="width:750rpx; height:312rpx;"></image>
+        <view class="integral-btn">
+            <image src="/images/jifen2.png"></image>
+            <text class="text-jiedan">积分规则</text>
+        </view>
+        <text class="integral-btxt">当前积分：{{integral}}</text>
+    </view>
+    <view class="mycenter-integral-body">
+        <view>每完成一单增加1个积分；</view>
+        <view class="integral-vip">
+            <text>积分累积达到30可升级</text>
+            <image src="/images/vip2.png" style="width:30rpx; height:30rpx;"></image>
+            <text class="text-color">VIP</text> ;
+        </view>
+        <view class="text-color">VIP级别每单可享受优惠福利及优先配单服务 !</view>
+    </view>
+</view>

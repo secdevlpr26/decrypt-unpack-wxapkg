@@ -1,0 +1,18 @@
+<view class="IntroTitle" wx:if="{{noMessage}}">商家暂未发布菜品信息</view>
+<view class="detailIntroBox" wx:for="{{infos}}" wx:key="key">
+    <view class="IntroTitle">{{item.foodName}}</view>
+    <view class="editableGraphic">
+        <image class="setMealImg" mode="aspectFill" src="{{item.imgName}}"></image>
+        <view class="IntroTextbox" wx:if="{{item.introduce!=''}}">
+            <text class="IntroText">{{item.introduce}}</text>
+        </view>
+        <view class="setMealTextBox" wx:if="{{item.masterials!=''}}">
+            <text class="setMealText">{{item.masterials}}</text>
+        </view>
+    </view>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>

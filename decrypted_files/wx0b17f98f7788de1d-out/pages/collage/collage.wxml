@@ -1,0 +1,19 @@
+<view class="collage-desc">
+    <view class="collage-text">欢迎使用{{companyName}}商户砍价服务</view>
+    <view class="collage-text">技术支持：沈阳众德润科技有限公司</view>
+    <view class="collage-text">电话：024-31284032</view>
+</view>
+<view class="shouquan">
+    <image class="shakeCover_img" src="{{wntjUrls}}"></image>
+    <button bindtap="goToTuanGou" class="lqhyk" wx:if="{{!jiazaizhong}}">前往团购</button>
+    <button bindtap="backToUser" class="lqhyk" wx:if="{{!jiazaizhong}}">返回</button>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+    <component-alertview carname="{{carname_0}}" displayy="{{displayy_0}}" titlename="{{titlename_0}}"></component-alertview>
+    <component-alertview bind:chkOrder0="chkOrder0_1" bind:chkOrder1="chkOrder1_1" carname="{{carname_1}}" displayy="{{displayy_1}}" titlename="{{titlename_1}}"></component-alertview>
+    <component-alertview bind:chkOrder0="chkOrder0_2" bind:chkOrder1="chkOrder1_2" carname="{{carname_2}}" displayy="{{displayy_2}}" titlename="{{titlename_2}}"></component-alertview>
+    <component-alertview bind:chkOrder0="chkOrder0_3" bind:chkOrder1="chkOrder1_3" carname="{{carname_3}}" displayy="{{displayy_3}}" titlename="{{titlename_3}}"></component-alertview>
+</view>

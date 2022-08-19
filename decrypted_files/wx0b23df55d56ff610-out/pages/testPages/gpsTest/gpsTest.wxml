@@ -1,0 +1,8 @@
+<map id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" style="position: absolute; width:100%; height: 800rpx;"></map>
+<view class="testBlock">
+    <view class="blockTitle">定位功能正常吗？</view>
+    <view class="blockContent btns">
+        <view bindtap="setResult" class="warn" data-val="1">异常</view>
+        <view bindtap="setResult" class="normal" data-val="0">正常</view>
+    </view>
+</view>

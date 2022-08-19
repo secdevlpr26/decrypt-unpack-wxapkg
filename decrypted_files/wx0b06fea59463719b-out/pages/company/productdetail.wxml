@@ -1,0 +1,31 @@
+<view class="langFlag"></view>
+<import src="/wxParse/wxParse.wxml"></import>
+<view class="container">
+    <swiper autoplay="{{videoshow?flase:true}}" bindchange="videoguanbi" circular="true" duration="200" indicatorDots="true" interval="5000" style="height:{{bannerHeight}}px">
+        <view wx:if="{{videoshow}}">
+            <view class="ProVideoDiv" style="width:100%;height:100%;background-color:rgba(0,0,0,0.5);position:absolute;z-index:100;">
+                <video autoplay="true" bindended="videoguanbi" src="{{productInfo.Video}}" style="position:absolute;height:100%;width:100%;"></video>
+                <i bindtap="videoguanbi" class="iconfont icon-guanbi-copy" style="position:absolute;right:5px;top:5px;font-size:20px;color:rgba(255,255,255,0.8)"></i>
+            </view>
+        </view>
+        <swiper-item wx:for="{{productImgs}}" wx:key="index">
+            <view class="videobofang" wx:if="{{index=='0'&&productInfo.Video!=''&&productInfo.Video!=null}}">
+                <image bindtap="videobofang" src="../../images/bofang.png" style="width:50px;height:50px;"></image>
+            </view>
+            <image bindload="onBannerImgLoad" class="slide-image" mode="widthFix" src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="particulars-text borderBtm">
+        <text class="title">{{productInfo.Name}}</text>
+        <text class="desc">{{productInfo.ProDesc?productInfo.ProDesc:'暂无简介'}}</text>
+        <text class="productprice" wx:if="{{productInfo.Price!=''}}">￥{{productInfo.Price}}</text>
+    </view>
+    <view class="particulars-page">
+        <view class="particulars-content" hidden="{{currentTab!==0}}">
+            <template is="wxParse" data="{{wxParseData:DetailInfo.nodes}}"></template>
+        </view>
+    </view>
+</view>
+<include src="/pages/template/floatLayer.wxml"></include>
+<include src="/pages/common/popout/index.wxml"></include>
+<include src="/pages/common/phoneauthorization/index.wxml"></include>

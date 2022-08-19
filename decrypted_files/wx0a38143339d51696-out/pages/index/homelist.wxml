@@ -1,0 +1,25 @@
+<view class="titxt">{{xsinfo.reviewtitle}}</view>
+<view style="width:720rpx;margin-left: 15rpx;">
+    <rich-text nodes="{{xstxt}}" style="width:720rpx;height:300rpx；"></rich-text>
+</view>
+<button bindtap="clickTap" class="bbtn0" data-ss="{{xsinfo.id}}">查看更多</button>
+<view style="background-color: #fff;margin-top: 15rpx;" wx:if="{{isshowrf==1}}">
+    <view style="margin-left: 15rpx;display: flex; flex-direction:row;height:40rpx;line-height: 40rpx;margin-top: 25rpx;">
+        <view style="width:12rpx;height:40rpx;background-color: #1E90FF;margin-right: 10rpx;"></view>热门推荐</view>
+    <view style="display: inline-block;">
+        <view bindtap="clickTap" data-ss="{{item.id}}" style="width:250rpx;margin-top: 25rpx; display: inline; flex-direction: column;background-color: #fff;float: left;" wx:for="{{list}}">
+            <image src="{{item.fimg}}" style="width:220rpx;margin-right: 15rpx;margin-left: 15rpx;   height:300rpx;background-color: #f4f4f4"></image>
+            <view class="rftitxt">{{item.name}}</view>
+        </view>
+    </view>
+    <view style="height:100rpx"></view>
+</view>
+<view class="adlayout" wx:if="{{dialog==1}}">
+    <view class="dialog">
+        <view class="dialogtext">点击“下一步”</view>
+        <view class="dialogtext2">回复“1”开始阅读</view>
+        <form bindsubmit="submit" reportSubmit="true">
+            <button class="bbtn" formType="submit" openType="contact">下一步</button>
+        </form>
+    </view>
+</view>

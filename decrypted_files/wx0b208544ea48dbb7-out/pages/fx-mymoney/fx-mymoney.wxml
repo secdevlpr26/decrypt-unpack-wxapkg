@@ -1,0 +1,59 @@
+<view>
+    <view class="header">
+        <text class="money">{{summary.balance||'0.00'}}</text>
+        <text class="money-notice">可提现金额(元)</text>
+    </view>
+    <view class="process">
+        <view class="item">
+            <image></image>
+            <text>提交申请</text>
+        </view>
+        <view class="item">
+            <image></image>
+            <text>等待审核</text>
+        </view>
+        <view class="item">
+            <image></image>
+            <text>提现成功</text>
+        </view>
+    </view>
+    <view class="form">
+        <view class="field">
+            <input bindinput="changeMoney" placeholder="最多可以提现¥{{summary.balance||'0.00'}}元"></input>
+        </view>
+        <view class="field">
+            <input bindinput="changeMobile" placeholder="电话号码"></input>
+        </view>
+        <view class="field">
+            <input bindinput="changeName" key="bank-card-owner" placeholder="请输收款人姓名"></input>
+        </view>
+        <view class="tab-box">
+            <view class="tab-wrapper">
+                <view bindtap="changetab" class="tab-item {{curTab==='bank'?'active':''}}" data-key="bank">银行卡</view>
+                <view bindtap="changetab" class="tab-item {{curTab==='wechat'?'active':''}}" data-key="wechat">微信</view>
+                <view bindtap="changetab" class="tab-item {{curTab==='zhifubao'?'active':''}}" data-key="zhifubao">支付宝</view>
+            </view>
+            <view class="content-wrapper">
+                <view class="content-item" data-key="bank" wx:if="{{curTab==='bank'?'active':''}}">
+                    <view class="field">
+                        <input bindinput="changeTabInput" data-key="bankcount" placeholder="请输入银行卡号"></input>
+                    </view>
+                </view>
+                <view class="content-item" data-key="wechat" wx:if="{{curTab==='wechat'?'active':''}}">
+                    <view class="field">
+                        <input bindinput="changeTabInput" data-key="wechatcount" placeholder="请输入微信账号"></input>
+                    </view>
+                </view>
+                <view class="content-item" data-key="zhifubao" wx:if="{{curTab==='zhifubao'?'active':''}}">
+                    <view class="field">
+                        <input bindinput="changeTabInput" data-key="zhifubaocount" placeholder="请输入支付宝账号"></input>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="submit" class="link-btn">申请提现</view>
+    </view>
+    <view class="footer">
+        <text>提现金额需要3-5个工作日到账</text>
+    </view>
+</view>

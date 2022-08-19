@@ -1,0 +1,190 @@
+<image bindtap="rule" class="rule" src="../../icon/rule.png"></image>
+<view class="userInfo">
+    <image class="avatar" src="{{userInfo?userInfo.avatarUrl:'/icon/avatar.png'}}"></image>
+    <button bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" hoverClass="none" openType="{{userInfo?'':'getUserInfo'}}" style="font-size:28rpx;color:#eeeeee;margin-top:10rpx;background-color: transparent">
+  {{userInfo?userInfo.nickName:'点击授权'}}</button>
+    <view bindtap="toScoreDetail" style="font-size:30rpx;font-weight:bold;color:#ffffff;margin-top:20rpx;width:100%;text-align:center">
+    成长豆：
+    <view style="font-size:32rpx;font-weight:bold;color:#FFFF00;display:inline-block">{{score}}</view>
+    </view>
+</view>
+<view class="top">
+    <view class="top-btn">
+        <view bindtap="jifen" class="btn-l">
+            <view style="display: flex;align-items: center">
+                <image src="../../icon/jifen.png" style="width:45rpx;height:45rpx;margin-right:20rpx"></image>
+                <view>积分兑换</view>
+            </view>
+        </view>
+        <view bindtap="toMore" class="btn-r">
+            <view style="display: flex;align-items: center">
+                <image src="../../icon/paihang.svg" style="width:45rpx;height:45rpx;margin-right:20rpx"></image>
+                <view>成长豆排行</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="qiandao" class="{{isqiandao?'qiandao2':'qiandao'}}">{{isqiandao?'已签到':'点击签到'}}</view>
+    <view style="font-size:26rpx;width:100%;text-align:center">
+    已连续签到
+    <view style="display:inline-block;color:#ff394c">{{days}}</view>
+    天
+  </view>
+    <view class="wrap">
+        <view class="item">
+            <image src="{{days>=1?'../../icon/isqd.png':'../../icon/qd.png'}}" style="width:68rpx;height:92rpx"></image>
+            <view>第一天</view>
+        </view>
+        <view class="item">
+            <image src="{{days>=2?'../../icon/isqd.png':'../../icon/qd.png'}}" style="width:68rpx;height:92rpx"></image>
+            <view>第二天</view>
+        </view>
+        <view class="item">
+            <image src="{{days>=3?'../../icon/isqd.png':'../../icon/qd.png'}}" style="width:68rpx;height:92rpx"></image>
+            <view>第三天</view>
+        </view>
+        <view class="item">
+            <image src="{{days>=4?'../../icon/isqd.png':'../../icon/qd.png'}}" style="width:68rpx;height:92rpx"></image>
+            <view>第四天</view>
+        </view>
+        <view class="item">
+            <image src="{{days>=5?'../../icon/isqd.png':'../../icon/qd.png'}}" style="width:68rpx;height:92rpx"></image>
+            <view>第五天</view>
+        </view>
+        <view class="item">
+            <image src="{{days>=6?'../../icon/isqd.png':'../../icon/qd.png'}}" style="width:68rpx;height:92rpx"></image>
+            <view>第六天</view>
+        </view>
+        <view class="item">
+            <image src="{{days>=7?'../../icon/isqd.png':'../../icon/qd.png'}}" style="width:68rpx;height:92rpx"></image>
+            <view>第七天</view>
+        </view>
+    </view>
+    <view class="explain">
+        <view>
+            <view style="display:inline-block;color:#FF3300">*</view> 每日签到成长豆累加,连续签到7天后，只要签到不中断每日成长豆 <view style="display:inline-block;color:#FF3300">+7</view>
+        </view>
+        <view>
+            <view style="display:inline-block;color:#FF3300">*</view> 当连续签到中断后,则回到初始签到状态,重新累计签到天数</view>
+    </view>
+</view>
+<view class="bottom">
+    <view class="title">
+        <view style="display:inline-block;margin-left:20rpx">成长豆任务</view>
+    </view>
+    <view class="work">
+        <view class="left">
+            <view>分享小程序</view>
+            <view style="color:#999999">分享小程序到任意群</view>
+        </view>
+        <view class="right">
+            <view bindtap="getScore1" class="btn" wx:if="{{share.score}}">
+                <view style="display:flex;align-items:center;">
+                    <image src="../../icon/score.png" style="width:30rpx;height:30rpx;margin-right:10rpx"></image>
+                    <view>领取</view>
+                </view>
+            </view>
+            <button bindtap="{{!share?complete1:''}}" class="btn1" openType="share" wx:elif="{{!get1}}">去完成</button>
+            <view class="btn3" wx:else>已完成</view>
+        </view>
+    </view>
+    <view class="{{show?'work':'work3'}}" style="display:{{isMake}}">
+        <view class="work2">
+            <view class="left">
+                <view>推荐人</view>
+                <view style="color:#999999">填写推荐人手机号：500成长豆</view>
+            </view>
+            <view class="right">
+                <view bindtap="complete2" class="btn">去完成</view>
+            </view>
+        </view>
+        <view class="tuijianren" style="display:{{show}}">
+      请输入推荐人手机号：
+      <input bindinput="getPhone"></input>
+            <image bindtap="tjphone" src="../../icon/yes.png" style="width:50rpx;height:50rpx;margin-left:30rpx"></image>
+        </view>
+    </view>
+    <view class="work">
+        <view class="left">
+            <view>提建议</view>
+            <view style="color:#999999">建议需20字以上，一经采纳获赠200成长豆</view>
+        </view>
+        <view class="right">
+            <view bindtap="getScore3" class="btn" wx:if="{{comment.score}}">
+                <view style="display:flex;align-items:center;">
+                    <image src="../../icon/score.png" style="width:30rpx;height:30rpx;margin-right:10rpx"></image>
+                    <view>领取</view>
+                </view>
+            </view>
+            <view bindtap="{{get3?'':'complete3'}}" class="{{get3?'btn3':'btn'}}" wx:else>{{get3?'已完成':'去完成'}}</view>
+        </view>
+    </view>
+</view>
+<view class="bottom2">
+    <view class="title">
+        <view style="display:inline-block;margin-left:20rpx">精选留言板</view>
+        <view bindtap="toMsg" style="font-size:26rpx">我也要留言>></view>
+    </view>
+    <view class="msg_item" wx:for="{{msgList}}">
+        <view class="msg_user">
+            <image src="{{item.headimgurl}}"></image>
+            <view>{{item.nickname}}</view>
+        </view>
+        <view style="display:flex;align-items:center">
+            <view class="msg_comment">{{item.content}}</view>
+            <view style="width:20%; display: flex;align-items: center;justify-content: space-around;">
+                <image class="msg_icon" src="../../icon/agree.png" wx:if="{{item.status==1}}"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="rule_wrap" style="width:100%;height:100%;" wx:if="{{isShow}}">
+    <view style="width:100%;text-align:right;margin-top:50rpx;margin-bottom:10rpx;">
+        <image bindtap="close" src="../../icon/close.svg" style="margin-right:50rpx;width:60rpx;height:60rpx"></image>
+    </view>
+    <view class="rule_img">
+        <view style="width:100%;text-align:center">
+            <image src="../../icon/getuse.png" style="width:300rpx;height:50rpx;"></image>
+        </view>
+        <view style="border-bottom:1px dashed	#666;margin-top:10rpx">
+            <view class="icon">1</view>
+            <view style="font-size:28rpx;display:inline-block">什么是成长豆？</view>
+            <view style="font-size:24rpx;color:#666;margin:5rpx auto">
+          成长豆是针对在本机构小程序上注册用户的奖励体系,当您注册本机构的微信小程序后，即可开始您的领取成长豆之路
+        </view>
+        </view>
+        <view style="border-bottom:1px dashed	#666;margin-top:10rpx">
+            <view class="icon">2</view>
+            <view style="font-size:28rpx;display:inline-block">如何获得成长豆？</view>
+            <view style="font-size:24rpx;color:#666;margin:5rpx auto">
+          每日签到、分享内容、邀请好友及给商家提建议都可以获取成长豆。
+        </view>
+        </view>
+        <view style="border-bottom:1px dashed	#666;margin-top:10rpx">
+            <view class="icon">3</view>
+            <view style="font-size:28rpx;display:inline-block">成长豆如何兑换？</view>
+            <view style="font-size:24rpx;color:#666;margin:5rpx auto">
+          用户可通过我的-->积分兑换页面选择可兑换的奖励，点击马上兑，确认兑换后系统将扣除相应成长豆。
+        </view>
+        </view>
+        <view style="border-bottom:1px dashed	#666;margin-top:10rpx">
+            <view class="icon">4</view>
+            <view style="font-size:28rpx;display:inline-block">我成功兑换了奖励，如何领取？</view>
+            <view style="font-size:24rpx;color:#666;margin:5rpx auto">
+          当您成功兑换奖励后，您需要去线下门店进行核实，核实无误后，将会根据相应要求领取您的奖励
+        </view>
+        </view>
+        <view style="border-bottom:1px dashed	#666;margin-top:10rpx">
+            <view class="icon">5</view>
+            <view style="font-size:28rpx;display:inline-block">其他问题</view>
+            <view style="font-size:24rpx;color:#666;margin:5rpx auto">
+          如果小程序用户在成长豆累计过程或商品兑换过程中遇到上述无法解答的情况，请联系商家进行咨询。
+        </view>
+        </view>
+    </view>
+</view>
+<view class="newP" style="height:{{Height*2}}rpx" wx:if="{{isNew}}">
+    <view class="newP_wrap">
+        <image src="../../icon/new.png" style="width:350rpx;height:350rpx"></image>
+        <view bindtap="getNewScore" class="newP_btn">立即领取</view>
+    </view>
+</view>

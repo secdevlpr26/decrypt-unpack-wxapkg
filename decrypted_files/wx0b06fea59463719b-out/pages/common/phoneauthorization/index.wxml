@@ -1,0 +1,28 @@
+<view catchtouchmove="preventD" class="popout-mark" wx:if="{{phonelicense||authorizationfailure}}"></view>
+<view class="panel-getUserInfo panelus" wx:if="{{phonelicense}}">
+    <view class="panel-title border1px">小程序授权</view>
+    <view class="panel-tips">
+        <view class="allow-tips">
+            <view class="circle"></view>
+            <view class="ebook">请允许当前小程序获取手机号码</view>
+        </view>
+    </view>
+    <view class="btn-groups">
+        <button bindgetphonenumber="getPhoneNumber" bindtap="turnOff" openType="getPhoneNumber" type="primary">允许</button>
+    </view>
+</view>
+<view class="panel-getUserInfo panelu" wx:if="{{authorizationfailure}}">
+    <view class="phonelicense-title border1px">
+        <view>授权提示</view>
+        <view bindtap="fork" class="fork" wx:if="{{fork}}">×</view>
+    </view>
+    <view class="panel-tips">
+        <view class="allow-tips">
+            <view class="circle"></view>
+            <view class="ebook">授权失败，请重新授权</view>
+        </view>
+    </view>
+    <view class="btn-panel">
+        <button bindgetphonenumber="getPhoneNumber" bindtap="turnOff" openType="getPhoneNumber" type="primary">立即授权</button>
+    </view>
+</view>

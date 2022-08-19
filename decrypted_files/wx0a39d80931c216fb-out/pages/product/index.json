@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "商品详情",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "uni-badge": "/components/uni-badge",
+        "uni-number-box": "/components/uni-number-box",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

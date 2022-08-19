@@ -1,0 +1,18 @@
+<view class="page">
+    <scroll-view>
+        <map bindregionchange="regionchange" id="map" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" scale="14" showLocation="true" style="width: 100%;flex:1;height:650rpx;"></map>
+        <view bindtap="goToTheAddress" class="addressBtn" hover="true" hoverClass="button-hover" wx:if="{{info.address!=null&&info.address.length>10}}">
+            <text class="addressBtn-text">{{info.address}}</text>
+            <image class="addressBtn-image" src="../../images/location.png"></image>
+        </view>
+        <view wx:if="{{tels!=null&&tels.length>0}}" wx:for="{{tels}}" wx:key="index">
+            <view bindtap="callPhone" class="phoneBtn" data-name="{{tels[index]}}" hover="true" hoverClass="button-hover">
+                <view class="phoneBtn-text">
+                    <view style="font-size:17px; color:#666;">{{tels[index]}}</view>
+                    <view style="font-size:12px; color:#999; margin-top:10rpx;">服务时间：{{info.serverTime}}</view>
+                </view>
+                <image class="phoneBtn-image" src="../../images/phone.png"></image>
+            </view>
+        </view>
+    </scroll-view>
+</view>

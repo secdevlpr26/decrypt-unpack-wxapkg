@@ -1,0 +1,37 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <view class="search-top">
+        <view class="search-input">
+            <image mode="widthFix" src="/images/search-icon.png"></image>
+            <input focus bindconfirm="search" bindinput="backSearch" confirmType="search" placeholder="搜索你要的商品" value="{{searchWord}}"></input>
+        </view>
+        <view bindtap="back" class="cancel">取消</view>
+    </view>
+    <view class="search-history" hidden="{{searchStatus}}">
+        <view class="tit">
+      历史搜索
+      <view bindtap="delete" class="delete">
+                <image mode="widthFix" src="/images/laji.png"></image>
+            </view>
+        </view>
+        <view class="history-list">
+            <view bindtap="searchHistory" class="item" data-value="{{item}}" wx:for="{{historyList}}" wx:key="*this">{{item}}</view>
+        </view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="lower" class="serve_content" hidden="{{!searchStatus}}" scrollTop="{{scrollTop}}">
+        <view class="serve-list">
+            <navigator url="../serveDetail/index?id={{item.id}}" wx:for="{{serveList}}" wx:key="id">
+                <view class="serve_item">
+                    <image src="{{item.listImage}}"></image>
+                    <view class="serve_item_text">
+                        <view class="serve_item_name">{{item.title}}</view>
+                        <view class="serve_item_attr">{{item.abstractContent}}</view>
+                        <view class="serve_item_price">{{item.price}}</view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="none-data" hidden="{{serveList.length>0}}">暂时没有您需要的服务</view>
+    </scroll-view>
+</view>

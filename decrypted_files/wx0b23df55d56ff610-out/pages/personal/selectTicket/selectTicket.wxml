@@ -1,0 +1,32 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view wx:if="{{isShow}}">
+    <view class="codeTo">
+        <input bindinput="inputBind" class="codeInput" placeholder="请输入兑换码" value="{{inputCode}}"></input>
+        <view bindtap="addTicket">兑换</view>
+    </view>
+    <view class="ticketList {{fromInfo?'':'pb100'}}">
+        <view bindtap="select" class="ticketItem {{curId==item.id?'on':''}} discount invalid {{item.status==1?'hasUse':''}}" data-coupon_project="{{item.coupon_project}}" data-index="{{index}}" data-type="{{item.type}}" wx:for="{{listArr}}">
+            <view class="itemTop">
+                <view class="left">
+                    <view class="leftTop" style="color: #ff5000">满减券</view>
+                    <view class="leftDown" style="color: #ff5000">满{{item.condition}}减{{item.money}}</view>
+                </view>
+                <view class="right">
+                    <view class="code" style="color: #ff5000">{{item.name}}</view>
+                </view>
+            </view>
+            <view class="itemDown" style="background: #ff5000">
+        有效期<text>{{item.start_time}}</text>至<text>{{item.use_end_time}}</text>
+            </view>
+            <view class="selectBtn">
+                <image src="../../../img/xzzf@2x.png"></image>
+            </view>
+            <view class="used">已使用</view>
+        </view>
+    </view>
+    <view class="nullTicket" wx:if="{{listArr.length<1}}">暂无可用优惠券</view>
+    <view class="downConfirm" wx:if="{{ticketList.length>0&&!fromInfo}}">
+        <view bindtap="setSelectTicket">确定</view>
+    </view>
+</view>

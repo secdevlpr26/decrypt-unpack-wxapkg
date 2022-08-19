@@ -1,0 +1,5 @@
+module.exports = ({
+    replaceBr: (function(str) {
+        return (str.replace('\x3cbr/\x3e', ''))
+    }),
+});

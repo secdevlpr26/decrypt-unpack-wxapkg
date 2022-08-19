@@ -1,0 +1,27 @@
+{
+    "pages": [
+        "pages/teacher/login/login",
+        "pages/teacher/outsourcing/outsourcing",
+        "pages/teacher/student/student",
+        "pages/teacher/class/class",
+        "pages/study/lessonList/lessonList",
+        "pages/study/bookList/bookList",
+        "pages/study/readBook/readBook",
+        "pages/study/studyIndex/studyIndex",
+        "pages/study/listenStory/listenStory",
+        "pages/study/chooseWord/chooseWord",
+        "pages/study/recordVoice/recordVoice",
+        "pages/study/playGame/playGame",
+        "pages/study/homework/homework",
+        "pages/user/userCenter/userCenter",
+        "pages/user/calendar/calendar",
+        "pages/index/index",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "彩虹堂英语课堂",
+        "navigationBarTextStyle": "black"
+    }
+}

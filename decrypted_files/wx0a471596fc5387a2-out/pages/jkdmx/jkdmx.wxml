@@ -1,0 +1,64 @@
+<form bindreset="formReset" bindsubmit="formSubmit">
+    <view class="address">
+        <view class="addr">
+            <text>单号：{{id}}</text>
+        </view>
+        <view class="addr">
+            <text>申请部门：{{zrzxbm}}--{{zrzxmc}}</text>
+        </view>
+        <view class="addr">
+            <text>{{djlx=='02'?'借款':'还款'}}人：{{lrr}}--{{lrrmc}}</text>
+        </view>
+        <view class="li">
+            <picker bindchange="datePickerBindchange" end="2999-12-12" mode="date" start="1999-01-01" value="{{ywrq}}">
+        业务日期: {{ywrq}}
+      </picker>
+        </view>
+        <view class="li">
+            <text>{{djlx=='02'?'借款':'还款'}}事由：</text>
+            <input name="fkzt" placeholder="请添加事由" type="text" value="{{fkzt}}"></input>
+        </view>
+        <view class="li">
+            <text>{{djlx=='02'?'借款':'还款'}}金额：</text>
+            <input focus name="sqje" type="digit" value="{{sqje}}"></input>
+        </view>
+        <view class="li">
+            <text>备注：</text>
+            <input name="bz" placeholder="我还有要说的：）" type="text" value="{{bz}}"></input>
+        </view>
+        <view bindtap="addAddress" class="li search">
+            <text>{{djlx=='02'?'收款':'付款'}}单位/人：</text>
+            <input name="ssdw" placeholder="请添加收款帐户" type="text" value="{{ssdw}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view class="li">
+            <text>开户银行：</text>
+            <input name="khh" type="text" value="{{khh}}"></input>
+        </view>
+        <view class="li">
+            <text>银行帐户：</text>
+            <input name="zh" type="number" value="{{zh}}"></input>
+        </view>
+        <view class="li">
+            <text>税号：</text>
+            <input name="sh" type="text" value="{{sh}}"></input>
+        </view>
+        <input hidden="false" name="id" type="hidden" value="{{id}}"></input>
+        <input hidden="false" name="lcbm" type="hidden" value="{{lcbm}}"></input>
+        <input hidden="false" name="djlx" type="hidden" value="{{djlx}}"></input>
+    </view>
+    <view class="zhichi">
+    图片附件（单击放大/缩小、滑动浏览、长按删除）
+  </view>
+    <view class="school-list-info" wx:for="{{getOrderFj}}" wx:key="{{item.id}}">
+        <image bindlongpress="deleteImage" bindtap="imgYu" class="school-list-photo" data-index="{{index}}" data-list="{{getOrderFj.WEB}}/upload/Annex/{{getOrderFj.FILENAME}}" data-src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" mode="aspectFit" src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" wx:if="{{item.LX=='png'||item.LX=='jpg'||item.LX=='gif'||item.LX=='bmp'}}"></image>
+    </view>
+    <image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+    <view class="tijiao">
+        <button formType="submit">保存</button>
+    </view>
+</form>
+<view bindtap="bindChooiceProduct" class="icon_search1 photo">
+    <image src="{{hostUrl}}/images/photo.png"></image>
+</view>
+<wxs module="filters" src="../../utils/filters.wxs" />

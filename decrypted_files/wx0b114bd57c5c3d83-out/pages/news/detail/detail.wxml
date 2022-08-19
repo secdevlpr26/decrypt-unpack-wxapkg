@@ -1,0 +1,8 @@
+<import src="../../../wxParse/wxParse.wxml"></import>
+<view class="article-content">
+    <text style="margin:10px 0;">{{title}}</text>
+    <view style="font-size:12px; margin-bottom:10px;">{{publishTime}}</view>
+</view>
+<view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+</view>

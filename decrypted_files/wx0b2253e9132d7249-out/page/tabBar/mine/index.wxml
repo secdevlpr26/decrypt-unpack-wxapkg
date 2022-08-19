@@ -1,0 +1,87 @@
+<view class="container">
+    <view class="grant" hidden="{{grant}}">
+        <view class="grant_title">提示</view>
+        <view class="grant_content">请您授权您的用户信息，否则核心功能将无法使用</view>
+        <button bindgetuserinfo="getUserInfo" class="grant_button" data-url="/pages/guanjialist/index" disabled="{{loading}}" loading="{{loading}}" openType="getUserInfo">去授权</button>
+        <view class="grant_yes">去授权</view>
+    </view>
+    <view hidden="{{grant}}" style="width:100%;height:100%;position:fixed;background:#000;opacity:0.4;z-index:2;"></view>
+    <view bindtap="set" class="set" wx:if="{{over==true&&grant}}">
+        <image src="{{photo_url}}images/set.png"></image>
+    </view>
+    <view bindtap="set" class="set" wx:elif="{{over!=true&&grant}}">未完善</view>
+    <view class="userinfo">
+        <image class="bgcolor" src="{{photo_url}}images/center1.png" style="width:100%; height:350rpx; position:absolute; top:0; "></image>
+        <image backgroundSize="cover" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        <text class="userinfo-nickname" style="top:132px;" wx:if="{{level.levelname!=''&&level.levelname!=null}}">[{{level.levelname}}]</text>
+        <view class="child" hidden="{{!grant}}">
+            <view hidden="{{closerecharge==1}}">
+                <view class=" class">余额</view>
+                <view class="num">{{member.credit2==null?'0.00':member.credit2}}</view>
+                <view bindtap="addAddress" class="btn">充值</view>
+            </view>
+        </view>
+        <view class="childs" hidden="{{!grant}}">
+            <view hidden="{{closeexchange==1}}">
+                <view class=" class">积分</view>
+                <view class="num">{{member.credit1==null?0:member.credit1}}</view>
+                <view bindtap="toCredit" class="btn">兑换</view>
+            </view>
+        </view>
+        <view hidden="{{grant}}" style="height:280rpx;">
+            <image class="userinfo-avatar" src="/images/avatar_.png"></image>
+            <button bindgetuserinfo="getUserInfo" class="no-data-nav" data-url="/pages/guanjialist/index" disabled="{{loading}}" loading="{{loading}}" openType="getUserInfo" style="opacity:0;left:38%;z-index:10;">授权登录</button>
+            <view class="no-data-nav">授权登录</view>
+        </view>
+    </view>
+    <view class="info_list myorder">
+        <view class="weui_cells" hidden="{{userLocation}}" style="padding:2px 25rpx 5px;">
+            <view class="announcement-img">
+                <image src="/images/remind.png"></image>
+                <view class="announcements">
+                    <text>您未授权获取位置，</text>
+                    <view class="no-data-navs">
+                        <button bindgetuserinfo="getUserInfo" class="address" data-url="/pages/guanjialist/index" disabled="{{loading}}" loading="{{loading}}" openType="openSetting"></button>点击此获取定位！</view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="cartList" class="weui_cells" data-id="0" data-url="/page/shop/pages/order-list/index">
+            <view class="weui_cell_hd">
+                <image src="{{photo_url}}images/doctor.png"></image>
+            </view>
+            <view class="weui_cell_bd">
+                <view class="weui_cell_bd_p"> 我的订单</view>
+            </view>
+            <view class="with_arrow">
+                <image class="userinfo-avatars" src="{{photo_url}}images/showMore.png" style="width:20px;height:20px;margin:0px"></image>
+            </view>
+        </view>
+        <view class="order_list">
+            <view bindtap="{{item.orderNav}}" class="order_cells" data-id="{{item.pathId}}" data-url="{{item.pagePath}}" wx:for="{{orderoption}}" wx:key="key">
+                <view class="order_icon">
+                    <image src="{{item.icon}}"></image>
+                </view>
+                <view class="ordersta">{{item.text}}</view>
+                <view class="goodsNum" wx:if="{{item.goodsNum>0||item.goodsNum=='99+'?true:false}}">{{item.goodsNum}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="info_list">
+        <view bindtap="{{item.bindNav}}" class="weui_cells" data-url="{{item.pagePath}}" wx:for="{{userListInfo}}" wx:key="key">
+            <view class="weui_cell_hd">
+                <image src="{{item.icon}}"></image>
+            </view>
+            <view class="weui_cell_bd">
+                <view class="weui_cell_bd_p"> {{item.text}}
+                </view>
+            </view>
+            <view class="with_arrow">
+                <image class="userinfo-avatars" src="{{photo_url}}images/showMore.png" style="width:20px;height:20px;margin:0px"></image>
+            </view>
+        </view>
+        <view class="weui_cells" style="font-size:28rpx;color:#939393;text-align:center;display:block">
+    {{copyright}}
+    </view>
+    </view>
+</view>

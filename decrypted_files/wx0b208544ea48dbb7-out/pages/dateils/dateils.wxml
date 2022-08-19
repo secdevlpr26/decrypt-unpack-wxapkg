@@ -1,0 +1,13 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<view class="dateils-container">
+    <view class="main">
+        <text class="title">{{article.title}}</text>
+        <view class="time">
+            <text>{{article.author}} </text>
+            <text>{{article.add_time}}</text>
+        </view>
+        <view class="mian-txt">
+            <template is="wxParse" data="{{wxParseData:imageText.nodes}}"></template>
+        </view>
+    </view>
+</view>

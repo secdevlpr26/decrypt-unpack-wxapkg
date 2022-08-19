@@ -1,0 +1,69 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view>
+    <view class="deviceInfoBlock">
+        <view class="deviceInfoLeft">
+            <image mode="widthFix" src="{{goods.original_img}}"></image>
+        </view>
+        <view class="deviceInfoRight">
+            <text class="device">{{goods.goods_name}}</text>
+            <text class="mid">预估回收价格：</text>
+            <view class="price">
+                <view class="rmb">
+                    <text>¥</text>
+                </view>
+                <view class="priceNum">{{shop_price}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="selectInfoBlock">
+        <view class="selectInfoTop">
+            <view class="left">
+                <image src="https://pic.hiweixiu.com/images/mrecy.hiweixiu.com/jieguo.png"></image>
+                <text>描述详情</text>
+            </view>
+            <view class="right">
+                <text bindtap="reAssess">重新评估</text>
+            </view>
+        </view>
+        <view class="selectInfoBottom">
+            <view class="selectInfoItem" wx:for="{{faultList}}" wx:key="index">
+                <text class="selectInfoItemLeft">{{item.fname}}</text>
+                <text class="selectInfoItemRight">{{item.info}}</text>
+            </view>
+            <view class="selectInfoItem">
+                <text class="selectInfoItemLeft">是否存在以下问题（可多选）</text>
+                <text class="selectInfoItemRight">
+                    <block wx:for="{{otherFaultList}}">{{item.info}} </block>
+                </text>
+            </view>
+        </view>
+    </view>
+    <view class="promiseBlock">
+        <view class="promiseTop">
+            <image src="https://pic.hiweixiu.com/images/mrecy.hiweixiu.com/chengnuo.png"></image>
+            <text>我们的承诺</text>
+        </view>
+        <view class="promiseBottom">
+            <view class="promiseBottomItem" wx:for="{{promiseList}}" wx:key="index">
+                <image src="{{item.imgUrl}}"></image>
+                <text>{{item.content}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="placeHolderBlock"></view>
+    <view class="bottomBlock">
+        <view bindtap="toRecycleCart" class="left">
+            <view class="leftTop">
+                <image src="/img/icon_phone.png"></image>
+            </view>
+            <view class="leftBottom">联系我</view>
+        </view>
+        <view bindtap="reAssess" class="mid">
+            <text>重新评估</text>
+        </view>
+        <view bindtap="toCreateOrder" class="right">
+            <text>立即下单</text>
+        </view>
+    </view>
+</view>

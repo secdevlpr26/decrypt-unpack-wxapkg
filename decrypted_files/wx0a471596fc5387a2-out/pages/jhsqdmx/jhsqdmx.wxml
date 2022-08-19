@@ -1,0 +1,61 @@
+<view>{{djlx}}{{djmc}}{{lcbm}}{{nf}}{{zrzxbm}}{{zrzxmc}}{{ztbm}}{{ls_tj}}</view>
+<view class="addrcon">
+    <view class="addrlist" wx:for="{{addressList}}" wx:key="{{item.ID}}">
+        <view class="addr">
+            <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+        </view>
+        <view bindtap="selectzrzxbm" class="addr search" data-index="{{index}}">
+            <text>申请部门：</text>
+            <input disabled="true" name="zrzxbm" placeholder="请选择申请部门" type="text" value="{{item.ZRZXBM}}{{item.ZRZXMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view class="addr">
+            <text>摘要：</text>
+            <input bindinput="inputzy" data-index="{{index}}" name="zy" placeholder="申请摘要" type="text" value="{{item.ZY}}"></input>
+        </view>
+        <view bindtap="selectysxmmxbh" class="addr search" data-index="{{index}}" data-ysxmbm="{{item.YSXMBM}}" data-zrzxbm="{{item.ZRZXBM}}">
+            <text>存货名称：</text>
+            <input disabled="true" name="ysxmbm" placeholder="请选择存货编码" type="text" value="{{item.YSXMBM}}{{item.YSXMMXMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view class="addr">
+            <text>规格：</text>
+            <input bindinput="inputgg" data-index="{{index}}" disabled="true" name="gg" placeholder="" type="text" value="{{item.GG}}"></input>
+        </view>
+        <view class="addr">
+            <text>型号：</text>
+            <input bindinput="inputxh" data-index="{{index}}" disabled="true" name="xh" placeholder="" type="text" value="{{item.XH}}"></input>
+        </view>
+        <view class="addr">
+            <text>申请数量：</text>
+            <input bindinput="inputsqje" data-index="{{index}}" name="sqje" style="width:200rpx;" type="digit" value="{{item.SQJE}}"></input>
+        </view>
+        <view class="addr">
+            <text>备注：</text>
+            <input bindinput="inputbz" data-index="{{index}}" name="bz" placeholder="我还有要说的：）" type="text" value="{{item.BZ}}"></input>
+        </view>
+        <view class="addrb">
+            <button bindtap="delete" class="delete" data-bh="{{item.BH}}" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/cross.png"></image>删除明细</button>
+            <button bindtap="tijiao" class="delete" data-bh="{{item.BH}}" data-bz="{{item.BZ}}" data-czje="{{item.CZJE}}" data-gg="{{item.GG}}" data-id="{{item.ID}}" data-index="{{index}}" data-sqje="{{item.SQJE}}" data-xh="{{item.XH}}" data-ysxmbm="{{item.YSXMBM}}" data-ysxmmxmc="{{item.YSXMMXMC}}" data-ywrq="{{item.YWRQ}}" data-zrzxbm="{{item.ZRZXBM}}" data-zy="{{item.ZY}}">
+                <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+        </view>
+    </view>
+</view>
+<view class="zhichi">
+  图片附件（单击放大/缩小、滑动浏览、长按删除）
+</view>
+<view wx:for="{{getOrderFj}}" wx:key="{{item.id}}">
+    <image bindlongpress="deleteImage" bindtap="imgYu" data-index="{{index}}" data-list="{{getOrderFj.WEB}}/upload/Annex/{{getOrderFj.FILENAME}}" data-src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" mode="widthFix" src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" style="width:100%" wx:if="{{item.LX=='png'||item.LX=='jpg'||item.LX=='gif'||item.LX=='bmp'}}"></image>
+</view>
+<image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+<view class="addbtn1">合计：{{hj}}个
+
+</view>
+<view bindtap="bindChooiceProduct" class="icon_search1 photo">
+    <image src="{{hostUrl}}/images/photo.png"></image>
+</view>
+<view bindtap="addAddress" class="icon_search2">新增明细
+
+</view>
+<wxs module="filters" src="../../utils/filters.wxs" />

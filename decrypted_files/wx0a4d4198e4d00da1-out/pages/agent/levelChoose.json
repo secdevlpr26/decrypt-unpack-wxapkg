@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "wxc-price": "../../packages/@minui/wxc-price/dist/index"
+    },
+    "navigationBarTitleText": "级别选择"
+}

@@ -1,0 +1,52 @@
+<view class="{{currentSkin}}">
+    <view class="l-main" wx:if="{{isonOrder==false}}">
+        <view class="l-num f fc fj">
+            <view class="f fc">
+                <image src="http://j.vzan.cc/miniapp/img/enterprise/new_a1.png"></image>
+                <text class="ml20">当前排队数量</text>
+            </view>
+            <text>{{dataObj.befterSortCount}}人</text>
+        </view>
+        <view class="l-num f fc fj">
+            <image src="http://j.vzan.cc/miniapp/img/enterprise/new_a3.png"></image>
+            <text class="ml20">手机号码</text>
+            <input bindinput="inputPhonenumber" class="ml20 f1" maxlength="11" placeholder="请输入您的手机号码" placeholderClass="c999 f28" type="number"></input>
+        </view>
+        <form bindsubmit="formaline" class="w-100" reportSubmit="true">
+            <view class="w-100 f fc-h">
+                <button class="l-btn skin_bg f36" formType="submit">立即取号</button>
+            </view>
+        </form>
+    </view>
+    <view class="l-now" wx:else>
+        <view class="l-item skin_bg f fc fj">
+            <view class="f fc">
+                <icon color="#FFFEFE" size="25" type="success"></icon>
+                <text class="f30 cfff ml20">取号成功</text>
+            </view>
+            <text class="t-b f90 cfff">{{dataObj.sortQueue.sortNo}}</text>
+        </view>
+        <view class="l-num f fc fj">
+            <view class="f fc">
+                <view class="dzicon icon-zhuanyebaniconkuozhan_trends f38" style="color:#5cb2fd"></view>
+                <text class="ml20">取号时间</text>
+            </view>
+            <text class="t28">{{dataObj.sortQueue.createDateStr}}</text>
+        </view>
+        <view class="l-num f fc fj">
+            <view class="f fc">
+                <text class="dzicon icon-zhuanyebaniconkuozhan_shouhuodizhi f38" style="color:#ff9645"></text>
+                <text class="ml20">商家地址</text>
+            </view>
+            <view bindtap="openlocation" class="line line2">{{dataObj.address}}</view>
+        </view>
+        <view class="l-btn f">
+            <form bindsubmit="cancelqueue" reportSubmit="true">
+                <button class="bgc535f o8" formType="submit">取消排队</button>
+            </form>
+            <form bindsubmit="refreshqueue" reportSubmit="true">
+                <button class="bgc535f" formType="submit">刷新排队</button>
+            </form>
+        </view>
+    </view>
+</view>

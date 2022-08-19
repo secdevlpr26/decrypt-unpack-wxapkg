@@ -1,0 +1,101 @@
+<view class="group-wrap">
+    <view class="top" hidden="{{activityStatus=='2'}}">
+        <view bindtap="toProDetail" class="top-underway" data-pid="{{productId}}" wx:if="{{activityStatus=='1'}}">
+            <image lazyLoad="{{true}}" src="{{groupDetail.productImageVOList[0].imageURL}}"></image>
+            <view class="pro-info">
+                <view class="underway-tips">仅剩 <text class="lackcount">{{groupDetail.lackCount}}</text> 个名额</view>
+                <view class="pro-price">￥{{groupDetail.productModelList[0].activityPrice}}</view>
+                <view class="btn-limitbuy">限时抢购</view>
+            </view>
+            <view class="countdown-box">
+                <view></view>
+                <view>{{remainTime}}</view>
+            </view>
+        </view>
+        <view class="top-fail" wx:elif="{{activityStatus=='3'}}">
+            <image lazyLoad="{{true}}" src="{{groupDetail.productImageVOList[0].imageURL}}"></image>
+            <view class="pro-info">
+                <view class="top-proname">{{groupDetail.productName}}</view>
+                <view class="total-count">{{groupDetail.orderCount}}人团</view>
+                <view class="pro-price">￥{{groupDetail.productModelList[0].activityPrice}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="member-frame">
+        <block wx:if="{{activityStatus=='2'}}">
+            <view class="success">
+                <text class="iconfont icon-checkbox1"></text>
+                <text>拼团成功</text>
+            </view>
+            <view class="success-tips">商家正在努力发货，请耐心等待</view>
+            <button class="btn-share" openType="share">分享给好友</button>
+        </block>
+        <view class="member-icons clearfix">
+            <block wx:for="{{groupDetail.orderCount>=10?10:groupDetail.orderCount}}">
+                <view class="icon-item icon-image" style="{{groupDetail.orderCount>5?'width: 64rpx;height: 64rpx; margin-right:6rpx;':''}}" wx:if="{{index<memberList.length}}">
+                    <image lazyLoad="{{true}}" src="{{memberList[index].headPortrait}}"></image>
+                    <view class="group-leader" wx:if="{{index==0}}">团长</view>
+                </view>
+                <view class="icon-item icon-none" style="{{groupDetail.orderCount>5?'width: 64rpx;height: 64rpx; margin-right:6rpx;':''}}" wx:else>?</view>
+            </block>
+        </view>
+        <view class="fail-tips" wx:if="{{activityStatus=='3'}}">
+            <text class="mark">!</text>
+            <text>拼团失败，款项将原路返还</text>
+        </view>
+        <block wx:if="{{activityStatus!='2'}}">
+            <button class="btn-share" openType="share" wx:if="{{isJoin}}">
+                {{activityStatus=='1'?'邀请好友参团 '+remainTime+' 后结束':'分享给好友'}}
+            </button>
+            <button bindtap="joinGroup" class="btn-share" wx:if="{{!isJoin}}">参与活动</button>
+            <view class="group-tips">
+                <view>拼团须知</view>
+                <view class="group-tips-txt">
+                    <view class="point"></view>
+                    <view>好友参团</view>
+                    <view class="point"></view>
+                    <view>人满发货</view>
+                    <view class="point"></view>
+                    <view>人不满退款</view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="group-info" wx:if="{{activityStatus!='3'}}">
+        <view bindtap="toProDetail" class="info-item" data-pid="{{productId}}">
+            <view>商品名称</view>
+            <view>
+                <text>{{groupDetail.productName}}</text>
+                <text class="iconfont icon-arrow-right"></text>
+            </view>
+        </view>
+        <block wx:if="{{isJoin}}">
+            <view class="info-item">
+                <view>收货人</view>
+                <view>{{receiver}}</view>
+            </view>
+            <view class="info-item">
+                <view>收货地址</view>
+                <view class="info-address">{{personAddress}}</view>
+            </view>
+            <view class="info-item">
+                <view>成团时间</view>
+                <view>{{groupDetail.groupTime}}</view>
+            </view>
+        </block>
+    </view>
+    <view class="maybe-like" hidden="{{!likeProductList.length}}">
+        <view class="pro-txt">你可能会喜欢</view>
+        <view class="pro-list">
+            <view bindtap="toProDetail" class="pro-item" data-pid="{{item.id}}" wx:for="{{likeProductList}}">
+                <image lazyLoad="{{true}}" src="{{item.productImageVOList[0].imageURL}}"></image>
+                <view class="pro-name">{{item.productName}}</view>
+                <view class="price-box">
+                    <text class="pro-price">￥{{item.price}}</text>
+                    <text class="pro-orignalprice">￥{{item.originalPrice}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <include src="../../product/common/pro-attr.wxml"></include>
+</view>

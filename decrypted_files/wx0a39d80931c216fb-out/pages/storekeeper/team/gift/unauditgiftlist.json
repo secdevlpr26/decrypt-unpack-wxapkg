@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "待审核礼包列表",
+    "usingComponents": {
+        "uni-icon": "/components/uni-icon",
+        "no-data": "/components/nodata",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

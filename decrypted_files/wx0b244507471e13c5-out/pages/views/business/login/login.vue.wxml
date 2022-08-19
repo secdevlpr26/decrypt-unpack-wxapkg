@@ -1,0 +1,7 @@
+<template name="663aacda">
+    <view class="_view M663aacda">
+        <button bindtap="handleProxy" class="_button M663aacda" data-comkey="{{$k}}" data-eventid="{{'663aacda-0'}}">微信登录</button>
+        <button bindtap="handleProxy" class="_button M663aacda" data-comkey="{{$k}}" data-eventid="{{'663aacda-1'}}">微信登录检测</button>
+        <button bindgetuserinfo="handleProxy" class="_button M663aacda" data-comkey="{{$k}}" data-eventid="{{'663aacda-2'}}" openType="getUserInfo" withCredentials="true">微信授权获取用户信息</button>
+    </view>
+</template>

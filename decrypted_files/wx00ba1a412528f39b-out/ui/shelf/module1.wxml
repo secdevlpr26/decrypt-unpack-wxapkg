@@ -1,0 +1,20 @@
+<template name="module1">
+    <view class="shop_module_floor">
+        <navigator class="shop_module_hd" url="/pages/list/list?gid={{group_info.group_id}}&sort_type=asc&sort_key=price">
+            <text class="shop_module_floor_title">{{group_info.group_name}}</text>
+            <icon class="icon_arrow" type=""></icon>
+        </navigator>
+        <view class="shop_module_bd">
+            <view class="good_list">
+                <view class="good_item" wx:for="{{group_info.product_list}}" wx:for-item="product" wx:key="product_id">
+                    <navigator url="/pages/product/detail/detail?pid={{product.product_id}}">
+                        <image src="{{product.base_attr.img_info[0]}}"></image>
+                        <view class="title">{{product.base_attr.name}}</view>
+                        <text class="price">{{product.base_attr.fee_type=='CNY'?'¥':product.base_attr.fee_type}}{{product.base_attr.low_priceStr}}</text>
+                        <text class="sub_price" wx:if="{{product.base_attr.low_price!=product.base_attr.ori_price}}">{{product.base_attr.fee_type=='CNY'?'¥':product.base_attr.fee_type}}{{product.base_attr.ori_priceStr}}</text>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

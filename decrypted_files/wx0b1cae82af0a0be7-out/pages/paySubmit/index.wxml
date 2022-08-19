@@ -1,0 +1,33 @@
+<view class="container">
+    <view class="pay-tip">
+        <view>订单提交成功，只差最后一步啦</view>
+        <view>请尽快完成支付，超时该订单将会自动被取消！</view>
+        <image src="/images/payBackTwo.png"></image>
+    </view>
+    <view class="order-info">
+        <view class="cell">
+            <view>订单号</view>
+            <view>{{orderSn}}</view>
+        </view>
+        <view class="cell">
+            <view>实付金额</view>
+            <view class="price">¥{{totalPrice}}</view>
+        </view>
+    </view>
+    <view class="payway-content">
+        <view class="payway-tit">请选择支付方式</view>
+        <radio-group bindchange="paywayChange">
+            <label class="weui-cell weui-check__label" wx:for="{{options}}" wx:key="value">
+                <radio checked="{{item.checked}}" class="weui-check" value="{{item.value}}"></radio>
+                <view class="weui-cell__bd">{{item.label}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-radio">
+                    <image class="select-icon" hidden="{{!item.checked}}" src="/images/woker11.png"></image>
+                    <image class="select-icon" hidden="{{item.checked}}" src="/images/woker12.png"></image>
+                </view>
+            </label>
+        </radio-group>
+    </view>
+    <view bindtap="pay" class="btn-block appoint">
+    确认支付
+  </view>
+</view>

@@ -1,0 +1,8 @@
+<view>
+    <view bindlongtap="toZan" style="margin-left:179rpx;margin-right:179rpx;justify-content: center;align-items: center;">
+        <image src="{{url}}" style="width:400rpx;height:400rpx;border-radius:50%;margin-top:146rpx; "></image>
+    </view>
+    <view class="center verti  page__bd" style="margin-top:140rpx; ">
+        <text style="font-size:14px;color:#999999;"> 长按图片，识别图中二维码赞赏律师</text>
+    </view>
+</view>

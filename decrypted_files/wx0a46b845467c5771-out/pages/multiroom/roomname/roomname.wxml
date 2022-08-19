@@ -1,0 +1,8 @@
+<view class="container-box">
+    <view class="input-box">
+        <input bindinput="bindRoomName" maxlength="20" placeholder="输入房间名称" placeholderStyle="color:#ffffff;opacity: 0.55;" value="{{roomName}}"></input>
+    </view>
+</view>
+<view class="bottom-btn">
+    <button bindtap="create" hoverClass="none" type="primary">确定创建并进入房间</button>
+</view>

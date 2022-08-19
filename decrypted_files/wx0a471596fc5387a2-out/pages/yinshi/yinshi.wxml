@@ -1,0 +1,28 @@
+<import src="../template/template.wxml"></import>
+<view class="tr" style=" padding-top:160rpx;">
+    <block wx:for="{{list}}" wx:key="{{item.YSXMBM}}">
+        <template is="KHB_N" data="{{data:item}}" wx:if="{{item.LX=='N'}}"></template>
+        <template is="KHB_J" data="{{data:item}}" wx:if="{{item.LX=='J'}}"></template>
+        <template is="KHB_Y" data="{{data:item}}" wx:if="{{item.LX=='Y'}}"></template>
+    </block>
+    <image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%;"></image>
+    <include src="../footer/footer.wxml"></include>
+</view>
+<view style="position:fixed; top:0rpx;width: 750rpx;opacity:1.0;background:white;">
+    <view class="top">
+        <view class="section">
+            <picker bindchange="bindPickerChange" range="{{array}}" value="{{index}}">
+                <text class="left">年份：{{array[index]}} 
+  </text>
+            </picker>
+        </view>
+        <view bindtap="selectzrzxbm" class="search" data-index="{{index}}">
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+            <text>{{ZRZXBM}}{{ZRZXMC}}</text>
+        </view>
+    </view>
+    <view class="switch_box">
+        <navigator bindtap="switchTab" class="{{switchTabTwo==true?'active':''}}" data-order="2" hoverClass="none">收入及利润</navigator>
+        <navigator bindtap="switchTab" class="{{switchTabThree==true?'active':''}}" data-order="3" hoverClass="none">支出及费用</navigator>
+    </view>
+</view>

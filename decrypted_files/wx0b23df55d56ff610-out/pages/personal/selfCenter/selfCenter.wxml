@@ -1,0 +1,63 @@
+<import src="../../../component/xy_actionsheet/xy_actionsheet.wxml"></import>
+<template is="actionsheet" data="{{...$wux.actionSheet}}"></template>
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="userinfo">
+    <view class="userhead">
+        <image class="head-img" src="{{userInfo?userInfo.avatarUrl:placeHolder.holderUrl}}"></image>
+    </view>
+    <view class="username" wx:if="{{userInfo}}">
+
+
+    {{userInfo.nickName}}
+  </view>
+    <view class="username" wx:else>
+        <button bindgetuserinfo="getUserInfoFun" openType="getUserInfo">{{placeHolder.holderName}}</button>
+    </view>
+    <view class="usertips">{{placeHolder.holderDes}}</view>
+</view>
+<view class="caozuo">
+    <view bindtap="myOrder" class="caozuo-inner">
+        <view class="icon">
+            <image class="icon-img" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/17020406.png"></image>
+        </view>
+        <view class="lianxi">我的订单</view>
+    </view>
+    <view bindtap="myTicket" class="caozuo-inner">
+        <view class="icon">
+            <image class="icon-img" src="http://pic.hiweixiu.com/hiweixiu-app/weapp/img/ticket.png"></image>
+        </view>
+        <view class="lianxi">我的优惠券</view>
+    </view>
+    <view bindtap="callPhone" class="caozuo-inner">
+        <view class="icon">
+            <image class="icon-img" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/kfdh.png"></image>
+        </view>
+        <view class="lianxi">客服电话</view>
+    </view>
+    <view class="caozuo-inner">
+        <view class="icon">
+            <image class="icon-img" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/17020407.png"></image>
+        </view>
+        <view class="lianxi">在线客服</view>
+        <button class="lianxibutton" openType="contact"></button>
+    </view>
+    <view bindtap="webview" class="caozuo-inner">
+        <view class="icon">
+            <image class="icon-img" src="/images/iconsj.png"></image>
+        </view>
+        <view class="lianxi">商家登陆</view>
+    </view>
+    <view bindtap="bd" class="caozuo-inner">
+        <view class="icon">
+            <image class="icon-img" src="/images/bd.png"></image>
+        </view>
+        <view class="lianxi">保单管理</view>
+    </view>
+    <view bindtap="sk" class="caozuo-inner">
+        <view class="icon">
+            <image class="icon-img" src="/images/iconsk.png"></image>
+        </view>
+        <view class="lianxi">收款入口</view>
+    </view>
+</view>

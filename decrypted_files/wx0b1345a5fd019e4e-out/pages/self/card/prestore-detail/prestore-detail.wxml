@@ -1,0 +1,12 @@
+<view class="detail-warp">
+    <view class="detail-item" wx:for="{{detailList}}">
+        <view class="detail-left">
+            <text>{{item.detail}}</text>
+            <text>{{item.createDate}}</text>
+        </view>
+        <view class="detail-right {{item.kind==1?'green':''}}">{{item.money}}</view>
+    </view>
+</view>
+<view class="detail-null" hidden="{{!detailNull}}">
+    您还没有充值！
+</view>

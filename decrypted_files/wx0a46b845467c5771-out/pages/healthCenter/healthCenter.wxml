@@ -1,0 +1,22 @@
+<scroll-view>
+    <swiper autoplay="true" circular="true" class="topSwiper" indicatorDots="true" interval="20000">
+        <swiper-item wx:for="{{imgUrls}}" wx:key="index">
+            <image bindload="load" class="swiperImg" data-index="{{index}}" data-item="{{item}}" data-target="imgUrls" hidden="{{item.loadComplete==false}}" src="{{serverNewUrl+item.url}}"></image>
+            <image class="slide-image" hidden="{{item.loadComplete}}" mode="center" src="{{defaultImagePath1}}" style="width:100vw;"></image>
+        </swiper-item>
+    </swiper>
+    <movable-area inertia="true" style="height: 100rpx; width: 100%; background: #fff;">
+        <movable-view direction="all" style="width:{{healthList.length*205+'rpx;'}}" x="{{x}}">
+            <view bindtap="checkout" class="text" data-num="{{index}}" style="color:{{current==index?'#4E8789':'#606060'}};border-bottom:{{current==index?'4rpx solid #4E8789':''}};font-weight: {{current==index?'600':'normal'}}" wx:for="{{healthList}}" wx:key="index">
+                {{item}}
+            </view>
+        </movable-view>
+    </movable-area>
+    <swiper bindchange="change" class="bannerSwiper" current="{{current}}" duration="200" style="height:{{bannerUrls[current].imgheights+'rpx'}}">
+        <swiper-item wx:for="{{bannerUrls}}" wx:key="index">
+            <image class="slide-image" hidden="{{index!=2}}" mode="center" src="https://dm.static.elab-plus.com/tn/转2.gif" style="width:100vw;height:380rpx;position:absolute;"></image>
+            <image bindload="load1" class="bannerImg" data-index="{{index}}" data-item="{{item}}" data-target="imgUrls" hidden="{{item.loadComplete==false}}" src="{{serverNewUrl+item.url}}"></image>
+            <image class="slide-image" hidden="{{item.loadComplete}}" mode="center" src="{{defaultImagePath}}"></image>
+        </swiper-item>
+    </swiper>
+</scroll-view>

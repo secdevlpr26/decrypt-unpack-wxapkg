@@ -1,0 +1,43 @@
+<view class="container" style="border-top:1px solid #ccc">
+    <view class=".navbar">
+        <text bindtap="switchNavbar" class="item {{currentTab=='1'?'active':''}}" data-idx="1">已领取</text>
+        <text bindtap="switchNavbar" class="item {{currentTab=='2'?'active':''}}" data-idx="2">未领取</text>
+    </view>
+    <view class="coupon-list">
+        <scroll-view bindscrolltolower="onMyListScroll" class="coupon1" lowerThreshold="20" scrollY="true" style="height:{{scrollHeight}}rpx;display:{{currentTab=='1'?'block':'none'}}">
+            <view class="coupon-item" wx:for="{{mylist}}" wx:key="*this">
+                <view class="item-title {{item.Status==1?'used':''}}">
+                    <view class="code">券号：{{item.Code}}</view>
+                    <view class="title">
+                        <text>{{item.Title}}</text>
+                        <text wx:if="{{item.OrderMoney>0}}">，满{{item.OrderMoney}}元可用</text>
+                    </view>
+                </view>
+                <view class="coupon-time">
+                    <view class="time">有效期至：{{item.ExTime}}</view>
+                    <view class="status">
+                        <text wx:if="{{item.Status==1}}">已使用</text>
+                        <text wx:else>未使用</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <scroll-view bindscrolltolower="onListScroll" class="coupon2" lowerThreshold="20" scrollY="true" style="height:{{scrollHeight}}rpx;display:{{currentTab=='2'?'block':'none'}}">
+            <view wx:if="{{list.length==0}}">恭喜你，所有优惠券你都领了</view>
+            <view class="coupon-item" wx:for="{{list}}" wx:key="*this">
+                <view class="item-title {{item.CanGet==1?'notget':'goted'}}">
+                    <view class="title">{{item.Title}}</view>
+                    <view class="button">
+                        <view bindtap="getCoupon" class="getbtn" data-couponid="{{item.CouponID}}" wx:if="{{item.CanGet==1}}">领取</view>
+                        <view class="getbtn" wx:if="{{item.CanGet==0}}">已领取</view>
+                    </view>
+                </view>
+                <view class="coupon-time">
+                    <view class="time">{{item.TimeLimit}}</view>
+                    <view class="itemcount">还剩{{item.Available}}份</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<include src="/pages/template/getUserInfo.wxml"></include>

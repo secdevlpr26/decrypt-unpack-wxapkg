@@ -1,0 +1,12 @@
+<import src="/pages/noticedetail/tabbar.wxml"></import>
+<template is="tabbar" data="{{tabbar:tabbar}}"></template>
+<view class="page-index">
+    <view class="content">
+        <navigator hoverClass="none" openType="navigate" url="/pages/noticedetail/index?key={{item.id}}" wx:for="{{list}}" wx:key="{{code}}">
+            <view class="card" hoverClass="card-hover">
+                <view class="title">{{item.title}}</view>
+                <view class="time">{{item.createtime}}</view>
+            </view>
+        </navigator>
+    </view>
+</view>

@@ -1,0 +1,23 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/member/member",
+        "pages/classify/classify",
+        "pages/order/order",
+        "pages/pay/pay",
+        "pages/webpage/webpage",
+        "pages/index/index",
+        "pages/wechat/wechat"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wxe9923d40b892bd38",
+        "wx082f01e8226cd2ab",
+        "wx0a5a2a82c90be77b"
+    ]
+}

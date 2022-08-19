@@ -1,0 +1,33 @@
+<template name="3cdef46c">
+    <view class="_view M3cdef46c page">
+        <view class="_view M3cdef46c uni-list">
+            <view class="_view M3cdef46c uni-list-cell">
+                <view class="_view M3cdef46c uni-triplex-row">
+                    <view class="_view M3cdef46c uni-triplex-left">
+                        <text class="_text M3cdef46c uni-h4 uni-ellipsis txt">{{planInfo.base.cpmc}}</text>
+                        <text class="_text M3cdef46c uni-h5 txt">订单信息：{{planInfo.base.ddbh}}</text>
+                        <text class="_text M3cdef46c uni-h6 uni-ellipsis txt">下单日期：{{planInfo.base.xdrq}}</text>
+                        <text class="_text M3cdef46c uni-h6 uni-ellipsis txt">发货日期：{{planInfo.base.fhrq}}</text>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="handleProxy" class="_view M3cdef46c {{[ uni-list-cell,cls[index%2] ]}}" data-comkey="{{$k}}" data-eventid="{{'3cdef46c-0-'+index}}" hoverClass="uni-list-cell-hover" wx:for="{{planInfo.cjs}}" wx:key="index">
+                <view class="_view M3cdef46c uni-triplex-row">
+                    <view class="_view M3cdef46c uni-triplex-left">
+                        <text class="_text M3cdef46c cj-title uni-ellipsis txt title">{{item.cjmc}}</text>
+                        <text class="_text M3cdef46c uni-h5 txt">加工日期：{{item.jgrq}}</text>
+                        <text class="_text M3cdef46c uni-h5 uni-ellipsis txt">木工工匠：{{item.jgry}}</text>
+                        <view class="_view M3cdef46c uni-flex uni-row " style="margin-top: 5rpx;">
+                            <view class="_view M3cdef46c flex-item" wx:for="{{item.images}}" wx:for-index="idx" wx:for-item="it">
+                                <image class="_image M3cdef46c" src="{{it}}" style="width: 60rpx;height: 50rpx;margin: 5rpx;"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="_view M3cdef46c uni-triplex-right {{[item.images.length>0?'mgt1':'',item.images.length==0?'mgt2':'']}}">
+                        <text class="_text M3cdef46c uni-h5" style="color: #FFFFFF;font-size: 50rpx;font-weight: bold;">{{sortIndexs[index]}}{{item.cjmc}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

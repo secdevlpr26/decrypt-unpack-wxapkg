@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "wxc-price": "../../packages/@minui/wxc-price/dist/index",
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index",
+        "wxc-abnor": "../../packages/@minui/wxc-abnor/dist/index",
+        "wxc-mask": "../../packages/@minui/wxc-mask/dist/index"
+    },
+    "navigationBarTitleText": "",
+    "enablePullDownRefresh": true
+}

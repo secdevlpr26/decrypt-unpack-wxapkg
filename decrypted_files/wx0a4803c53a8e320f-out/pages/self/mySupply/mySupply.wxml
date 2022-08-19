@@ -1,0 +1,21 @@
+<view class="wrap">
+    <navigator url="../../supply/supply-detail/supply-detail?tabContentId={{item.id}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+        <view class="item">
+            <view class="icon">
+                <image lazyLoad="{{true}}" src="{{item.picture1==''?'../../../img/img-default.png':item.picture1}}"></image>
+            </view>
+            <view class="item-main">
+                <text class="item-title">{{item.title}}</text>
+                <text class="item-content">{{item.phone}}</text>
+            </view>
+        </view>
+    </navigator>
+    <view class="supply-null" hidden="{{noSupply}}">
+        <view class="iconfont icon-vz-null"></view>
+        <text>您还没有发布供求信息</text>
+    </view>
+    <view class="bottom-hint" hidden="{{bottomHint}}">
+        <view class="line"></view>
+        <text>没有更多数据啦</text>
+    </view>
+</view>

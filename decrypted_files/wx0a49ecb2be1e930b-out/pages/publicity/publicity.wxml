@@ -1,0 +1,11 @@
+<view class="wrap">
+    <view class="main">
+        <view class="item" wx:for="{{videoList}}" wx:key="{{item.id}}">
+            <navigator url="publicity-detail/publicity-detail?video={{item.video}}&briefDescription={{item.briefDescription}}">
+                <image lazyLoad="{{true}}" src="{{item.picture1}}"></image>
+                <view class="title">{{item.title}}</view>
+                <i class="iconfont icon-play"></i>
+            </navigator>
+        </view>
+    </view>
+</view>

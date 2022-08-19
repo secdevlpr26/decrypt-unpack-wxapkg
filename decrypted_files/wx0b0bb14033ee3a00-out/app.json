@@ -1,0 +1,61 @@
+{
+    "pages": [
+        "pages/company/index",
+        "pages/company/about",
+        "pages/company/productlist",
+        "pages/company/newslist",
+        "pages/company/productdetail",
+        "pages/company/newsdetail",
+        "pages/company/caselist",
+        "pages/company/casedetail",
+        "pages/company/custompage",
+        "pages/company/productlist_tabbar",
+        "pages/company/newslist_tabbar",
+        "pages/company/about_tabbar",
+        "pages/webview/webview"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#474747",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#fff",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "皮盒厂家"
+    },
+    "tabBar": {
+        "backgroundColor": "#ffffff",
+        "color": "#333333",
+        "selectedColor": "#946b55",
+        "list": [
+            {
+                "pagePath": "pages/company/index",
+                "text": "首页",
+                "iconPath": "images/tarbaricons/grey-home.png",
+                "selectedIconPath": "images/tarbaricons/brown-home.png"
+            },
+            {
+                "pagePath": "pages/company/productlist_tabbar",
+                "text": "产品中心",
+                "iconPath": "images/tarbaricons/grey-category.png",
+                "selectedIconPath": "images/tarbaricons/brown-category.png"
+            },
+            {
+                "pagePath": "pages/company/newslist_tabbar",
+                "text": "新闻资讯",
+                "iconPath": "images/tarbaricons/grey-message.png",
+                "selectedIconPath": "images/tarbaricons/brown-message.png"
+            },
+            {
+                "pagePath": "pages/company/about_tabbar",
+                "text": "关于我们",
+                "iconPath": "images/tarbaricons/grey-my.png",
+                "selectedIconPath": "images/tarbaricons/brown-my.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
+}

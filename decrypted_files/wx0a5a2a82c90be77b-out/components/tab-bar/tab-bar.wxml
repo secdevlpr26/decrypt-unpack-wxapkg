@@ -1,0 +1,9 @@
+<view class="mod-tab-bar {{isIpx?'tab-ipx':''}}">
+    <view class="tab-list">
+        <navigator class="bar-item {{index==tools.floor(barData.length/2)?'center-bar':''}} {{route==item.path?'bar-active':''}}" hoverClass="none" openType="navigateTo" url="{{item.path}}" wx:for="{{barData}}" wx:key="item.text">
+            <image class="bar-icon" src="{{route==item.path?item.iconSel:item.icon}}"></image>
+            <text class="bar-txt">{{item.text}}</text>
+        </navigator>
+    </view>
+</view>
+<wxs module="tools" src="tab-bar.wxs" />

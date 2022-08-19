@@ -1,0 +1,22 @@
+<view class="container">
+    <view class="page-body">
+        <view class="page-section page-section_center">
+            <text class="page-body-text">旋转手机即可获取方位信息</text>
+            <view class="direction">
+                <view class="bg-compass-line"></view>
+                <image class="bg-compass" src="compass.png" style="transform: rotate({{direction}}deg)"></image>
+                <view class="direction-value">
+                    <text>{{direction}}</text>
+                    <text class="direction-degree">o</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="testBlock">
+    <view class="blockTitle">罗盘功能正常吗？</view>
+    <view class="blockContent btns">
+        <view bindtap="setResult" class="warn" data-val="1">异常</view>
+        <view bindtap="setResult" class="normal" data-val="0">正常</view>
+    </view>
+</view>

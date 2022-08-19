@@ -1,0 +1,57 @@
+<view class="rankingList {{DefaultImg?'rankingListBgc':''}}">
+    <form reportSubmit bindsubmit="from_send">
+        <view class="statistics-top">
+            <text class="filter-tip">最近{{cardFilterDay}}天内</text>
+            <view class="day-btn">
+                <view catchtap="chooseValue" class="sevenDay {{cardFilterDay==7?'isActive':''}}" data-value="7">
+                    <form reportSubmit bindsubmit="from_send">
+                        <button class="normal-btn" formType="submit">
+              最近7天
+            </button>
+                    </form>
+                </view>
+                <view catchtap="chooseValue" class="fifDay {{cardFilterDay==15?'isActive':''}}" data-value="15">
+                    <form reportSubmit bindsubmit="from_send">
+                        <button class="normal-btn" formType="submit">
+              最近15天
+            </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+        <view class="rankingListItem flexBox flexAlign" wx:for="{{rankingList}}" wx:key="{{index}}">
+            <button catchtap="{{isBoss?'toUserAi':''}}" class="saveFormID flexBox flexAlign" data-cardid="{{item.businessCardID}}" formType="submit">
+                <view class="flexBox flexAlign">
+                    <view class="rankingNum">
+                        <image class="rankingImg" src="{{baseUrl}}/images/wxapp/paixingbang{{index+1}}.png" wx:if="{{index<=2}}"></image>
+                        <text class="rankingNumber" wx:else>{{index+1}}</text>
+                    </view>
+                    <image binderror="errArticleImg" class="rankingListImg {{optionsobj.itemType==1?'bossImg':''}}" data-err-img="/images/wxapp/article-default.png" data-err-index="{{index}}" src="{{baseUrl}}{{optionsobj.itemType==1?item.headImgUrl:item.img}}"></image>
+                    <view class="rankingListText">
+                        <view class="goodsName">{{optionsobj.itemType==1?item.userName:item.name}}</view>
+                        <view class="seeCount">{{optionsobj.itemType==24?'售出':'被查看了'}}
+              <text class="seeCountNum">{{optionsobj.itemType==1?item.quantity:item.number}}</text>{{optionsobj.itemType==24?'件':'次'}}
+            </view>
+                    </view>
+                </view>
+                <view class="look-more flexBox flexAlign" wx:if="{{isBoss}}">
+                    <text class="more-title">查看详细</text>
+                    <text class="iconfont icon-xiangyou"></text>
+                </view>
+            </button>
+        </view>
+        <view class="noMore" wx:if="{{showNoMore}}">
+            <view class="line"></view>
+            <text class="text">没有更多</text>
+            <view class="line"></view>
+        </view>
+        <view style="height: 40rpx;"></view>
+        <view class="isLoading" wx:if="{{showMoreView}}">
+            <image src="{{baseUrl}}/images/wxapp/loadMoreData.gif"></image>
+        </view>
+    </form>
+</view>
+<view class="rankingNoData" wx:if="{{DefaultImg}}">
+    <image mode="widthFix" src="{{baseUrl}}/images/wxapp/{{optionsobj.itemType==1?'mingpianliulan_':optionsobj.itemType==12?'wenzhang':optionsobj.itemType==18?'shangpin':optionsobj.itemType==19?'fuwuliulan':'shangpinxiaoshou'}}.png"></image>
+    <text>{{optionsobj.itemType==24?'暂无销售记录':'暂无浏览记录'}}</text>
+</view>

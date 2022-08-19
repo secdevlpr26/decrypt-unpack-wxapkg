@@ -1,0 +1,33 @@
+<import src="../template/template.wxml"></import>
+<view class="order_hao">
+    <view class="section">
+        <picker bindchange="bindPickerChange" range="{{array}}" value="{{index}}">
+            <text class="left">年份：{{array[index]}} 
+  </text>
+        </picker>
+    </view>
+    <view>
+    类型（默认：支出）：<switch checked bindchange="switch1Change"></switch>
+    </view>
+</view>
+<view class="container">
+    <view class="zhichi" wx:if="{{xs1=='1'}}">
+   各公司预算执行对比图--{{lx=='1'?'支出':'收入'}}
+  </view>
+    <canvas bindtouchend="touchEndHandler" bindtouchmove="moveHandler" bindtouchstart="touchHandler" canvasId="lineCanvas" class="canvas" disableScroll="true" style="height:600rpx;" wx:if="{{xs1=='1'}}"></canvas>
+    <image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+    <view class="zhichi" wx:if="{{xs1=='1'}}">
+    {{gsname}}--各部门{{lx=='1'?'支出':'收入'}}情况
+  </view>
+    <canvas bindtouchend="touchEndHandler1" bindtouchmove="moveHandler1" bindtouchstart="touchHandler1" canvasId="lineCanvas1" class="canvas" disableScroll="true" wx:if="{{xs1=='1'}}"></canvas>
+    <image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+    <view class="zhichi" wx:if="{{xs1=='1'}}">
+    {{deptname}}--各月{{lx=='1'?'支出':'收入'}}情况
+  </view>
+    <canvas bindtouchend="touchEndHandler2" bindtouchmove="moveHandler2" bindtouchstart="touchHandler2" canvasId="lineCanvas2" class="canvas" disableScroll="true" wx:if="{{xs1=='1'}}"></canvas>
+    <image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+    <view class="zhichi" wx:if="{{xs1=='1'}}">
+    {{deptname}}--{{yf+1}}月{{lx=='1'?'各项支出':'各项收入'}}
+  </view>
+    <canvas bindtouchend="touchEndHandler3" bindtouchmove="moveHandler3" bindtouchstart="touchHandler3" canvasId="lineCanvas3" class="canvas" disableScroll="true" wx:if="{{xs1=='1'}}"></canvas>
+</view>

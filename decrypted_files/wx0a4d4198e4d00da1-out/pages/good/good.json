@@ -1,0 +1,6 @@
+{
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index"
+    }
+}

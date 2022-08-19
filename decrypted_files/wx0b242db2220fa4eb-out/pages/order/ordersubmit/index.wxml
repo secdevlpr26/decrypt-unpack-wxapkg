@@ -1,0 +1,74 @@
+<view class="Empty">
+    <view bindtap="Empty" class="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+            </view>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <image src="Empty"></image>
+        </view>
+    </view>
+    <view class="Empty" wx:for="Empty" wx:key="index">
+        <view class="Empty" wx:if="Empty">
+            <image src="Empty"></image>
+            <text>Empty</text>
+        </view>
+        <view class="Empty" wx:if="Empty"></view>
+        <view class="Empty">
+            <view>
+                <image class="Empty" mode="Empty" src="Empty"></image>
+            </view>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+                <view class="Empty"></view>
+            </view>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+            </view>
+        </view>
+    </view>
+    <view class="Empty"></view>
+    <view class="Empty">
+        <radio bindtap="Empty" checked="Empty" class="Empty" color="Empty" value="Empty"></radio>
+        <picker bindchange="Empty" range="Empty" value="Empty">
+            <view class="Empty">Empty</view>
+        </picker>
+        <text class="Empty">Empty</text>
+        <radio bindtap="Empty" checked="Empty" class="Empty" color="Empty" value="Empty"></radio>
+        <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty" style="Empty"></input>
+    </view>
+    <view class="Empty">
+        <text class="Empty">Empty</text>
+        <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty"></input>
+        <text bindtap="Empty" class="Empty">Empty</text>
+        <text class="Empty">Empty</text>
+    </view>
+    <view class="Empty">
+        <text class="Empty">Empty</text>
+        <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty"></input>
+        <text bindtap="Empty" class="Empty">Empty</text>
+        <text class="Empty">Empty</text>
+    </view>
+    <view class="Empty"></view>
+    <view class="Empty">
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <text class="Empty">Empty</text>
+        </view>
+        <view hidden class="Empty">
+            <text class="Empty">Empty</text>
+            <text class="Empty">Empty</text>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <text class="Empty">Empty</text>
+        </view>
+    </view>
+    <text bindtap="Empty" class="Empty">Empty</text>
+</view>

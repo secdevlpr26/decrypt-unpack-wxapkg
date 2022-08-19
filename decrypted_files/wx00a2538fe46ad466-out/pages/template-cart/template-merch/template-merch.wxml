@@ -1,0 +1,29 @@
+<template name="shoplist">
+    <view class="Empty" wx:for="Empty" wx:key="index">
+        <view bindtap="Empty" class="Empty" data-pid="Empty" data-vid="Empty">
+            <view class="Empty">
+                <image mode="Empty" src="Empty"></image>
+            </view>
+            <view class="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <view>Empty</view>
+                    <view>Empty</view>
+                    <view>Empty</view>
+                </view>
+            </view>
+            <view class="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <view>Empty</view>
+                </view>
+            </view>
+        </view>
+        <view class="Empty" wx:if="Empty">
+            <button bindtap="Empty" data-id="Empty">Empty</button>
+            <button bindtap="Empty" data-id="Empty" wx:if="Empty">Empty</button>
+            <button bindtap="Empty" data-id="Empty" wx:if="Empty">Empty</button>
+            <button bindtap="Empty" data-id="Empty" wx:if="Empty">Empty</button>
+        </view>
+    </view>
+</template>

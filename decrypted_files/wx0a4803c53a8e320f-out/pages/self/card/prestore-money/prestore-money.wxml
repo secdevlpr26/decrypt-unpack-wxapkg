@@ -1,0 +1,13 @@
+<view class="wrap">
+    <view class="money">
+        <view class="prestore-money">
+            <view>预存余额</view>
+            <view>{{preMoney}}</view>
+        </view>
+        <view bindtap="toRecharge" class="btn-recharge">我要充值</view>
+    </view>
+    <view bindtap="toDetail" class="prestore-detail">
+        <text>明细</text>
+        <text class="iconfont icon-arrow-right"></text>
+    </view>
+</view>

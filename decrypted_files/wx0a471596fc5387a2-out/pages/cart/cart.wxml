@@ -1,0 +1,45 @@
+<view class="box">
+    <view class="list" wx:for="{{cartList}}" wx:key="{{item.ID}}">
+        <checkbox bindtap="choice" checked="{{item.CHECKED}}" color="#5397fb" data-id="{{item.ID}}" data-ischecked="{{item.IS_CHECKED}}" value="{{item.IS_CHECKED}}" wx:if="{{item.IS_CHECKED==2}}"></checkbox>
+        <checkbox bindtap="choice" color="#5397fb" data-id="{{item.ID}}" data-ischecked="{{item.IS_CHECKED}}" value="{{item.IS_CHECKED}}" wx:else></checkbox>
+        <image class="spimg" mode="aspectFill" src="{{hostUrl}}{{item.LITPIC}}"></image>
+        <view class="info">
+            <view class="info_l">
+                <view class="spname">{{item.TITLE}}</view>
+                <view class="guige">规格:/{{item.PROPERTY_VALUE}}</view>
+                <view class="edit">
+                    <button bindtap="jian" class="jian" data-id="{{item.ID}}">-</button>
+                    <input class="num" value="{{item.QUANTITY}}"></input>
+                    <button bindtap="jia" class="jia" data-id="{{item.ID}}">+</button>
+                </view>
+            </view>
+            <view class="price">
+                <view class="xian">
+                    <text class="fuhao">￥</text>{{item.PRICE}}<text></text>
+                </view>
+                <view class="yuan">￥{{item.MARKETPRICE}}</view>
+            </view>
+        </view>
+        <view bindtap="delCart" class="del" data-id="{{item.ID}}" style="display:block;" wx:if="{{item.IS_CHECKED==2}}">删除</view>
+        <view bindtap="delCart" class="del" data-id="{{item.ID}}" wx:else>删除</view>
+    </view>
+</view>
+<view class="fix_bot">
+    <view class="quan">
+        <label>
+            <checkbox bindtap="selection" checked="true" color="#5397fb" data-id="{{selection}}" value="{{selection}}" wx:if="{{selection==2}}"></checkbox>
+            <checkbox bindtap="selection" color="#5397fb" data-id="{{selection}}" value="{{selection}}" wx:else></checkbox>
+            <text>全选</text>
+        </label>
+    </view>
+    <view class="jia">
+        <view class="jiage_box">
+            <text class="small">￥</text>
+            <text class="yuan">{{dTotal}}</text>
+            <text class="jiao"></text>
+        </view>
+        <text class="jiesheng">为您节省￥{{marketPriceTotal}}</text>
+    </view>
+    <navigator bindtap="buyNow">去结算（{{quantity}}）</navigator>
+</view>
+<include src="../footer/footer.wxml"></include>

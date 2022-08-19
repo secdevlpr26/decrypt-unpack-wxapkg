@@ -1,0 +1,19 @@
+<view class="page-fxconsumelist">
+    <view class="header">
+        <view class="title">商城余额变动</view>
+        <view class="row fixHeader">
+            <text class="col">摘要</text>
+            <text class="col">变动</text>
+            <text class="col">余额</text>
+            <text class="col">日期</text>
+        </view>
+    </view>
+    <scroll-view bindscrolltolower="loadMore" class="scroll-body list-container" scrollY="true" style="height:{{listHeight}}px">
+        <view class="row" wx:for="{{consumeList}}">
+            <text class="col">{{item.log_name}}</text>
+            <text class="col">{{item.change_balance}}</text>
+            <text class="col">{{item.after_change_balance}}</text>
+            <text class="col date">{{item.log_time}}</text>
+        </view>
+    </scroll-view>
+</view>

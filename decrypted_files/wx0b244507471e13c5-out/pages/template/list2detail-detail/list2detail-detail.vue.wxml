@@ -1,0 +1,16 @@
+<template name="616b59df">
+    <view class="_view M616b59df page">
+        <view class="_view M616b59df banner">
+            <image class="_image M616b59df banner-img" src="{{banner.cover}}"></image>
+            <view class="_view M616b59df banner-title">{{banner.title}}</view>
+        </view>
+        <view class="_view M616b59df article-meta">
+            <text class="_text M616b59df article-author">{{banner.author_name}}</text>
+            <text class="_text M616b59df article-text">发表于</text>
+            <text class="_text M616b59df article-time">{{banner.published_at}}</text>
+        </view>
+        <view class="_view M616b59df article-content">
+            <rich-text class="_rich-text M616b59df" nodes="{{htmlString}}"></rich-text>
+        </view>
+    </view>
+</template>

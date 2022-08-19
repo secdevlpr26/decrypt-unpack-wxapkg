@@ -1,0 +1,6 @@
+<scroll-view scrollY style="Empty">
+    <image lazyLoad mode="Empty" src="Empty" style="Empty"></image>
+</scroll-view>
+<view class="Empty">
+    <button bindgetphonenumber="Empty" openType="Empty" style="Empty">Empty</button>
+</view>

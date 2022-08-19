@@ -1,0 +1,42 @@
+<view class="page-index">
+    <view class="store"></view>
+    <view class="content">
+        <view class="quan">
+            <view class="logo">
+                <image mode="scaleToFill" src="{{userinfo?userinfo.avatarUrl:''}}"></image>
+            </view>
+            <view class="right">
+                <view class="title">{{operator?operator.name:''}}</view>
+                <view class="desc">{{operator?operator.company:''}}</view>
+            </view>
+        </view>
+        <view bindtap="calling" class="message">
+            <view class="img">
+                <image src="/images/mobile.png"></image>
+            </view>
+            <view class="text">联系号码<text style="display:none;">17369609966</text>
+            </view>
+        </view>
+        <navigator hoverClass="none" hoverStayTime="600" openType="navigate" url="/pages/comment/index">
+            <view class="message" hoverClass="message-hover">
+                <view class="img">
+                    <image src="/images/pen.png"></image>
+                </view>
+                <view class="text">留言反馈</view>
+                <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+            </view>
+        </navigator>
+        <navigator hoverClass="none" hoverStayTime="600" openType="navigate" url="/pages/notice/index">
+            <view class="message" hoverClass="message-hover">
+                <view class="img">
+                    <image src="/images/message.png"></image>
+                </view>
+                <view class="text">系统通知</view>
+                <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+            </view>
+        </navigator>
+    </view>
+    <view class="shuru" style="color:#9095A5;display:none;">
+        <text>copyright@2018-2019 绍兴悦轩商贸</text>
+    </view>
+</view>

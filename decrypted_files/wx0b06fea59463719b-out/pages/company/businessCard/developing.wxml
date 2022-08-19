@@ -1,0 +1,6 @@
+<view class="container">
+    <view class="blank">
+        <image src="{{baseUrl}}/images/wxappmanage/blank_01.png"></image>
+        <view class="blank-title">工程师们正在努力开发中~</view>
+    </view>
+</view>

@@ -1,0 +1,10 @@
+<view class="uni-countdown">
+    <view class="uni-countdown-numbers" style="{{'border-color:'+borderColor+';'+'color:'+fontColor+';'+'background:'+bgrColor+';'}}">{{d}}</view>
+    <view class="uni-countdown-splitor" style="{{'color:'+splitorColor+';'}}">天</view>
+    <view class="uni-countdown-numbers" style="{{'border-color:'+borderColor+';'+'color:'+fontColor+';'+'background:'+bgrColor+';'}}">{{h}}</view>
+    <view class="uni-countdown-splitor" style="{{'color:'+splitorColor+';'}}">时</view>
+    <view class="uni-countdown-numbers" style="{{'border-color:'+borderColor+';'+'color:'+fontColor+';'+'background:'+bgrColor+';'}}">{{i}}</view>
+    <view class="uni-countdown-splitor" style="{{'color:'+splitorColor+';'}}">分</view>
+    <view class="uni-countdown-numbers" style="{{'border-color:'+borderColor+';'+'color:'+fontColor+';'+'background:'+bgrColor+';'}}">{{s}}</view>
+    <view class="uni-countdown-splitor" style="{{'color:'+splitorColor+';'}}">秒</view>
+</view>

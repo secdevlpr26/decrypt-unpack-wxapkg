@@ -1,0 +1,90 @@
+<view class="refund-pro">
+    <view class="refund-pro-txt">退款商品</view>
+    <view class="pro-info">
+        <view class="pro-item" wx:for="{{productList}}">
+            <image lazyLoad="{{true}}" src="{{item.imageURL}}"></image>
+            <view class="refund-pro-info">
+                <view class="pro-title">{{item.productName}}</view>
+                <view class="pro-model">{{item.productModelName}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="refund-info">
+    <view bindtap="hideGoodsStatus" class="pro-statu">
+        <view>货物状态</view>
+        <view>
+            <text>{{goodsStatus==''?'请选择':goodsStatus}}</text>
+            <text class="iconfont icon-arrow-right"></text>
+        </view>
+    </view>
+    <view bindtap="hideReasonFrame" class="refund-reason">
+        <view>退款原因</view>
+        <view>
+            <text>{{refundReason==''?'请选择':refundReason}}</text>
+            <text class="iconfont icon-arrow-right"></text>
+        </view>
+    </view>
+</view>
+<view class="refund-money">
+    <view class="refund-money-frame">
+        <view>退款金额：￥</view>
+        <input bindinput="moneyInput" type="number" value="{{money}}"></input>
+    </view>
+    <view class="refund-money-tips">最多￥{{money}}，含发货邮费{{transportCost}}</view>
+</view>
+<view class="remarks">
+    <view>退款说明：</view>
+    <input bindinput="remarksInput" maxlength="50" placeholder="选填（最多50字）"></input>
+</view>
+<view class="refund-pic">
+    <view class="refund-pic-title">上传凭证</view>
+    <view class="pic-frame">
+        <view bindtap="chooseImage" class="upload-pic">
+            <view class="iconfont icon-camera"></view>
+            <view>
+                <text>上传凭证</text>
+                <text>(最多3张)</text>
+            </view>
+        </view>
+        <view class="pic-wrap" wx:for="{{imageUrls}}">
+            <image class="pic-item" lazyLoad="{{true}}" mode="aspectFill" src="{{imageUrls[index]}}"></image>
+            <text bindtap="delPic" class="pic-del iconfont icon-close" data-idx="{{index}}"></text>
+        </view>
+    </view>
+</view>
+<view bindtap="submit" class="btn-submit">提交</view>
+<view class="status-frame" hidden="{{isHideGoodsStatus}}">
+    <view bindtap="hideGoodsStatus" class="status-bg"></view>
+    <view class="status-main">
+        <view class="status-title">货物状态</view>
+        <view class="status-content">
+            <radio-group bindchange="statusChange" class="radio-group">
+                <view class="radio-item">
+                    <text>未收到货</text>
+                    <radio checked="{{item.checked}}" color="red" value="0"></radio>
+                </view>
+                <view class="radio-item">
+                    <text>已收到货</text>
+                    <radio checked="{{item.checked}}" color="red" value="1"></radio>
+                </view>
+            </radio-group>
+        </view>
+        <view bindtap="hideGoodsStatus" class="btn-close">关闭</view>
+    </view>
+</view>
+<view class="reason-frame" hidden="{{isHideReason}}">
+    <view bindtap="hideReasonFrame" class="reason-bg"></view>
+    <view class="reason-main">
+        <view class="reason-title">退款原因</view>
+        <view class="reason-content">
+            <radio-group bindchange="reasonChange" class="radio-group">
+                <view class="radio-item" wx:for="{{reasons}}">
+                    <text>{{item.value}}</text>
+                    <radio checked="{{item.checked}}" color="red" value="{{item.value}}"></radio>
+                </view>
+            </radio-group>
+        </view>
+        <view bindtap="hideReasonFrame" class="btn-close">关闭</view>
+    </view>
+</view>

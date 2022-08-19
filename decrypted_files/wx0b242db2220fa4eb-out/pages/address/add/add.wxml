@@ -1,0 +1,78 @@
+<view class="Empty">
+    <view class="Empty">
+        <text>Empty</text>
+        <input bindchange="Empty" placeholder="Empty" placeholderClass="Empty"></input>
+    </view>
+    <view class="Empty"></view>
+    <view class="Empty">
+        <text>Empty</text>
+        <text bindtap="Empty" style="Empty">Empty</text>
+    </view>
+    <view class="Empty"></view>
+    <view class="Empty">
+        <text>Empty</text>
+        <input bindchange="Empty" placeholder="Empty" placeholderClass="Empty"></input>
+    </view>
+    <view class="Empty"></view>
+    <view class="Empty">
+        <text>Empty</text>
+        <input bindchange="Empty" placeholder="Empty" placeholderClass="Empty"></input>
+    </view>
+    <view class="Empty"></view>
+    <view class="Empty">
+        <text>Empty</text>
+        <input bindchange="Empty" placeholder="Empty" placeholderClass="Empty"></input>
+    </view>
+    <view class="Empty"></view>
+    <text bindtap="Empty" class="Empty">Empty</text>
+</view>
+<view class="Empty">
+    <view bindtap="Empty" class="Empty"></view>
+    <view animation="Empty" class="Empty">
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <text bindtap="Empty" class="Empty">Empty</text>
+        </view>
+        <view class="Empty">
+            <text bindtap="Empty" class="Empty" data-current="Empty">Empty</text>
+            <text bindtap="Empty" class="Empty" data-current="Empty">Empty</text>
+            <text bindtap="Empty" class="Empty" data-current="Empty">Empty</text>
+            <text bindtap="Empty" class="Empty" data-current="Empty">Empty</text>
+            <view class="Empty"></view>
+            <swiper bindchange="Empty" class="Empty" current="Empty">
+                <swiper-item wx:if="Empty">
+                    <scroll-view class="Empty" scrollY="Empty">
+                        <view bindtap="Empty" data-index="Empty" wx:for="Empty" wx:key="index">
+                            <text class="Empty" wx:if="Empty">Empty</text>
+                            <text wx:else>Empty</text>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item wx:if="Empty">
+                    <scroll-view class="Empty" scrollY="Empty">
+                        <view bindtap="Empty" data-index="Empty" wx:for="Empty" wx:key="index">
+                            <text class="Empty" wx:if="Empty">Empty</text>
+                            <text wx:else>Empty</text>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item wx:if="Empty">
+                    <scroll-view class="Empty" scrollY="Empty">
+                        <view bindtap="Empty" data-index="Empty" wx:for="Empty" wx:key="index">
+                            <text class="Empty" wx:if="Empty">Empty</text>
+                            <text wx:else>Empty</text>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item wx:if="Empty">
+                    <scroll-view class="Empty" scrollY="Empty">
+                        <view bindtap="Empty" data-index="Empty" wx:for="Empty" wx:key="index">
+                            <text class="Empty" wx:if="Empty">Empty</text>
+                            <text wx:else>Empty</text>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,133 @@
+<view class="hasUserInfo" wx:if="{{!hasUserInfo&&canIUse}}">
+    <image class="bg-login" src="../../../image/liveclass/bg_home.png"></image>
+    <image class="logo_pic" src="../../../image/liveclass/logo_pic.png"></image>
+    <image class="title_pic" src="../../../image/liveclass/title_pic.png"></image>
+    <text class="title_text">为了给您提供完善的课程体验，
+        需要获取你的公开信息（昵称、头像）</text>
+    <button bindgetuserinfo="getUserInfo" class="getInfo" openType="getUserInfo">立即上课</button>
+</view>
+<view class="video-content" wx:else>
+    <video autoplay="{{true}}" bindended="bindended" bindtimeupdate="bindtimeupdate" class="video-box" controls="{{isShowControls}}" customCache="{{false}}" enablePlayGesture="{{false}}" enableProgressGesture="{{isShowGesture}}" height="100%" id="live_class" initialTime="{{play_time_already}}" loop="{{false}}" objectFit="cover" poster="" showCenterPlayBtn="{{false}}" src="{{video_url}}" width="100%">
+        <view class="showView">
+            <view class="cover-avatar">
+                <view wx:for="{{avatarRList}}" wx:key="index">
+                    <view class="avatar-box" wx:if="{{index===0}}">
+                        <image class="user-avatar" mode="cover" src="{{item.url}}"></image>
+                        <image class="champion" src="../../../image/liveclass/champion_icon.png" wx:if="{{!isShowChampion}}"></image>
+                        <image class="first" src="../../../image/liveclass/1_icon.png" wx:if="{{!isShowChampion}}"></image>
+                    </view>
+                    <view class="avatar-box1" wx:if="{{index===1}}">
+                        <image class="user-avatar1" mode="cover" src="{{item.url}}"></image>
+                        <image class="first" src="../../../image/liveclass/2_icon.png" wx:if="{{!isShowChampion}}"></image>
+                    </view>
+                    <view class="avatar-box2" wx:if="{{index===2}}">
+                        <image class="user-avatar2" mode="cover" src="{{item.url}}"></image>
+                        <image class="first" src="../../../image/liveclass/3_icon.png" wx:if="{{!isShowChampion}}"></image>
+                    </view>
+                </view>
+                <view class="video-star-box">
+                    <image class="video-star" src="../../../image/liveclass/star_off_icon.png " wx:if="{{star===0}}"></image>
+                    <image class="video-star" if="{{star!=0}}" src="../../../image/liveclass/star_light_icon.png " wx:else></image>
+                    <view class="video-text" wx:if="{{star!=0}}">{{star}}</view>
+                </view>
+            </view>
+            <image bindtap="closeFullscreen" class="back-btn" src="../../../image/liveclass/close.png" wx:if="{{!fullscreen}}"></image>
+            <view style="height: 100%;width: 100%;position: fixed;top:0;background: rgba(0, 0, 0, 0.5);" wx:if="{{!rocketAnimation}}">
+                <view class="excellent">
+                    <image src="../../../image/liveclass/excellent.png"></image>
+                </view>
+            </view>
+            <view class="clock-box" wx:if="{{!isShowTopic}}">
+                <view bindtap="uploadRecord" class="clock">
+                    <view class="clock-yellow">
+                        <view style="height: 15vmin;;display: flex;align-items: center;justify-content: center;" wx:if="{{!showClock}}">
+                            <image class="clock-img" src="../../../image/liveclass/time_icon.png"></image>
+                        </view>
+                        <span class="video-text" wx:if="{{!showChoiceTime}}">{{finish_time}}</span>
+                        <span class="video-text" wx:if="{{!showRecordTime}}">{{countDownNum}}</span>
+                    </view>
+                </view>
+                <view class="bg-topic">
+                    <view class="topic-choice" wx:if="{{!showTopic}}">
+                        <view class="topic-img-left">
+                            <image class="topic-img" src="{{img_url}}"></image>
+                        </view>
+                        <view class="topic-content">
+                            <view class="topic-number">第{{number}}题</view>
+                            <view class="topic-title" wx:if="{{!showTitle}}">{{title}}</view>
+                            <view class="topic-answer-content" wx:if="{{!showText}}">
+                                <view bindtap="choiceAnswer" class="topic-answer topic-answer-img" data-answer="{{item1.is_crrect}}" data-curQuestion="{{curQuestion}}" data-index="{{index}}" data-item="{{item1}}" data-type="{{item1.type}}" style="background:{{item1.background}};color:{{item1.color}};border:{{item1.border}}" wx:for="{{textAttr}}" wx:for-item="item1" wx:key="index">
+                                    <image class="right-icon" src="../../../image/liveclass/right_icon.png" style="background:{{item1.background}}" wx:if="{{!rightIcon&&item1.answer_index==0}}"></image>
+                                    <image class="right-icon" src="../../../image/liveclass/erroy_icon.png" style="background:{{item1.background}}" wx:if="{{!errorIcon&&item1.answer_index==1}}"></image>
+                                    <view class="right-number">{{index+1}}.</view>
+                                    <view>{{item1.content}}</view>
+                                </view>
+                            </view>
+                            <view class="topic-answer-content answer-img-box" wx:if="{{!showImg}}">
+                                <view bindtap="choiceAnswer" class="answer-img-content answer-img-content-border" data-answer="{{item.is_crrect}}" data-curQuestion="{{curQuestion}}" data-index="{{index}}" data-item="{{item}}" data-type="{{item.type}}" style="background:{{item.background}};color:{{item.color}};border:{{item.border}}" wx:for="{{imgAttr}}" wx:key="index">
+                                    <image class="right-icon1" src="../../../image/liveclass/right_icon.png" wx:if="{{!rightIcon&&item.answer_index==0}}"></image>
+                                    <image class="right-icon1" src="../../../image/liveclass/erroy_icon.png" wx:if="{{!errorIcon&&item.answer_index==1}}"></image>
+                                    <view class="image-title">{{index+1}}.</view>
+                                    <image class="answer-img" src="{{item.content}}" style="display: {{item.display}};"></image>
+                                </view>
+                            </view>
+                            <view bindtap="record" class="record-img" wx:if="{{!showRecord}}">
+                                <view>
+                                    <image class="record-url" src="../../../image/liveclass/mic_btn.png"></image>
+                                </view>
+                                <image class="record-tip" src="../../../image/liveclass/tips_icon.png"></image>
+                            </view>
+                            <view class="evaluation" wx:if="{{!evaluation}}">
+                                <view class="evaluation-text">评测中...</view>
+                            </view>
+                            <view class="count-down-time" wx:if="{{!recording}}">
+                                <view class="bg-count-time">
+                                    <view class="countDownNum video-text">{{finish_time}}</view>
+                                </view>
+                            </view>
+                            <view class="topic-stars" wx:if="{{!topic_star}}">
+                                <image class="star-img" src="../../../image/liveclass/star_light_icon.png" wx:for="{{now_star_attr}}" wx:key="index"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="topic-choice-no-img" wx:if="{{!showTopicChoiceNoImg}}">
+                        <view class="topic-number">第{{number}}题</view>
+                        <view class="topic-title" wx:if="{{!showTitle1}}">{{title}}</view>
+                        <view class="topic-choice-no-img-answer" wx:if="{{!showText1}}">
+                            <view bindtap="choiceAnswer" class="topic-answer" data-answer="{{item1.is_crrect}}" data-curQuestion="{{curQuestion}}" data-index="{{index}}" data-item="{{item1}}" data-type="{{item1.type}}" style="background:{{item1.background}};color:{{item1.color}};border:{{item1.border}}" wx:for="{{textAttr}}" wx:for-item="item1" wx:key="index">
+                                <image class="right-icon" src="../../../image/liveclass/right_icon.png" style="background:{{item1.background}}" wx:if="{{!rightIcon&&item1.answer_index==0}}"></image>
+                                <image class="right-icon" src="../../../image/liveclass/erroy_icon.png" style="background:{{item1.background}}" wx:if="{{!errorIcon&&item1.answer_index==1}}"></image>
+                                <view class="right-number">{{index+1}}.</view>
+                                <view>{{item1.content}}</view>
+                            </view>
+                        </view>
+                        <view class="topic-choice-no-img-answer topic-choice-no-answer" wx:if="{{!showImg1}}">
+                            <view bindtap="choiceAnswer" class="horizontal-img answer-img-content answer-img-content-border" data-answer="{{item.is_crrect}}" data-curQuestion="{{curQuestion}}" data-index="{{index}}" data-item="{{item}}" data-type="{{item.type}}" style="background:{{item.background}};color:{{item.color}};border:{{item.border}}" wx:for="{{imgAttr}}" wx:key="index">
+                                <image class="right-icon3" src="../../../image/liveclass/right_icon.png" wx:if="{{!rightIcon&&item.answer_index==0}}"></image>
+                                <image class="right-icon3" src="../../../image/liveclass/erroy_icon.png" wx:if="{{!errorIcon&&item.answer_index==1}}"></image>
+                                <image class="answer-img" src="{{item.content}}" style="display: {{item.display}}"></image>
+                            </view>
+                        </view>
+                        <view bindtap="record" class="record-img record-center" wx:if="{{!showRecord1}}">
+                            <view class="record">
+                                <image src="../../../image/liveclass/mic_btn.png"></image>
+                            </view>
+                            <image class="record-tips" src="../../../image/liveclass/tips_icon.png"></image>
+                        </view>
+                        <view class="count-down-time record-center" wx:if="{{!recording}}">
+                            <view class="bg-count-time">
+                                <view class="countDownNum video-text">{{finish_time}}</view>
+                            </view>
+                        </view>
+                        <view class="evaluation record-center" wx:if="{{!evaluation}}">
+                            <view class="evaluation-text">评测中...</view>
+                        </view>
+                        <view class="topic-star" wx:if="{{!topic_star}}">
+                            <image class="star-img" src="../../../image/liveclass/star_light_icon.png" wx:for="{{now_star_attr}}" wx:key="index"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </video>
+</view>

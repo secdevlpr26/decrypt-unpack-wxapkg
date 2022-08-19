@@ -1,0 +1,42 @@
+<view class="ac-wrap">
+    <view class="total-money">
+        <text>可提现金额</text>
+        <text>￥{{mayMoney}}</text>
+    </view>
+    <view class="withdraw-money">
+        <text>提现金额：</text>
+        <input bindblur="bindblur" bindinput="bindMoneyInput" placeholder="请输入提现金额" type="digit" value="{{withdrawMoney}}"></input>
+    </view>
+    <view bindtap="showAccount" class="account">
+        <view>转入账号：</view>
+        <view class="account-right">
+            <view class="default-account" hidden="{{!defaultAccount}}">
+                <text>{{defaultAccount.bank.bankName}}</text>
+                <text>{{defaultAccount.omitAccount}}</text>
+            </view>
+            <view class="iconfont icon-arrow-right"></view>
+        </view>
+    </view>
+    <view class="tips">本日可转出1次，每次提出金额最低{{limit.moneyMinimum}}元，最高{{limit.moneyMaximum}}元</view>
+    <view bindtap="applyCash" class="btn-ac">我要提现</view>
+</view>
+<view class="bomb-frame" hidden="{{hideAccountList}}">
+    <view bindtap="cancel" class="bomb-bg"></view>
+    <view class="bomb-box">
+        <view class="bomb-txt">选择您的提现账号</view>
+        <view bindtap="selectAccount" class="account-item" data-idx="{{index}}" wx:for="{{accountList}}">
+            <view>{{item.bank.bankName}}</view>
+            <view class="account-item-right">
+                <view class="account-item-content">
+                    <text>{{item.applyCashName}}</text>
+                    <text>{{item.omitAccount}}</text>
+                </view>
+                <view catchtap="deleteAccount" class="iconfont icon-delete" data-id="{{item.id}}"></view>
+            </view>
+        </view>
+        <view class="bomb-main">
+            <view bindtap="addAccount">添加提现账号</view>
+            <view bindtap="cancel">取消</view>
+        </view>
+    </view>
+</view>

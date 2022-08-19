@@ -1,0 +1,5 @@
+<view class="wrap">
+    <textarea bindinput="getVal" maxlength="200" placeholder="说说您的建议，每日提建议一次奖励20成长豆，采纳奖励200成长豆，每条建议不超过200字" value="{{val}}"></textarea>
+</view>
+<view class="line"></view>
+<view bindtap="submit" class="btn">提交建议</view>

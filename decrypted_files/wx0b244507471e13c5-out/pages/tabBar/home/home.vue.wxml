@@ -1,0 +1,14 @@
+<template name="53e21423">
+    <view class="_view M53e21423 index">
+        <view class="_view M53e21423 index-hd">
+            <image class="_image M53e21423 index-logo" src="../../../static/jxicon.jpg"></image>
+        </view>
+        <view class="_view M53e21423 page-body">
+            <view class="_view M53e21423 page-section page-section-spacing">
+                <view class="_view M53e21423 text-box align-text" scrollY="true">
+                    <text class="_text M53e21423" decode="true">{{text}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

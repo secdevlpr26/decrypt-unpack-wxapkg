@@ -1,0 +1,21 @@
+<view class="business-bottom">
+    <view catchtap="{{!isCardDetail?'toDetail':''}}" class="business-con">
+        <view class="iconfont icon-mingpian-copy pian-copy business-col" wx:if="{{isCardDetail}}"></view>
+        <view class="iconfont icon-mingpian no_active" wx:if="{{!isCardDetail}}"></view>
+        <view class="colorb sizeg {{isCardDetail?'business-col':'no_active'}}">名片</view>
+    </view>
+    <view catchtap="{{!isDynamic?'toDynamic':''}}" class="business-con">
+        <view class="iconfont icon-caidan-dongtai- pian-copys" wx:if="{{!isDynamic}}"></view>
+        <view class="iconfont icon-dongtai is_active pian-copy" wx:if="{{isDynamic}}"></view>
+        <view class="colorb sizeg {{isDynamic?'is_active':'no_active'}}">动态</view>
+    </view>
+    <view catchtap="{{!isMaterial?'toMaterial':''}}" class="business-con" wx:if="{{showMaterial}}">
+        <view class="iconfont icon-sucai pian-copys" wx:if="{{!isMaterial}}"></view>
+        <view class="iconfont icon-sucaiku pian-copy is_active" wx:if="{{isMaterial}}"></view>
+        <view class="colorb sizeg {{isMaterial?'is_active':'no_active'}}">素材</view>
+    </view>
+    <view bindtap="goeditCardindex" class="business-con aa">
+        <view class="iconfont icon-iconfont_homepage pian-copy"></view>
+        <view class="colorb sizeg">商城</view>
+    </view>
+</view>

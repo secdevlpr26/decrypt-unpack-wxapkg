@@ -1,0 +1,14 @@
+<view class="bh-wrap">
+    <view bindtap="bhtap" class="item" data-id="{{item.id}}" style="border: 2rpx solid {{styleConfig.isWhite?'#95D9FA':styleConfig.mainColor}};" wx:for="{{bookingList}}">
+        <view class="title" style="background-color: {{styleConfig.isWhite?'#95D9FA':styleConfig.mainColor}}; color: white;">预约商家：{{item.branchName}}</view>
+        <view class="time">预约服务：{{item.productName}}</view>
+        <view class="time">预约时间：{{item.date}}</view>
+        <view class="status" wx:if="{{item.status==1}}">预约状态：已提交</view>
+        <view class="status" wx:if="{{item.status==2}}">预约状态：预约成功</view>
+        <view class="status" wx:if="{{item.stauts==0}}">预约状态：预约失败</view>
+    </view>
+</view>
+<view class="booking-null" hidden="{{bookingList.length}}">
+    <view class="iconfont icon-vz-null"></view>
+    <text>您暂时还没有预约</text>
+</view>

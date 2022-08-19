@@ -1,0 +1,90 @@
+<view class="testBlock" wx:if="{{!showErr}}">
+    <view class="blockTitle">扬声器和麦克风功能检测</view>
+    <view class="blockContent">
+        <view class="container">
+            <view class="page-body">
+                <view class="page-section">
+                    <block wx:if="{{recording===false&&playing===false&&hasRecord===false}}">
+                        <view class="page-body-time">
+                            <text class="time-big">{{formatedRecordTime}}</text>
+                            <text class="time-small"></text>
+                        </view>
+                        <view class="page-body-buttons">
+                            <view class="page-body-button"></view>
+                            <view bindtap="startRecord" class="page-body-button">
+                                <image src="../img/record.png"></image>
+                            </view>
+                            <view class="page-body-button"></view>
+                        </view>
+                    </block>
+                    <block wx:if="{{recording===true}}">
+                        <view class="page-body-time">
+                            <text class="time-big">{{formatedRecordTime}}</text>
+                            <text class="time-small"></text>
+                        </view>
+                        <view class="page-body-buttons">
+                            <view class="page-body-button"></view>
+                            <view bindtap="stopRecord" class="page-body-button">
+                                <view class="button-stop-record"></view>
+                            </view>
+                            <view class="page-body-button"></view>
+                        </view>
+                    </block>
+                    <block wx:if="{{hasRecord===true&&playing===false}}">
+                        <view class="page-body-time">
+                            <text class="time-big">{{formatedPlayTime}}</text>
+                            <text class="time-small">{{formatedRecordTime}}</text>
+                        </view>
+                        <view class="page-body-buttons">
+                            <view class="page-body-button"></view>
+                            <view bindtap="playVoice" class="page-body-button">
+                                <image src="../img/play.png"></image>
+                            </view>
+                            <view bindtap="clear" class="page-body-button">
+                                <image src="../img/trash.png"></image>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:if="{{hasRecord===true&&playing===true}}">
+                        <view class="page-body-time">
+                            <text class="time-big">{{formatedPlayTime}}</text>
+                            <text class="time-small">{{formatedRecordTime}}</text>
+                        </view>
+                        <view class="page-body-buttons">
+                            <view bindtap="stopVoice" class="page-body-button">
+                                <image src="../img/stop.png"></image>
+                            </view>
+                            <view bindtap="clear" class="page-body-button">
+                                <image src="../img/trash.png"></image>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="tipText">点击按钮开始录音，录音完毕后，播放检测，如播放有问题，点击下面播放音乐按钮，分辨是扬声器问题还是麦克风问题        </view>
+    </view>
+</view>
+<view class="testBlock" wx:if="{{showErr}}">
+    <view class="blockTitle">判断具体异常</view>
+    <view class="blockContent">
+        <view bindtap="playMusic" class="testBtn">播放音乐</view>
+        <view class="tipText">点击按钮开始播放，根据播放效果，分辨是扬声器问题还是麦克风问题</view>
+    </view>
+</view>
+<view class="testBlock" wx:if="{{showErr}}">
+    <view class="blockTitle errTitle">提交检测结果</view>
+    <view class="blockContent">
+        <view>
+            <view bindtap="errItemBind" class="flex-between errItem {{faultArr[index].val==1?'on':''}}" data-index="{{index}}" wx:for="{{['扬声器','麦克风']}}" wx:key="{{index}}">
+                <text class="col666">{{item}}异常</text>
+                <text class="circle"></text>
+            </view>
+        </view>
+    </view>
+</view>
+<view bindtap="errBtnBind" class="submitErrBtn" style="position: fixed; bottom: 100rpx; right: 0; left: 0; margin: 0 50rpx;" wx:if="{{showErr}}">提交异常</view>
+<view class="bottomBtns" wx:if="{{!showErr}}">
+    <view bindtap="showErr" class="submitErrBtn">播放异常</view>
+    <view bindtap="setResult" class="okBtn">播放正常</view>
+</view>

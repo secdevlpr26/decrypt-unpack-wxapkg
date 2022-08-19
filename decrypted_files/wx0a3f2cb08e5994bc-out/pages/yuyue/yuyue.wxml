@@ -1,0 +1,25 @@
+<view>
+    <image mode="Empty" src="Empty" style="Empty"></image>
+</view>
+<view class="Empty">
+    <text>Empty</text>
+</view>
+<view class="Empty">
+    <view style="Empty">
+        <label style="Empty">Empty</label>
+    </view>
+    <view style="Empty">
+        <input bindinput="Empty" placeholder="Empty"></input>
+    </view>
+</view>
+<view class="Empty">
+    <view style="Empty">
+        <label style="Empty">Empty</label>
+    </view>
+    <view style="Empty">
+        <textarea bindblur="Empty" fixed="Empty" placeholder="Empty"></textarea>
+    </view>
+</view>
+<view class="Empty">
+    <button bindgetphonenumber="Empty" openType="Empty" style="Empty">Empty</button>
+</view>

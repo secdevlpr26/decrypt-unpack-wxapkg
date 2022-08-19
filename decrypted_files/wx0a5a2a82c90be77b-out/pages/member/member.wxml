@@ -1,0 +1,79 @@
+<view class="page-view">
+    <view class="mod-member">
+        <view bindtap="toLogin" class="mod-head">
+            <view class="head-img">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <view class="head-msg">
+                <view class="head-phone">{{phone}}</view>
+            </view>
+        </view>
+        <view class="mod-contain">
+            <view class="mod-nav">
+                <view bindtap="toPage" class="nav-item" data-path="{{url.rechargeUrl}}">
+                    <image class="nav-img" src="../../images/member/icon-nav-1.png"></image>
+                    <text class="nav-txt">会员卡余额</text>
+                    <view class="nav-price">￥{{sumBalance||0}}</view>
+                </view>
+                <view bindtap="toPage" class="nav-item" data-path="{{url.online}}">
+                    <image class="nav-img" src="../../images/member/icon-nav-2.png"></image>
+                    <text class="nav-txt">充值余额</text>
+                    <view class="nav-price">￥{{member.money||0}}</view>
+                </view>
+                <view bindtap="toPage" class="nav-item" data-path="{{url.coupon}}">
+                    <image class="nav-img" src="../../images/member/icon-nav-3.png"></image>
+                    <text class="nav-txt">优惠券</text>
+                    <view class="nav-price">{{coupons.cnt||0}}张</view>
+                </view>
+            </view>
+            <view bindtap="toPage" class="mod-card" data-path="{{washBuyCard.URL}}">
+                <image src="{{washBuyCard.PATH}}"></image>
+            </view>
+            <view class="mod-order">
+                <view bindtap="toPage" class="order-head clearfix" data-path="{{url.order}}" data-type="1">
+                    <view class="title">我的订单</view>
+                    <view class="more">全部<image src="../../images/common/icon-right-arrow.png"></image>
+                    </view>
+                </view>
+                <view class="order-list">
+                    <view bindtap="toPage" class="order-item" data-path="{{url.order}}" data-type="2">
+                        <image src="../../images/member/icon-order-1.png"></image>
+                        <view>服务中<text>({{washOrderServiceCount||0}})</text>
+                        </view>
+                    </view>
+                    <view bindtap="toPage" class="order-item" data-path="{{url.order}}" data-type="3">
+                        <image src="../../images/member/icon-order-3.png"></image>
+                        <view>已完成<text>({{washOrderFinishCount||0}})</text>
+                        </view>
+                    </view>
+                    <view bindtap="toPage" class="order-item" data-path="{{url.order}}" data-type="4">
+                        <image src="../../images/member/icon-order-4.png"></image>
+                        <view>待支付<text>({{washOrderNotPayCount||0}})</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="mod-list">
+                <view bindtap="toPage" class="list-item" data-path="{{url.distributorCenter}}">
+                    <image src="../../images/member/icon-list-1.png"></image>
+                    <text>分销中心</text>
+                </view>
+                <view bindtap="toPage" class="list-item" data-path="{{url.distributorUrl}}" data-type="0">
+                    <image src="../../images/member/icon-list-4.png"></image>
+                    <text>商城订单</text>
+                </view>
+                <view bindtap="toPage" class="list-item" data-path="{{url.addressUrl}}">
+                    <image src="../../images/member/icon-list-2.png"></image>
+                    <text>常用地址</text>
+                </view>
+                <view bindtap="callPhone" class="list-item" data-phone="{{operator.operator_tel}}">
+                    <image src="../../images/member/icon-list-3.png"></image>
+                    <text>客户热线</text>
+                    <text class="phone">{{operator.operator_tel||'暂未开通'}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <tab-bar cartNum="{{shopCartCount}}"></tab-bar>
+    <login-dialog bindonlogin="eventLogin" loginHidden="{{isLogin}}"></login-dialog>
+</view>

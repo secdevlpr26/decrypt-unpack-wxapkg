@@ -1,0 +1,65 @@
+<template name="stick">
+    <view class="Empty" hidden="Empty">
+        <view bindtap="Empty" class="Empty">
+            <image src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view bindtap="Empty" class="Empty">
+                <view>Empty</view>
+                <view>Empty</view>
+                <view class="Empty" hidden="Empty">
+                    <scroll-view>
+                        <view catchtap="Empty" data-title="Empty" wx:for="Empty">Empty</view>
+                    </scroll-view>
+                </view>
+            </view>
+            <view bindtap="Empty" class="Empty">
+                <text wx:if="Empty">Empty</text>
+                <text wx:else>Empty</text>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="informer">
+    <view class="Empty">
+        <view bindtap="Empty" class="Empty" style="Empty" wx:for="Empty">Empty</view>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+    </view>
+</template>
+<template name="pinglun">
+    <view bindtap="Empty" class="Empty" data-uid="Empty" wx:for="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">Empty</view>
+            <view class="Empty">Empty</view>
+        </view>
+    </view>
+</template>
+<template name="quanlist">
+    <view bindtap="Empty" class="Empty" data-vid="Empty" wx:for="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <view class="Empty">
+                <text class="Empty" style="Empty" wx:if="Empty">Empty</text>
+                <text class="Empty" style="Empty" wx:else>Empty</text>
+                <text style="Empty">Empty</text>
+            </view>
+            <view class="Empty">Empty</view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">
+                <image src="Empty" wx:if="Empty"></image>
+                <image src="Empty" wx:else></image>
+            </view>
+            <view class="Empty">Empty</view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,79 @@
+<view>
+    <view class="header-box">
+        <view class="boorrow-type">
+            <view bind:tap="tabclick" data-idx="{{index}}" wx:for="{{tabs}}">
+                <view class="{{curId===index?'active':''}}">{{item}}</view>
+            </view>
+        </view>
+        <view bind:tap="returnbook" class="scancode">
+            <image src="../../images/ewm.png"></image>
+            <text>还书</text>
+        </view>
+    </view>
+</view>
+<view hidden="{{curId!==0}}">
+    <view class="search">
+        <input bindinput="keyinput" placeholder="姓名/电话号码" type="text" value="{{key}}"></input>
+        <view bind:tap="uesrSearch" data-key="{{key}}">搜索</view>
+    </view>
+    <view class="lists" wx:if="{{!infoShow}}">
+        <view class="lists-item" style="text-align: center;" wx:if="{{noData}}">暂无记录</view>
+        <view bind:tap="getuserinfo" class="lists-item" data-id="{{item.id}}" wx:for="{{lists}}">
+            <view>{{item.userName}}</view>
+            <view>{{item.phone}}</view>
+            <view class="classRoom" wx:if="{{item.classes}}">{{item.classes}}</view>
+        </view>
+    </view>
+    <block wx:if="{{infoShow}}">
+        <view class="user-info">
+            <view>
+                <text>{{user.userName}}</text>
+                <text class="classRoom ml30" wx:if="{{user.major}}">{{user.major}}</text>
+            </view>
+            <view>{{user.phone}}</view>
+            <view>
+                未还书籍
+                <text class="cf40">{{user.count}}</text>
+                本
+            </view>
+            <view>
+                剩余可借
+                <text class="c00ca">{{user.brown}}</text>
+                本
+            </view>
+        </view>
+        <button bind:tap="borrowbook" class="btn" data-id="{{user.id}}" wx:if="{{user.brown}}">扫描借书</button>
+        <button class="disableBtn" disabled="{{true}}" wx:else>不能借书</button>
+    </block>
+</view>
+<view hidden="{{curId!==1}}">
+    <view class="search">
+        <input bindinput="codeinput" placeholder="请输入取书码" type="text" value="{{bookCode}}"></input>
+        <view bind:tap="getbookCode">确定</view>
+    </view>
+    <block wx:if="{{getBookInfo}}">
+        <view class="borrow-info">
+            <view class="bookname">{{getBookInfo.bookName}}</view>
+            <view class="author">{{getBookInfo.author==null?'--':getBookInfo.author}}著</view>
+            <view class="borrowname">
+                <view>借阅人 {{getBookInfo.userName}}</view>
+                <view>{{getBookInfo.phone}}</view>
+            </view>
+        </view>
+        <button bind:tap="borrowbook" class="btn" data-id="{{getBookInfo.readerId}}">扫描书籍条形码借书</button>
+    </block>
+</view>
+<view class="modal" hidden="{{modal}}">
+    <view class="modal-content">
+        <view class="title">{{modalTitle}}</view>
+        <image hidden="{{!success}}" src="../../images/success.png"></image>
+        <image hidden="{{success}}" src="../../images/error.png"></image>
+        <view class="msg c00ca" hidden="{{!success}}">{{modalMsg}}</view>
+        <view class="msg cf40" hidden="{{success}}">{{modalErrorMsg}}</view>
+        <button bind:tap="delmodal" wx:if="{{success}}">确定</button>
+        <button bind:tap="sandCodeAgin" data-type="{{type}}" wx:else>重新扫码</button>
+        <view bind:tap="delmodal" class="modal-del">
+            <image class="" src="../../images/modal-del.png"></image>
+        </view>
+    </view>
+</view>

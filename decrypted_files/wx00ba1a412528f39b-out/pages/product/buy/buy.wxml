@@ -1,0 +1,61 @@
+<view class="wx_page">
+    <view class="addr_area">
+        <view class="addr_area_inner">
+            <view catchtap="tapChooseAddr" class="addr_choose_box" wx:if="{{canChooseAddr}}">
+                <view class="addr_info wx_flex_wrp" wx:if="{{!!address&&address.userName}}">
+                    <view class="icon_wrp">
+                        <image class="express_icon" src="/images/address@3x.png"></image>
+                    </view>
+                    <view class="addr_info_main">
+                        <view class="addr_info_hd">
+                            <view class="addr_info_name">{{address.userName}}</view>
+                            <view class="addr_info_phone">{{address.telNumber}}</view>
+                        </view>
+                        <view class="addr_info_detail">{{address.countyName}}{{address.provinceName}}{{address.cityName}}{{address.detailInfo}}</view>
+                    </view>
+                </view>
+                <view class="addr_empty" wx:else>
+                    <icon class="icon_addr" type=""></icon>
+                    <text>收货地址</text>
+                    <icon class="icon_arrow" type=""></icon>
+                </view>
+            </view>
+            <view catchtap="tapOpenSetting" class="addr_empty" wx:else>
+                <text>请在设置中允许访问通讯地址</text>
+                <icon class="icon_arrow" type=""></icon>
+            </view>
+        </view>
+    </view>
+    <view class="goods_area">
+        <view class="goods_list">
+            <view class="goods_item" wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
+                <view class="goods_cover">
+                    <image class="goods_cover_img" mode="aspectFill" src="{{item.skuImg||item.product.base_attr.img_info[0]}}"></image>
+                </view>
+                <view class="goods_info">
+                    <view class="goods_title">{{item.product.base_attr.name}}</view>
+                    <view class="goods_description">
+                        <text class="goods_description_item" wx:for="{{item.attrs}}" wx:key="{{item}}">{{item}}</text>
+                    </view>
+                    <view class="goods_cost">
+                        <text class="goods_price">{{item.feeTxt}}{{item.priceTxt}}</text>
+                        <text class="goods_num">x{{item.buyCount}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="finalPrice_area">
+        <text>实付金额<block wx:if="{{isLoadedExpress}}">
+                <block wx:if="{{expressPrice==0}}">（包邮）</block>
+                <block wx:else>（含运费{{feeTxt}}{{expressPriceTxt}}）</block>
+            </block>
+        </text>
+        <text class="price">{{feeTxt}}{{finalPriceTxt}}</text>
+    </view>
+    <view class="buy_ft">
+        <form>
+            <button bindtap="tapBtnPay" class="buy_btn" disabled="{{!canBuy?true:false}}" type="">付款</button>
+        </form>
+    </view>
+</view>

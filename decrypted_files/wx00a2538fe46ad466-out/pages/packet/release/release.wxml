@@ -1,0 +1,58 @@
+<view class="Empty">
+    <view class="Empty">
+        <view bindtap="Empty" class="Empty" data-index="Empty" wx:for="Empty">Empty</view>
+    </view>
+    <view style="Empty"></view>
+    <form bindsubmit="Empty">
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" confirmType="Empty" data-form-index="Empty" name="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" confirmType="Empty" data-form-index="Empty" maxlength="Empty" name="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">
+                <text wx:if="Empty">Empty</text>
+                <text wx:else>Empty</text>
+            </view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" confirmType="Empty" data-form-index="Empty" name="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" data-form-index="Empty" name="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <textarea bindblur="Empty" bindfocus="Empty" bindinput="Empty" data-form-index="Empty" maxlength="Empty" name="Empty" value="Empty"></textarea>
+            </view>
+            <view class="Empty">
+                <view bindtap="Empty" class="Empty">
+                    <image class="Empty" mode="Empty" src="Empty"></image>
+                </view>
+                <view class="Empty">Empty</view>
+            </view>
+        </view>
+        <view class="Empty" wx:if="Empty">
+            <view bindlongpress="Empty" bindtap="Empty" class="Empty" data-id="Empty" data-index="Empty" data-src="Empty" wx:for="Empty">
+                <button class="Empty">
+                    <image class="Empty" mode="Empty" src="Empty"></image>
+                </button>
+            </view>
+        </view>
+        <view style="Empty"></view>
+        <view class="Empty">
+            <button class="Empty" formType="Empty">Empty</button>
+        </view>
+    </form>
+</view>

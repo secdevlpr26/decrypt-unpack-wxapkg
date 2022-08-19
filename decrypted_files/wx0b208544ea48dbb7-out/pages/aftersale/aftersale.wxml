@@ -1,0 +1,53 @@
+<view class="wrap">
+    <view class="oreder-item">
+        <view class="goods-info">
+            <view class="pic">
+                <image src="{{goods.original_img}}"></image>
+            </view>
+            <view class="info">
+                <view class="name text-ellipsis">
+                    <text class="text-ellipsis">{{goods.goods_name}}</text>
+                </view>
+                <view class="specification">{{goods.goods_remark}}</view>
+                <view class="goods-status">
+                    <view class="price">
+                        <text>¥{{goods.shop_price}}</text>
+                    </view>
+                    <view class="count">
+                        <text>{{goods.goods_num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="comment-container">
+        <view class="caption">
+            <text>售后类型</text>
+            <picker bindchange="changeType" mode="selector" range="{{typelist}}">
+                <text>{{typelist[type]}}</text>
+            </picker>
+        </view>
+        <view class="caption">
+            <text>申请理由</text>
+        </view>
+        <view class="content">
+            <textarea bindinput="editComment" placeholder="对你购买的商品进行问题描述"></textarea>
+        </view>
+    </view>
+    <view class="images-container">
+        <view class="caption">
+            <text>上传图片</text>
+        </view>
+        <view class="images-list">
+            <view bindtap="delImage" class="uploading" data-dataimgurl="{{uploadIng[index]}}" data-showimgurl="{{item}}" wx:for="{{imageList}}">
+                <image src="{{item}}"></image>
+            </view>
+            <view bindtap="chooseImage" class="uploading" wx:if="{{!imageList||imageList.length<=3}}">
+                <image src="../../assets/icons/uploading.png"></image>
+            </view>
+        </view>
+    </view>
+    <view bindtap="submit" class="submit btn-default">
+        提交申请
+    </view>
+</view>

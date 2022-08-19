@@ -1,0 +1,26 @@
+<view class="wd-content">
+    <view class="wd-nav">
+        <view bindtap="navtap" class="wd-nav-item {{curIdx==1?'active':''}}" data-idx="1">待审核</view>
+        <view bindtap="navtap" class="wd-nav-item {{curIdx==2?'active':''}}" data-idx="2">待打款</view>
+        <view bindtap="navtap" class="wd-nav-item {{curIdx==3?'active':''}}" data-idx="3">已打款</view>
+        <view bindtap="navtap" class="wd-nav-item {{curIdx==4?'active':''}}" data-idx="4">驳回</view>
+    </view>
+    <view class="wd-list">
+        <view bindtap="toWithdrawDetail" class="wd-item" data-id="{{item.id}}" wx:for="{{withdrawList}}">
+            <view class="date">
+                <text>{{item.date}}</text>
+                <text>{{item.time}}</text>
+            </view>
+            <view class="money">
+                <text>提现金额：(元)</text>
+                <text>{{item.money}}</text>
+            </view>
+            <view class="bank">
+                <text>{{item.bank.bankName}}</text>
+                <text>{{item.account}}</text>
+            </view>
+        </view>
+        <view class="bottom" hidden="{{hideBottom}}">- 已经到底啦 -</view>
+    </view>
+    <view class="wd-null" hidden="{{!wdListNull}}">暂无明细</view>
+</view>

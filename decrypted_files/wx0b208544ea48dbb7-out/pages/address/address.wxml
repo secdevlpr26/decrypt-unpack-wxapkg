@@ -1,0 +1,50 @@
+<view class="address-wrap">
+    <view class="address-edit">
+        <view class="edit-item">
+            <text>收货人</text>
+            <input bindinput="inputInfo" data-name="name" placeholder="请输姓名" type="text" value="{{addressInfo.name}}"></input>
+        </view>
+        <view class="edit-item" data-name="iphone">
+            <text>手机号码</text>
+            <input bindinput="inputInfo" data-name="iphone" placeholder="请输入手机号码" type="number" value="{{addressInfo.iphone}}"></input>
+        </view>
+        <view class="edit-item">
+            <text>所在省份</text>
+            <picker bindchange="choiceAddress" class="picker" data-setname="province" mode="selector" range="{{province}}" rangeKey="name">
+                <view>{{province[addressInfo.province.index].name}}</view>
+            </picker>
+        </view>
+        <view class="edit-item">
+            <text>所在城市</text>
+            <picker bindchange="choiceAddress" class="picker" data-setname="city" mode="selector" range="{{city}}" rangeKey="name">
+                <view>{{city[addressInfo.city.index].name}}</view>
+            </picker>
+        </view>
+        <view class="edit-item">
+            <text>所在区域</text>
+            <picker bindchange="choiceAddress" class="picker" data-setname="district" mode="selector" range="{{district}}" rangeKey="name">
+                <view>{{district[addressInfo.district.index].name}}</view>
+            </picker>
+        </view>
+        <view class="edit-item">
+            <text>所在街道</text>
+            <picker bindchange="choiceAddress" class="picker" data-setname="street" mode="selector" range="{{street}}" rangeKey="name">
+                <view>{{street[addressInfo.street.index].name}}</view>
+            </picker>
+        </view>
+        <view class="edit-item">
+            <text>详细地址</text>
+            <input bindinput="inputInfo" data-name="address" placeholder="请输入详细地址" type="text" value="{{addressInfo.address}}"></input>
+        </view>
+        <view bindtap="changeDefault" class="edit-item">
+            <view class="check-default">
+                <image src="../../assets/icons/check.png" wx:if="{{addressInfo.isDefault}}"></image>
+                <image src="../../assets/icons/check-none.png" wx:else></image>
+            </view>
+            <text>设置默认地址</text>
+        </view>
+    </view>
+    <view bindtap="submitAddress" class="btn-default save-btn">
+        <text>保存</text>
+    </view>
+</view>

@@ -1,0 +1,37 @@
+<view class="main">
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="top">
+            <view class="item">
+                <text>商家名字</text>
+                <input name="storeName" value="{{storeName}}"></input>
+            </view>
+            <view class="item">
+                <text>您的姓名</text>
+                <input name="name" value="{{name}}"></input>
+            </view>
+            <view class="item">
+                <text>您的手机号</text>
+                <input maxlength="11" name="phone" type="number" value="{{phone}}"></input>
+            </view>
+        </view>
+        <view class="picture">
+            <text class="ftsm">图片说明</text>
+            <view class="photo">
+                <image lazyLoad="{{true}}" src="{{imagePath}}"></image>
+            </view>
+            <view class="btns">
+                <span bindtap="takephoto" class="photograph" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">拍照</span>
+                <span bindtap="takephoto" class="upload">从相册选择</span>
+            </view>
+        </view>
+        <view class="bottom">
+            <view class="item">
+                <text>详细描述</text>
+                <input name="detail" value="{{detail}}"></input>
+            </view>
+            <text class="tip">确认提交后我们的工作人员将会尽快与您联系</text>
+            <button class="submit" formType="submit" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">提交</button>
+            <button class="reset" formType="reset" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">重置</button>
+        </view>
+    </form>
+</view>

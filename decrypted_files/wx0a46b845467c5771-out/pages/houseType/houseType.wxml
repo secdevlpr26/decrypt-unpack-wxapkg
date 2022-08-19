@@ -1,0 +1,30 @@
+<scroll-view class="contain" wx:if="{{list.length>0}}">
+    <movable-area class="top_flex" style="height: 120rpx; width: 100%;">
+        <movable-view class="top" direction="horizontal" style="width:{{list.length>3?list.length*212+'rpx':'100%'}}">
+            <view bindtap="checkOutHouse" class="{{list.length==1?'item1':list.length==2?'item2':list.length==3?'item3':'item4'}}" data-id="{{item.id}}" data-name="{{item.name}}" id="{{index}}" style="background:{{active==index?'linear-gradient(-270deg, '+jbColor1+' 0%, '+jbColor2+' 100%);border: 2rpx solid #FFFFFF;opacity:1':'#272A34'}}" wx:for="{{list}}" wx:key="index">{{item.name}}</view>
+        </movable-view>
+    </movable-area>
+    <view class="list">
+        <view bindtap="goDetail" class="listItem" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{houseList}}" wx:key="index">
+            <image class="left" mode="aspectFill" src="{{item.thumbnail?item.thumbnail:item.layoutImageResponseList[0].imageUrl}}"></image>
+            <view class="right">
+                <image mode="aspectFill" src="{{item.backgroundImage?item.backgroundImage:serverUrl+'houseType/'+item.backgroundNumber+'.png'}}"></image>
+                <view class="shade" style="background-image: linear-gradient(-180deg, {{shade1}} 0%, {{shade2}} 100%);">
+                    <view class="top1">
+                        <view class="graph">
+                            {{item.area}}<i class="m">M²</i>
+                        </view>
+                        <i class="tip">面积约</i>
+                    </view>
+                    <view class="bottom">
+                        <i class="useRoom">{{item.room?item.room+'室':''}}{{item.hall?item.hall+'厅':''}}{{item.kitchen?item.kitchen+'厨':''}}{{item.toilet?item.toilet+'卫':''}}</i>
+                        <text>{{item.propertyType}} | {{item.floorHeight}}M | {{item.orientation}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<view class="none" wx:else>
+    暂无户型信息
+</view>

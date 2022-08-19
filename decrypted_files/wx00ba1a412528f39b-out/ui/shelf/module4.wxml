@@ -1,0 +1,19 @@
+<template name="module4">
+    <view class="shop_module_multi_activity">
+        <view class="goods_list">
+            <view class="goods_wrp">
+                <navigator url="/pages/list/list?gid={{group_infos.groups[0].group_id}}&sort_type=asc&sort_key=price">
+                    <image mode="aspectFill" src="{{group_infos.groups[0].img}}"></image>
+                </navigator>
+            </view>
+            <view class="goods_wrp_with2">
+                <navigator url="/pages/list/list?gid={{group_infos.groups[1].group_id}}&sort_type=asc&sort_key=price">
+                    <image mode="aspectFill" src="{{group_infos.groups[1].img}}"></image>
+                </navigator>
+                <navigator url="/pages/list/list?gid={{group_infos.groups[2].group_id}}&sort_type=asc&sort_key=price">
+                    <image mode="aspectFill" src="{{group_infos.groups[2].img}}"></image>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</template>

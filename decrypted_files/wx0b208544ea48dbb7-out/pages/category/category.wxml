@@ -1,0 +1,29 @@
+<view class="category-wrap">
+    <view class="search-container bg_public">
+        <view class="search-box cate_search_box">
+            <input bindconfirm="toSearch" bindinput="search" placeholder="请输入搜索内容" placeholderClass="holder-text" type="text"></input>
+            <view bindtap="oSearch" class="search-icon">
+                <image src="./icons/search-icon.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="category-container">
+        <scroll-view class="meun" scrollY="true">
+            <view bindtap="menuSelect" class="{{index==crrentIndex?'active':''}} item text-ellipsis" data-index="{{index}}" wx:for="{{category}}" wx:key="index">
+                <text>{{item.mobile_name}}</text>
+            </view>
+        </scroll-view>
+        <scroll-view class="content" scrollY="true">
+            <view bindtap="toGoodsList" class="item" data-id="{{item.id}}" wx:for="{{meunContent}}" wx:key="{{index}}">
+                <view class="info">
+                    <view class="pic">
+                        <image src="{{item.aimage}}"></image>
+                    </view>
+                    <view class="name text-ellipsis">
+                        <text>{{item.name}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,136 @@
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+<view class="parent" wx:if="{{tab==0}}">
+    <swiper autoplay="true" class="images" duration="500" indicatorDots="true" interval="3000" style="height:700rpx;">
+        <swiper-item wx:for="{{goods.gallery}}">
+            <image bindtap="previewImage" class="swiper-image" data-current="{{index}}" src="{{item.image_url}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="view-class-title">
+        <view class="summary">
+            <text class="title">{{goods.goods.goods_name}}</text>
+        </view>
+        <view class="class-line"></view>
+        <view bindtap="tapfriendshare" class="class-collect">
+            <image src="/images/collect.png"></image>
+        </view>
+    </view>
+    <view class="view-price">
+        <text class="text-red">￥{{price}}{{goods.shop_price}}</text>
+        <text class="text-price"> ￥{{goods.goods.market_price}} </text>
+    </view>
+    <view class="view-other-info">
+        <text>库存：{{goods.goods.store_count}}</text>
+        <text>销量：{{goods.goods.sales_sum}}笔</text>
+        <text style="width:200rpx;">出货时间：{{goods.goods.sku}}天</text>
+    </view>
+    <text class="text-prop">选择商品属性</text>
+    <view class="rowline"></view>
+    <view class="view-sub-prop" wx:for="{{goods.goods.goods_spec_list}}" wx:for-index="pos">
+        <text class="text-prop">{{item[0].spec_name}}</text>
+        <view class="view-btns">
+            <text bindtap="propClick" class="{{textStates[item.isClick]}}" data-index="{{pos}}" data-pos="{{index}}" wx:for="{{item}}">{{item.item}}</text>
+        </view>
+    </view>
+    <view class="rowline"></view>
+    <view class="hui"></view>
+</view>
+<view class="parent">
+    <text class="text-desc-title">商品信息</text>
+    <view class="rowline"></view>
+    <view class="page__detail">
+        <view class="detail">
+            <view class="article__content wxParse">
+                <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+            </view>
+        </view>
+    </view>
+</view>
+<view style="width:100%;height:100rpx;"></view>
+<view class="footer">
+    <button bindtap="bug" class="btn-bug" data-type="0">立即购买</button>
+    <button bindtap="phone" class="add-cart" data-type="1">电话联系</button>
+</view>
+<view class="attr-picker" wx:if="{{buys}}">
+    <view class="content-box">
+        <view class="flex-row" style="margin-left:30rpx;margin-right:30rpx; border-bottom: 1rpx solid #e3e3e3;padding: 24rpx 28rpx">
+            <view class="flex-grow-0">
+                <view class="goods-pic-box">
+                    <image mode="aspectFill" src="{{goods.goods.original_img}}" wx:if="{{goods.goods.attr_pic}}"></image>
+                    <image mode="aspectFill" src="{{goods.goods.original_img}}" wx:else></image>
+                </view>
+            </view>
+            <view class="flex-grow-1" style="padding: 0 24rpx">
+                <view style="margin-bottom: 12rpx;" wx:if="{{miaosha_data&&miaosha_data.rest_num>0}}">
+                    <view>
+                        <text style="color:#ff4544;font-weight: bold">￥{{goods.goods.shop_price}}</text>
+                        <text style="color:#888;text-decoration: line-through;font-size: 9pt;margin-left: 8rpx">￥{{goods.goods.price}}</text>
+                    </view>
+                </view>
+                <view style="color:#ff4544;margin-bottom: 12rpx;font-weight: bold" wx:else>￥{{goods.goods.shop_price}}</view>
+                <view style="font-size:9pt">库存{{goods.goods.sales_sum}}件
+          </view>
+            </view>
+            <view class="flex-grow-0">
+                <view bindtap="hideAttrPicker" class="flex-x-center flex-y-center" style="width: 100rpx;height: 100rpx">
+                    <image src="/images/icon-close.png" style="width: 30rpx;height: 30rpx"></image>
+                </view>
+            </view>
+        </view>
+        <view class="flex-row1" style="margin-left:30rpx;margin-right:30rpx; padding: 24rpx 28rpx">
+            <image bindtap="left" src="/images/iconleft.png" style="width:36rpx;opacity: 0.7"></image>
+            <scroll-view scrollIntoView="{{scroll}}" scrollX="true">
+                <view>
+                    <text bindtap="cselect" class="{{item.select}}" data-index="{{index}}" id="index{{index}}" wx:for="{{goods.goods_spec_list[0]}}">{{item.item}}</text>
+                </view>
+            </scroll-view>
+            <image bindtap="right" src="/images/iconright.png"></image>
+        </view>
+        <scroll-view scrollY="true" style="max-height: 650rpx;margin-top:-15rpx;">
+            <view style="padding: 24rpx 28rpx">
+                <view style="height: 0;border-bottom: 1rpx solid #e3e3e3;margin-bottom: 20rpx"></view>
+                <view style="padding-bottom: 0rpx" wx:for="{{goods.goods_spec_list[1]}}">
+                    <view class="flex-row flex-y-center mb-20">
+                        <view class="flex-grow-1">{{item.item}}</view>
+                        <view class="flex-grow-0">
+                            <view class="flex-row number-input-box">
+                                <view bindtap="numberSub" class="flex-grow-0 flex-x-center flex-y-center number-btn number-sub {{form.number<=1?'disabled':''}}" data-index="{{index}}">-
+                </view>
+                                <view class="flex-grow-0" wx:if="{{goods.goods_spec_list[0][cindex].item_id>goods.goods_spec_list[1][index].item_id}}">
+                                    <input bindblur="numberBlur" class="flex-grow-1 number-input" min="1" step="1" type="number" value="{{goods.spec_goods_price[goods.goods_spec_list[1][index].item_id+'_'+goods.goods_spec_list[0][cindex].item_id].num}}"></input>
+                                </view>
+                                <view class="flex-grow-0" wx:else>
+                                    <input bindblur="numberBlur" class="flex-grow-1 number-input" min="1" step="1" type="number" value="{{goods.spec_goods_price[goods.goods_spec_list[0][cindex].item_id+'_'+goods.goods_spec_list[1][index].item_id].num}}"></input>
+                                </view>
+                                <view bindtap="numberAdd" class="flex-grow-0 flex-x-center flex-y-center number-btn number-add" data-index="{{index}}">+
+                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view bindtap="sure" class="sure">确定</view>
+    </view>
+</view>
+<view class="shareAlert" wx:if="{{shareAlert}}">
+    <canvas canvasId="myCanvas" style="width:{{windowWidth}}px;height:{{windowHeight}}px;"></canvas>
+    <view class="share1">
+        <image bindtap="closetap" class="close" src="/images/close.png"></image>
+        <view class="imgwarp">
+            <image bindtap="show" src="{{saveimgsrc}}" wx:if="{{saveimgsrc}}"></image>
+        </view>
+        <button bindtap="saveimg" class="saveimg">保存图片</button>
+        <text style="text-align:center;width:100%;display:block;padding-top:20rpx;font-size:30rpx;color:#5c5c5c;">保存至相册</text>
+    </view>
+</view>
+<view class="fenishare" wx:if="{{fenishare}}">
+    <view class="fenbotton">
+        <view class="fenimg">
+            <button openType="share" style="margin:0;padding:0;background:#f2f2f2;">
+                <image bindtap="sharehaoyou" src="/images/haoyou.png"></image>
+            </button>
+            <image bindtap="tapshare" src="/images/pyq.png"></image>
+        </view>
+        <view bindtap="closefenishare" class="fenbtn">关闭</view>
+    </view>
+</view>

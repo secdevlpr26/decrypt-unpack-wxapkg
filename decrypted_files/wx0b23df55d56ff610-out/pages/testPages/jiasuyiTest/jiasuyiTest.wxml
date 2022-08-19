@@ -1,0 +1,21 @@
+<view class="page-body">
+    <view class="page-section page-section_center">
+        <text class="page-body-text">倾斜手机即可移动下方小球</text>
+        <view class="page-body-canvas">
+            <canvas canvasId="big-ball" class="page-body-ball" show="{{true}}"></canvas>
+            <canvas canvasId="small-ball" class="page-body-ball" show="{{true}}"></canvas>
+        </view>
+        <view class="page-body-xyz">
+            <text class="page-body-title">X: {{x}}</text>
+            <text class="page-body-title">Y: {{y}}</text>
+            <text class="page-body-title">Z: {{z}}</text>
+        </view>
+    </view>
+</view>
+<view class="testBlock">
+    <view class="blockTitle">重力感应功能正常吗？</view>
+    <view class="blockContent btns">
+        <view bindtap="setResult" class="warn" data-val="1">异常</view>
+        <view bindtap="setResult" class="normal" data-val="0">正常</view>
+    </view>
+</view>

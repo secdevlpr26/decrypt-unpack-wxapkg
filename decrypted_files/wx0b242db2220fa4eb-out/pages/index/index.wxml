@@ -1,0 +1,73 @@
+<swiper autoplay="Empty" duration="Empty" indicatorDots="Empty" interval="Empty" style="Empty">
+    <swiper-item wx:for="Empty">
+        <image bindtap="Empty" class="Empty" data-goods-id="Empty" mode="Empty" src="Empty"></image>
+    </swiper-item>
+</swiper>
+<view class="Empty">
+    <view bindtap="Empty" class="Empty" data-city="Empty">Empty</view>
+    <view bindtap="Empty" class="Empty">
+        <text bindtap="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty">Empty</text>
+        <view bindtap="Empty" class="Empty">
+            <view bindtap="Empty" class="Empty"></view>
+            <image bindtap="Empty" src="Empty"></image>
+        </view>
+    </view>
+</view>
+<view class="Empty" data-index="Empty" wx:for="Empty">
+    <view bindtap="Empty" data-navigation-id="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+</view>
+<view class="Empty">
+    <view bindtap="Empty" class="Empty" data-add="Empty" wx:if="Empty">
+        <image src="Empty"></image>
+    </view>
+    <view class="Empty" wx:if="Empty">
+        <image bindtap="Empty" class="Empty" data-ada="Empty" src="Empty"></image>
+        <view class="Empty">
+            <image bindtap="Empty" data-adc="Empty" src="Empty"></image>
+            <image bindtap="Empty" data-adb="Empty" src="Empty"></image>
+        </view>
+    </view>
+    <view bindtap="Empty" class="Empty" data-ade="Empty" wx:if="Empty">
+        <image src="Empty"></image>
+    </view>
+</view>
+<view class="Empty" data-index="Empty" wx:for="Empty">
+    <view class="Empty">
+        <view class="Empty">
+            <view class="Empty"></view>
+            <text class="Empty">Empty</text>
+        </view>
+        <view class="Empty">
+            <view bindtap="Empty" class="Empty" data-article-id="Empty" data-index="Empty" wx:for="Empty">
+                <view class="Empty">
+                    <text class="Empty">Empty</text>
+                    <text>Empty</text>
+                </view>
+                <view class="Empty">
+                    <text>Empty</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="Empty" data-index="Empty" wx:for="Empty">
+    <view class="Empty">
+        <view class="Empty">
+            <view class="Empty"></view>
+            <text class="Empty">Empty</text>
+        </view>
+        <view class="Empty">
+            <view bindtap="Empty" class="Empty" data-goods-id="Empty" data-index="Empty" wx:for="Empty">
+                <image class="Empty" mode="Empty" src="Empty"></image>
+                <text class="Empty">Empty</text>
+                <view class="Empty">
+                    <text class="Empty">Empty</text>
+                    <text class="Empty">Empty</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,235 @@
+<view style="width:0px;height:0px;overflow:hidden;">
+    <canvas canvasId="shareImg" style="width:700px;height:700px"></canvas>
+</view>
+<scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">
+    <view catchtouchmove="true" class="preview" hidden="{{hidden}}">
+        <image bindtap="closetype" class="close" src="../../resource/images/gb.png"></image>
+        <image class="tu" mode="widthFix" src="{{prurl}}"></image>
+        <button bindtap="share" class="save1" size="mini" type="primary">重新加载</button>
+        <button bindtap="save" class="save" size="mini" type="primary">保存分享图</button>
+    </view>
+    <image bindtap="share" class="fenx" src="../../resource/images/share2x.png"></image>
+    <view class="container">
+        <view class="swiper-container">
+            <swiper autoplay="{{autoplay}}" circular="{{circular}}" duration="{{duration}}" interval="{{interval}}" style="height:{{imgheight}}rpx;">
+                <swiper-item wx:for="{{piclist}}">
+                    <image class="slide-image" src="{{item}}" style="height:{{imgheight}}rpx;width:{{imgwidth}}rpx;"></image>
+                </swiper-item>
+            </swiper>
+            <view class="dots">
+                <view class="dot{{index==swiperCurrent?' active':''}}" wx:for="{{piclist}}" wx:key="index"></view>
+            </view>
+        </view>
+        <view class="main">
+            <view class="title">
+                <view style="font-size:32rpx;">
+                    <view>{{data.housename}}</view>
+                    <view>
+                        <image class="sell" src="../../resource/newimage/sellOut.png" wx:if="{{data.salestatus_str=='售完'}}"></image>
+                        <image class="sell" src="../../resource/newimage/sellOn.png" wx:if="{{data.salestatus_str=='在售'}}"></image>
+                    </view>
+                </view>
+                <view class="special">
+                    <text wx:for="{{data.speciallist}}">{{item}}</text>
+                </view>
+                <view class="price">
+                    <view class="text1" style="border-right:1rpx solid #e5e5e5;">
+                        <view>
+            均价
+          </view>
+                        <view style="color:#ed4e33;">
+            {{data.houseprice}}元/㎡
+          </view>
+                    </view>
+                    <view class="text2">
+                        <view>
+            建筑面积
+          </view>
+                        <view style="color:#000;">
+            {{data.buildarea}}万㎡
+          </view>
+                    </view>
+                </view>
+            </view>
+            <view class="address">
+                <view>开盘时间：
+        <text style="color:#000;">{{data.opensaletime}}</text>
+                </view>
+                <view>项目地址：
+        <text style="color:#000;">{{data.houseaddress}}</text>
+                </view>
+            </view>
+            <view class="open-detail">
+                <view bindtap="openDetail" class="detail-button" wx:if="{{isopen==0}}">查看详细信息</view>
+                <view bindtap="closeDetail" class="detail-button" wx:if="{{isopen==1}}">收起详细信息</view>
+            </view>
+        </view>
+        <view class="contentlist" wx:if="{{isopen==1}}">
+            <view class="listitem">
+                <view class="companyname">{{data.companyname}}</view>
+                <view class="items">
+                    <view space="emsp">均价 </view>
+                    <view>{{data.buildarea}}㎡</view>
+                </view>
+                <view class="items">
+                    <view>开盘时间</view>
+                    <view>{{data.opensaletime}}</view>
+                </view>
+                <view class="items">
+                    <view>入驻时间</view>
+                    <view>{{data.staytime}}</view>
+                </view>
+                <view bindtap="doCall" class="items" data-tel="{{data.tel}}">
+                    <view>联系号码</view>
+                    <view>{{data.tel}}</view>
+                </view>
+                <view class="backgroud"></view>
+                <view class="items">
+                    <view>项目地址</view>
+                    <view>{{data.opensaletime}}</view>
+                </view>
+                <view class="items">
+                    <view>售楼地址</view>
+                    <view>{{data.housesaleaddress}}</view>
+                </view>
+                <view class="backgroud"></view>
+                <view class="items">
+                    <view>占地面积</view>
+                    <view>{{data.housecovered}}㎡</view>
+                </view>
+                <view class="items">
+                    <view>建筑面积</view>
+                    <view>{{data.buildarea}}万㎡</view>
+                </view>
+                <view class="items">
+                    <view>容积率</view>
+                    <view>{{data.houserate}}</view>
+                </view>
+                <view class="items">
+                    <view>绿化率</view>
+                    <view>{{data.housegreenrate}}</view>
+                </view>
+                <view class="backgroud"></view>
+                <view class="items">
+                    <view>项目特色</view>
+                    <view>{{data.specialliststr}}</view>
+                </view>
+                <view class="items">
+                    <view>所属学区</view>
+                    <view>{{data.houseschool}}</view>
+                </view>
+                <view class="items">
+                    <view>附近公交</view>
+                    <view>{{data.housebus}}</view>
+                </view>
+                <view class="backgroud"></view>
+                <view class="items">
+                    <view>楼盘详情</view>
+                    <block wx:for="{{content}}" wx:for-item="cellData">
+                        <view class="p" wx:if="{{cellData.type=='view'}}">
+                            <block wx:for="{{cellData.child}}" wx:key="text">
+                                <block wx:if="{{item.type=='a'}}">
+                                    <text bindtap="stockClick" class="a" data-seccode="{{item.attr['data-seccode']}}" data-secname="{{item.attr['data-secname']}}" wx:if="{{item.text!=''||item.text!=null}}">{{item.text}}</text>
+                                </block>
+                                <block wx:else>
+                                    <text wx:if="{{item.text!=''||item.text!=null}}">{{item.text}}</text>
+                                </block>
+                            </block>
+                        </view>
+                        <image bindload="imageLoad" class="img" data-index="{{index}}" mode="widthFix" src="{{cellData.attr.src}}" style="width:{{imagewidth}}px; height:{{imageheight}}px;" wx:if="{{cellData.type=='img'}}"></image>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="agent" wx:if="{{data.agentid>0}}">
+            <view class="agentinfo">
+                <view class="left">
+                    <view bindtap="toAgentDetail" class="headpic" data-id="{{data.agentid}}">
+                        <image src="{{data.agentthumb}}"></image>
+                    </view>
+                    <view class="username">
+                        <view>{{data.agentname}}</view>
+                        <view>{{data.agenttel}}</view>
+                    </view>
+                </view>
+                <view class="right">
+                    <view class="contact">
+                        <view bindtap="doCall" data-tel="{{data.agenttel}}">
+                            <image src="../../resource/images/telnew.png"></image>
+                        </view>
+                        <view>联系经纪人</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="contentlist">
+            <view class="title">
+                <view></view>
+                <view>楼盘户型</view>
+            </view>
+        </view>
+        <view class="type-container">
+            <scroll-view class="type-navbar" scrollX="true" style="width: 100%">
+                <view class="type-box" wx:for="{{housecase}}">
+                    <view catchtap="previewImage1" class="type-navbar-item " id="{{item}}">
+                        <image mode="scaleToFill" src="{{item}}" style="width: 100%;"></image>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="contentlist">
+            <view class="title">
+                <view></view>
+                <view>楼盘相册</view>
+            </view>
+        </view>
+        <view class="type-container">
+            <scroll-view class="type-navbar" scrollX="true" style="height: 200px;">
+                <view class="type-box" wx:for="{{casephone}}">
+                    <view bindtap="tabClick" catchtap="previewImage" class="type-navbar-item " id="{{item}}">
+                        <image src="{{item}}" style="width: 100%;"></image>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</scroll-view>
+<view class="weixinmao-msg" hidden="{{showmsg}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>预约看房</view>
+            <view bindtap="closemsg">
+                <image src="../../resource/newimage/clear.png"></image>
+            </view>
+        </view>
+        <form bindsubmit="saveuserinfo">
+            <view class="content">
+                <view class="item">
+                    <input class="inputlist" name="contactname" placeholder="请输入您的姓名" type="text"></input>
+                </view>
+                <view class="item">
+                    <input class="inputlist" name="contactphone" placeholder="请输入您的手机号" type="text"></input>
+                </view>
+                <view class="item">
+                    <input class="inputlist" name="referrer" placeholder="请输入您的推荐人" type="text"></input>
+                </view>
+                <view class="item tops" style="border-bottom: 0rpx solid #efefef;">
+                    <button class="bindtel" formType="submit">立即预约</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>
+<view class="weixinmao-float">
+    <view class="weixinmao-foot">
+        <view bindtap="goMap" class="footer1">
+      一键导航</view>
+        <view bindtap="binduserinfo" class="footer2">
+      预约看房</view>
+        <view bindtap="jump" class="back">
+            <image class="fenx2" src="../../resource/images/home@2x.png">123</image>
+            <view class="backup">返回首页</view>
+        </view>
+    </view>
+</view>

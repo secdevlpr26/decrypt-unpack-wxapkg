@@ -1,0 +1,25 @@
+<view class="registered-wrap">
+    <view class="registered bg-w">
+        <view class="reg-type f fc">
+            <view bindtap="selectType" class="item f1 f28 {{formData.opentype==index?'active':''}}" data-wpyselecttype-a="{{index}}" wx:for="{{regType}}" wx:key="index">{{item}}</view>
+        </view>
+        <form bindsubmit="formReg" class="form-wrap ">
+            <view class="form-item f fc ">
+                <view class="form-name f28">手机号</view>
+                <input bindinput="getPhoneValue" class="input-box f28" confirmType="next" name="phone" placeholder="请输入手机号" type="number" value="{{formData.phone}}"></input>
+            </view>
+            <view class="form-item rel f fc ">
+                <view class="form-name f28">验证码</view>
+                <input class="input-box f28" confirmType="next" name="code" placeholder="请输入短信验证码" style="padding-right:130rpx;" type="number"></input>
+                <view bindtap="getCode" class="btn-getcode abs f24" hidden="{{!showCountDown}}">获取验证码</view>
+                <view class="btn-getcode abs f24" hidden="{{showCountDown}}">{{count}}</view>
+            </view>
+            <view class="form-item rel f fc ">
+                <view class="form-name f28">密码</view>
+                <input password class="input-box f28" name="password" placeholder="请设置密码" type="text"></input>
+            </view>
+            <button plain class="submit c666" disabled="{{isDisabled}}" formType="submit">提交</button>
+        </form>
+    </view>
+    <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+</view>

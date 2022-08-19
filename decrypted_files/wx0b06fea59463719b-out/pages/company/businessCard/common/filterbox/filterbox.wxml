@@ -1,0 +1,5 @@
+<view catchtap="closeMark" class="mark {{markFlag?'showMark':''}}"></view>
+<view class="status-box {{filterDayFlag?'showParam':'hideParam'}}">
+    <view catchtap="chooseValue" class="sevenday border1px" data-value="7">查看最近7天</view>
+    <view catchtap="chooseValue" class="fifteenday" data-value="15">查看最近15天</view>
+</view>

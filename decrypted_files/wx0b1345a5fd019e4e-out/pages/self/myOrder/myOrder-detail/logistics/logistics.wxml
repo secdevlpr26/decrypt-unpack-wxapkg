@@ -1,0 +1,13 @@
+<view class="logistics-detail-wrap">
+    <view class="logList-info">
+        <text>承运来源：{{logInfo.com}}</text>
+        <text>物流单号：{{logInfo.nu}}</text>
+    </view>
+    <view class="logList-detail">
+        <view class="logistics-item" wx:for="{{logList}}" wx:key="{{item.Remark}}">
+            <view class="cirle"></view>
+            <view class="address">{{item.context}}</view>
+            <text class="logistics-date">{{item.time}}</text>
+        </view>
+    </view>
+</view>

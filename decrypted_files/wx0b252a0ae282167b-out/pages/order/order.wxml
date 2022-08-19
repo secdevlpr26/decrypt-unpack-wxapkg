@@ -1,0 +1,65 @@
+<view class="container mykorder">
+    <view bindtap="tabFun" class="myorder-header">
+        <text class="{{tabArr.curHdIndex=='1'?'active':''}}" data-id="1" id="tab-hd01">待完成</text>
+        <text class="{{tabArr.curHdIndex=='0'?'active':''}}" data-id="0" id="tab-hd02">全部</text>
+        <text class="{{tabArr.curHdIndex=='2'?'active':''}}" data-id="2" id="tab-hd03">已完成</text>
+    </view>
+    <view class="myorder-body">
+        <view class="detail {{tabArr.curBdIndex=='1'?'active':''}}">
+            <view bindtap="actionSheetTap" class="team" id="{{item.id}}" wx:for="{{list_data_1}}" wx:key="index">
+                <view class="order-txt">
+                    <text>{{item.area_1}}{{item.area_2}}{{item.area_3}}{{item.area_4}}</text>
+                    <text>做箱日期：{{item.do_box_time}} {{item.do_box_time_remake}}</text>
+                    <text>上海港区：{{item.port}}</text>
+                    <text>提单号：{{item.bl_num}}</text>
+                    <text>箱型：{{item.box_type}}</text>
+                    <text>货重：{{item.kgs}}</text>
+                    <text>提箱点：{{item.box_take_yard}}</text>
+                    <text>做箱地址：{{item.box_address2}}</text>
+                    <text wx:if="{{item.db_remark}}">备注：{{item.db_remark}}</text>
+                    <text wx:else></text>
+                </view>
+                <view class="price-btn">
+                    <text class="price-1">￥{{item.money}}</text>
+                    <text class="price-2">{{item.statstr}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="detail {{tabArr.curBdIndex=='0'?'active':''}}">
+            <view bindtap="actionSheetTap" class="team" id="{{item.id}}" wx:for="{{list_data_0}}" wx:key="index">
+                <view class="order-txt">
+                    <text>{{item.area_1}}{{item.area_2}}{{item.area_3}}{{item.area_4}}</text>
+                    <text>做箱日期：{{item.do_box_time}}</text>
+                    <text>上海港区：{{item.port}}</text>
+                    <text>箱型：{{item.box_type}}</text>
+                    <text>货重：{{item.kgs}}</text>
+                    <text>提箱点：{{item.box_take_yard}}</text>
+                    <text wx:if="{{item.db_remark}}">备注：{{item.db_remark}}</text>
+                    <text wx:else></text>
+                </view>
+                <view class="price-btn">
+                    <text class="price-1">￥{{item.money}}</text>
+                    <text class="price-2">{{item.statstr}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="detail {{tabArr.curBdIndex=='2'?'active':''}}" hidden="{{currenttTabsIndex!=2}}">
+            <view bindtap="actionSheetTap" class="team" id="{{item.id}}" wx:for="{{list_data_2}}" wx:key="index">
+                <view class="order-txt">
+                    <text>{{item.area_1}}{{item.area_2}}{{item.area_3}}{{item.area_4}}</text>
+                    <text>做箱日期：{{item.do_box_time}}</text>
+                    <text>上海港区：{{item.port}}</text>
+                    <text>箱型：{{item.box_type}}</text>
+                    <text>货重：{{item.kgs}}</text>
+                    <text>提箱点：{{item.box_take_yard}}</text>
+                    <text wx:if="{{item.db_remark}}">备注：{{item.db_remark}}</text>
+                    <text wx:else></text>
+                </view>
+                <view class="price-btn">
+                    <text class="price-1">￥{{item.money}}</text>
+                    <text class="price-2">{{item.statstr}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

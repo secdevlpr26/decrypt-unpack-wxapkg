@@ -1,0 +1,22 @@
+<template name="c1fbfa02">
+    <view class="_view Mc1fbfa02 page">
+        <view bindtap="handleProxy" class="_view Mc1fbfa02 banner" data-comkey="{{$k}}" data-eventid="{{'c1fbfa02-0'}}">
+            <image class="_image Mc1fbfa02 banner-img" src="{{banner.cover}}"></image>
+            <view class="_view Mc1fbfa02 banner-title">{{banner.title}}</view>
+        </view>
+        <view class="_view Mc1fbfa02 uni-list">
+            <view bindtap="handleProxy" class="_view Mc1fbfa02 uni-list-cell" data-comkey="{{$k}}" data-eventid="{{'c1fbfa02-1-'+key}}" hoverClass="uni-list-cell-hover" key="{{key}}" wx:for="{{listData}}" wx:for-index="key" wx:for-item="value" wx:key="key">
+                <view class="_view Mc1fbfa02 uni-media-list">
+                    <image class="_image Mc1fbfa02 uni-media-list-logo" src="{{value.cover}}"></image>
+                    <view class="_view Mc1fbfa02 uni-media-list-body">
+                        <view class="_view Mc1fbfa02 uni-media-list-text-top">{{value.title}}</view>
+                        <view class="_view Mc1fbfa02 uni-media-list-text-bottom">
+                            <text class="_text Mc1fbfa02">{{value.author_name}}</text>
+                            <text class="_text Mc1fbfa02">{{value.published_at}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

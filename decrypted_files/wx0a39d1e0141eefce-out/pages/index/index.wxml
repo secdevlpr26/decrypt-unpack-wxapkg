@@ -1,0 +1,91 @@
+<view class="top">
+    <view class="logo">
+        <image src="../../images/index/logo-big.png"></image>
+    </view>
+    <view class="total">
+        <view class="total-data">
+            <view class="data-title">总容量</view>
+            <view>
+                <text style="font-size:48rpx;line-height:48rpx;">420</text>
+                <text style="font-size:32rpx;line-height:32rpx;">万立</text>
+            </view>
+        </view>
+        <view class="vertical-line"></view>
+        <view class="total-data" style="width:266rpx;">
+            <view class="data-title" style="margin-bottom:23rpx;">总储量</view>
+            <view>
+                <text style="font-size:64rpx;line-height:64rpx;">238</text>
+                <text style="font-size:32rpx;line-height:32rpx;">万立</text>
+            </view>
+        </view>
+        <view class="vertical-line"></view>
+        <view class="total-data">
+            <view class="data-title">容余量</view>
+            <view>
+                <text style="font-size:48rpx;line-height:48rpx;">182</text>
+                <text style="font-size:32rpx;line-height:32rpx;">万立</text>
+            </view>
+        </view>
+        <view class="clearfix"></view>
+    </view>
+</view>
+<view class="tank">
+    <view style="margin-left:7rpx;color:#84868A;">罐区监测</view>
+    <view class="tank-area">
+        <view bindtap="gotoSingleTank" class="pre-tank" id="{{item_index}}" wx:for="{{list}}" wx:for-index="item_index">
+            <view>
+                <view class="tank-name">{{item.name}}</view>
+                <view class="tank-message">
+                    <view style="float:left;">
+                        <image src="../../images/index/drip-icon{{item_index}}.png"></image>
+                    </view>
+                    <view style="float:left;">
+                        <text>{{item.total}}</text>
+                        <text>万立</text>
+                    </view>
+                    <view class="clearfix"></view>
+                </view>
+                <view class="canvasBox">
+                    <view class="bigCircle"></view>
+                    <view class="littleCircle"></view>
+                    <canvas-ring canvasId="runCanvas{{item_index}}" class="canvas" id="runCanvas{{item_index}}" value="{{item.saturation}}"></canvas-ring>
+                </view>
+                <view class="fire-alarm" style="display:{{item.alarmStatus==0?'none':'block'}};">
+                    <image class="fire-alarm-pre" src="../../images/index/fire-alarm.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="clearfix"></view>
+    </view>
+    <view class="enter-title">功能入口</view>
+    <view class="function-area">
+        <view>
+            <view bindtap="gotoNet" class="single-function">
+                <form bindsubmit="sendFormId" reportSubmit="true" style="width:100%;">
+                    <button formType="submit">
+                        <view style="position:relative;width:46rpx;width34rpx;margin:0 auto;">
+                            <image class="function-image" src="../../images/index/net-icon.png" style="width:46rpx;"></image>
+                            <image class="net-alarm" src="../../images/index/net-alarm.png" style="display:{{normal?'none':'block'}};"></image>
+                        </view>
+                        <view>网络状态</view>
+                    </button>
+                </form>
+            </view>
+            <view bindtap="gotoData" class="single-function">
+                <image class="function-image" src="../../images/index/data-search-icon.png"></image>
+                <view>仓容查询</view>
+            </view>
+            <view class="single-function">
+                <image class="function-image" src="../../images/index/count-icon.png"></image>
+                <view style="color:#B3B3B3;">统计分析</view>
+            </view>
+            <view class="single-function">
+                <image class="function-image" src="../../images/index/video-surveillance-icon.png" style="width:36rpx;height:34rpx;margin-top:2rpx;"></image>
+                <view style="color:#B3B3B3;">视频监控</view>
+            </view>
+            <view class="clearfix"></view>
+        </view>
+    </view>
+</view>
+<zy-modal areaName="{{areaName}}出现火灾预警!" bindconfirm="modalConfirm" confirmText="确定" hidden="{{modalHidden}}" imageReady="block"></zy-modal>
+<audio id="audio" loop="false" src="{{src}}"></audio>

@@ -1,0 +1,4 @@
+<text class="desc">
+	分享这个推广二维码，别人通过扫码，可以自动成为您的下级。
+</text>
+<image bindtap="show" mode="widthFix" src="{{path}}" style="width: 70%; margin: 0 auto;"></image>

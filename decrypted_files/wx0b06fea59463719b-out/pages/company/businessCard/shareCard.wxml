@@ -1,0 +1,7 @@
+<view class="fixedTopBorder"></view>
+<view class="canvas-box">
+    <canvas canvasId="myCanvas" style="width: {{canvasWidth}}px;height: {{canvasHeight}}px;" wx:if="{{!hideCanvas}}"></canvas>
+    <image bindtap="clickImage" class="{{hideCanvas?'imgShadow':''}}" data-src="{{shareImage}}" src="{{shareImage}}" style="width: {{canvasWidth}}px;height: {{canvasHeight}}px;" wx:if="{{changeImageShow}}"></image>
+    <view bindtap="saveImageToPhotosAlbum" class="save {{hideCanvas?'pFixed':''}}" style="top: {{hideCanvas?buttonTop:0}}px;" wx:if="{{canSave}}">保存图片</view>
+    <button catchtap="openSet" class="openSetting  {{hideCanvas?'pFixed':''}}" openType="openSetting" style="top: {{hideCanvas?buttonTop:0}}px;" wx:if="{{!canSave}}">保存图片</button>
+</view>

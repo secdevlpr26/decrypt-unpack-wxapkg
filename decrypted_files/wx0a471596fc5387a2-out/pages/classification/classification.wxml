@@ -1,0 +1,24 @@
+<view class="box">
+    <view class="top">
+        <view class="location">
+            <image class="dwico" src="{{hostUrl}}/images/syico1.png"></image>
+            <text>OBS实训平台</text>
+            <image class="rightico" src="{{hostUrl}}/images/syico2.png"></image>
+        </view>
+        <view class="search">
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+            <input bindblur="searchSubmit" bindinput="searchActiveChangeinput" placeholder="搜索商品名称" type="text" value="{{word}}"></input>
+        </view>
+    </view>
+    <view class="list">
+        <view class="li" wx:for="{{typeList}}" wx:key="{{item.ID}}">
+            <navigator url="/pages/goods_list/goods_list?typeId={{item.ID}}">
+                <view class="li_img">
+                    <image class="pic" src="{{hostUrl}}{{item.IMG_URL}}"></image>
+                </view>
+      {{item.TITLE}}
+      </navigator>
+        </view>
+    </view>
+    <include src="../footer/footer.wxml"></include>
+</view>

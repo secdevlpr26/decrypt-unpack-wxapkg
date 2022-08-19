@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "账户安全",
+    "usingComponents": {
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

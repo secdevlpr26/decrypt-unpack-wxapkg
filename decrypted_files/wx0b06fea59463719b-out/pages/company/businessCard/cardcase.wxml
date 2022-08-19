@@ -1,0 +1,38 @@
+<view class="">
+    <view class="carddetails-imgc" wx:if="{{incard}}">
+        <image mode="widthFix" src="{{baseUrl}}/images/wxapp/mingpianjiaye.png"></image>
+        <view class="blank-title">暂未收到名片</view>
+    </view>
+    <form bindsubmit="sendMessage" reportSubmit="true">
+        <view class="businessCard-box" data-idx="{{index}}" wx:for="{{cardcontent}}" wx:key="index">
+            <button catchtap="{{!buttonClicked?'cardDetails':''}}" class="businessCard-conttent" data-id="{{item.ID}}" formType="submit" hoverClass="none" typ="default">
+                <view class="businessCard-title">
+                    <view class="colorc sizeb transmit">来自{{item.SharerName}}的转发</view>
+                    <view class="sizea colorb">{{item.CrTime}}</view>
+                </view>
+                <view class="businessCard-content">
+                    <view class="businessCard-info">
+                        <view class="info-card">
+                            <view class="info-card-left">
+                                <view class="CompanyName">{{item.CompanyName}}</view>
+                                <view class="personInfo">
+                                    <text class="UserName">{{item.UserName}}</text>
+                                    <text class="Position">{{item.Position}}</text>
+                                </view>
+                                <view class="Mobile">{{item.Mobile}}</view>
+                                <view class="email">{{item.Email}}</view>
+                            </view>
+                            <view class="info-card-right">
+                                <image class="PersonImg" mode="widthFix" src="{{baseUrl}}{{item.PersonImg}}"></image>
+                            </view>
+                            <image class="bottom-img" src="{{baseUrl}}/images/wxapp/mingpianlan.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </button>
+        </view>
+    </form>
+    <view bindtap="businessCards" class="business-card pian-copys" wx:if="{{isBinding}}">
+        <view class="mycard">我的名片</view>
+    </view>
+</view>

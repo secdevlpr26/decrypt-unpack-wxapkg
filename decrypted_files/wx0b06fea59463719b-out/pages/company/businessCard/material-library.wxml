@@ -1,0 +1,46 @@
+<view class="material">
+    <swiper autoplay="{{autoplay}}" circular="true" duration="{{duration}}" indicatorActiveColor="#fff" indicatorColor="rgba(255,255,255,.4)" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item wx:for="{{imgUrls}}">
+            <image class="image" mode="aspectFill" src="{{baseUrl}}{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="userInfo">
+        <text class="userInfoName">{{nickName}}</text>
+        <image class="userInfoImg" src="{{avatarUrl}}"></image>
+    </view>
+    <view class="mat-content flexBox flexDirectionRow border1px" wx:if="{{!showBlankFlag}}" wx:for="{{materialList}}" wx:key="{{item.MaterialID}}">
+        <view>
+            <image class="mat-content-img" src="{{avatarUrl}}"></image>
+        </view>
+        <view class="mat-contentRight">
+            <view class="mat-content-top flexBox flexJustifyBetween flexAlign">
+                <text class="mat-name">{{nickName}}</text>
+                <text class="mat-label" wx:if="{{item.TagName}}">{{item.TagName}}</text>
+            </view>
+            <view class="mat-font">{{item.Descriptor}}</view>
+            <view class="mat-imgLists flexBox" wx:if="{{item.MaterialContent.length!==0}}">
+                <view class="mat-content-imglist flexBox flexAlign flexJustify {{item.MaterialContent.length==1?'oneImg':''}}" wx:for="{{item.MaterialContent}}" wx:for-item="itemImg" wx:key="index">
+                    <image bindtap="bindClickImg" data-imagearr="{{item.MaterialContent}}" data-index="{{index}}" mode="aspectFill" src="{{baseUrl}}{{itemImg}}"></image>
+                </view>
+            </view>
+            <view class="mat-content-bottom flexBox flexJustifyBetween flexAlign {{item.MaterialContent.length!==0?'':'noItemImg'}}">
+                <text class="mat-content-time">{{item.CrTime}}</text>
+                <view class="flexBox flexDirectionRow">
+                    <view catchtap="copyText" class="mat-content-btn" data-descriptor="{{index}}">复制文案</view>
+                    <view catchtap="saveImg" class="mat-content-btn" data-saveindex="{{index}}" wx:if="{{canSave}}">保存图片</view>
+                    <button catchtap="openSet" class="mat-content-btn" openType="openSetting" wx:if="{{!canSave}}">保存图片</button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="noMaterial" wx:if="{{showBlankFlag}}">
+        <image mode="widthFix" src="{{baseUrl}}/images/wxapp/material_blank.png"></image>
+        <text style="font-size:26rpx;color:#999">暂无发布素材</text>
+    </view>
+    <picker bindchange="bindPickerChange" range="{{tagNameList}}" value="{{tagNameIndex}}">
+        <view class="search">
+            <image class="searchImg" src="{{baseUrl}}/images/wxapp/filter-search.png"></image>
+        </view>
+    </picker>
+</view>
+<include src="/pages/template/getUserInfo.wxml"></include>

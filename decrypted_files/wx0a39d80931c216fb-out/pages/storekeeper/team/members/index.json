@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "我的会员",
+    "usingComponents": {
+        "uni-icon": "/components/uni-icon",
+        "no-data": "/components/nodata",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

@@ -1,0 +1,10 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <form bindsubmit="formSubmit">
+        <view class="nick-name">
+            <input focus bindconfirm="editNickName" maxlength="20" name="nickName" placeholder="昵称" value="{{nickName}}"></input>
+        </view>
+        <button class="btn-dafault appoint" formType="submit">保存</button>
+    </form>
+</view>

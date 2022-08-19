@@ -1,0 +1,21 @@
+<view style="width:0px;height:0px;overflow:hidden;">
+    <canvas canvasId="shareImg" style="width:700px;height:710px"></canvas>
+</view>
+<view catchtouchmove="true" class="preview" hidden="{{hidden}}">
+    <image bindtap="closetype" class="close" src="../../resource/images/gb.png"></image>
+    <image class="tu" mode="widthFix" src="{{prurl}}"></image>
+    <button bindtap="share" class="save1" size="mini" type="primary">重新加载</button>
+    <button bindtap="save" class="save" size="mini" type="primary">保存分享图</button>
+</view>
+<image bindtap="share" class="fenx" src="../../resource/images/fx.png"></image>
+<image bindtap="jump" class="fenx2" src="../../resource/images/sy1.png"></image>
+<import src="../../resource/wxParse/wxParse.wxml"></import>
+<view class="container">
+    <view class="title">
+        <view>{{data.title}}</view>
+        <view>{{data.createtime}}</view>
+    </view>
+    <view class="content">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </view>
+</view>

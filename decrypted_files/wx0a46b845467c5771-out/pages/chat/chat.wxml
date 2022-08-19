@@ -1,0 +1,74 @@
+<view style="background:#eee">
+    <view class="title">
+        <view class="ad-name">
+            <image alt="" src="{{busyButton}}"></image>
+            <text>{{adviserName}}</text>
+        </view>
+    </view>
+    <scroll-view scrollY bindscrolltoupper="scrollTop" class="message-box" scrollIntoView="{{toView}}" style="height:100vh;">
+        <view class="line-box">
+            <view class="line"></view>
+            <view class="line-text">资深顾问{{adviserName}}为您服务</view>
+            <view class="line"></view>
+        </view>
+        <view class="message-text {{item.local?'right':'left'}} " wx:for="{{localMessages}}" wx:key="index">
+            <view class="{{item.content&&item.content.type==104||item.content.type==502?'text-content1':'text-content'}}">
+                <image bindtap="tryAgain" class="failed" data-index="{{index}}" data-msg="{{item.content}}" src="../../image/im/fail.png" wx:if="{{item.failed}}"></image>
+                <text selectable="true" wx:if="{{!item.content.type}}">{{item.content}}</text>
+                <text selectable="true" wx:if="{{item.content.type==515||item.content.type==516}}">{{item.content.param.text}}</text>
+                <view data-dialog="1" data-showvideo="1" data-url="{{item.content.param.linkedUrl}}" style="max-width:250px;" wx:if="{{item.content.type&&item.content.type==509}}">
+                    <image bindtap="previewImage" data-src="{{item.content.param.linkedUrl}}" mode="widthFix" src="{{item.content.param.linkedUrl}}" style="width:250px"></image>
+                </view>
+                <view bindtap="showDialog" data-dialog="1" data-showvideo="2" data-url="{{item.content.param.linkedUrl}}" style="max-width:250px;" wx:if="{{item.content.type&&item.content.type==506||item.content.type==508}}">
+                    <image mode="widthFix" src="{{item.content.param.url}}" style="width:250px"></image>
+                </view>
+                <view style="width:250px" wx:if="{{item.content.type&&item.content.type==502}}">
+                    <view style="margin-top:5px;margin-left:5px">顾问{{adviserName}}</view>
+                    <view style="margin-left:5px;color:#999999;margin-bottom:10px;">正在请求获取您的手机号码</view>
+                    <view class="down-box" wx:if="{{!isGiveTel}}">
+                        <button bindtap="deny" class="deny-button">拒绝</button>
+                        <button bindtap="admit" class="admit-button">同意</button>
+                    </view>
+                    <view style="width:100%;text-align:center;height:40px;line-height:40px" wx:else>
+                        <text>该请求已过期</text>
+                    </view>
+                </view>
+                <view bindtap="goH5" data-url="{{item.content.param.url}}" style="display:flex" wx:if="{{item.content.type&&item.content.type==507}}">
+                    <view style="width:160px">
+                        <view>{{item.content.param.h5Title}}</view>
+                        <view style="font-size:14px;white-space:nowrap;overflow:hidden;texe-overflow:ellipsis">{{item.content.param.h5Desc}}</view>
+                    </view>
+                    <view>
+                        <image alt="" src="{{item.content.param.h5Icon}}" style="width:50px;height:50px;"></image>
+                    </view>
+                </view>
+                <view bindtap="goPDF" data-url="{{item.content.param.linkedUrl}}" style="display:flex" wx:if="{{item.content.type&&item.content.type==204}}">
+                    <view style="width:160px">
+                        <view>{{item.content.param.pdfTitle}}</view>
+                    </view>
+                    <view>
+                        <image alt="" src="{{pdfImg}}" style="width:50px;height:50px;"></image>
+                    </view>
+                </view>
+                <view bindtap="goVideo" style="width:250px;" wx:if="{{item.content.type&&item.content.type==104}}">
+                    <image mode="widthFix" src="{{videoImg}}" style="width:250px"></image>
+                    <view class="video-text">立即进入e考察</view>
+                </view>
+            </view>
+            <view class="time-now">{{item.time||''}}</view>
+        </view>
+        <view class="hei" id="hei"></view>
+    </scroll-view>
+    <view class="bottom-box">
+        <input confirmHold bindconfirm="bindButtonTap" bindinput="bindKeyInput" class="input-box" placeholder="点击输入..." placeholderStyle="font-size:14px;color:#cccccc" value="{{currentMessage}}"></input>
+    </view>
+    <view class="loadData" wx:if="{{loading}}">
+        <image alt="" mode="widthFix" src="{{loadingImg}}" style="width:100px"></image>
+    </view>
+    <view bindtap="showDialog" class="dialog" data-dialog="2" wx:if="{{dialog==1}}">
+        <view class="pic-div">
+            <video controls objectFit="cover" src="{{imgUrl}}" style="width:100vw" wx:if="{{showvideo==2}}"></video>
+            <image alt="" src="{{imgUrl}}" style="width:100vw" wx:else></image>
+        </view>
+    </view>
+</view>

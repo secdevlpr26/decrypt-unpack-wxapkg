@@ -1,0 +1,10 @@
+<view class="listWrapper">
+    <view class="oneLesson" wx:for="{{groupList}}">
+        <image class="lessonCoverImage" lazyLoad="true " src="{{item.course_cover_url}}"></image>
+        <view class="lessonInfo">
+            <image class="icon" src="../../../image/lessonList/time_icon.png"></image>
+            <text class="lessonDay">第{{item.current_learn_day}}天</text>
+            <image class="icon" mode="aspectFit" src="../../../image/lessonList/next_icon.png"></image>
+        </view>
+    </view>
+</view>

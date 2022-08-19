@@ -1,0 +1,79 @@
+<view class="wx_page">
+    <view class="list_nav_area">
+        <view bindtap="gotoAllOrder" class="list_nav {{orderStatus=='0_2_3_4_5_6_7_8'?'highlight':''}}" hoverClass="none" url="url">
+            <view class="list_nav_inner">全部</view>
+        </view>
+        <view bindtap="gotoSellerSendOrder" class="list_nav {{orderStatus=='2'?'highlight':''}}" hoverClass="none" url="url">
+            <view class="list_nav_inner">待发货</view>
+        </view>
+        <view bindtap="gotoBuyerConfirmGoodsOrder" class="list_nav {{orderStatus=='3_4'?'highlight':''}}" hoverClass="none" url="url">
+            <view class="list_nav_inner">待收货</view>
+        </view>
+        <view bindtap="gotoFinishOrder" class="list_nav {{orderStatus=='5'?'highlight':''}}" hoverClass="none" url="url">
+            <view class="list_nav_inner">已完成</view>
+        </view>
+    </view>
+    <scroll-view bindscrolltolower="scrollToLowerHandler" class="page_content" lowerThreshold="100" scrollY="true" style="height:{{listHeight}}px;" wx:if="{{orderBlock.length>0}}">
+        <block wx:for="{{orderBlock}}" wx:for-item="order_list" wx:key="index">
+            <view bindtap="gotoDetailHandler" class="order_group" data-order="{{order}}" wx:for="{{order_list}}" wx:for-item="order" wx:key="order_id">
+                <view class="goods_list">
+                    <view class="goods_item" wx:for="{{order.product_list}}" wx:for-item="orderItem" wx:key="order_id">
+                        <view class="goods_cover">
+                            <image class="goods_cover_img" mode="aspectFill" src="{{orderItem.pic_path}}"></image>
+                        </view>
+                        <view class="goods_info">
+                            <view class="goods_title">{{orderItem.product_name}}</view>
+                            <view class="goods_description">
+                                <text class="goods_description_item" wx:for="{{orderItem.skuname_list}}" wx:for-item="name" wx:key="index">{{name}}</text>
+                            </view>
+                            <view class="goods_cost">
+                                <text class="goods_price">¥{{orderItem.product_fee/100}}</text>
+                                <text class="goods_num">x{{orderItem.num}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="order_group_ft">
+                    <view class="order_group_label" wx:if="{{order.status!=3||!order.track_no}}">
+                        <block wx:if="{{order.status==0}}">预下单</block>
+                        <block wx:if="{{order.status==1}}">待支付</block>
+                        <block wx:if="{{order.status==2}}">待发货</block>
+                        <block wx:if="{{order.status==3}}">待收货</block>
+                        <block wx:if="{{order.status==4}}">待签收</block>
+                        <block wx:if="{{order.status==5}}">已完成</block>
+                        <block wx:if="{{order.status==6}}">订单取消</block>
+                        <block wx:if="{{order.status==7}}">系统自动取消订单</block>
+                    </view>
+                    <view catchtap="gotoExpress" class="order_group_opr" data-id="{{order.order_id}}" data-track_no="{{order.track_no}}" wx:if="{{order.status==3&&order.track_no}}">查看物流</view>
+                    <view class="order_group_total">
+                        <text class="num">{{order.product_list.length}}</text>件商品共<text class="price">{{order.total_fee/100}}</text>元
+        </view>
+                </view>
+            </view>
+        </block>
+        <view class="list_extra_area">
+            <view class="tips_area no_more" wx:if="{{listStatus==3}}">
+                <view class="tips_area_inner">
+          END
+        </view>
+            </view>
+            <view class="tips_area loading" wx:if="{{listStatus==2}}">
+                <view class="tips_area loading">
+                    <image src="/images/icon16_loading_gray.gif"></image>
+          正在加载
+        </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="empty_box" wx:if="{{listStatus==3&&orderBlock.length==0}}">
+    没有订单
+  </view>
+    <view class="loading_box" wx:if="{{pageStatus==1}}">
+        <image class="icon_loading" mode="aspectFit" src="/images/loadin.png"></image>
+    </view>
+    <view class="error_box" wx:if="{{pageStatus==2}}">
+        <image class="icon_reload" mode="aspectFit" src="/images/reload.png"></image>
+        <view class="reload_desc">加载失败</view>
+        <view bindtap="reloadHandler" class="reload_link">重新加载</view>
+    </view>
+</view>

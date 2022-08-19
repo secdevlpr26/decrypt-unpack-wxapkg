@@ -1,0 +1,56 @@
+<scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">
+    <view class="allcontainer">
+        <view class="container">
+            <view class="swiper-container">
+                <swiper autoplay="{{autoplay}}" circular="{{circular}}" duration="{{duration}}" interval="{{interval}}" style="height:{{imgheight}}rpx;">
+                    <swiper-item wx:for="{{piclist}}">
+                        <image bindload="imageLoad" class="slide-image" src="{{item}}" style="height:{{imgheight}}rpx;width:{{imgwidth}}rpx;"></image>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view class="list">
+                <view class="item">
+                    <view class="name">地址</view>
+                    <view class="selectitem">{{data.address}}</view>
+                    <view bindtap="goMap" class="redname">
+                        <image src="../../resource/images/ico-addr.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="list">
+                <view class="item">
+                    <view class="name">联系电话</view>
+                    <view class="selectitem">{{data.tel}}</view>
+                    <view bindtap="doCall" class="redname" data-tel="{{data.tel}}">
+                        <image src="../../resource/images/telnew.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="list">
+                <view class="item">
+                    <view class="name">上班时间</view>
+                    <view class="selectitem">{{data.opentime}}</view>
+                    <view bindtap="goMap" class="redname"></view>
+                </view>
+            </view>
+            <view class="backgroud"></view>
+            <view class="contentlist">
+                <view class="title">
+                    <view></view>
+                    <view>{{data.name}}介绍</view>
+                </view>
+                <view class="intro">
+                    <block wx:for="{{content}}" wx:for-item="cellData">
+                        <view class="p" wx:if="{{cellData.type=='view'}}">
+                            <block wx:for="{{cellData.child}}" wx:key="text">
+                                <text bindtap="stockClick" class="a" data-seccode="{{item.attr['data-seccode']}}" data-secname="{{item.attr['data-secname']}}" wx:if="{{item.type=='a'}}">{{item.text}}</text>
+                                <text wx:else>{{item.text}}</text>
+                            </block>
+                        </view>
+                        <image bindload="imageLoad" class="img" data-index="{{index}}" mode="widthFix" src="{{cellData.attr.src}}" style="width:{{imagewidth}}px; height:{{imageheight}}px;" wx:if="{{cellData.type=='img'}}"></image>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>

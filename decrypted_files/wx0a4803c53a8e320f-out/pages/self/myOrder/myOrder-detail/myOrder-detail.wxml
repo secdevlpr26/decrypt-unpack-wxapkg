@@ -1,0 +1,83 @@
+<view class="order-detail-wrap">
+    <view class="order-info">
+        <view class="order-info-item" hidden="{{!showStatus}}">
+            <text class="order-info-txt">状态：</text>
+            <text class="order-info-state red">{{payStatusStr}}</text>
+        </view>
+        <view class="order-info-item">
+            <text class="order-info-txt">订单编号：</text>
+            <text class="order-info-no">{{orderNO}}</text>
+        </view>
+        <view class="order-info-item">
+            <text class="order-info-txt">下单时间：</text>
+            <text class="order-info-time">{{createDate}}</text>
+        </view>
+        <view bindtap="sureReceive" class="btn-frame" wx:if="{{status==3}}">
+            <text class="btn-sure">确认收货</text>
+        </view>
+        <view class="btn-frame" wx:if="{{payType!=3&&payStatus==0&&status==1}}">
+            <text bindtap="toPay" class="btn-cancel" data-orderinfo="{{orderDetail}}" data-type="0" wx:if="{{isShowPrePay&&cardNo}}">预存支付</text>
+            <text bindtap="cancelOrder" class="btn-cancel" wx:else>申请取消订单</text>
+            <text bindtap="toPay" class="btn-pay" data-orderinfo="{{orderDetail}}" data-type="1">去支付</text>
+        </view>
+        <view class="btn-frame" wx:elif="{{status==1&&payStatus==0}}">
+            <text bindtap="cancelOrder" class="btn-sure">申请取消订单</text>
+        </view>
+    </view>
+    <view class="order-info1">
+        <view class="order-info-item">
+            <text class="order-info-txt">商品金额：</text>
+            <text class="order-info-price red">￥{{orderDetail.totalMoney}}<text class="gray" wx:if="{{orderDetail.payType==0}}"> (支付宝支付)</text>
+                <text class="gray" wx:elif="{{orderDetail.payType==4||orderDetail.payType==1}}"> (微信支付)</text>
+                <text class="gray" wx:elif="{{orderDetail.payType==3}}"> (货到付款)</text>
+            </text>
+        </view>
+        <view class="order-info-item">
+            <text class="order-info-txt">收货地址：</text>
+            <text class="order-info-address">{{orderDetail.parent.personAddress}}</text>
+        </view>
+        <view class="order-info-item">
+            <text class="order-info-txt">收货人：</text>
+            <text class="order-info-name" selectable="true">{{orderDetail.parent.personName}}</text>
+        </view>
+        <view class="order-info-item" wx:if="{{expressNO}}">
+            <text class="order-info-txt">物流单号：</text>
+            <text class="order-info-time" selectable="true">{{expressNO}}</text>
+        </view>
+    </view>
+    <view catchtap="gotoLogistics" class="logistics" wx:if="{{orderDetail.status==3}}">
+        <view class="iconfont icon-wuliu1"></view>
+        <view class="logistics-txt">
+            <text>查看物流信息（物流单号：</text>
+            <text class="red">{{orderDetail.expressNO}}</text>）
+        </view>
+        <view class="iconfont icon-arrow-right"></view>
+    </view>
+    <view class="order-item">
+        <view class="ori-produce" wx:for="{{orderDetail.productOrderVOList}}" wx:key="{{item.id}}">
+            <image lazyLoad="{{true}}" src="{{item.imageURL}}"></image>
+            <view class="orip-info">
+                <text class="orip-name">
+                    <text>{{item.productName}}</text>
+                </text>
+                <text class="orip-attr">{{item.productModelName}}</text>
+                <text class="price">
+                    <text>￥</text>{{item.price}}<text>x{{item.amount}}</text>
+                </text>
+                <view bindtap="goComment" class="btn-comment" data-id="{{item.id}}" wx:if="{{payStatus==1&&status==4}}">去评价</view>
+            </view>
+        </view>
+        <view class="order-item-bot">
+            <view class="ori-allPrice">
+                <text>总金额￥</text>{{orderDetail.totalMoney}}<text>含运费￥{{orderDetail.transportCost}}</text>
+            </view>
+            <view bindtap="refund" class="btn-refund" wx:if="{{payStatus==1&&(status==1||status==2||status==3)}}">退款</view>
+        </view>
+    </view>
+</view>
+<view class="order-detail-bottom">
+    <view bindtap="makePhoneCall" class="merchant-tel">
+        <text class="iconfont icon-phone"></text>
+        <text>联系商家</text>
+    </view>
+</view>

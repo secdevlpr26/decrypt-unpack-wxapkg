@@ -1,0 +1,24 @@
+<view class="banner">
+    <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/meizu_banner.png"></image>
+    <image class="shouquan" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/meizu2.png"></image>
+    <view class="bannertxt">魅族科技有限公司</view>
+</view>
+<view class="detail">
+    <view class="title">关于魅族</view>
+    <text>魅族成立于2003年，长达13年的历史文化沉淀使得它对于每一个细节都要做到完美，魅族因梦想而立，热爱而极致，专注和长久的追求，必将带来商业产品无与伦比的梦想之作。魅族的一切将超越常规，超乎想象。</text>
+    <view class="title">关于Hi维修</view>
+    <text>在Hi维修成立以来，就是为了用快乐方式解决“手机维修难”让更多的人分享快乐、让更多的人传播快乐！用透明价、成本价、免费上门、全程录像、售后质保等多项措施去保护顾客的利益，用电话回访、录像查看、地点定位等措施去维护顾客权益！一切服务以顾客的极致体验为前提，转变大家对手机维修行业的认知！</text>
+    <view class="title">官方授权</view>
+    <text>2016年8月魅族官方正式授权“Hi维修”成为其线上O2O手机维修商，意向—接洽—考察—合作，每一个步骤都经历了月余的光阴，Hi维修凭借其创新的模式、对待客户认真和负责的态度，一致赢得了魅族官方的高度满意和赞赏！</text>
+    <view class="title">我们的优势</view>
+    <view class="youshititle">官方授权</view>
+    <text class="youshi">魅族手机官方授权线上O2O手机维修商，官方认证，品质有保障！</text>
+    <view class="youshititle">覆盖全国</view>
+    <text class="youshi">Hi维修已经开通上海、北京、深圳、杭州等12个城市，嬴得了数十万用户口碑赞誉！</text>
+    <view class="youshititle">便捷服务</view>
+    <text class="youshi">再也不用为手机售后烦忧了，动动手指一键下单，Hi维修为您免费上门服务！</text>
+    <view class="youshititle">安全保障</view>
+    <text class="youshi">担心零件被换？担心隐私泄露？一对一当面维修，维修过程全程录像保障你的隐私安全！</text>
+    <view class="youshititle">透明价格</view>
+    <text class="youshi">Hi维修作为魅族官方授权商，价格透明公开，从此告别黑心奸商！</text>
+</view>

@@ -1,0 +1,73 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/login/index",
+        "pages/news/index",
+        "pages/commonUser/index",
+        "pages/orderList/index",
+        "pages/appointment/index",
+        "pages/nearby/index",
+        "pages/myCoupons/index",
+        "pages/sellerEnter/index",
+        "pages/aboutUs/index",
+        "pages/getCoupons/index",
+        "pages/sharePolite/index",
+        "pages/myBalance/index",
+        "pages/commonUserInfo/index",
+        "pages/oauth/index",
+        "pages/paySubmit/index",
+        "pages/recharge/index",
+        "pages/serveIntro/index",
+        "pages/evaluates/index",
+        "pages/serveSearch/index",
+        "pages/positionChange/index",
+        "pages/orderDetail/index",
+        "pages/addressDetail/index",
+        "pages/orderProcess/index",
+        "pages/userNickName/index",
+        "pages/addressList/index",
+        "pages/addressSearch/index",
+        "pages/oneClick/index",
+        "pages/serveDetail/index",
+        "pages/allserve/index",
+        "pages/servecont/index",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#2d92f4",
+        "navigationBarTextStyle": "#fff"
+    },
+    "tabBar": {
+        "color": "#c7c7c7",
+        "selectedColor": "#258ef3",
+        "borderStyle": "#eee",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/1.png",
+                "selectedIconPath": "images/2.png"
+            },
+            {
+                "pagePath": "pages/nearby/index",
+                "text": "附近",
+                "iconPath": "images/4.png",
+                "selectedIconPath": "images/3.png"
+            },
+            {
+                "pagePath": "pages/orderList/index",
+                "text": "订单",
+                "iconPath": "images/6.png",
+                "selectedIconPath": "images/5.png"
+            },
+            {
+                "pagePath": "pages/commonUser/index",
+                "text": "我的",
+                "iconPath": "images/8.png",
+                "selectedIconPath": "images/7.png"
+            }
+        ]
+    }
+}

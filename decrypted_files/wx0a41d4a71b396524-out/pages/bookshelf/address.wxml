@@ -1,0 +1,16 @@
+<view class="title m10">书柜列表</view>
+<view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+        <view bindtap="chooseAddr" class="weui-cell weui-cell_access" data-id="{{i.eqId}}" data-index="{{ind}}" wx:for="{{items}}" wx:for-index="ind" wx:for-item="i">
+            <view class="weui-cell__bd">
+                <view>
+                    <view class="book-name">
+                        <view class="ocle" wx:if="{{i.wasCurrent==true}}">当前</view>{{i.eqName}}</view>
+                    <view class="book-addr">{{i.address==null?'':i.address}}</view>
+                </view>
+            </view>
+            <view class="weui-cell__ft ">
+                <image src="../../images/bookshelf_icon.png"></image>{{i.distance}}</view>
+        </view>
+    </view>
+</view>

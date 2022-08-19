@@ -1,0 +1,2 @@
+<import src="./product-time-machine.vue.wxml"></import>
+<template is="1bd92d26" data="{{...$root['0'],$root:$root}}"></template>

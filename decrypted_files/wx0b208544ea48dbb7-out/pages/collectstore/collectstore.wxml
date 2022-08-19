@@ -1,0 +1,26 @@
+<view class="store-wrap">
+    <scroll-view bindscrolltolower="loadMore" class="store-scroll" scrollY="true">
+        <view bindtap="toGoodsList" class="store-item" data-id="{{item.shop_id}}" wx:for="{{storeList}}" wx:key="index">
+            <view class="logo">
+                <image src="{{item.shop_img}}"></image>
+            </view>
+            <view class="content">
+                <view class="name text-ellipsis">
+                        {{item.shop_name}}
+                    </view>
+                <view class="text text-ellipsis">
+                        {{item.shop_desc}}
+                    </view>
+            </view>
+            <view catchtap="delShop" class="del-btn" data-id="{{item.shop_id}}">取消收藏</view>
+        </view>
+        <view class="empty-container" wx:if="{{storeList.length==0}}">
+            <view class="icon">
+                <image src="./icons/empty-icon.png"></image>
+            </view>
+            <view class="hint">
+                暂时还没有收藏任何店铺
+            </view>
+        </view>
+    </scroll-view>
+</view>

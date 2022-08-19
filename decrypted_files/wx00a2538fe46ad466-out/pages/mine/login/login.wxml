@@ -1,0 +1,5 @@
+<view id="Empty">
+    <image mode="Empty" src="Empty"></image>
+</view>
+<view id="Empty">Empty</view>
+<button bindgetuserinfo="Empty" class="Empty" disabled="Empty" id="Empty" loading="Empty" openType="Empty">Empty</button>

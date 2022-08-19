@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "tab-bar": "../../components/tab-bar/tab-bar",
+        "login-dialog": "../../components/login-dialog/login-dialog"
+    },
+    "navigationBarTitleText": "个人中心",
+    "navigationBarBackgroundColor": "#bb825b",
+    "navigationBarTextStyle": "white"
+}

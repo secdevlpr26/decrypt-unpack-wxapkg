@@ -1,0 +1,33 @@
+<import src="/utils/wxParse/wxParse.wxml"></import>
+<view class="container">
+    <view class="banner">
+        <image class="fullImg" src="{{serveData.picture}}"></image>
+    </view>
+    <view class="serve-tit">
+        <view class="serve-name">{{serveData.title}}</view>
+        <view class="serve-abst">{{serveData.abstract}}</view>
+        <view class="serve-price">¥{{serveData.price}}</view>
+    </view>
+    <navigator class="weui-cell weui-cell_access serve-price-detail" url="../serveIntro/index">
+        <view class="weui-cell__bd">服务价格</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator class="weui-cell weui-cell_access serve-price-detail" url="../evaluates/index?id={{serviceId}}">
+        <view class="weui-cell__bd">评价({{evaluatesTotal}})</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">好评度<text class="percent">{{evaluatesPercent}}%</text>
+        </view>
+    </navigator>
+    <view class="serve-content-detail" wx:if="{{serveData.content}}">
+        <view class="content-tit">
+            <view class="left"></view>
+            <view class="text">服务内容</view>
+            <view class="right"></view>
+        </view>
+        <view>
+            <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+        </view>
+    </view>
+    <view bindtap="submit" class="btn-block appoint">
+      立即预约
+    </view>
+</view>

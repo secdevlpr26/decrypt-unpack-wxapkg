@@ -1,0 +1,22 @@
+<view class="page-container">
+    <view class="form-container">
+        <view class="form-line">
+            <view class="line-title">isbn号：</view>
+            <input bindinput="formInput" class="line-input" data-name="isbn" placeholder="请扫码或手动输入" value="{{formData.isbn}}"></input>
+            <view bindtap="scanCode" class="line-button" data-type="isbn">扫码获取</view>
+        </view>
+        <view class="form-line">
+            <view class="line-title">条码号：</view>
+            <input bindinput="formInput" class="line-input" data-name="barCode" placeholder="请扫码或手动输入" value="{{formData.barCode}}"></input>
+            <view bindtap="scanCode" class="line-button" data-type="barCode">扫码获取</view>
+        </view>
+        <view class="form-line">
+            <view class="line-title">设备编号：</view>
+            <input bindinput="formInput" class="line-input" data-name="clientId" placeholder="请输入设备编码" value="{{formData.clientId}}"></input>
+        </view>
+        <view class="button-line">
+            <button bindtap="launch" class="launch">入库+投放</button>
+            <button bindtap="warehousing" class="warehousing">入库</button>
+        </view>
+    </view>
+</view>

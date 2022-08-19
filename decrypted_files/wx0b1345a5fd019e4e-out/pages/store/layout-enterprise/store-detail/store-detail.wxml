@@ -1,0 +1,34 @@
+<view class="wrap">
+    <view class="top">
+        <swiper autoplay="true" circular="true" indicatorActiveColor="#000000" indicatorColor="rgba(0,0,0,.4)" indicatorDots="true" interval="3000">
+            <swiper-item wx:for="{{storeImg}}" wx:key="index">
+                <image class="top-background" lazyLoad="{{true}}" mode="aspectFill" src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="main">
+        <view class="nav">
+            <view bindtap="nav_tap" class="nav-item" data-index="2">
+                <text class="{{tapIndex==2?'active':''}}">关于我们</text>
+            </view>
+            <view bindtap="nav_tap" class="nav-item" data-index="3">
+                <text class="{{tapIndex==3?'active':''}}">招聘信息</text>
+            </view>
+            <view bindtap="nav_tap" class="nav-item" data-index="1">
+                <text class="{{tapIndex==1?'active':''}}">留言反馈</text>
+            </view>
+        </view>
+        <view class="introduction" wx:if="{{tapIndex==2}}">
+            <rich-text nodes="{{storeInfo.shortDescription}}"></rich-text>
+        </view>
+        <view class="jobInfo" wx:elif="{{tapIndex==3}}">{{storeInfo.longDescription}}</view>
+        <view class="feedback" wx:else>
+            <form bindsubmit="formSubmit">
+                <input name="name" placeholder="请输入姓名"></input>
+                <input maxlength="11" name="phone" placeholder="请输入联系方式" type="number"></input>
+                <textarea name="detail" placeholder="请输入意见详情"></textarea>
+                <button class="btn-submit" formType="submit" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">提交</button>
+            </form>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,30 @@
+<view class="Empty">
+    <view bindtap="Empty" class="Empty">
+        <view>
+            <image class="Empty" mode="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <text class="Empty">Empty</text>
+        </view>
+    </view>
+    <view class="Empty">
+        <textarea bindblur="Empty" class="Empty" placeholder="Empty" placeholderClass="Empty"></textarea>
+    </view>
+    <view class="Empty">
+        <text class="Empty">Empty</text>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <image bindtap="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <image bindtap="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <image bindtap="Empty" src="Empty"></image>
+        </view>
+    </view>
+    <text bindtap="Empty" class="Empty">Empty</text>
+</view>

@@ -1,0 +1,14 @@
+<scroll-view bindchange="switchTab" bindscrolltolower="bindDownLoad" class="scoll-h" current="{{currentTab}}" duration="300" scrollY="true" style="height:{{winHeight}}rpx">
+    <view class="li" wx:for="{{list}}" wx:key="{{item.ARTICLEID}}">
+        <navigator url="/pages/noticeDe/noticeDe?id={{item.ARTICLEID}}">
+            <view class="p">{{item.TITLE}}</view>
+            <view class="jj">{{item.INTRO}}</view>
+            <view class="ckxq">关注:🌹{{item.HITS}}</view>
+        </navigator>
+    </view>
+</scroll-view>
+<view>
+    <loading hidden="{{hidden}}">
+      加载中...
+    </loading>
+</view>

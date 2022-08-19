@@ -1,0 +1,26 @@
+<view>{{index}}</view>
+<view class="addrcon">
+    <view class="addrlist" wx:for="{{addressList}}" wx:key="{{item.XH}}">
+        <view class="addr">
+            <text>姓名：{{item.GSNAME}}</text>
+        </view>
+        <view class="dianhua">开户银行：{{item.BANK}}</view>
+        <view class="dianhua">卡号：{{item.ZH}}</view>
+        <view class="dianhua">通信地址：{{item.ADDRESS}}</view>
+        <view class="dianhua">联系方式：{{item.TELL}}</view>
+        <view class="addrb">
+            <view class="moren">
+                <label>
+                    <radio bindtap="radio" checked="true" color="#e6442d" data-id="{{item.ID}}" wx:if="{{item.IS_DEFAULT==1}}"></radio>
+                    <radio bindtap="radio" color="#e6442d" data-id="{{item.ID}}" wx:else></radio>
+      设成默认</label>
+            </view>
+            <button bindtap="edit" class="edit" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/bjico.png"></image>编辑</button>
+            <button bindtap="delete" class="delete" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/scico.png"></image>删除</button>
+        </view>
+    </view>
+</view>
+<view bindtap="addAddress" class="addbtn">新增个人帐户信息<image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>

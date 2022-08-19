@@ -1,0 +1,59 @@
+<view class="container container-gray">
+    <view class="group">
+        <view class="group-header">基本信息</view>
+        <view class="group-body">
+            <view class="input-list">
+                <view class="input-item">
+                    <text class="input-item-label">类型</text>
+                    <view class="input-item-content">{{event.type_name}}</view>
+                </view>
+                <view class="input-item">
+                    <text class="input-item-label">事发时间</text>
+                    <view class="input-item-content">{{event.occur_time}}</view>
+                </view>
+                <view class="input-item">
+                    <text class="input-item-label">处理时限</text>
+                    <view class="input-item-content">{{event.deadline||''}}</view>
+                </view>
+                <view class="input-item">
+                    <text class="input-item-label">是否超期</text>
+                    <view class="input-item-content">否</view>
+                </view>
+                <view class="input-item">
+                    <text class="input-item-label">地址</text>
+                    <view class="input-item-content">{{event.location}}</view>
+                </view>
+                <view class="input-item input-item-full">
+                    <text class="input-item-label">事件描述</text>
+                    <textarea>{{event.event_describe}}</textarea>
+                </view>
+                <view class="input-item input-item-full">
+                    <text class="input-item-label">附件</text>
+                    <view class="page-section-spacing">
+                        <scroll-view bindscroll="scroll" class="scroll-view_H" scrollX="true" style="width: 100%">
+                            <view class="scroll-view-item_H demo-text-1" wx:if="{{image.dic_type<1}}" wx:for="{{attachment}}" wx:for-item="image">
+                                <image bindtap="previewImage" class="weui-uploader__img" data-src="{{image.attachment_url}}" src="{{image.attachment_url}}"></image>
+                            </view>
+                            <view class="scroll-view-item_H demo-text-1" wx:if="{{image.dic_type>1}}" wx:for="{{attachment}}" wx:for-item="image">
+                                <image bindtap="playVoice" class="weui-uploader__img" data-src="{{image.attachment_url}}" src="/dist/images/yuyin.jpg"></image>
+                            </view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="group-header">记录信息</view>
+        <view class="group-body">
+            <scroll-view scrollX="false" scrollY="true" wx:for="{{record}}">
+                <view class="recond">
+                    <view class="recond-head">
+                        <view class="recond-time">{{item.create_time}}</view>
+                        <view class="recond-people">{{item.name||''}}</view>
+                        <view class="recond-action">{{item.action}}</view>
+                    </view>
+                    <view class="recond-cont">{{item.action_result||''}}</view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

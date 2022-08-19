@@ -1,0 +1,37 @@
+<view class="submit-cost">
+    <view class="submit-cost-header">
+        <view class="receipt-header-bt">修改费用</view>
+    </view>
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="submit-cost-body">
+            <view class="section">
+                <view class="section__title">费用名称</view>
+                <picker bindchange="bindPickerChange" range="{{objectArray}}" rangeKey="name" value="objectIndex">
+                    <view class="picker_one" id="{{objectArray[objectIndex].id}}">
+                    {{objectArray[objectIndex].name}}
+                </view>
+                </picker>
+            </view>
+            <view class="section">
+                <view class="section__title">金额</view>
+                <input name="money" placeholder="请输入上报金额" type="number" value="{{minfo.money}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">备注</view>
+                <input name="remark" placeholder="请输入备注" value="{{minfo.remark}}"></input>
+            </view>
+            <view class="section section2">
+                <view class="section__title">凭证</view>
+                <view class="item-pic">
+                    <view bindtap="upload" class="userinfo">
+                        <text>上传图片</text>
+                    </view>
+                    <image bindtap="listenerButtonPreviewImage" data-index="{{index}}" src="{{item}}" wx:for="{{tempFilePaths}}" wx:key="{{index}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="submit-cost-btn">
+            <button formType="submit">确认提交</button>
+        </view>
+    </form>
+</view>

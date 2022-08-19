@@ -1,0 +1,113 @@
+<view>
+    <view class="spreadTip1" wx:if="{{twitterInfo.status==2}}">
+        <image src="{{sourceURL}}/applet_weapp/images/form/tips-icon.png"></image>
+    您已被禁用，禁用期间推广订单无佣金收益
+  </view>
+    <view class="spreadCenterTop">
+        <image src="{{userInfo.head_pic}}" style="width:100rpx;height:100rpx;margin-top:20rpx;border-radius: 50rpx;"></image>
+        <view class="font30">累计收益(元)</view>
+        <view class="font80 mb5">
+      {{distribut_money}}
+    </view>
+        <view class="font24 newOrange">一分耕耘,一分收获</view>
+    </view>
+    <view class="spreadMsg">
+        <view bindtap="gotoTwitterOrder" data-type="">
+            <view class="mb10 mt25">
+                <image class="imgL" src="{{sourceURL}}/applet_weapp/images/icon/icon_192.png"></image>
+        累计订单
+      </view>
+            <view class="font48 spreadOrange">{{coupons}}</view>
+        </view>
+        <view bindtap="gotoTwitterJunior">
+            <view class="mb10 mt25">
+                <image class="imgR" src="{{sourceURL}}/applet_weapp/images/icon/icon_193.png"></image>
+        推客下级(人)
+      </view>
+            <view class="font48 spreadOrange">{{person}}</view>
+        </view>
+        <view bindtap="gotoMoney">
+            <view class="mb10 mt25">
+                <image class="imgR" src="{{sourceURL}}/applet_weapp/images/icon/icon_yongjin.png"></image>
+        可提现/已提现
+      </view>
+            <view class="font48 spreadOrange">
+       {{nmoney}}/{{money}}
+      </view>
+        </view>
+    </view>
+    <view class="spreadLink">
+        <view bindtap="gotoCharge">
+            <view class="spreadFlex">
+                <image src="{{sourceURL}}/applet_weapp/images/icon/icon_220.png"></image>
+                <view class="font24 font-blank">我的佣金</view>
+                <view class="font20 font-grey-middle">提现</view>
+            </view>
+        </view>
+        <view bindtap="gotoCode">
+            <view class="spreadFlex">
+                <image src="{{sourceURL}}/applet_weapp/images/icon/icon_194.png"></image>
+                <view class="font24 font-blank">我的推广码</view>
+                <view class="font20 font-grey-middle">分享赚钱</view>
+            </view>
+        </view>
+    </view>
+    <view class="spreadLink">
+        <view bindtap="showModal">
+            <view class="spreadFlex">
+                <image src="{{sourceURL}}/applet_weapp/images/icon/icon_195.png"></image>
+                <view class="font24 font-blank">{{twitterInfo.spread_name}}信息</view>
+                <view class="font20 font-grey-middle">{{twitterInfo.spread_name}}信息设置</view>
+            </view>
+        </view>
+        <view bindtap="call">
+            <view class="spreadFlex">
+                <view class="iconNum" wx:if="{{twitterInfo.distrib_activity_unread}}">
+                    <view class="iconNumtxt">
+            {{twitterInfo.distrib_activity_unread>99?'99+':twitterInfo.distrib_activity_unread}}
+          </view>
+                </view>
+                <image src="{{sourceURL}}/applet_weapp/images/icon/icon_213.png"></image>
+                <view class="font24 font-blank">联系我们</view>
+                <view class="font20 font-grey-middle">24小时在线</view>
+            </view>
+        </view>
+    </view>
+    <view style="width:100%;text-align:center;color:red;font-size:44rpx;"> ID:{{userInfo.user_id}}</view>
+</view>
+<view bindtap="hideModal" class="mask" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="card-modal" wx:if="{{showModalStatus}}">
+    <form reportSubmit bindsubmit="submit">
+        <view class="spreadTle">申请成为推客
+        <text>请填写下方信息</text>
+        </view>
+        <view class="speardForm">
+            <view class="weui-cell weui-cell_access bgfff">
+                <view class="weui-cell__bd">
+                    <text class="font-blank font28">姓名</text>
+                </view>
+                <view class="weui-cell__ft spreadItem">
+                    <input adjustPosition class="spreadInp" confirmType="next" name="name" placeholder="请填写您的姓名" placeholderStyle="color:#ccc" type="text" value="{{userInfo.name}}"></input>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_access bgfff">
+                <view class="weui-cell__bd">
+                    <text class="font-blank font28">手机号</text>
+                </view>
+                <view class="weui-cell__ft spreadItem">
+                    <input adjustPosition bindinput="bindHideKeyboard" class="spreadInp" maxlength="11" name="mobile" placeholder="请填写手机号" placeholderStyle="color:#ccc" type="number" value="{{userInfo.mobile}}"></input>
+                </view>
+            </view>
+            <view hidden class="weui-cell weui-cell_access bgfff">
+                <view class="weui-cell__bd">
+                    <text class="font-blank font28">身份证</text>
+                </view>
+                <view class="weui-cell__ft spreadItem">
+                    <input adjustPosition class="spreadInp" maxlength="32" name="card" placeholder="请填写身份证号" placeholderStyle="color:#ccc" value="{{userInfo.card}}"></input>
+                </view>
+            </view>
+        </view>
+        <button class="card-btn" formType="submit" wx:if="{{!disabled}}">确认</button>
+        <button class="card-btn" style="background:#ccc" wx:else>确认</button>
+    </form>
+</view>

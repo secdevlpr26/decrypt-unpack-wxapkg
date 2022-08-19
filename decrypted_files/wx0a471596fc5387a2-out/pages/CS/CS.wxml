@@ -1,0 +1,1 @@
+<button bindtap="form">submit1</button>

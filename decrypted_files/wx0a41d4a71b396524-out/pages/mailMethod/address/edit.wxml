@@ -1,0 +1,56 @@
+<form bindreset="formReset" bindsubmit="formSubmit">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell__hidden">
+            <input class="weui-input" name="id" value="{{address.id}}"></input>
+            <input class="weui-input" name="readerId" value="{{address.readerId}}"></input>
+            <input class="weui-input" name="isDel" value="{{address.isDel}}"></input>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">收件人:</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" maxlength="32" name="userName" placeholder="请输入姓名" placeholderClass="phcolor" value="{{address.userName}}"></input>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">联系电话:</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" maxlength="11" name="phone" placeholder="请输入联系电话" placeholderClass="phcolor" value="{{address.phone}}"></input>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">地址:</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input hidden" name="area" placeholder="请输入地区" placeholderClass="phcolor" value="{{locationAddress}}"></input>
+            </view>
+            <view bindtap="addOpenMap" class="weui-cell__ft">
+                <image class="add-icon" src="../../../images/myAddicon.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title mt20">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" maxlength="150" name="address" placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元室等" style="height: 5.3em" value="{{address.address}}"></textarea>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cell__hidden">
+        <view class="weui-cells weui-cells_after-title" style="margin-top:30rpx;">
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">是否默认</view>
+                <view class="weui-cell__ft">
+                    <switch checked="{{address.isDefault==true?'true':''}}" name="isDefault"></switch>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footer-btn">
+        <button class="weui-btn button-hover" formType="submit">确认修改</button>
+    </view>
+</form>

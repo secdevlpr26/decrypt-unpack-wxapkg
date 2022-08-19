@@ -1,0 +1,78 @@
+<view class="Empty">
+    <view class="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+            </view>
+        </view>
+    </view>
+    <view class="Empty" style="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+            </view>
+        </view>
+    </view>
+    <view class="Empty" style="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+            </view>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+        </view>
+    </view>
+    <view class="Empty" style="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+            </view>
+        </view>
+    </view>
+    <view class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view class="Empty"></view>
+    <view class="Empty">
+        <view class="Empty" wx:for="Empty" wx:key="index">
+            <view>
+                <image class="Empty" mode="Empty" src="Empty"></image>
+            </view>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+                <view class="Empty"></view>
+            </view>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+            </view>
+        </view>
+    </view>
+    <view class="Empty"></view>
+    <view class="Empty">
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <text class="Empty">Empty</text>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <text class="Empty">Empty</text>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <text class="Empty">Empty</text>
+        </view>
+    </view>
+</view>

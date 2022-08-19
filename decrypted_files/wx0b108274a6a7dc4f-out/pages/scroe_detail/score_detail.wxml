@@ -1,0 +1,13 @@
+<view class="score">
+    <view style="display:inline-block;margin-left:30rpx;font-size:28rpx;line-height:134rpx">剩余成长豆：</view>
+    <view style="display:inline-block;margin-left:30rpx;font-size:60rpx;color:#e62b4a;line-height:134rpx">{{score}}</view>
+</view>
+<view class="line"></view>
+<view class="title">我的成长豆记录</view>
+<view class="log">
+    <view class="item" wx:for="{{logList}}">
+        <view style="display:inline-block;line-height:70rpx">{{item.update_time}}</view>
+        <view style="display:inline-block;margin-left:50rpx;margin-right:50rpx;line-height:70rpx">{{item.status==0?'-':'+'}}{{item.num}}分</view>
+        <view style="display:inline-block;line-height:70rpx">{{item.status==0?'兑换商品':item.type==0?'分享奖励':item.type==1?'签到奖励':item.type==2?'推荐奖励':item.type==3?'建议奖励':item.type==4?'退还成长豆':item.type==6?'新人奖励':item.type==5?'学费兑换':'未知'}}</view>
+    </view>
+</view>

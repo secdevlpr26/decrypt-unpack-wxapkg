@@ -1,0 +1,6 @@
+<view class="video-wrap">
+    <video autoplay="{{netWorkType=='wifi'?true:false}}" objectFit="fill" src="{{video}}"></video>
+</view>
+<view class="video-deta">
+    <rich-text nodes="{{details}}"></rich-text>
+</view>

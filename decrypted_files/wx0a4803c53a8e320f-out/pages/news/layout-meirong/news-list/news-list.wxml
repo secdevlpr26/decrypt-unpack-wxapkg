@@ -1,0 +1,28 @@
+<view class="wrap">
+    <view class="news-top" style="{{'background-color:'+styleConfig.mainColor}}">
+        <view class="top-title">
+            <view>“</view>
+            <view>{{title}}</view>
+            <view>”</view>
+        </view>
+    </view>
+    <view class="iconfont icon-trangle" style="{{'color:'+styleConfig.mainColor}}"></view>
+    <view class="news-content">
+        <view class="news-tips">达人支招</view>
+        <view class="news-list">
+            <view class="news-item" wx:for="{{pageList}}" wx:key="item.code">
+                <navigator url="../../news-detail/news-detail?tabContentId={{item.id}}&type={{news_type}}">
+                    <image lazyLoad="{{true}}" src="{{item.picture1}}"></image>
+                    <view class="news-item-info">
+                        <text class="news-item-title">{{item.title}}</text>
+                        <text class="news-item-intro">{{item.briefDescription}}</text>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-hint" hidden="{{bottomHint}}">
+        <view class="line"></view>
+        <text>已经到底啦</text>
+    </view>
+</view>

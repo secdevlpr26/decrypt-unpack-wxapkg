@@ -1,0 +1,11 @@
+<view class="Empty">
+    <view catchtouchend="Empty" catchtouchmove="Empty" catchtouchstart="Empty" data-letter="Empty" style="Empty" wx:for="Empty" wx:key="index">Empty</view>
+</view>
+<view class="Empty" wx:if="Empty">Empty</view>
+<view>Empty</view>
+<scroll-view bindscroll="Empty" scrollTop="Empty" scrollY="Empty" style="Empty">
+    <view class="Empty" wx:for="Empty" wx:key="{{item.initial}}">
+        <view class="Empty">Empty</view>
+        <view bindtap="Empty" class="Empty" data-city="Empty" data-id="Empty" wx:for="Empty" wx:for-item="ct" wx:key="{{ct.id}}">Empty</view>
+    </view>
+</scroll-view>

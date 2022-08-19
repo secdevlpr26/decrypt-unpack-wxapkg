@@ -1,0 +1,68 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <view class="home-top">
+        <navigator class="addr" hoverClass="none" url="../positionChange/index">
+            <text>{{city}}</text>
+            <image class="more" mode="widthFix" src="/images/1@3x.png"></image>
+        </navigator>
+        <navigator class="search-content" hoverClass="none" url="../serveSearch/index">
+            <image mode="widthFix" src="/images/search-icon.png"></image>
+            <text>搜索你想要的商品</text>
+        </navigator>
+        <navigator class="add" hoverClass="none" url="../sellerEnter/index">
+            <image mode="widthFix" src="/images/2@3x.png"></image>
+        </navigator>
+    </view>
+    <view>
+        <swiper class="swiper_box" indicatorActiveColor="#2d92f4" indicatorColor="#ddd" indicatorDots="{{true}}">
+            <swiper-item wx:if="{{item.type!=3}}" wx:for="{{banner_images}}">
+                <image bindtap="bannerLink" class="slide-image" data-id="{{item.link}}" data-type="{{item.type}}" src="{{item.pic}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="cont">
+        <view class="nav">
+            <navigator hoverClass="none" url="../allserve/index?id={{item.id}}" wx:for="{{menuList}}">
+                <view class="nav_cont">
+                    <image src="{{item.banner}}"></image>
+                    <view class="title">{{item.name}}</view>
+                </view>
+            </navigator>
+            <navigator hoverClass="none" url="../allserve/index?id={{firstMenu.id}}">
+                <view class="nav_cont">
+                    <image src="../../images/10@3x.png"></image>
+                    <view class="title">全部服务</view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view class="mid_nav">
+        <navigator url="../sharePolite/index">
+            <view class="mid_nav_cont">
+                <view>分享有礼</view>
+                <text>分享获取优惠券</text>
+                <image src="../../images/11@3x.png"></image>
+            </view>
+        </navigator>
+        <navigator url="../oneClick/index">
+            <view class="mid_nav_cont">
+                <view>一键下单</view>
+                <text>一键下取订单服务</text>
+                <image src="../../images/12@3x.png"></image>
+            </view>
+        </navigator>
+    </view>
+    <view class="hot_service_content">
+        <view class="hot_service_tit">
+            <image src="../../images/13@3x.png"></image>
+        热门服务
+      </view>
+        <view class="hot_service_list">
+            <navigator class="hot_service_item" url="../serveDetail/index?id={{item.link}}" wx:for="{{hotServices}}">
+                <image src="{{item.pic}}"></image>
+            </navigator>
+        </view>
+    </view>
+</view>
+<authorized-mask bindloginSuccess="loginSuccess" wx:if="{{isShowLogin}}"></authorized-mask>

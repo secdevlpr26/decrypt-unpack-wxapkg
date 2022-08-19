@@ -1,0 +1,34 @@
+<view class="mask" wx:if="{{showInfoModel||showPhoneModel}}"></view>
+<view class="model" wx:if="{{showInfoModel}}">
+    <view class="modelTitle">
+      请求获取信息
+    </view>
+    <view class="modelBody">为了更好的为您提供服务，我们请求获取您的昵称、头像等公开信息</view>
+    <view class="btns">
+        <button bindgetuserinfo="getUserInfo" class="agree" lang="zh_CN" openType="getUserInfo" plain="true">下一步</button>
+    </view>
+</view>
+<view class="model" wx:if="{{showPhoneModel}}">
+    <view class="modelTitle">
+        请求获取信息
+    </view>
+    <view class="modelBody">为了更好的为您提供服务，我们请求获取您的手机号码</view>
+    <view class="btns">
+        <button bindgetphonenumber="getPhoneNumber" class="agree" lang="zh_CN" openType="getPhoneNumber" plain="true">下一步</button>
+    </view>
+</view>
+<scroll-view>
+    <view class="contain">
+        <view class="tip">{{note}}</view>
+        <view class="item" wx:for="{{list}}" wx:key="key">
+            <image bindtap="goDetail" class="img" data-path="{{item.addressUrl}}" src="{{item.imageUrl}}"></image>
+            <view class="bottom">
+                <text>{{item.title}}</text>
+                <view class="tagBox">
+                    <i wx:for="{{item.tag}}" wx:key="key">{{item}}</i>
+                </view>
+                <button class="share" data-path="{{item.addressUrl}}" data-title="{{item.title}}" data-url="{{item.imageUrl}}" openType="share" style="background-image: url({{serverUrl}}share.png)" wx:if="{{item.shared}}"></button>
+            </view>
+        </view>
+    </view>
+</scroll-view>

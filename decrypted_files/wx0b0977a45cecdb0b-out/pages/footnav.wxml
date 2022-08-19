@@ -1,0 +1,32 @@
+<template name="footnav">
+    <view style="display: none">
+        <view style="background:#fff; height:96rpx;z-index:-1"></view>
+        <view class="footnav" style="background:#fff; height:96rpx;z-index:9999">
+            <view class="footnav-item borderTop1px">
+                <navigator hoverClass="navigator-hover" openType="redirect" url="/pages/company/index">
+                    <text class="iconfont icon-yingyu"></text>
+                    <text class="titile home-tit">首页</text>
+                </navigator>
+            </view>
+            <view class="footnav-item borderTop1px">
+                <navigator hoverClass="navigator-hover" openType="redirect" url="/pages/company/personlist">
+                    <text class="iconfont icon-boshimao"></text>
+                    <text class="titile tacher-tit">师资</text>
+                </navigator>
+            </view>
+            <view class="footnav-item borderTop1px">
+                <navigator hoverClass="navigator-hover" openType="redirect" url="/pages/company/productlist">
+                    <text class="iconfont icon-kecheng"></text>
+                    <text class="titile cuour-tit">课程</text>
+                </navigator>
+            </view>
+            <view class="footnav-item borderTop1px">
+                <navigator hoverClass="navigator-hover" openType="redirect" url="/pages/company/mycenter">
+                    <text class="iconfont icon-wode-fuben_fuzhi"></text>
+                    <text class="titile my-tit">个人中心</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</template>
+<include src="/pages/template/getUserInfo.wxml"></include>

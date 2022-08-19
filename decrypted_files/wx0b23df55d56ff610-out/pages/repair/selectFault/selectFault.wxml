@@ -1,0 +1,11 @@
+<view class="faultList">
+    <view bindtap="select" class="faultItem" data-index="{{index}}" wx:for="{{types}}">
+        <view class="imgView">
+            <image src="{{item.image}}"></image>
+        </view>
+        <view class="textView">
+            <view class="title">{{item.name}}</view>
+            <view class="openTime">{{item.remark}}</view>
+        </view>
+    </view>
+</view>

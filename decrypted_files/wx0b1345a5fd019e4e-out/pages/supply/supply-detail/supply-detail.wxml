@@ -1,0 +1,14 @@
+<view class="main">
+    <image lazyLoad="{{true}}" src="{{supplyDetail.picture1}}"></image>
+    <view class="detail">
+        <view class="title">{{supplyDetail.title}}</view>
+        <view class="tel-date">
+            <text class="tel">电话号码:{{supplyDetail.phone}}</text>
+            <text class="date">时间：{{supplyDetail.createDate}}</text>
+        </view>
+        <i bindtap="{{collectStatus=='0'?'collect':'cancelCollect'}}" class="iconfont {{collectStatus=='0'?'icon-xin1':'icon-xin'}}"></i>
+    </view>
+    <view class="content">
+        <rich-text nodes="{{supplyDetail.detailDescription}}"></rich-text>
+    </view>
+</view>

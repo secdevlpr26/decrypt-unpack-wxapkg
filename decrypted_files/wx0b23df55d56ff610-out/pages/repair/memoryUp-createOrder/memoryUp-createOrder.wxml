@@ -1,0 +1,74 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="graybg">
+    <view class="tjddtop">
+        <view class="tjddtitle">选择设备型号</view>
+        <view class="tjddlist">
+            <block wx:for="{{mouldList}}" wx:for-index="mouldIndex" wx:for-item="mouldItem" wx:key="mould">
+                <view bindtap="selectMould" class="tjddxz active" data-id="{{mouldItem.id}}" data-idx="{{mouldIndex}}" wx:if="{{mouldItem.id==selectedMould.id}}">{{mouldItem.mobile_name}}</view>
+                <view bindtap="selectMould" class="tjddxz" data-id="{{mouldItem.id}}" data-idx="{{mouldIndex}}" wx:else>{{mouldItem.mobile_name}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="tjddtop mt20">
+        <view class="tjddtitle">选择服务内容</view>
+        <view class="tjddlist">
+            <block wx:for="{{faultList}}" wx:for-index="faultIndex" wx:for-item="faultItem" wx:key="fault">
+                <view bindtap="selectFault" class="tjddxz active" data-id="{{faultItem.id}}" data-idx="{{faultIndex}}" wx:if="{{faultItem.id==selectedFault.id}}">{{faultItem.itemstr}}</view>
+                <view bindtap="selectFault" class="tjddxz" data-id="{{faultItem.id}}" data-idx="{{faultIndex}}" wx:else>{{faultItem.itemstr}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="tjddmain mt20">
+        <view class="tjddtitle">填写预约信息</view>
+        <view class="tjddli">
+            <view bindtap="city" class="sel_box">
+                <view class="add  col000" wx:if="{{selectedAddress}}">{{selectedAddress.province}}{{selectedAddress.city}}{{selectedAddress.district}}</view>
+                <view class="add col000" wx:else>选择你所在城市</view>
+            </view>
+        </view>
+        <view class="tjddli">
+            <text class="type">您的地址</text>
+            <input bindinput="inputAddress" class="input" placeholder="请输入" value="{{selectedAddress.address_name}}"></input>
+        </view>
+        <view class="tjddli">
+            <text class="type">您的姓名</text>
+            <input bindinput="inputUname" class="input" placeholder="请输入" value="{{uname}}"></input>
+        </view>
+        <view class="tjddli">
+            <text class="type">手机号码</text>
+            <input bindinput="inputPhoneNum" class="input" placeholder="请输入" value="{{phoneNum}}"></input>
+        </view>
+        <view class="tjddli" wx:if="{{hasLogin==false}}">
+            <text class="type">短信验证码</text>
+            <input bindinput="inputSmsCode" class="input_smscode" placeholder="请输入" value="{{smsCode}}"></input>
+            <view bindtap="sendSmsCode" class="code" style="color:{{getAuthCodeTextColor}}">{{getSmsCode}}</view>
+        </view>
+        <view hidden class="tjddli addressPicker">
+            <picker bindchange="bindPickerChange" range="{{repairCenter}}" rangeKey="name" value="{{repairCenter[index]}}">
+                <view class="repairCenterPicker">
+                    <view>当前选择：    <text class="col333">{{repairCenter[index].name}}</text>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view class="repairCenterInfo" wx:if="{{repairCenter[index].id}}">
+            <view class="addr">
+                <view class="addrTop">
+                    <text class="addrTopLeft">门店地址：</text>
+                    <text class="col333 addrTopRight">{{repairCenter[index].address}}</text>
+                </view>
+                <view bindtap="openMap" class="mapBtn">查看地图</view>
+            </view>
+            <view class="tel">
+                <text>联系电话：</text>
+                <text class="col333">{{repairCenter[index].tel}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="footer">
+        <view class="feiyong">升级费用<text>{{totalPrice}}</text>
+        </view>
+        <view bindtap="submit" class="btn_yuyue">立即预约</view>
+    </view>
+</view>

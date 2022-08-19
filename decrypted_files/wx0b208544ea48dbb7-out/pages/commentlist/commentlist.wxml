@@ -1,0 +1,56 @@
+<view class="wrap">
+    <view class="menu">
+        <view bindtap="handoverType" class="{{type=='待评论'?'active':''}}" data-type="待评论">
+            待评价
+        </view>
+        <view bindtap="handoverType" class="{{type=='已评论'?'active':''}}" data-type="已评论">
+            已评论
+        </view>
+    </view>
+    <scroll-view bindscrolltolower="loadMore" class="list-container" scrollY="true">
+        <view class="empty" wx:if="{{commentList.length==0}}">
+            <view class="icon">
+                <image src="./icons/empty-icon.png"></image>
+            </view>
+            <view bindtap="toIndex" class="btn">
+                <text>随便逛逛</text>
+            </view>
+        </view>
+        <view class="list-content">
+            <view bindtap="toComment" class="oreder-item" data-goods="{{item}}" wx:for="{{commentList}}" wx:key="{{index}}">
+                <view class="oreder-code">
+                    <text>订单号:{{item.order_sn}}</text>
+                </view>
+                <view class="goods-info">
+                    <view class="pic">
+                        <image src="{{item.original_img}}"></image>
+                    </view>
+                    <view class="info">
+                        <view class="name text-ellipsis">
+                            <text class="text-ellipsis">{{item.goods_name}}</text>
+                        </view>
+                        <view class="specification">{{item.spec_key_name}}</view>
+                        <view class="goods-status">
+                            <view class="price">
+                                <text>¥{{item.goods_price}}</text>
+                            </view>
+                            <view class="count">
+                                <text>{{item.goods_num}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="oreder-status">
+                    <view class="price">
+                        <text>{{item.statusType}}</text>
+                    </view>
+                    <view class="oreder">
+                        <view class="comment" vIf="{{item.is_comment==1}}">
+                                我要评论
+                            </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

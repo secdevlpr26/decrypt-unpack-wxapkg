@@ -1,0 +1,12 @@
+<view class="wrap">
+    <textarea bindinput="bindInput" placeholder="说说它的优点和美中不足的地方吧"></textarea>
+    <view bindtap="takephoto" class="pic" wx:if="{{!imagePath}}">
+        <view class="iconfont icon-camera"></view>
+        <view>添加图片</view>
+    </view>
+    <view bindtap="takephoto" class="pic photo" wx:else>
+        <image lazyLoad="{{true}}" mode="aspectFill" src="{{imagePath}}"></image>
+        <view catchtap="deleteImage" class="iconfont icon-close"></view>
+    </view>
+    <view bindtap="submit" class="btn-submit">发布</view>
+</view>

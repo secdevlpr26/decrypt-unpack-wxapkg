@@ -1,0 +1,48 @@
+<template name="group">
+    <view class="spick">
+        <view class="spike_title">
+            <view>超级拼团</view>
+            <view>
+                <text class="today">今日精选</text>
+            </view>
+            <view bindtap="sroup_more">更多<image class="img_right" src="/images/right_jian.png"></image>
+            </view>
+        </view>
+        <view class="spike_content">
+            <scroll-view>
+                <view class="spiker-items" style="width:{{goods_recommends.length*300+2}}rpx;">
+                    <view bindtap="toDetailsTap" class="spike_box" data-id="{{item.id}}" data-isindex="{{item.isindex}}" wx:for="{{goods_recommends}}" wx:key="key">
+                        <view class="spike_biao">拼团</view>
+                        <image src="{{imgurl+item.thumb_url[1]}}"></image>
+                        <view class="spike_name">{{item.title}}</view>
+                        <view class="spike_price">￥{{item.price}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</template>
+<template name="spikell">
+    <view class="spick">
+        <view class="spike_title">
+            <view>限时秒杀</view>
+            <view>
+          距离结束 <text>{{Count_down.day}}</text>天<text>{{Count_down.hour}}</text> 时<text>{{Count_down.min}}</text> 分<text>{{Count_down.sec}}</text> 秒
+        </view>
+            <view bindtap="spiker_more">更多<image class="img_right" src="/images/right_jian.png"></image>
+            </view>
+        </view>
+        <view class="spike_content">
+            <scroll-view>
+                <view class="spiker-items" style="width:{{spike_goods.length*300+2}}rpx;">
+                    <view bindtap="toDetailsTap" class="spike_box" data-id="{{item.goodsid}}" wx:for="{{spike_goods}}" wx:key="key">
+                        <view class="spike_biao">秒杀</view>
+                        <image src="{{item.thumb}}"></image>
+                        <view class="spike_name">{{item.title}}</view>
+                        <view class="spike_price">￥{{item.price}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</template>

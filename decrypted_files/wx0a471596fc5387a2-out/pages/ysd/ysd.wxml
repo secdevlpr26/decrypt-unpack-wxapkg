@@ -1,0 +1,65 @@
+<view>{{ls_tj}}</view>
+<view class="tr" style=" padding-top:230rpx;">
+    <checkbox-group bindchange="checkboxChange">
+        <block wx:for="{{list}}" wx:key="{{item.id}}">
+            <view class="order_hao">
+                <checkbox checked="{{item.checked}}" class="left" value="{{item.ID}}" wx:if="{{switchTabTwo==false}}"></checkbox>
+                <text class="left">{{item.DJMC}}号: {{item.ID}}</text>
+                <text class="icon" wx:if="{{item.BXJS=='W'}}">{{item.BXJS=='W'?'超':''}}</text>
+                <text class="right"> {{item.YWRQ}}</text>
+            </view>
+            <view class="order_zt">
+                <image class="order_img" src="{{item.HEADIMGURL}}"></image>
+                <view class="order_zt_top">
+                    <text>公司：</text>
+                    <text>{{item.GSMC}}</text>
+                </view>
+                <view class="order_zt_top">
+                    <text>部门：</text>
+                    <text>{{item.MC}}</text>
+                </view>
+                <view class="order_zt_top">
+                    <text>申请人：</text>
+                    <text>{{item.BXR}}</text>
+                </view>
+                <view class="order_zt_top">
+                    <text>摘要：</text>
+                    <text>{{item.ZY}}</text>
+                </view>
+                <view class="order_zt_top" wx:if="{{item.FZ=='F'||item.FZ=='G'}}">
+                    <text>数量：</text>
+                    <text class="f00">{{item.JE}}</text>
+                </view>
+                <view class="order_zt_top" wx:if="{{item.FZ!='F'&&item.FZ!='G'}}">
+                    <text>金额：</text>
+                    <text class="f00">￥{{item.JE}}</text>
+                </view>
+                <view>
+                    <navigator url="/pages/ysd_details/ysd_details?id={{item.ID}}&ztbm={{item.ZTBM}}&lx={{lx}}">查看明细</navigator>
+                </view>
+            </view>
+        </block>
+    </checkbox-group>
+    <image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%;"></image>
+    <include src="../footer/footer.wxml"></include>
+    <view class="body-view">
+        <loading bindchange="loadingChange" hidden="{{hidden}}">
+      加载中...
+    </loading>
+    </view>
+</view>
+<view style="position:fixed; top:0;width: 750rpx;opacity:1.0;background:white;">
+    <view class="search">
+        <image src="{{hostUrl}}/images/search.jpg"></image>
+        <input bindblur="searchSubmit" bindinput="searchActiveChangeinput" placeholder="请输入单据号码" type="text" value="{{keyWord}}"></input>
+    </view>
+    <view class="switch_box">
+        <navigator bindtap="switchTab" class="{{switchTabOne==true?'active':''}}" data-order="1" hoverClass="none">待审批</navigator>
+        <navigator bindtap="switchTab" class="{{switchTabTwo==true?'active':''}}" data-order="2" hoverClass="none">已审批</navigator>
+    </view>
+    <view class="tr" style="background:rgb(206, 235, 206);" wx:if="{{switchTabTwo==false}}">
+        <checkbox bindtap="selectall"></checkbox>全选
+    <text class="center">共计<text style="color:red;font-size: 40rpx;">{{batchIds.length}}</text>个单据</text>
+        <navigator2 bindtap="sp_yes_pl">批量审核</navigator2>
+    </view>
+</view>

@@ -1,0 +1,40 @@
+<view bindtap="close" class="close" wx:if="{{saoma==true}}">返 回</view>
+<view class="container" wx:if="{{!hasShake&&!noShake}}">
+    <image class="shakePhone" src="{{shakeBackUrl}}" style="animation:{{shake}}"></image>
+</view>
+<view class="cover">
+    <image class="shakeBottom" src="{{shakeBottomUrl}}"></image>
+</view>
+<view class="container" wx:if="{{hasShake}}">
+    <image class="shakePhone" src="{{hasShakeUrl}}"></image>
+    <view class="description">{{prizeInfo}}</view>
+    <view bindtap="confirm" class="confirm">{{confirm}}</view>
+</view>
+<view class="container" wx:if="{{noShake}}">
+    <image class="shakePhone" src="{{noShakeUrl}}"></image>
+    <view class="description">{{prizeInfo}}</view>
+    <view bindtap="confirm" class="confirm">{{confirm}}</view>
+</view>
+<view class="shouquan" wx:if="{{jiazaizhong}}">
+    <image class="shakeCover_img" src="{{wntjUrls}}"></image>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<view class="cover1" style="display:{{display}}">
+    <view class="" style="display:{{display}}"></view>
+    <view class="containers xiadan-box">
+        <view class="row2">
+            <text class="flex80 writedesk">请先领取会员卡</text>
+        </view>
+        <view class="row2">
+            <text class="col-12 xiadan-box-descrip"></text>
+        </view>
+        <view class="row2 row-button1">
+            <view bindtap="quxiao" class="flex30 button-xiadan1">取 消</view>
+            <button bindgetphonenumber="getPhone" class="flex30 button-xiadan" openType="getPhoneNumber">确定</button>
+        </view>
+    </view>
+</view>

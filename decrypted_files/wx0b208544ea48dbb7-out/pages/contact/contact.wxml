@@ -1,0 +1,31 @@
+<view class="contact" data-id="test">
+    <text bindtap="getContact" class="contact-top">Q：关于我们</text>
+    <text>{{contact.content}} </text>
+    <view class="we">
+        <text class="cont">Q:联系我们</text>
+    </view>
+    <view class="service">
+        <text>服务热线:</text>
+        <image bindtap="calling" class="service-icons" src="icons/call.png"></image>
+    </view>
+    <view class="contact-txt">
+        <text>微信：</text>
+        <text>{{contact.wechat}}</text>
+    </view>
+    <view class="contact-txt">
+        <text>公司传真：</text>
+        <text>{{contact.faxes}}</text>
+    </view>
+    <view class="contact-txt">
+        <text>邮箱：</text>
+        <text>{{contact.email}}</text>
+    </view>
+    <view class="contact-txt">
+        <text>电话：</text>
+        <text>{{contact.mobile}}</text>
+    </view>
+    <view class="contact-add">
+        <text>地址：</text>
+        <text> {{contact.address}}</text>
+    </view>
+</view>

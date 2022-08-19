@@ -1,0 +1,47 @@
+<view class="model" wx:if="{{showInfoModel}}">
+    <view class="modelTitle">
+        请求获取信息
+    </view>
+    <view class="modelBody">为了更好的为您提供服务，我们请求获取您的昵称、头像等公开信息</view>
+    <view class="btns">
+        <button bindgetuserinfo="getUserInfo" class="agree" lang="zh_CN" openType="getUserInfo" plain="true">下一步</button>
+    </view>
+</view>
+<view class="model" wx:if="{{showPhoneModel}}">
+    <view class="modelTitle">
+    请求获取信息
+</view>
+    <view class="modelBody">为了更好的为您提供服务，我们请求获取您的手机号码</view>
+    <view class="btns">
+        <button bindgetphonenumber="getPhoneNumber" class="agree" lang="zh_CN" openType="getPhoneNumber" plain="true">下一步</button>
+    </view>
+</view>
+<view class="mask" wx:if="{{showPhoneModel||showInfoModel}}"></view>
+<scroll-view class="counList" scrollY="true" style="padding-bottom:50px;">
+    <view class="title-box">
+        <view class="title-text">消息列表</view>
+    </view>
+    <view bindtap="goChat" class="message-box" data-item="{{item}}" wx:for="{{isSentAdviserList}}" wx:key="index">
+        <view class="head-box">
+            <view class="newRed" wx:if="{{item.hasNewMsg>0}}">{{item.hasNewMsg}}</view>
+            <image alt="" mode="widthFix" src="{{item.head}}" wx:if="{{item.head}}"></image>
+            <image alt="" src="{{defaultImg}}" wx:else></image>
+        </view>
+        <view class="message-right-box">
+            <view class="message-right-top">
+                <view class="name">{{item.name}}</view>
+                <view class="last-message-time">{{item.MsgTimeStamp}}</view>
+            </view>
+            <view class="message-right-bottom">
+                <view class="message-text">{{item.MsgShow}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="goAdviserList" class="more-adviser">
+        <image alt="" src="{{moreImg}}"></image>
+    </view>
+</scroll-view>
+<view class="loadData" wx:if="{{loading}}">
+    <image alt="" mode="widthFix" src="{{loadingImg}}" style="width:100px"></image>
+</view>
+<image bindtap="goVideo" class="fixImg" mode="widthFix" src="{{fixImg}}" style="width:100%" wx:if="{{isShowVideoButton}}"></image>

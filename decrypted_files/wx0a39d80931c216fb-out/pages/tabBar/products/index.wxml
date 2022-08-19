@@ -1,0 +1,74 @@
+<view class="page">
+    <view class="sorter-box">
+        <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'switchSorter',['$event'] ] ] ] ]}}" data-orderkey="1">默认</view>
+        <view bindtap="__e" class="{{['by-price',orderKey==3?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'switchSorter',['$event'] ] ] ] ]}}" data-orderkey="3">
+            <text>价格</text>
+        </view>
+        <view bindtap="__e" class="{{['by-sales',orderKey==2?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'switchSorter',['$event'] ] ] ] ]}}" data-orderkey="2">
+            <text>销量</text>
+        </view>
+        <view bindtap="__e" class="{{['by-comments',orderKey==4?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'switchSorter',['$event'] ] ] ] ]}}" data-orderkey="4">
+            <text>评价数</text>
+        </view>
+        <view bindtap="__e" class="view-grid" data-event-opts="{{[ [ 'tap',[ [ 'switchView',['$event'] ] ] ] ]}}" wx:if="{{gridView}}"></view>
+        <view bindtap="__e" class="view-list" data-event-opts="{{[ [ 'tap',[ [ 'switchView',['$event'] ] ] ] ]}}" wx:if="{{!gridView}}"></view>
+    </view>
+    <view class="header">
+        <view bindtap="__e" class="view-category" data-event-opts="{{[ [ 'tap',[ [ 'viewCategory',['$event'] ] ] ] ]}}">
+            <image mode src="/static/tabicons/cate.png"></image>分类</view>
+        <view class="input-view">
+            <uni-icon bind:__l="__l" color="#666666" size="22" type="search" vueId="28f8b337-1"></uni-icon>
+            <input bindconfirm="__e" bindinput="__e" class="input" confirmType="search" data-event-opts="{{[ [ 'confirm',[ [ 'confirm',['$event'] ] ] ],[ 'input',[ [ '__set_model',[ '','keywords','$event',[] ] ] ] ] ]}}" placeholder="输入搜索关键词" type="text" value="{{keywords}}"></input>
+        </view>
+    </view>
+    <view wx:if="{{Products.length>0}}">
+        <view class="product-count">{{'找到相关商品 '+Products.length+' 件。'}}</view>
+        <view class="product-grid" wx:if="{{gridView}}">
+            <view bindtap="__e" class="product" data-event-opts="{{[ [ 'tap',[ [ 'gotoProductDetails',['$0'],[ [ ['Products','',index,'ProductId'] ] ] ] ] ] ]}}" wx:for="{{Products}}" wx:for-item="product" wx:key="index">
+                <view class="product-inner">
+                    <view class="p-label" wx:if="{{product.Title!=null}}">{{product.Title}}</view>
+                    <view class="image-view">
+                        <image class="product-image" lazyLoad="{{true}}" mode="aspectFit" src="{{product.ImagePath}}" wx:if="{{renderImage}}"></image>
+                        <view class="pd-label" wx:if="{{product.ShortDescription!=null}}">{{product.ShortDescription}}</view>
+                        <view class="pd-label" wx:else>汉欧优选</view>
+                    </view>
+                    <view class="product-title">{{product.ProductName}}</view>
+                    <view class="product-price">
+                        <view>{{'￥'+product.SalePrice}}</view>
+                    </view>
+                    <view class="product-status">
+                        <view>{{'评价 '+product.Comments}}</view>
+                        <view>{{'销量 '+product.SaleCount}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="product-list" wx:if="{{!gridView}}">
+            <view bindtap="__e" class="product" data-event-opts="{{[ [ 'tap',[ [ 'gotoProductDetails',['$0'],[ [ ['Products','',index,'ProductId'] ] ] ] ] ] ]}}" wx:for="{{Products}}" wx:for-item="product" wx:key="index">
+                <view class="product-inner">
+                    <view class="p-label" wx:if="{{product.Title!=null}}">{{product.Title}}</view>
+                    <view class="image-view">
+                        <image class="product-image" lazyLoad="{{true}}" mode="aspectFit" src="{{product.ImagePath}}" wx:if="{{renderImage}}"></image>
+                    </view>
+                    <view class="product-title">{{product.ProductName}}</view>
+                    <view class="product-price">
+                        <text>{{'￥'+product.SalePrice}}</text>
+                    </view>
+                    <view class="product-status">
+                        <view>{{'评价 '+product.Comments}}</view>
+                        <view>{{'销量 '+product.SaleCount}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="no-data t-center" wx:if="{{Products.length==0}}">该分类暂无商品</view>
+    <view class="no-more-data" wx:if="{{isBottom}}">= 没有更多了 =</view>
+    <view class="{{['share-icon',showGoTop?'mtop':'']}}">
+        <image src="/static/product/share.png"></image>
+        <button openType="share" type="primary">微信好友</button>
+    </view>
+    <view bindtap="__e" class="gotop-icon" data-event-opts="{{[ [ 'tap',[ [ 'goTop',['$event'] ] ] ] ]}}" wx:if="{{showGoTop}}">
+        <image src="/static/product/gotop.png"></image>
+    </view>
+</view>

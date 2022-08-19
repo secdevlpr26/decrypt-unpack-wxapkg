@@ -1,0 +1,74 @@
+{
+    "pages": [
+        "pages/Home/Home",
+        "pages/My/My",
+        "pages/CaseList/CaseList",
+        "pages/ArticleList/ArticleList",
+        "pages/ArticleDetail/ArticleDetail",
+        "pages/CaseDetail/CaseDetail",
+        "pages/Consult/Consult",
+        "pages/MessageAdvice/MessageAdvice",
+        "pages/OnlineReservation/OnlineReservation",
+        "pages/PaidAdvice/PaidAdvice",
+        "pages/Album/Album",
+        "pages/BigImage/BigImage",
+        "pages/ContactWay/ContactWay",
+        "pages/MyReservation/MyReservation",
+        "pages/MyFreeAdvice/MyFreeAdvice",
+        "pages/MyFreeAdviceInfo/MyFreeAdviceInfo",
+        "pages/MyPaidAdvice/MyPaidAdvice",
+        "pages/MyPaidAdviceInfo/MyPaidAdviceInfo",
+        "pages/File/File",
+        "pages/RecentVisit/RecentVisit",
+        "pages/Admire/Admire",
+        "pages/BusinessIntroduction/BusinessIntroduction",
+        "pages/PayAdviceQRCode/PayAdviceQRCode"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "律师",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "selectedColor": "#F8AB47",
+        "borderStyle": "#eee",
+        "color": "#3333",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/Home/Home",
+                "text": "首页",
+                "iconPath": "images/tabar_home_normal.png",
+                "selectedIconPath": "images/tabar_home_selected.png"
+            },
+            {
+                "pagePath": "pages/ArticleList/ArticleList",
+                "text": "文章",
+                "iconPath": "images/tabar_wenzhang_normal.png",
+                "selectedIconPath": "images/tabar_wenzhang_selected.png"
+            },
+            {
+                "pagePath": "pages/Consult/Consult",
+                "text": "咨询",
+                "iconPath": "images/tabar_zixun_normal.png",
+                "selectedIconPath": "images/tabar_zixun_selected.png"
+            },
+            {
+                "pagePath": "pages/My/My",
+                "text": "我的",
+                "iconPath": "images/tabar_wode_normal.png",
+                "selectedIconPath": "images/tabar_wode_selected.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
+}

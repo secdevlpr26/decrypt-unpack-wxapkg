@@ -1,0 +1,12 @@
+<view class="stopDefault">
+    <view bindtouchend="touchEnd" bindtouchmove="touchMove" bindtouchstart="touchStart" class="perLine" wx:for="{{arr}}" wx:for-index="idx1" wx:key="{{i}}">
+        <view class="item {{item.val==true?'bgFF':''}}" data-i="{{idx1}}" data-j="{{idx2}}" data-val="{{item.val}}" style="flex: 1; height: {{itemHeight}}px" wx:for="{{item}}" wx:for-index="idx2" wx:key="{{i}}"></view>
+    </view>
+    <view class="blockItem" style="width: {{itemWidth*4}}px; height: {{itemHeight*4}}px;top: {{item.top*itemHeight}}px; left: {{item.left*itemWidth}}px;" wx:for="{{blockArr}}" wx:key="{{i}}">
+        <view class="tip" wx:if="{{index==0}}">
+            <view style="margin-bottom: 20rpx;">沿格子划线</view>
+            <view>触摸并滑动使颜色充满所有方格</view>
+        </view>
+        <text bindtap="setResult" class="submitBtn" wx:if="{{index==2}}">提交结果</text>
+    </view>
+</view>

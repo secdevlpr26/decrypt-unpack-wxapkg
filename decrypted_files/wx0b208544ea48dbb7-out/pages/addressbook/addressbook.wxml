@@ -1,0 +1,40 @@
+<view class="address-wrap">
+    <view class="address-list">
+        <view class="address-item" wx:for="{{addRessList}}" wx:key="index">
+            <view class="info">
+                <view class="name">
+                    <text>{{item.consignee}}</text>
+                    <text class="mobile">{{item.mobile}}</text>
+                </view>
+                <view class="address text-ellipsis">
+                    <text>{{item.pname}}{{item.cname}}{{item.dname}}{{item.address}}</text>
+                </view>
+            </view>
+            <view class="handle">
+                <view bindtap="setDefault" class="default" data-index="{{index}}">
+                    <view class="check">
+                        <image src="../../assets/icons/check.png" wx:if="{{item.is_default==1}}"></image>
+                        <image src="../../assets/icons/check-none.png" wx:else></image>
+                    </view>
+                    <text style="padding-left:30rpx">设为默认</text>
+                </view>
+                <view class="status">
+                    <view bindtap="deleteAddress" data-index="{{index}}">
+                        <image src="./icon/delete-icon.png"></image>
+                            删除
+                        </view>
+                    <view bindtap="toAddress" data-index="{{index}}" data-name="edit">
+                        <image src="./icon/edit-icon.png"></image>
+                            编辑
+                        </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="empty" wx:if="{{addRessList.length==0}}">
+        <text>暂无地址</text>
+    </view>
+    <view bindtap="toAddress" class="add-btn btn-default" data-name="create">
+        新建地址
+    </view>
+</view>

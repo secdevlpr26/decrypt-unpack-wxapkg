@@ -1,0 +1,17 @@
+<view class="question">
+    <view class="question-header">
+        <image src="/images/bg2.png" style="width:750rpx; height:312rpx;"></image>
+        <view class="question-btn">
+            <image src="/images/hnit.png"></image>
+        </view>
+        <text class="question-btxt">请查阅以下常见问题</text>
+    </view>
+    <view class="question-body">
+        <text class="question-bt">Q：我什么时候可以提现？</text>
+        <text>A：随时都可以</text>
+        <text class="question-bt">Q：提现有什么要求？</text>
+        <text>A：个人姓名与提现银行卡或支付宝姓名需保持一致，银行卡信息完整。</text>
+        <text class="question-bt">Q：提现什么时候可以到账？ </text>
+        <text>A：一般为审核通过后3个工作日到账，请留意银行卡或支付宝通知。一般为审核通过后3个工作日到账，请留意银行卡或支付宝通知。</text>
+    </view>
+</view>

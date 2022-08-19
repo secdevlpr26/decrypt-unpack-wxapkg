@@ -1,0 +1,24 @@
+<view class="container bordertop">
+    <view class="reserve-list">
+        <scroll-view bindscrolltolower="onReserveListScroll" lowerThreshold="20" scrollY="true" style="height:{{scrollHeight}}rpx;">
+            <view class="noproducttips" style="display:{{hasproduct?'none':'block'}}" wx:if="{{list.length===0}}">
+                <image mode="widthFix" src="../../images/blank_03.png"></image>
+                <text>您还没有预约培训项目</text>
+            </view>
+            <view class="reserve-item" wx:for="{{list}}" wx:key="ID">
+                <view class="subscribeTime">
+                    <text class="title">预约时间：</text>
+                    <text class="time-value">{{item.ArriveTime}}</text>
+                </view>
+                <view>
+                    <text class="title">预约项目：</text>
+                    <text class="value">{{item.ProductName}}</text>
+                </view>
+                <view class="reservationCancel">
+                    <view bindtap="cancelReserve" class="btncancel" data-id="{{item.ID}}">取消预约</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<include src="/pages/template/getUserInfo.wxml"></include>

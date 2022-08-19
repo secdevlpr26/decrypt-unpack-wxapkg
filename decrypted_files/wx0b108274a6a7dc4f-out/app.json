@@ -1,0 +1,66 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/lianxi/lianxi",
+        "pages/yuyue/yuyue",
+        "pages/goods_detail/goods_detail",
+        "pages/video_detail/video_detail",
+        "pages/login/login",
+        "pages/near/near",
+        "pages/qiandao/qiandao",
+        "pages/message/message",
+        "pages/getgoods/getgoods",
+        "pages/record/record",
+        "pages/more_rank/more_rank",
+        "pages/scroe_detail/score_detail",
+        "pages/everyday/everyday",
+        "pages/slqj_detail/slqj_detail",
+        "pages/ggDetail/ggDetail",
+        "pages/near_detail/near_detail",
+        "pages/video_detail2/video_detail2",
+        "pages/myyuyue/myyuyue",
+        "pages/video_list/video_list",
+        "pages/register/register",
+        "pages/forgetPsd/forgetPsd",
+        "pages/gameDetail/gameDetail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "托口蒙萌幼儿园",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "selectedColor": "#ff9600",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "icon/index.png",
+                "selectedIconPath": "icon/sele_index.png"
+            },
+            {
+                "pagePath": "pages/yuyue/yuyue",
+                "text": "预约",
+                "iconPath": "icon/yuyue.png",
+                "selectedIconPath": "icon/sele_yuyue.png"
+            },
+            {
+                "pagePath": "pages/lianxi/lianxi",
+                "text": "联系",
+                "iconPath": "icon/lianxi.png",
+                "selectedIconPath": "icon/sele_lianxi.png"
+            },
+            {
+                "pagePath": "pages/qiandao/qiandao",
+                "text": "我的",
+                "iconPath": "icon/me.png",
+                "selectedIconPath": "icon/sele_me.png"
+            }
+        ]
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wx3950a029465d5070"
+    ]
+}

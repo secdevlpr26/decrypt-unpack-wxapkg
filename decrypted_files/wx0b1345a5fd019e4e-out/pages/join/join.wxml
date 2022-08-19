@@ -1,0 +1,52 @@
+<view class="join-wrap">
+    <image class="top-ad" lazyLoad="{{true}}" src="http://img1.vzmapp.com/common-img/join.png"></image>
+    <form bindsubmit="formSubmit">
+        <view class="join-main">
+            <view class="join-item">
+                <text>商店名称:</text>
+                <input name="branchName" placeholder="请为您的店铺取一个闪亮的名字" value="{{branchInfo.branchName}}"></input>
+            </view>
+            <view class="join-item">
+                <text>主营项目:</text>
+                <input name="mainProject" placeholder="比如服装，水果，蛋糕等" value="{{branchInfo.mainProject}}"></input>
+            </view>
+            <view class="join-item">
+                <text>联系人:</text>
+                <input name="name" placeholder="您的姓名" value="{{branchInfo.surname}}"></input>
+            </view>
+            <view class="join-item">
+                <text>电话:</text>
+                <input maxlength="11" name="phone" placeholder="您的手机号" value="{{branchInfo.mobilePhone}}"></input>
+            </view>
+            <view class="join-item">
+                <text>邮箱:</text>
+                <input name="email" placeholder="请输入您后台注册要用的邮箱" value="{{branchInfo.email}}"></input>
+            </view>
+            <view class="join-item">
+                <text>密码:</text>
+                <input name="pwd" password="true" placeholder="请输入您登录后台要使用的密码" value="{{branchInfo.password}}"></input>
+            </view>
+            <view class="join-item item-brief">
+                <text>简单介绍:</text>
+                <input name="shortDescription" placeholder="简单介绍一下您的店铺" value="{{branchInfo.shortDescription}}"></input>
+            </view>
+            <view class="tips">请认真填写联系方式，以便我们能够尽快的联系到您</view>
+            <view class="protocol">
+                <view bindtap="check" class="iconfont {{isRead?'icon-checkbox':'icon-checkBox'}}"></view>
+                <view>我已阅读并了解了</view>
+                <view bindtap="showAgreement" class="btn-protocol">【入驻申请协议】</view>
+            </view>
+            <button class="btn-join" formType="submit">立即申请入驻</button>
+        </view>
+    </form>
+</view>
+<view class="agreement" hidden="{{hiddenAgreement}}">
+    <view class="agreement-bg"></view>
+    <view class="agreement-box">
+        <view class="agreement-txt">入驻申请协议</view>
+        <view class="agreement-content">
+            <rich-text nodes="{{agreementContent}}"></rich-text>
+        </view>
+        <view bindtap="suretap" class="btn-sure">确定</view>
+    </view>
+</view>

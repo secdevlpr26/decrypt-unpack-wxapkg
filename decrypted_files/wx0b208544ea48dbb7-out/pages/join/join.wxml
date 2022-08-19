@@ -1,0 +1,92 @@
+<scroll-view scrollY="{{canScroll}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+    <view class="wrap">
+        <view class="banner-container">
+            <image src="./images/banner.png"></image>
+        </view>
+        <view class="edit-container">
+            <view class="edit-item">
+                <view class="type-name">
+        商品名称
+      </view>
+                <view class="type-input">
+                    <input bindinput="editAddinfo" data-type="shop" placeholder="请为您的店铺取个闪亮的名字" type="text"></input>
+                </view>
+            </view>
+            <view class="edit-item">
+                <view class="type-name">
+        主营项目
+      </view>
+                <view class="type-input">
+                    <picker bindchange="choiceType" mode="selector" range="{{classList}}" rangeKey="class_name">
+          {{classList[typeIndex].class_name}}
+        </picker>
+                </view>
+            </view>
+            <view class="edit-item">
+                <view class="type-name">
+        简单介绍
+      </view>
+                <view class="type-input">
+                    <input bindinput="editAddinfo" data-type="info" placeholder="简单描述一下你的店铺" type="text"></input>
+                </view>
+            </view>
+            <view class="edit-item">
+                <view class="type-name">
+        联系人
+      </view>
+                <view class="type-input">
+                    <input bindinput="editAddinfo" data-type="name" placeholder="您的姓名" type="text"></input>
+                </view>
+            </view>
+            <view class="edit-item">
+                <view class="type-name">
+        联系方式
+      </view>
+                <view class="type-input">
+                    <input bindinput="editAddinfo" data-type="phone" placeholder="您的手机号码" type="text"></input>
+                </view>
+            </view>
+        </view>
+        <view class="info-container">
+            <view class="hint">
+      请仔细填写联系方式,保证我们能尽快联系到你
+    </view>
+            <view class="agreement">
+                <view bindtap="switchConsent" class="icon">
+                    <image src="../../assets/icons/check.png" wx:if="{{isConsent}}"></image>
+                    <image src="../../assets/icons/check-none.png" wx:else></image>
+                </view>
+      我已阅读并了解
+      <text bindtap="agreementShow">［入驻申请协议］</text>
+            </view>
+            <view bindtap="submit" class="submit">立即申请入驻</view>
+        </view>
+        <view class="pop-box" hidden="{{!isShow}}">
+            <view class="pop-wrap">
+                <scroll-view scrollY="{{canScroll}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+                    <view class="pop-countent">
+                        <view class="head-text">
+          入驻协议
+        </view>
+                        <view class="mian-text">
+                            <view class="text-item" style="text-align:center;">
+
+            商城商户入驻协议
+          </view>
+                            <view class="text-item">
+            本协议由同意并承诺遵守本协议规定使用商城服务的合法经营实体（下称“商户”）、 小程序服务站（下称“商城”）共同缔结，具有合同效力。 一、协议内容及生效： （一）本协议内容包括协议正文及所有商城已经发布的或将来可能发布的各类规则。所有规则为协议不可分割的一部分，与协议正文具有同等法律效力。 （二）商户在使用商城提供的各项服务的同时，承诺接受并遵守各项相关规则的规定。商城有权根据需要不时地制定、修改本协议或各类规则，如本协议有任何变更，商城将在网站上以公示形式通知商户。任何修订和新规则一经公示，商户在七日内如未以书面形式提出相关意见，则新规则即时生效，并成为本协议的一部分。登录或继续使用服务将表示商户接受经修订的协议。除另行明确声明外，任何使服务范围扩大或功能增强的新内容均受本协议约束。
+            （三）商户签署或在线接受本协议并不导致本协议立即生效，经过商城审核通过并向商户发出服务开通通知时，本协议即在商户和商城之间产生法律效力。 二、证明文件提交： （一）证明文件提交：商户欲入驻商城，必须向商城提交其在申请服务时应当提供的证明文件或其他相关证明。 （二）证明文件变更的通知：协议期内，上述相关证明文件的任何变更商户都应及时通知商城，并补充提交变更后的证明文件。 （三）责任条款：商户承诺如其未及时通知或更新其证明文件或其他证明信息自行承担全部责任，商户保证其向商城提供的全部证明文件真实、准确且不存在超过时效问题（即保证所有证明文件在整个合同履行期间都处于有效期内）。如因上述原因发生纠纷或被相关国家主管机关处罚，商户应当独立承担全部责任，如给商城造成损失的，商户同意赔偿其全部损失。
+            三、商户的声明与保证 ： （一）商户必须向商城提供真实、合法、准确、有效的注册资料，并保证其诸如电子邮件地址、联系电话、联系地址、邮政编码等内容的有效性及安全性，保证商城及其他用户可以通过上述联系方式与自己进行联系。同时，商户也有义务在相关资料实际变更时及时更新有关注册资料。 （二）其有合法的主体权利缔结本协议，使用商城相关服务。 （三）其发布于商城的所有信息真实、准确，符合相关法律法规及商城规则。 （四）其对其发布于商城的交易信息中所涉商品有合法的销售权、经营许可权。 （五）其将按照不低于《中华人民共和国产品质量法》、《中华人民共和国消费者权益保护法》及其他法规、部门规章和国家强制性标准规定的要求，出售质量合格商品并提供“三包”等售后服务。
+            （六）其在商城出售商品，有义务按照买家实际支付的现金金额为买家开具正规发票，相关税收应按国家相关规定由商户自行承担。 （七）其保证在使用服务进行交易的过程中遵守诚实信用的原则，不在交易过程中采取不正当竞争行为，不扰乱网上交易的正常秩序，不从事与网上交易无关的行为。
+
+          </view>
+                        </view>
+                        <view class="foot-text">
+                            <view bindtap="agreementHide" class="button">同意</view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</scroll-view>

@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index"
+    },
+    "navigationBarTitleText": "预约单",
+    "enablePullDownRefresh": true
+}

@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "文章列表",
+    "usingComponents": {
+        "no-data": "/components/nodata",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

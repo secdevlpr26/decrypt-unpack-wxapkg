@@ -1,0 +1,25 @@
+<form bindreset="formReset" bindsubmit="formSubmit">
+    <view class="address">
+        <view bindtap="selectysxmbm" class="addr search" data-index="{{index}}">
+            <text>选择班级：</text>
+            <input disabled="true" name="ysxmbm" placeholder="请选择学生班级" type="text" value="{{YSXMBM}}-{{YSXMMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view bindtap="selectysxmmxbh" class="addr search" data-index="{{index}}" data-ysxmbm="{{YSXMBM}}">
+            <text>学生姓名：</text>
+            <input disabled="true" name="ysxmmxbh" placeholder="请选择学生" type="text" value="{{YSXMMXBH}}-{{YSXMMXMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view class="li">
+            <text>家长姓名：</text>
+            <input name="username" type="text" value="{{username}}"></input>
+        </view>
+        <input hidden="false" name="id" type="hidden" value="{{id}}"></input>
+    </view>
+    <view class="zhichi">
+   提示：一个学生可允许多人绑定，但每日上报只能一人上报。
+  </view>
+    <view class="tijiao">
+        <button formType="submit">绑定</button>
+    </view>
+</form>

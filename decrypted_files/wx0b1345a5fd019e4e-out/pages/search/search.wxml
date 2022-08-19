@@ -1,0 +1,105 @@
+<view bindtap="blanktap" class="search-wrap">
+    <view class="search-frame">
+        <view class="input-frame">
+            <input bindinput="searchInput" placeholder="输入搜索" value="{{inputVal}}"></input>
+        </view>
+        <view catchtap="search" class="btn-search">搜索</view>
+    </view>
+    <view class="nav-frame" wx:if="{{!isPerson}}">
+        <view bindtap="navItemtap" class="nav-item" data-idx="0">
+            <text class="{{search_type=='0'?'active':''}}">产品</text>
+        </view>
+        <view bindtap="navItemtap" class="nav-item" data-idx="1">
+            <text class="{{search_type=='1'?'active':''}}">商家</text>
+        </view>
+        <view bindtap="navItemtap" class="nav-item" data-idx="2">
+            <text class="{{search_type=='2'?'active':''}}">资讯</text>
+        </view>
+    </view>
+    <view class="screening-box" hidden="{{search_type!='0'}}">
+        <view catchtap="proNavTap" class="screening-item {{currentIdx=='0'?'active':''}}" data-idx="0">
+            <view>{{showVal}}</view>
+            <view class="iconfont icon-trangle-up {{hideComboBox?'active':''}}"></view>
+        </view>
+        <view bindtap="proNavTap" class="screening-item {{currentIdx=='1'?'active':''}}" data-idx="1">销量</view>
+        <view bindtap="proNavTap" class="screening-item {{currentIdx=='2'?'active':''}}" data-idx="2">筛选
+            <text class="iconfont icon-filter"></text>
+        </view>
+        <view class="pull-down" hidden="{{hideComboBox}}">
+            <text bindtap="itemSelect" class="txt" data-idx="0">综合</text>
+            <text bindtap="itemSelect" class="txt" data-idx="1">新品</text>
+            <text bindtap="itemSelect" class="txt" data-idx="2">价格降序</text>
+            <text bindtap="itemSelect" class="txt" data-idx="3">价格升序</text>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true">
+    <view bindtap="hiddenTo" class="animation" hidden="{{hiddenTo}}"></view>
+    <view class="animation-content" hidden="{{hiddenTo}}">
+        <view class="pricezone">
+            <view class="pri-category">品牌商家</view>
+            <scroll-view scrollY="true" style="{{trademark.length>=7?'height: 216px':''}}">
+                <view class="pri-brand">
+                    <view bindtap="onselect" class="claview" data-bid="{{item.branchInfoId}}" data-idx="{{index}}" style="{{index==active&&back?'color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':''}}" wx:for="{{trademark}}" wx:key="{{item}}">
+                        <text>{{item.branchName}}</text>
+                    </view>
+                </view>
+            </scroll-view>
+            <view class="price-range">价格区间（元）</view>
+            <view class="inputzone">
+                <input bindinput="MinMoney" class="inp-money" placeholder="最低价" type="digit" value="{{MinMoneyVal}}"></input>
+                <text style="color:#000; opacity:0.4; margin: 0 26rpx;">-</text>
+                <input bindinput="MaxMoney" class="inp-money" placeholder="最高价" type="digit" value="{{MaxMoneyVal}}"></input>
+            </view>
+            <view class="btn-box">
+                <button bindtap="reset" class="btn">重置</button>
+                <button bindtap="confirm" class="btn back">确定</button>
+            </view>
+        </view>
+    </view>
+</view>
+<scroll-view bindscrolltolower="scrolltolower" bindtap="blanktap" class="main" scrollY="true" style="{{search_type=='0'&&!isPerson?'margin-top: 236rpx;':''}}">
+    <view class="store" wx:if="{{search_type=='1'}}">
+        <view bindtap="toStoreDetail" class="store-item" data-id="{{item.id}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+            <image lazyLoad="{{true}}" src="{{item.pic1==''?'../../img/img-default.png':item.pic1}}"></image>
+            <view class="item-main">
+                <text class="item-title">{{item.branchName}}</text>
+                <text class="item-content">{{item.address}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="news" wx:elif="{{search_type=='2'}}">
+        <view bindtap="toNewsDetail" class="news-item" data-id="{{item.id}}" wx:for="{{pageList}}" wx:key="{{item.code}}">
+            <image lazyLoad="{{true}}" src="{{item.picture1}}"></image>
+            <view class="news-item-info">
+                <text class="news-item-title">{{item.title}}</text>
+                <text class="news-item-intro">{{item.briefDescription}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="product" wx:else>
+        <view bindtap="toProDetail" class="recommend-item" data-pid="{{item.id}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+            <image lazyLoad="{{true}}" src="{{item.productImageVOList[0].imageURL}}"></image>
+            <view class="pro-info">
+                <text class="pro-title">{{item.productName}}</text>
+                <view class="price-frame" wx:if="{{item.purpose!=2&&item.purpose!=4}}">
+                    <text class="price">
+                        <text class="min">￥</text>{{item.productModelList[0].price}}</text>
+                    <text class="ori-price">￥{{item.productModelList[0].originalprice}}</text>
+                </view>
+                <view class="noprice" wx:else>
+                    <text>{{item.showName}}</text>
+                </view>
+                <button wx:if="{{item.purpose!=2&&item.purpose!=4}}">点击抢购</button>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-hint" hidden="{{bottomHint}}">
+        <view class="line"></view>
+        <text>没有更多啦</text>
+    </view>
+    <view class="search-null" hidden="{{noSearch}}">
+        <view class="iconfont icon-vz-null"></view>
+        <text>没有您搜索的信息</text>
+    </view>
+</scroll-view>

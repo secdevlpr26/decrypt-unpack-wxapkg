@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "邀请店主",
+    "usingComponents": {
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

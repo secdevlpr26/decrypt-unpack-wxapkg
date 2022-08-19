@@ -1,0 +1,10 @@
+<view class="mod-login-dialog" wx:if="{{loginHidden}}">
+    <view animation="{{showScale}}" class="mod-login">
+        <view class="title">{{title}}</view>
+        <view class="desc">{{desc}}</view>
+        <button bindgetphonenumber="getPhone" openType="getPhoneNumber">微信一键登录</button>
+        <view bindtap="closeDialog" class="mod-login-close">
+            <image src="../../images/common/icon-close.png"></image>
+        </view>
+    </view>
+</view>

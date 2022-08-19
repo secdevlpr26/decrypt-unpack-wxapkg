@@ -1,0 +1,7 @@
+<import src="/pages/template/modules.wxml"></import>
+<view class="homeWrapper {{copyrightInfo.contentClassName}}" style="height: {{showAuthGetUserInfoBtn?height:''}}px">
+    <template is="modules" data="{{modules:modules,globaldata:globaldata}}"></template>
+</view>
+<include src="/pages/template/copyright.wxml"></include>
+<include src="/pages/template/floatLayer.wxml"></include>
+<include src="/pages/template/getUserInfo.wxml"></include>

@@ -1,0 +1,33 @@
+<view wx:if="{{isHide}}">
+    <view wx:if="{{canIUse}}">
+        <view class="header">
+            <image src="/images/58_logo.png"></image>
+        </view>
+        <view class="content">
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+        <button bindgetuserinfo="bindGetUserInfo" class="bottom" lang="zh_CN" openType="getUserInfo" type="primary">
+            授权登录
+        </button>
+    </view>
+    <view wx:else>请升级微信版本</view>
+</view>
+<view wx:else>
+    <view wx:if="{{isCode}}">
+        <view>已激活</view>
+    </view>
+    <view wx:else>
+        <view class="header">
+            <image src="/images/58_logo.png"></image>
+        </view>
+        <form bindreset="bindAtCode" bindsubmit="bindAtCode">
+            <view class="content">
+                <input class="weui-input" name="at_code" placeholder="请输入激活码" type="text" value=""></input>
+            </view>
+            <button class="bottom" formType="submit" lang="zh_CN" type="primary">
+                激活
+            </button>
+        </form>
+    </view>
+</view>

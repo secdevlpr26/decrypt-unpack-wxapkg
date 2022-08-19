@@ -1,0 +1,10 @@
+<view style="position: absolute; width: 100%; height: 100%; background:#fff; display: flex; flex-direction: column;">
+    <camera binderror="error" devicePosition="front" style="flex: 1;"></camera>
+    <view class="testBlock" style="height: 240rpx;">
+        <view class="blockTitle">前置摄像头正常吗？</view>
+        <view class="blockContent btns">
+            <view bindtap="setResult" class="warn" data-val="1">异常</view>
+            <view bindtap="setResult" class="normal" data-val="0">正常</view>
+        </view>
+    </view>
+</view>

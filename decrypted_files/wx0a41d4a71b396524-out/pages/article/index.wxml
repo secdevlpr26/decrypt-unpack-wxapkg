@@ -1,0 +1,68 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<view class="type-list">
+    <view class="borrow-most">
+        <view class="box-sd">
+            <view class="book-info-header">
+                <image binderror="bookImgError" src="{{book.pic1=='no_cover'?noCover:imgRootPath+book.pic1}}"></image>
+                <view style="margin-left:30rpx;position:relative;">
+                    <view class="title">
+                        {{book.bookName}}
+                        <view class="hot"></view>
+                    </view>
+                    <view class="author">作者：{{book.author==null?'--':book.author}}</view>
+                    <view class="author">
+                        类别：{{book.bookCategory!=null?book.bookCategory:''}}
+                    </view>
+                    <view class="collection-book">
+                        <view class="collection" wx:if="{{checkStatusAry!=null&&checkStatusAry.length>0}}">
+                            <label wx:for="{{checkStatusAry}}" wx:for-index="key" wx:for-item="statuItem">
+                                <image binderror="checkStatusImgError" bindtap="addSign" data-bookid="{{book.id}}" data-check="{{statuItem.checkStatus}}" src="{{statuItem==null?'../../images/addsign_01.png':statuItem.starUrl}}"></image>
+                            </label>
+                            <view class="{{statuItem.checkStatus==='checked'?'c00ca':''}}" style="font-size:24rpx" wx:for="{{checkStatusAry}}" wx:for-index="key" wx:for-item="statuItem">
+                                    {{statuItem.checkStatus==='checked'?'已收藏':'收藏'}}
+                                </view>
+                        </view>
+                        <view class="collection" wx:else>
+                            <image binderror="checkStatusImgError" bindtap="addSign" data-bookid="{{book.id}}" data-check="nocheck" src="../../images/addsign_01.png"></image>
+                            <view style="font-size:24rpx">收藏</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="author">出版社：{{book.press}}</view>
+            <view class="author">出版时间：{{tools.getDateStr(book.pubDate)}}</view>
+        </view>
+    </view>
+</view>
+<view class="box-sd m10">
+    <view class="pad10">
+        <view class="title-name">
+            <image src="../../images/books_icon_01.png" style="width:21px; height:15px"></image>
+            <text class="">书本简介</text>
+        </view>
+        <view class="article-intro">
+            <view wx:if="{{book.bookintr==null||book.bookintr==''}}">本书暂无简介</view>
+            <template is="wxParse" data="{{wxParseData:bookintr.nodes}}" wx:else></template>
+        </view>
+    </view>
+</view>
+<view class="box-sd m10">
+    <view class="pad10">
+        <view class="title-name">
+            <image src="../../images/books_icon_02.png" style="width:33rpx; height:31rpx"></image>
+            <text class="">相关推荐</text>
+        </view>
+        <view class="page__bd page__bd_spacing">
+            <view class="weui-flex">
+                <view class="item-three" wx:for="{{recs}}" wx:for-item="bk">
+                    <view bindtap="toOther" class="article-list" data-id="{{bk.id}}">
+                        <image binderror="imgError" data-index="{{index}}" mode="aspectFill" src="{{bk.pic1=='no_cover'?noCover:imgRootPath+bk.pic1}}"></image>
+                        <view class="bookName">{{bk.bookName}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="tools" src="../../utils/appDate.wxs" />
+<wxs module="utils" src="../../utils/appUtils.wxs" />

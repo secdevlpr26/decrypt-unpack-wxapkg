@@ -1,0 +1,67 @@
+<view class="container-card" wx:for="{{forceCards}}">
+    <view class="container">
+        <view class="row">
+            <view class="forceCardName">{{item.vipCardName}}</view>
+            <view class="forceCardPrice">￥{{item.money}}</view>
+        </view>
+        <view class="row">
+            <view class="forceCardValidity" wx:if="{{item.effectiveData!=''}}">
+                <text class="noteTitle">有效期</text>
+                <text>：{{item.effectiveData}}天</text>
+            </view>
+            <view class="forceCardValidity" wx:else>
+                <text class="noteTitle">有效期</text>
+                <text>：{{item.validityBegin+'至'+item.validityEnd}}</text>
+            </view>
+        </view>
+        <view class="row">
+            <view class="useNote">
+                <view class="noteTitle">{{forceTitle}}</view>
+                <em class="dd">：</em>
+                <ul class="noteList">
+                    <li class="noteLists" wx:for="{{item.vipcardPrerogativeBeans}}" wx:for-index="forceIndex" wx:for-item="forceItem">
+            {{forceItem.title!=''&&forceItem.content!=''?forceIndex+1+'.'+forceItem.title+forceItem.content:'暂无'}}</li>
+                </ul>
+                <view class="clear"></view>
+            </view>
+            <view class="clear"></view>
+        </view>
+        <view class="row">
+            <view class="useNote">
+                <view class="noteTitle">{{noteTitle}}</view>
+                <em class="dd">：</em>
+                <ul class="noteList">
+                    <li class="noteLists" wx:if="{{item.vipcardUse.length>0}}" wx:for="{{item.vipcardUse}}" wx:for-index="noteIndex" wx:for-item="noteItem">{{noteItem.content!=''?noteIndex+1+'.'+noteItem.content:'暂无'}}</li>
+                    <li class="noteLists" wx:if="{{item.vipcardUse.length==0}}" wx:for="{{item.vipcardUse}}" wx:for-index="noteIndex" wx:for-item="noteItem">暂无</li>
+                </ul>
+                <view class="clear"></view>
+            </view>
+            <view class="clear"></view>
+        </view>
+        <view class="row">
+            <button bindgetphonenumber="getPhone" class="lqhyk" data-index="{{index}}" openType="getPhoneNumber">购买权益卡</button>
+        </view>
+    </view>
+</view>
+<view class="clear"></view>
+<view class="cover" style="display:{{displ3}}">
+    <view bindtap="back" class="cover1"></view>
+    <view class="cover3">
+        <form reportSubmit bindsubmit="toPay" data-order-pay-type="W">
+            <button class="evaluation" formType="submit">微信支付</button>
+        </form>
+        <form reportSubmit bindsubmit="toPay" data-order-pay-type="B">
+            <button class="evaluation" formType="submit">余额支付</button>
+        </form>
+    </view>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<button bindtap="goToUser" class="lqhyk" wx:if="{{saoma}}">返回首页</button>
+<component-alertview carname="{{carname}}" displayy="{{displayy}}" titlename="{{titlename}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder0" bind:chkOrder1="chkOrder0" carname="{{carname_0}}" displayy="{{displayy_0}}" titlename="{{titlename_0}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder1" bind:chkOrder1="chkOrder1" carname="{{carname_1}}" displayy="{{displayy_1}}" titlename="{{titlename_1}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder2" bind:chkOrder1="chkOrder1_2" carname="{{carname_2}}" displayy="{{displayy_2}}" titlename="{{titlename_2}}"></component-alertview>

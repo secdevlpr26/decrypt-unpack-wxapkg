@@ -1,0 +1,140 @@
+<import src="../../../component/XYReserveTimeView/XYReserveTimeView.wxml"></import>
+<template is="XYReserveTimeView" data="{{...$wux.picker.phone}}"></template>
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="container">
+    <view bindtap="selecttype" class="bgw w100 col333 ljxdbg">
+        <view class="pl30 pr30 add">
+            <view class="ft30 pl50 tianjia">{{types}}</view>
+        </view>
+    </view>
+    <view bindtap="selectAddress" class="bgw w100 col333 ljxdbg" wx:if="{{isShowPlaceHold&&typesv==0}}">
+        <view class="pl30 pr30 add">
+            <view class="ft30 pl50 tianjia">添加服务地址</view>
+        </view>
+    </view>
+    <view bindtap="selectAddress" class="bgw w100 col333 ljxdbg" wx:elif="{{typesv==0}}">
+        <view class="pl30 pr30 add">
+            <view class="ft32 h45">
+                <text class="fb pr20">{{selectedAddress.contacts}}</text>
+                <text wx:if="{{selectedAddress.selectedGenderId==1}}">先生</text>
+                <text wx:if="{{selectedAddress.selectedGenderId==2}}">女士</text>
+            </view>
+            <view class="ft26 address">
+                <text>{{selectedAddress.address}}</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="selectAddress" class="bgw w100 col333 ljxdbg" wx:if="{{isShowPlaceHold&&typesv==2}}">
+        <view class="pl30 pr30 add">
+            <view class="ft30 pl50 tianjia">添加服务地址</view>
+        </view>
+    </view>
+    <view bindtap="selectAddress" class="bgw w100 col333 ljxdbg" wx:elif="{{typesv==2}}">
+        <view class="pl30 pr30 add">
+            <view class="ft32 h45">
+                <text class="fb pr20">{{selectedAddress.contacts}}</text>
+                <text wx:if="{{selectedAddress.selectedGenderId==1}}">先生</text>
+                <text wx:if="{{selectedAddress.selectedGenderId==2}}">女士</text>
+            </view>
+            <view class="ft26 address">
+                <text>{{selectedAddress.address}}</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="selectStore" class="bgw w100 col333 ljxdbg" wx:if="{{!isstore&&typesv==1}}">
+        <view class="pl30 pr30 add">
+            <view class="ft30 pl50 tianjia">选择到店门店</view>
+        </view>
+    </view>
+    <view bindtap="selectAddress" class="bgw w100 col333 ljxdbg" wx:elif="{{typesv==1}}">
+        <view class="pl30 pr30 add">
+            <view class="ft32 h45">
+                <text class="fb pr20">{{store.title}}</text>
+                <text>{{store.phone}}</text>
+            </view>
+            <view class="ft26 address">
+                <text>{{store.address}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100">
+        <view class="pl30 pr30 pb80 ft30">
+            <view class="ht100 bb col000" wx:if="{{typesv==1}}">
+                <input bindinput="inputName" class="ht100" maxlength="11" placeholder="请输入姓名" placeholderClass="col999"></input>
+            </view>
+            <view class="ht100 bb col000">
+                <input bindinput="inputPhone" class="ht100" disabled="{{hasLogin}}" maxlength="11" placeholder="请输入手机号" placeholderClass="col999" type="number" value="{{phone}}"></input>
+            </view>
+            <view class="ht100 bb col000" wx:if="{{hasLogin==false}}">
+                <input bindinput="inputCode" class="sryzm" maxlength="8" placeholder="请输入验证码" placeholderClass="col999" type="number" value="{{code}}"></input>
+                <text catchtap="sendCode" class="hqyzm ht100 lh100 colorange pr30 ft28" style="color:{{getAuthCodeTextColor}}">{{getSmsCode}}</text>
+            </view>
+            <view bindtap="onTapTime" class="ht100 bb col333" wx:if="{{typesv!=2}}">
+                <text class="lh100">预约时间</text>
+                <view class="xzfwsj ht100 lh100 {{time?'col000':'col999'}} pr30 ft28">{{time?time:'选择服务时间'}}</view>
+            </view>
+            <view bindtap="chooseTicket" class="ht100 bb col333">
+                <text class="lh100">优惠券</text>
+                <view class="xzfwsj ht100 lh100 {{couponId?'col000':'col999'}} pr30 ft28" wx:if="{{!coupon}}">{{ticketTxt}}</view>
+                <view class="xzfwsj ht100 lh100 col000 pr30 ft28" wx:else>{{coupon.name}}</view>
+            </view>
+            <view class="ht100 col000">
+                <input bindinput="inputDetail" class="ht100" placeholder="如有其它问题请留言" placeholderClass="col999" value="{{remark}}"></input>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" style="margin-bottom: 120rpx;">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100">{{phone1.mobile_name}}</view>
+            <view class="bb col333 ft28 pt14 pb14">
+                <view class="ht68">
+                    <text class="col333">{{sp.desc}}</text>
+                </view>
+                <view class="ht68">
+                    <text class="col333">维修费</text>
+                    <text class="colorange fr">¥{{tprice}}</text>
+                </view>
+                <view hidden class="ht68">
+                    <text class="col333">上门费</text>
+                    <text class="colorange fr">¥{{plan.brand_home_visit_fee}}</text>
+                </view>
+                <view hidden class="ht68">
+                    <text class="col333">手工费</text>
+                    <text class="colorange fr">¥{{plan.brand_manual_fee}}</text>
+                </view>
+                <view class="ht68">
+                    <text class="col333">优惠金额</text>
+                    <text class="colorange fr" wx:if="{{!coupon}}">¥{{discountNum}}</text>
+                    <text class="colorange fr" wx:else>¥{{coupon.money}}</text>
+                </view>
+                <view class="ht68" wx:if="{{night_fee>0}}">
+                    <text class="col333">夜间服务费</text>
+                    <text class="colorange fr">¥{{night_fee}}</text>
+                </view>
+            </view>
+            <view class="ht100 col666 lh100">
+                <text class="fr">总额：¥{{price}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="fixedb w100  bgf8">
+        <view class="fl pt14">
+            <view class="ft30" wx:if="{{yy>0}}">
+                <text class="col333 pl30 lh40">预约金：</text>
+                <text class="colorange lh40">¥{{yy}}</text>
+            </view>
+            <view class="ft30" wx:else>
+                <text class="col333 pl30 lh40">总额：</text>
+                <text class="colorange lh40">¥{{price}}</text>
+            </view>
+            <view class="ft22 col666 pl30">
+                <view bindtap="toUserAgreement" class="">提交订单等同于同意
+          <text class="bluei">维修服务条款</text>
+                </view>
+            </view>
+        </view>
+        <button bindtap="submit" class="xiadanbtn fr lh100 ft30" wx:if="{{yy>0}}">支付</button>
+        <button bindtap="submit" class="xiadanbtn fr lh100 ft30" wx:else>下一步</button>
+    </view>
+</view>

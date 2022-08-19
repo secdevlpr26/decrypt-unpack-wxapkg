@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "验证",
+    "usingComponents": {
+        "authorized-mask": "/common/authorizedMask/authorizedMask"
+    }
+}

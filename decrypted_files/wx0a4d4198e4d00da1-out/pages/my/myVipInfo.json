@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "会员权益",
+    "usingComponents": {
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index",
+        "wxc-abnor": "../../packages/@minui/wxc-abnor/dist/index"
+    }
+}

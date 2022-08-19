@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "zy-modal": "/components/zy-modal/zy-modal"
+    },
+    "navigationBarTitleText": "网络状态",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#FAFAFF"
+}

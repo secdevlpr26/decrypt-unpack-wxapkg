@@ -1,0 +1,15 @@
+var compareDate = (function(date) {
+    var t = date.replace("/-/g", "/");
+    now = getDate();
+    var nDat = getDate(t);
+    var nowTime = now.getTime();
+    var nTime = nDat.getTime();
+    if (nowTime > nTime) {
+        return (false)
+    } else {
+        return (true)
+    }
+});
+module.exports = ({
+    compareDate: compareDate,
+});

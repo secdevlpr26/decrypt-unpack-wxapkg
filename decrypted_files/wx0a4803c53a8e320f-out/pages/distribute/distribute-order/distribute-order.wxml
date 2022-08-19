@@ -1,0 +1,28 @@
+<view class="order-wrap">
+    <view class="order-content">
+        <view class="order-nav">
+            <view bindtap="navtap" class="nav-item {{curIdx==0?'active':''}}" data-idx="0">所有</view>
+            <view bindtap="navtap" class="nav-item {{curIdx==1?'active':''}}" data-idx="1">待付款</view>
+            <view bindtap="navtap" class="nav-item {{curIdx==2?'active':''}}" data-idx="2">已付款</view>
+            <view bindtap="navtap" class="nav-item {{curIdx==3?'active':''}}" data-idx="3">已完成</view>
+        </view>
+        <view class="order-list">
+            <view class="order-item" wx:for="{{orderList}}">
+                <view class="pro-item" wx:for="{{item.productOrderVOList}}" wx:for-item="proItem">
+                    <image src="{{proItem.imageURL}}"></image>
+                    <view class="pro-main">
+                        <text>{{proItem.productName}}</text>
+                        <text>{{proItem.productModelName}}</text>
+                        <text>￥{{proItem.price}}</text>
+                    </view>
+                </view>
+                <view class="order-bottom">
+                    <view>总金额：{{item.totalMoney}}</view>
+                    <view>订单编号：{{item.orderNO}}</view>
+                </view>
+            </view>
+            <view class="botttom" hidden="{{hideBottom}}">- 已经到底啦 -</view>
+        </view>
+        <view class="order-null" hidden="{{!noOrder}}">暂无订单</view>
+    </view>
+</view>

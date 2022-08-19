@@ -1,0 +1,22 @@
+<view class="avatar">
+    <image src="{{userInfo.avatarUrl}}" style="width:100%;height:100%"></image>
+</view>
+<view class="name">{{userInfo.nickName}}</view>
+<form bindsubmit="register">
+    <view class="item">
+        <input bindinput="getPhone" class="inp" name="phone" placeholder="请输入您的手机号" value="{{val}}"></input>
+    </view>
+    <view class="item">
+        <input bindinput="getPsd" class="inp" name="psd" placeholder="请输入您的密码" value="{{psd}}"></input>
+    </view>
+    <view class="item">
+        <input bindinput="getPsd2" class="inp" name="psd2" placeholder="请再次输入您的密码" value="{{psd2}}"></input>
+    </view>
+    <view class="item">
+        <input bindinput="userCode" class="inp2" name="usercode" placeholder="请输入验证码" value="{{val2}}"></input>
+        <view bindtap="getcode" class="{{msg=='已发送'?'getpsd2':'getpsd'}}">{{msg}}
+      <view class="timer" wx:if="{{msg=='已发送'}}">({{timer_num}}s)</view>
+        </view>
+    </view>
+    <button class="{{isLogin?'btn2':'btn'}}" formType="submit">注册</button>
+</form>

@@ -1,0 +1,546 @@
+<view class="bg">
+    <view class="condition-area">
+        <view class="condition-line">
+            <view class="area" style="background-color:{{areaBg}};border-bottom:2rpx solid {{areaLine}};position:relative;">
+                <view bindtap="bindShowAreaMsg" class="area-select-header">
+                    <view style="float:left;">{{area_name}}</view>
+                    <image src="../../images/net-monitor/data-down.png" style="float:right;margin-top:10rpx;"></image>
+                    <view class="clearfix"></view>
+                </view>
+                <view class="area-select-body" wx:if="{{selectArea}}">
+                    <view style="position:absolute;top:35rpx;left:16rpx;z-index:22;">
+                        <view bindtap="mySelectArea" class="select_one" data-name="全部罐区" style="margin-bottom:41rpx;">全部罐区</view>
+                        <view bindtap="mySelectArea" class="select_one" data-name="N-T1罐区" style="margin-bottom:41rpx;">N-T1罐区</view>
+                        <view bindtap="mySelectArea" class="select_one" data-name="N-T2罐区" style="margin-bottom:41rpx;">N-T2罐区</view>
+                        <view bindtap="mySelectArea" class="select_one" data-name="N-T3罐区" style="margin-bottom:41rpx;">N-T3罐区</view>
+                        <view bindtap="mySelectArea" class="select_one" data-name="N-T4罐区" style="margin-bottom:41rpx;">N-T4罐区</view>
+                        <view bindtap="mySelectArea" class="select_one" data-name="N-T5罐区" style="margin-bottom:41rpx;">N-T5罐区</view>
+                        <view bindtap="mySelectArea" class="select_one" data-name="N-T6罐区" style="margin-bottom:41rpx;">N-T6罐区</view>
+                        <view bindtap="mySelectArea" class="select_one" data-name="N-T7罐区" style="margin-bottom:41rpx;">N-T7罐区</view>
+                    </view>
+                </view>
+            </view>
+            <view class="tank" style="background-color:{{tankBg}};border-bottom:2rpx solid {{tankLine}};position:relative;">
+                <view bindtap="bindShowTankMsg" class="tank-select-header">
+                    <view style="float:left;">{{tank_name}}</view>
+                    <image src="../../images/net-monitor/data-down.png" style="float:right;margin-top:10rpx;"></image>
+                    <view class="clearfix"></view>
+                </view>
+                <view class="tank-select-body" wx:if="{{selectTank}}">
+                    <view style="position:absolute;top:35rpx;left:16rpx;z-index:32;">
+                        <view bindtap="mySelectTank" class="select_one" data-name="全部油罐" style="margin-bottom:41rpx;">全部油罐</view>
+                        <view bindtap="mySelectTank" class="select_one" data-name="01" style="margin-bottom:41rpx;">01</view>
+                        <view bindtap="mySelectTank" class="select_one" data-name="02" style="margin-bottom:41rpx;">02</view>
+                        <view bindtap="mySelectTank" class="select_one" data-name="03" style="margin-bottom:41rpx;">03</view>
+                        <view bindtap="mySelectTank" class="select_one" data-name="04" style="margin-bottom:41rpx;">04</view>
+                        <view bindtap="mySelectTank" class="select_one" data-name="05" style="margin-bottom:41rpx;">05</view>
+                        <view bindtap="mySelectTank" class="select_one" data-name="06" style="margin-bottom:41rpx;">06</view>
+                    </view>
+                </view>
+            </view>
+            <view class="time" style="background-color:{{timeBg}};border-bottom:2rpx dotted {{timeLine}};position:relative;">
+                <view class="time-select-header">
+                    <picker bindchange="changeStarttime" end="2117-10-08" mode="date" name="starttime" start="2017-10-01" value="{{starttime}}">
+                        <view>{{starttime}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="clearfix"></view>
+        </view>
+    </view>
+    <view class="data-message">
+        <view class="single-data-message-head">
+            <view class="single-total-head">
+                <view style="width:15%;">罐号</view>
+                <view style="width:25%;">日期</view>
+                <view style="width:20%;">液位</view>
+                <view>动态</view>
+                <view>体积</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.13</view>
+                <view style="width:20%;">14.824m</view>
+                <view style="color:#008744;">+0.401m</view>
+                <view>6.80万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T102</view>
+                <view style="width:25%;">2020.05.13</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>4.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T103</view>
+                <view style="width:25%;">2020.05.13</view>
+                <view style="width:20%;">15.631m</view>
+                <view style="color:#008744;">+1.601m</view>
+                <view>6.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T104</view>
+                <view style="width:25%;">2020.05.13</view>
+                <view style="width:20%;">18.631m</view>
+                <view style="color:#008744;">+1.001m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T105</view>
+                <view style="width:25%;">2020.05.13</view>
+                <view style="width:20%;">13.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>7.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T106</view>
+                <view style="width:25%;">2020.05.13</view>
+                <view style="width:20%;">20.131m</view>
+                <view style="color:#008744;">+0.401m</view>
+                <view>9.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.12</view>
+                <view style="width:20%;">14.423m</view>
+                <view style="color:#008744;">+0.601m</view>
+                <view>6.45万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T102</view>
+                <view style="width:25%;">2020.05.12</view>
+                <view style="width:20%;">11.232m</view>
+                <view style="color:#D81414;">-1.601m</view>
+                <view>6.15万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T103</view>
+                <view style="width:25%;">2020.05.12</view>
+                <view style="width:20%;">14.030m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>7.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T104</view>
+                <view style="width:25%;">2020.05.12</view>
+                <view style="width:20%;">17.630m</view>
+                <view style="color:#008744;">+1.201m</view>
+                <view>8.65万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T105</view>
+                <view style="width:25%;">2020.05.12</view>
+                <view style="width:20%;">14.232m</view>
+                <view style="color:#008744;">+0.501m</view>
+                <view>6.45万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T106</view>
+                <view style="width:25%;">2020.05.12</view>
+                <view style="width:20%;">19.730m</view>
+                <view style="color:#D81414;">-0.201m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.11</view>
+                <view style="width:20%;">13.822m</view>
+                <view style="color:#D81414;">-2.203m</view>
+                <view>5.20万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T102</view>
+                <view style="width:25%;">2020.05.11</view>
+                <view style="width:20%;">12.833m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>5.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T103</view>
+                <view style="width:25%;">2020.05.11</view>
+                <view style="width:20%;">14.631m</view>
+                <view style="color:#008744;">+1.601m</view>
+                <view>6.75万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T104</view>
+                <view style="width:25%;">2020.05.11</view>
+                <view style="width:20%;">16.430m</view>
+                <view style="color:#008744;">+1.001m</view>
+                <view>7.45万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T105</view>
+                <view style="width:25%;">2020.05.11</view>
+                <view style="width:20%;">13.731m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>7.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T106</view>
+                <view style="width:25%;">2020.05.11</view>
+                <view style="width:20%;">19.931m</view>
+                <view style="color:#008744;">+0.401m</view>
+                <view>9.45万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.10</view>
+                <view style="width:20%;">13.631m</view>
+                <view style="color:#008744;">+0.601m</view>
+                <view>6.45万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T102</view>
+                <view style="width:25%;">2020.05.10</view>
+                <view style="width:20%;">8.631m</view>
+                <view style="color:#D81414;">-1.601m</view>
+                <view>4.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.10</view>
+                <view style="width:20%;">17.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T104</view>
+                <view style="width:25%;">2020.05.10</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#008744;">+1.201m</view>
+                <view>6.65万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T105</view>
+                <view style="width:25%;">2020.05.10</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#008744;">+0.501m</view>
+                <view>6.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T106</view>
+                <view style="width:25%;">2020.05.10</view>
+                <view style="width:20%;">18.631m</view>
+                <view style="color:#D81414;">-0.201m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.09</view>
+                <view style="width:20%;">14.824m</view>
+                <view style="color:#008744;">+0.401m</view>
+                <view>6.80万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T102</view>
+                <view style="width:25%;">2020.05.09</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>4.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T103</view>
+                <view style="width:25%;">2020.05.09</view>
+                <view style="width:20%;">15.631m</view>
+                <view style="color:#008744;">+1.601m</view>
+                <view>6.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T104</view>
+                <view style="width:25%;">2020.05.09</view>
+                <view style="width:20%;">18.631m</view>
+                <view style="color:#008744;">+1.001m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T105</view>
+                <view style="width:25%;">2020.05.09</view>
+                <view style="width:20%;">13.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>7.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T106</view>
+                <view style="width:25%;">2020.05.09</view>
+                <view style="width:20%;">20.131m</view>
+                <view style="color:#008744;">+0.401m</view>
+                <view>9.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.08</view>
+                <view style="width:20%;">13.631m</view>
+                <view style="color:#008744;">+0.601m</view>
+                <view>6.45万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T102</view>
+                <view style="width:25%;">2020.05.08</view>
+                <view style="width:20%;">8.631m</view>
+                <view style="color:#D81414;">-1.601m</view>
+                <view>4.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T103</view>
+                <view style="width:25%;">2020.05.08</view>
+                <view style="width:20%;">17.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T104</view>
+                <view style="width:25%;">2020.05.08</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#008744;">+1.201m</view>
+                <view>6.65万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T105</view>
+                <view style="width:25%;">2020.05.08</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#008744;">+0.501m</view>
+                <view>6.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T106</view>
+                <view style="width:25%;">2020.05.08</view>
+                <view style="width:20%;">18.631m</view>
+                <view style="color:#D81414;">-0.201m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.07</view>
+                <view style="width:20%;">14.824m</view>
+                <view style="color:#008744;">+0.401m</view>
+                <view>6.80万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T102</view>
+                <view style="width:25%;">2020.05.07</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>4.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T103</view>
+                <view style="width:25%;">2020.05.07</view>
+                <view style="width:20%;">15.631m</view>
+                <view style="color:#008744;">+1.601m</view>
+                <view>6.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T104</view>
+                <view style="width:25%;">2020.05.07</view>
+                <view style="width:20%;">18.631m</view>
+                <view style="color:#008744;">+1.001m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T105</view>
+                <view style="width:25%;">2020.05.07</view>
+                <view style="width:20%;">13.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>7.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T106</view>
+                <view style="width:25%;">2020.05.07</view>
+                <view style="width:20%;">20.131m</view>
+                <view style="color:#008744;">+0.401m</view>
+                <view>9.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T101</view>
+                <view style="width:25%;">2020.05.06</view>
+                <view style="width:20%;">13.631m</view>
+                <view style="color:#008744;">+0.601m</view>
+                <view>6.45万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T102</view>
+                <view style="width:25%;">2020.05.06</view>
+                <view style="width:20%;">8.631m</view>
+                <view style="color:#D81414;">-1.601m</view>
+                <view>4.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T103</view>
+                <view style="width:25%;">2020.05.06</view>
+                <view style="width:20%;">17.631m</view>
+                <view style="color:#D81414;">-0.601m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T104</view>
+                <view style="width:25%;">2020.05.06</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#008744;">+1.201m</view>
+                <view>6.65万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T105</view>
+                <view style="width:25%;">2020.05.06</view>
+                <view style="width:20%;">10.631m</view>
+                <view style="color:#008744;">+0.501m</view>
+                <view>6.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+        <view class="single-data-message">
+            <view class="single-total">
+                <view style="width:15%;">N-T106</view>
+                <view style="width:25%;">2020.05.13</view>
+                <view style="width:20%;">18.631m</view>
+                <view style="color:#D81414;">-0.201m</view>
+                <view>8.85万立</view>
+                <view class="clearfix" style="clear:both;float:none;"></view>
+            </view>
+        </view>
+    </view>
+    <view style="width:750rpx;height:100%;background-color:rgba(215,215,215,0.6);position:absolute;left:0;top:88rpx;z-index:10;display:{{shade}}"></view>
+</view>
+<zy-modal areaName="{{areaName}}出现火灾预警!" bindconfirm="modalConfirm" confirmText="确定" hidden="{{modalHidden}}" imageReady="block"></zy-modal>
+<audio id="audio" loop="false" src="{{src}}"></audio>

@@ -1,0 +1,40 @@
+<view class="goods-wrap">
+    <view class="order-container new">
+        <view catchtap="orderHide" class="tab {{order.number==2?'current':''}}" data-order="2">
+            按时间最新
+            <view class="arrow-down"></view>
+            <view class="split"></view>
+        </view>
+        <view catchtap="orderHide" class="tab {{order.number==1?'current':''}}" data-order="1">
+            价格从高到低<view class="arrow-down"></view>
+            <view class="split"></view>
+        </view>
+        <view catchtap="orderHide" class="tab {{order.number==0?'current':''}}" data-order="0">价格从低到高<view class="arrow-down"></view>
+        </view>
+    </view>
+    <view class="goods-container">
+        <scroll-view bindscrolltolower="loadMore" class="goods-scroll" scrollX="false" scrollY="true">
+            <view class="goods-list">
+                <view bindtap="toToGoods" class="goods-item" data-id="{{goods.goods_id}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="index">
+                    <view class="pic">
+                        <image src="{{goods.original_img}}"></image>
+                    </view>
+                    <view class="info">
+                        <view class="name text-ellipsis">
+                                {{goods.goods_name}}
+                            </view>
+                        <view class="brand text-ellipsis">
+                                {{goods.shop_name}} </view>
+                        <view class="price">
+                                ¥{{goods.shop_price}}
+                            </view>
+                        <view class="comment">
+                                {{goods.comments_num*1>0?goods.comments_num+'人评论':'新上架'}}
+                                <view class="salenum">销量：{{goods.sales_sum}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

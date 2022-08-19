@@ -1,0 +1,9 @@
+<view bindtap="screenClick" class="full" style="background: {{curBack}}; color: {{fontColor}}; background-size: cover;">
+    <view class="title">{{curContent}}</view>
+    <view class="surTitle">{{curTitle}}</view>
+    <view class="tip" wx:if="{{showTip}}">
+        <view>屏幕色彩显示正常？</view>
+        <view>正常</view>
+        <view>异常</view>
+    </view>
+</view>

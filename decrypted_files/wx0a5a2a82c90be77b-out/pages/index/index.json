@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "login-dialog": "../../components/login-dialog/login-dialog"
+    }
+}

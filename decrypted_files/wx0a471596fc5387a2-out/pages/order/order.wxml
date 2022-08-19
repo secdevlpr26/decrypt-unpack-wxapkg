@@ -1,0 +1,40 @@
+<view class="search">
+    <image src="{{hostUrl}}/images/search.jpg"></image>
+    <input bindblur="searchSubmit" bindinput="searchActiveChangeinput" placeholder="请输入订单号" type="text" value="{{keyWord}}"></input>
+</view>
+<view class="switch_box">
+    <navigator bindtap="switchTab" class="{{switchTab==true?'active':''}}" data-order="0" hoverClass="none">全部</navigator>
+    <navigator bindtap="switchTab" class="{{switchTabOne==true?'active':''}}" data-order="1" hoverClass="none">待付款</navigator>
+    <navigator bindtap="switchTab" class="{{switchTabTwo==true?'active':''}}" data-order="2" hoverClass="none">未完成</navigator>
+    <navigator bindtap="switchTab" class="{{switchTabThree==true?'active':''}}" data-order="3" hoverClass="none">已完成</navigator>
+    <navigator bindtap="switchTab" class="{{switchTabFour==true?'active':''}}" data-order="4" hoverClass="none">已取消</navigator>
+</view>
+<block wx:for="{{orderList}}" wx:key="{{item.ID}}">
+    <view class="order_hao">
+        <text class="left">订单号: {{item.ORDER_NUM}}</text>
+        <text class="right"> {{item.UPDATETIME}}</text>
+    </view>
+    <view class="order" wx:for="{{item.ORDERSUB}}" wx:for-item="twodata" wx:key="{{itemSub.ID}}">
+        <image class="order_img" src="{{hostUrl}}{{twodata.LITPIC}}"></image>
+        <view class="order_xx">
+            <text class="left">{{twodata.TITLE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">规格:/{{twodata.PROPERTY_VALUE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">X{{twodata.QUANTITY}}</text>
+        </view>
+    </view>
+    <view class="order_zt">
+        <view class="order_zt_top">
+            <text>状态：</text>
+            <text class="f00">{{item.ORDER_STATUS==0?'未付':'已取消'}}</text>
+        </view>
+        <view class="order_zt_top">
+            <text>总价：</text>
+            <text class="f00">￥{{item.PRICE_SUM}}</text>
+        </view>
+        <navigator url="/pages/order_details/order_details?id={{item.ID}}">查看详情</navigator>
+    </view>
+</block>

@@ -1,0 +1,36 @@
+<scroll-view class="tab-h" scrollLeft="{{scrollLeft}}" scrollX="true">
+    <view bindtap="swichNav" class="tab-item {{currentTab==idx?'active':''}}" data-current="{{idx}}" wx:for="{{categoryList}}" wx:for-index="idx" wx:key="index">{{item.categoryName}}</view>
+</scroll-view>
+<swiper bindchange="switchTab" class="tab-content" current="{{currentTab}}" duration="300" style="height:{{winHeight}}px">
+    <swiper-item wx:for="{{dataArray}}" wx:for-item="data" wx:key="index">
+        <scroll-view class="scoll-h" scrollY="true">
+            <navigator hoverClass="navigator-hover" style="background-color:#ffffff;" url="../ArticleDetail/ArticleDetail?tempId={{item.id}}" wx:for="{{data.list}}" wx:for-index="idx" wx:key="index">
+                <view class="cell">
+                    <image class="item-img" mode="aspectFill" src="{{item.imgpath}}" wx:if="{{item.imgpath.length>0}}"></image>
+                    <view class="item-ans">
+                        <view class="cell-title">{{item.title}}</view>
+                        <view class="cell-dis">{{item.addTime}}</view>
+                    </view>
+                </view>
+            </navigator>
+            <view class="pageControlView" wx:if="{{data.list.length>0}}">
+                <view bindtap="leftPageTap" class="pageBtnView" hover="{{data.leftPageHover}}" hoverClass="button-hover">
+                    <image class="pageBtn" mode="aspectFit" src="{{data.leftPageHover?'../../images/left_black.png':'../../images/left_gray.png'}}"></image>
+                </view>
+                <view class="pageTextView">
+                    <text class="pageText">{{data.page+1}}</text>
+                </view>
+                <view bindtap="rightPageTap" class="pageBtnView" hover="{{data.rightPageHover}}" hoverClass="button-hover">
+                    <image class="pageBtn" mode="aspectFit" src="{{data.rightPageHover?'../../images/right_black.png':'../../images/right_gray.png'}}"></image>
+                </view>
+            </view>
+            <view class="tipsText" wx:if="{{data.list.length==0}}">
+          无相关数据
+        </view>
+            <view class="weui-footer">
+                <image class="footer-img" src="../../images/left_black.png"></image>
+                <text bindtap="backToHome" class="footer-txt">返回至首页</text>
+            </view>
+        </scroll-view>
+    </swiper-item>
+</swiper>

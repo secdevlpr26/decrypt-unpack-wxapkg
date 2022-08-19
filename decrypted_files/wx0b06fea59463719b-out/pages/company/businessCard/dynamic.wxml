@@ -1,0 +1,70 @@
+<view bindtouchstart="touchstart" class="container">
+    <view class="fixedTopBorder"></view>
+    <view class="dynamic-box">
+        <view class="default-off" wx:if="{{dynamicBlank}}">
+            <image mode="widthFix" src="{{baseUrl}}/images/wxapp/dynamic.png"></image>
+            <view class="blank-title">暂无动态</view>
+        </view>
+        <scroll-view scrollY bindscrolltolower="loadMoreData" enableBackToTop="true" lowerThreshold="20" style="height: {{height}}px; box-sizing:border-box" wx:if="{{!dynamicBlank}}">
+            <view class="dynamic-item border1px" wx:for="{{dynamicList}}" wx:key="index">
+                <view class="siteLogo-image">
+                    <image src="{{siteLogo}}"></image>
+                </view>
+                <view class="dynamic-right">
+                    <view class="companyName-transpond">
+                        <text class="companyName">{{companyName}}</text>
+                        <button catchtap="sharetoFriend" class="transpond" data-ArticleID="{{item.ArticleID}}" data-img="{{item.ImgBig}}" data-title="{{item.Title}}" openType="share" type="default">
+              转发
+            </button>
+                    </view>
+                    <view catchtap="toNewsDetails" class="article-info" data-ArticleID="{{item.ArticleID}}">
+                        <view class="article-info-image">
+                            <image binderror="errArticleImg" data-err-img="/images/wxapp/article-default.png" data-err-index="{{index}}" mode="aspectFill" src="{{baseUrl}}{{item.ImgBig}}"></image>
+                        </view>
+                        <view class="article-info-title">{{item.Title}}</view>
+                    </view>
+                    <view class="date-comment">
+                        <view class="publish-time">{{item.PublishTimeText}}</view>
+                        <view class="comment-fn">
+                            <view class="comment-fn-box">
+                                <view class="pop-up-box {{showPopFlag&&index==currentIndex&&item.showPop?'show-pop-left':'hide-pop-right'}}">
+                                    <view catchtap="clickLove" class="zan-fn" data-ArticleID="{{item.ArticleID}}">
+                                        <text class="iconfont icon-heart"></text>
+                                        <text class="love">喜欢</text>
+                                    </view>
+                                    <view catchtap="toComment" class="com-fn" data-ArticleID="{{item.ArticleID}}">
+                                        <text class="iconfont icon-pinglun1"></text>
+                                        <text class="pinglun">评论</text>
+                                    </view>
+                                </view>
+                            </view>
+                            <view catchtap="TouchDiscuss" class="iconfont icon-pinglun" data-index="{{index}}" data-isone="{{index==0?true:false}}"></view>
+                        </view>
+                    </view>
+                    <view class="like-comment">
+                        <view class="nickNameText {{item.CommentList.length>0?'border1px':''}}" wx:if="{{item.NickNameText}}">
+                            <view class="arrows"></view>
+                            <text class="iconfont icon-heart"></text>
+                            <text class="nickname-text">{{item.NickNameText}}</text>
+                        </view>
+                        <view class="commentList" wx:if="{{item.CommentList.length>0}}">
+                            <view class="arrows" wx:if="{{!item.NickNameText}}"></view>
+                            <view class="comment-content" wx:for="{{item.CommentList}}" wx:for-item="v" wx:key="index">
+                                <text class="username">{{v.nickname}}:</text>
+                                <text class="user-content">{{v.comment}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <form bindsubmit="sendComment" class="formComment" id="fromID" reportSubmit="true" wx:if="{{showForm}}">
+            <view class="form-box">
+                <input adjustPosition="false" bindconfirm="sendclose" bindinput="inputComment" confirmHold="{{canhold}}" confirmType="send" cursorSpacing="{{modelType?60:6}}" focus="true" id="finput" name="commentcontent" placeholder="评论" type="text" value="{{commentcontent}}"></input>
+                <button class="sendBtn {{commentcontent==''?'op6':'changeColor'}}" formType="submit" id="fsend" type="default">发送</button>
+            </view>
+        </form>
+    </view>
+    <include src="/pages/company/businessCard/businessBottom.wxml" wx:if="{{!showForm}}"></include>
+</view>
+<include src="/pages/template/getUserInfo.wxml"></include>

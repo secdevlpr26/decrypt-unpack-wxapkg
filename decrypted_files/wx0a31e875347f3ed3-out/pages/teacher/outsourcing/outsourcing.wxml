@@ -1,0 +1,76 @@
+<view class="record-container">
+    <view class="record-title">
+        <view>
+            <text>{{teacherName}}</text>
+            <text>总收入:￥{{income}}</text>
+        </view>
+        <view>
+            <text bindtap="logout">退出登录</text>
+        </view>
+    </view>
+    <view class="record_statistics">
+        <text>当月点评: {{current_month_comment_num}}</text>
+        <text>上月点评: {{last_month_comment_num}}</text>
+        <text>总点评: {{all_comment_num}}</text>
+        <text>今日点评: {{today_comment}}</text>
+    </view>
+</view>
+<view animation="{{slide_up}}" class="record-container record_box" wx:if="{{comment_item&&comment_item.comment.id}}">
+    <view class="record-main-info">
+        <view class="record-user-info">
+            <text class="{{comment_item.user.user_name.length>0?'':'nickname'}}">{{comment_item.user.user_name.length>0?comment_item.user.user_name:comment_item.user.nick_name}}</text>
+            <text>ID:{{comment_item.user.user_id}}</text>
+            <text>{{comment_item.scheduleDate.class_date}}</text>
+        </view>
+        <view class="record-user-content">
+            <block wx:if="{{comment_item.picBookData!=null&&comment_item.picBookData.length>0}}">
+                <view class="studentWord" wx:for="{{comment_item.picBookData}}" wx:key="id">
+                    <view class="studentWordLeft">
+                        <view class="word">{{item.en_sentence}}</view>
+                        <text class="userDate">{{item.created_time_at}}</text>
+                    </view>
+                    <view catch:tap="playStudentVoice" class="studentVoiceBtn" data-user-audio-url="{{item.user_audio_url}}" hoverClass="btn_hover">
+                        <image mode="widthFix" src="../../../image/teacher/play.png"></image>
+                    </view>
+                </view>
+            </block>
+            <view class="studentWord" wx:else>
+                <text>没有跟读数据</text>
+            </view>
+        </view>
+        <view>
+            <view bind:tap="showModel" class="voiceBtn" data-commentid="{{comment_item.comment.id}}" data-istext="{{false}}" data-useraudiourl="{{comment_item.comment.audio_comment}}" hoverClass="btn_hover">语音点评</view>
+            <view bind:tap="showModel" class="textBtn" data-commentid="{{comment_item.comment.id}}" data-istext="{{true}}" data-textcomment="{{comment_item.comment.text_comment}}" hoverClass="btn_hover">文字点评</view>
+        </view>
+    </view>
+</view>
+<view class="comment_status">
+    <text>{{status_text}}</text>
+</view>
+<view class="record-bottom">
+    <view bindtap="next_item" class="next-item {{iphoneX?'iphoneX_bottom':''}}">{{btn_next_text}}</view>
+</view>
+<view class="mask" hidden="{{maskHidden}}">
+    <view class="model">
+        <textarea bindinput="inputFn" class="textarea" cursorSpacing="130px" fixed="true" id="" maxlength="300" name="" placeholder="请在此输入点评内容..." value="{{teacherText}}" wx:if="{{istext}}"></textarea>
+        <view wx:else>
+            <view bindtap="startRecord" class="recordClass {{isRecord?'isRecordClass':''}}" wx:if="{{!teacherHaveComment&&!is_start}}">
+                点击开始录音
+            </view>
+            <view bindtap="stopRecord" class="recordClass {{isRecord?'isRecordClass':''}}" wx:elif="{{!teacherHaveComment&&is_start}}">
+                点击结束录音
+            </view>
+            <view class="playClassWrapper" wx:else>
+                <view bind:tap="playTemp" class="playClass" hoverClass="btn_hover">
+                    <image class="playIcon" mode="widthFix" src="{{iconSrc}}"></image>
+                    <text>{{playText}}  录音时长 {{tempVoiceTime}} s </text>
+                </view>
+                <view bind:tap="againRecord" class="againClass">重录</view>
+            </view>
+        </view>
+        <view class="control">
+            <view bind:tap="cancel" class="cancel" hoverClass="btn_hover">取消</view>
+            <view bind:tap="confirm" class="confirm" hoverClass="btn_hover">确认</view>
+        </view>
+    </view>
+</view>

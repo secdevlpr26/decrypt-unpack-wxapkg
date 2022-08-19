@@ -1,0 +1,21 @@
+<view class="coupon-box">
+    <view>
+        <text class="fs32">书籍购买优惠券</text>
+        <text class="fs32 cf01">(满50可用)</text>
+    </view>
+    <view>
+        <text>￥</text>
+        <text class="fs120">5</text>
+    </view>
+    <view class="fs28">2019-10-01 00:00</view>
+    <view class="fs28">2019-11-01 00:00</view>
+    <image class="img" src="../../images/discount-bg.png"></image>
+</view>
+<view class="couponinfo">
+    <view>限范围：购买书籍</view>
+    <view>限价格：50</view>
+    <view>卡券号：2019100144</view>
+</view>
+<view>
+    <button class="btn">去使用</button>
+</view>

@@ -1,0 +1,32 @@
+<view class="wrap">
+    <swiper autoplay="true" circular="true" class="about-scroll" duration="1000" hidden="{{imageArr.length==0}}" indicatorActiveColor="{{styleConfig.mainColor}}" indicatorColor="rgba({{styleConfig.mainRGB.r}},{{styleConfig.mainRGB.g}},{{styleConfig.mainRGB.b}},.4)" indicatorDots="true" interval="5000">
+        <swiper-item wx:for="{{imageArr}}">
+            <image class="about-img" lazyLoad="{{true}}" src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="main">
+        <view class="name">{{auInfo.name}}</view>
+        <view bindtap="toPosition" class="item address">
+            <view class="item-title">地址:</view>
+            <view class="item-content item-address">
+                <text>{{auInfo.address}}</text>
+                <text class="iconfont icon-arrow-right"></text>
+            </view>
+        </view>
+        <view class="item">
+            <view class="item-title">联系人:</view>
+            <view class="item-content">{{auInfo.contactPerson}}</view>
+        </view>
+        <view class="item">
+            <view class="item-title">电话:</view>
+            <view class="item-content">{{auInfo.phone}}</view>
+        </view>
+        <view class="item">
+            <view class="item-title">邮件:</view>
+            <view class="item-content">{{auInfo.email}}</view>
+        </view>
+    </view>
+    <view class="about-content clearfix">
+        <rich-text nodes="{{auInfo.detailDescription}}"></rich-text>
+    </view>
+</view>

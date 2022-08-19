@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "下级分销",
+    "usingComponents": {
+        "wxc-abnor": "../../packages/@minui/wxc-abnor/dist/index"
+    },
+    "enablePullDownRefresh": true
+}

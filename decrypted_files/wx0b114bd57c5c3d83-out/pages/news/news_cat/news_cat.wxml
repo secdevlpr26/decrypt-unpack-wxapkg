@@ -1,0 +1,14 @@
+<view class="news-class">
+    <view class="news-title">
+        <view class="news-list">
+            <view bindtap="gotonews" class="single-list" data-id="{{item.article_id}}" wx:for="{{news}}">
+                <image class="avatar" src="https://mp.qq.kfy.cn{{item.thumb}}"></image>
+                <view class="news-biaoti">
+                    <text class="title">{{item.title}}</text>
+                    <text class="des">{{item.description}}</text>
+                    <text class="pub">{{item.publish_time}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

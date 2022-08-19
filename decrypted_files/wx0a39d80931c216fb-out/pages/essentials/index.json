@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "丝路优选",
+    "usingComponents": {
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

@@ -1,0 +1,22 @@
+<view class="inCab">
+    <view style="display:flex;align-items:center;">
+        <i class="iconfont icon-icon-weizhi-big"></i>
+        <view class="howLong">{{distance==null||distance==''?'0.00':distance}}km</view>
+    </view>
+    <view class="addr">{{info.eqName}}</view>
+    <view bindtap="moreAdd" class="more">更多</view>
+</view>
+<view class="type-list" wx:for="{{inList}}" wx:for-item="il">
+    <view bindtap="toArticle" class="borrow-most" data-id="{{il.id}}">
+        <image binderror="imgError" data-index="{{index}}" mode="aspectFill" src="{{il.pic1=='no_cover'?noCover:imgRootPath+il.pic1}}"></image>
+        <view class="box-sd">
+            <text class="title">{{il.bookName}}</text>
+            <text class="author">作者：{{il.author==null?'--':il.author}}</text>
+            <text class="book-intro">{{il.bookintr==null?'':il.bookintr}}</text>
+        </view>
+    </view>
+</view>
+<view class="noData" wx:if="{{inList==null||inList.length<=0}}">
+    <image src="../../images/no-data.png"></image>
+    <view>该书柜没有图书</view>
+</view>

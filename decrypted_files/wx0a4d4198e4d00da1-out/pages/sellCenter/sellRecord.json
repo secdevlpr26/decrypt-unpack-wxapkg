@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "提现记录",
+    "usingComponents": {
+        "wxc-abnor": "../../packages/@minui/wxc-abnor/dist/index",
+        "wxc-loadmore": "../../packages/@minui/wxc-loadmore/dist/index"
+    }
+}

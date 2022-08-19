@@ -1,0 +1,22 @@
+<text class="Empty">Empty</text>
+<view class="Empty">
+    <text class="Empty">Empty</text>
+    <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderClass="Empty" value="Empty"></input>
+</view>
+<view class="Empty">
+    <text class="Empty">Empty</text>
+    <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderClass="Empty" value="Empty"></input>
+</view>
+<view class="Empty">
+    <text class="Empty">Empty</text>
+    <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderClass="Empty" value="Empty"></input>
+</view>
+<view class="Empty">
+    <text class="Empty">Empty</text>
+    <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderClass="Empty" value="Empty"></input>
+</view>
+<view class="Empty">
+    <text class="Empty">Empty</text>
+    <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderClass="Empty" value="Empty"></input>
+</view>
+<view bindtap="Empty" class="Empty">Empty</view>

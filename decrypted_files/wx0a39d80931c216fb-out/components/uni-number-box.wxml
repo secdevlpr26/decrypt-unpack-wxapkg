@@ -1,0 +1,5 @@
+<view class="uni-numbox">
+    <view bindtap="__e" class="{{['uni-numbox-minus',disableSubtract?'uni-numbox-disabled':'']}}" data-event-opts="{{[ [ 'tap',[ [ '_calcValue',['subtract'] ] ] ] ]}}">-</view>
+    <input bindblur="__e" class="uni-numbox-value" data-event-opts="{{[ [ 'blur',[ [ '_onBlur',['$event'] ] ] ] ]}}" disabled="{{disabled}}" type="number" value="{{inputValue}}"></input>
+    <view bindtap="__e" class="{{['uni-numbox-plus',disableAdd?'uni-numbox-disabled':'']}}" data-event-opts="{{[ [ 'tap',[ [ '_calcValue',['add'] ] ] ] ]}}">+</view>
+</view>

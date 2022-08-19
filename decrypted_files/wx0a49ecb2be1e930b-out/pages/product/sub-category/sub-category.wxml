@@ -1,0 +1,11 @@
+<view class="pro-sm-type clearfix" wx:if="{{hasDataFlag}}">
+    <view bindtap="toProList" class="pst-item" data-code="{{item.code}}" data-flag="{{item.subCategoryList.length>0}}" data-title="{{item.itemName}}" wx:for="{{categoryList}}" wx:key="{{item.id}}">
+        <image lazyLoad="{{true}}" mode="scaleToFit" src="{{item.categoryPicture.length>1?item.categoryPicture:'../../../img/img-default.png'}}"></image>
+        <text>{{item.itemName}}</text>
+        <view class="iconfont icon-arrow-right"></view>
+    </view>
+</view>
+<view class="category-null" wx:else>
+    <view class="iconfont icon-null"></view>
+    <text>暂无内容</text>
+</view>

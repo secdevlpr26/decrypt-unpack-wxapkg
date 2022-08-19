@@ -1,0 +1,42 @@
+<view class="page">
+    <view class="timestamp m10" wx:if="{{none}}">
+        <image src="../../../images/time.png"></image>
+        <text wx:if="{{clock!=''}}">仅剩{{clock}}</text>
+        <text wx:if="{{clock==''}}">已经截止</text>
+    </view>
+    <view class="type-list">
+        <view class="borrow-most">
+            <image binderror="imgError" mode="aspectFill" src="{{orderDetail.pic1=='no_cover'?noCover:imgRootPath+orderDetail.pic1}}"></image>
+            <view class="box-sd">
+                <text class="title">{{orderDetail.bookName}}</text>
+                <text class="author">作者：{{orderDetail.author==null?'--':orderDetail.author}}</text>
+                <text class="author">出版社：{{orderDetail.press}}</text>
+                <text class="author">出版时间：{{orderDetail.pubDate}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="box-sd m10">
+        <view class="pad10">
+            <view class="title-name">
+                <text class="">订单信息</text>
+            </view>
+        </view>
+        <view class="page__bd page__bd_spacing orderinfo">
+            <view class="author">下单时间：{{orderDetail.createDate}}</view>
+            <view class="author">订单编号：{{orderDetail.sn}}</view>
+            <view class="author">金额：{{orderDetail.realMoney}}元</view>
+            <view class="author" wx:if="{{orderDetail.userName!=null&&orderDetail.userName!=''}}">收货人：{{orderDetail.userName}}</view>
+            <view class="author" wx:if="{{orderDetail.phone!=null&&orderDetail.phone!=''}}">电话：{{orderDetail.phone}}</view>
+            <block wx:if="{{orderDetail.eqName!=null&&orderDetail.eqName!=''}}">
+                <view class="author line-three">书柜名称：{{orderDetail.eqName}}</view>
+                <view class="author line-three">收货地址：{{orderDetail.eAddress}}</view>
+            </block>
+            <view class="author line-three" wx:else>收货地址：{{orderDetail.area+orderDetail.address}}</view>
+            <view class="fs28 c00ca" wx:if="{{orderDetail.btState==4}}">取书码：<view class="getCode">{{orderDetail.getCode}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="toTel" class="server-tel" data-phone="{{telPhone}}">客服电话：<i>{{telPhone}}</i>
+    </view>
+</view>
+<wxs module="tools" src="../../../utils/appDate.wxs" />

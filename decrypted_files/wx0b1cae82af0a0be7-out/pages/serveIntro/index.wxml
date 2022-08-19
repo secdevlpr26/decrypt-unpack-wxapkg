@@ -1,0 +1,5 @@
+<view class="container">
+    <view class="content">
+        <image mode="widthFix" src="{{item}}" wx:if="{{item}}" wx:for="{{content}}" wx:key="*this"></image>
+    </view>
+</view>

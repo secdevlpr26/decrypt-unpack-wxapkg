@@ -1,0 +1,157 @@
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<scroll-view scrollY scrollTop="{{top}}" style="height: {{windowHeight}}">
+    <view class="topImg">
+        <image bindload="imgLoad" class="{{platform!='android'?'opcityZero':'opcityOne'}} {{animate?'animated fadeIn':''}}" src="{{type.fimage}}"></image>
+    </view>
+    <view class="block markInfo">
+        <view class="left">故障表现：</view>
+        <view class="right">{{type.remark}}</view>
+    </view>
+    <view class="block tipsBlock">
+        <view class="item" wx:for="{{config.committed}}" wx:key="key">
+            <view class="leftIcon rightContent">{{item}}</view>
+        </view>
+    </view>
+    <view class="block selectDevice">
+        <view class="left">维修机型</view>
+        <view class="mid">{{model}}</view>
+        <view bindtap="goToChooseDevice" class="right">修改</view>
+    </view>
+    <view class="block infoAndColor animated fadeIn" wx:if="{{optionList.length!=0&&(planList.length>0||protectPlanList.length>0)}}">
+        <view class="blockTop">保障信息</view>
+        <view class="blockBottom">
+            <view bindtap="setOption" class="itemBtn {{currentOptionId==item.Id?'selected':''}}" data-id="{{item.Id}}" wx:for="{{optionList}}" wx:key="key">{{item.name}}</view>
+        </view>
+    </view>
+    <view class="block infoAndColor color animated fadeIn" wx:if="{{colorList.length>1}}">
+        <view class="blockTop">颜色</view>
+        <view class="blockBottom">
+            <view bindtap="setColor" class="itemBtn {{currentColorId==item.id?'selected':''}}" data-colorId="{{item.id}}" wx:for="{{colorList}}" wx:key="key">
+                <view style="color:#fff;" wx:if="{{currentColorId==item.id}}">{{item.name}}</view>
+                <view wx:else>{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="block repairMsg animated fadeIn" wx:if="{{spec&&spec.spec_item.length>0}}">
+        <view class="repairMsgTop">
+            <view class="msgPlan">维修方案</view>
+            <view hidden bindtap="diplayRepairDesView" class="msgInfo">维修说明</view>
+        </view>
+        <view class="repairMsgBottom">
+            <view bindtap="setPlan" class="item {{currentPlanId==item.id?'selected':''}}" data-id="{{item.id}}" data-index="{{planIndex}}" data-price="{{item.price}}" wx:for="{{spec.spec_item}}" wx:for-index="planIndex" wx:key="key">
+                <view class="">{{item.itemstr}}</view>
+                <view class="price" style="color:#fff;" wx:if="{{currentPlanId==item.id}}">{{item.price}}</view>
+                <view class="price" style="color:#ff5000;" wx:else>{{item.price}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="detailBlock">
+        <view class="blockTop">
+            <view class="line"></view>
+            <view class="text">详情</view>
+            <view class="line"></view>
+        </view>
+        <view class="blockBottom">
+            <view class="page__detail">
+                <view class="detail">
+                    <view class="article__content wxParse">
+                        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+                    </view>
+                </view>
+            </view>
+            <view class="block">
+                <view class="commonTitle">
+                    <view class="commonTitleLine"></view>
+                    <view class="commonTitleContent">服务流程</view>
+                    <view class="commonTitleLine"></view>
+                </view>
+                <view class="serviceFlow">
+                    <image src="{{config.fwlc}}"></image>
+                </view>
+            </view>
+            <view hidden class="block">
+                <view class="commonTitle">
+                    <view class="commonTitleLine"></view>
+                    <view class="commonTitleContent">服务细节</view>
+                    <view class="commonTitleLine"></view>
+                </view>
+                <view class="serviceDetail">
+                    <view class="serviceDetailItem" wx:for="{{serviceDtailList}}" wx:key="key">
+                        <view class="note">{{item.note}}</view>
+                        <image lazyload src="{{item.imgUrl}}"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="block">
+                <view class="commonTitle">
+                    <view class="commonTitleLine"></view>
+                    <view class="commonTitleContent">四大保障</view>
+                    <view class="commonTitleLine"></view>
+                </view>
+                <view class="ensureItem" wx:for="{{ensureList}}" wx:key="key">
+                    <view class="ensureItemLeft">
+                        <image lazyload src="{{item.imgUrl}}"></image>
+                    </view>
+                    <view class="ensureItemRight">
+                        <view class="top">{{item.title}}</view>
+                        <view class="bottom">{{item.content}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="block">
+                <view class="commonTitle">
+                    <view class="commonTitleLine"></view>
+                    <view class="commonTitleContent">服务城市</view>
+                    <view class="commonTitleLine"></view>
+                </view>
+                <view class="serveCity">
+                    <image lazyload src="{{config.fwcs}}"></image>
+                </view>
+                <view class="serveCityNote">
+                    <view class="left">备注：</view>
+                    <view class="right">以上城市客户均可享受上门维修服务，其他地区客户可咨询客服享受包邮寄修服务</view>
+                </view>
+            </view>
+            <view class="block">
+                <view class="commonTitle">
+                    <view class="commonTitleLine"></view>
+                    <view class="commonTitleContent">温馨提示</view>
+                    <view class="commonTitleLine"></view>
+                </view>
+                <view class="tipContent">
+                    <view class="classname">如果您设置了锁屏密码，请在维修前取消密码，以便于我们更好地维修您的设备。</view>
+                    <view class="classname">维修前，备份好您的数据；我们不会备份和泄露您的数据，亦不对数据丢失负责。</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<view class="fixedFoot">
+    <view class="left">总额：
+    <text>¥{{currentPrice}}</text>
+    </view>
+    <view bindtap="next" class="right">下一步</view>
+</view>
+<view class="detailtip animated fadeIn" wx:if="{{repairDesView_hidden==false}}">
+    <view class="detailtip1">
+        <block wx:for="{{explainList}}" wx:for-index="explainIndex" wx:for-item="explainItem" wx:key="explain">
+            <block wx:if="{{explainIndex==0}}">
+                <view class="detailtitle">{{explainItem.title}}</view>
+                <view class="detailmain">
+                    <view wx:for="{{explainItem.list}}" wx:key="item">{{item}}</view>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="detailtitle bortop">{{explainItem.title}}</view>
+                <view class="detailmain">
+                    <view wx:for="{{explainItem.list}}" wx:key="item">{{item}}</view>
+                </view>
+            </block>
+        </block>
+    </view>
+    <view bindtap="diplayRepairDesView" class="detailtipFoot">
+        <image class="detailtipclose" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/close.png"></image>
+    </view>
+</view>

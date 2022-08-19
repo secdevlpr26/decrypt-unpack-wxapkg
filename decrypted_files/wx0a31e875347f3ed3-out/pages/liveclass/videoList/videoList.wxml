@@ -1,0 +1,33 @@
+<view wx:if="{{is_show_page}}">
+    <image class="Introduction" mode="widthFix" src="../../../image/liveclass/home.jpg"></image>
+</view>
+<view wx:else>
+    <view class="live-class-list" wx:if="{{current_day_webcast.length!=0}}">
+        <view class="liveClassNow">今日课程</view>
+        <view bindtap="clickVideo" data-begin="{{item.webcast_time}}" data-id="{{item.id}}" data-item="{{item}}" data-time="{{item.video_time}}" wx:for="{{current_day_webcast}}" wx:key="index">
+            <view class="video-box">
+                <video autoplay="{{false}}" controls="{{false}}" objectFit="cover" poster="{{item.cover_url}}" showCenterPlayBtn="{{false}}" src="{{item.video_url}}">
+                    <cover-view bindtap="clickVideo" class="bg-play" data-begin="{{item.webcast_time}}" data-id="{{item.id}}" data-item="{{item}}" data-time="{{item.video_time}}">
+                        <cover-image class="play-icon" src="../../../image/liveclass/play_icon.png"></cover-image>
+                    </cover-view>
+                </video>
+            </view>
+            <view class="live-class-title">{{item.name}}</view>
+            <view class="live-class-time">{{item.webcast_time}}</view>
+        </view>
+    </view>
+    <view class="live-class-list" wx:if="{{old_webcast_list.length!=0}}">
+        <view class="liveClassNow liveClassBack">课程回顾</view>
+        <view bindtap="playVideo" data-begin="{{item.webcast_time}}" data-id="{{item.id}}" data-item="{{item}}" data-time="{{item.video_time}}" wx:for="{{old_webcast_list}}" wx:key="index">
+            <view class="video-box">
+                <video autoplay="{{false}}" controls="{{false}}" objectFit="cover" poster="{{item.cover_url}}" showCenterPlayBtn="{{false}}" src="{{item.video_url}}">
+                    <cover-view bindtap="playVideo" class="bg-play" data-begin="{{item.webcast_time}}" data-id="{{item.id}}" data-item="{{item}}" data-time="{{item.video_time}}">
+                        <cover-image class="play-icon" src="../../../image/liveclass/play_icon.png"></cover-image>
+                    </cover-view>
+                </video>
+            </view>
+            <view class="live-class-title">{{item.name}}</view>
+            <view class="live-class-time">{{item.webcast_time}}</view>
+        </view>
+    </view>
+</view>

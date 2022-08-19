@@ -1,0 +1,74 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <view bindtap="tabClick" class="weui-navbar__item {{activeIndex==index?'weui-bar__item_on':''}}" id="{{index}}" wx:for="{{tabs}}" wx:key="*this">
+                    <view class="weui-navbar__title">{{item}}</view>
+                </view>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex!=0}}">
+                    <block wx:if="{{exceed!=null}}">
+                        <view class="fine">
+                      滞纳金总额：<text>￥{{exceed.actual}}元</text>
+                        </view>
+                        <view class="fine-list">
+                            <view class="type-list" wx:for="{{exceedBooks}}">
+                                <view class="borrow-most">
+                                    <text class="borrow-success-img">超期书籍</text>
+                                    <image binderror="exceedImgError" data-index="{{index}}" src="{{item.pic=='no_cover'?noCover:imgRootPath+item.pic}}"></image>
+                                    <view class="box-sd">
+                                        <view class="title line-one">{{item.bookName}}</view>
+                                        <text class="author mt10">借书时间：{{item.borrowDate}}</text>
+                                        <text class="author">到期时间：{{item.expireDate}}</text>
+                                        <text class="author">还书时间：{{item.returnDate}}</text>
+                                        <text class="fine-word">已超期{{item.days}}天，金额{{item.money}}元</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view style="height:90rpx"></view>
+                        <view class="footer">
+                            <button bindtap="toExceedPay">立即支付</button>
+                        </view>
+                    </block>
+                    <view class="noData" wx:if="{{exceed==null}}">
+                        <image src="../../../images/no-data.png"></image>
+                        <view>暂无超期借阅书籍</view>
+                    </view>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex!=1}}">
+                    <block wx:if="{{damage!=null}}">
+                        <view class="fine">
+                      总金额：<text>￥{{damage.actual}}</text>
+                        </view>
+                        <view class="fine-list">
+                            <view class="type-list" wx:for="{{damageBooks}}">
+                                <view class="borrow-most">
+                                    <text class="borrow-success-img">损坏书籍</text>
+                                    <image binderror="damageImgError" data-index="{{index}}" src="{{item.pic=='no_cover'?noCover:imgRootPath+item.pic}}"></image>
+                                    <view class="box-sd">
+                                        <view class="title line-one">{{item.bookName}}</view>
+                                        <text class="author">还书时间：{{item.returnDate}}</text>
+                                        <text class="fine-word">金额{{item.money}}元</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view style="height:90rpx"></view>
+                        <view class="footer">
+                            <button bindtap="toDamagePay">立即支付</button>
+                        </view>
+                    </block>
+                    <view class="noData" wx:if="{{damage==null}}">
+                        <image src="../../../images/no-data.png"></image>
+                        <view>暂无损坏书籍</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="tools" src="../../../utils/appDate.wxs" />
+<wxs module="tols" src="../../../utils/appDates.wxs" />

@@ -1,0 +1,40 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <view bindtap="tabClick" class="weui-navbar__item {{activeIndex==index?'weui-bar__item_on':''}}" id="{{index}}" wx:for="{{tabs}}" wx:key="*this">
+                    <view class="weui-navbar__title">{{item}}</view>
+                </view>
+                <view class="weui-navbar__slider" style="width: 50%; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content">
+                    <view class="type-list">
+                        <view bindtap="toDeatil" class="borrow-most" data-orderdetail="{{unpid}}" wx:for="{{list}}" wx:for-item="unpid">
+                            <image binderror="notImgError" data-index="{{index}}" mode="aspectFill" src="{{unpid.pic1=='no_cover'?noCover:imgRootPath+unpid.pic1}}"></image>
+                            <view class="box-sd">
+                                <view class="title line-one">{{unpid.bookName}}</view>
+                                <text class="author">作者：{{unpid.author==null?'--':unpid.author}}</text>
+                                <text class="author">下单时间：{{unpid.createDate}}</text>
+                                <text class="author">订单编号：{{unpid.sn}}</text>
+                                <text class="author">金额：￥{{unpid.realMoney}}</text>
+                                <view class="order-btn">
+                                    <view class="fs28 c00ca" wx:if="{{unpid.btState==4}}">取书码：<view class="getCode">{{unpid.getCode}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="noData" wx:if="{{list==null||list.length<=0}}">
+                        <image src="../../../images/no-data.png"></image>
+                        <view>暂无订单记录</view>
+                    </view>
+                    <view bindtap="toTel" class="server-tel" data-phone="{{telPhone}}" wx:if="{{telPhone!=null&&telPhone!=''}}">客服电话：
+              <i>{{telPhone}}</i>
+                    </view>
+                    <text class="author" decode="{{true}}">&nbsp;&nbsp;</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

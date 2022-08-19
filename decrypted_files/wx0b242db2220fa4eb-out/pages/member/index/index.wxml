@@ -1,0 +1,60 @@
+<view>
+    <view class="Empty">
+        <image backgroundSize="Empty" bindtap="Empty" class="Empty" src="Empty"></image>
+        <text class="Empty">Empty</text>
+    </view>
+    <view class="Empty">
+        <view bindtap="Empty" class="Empty">
+            <image src="Empty"></image>
+            <text>Empty</text>
+        </view>
+        <view bindtap="Empty" class="Empty">
+            <image src="Empty"></image>
+            <text>Empty</text>
+        </view>
+        <view bindtap="Empty" class="Empty">
+            <image src="Empty"></image>
+            <text>Empty</text>
+        </view>
+        <view bindtap="Empty" class="Empty">
+            <image src="Empty"></image>
+            <text>Empty</text>
+        </view>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view hidden bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+</view>

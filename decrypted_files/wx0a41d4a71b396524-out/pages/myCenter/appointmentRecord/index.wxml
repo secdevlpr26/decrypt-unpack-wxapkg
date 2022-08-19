@@ -1,0 +1,21 @@
+<view class="type-list" wx:for="{{books}}">
+    <view class="borrow-most">
+        <navigator url="{{'details?id='+item.appId}}">
+            <image binderror="imgError" data-index="{{index}}" src="{{item.pic1=='no_cover'?noCover:imgRootPath+item.pic1}}"></image>
+            <view class="box-sd">
+                <text class="title">{{item.bookName}}</text>
+                <text class="author">作者：{{item.author==null?'--':item.author}}</text>
+                <text class="author">类别：{{item.bookCategory}}</text>
+                <text class="author">预约时间：{{item.appDate}}</text>
+                <view class="order-btn">
+                    <button catchtap="cancel" class="weui-btn mini-btn erro" data-id="{{item.appId}}" size="mini" type="default" wx:if="{{item.orderState<3&&item.parentId==null}}">取消预约</button>
+                    <button catchtap="obtainCode" class="weui-btn mini-btn code" data-id="{{item.appId}}" size="mini" type="warn" wx:if="{{item.orderState==2}}">获取取书</button>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>
+<view class="noData" wx:if="{{books==null||books.length<=0}}">
+    <image src="../../../images/no-data.png"></image>
+    <view>暂无预约图书</view>
+</view>

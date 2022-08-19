@@ -1,0 +1,16 @@
+{
+    "pages": [
+        "pages/inlet/index",
+        "pages/index/index",
+        "pages/tank-area/index",
+        "pages/single-tank/index",
+        "pages/single-tank-data/index",
+        "pages/net-monitor/index",
+        "pages/data-retrieval/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+    }
+}

@@ -1,0 +1,34 @@
+<view class="search x-row">
+    <view class="x-col">
+        <input bindinput="KeyInput" bindtap="keyFoucs" class="search-1" placeholder="搜索" placeholderClass="text;" type="text" value="{{key}}"></input>
+    </view>
+    <view class="anniu x-col-fixed">
+        <view bindtap="goto" class="more-1" data-key="{{key}}">
+            <button class="search-2">搜索</button>
+        </view>
+    </view>
+</view>
+<view class="content">
+    <view class="lishi" wx:if="{{histroy}}">
+        <text class="biaoti">历史搜索</text>
+        <view class="wenben">
+            <text bindtap="lishiSeach" class="text" data-key="{{item.key}}" wx:for="{{records}}">{{item.key}}</text>
+        </view>
+    </view>
+    <block wx:if="{{!histroy}}">
+        <view class="type-list" wx:for="{{typeList}}" wx:for-item="tl">
+            <view bindtap="toArticle" class="borrow-most" data-id="{{tl.id}}">
+                <image binderror="imgError" data-index="{{index}}" mode="aspectFill" src="{{tl.pic1=='no_cover'?noCover:imgRootPath+tl.pic1}}"></image>
+                <view class="box-sd">
+                    <text class="title">{{tl.bookName}}</text>
+                    <text class="author">作者：{{tl.author==null?'--':tl.author}}</text>
+                    <text class="book-intro">{{tl.bookintr==null?'':tl.bookintr}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="noData" wx:if="{{typeList==null||typeList.length<=0}}">
+            <image src="../../images/no-data.png"></image>
+            <view>未搜索到图书</view>
+        </view>
+    </block>
+</view>

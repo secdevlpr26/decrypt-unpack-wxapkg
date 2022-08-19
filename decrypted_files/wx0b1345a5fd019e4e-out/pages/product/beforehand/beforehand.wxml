@@ -1,0 +1,51 @@
+<view class="bh-wrap">
+    <view class="title">请填写您的预约信息</view>
+    <form bindsubmit="formSubmit" class="bh-main">
+        <view class="bh-item">
+            <text class="text">姓名:</text>
+            <input name="name" placeholder="请输入姓名"></input>
+        </view>
+        <view class="bh-item">
+            <text class="text">电话:</text>
+            <input maxlength="11" name="phone" placeholder="请输入电话" type="number"></input>
+        </view>
+        <view bindtap="selectBookingTime" class="hotel-booking" wx:if="{{mtype==1&&roomType==2}}">
+            <view class="come-frame">
+                <view class="come-txt">入住</view>
+                <view>
+                    <text class="come-date">{{comeDateInfo.date}}</text>
+                    <text class="come-week">{{comeDateInfo.date==nowDate?'今天':comeDateInfo.week}}</text>
+                </view>
+            </view>
+            <view class="totaltime">
+                <text>共{{totalDays}}晚</text>
+            </view>
+            <view class="leave-frame">
+                <view class="leave-txt">离店</view>
+                <view>
+                    <text class="leave-date">{{leaveDateInfo.date}}</text>
+                    <text class="leave-week">{{leaveDateInfo.week}}</text>
+                </view>
+            </view>
+        </view>
+        <block wx:else>
+            <view class="bh-item">
+                <text class="text">请选择日期:</text>
+                <picker bindchange="bindDateChange" mode="date" name="date" value="{{date}}">
+                    <view class="date">{{date}}</view>
+                </picker>
+            </view>
+            <view class="bh-item">
+                <text class="text">请选择时间:</text>
+                <picker bindchange="bindTimeChange" mode="time" name="time" value="{{time}}">
+                    <view class="time">{{time}}</view>
+                </picker>
+            </view>
+        </block>
+        <view class="remarks">
+            <text class="text">备注:</text>
+            <textarea name="remarks"></textarea>
+        </view>
+        <button class="btn-yuyue" formType="submit" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">马上预约</button>
+    </form>
+</view>

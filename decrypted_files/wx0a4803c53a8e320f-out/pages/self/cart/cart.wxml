@@ -1,0 +1,130 @@
+<view class="main" wx:if="{{!cartNull}}">
+    <view class="store-item" wx:for="{{cartList}}" wx:key="{{item.branchInfoId}}">
+        <view class="store-title">{{item.branchName}}</view>
+        <view class="product-list">
+            <view catchtap="toProDetail" class="product-item" data-pid="{{proItem.productId}}" wx:for="{{item.pro}}" wx:for-index="proIndex" wx:for-item="proItem" wx:key="{{proItem.moduleId}}">
+                <view catchtap="checkboxTap" class="iconfont {{proItem.isSelected?'icon-checkbox1':'icon-checkBox'}}" data-proId="{{proItem.productId}}"></view>
+                <view catchtap="toProDetail" class="product-icon" data-pid="{{proItem.productId}}">
+                    <image lazyLoad="{{true}}" src="{{proItem.pic_url}}"></image>
+                </view>
+                <view class="product-main">
+                    <view class="product-title">{{proItem.productName}}</view>
+                    <text class="product-model">{{proItem.proAttrName}}</text>
+                    <view class="product-price">
+                        <text class="rmb">￥</text>
+                        <text class="price">{{proItem.price}}</text>
+                    </view>
+                    <view catchtap="delPro" class="iconfont icon-close" data-modelid="{{proItem.moduleId}}"></view>
+                    <view catchtap="" class="plus-minus">
+                        <view catchtap="arrowdowntap" class="iconfont icon-add" data-index="{{index}}" data-modleid="{{proItem.moduleId}}" data-proindex="{{proIndex}}"></view>
+                        <input bindinput="bindCountInput" data-index="{{index}}" data-modleid="{{proItem.moduleId}}" data-proindex="{{proIndex}}" type="number" value="{{proItem.count}}"></input>
+                        <view catchtap="arrowuptap" class="iconfont icon-subtract" data-index="{{index}}" data-modleid="{{proItem.moduleId}}" data-proindex="{{proIndex}}"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom">
+        <view class="total">
+            <text>合计 ￥ <text class="totalPrice">{{totalPrice}}</text>  (不含运费)</text>
+        </view>
+        <span bindtap="toClearing" class="jiesuan">去结算</span>
+    </view>
+</view>
+<block wx:else>
+    <view class="cart-null" wx:if="{{projectType=='o2o'||projectType=='meirong'||projectType=='education'||projectType=='enterprise'}}">
+        <view class="iconfont icon-cart-null"></view>
+        <text>您的购物车没有商品</text>
+        <view bindtap="toProList" class="add-btn">赶紧去挑选吧</view>
+    </view>
+    <view class="cart-null-style2" wx:else>
+        <view class="iconfont {{projectType=='tmall'?'icon-cartnew':'icon-cart-null'}}"></view>
+        <text>购物车还是空的哦~</text>
+        <view bindtap="toProList" class="add-btn">去逛逛</view>
+    </view>
+</block>
+<view style="margin-bottom: 100rpx;" wx:if="{{projectType=='o2o-shop'}}">
+    <view class="rec-pros-frame">
+        <view class="rec-pros-top">
+            <view class="line line-Left"></view>
+            <view class="rec-pros-txt">猜你喜欢</view>
+            <view class="line line-Right"></view>
+        </view>
+        <view class="classname">
+            <view class="rec-pros-list clearfix">
+                <view bindtap="toProDetail" class="rec-pros-item" data-pid="{{item.id}}" wx:for="{{proList}}" wx:key="{{item.id}}">
+                    <view class="group-label1 style2" wx:if="{{item.actType=='5'}}">拼团</view>
+                    <view class="seckill-label1" wx:if="{{item.actType=='3'}}">秒杀</view>
+                    <view class="dis-label" style="background-color: {{actDistribution.identificationColor}}" wx:if="{{item.actType=='6'&&memberType=='3'&&actDistribution.enable&&actDistribution.identificationOpened}}">{{actDistribution.identificationName}}</view>
+                    <image lazyLoad="{{true}}" src="{{item.productImageVOList[0].imageURL}}"></image>
+                    <view class="rec-pros-name">
+                        <text class="iconfont icon-trangle videoLabel" wx:if="{{!item.video==''}}"></text>
+                                {{item.productName}}</view>
+                    <view class="rec-pros-price" wx:if="{{item.purpose=='1'||item.purpose=='3'}}">
+                        <text>￥<text class="bigBlue">{{item.actType=='5'||item.actType=='6'&&memberType=='3'?item.groupsPrice:item.productModelList[0].price}} </text>
+                        </text>
+                        <text class="ori-price">￥{{item.productModelList[0].originalprice}}</text>
+                        <text class="saleCount">销量:{{item.saleCount}}</text>
+                    </view>
+                    <view class="rec-pros-price2" wx:else>
+                        <text class="bigBlue">{{item.showName}}</text>
+                        <text class="saleCount" hidden="{{isPerson}}">销量:{{item.saleCount}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-hint" hidden="{{!bottomHint}}">
+        <text>无推荐商品</text>
+    </view>
+</view>
+<view style="margin-bottom: 100rpx;" wx:if="{{projectType=='tmall'}}">
+    <view class="top-titel" hidden="{{isPerson}}">
+        <view class="line line-left">
+            <text class="dotLeft"></text>
+        </view>
+        <text class="iconfont icon-xin"></text>
+        <text class="title recommand">猜你喜欢</text>
+        <view class="line line-right">
+            <text class="dotRight"></text>
+        </view>
+    </view>
+    <view class="advertis-top" hidden="{{isPerson}}">
+        <scroll-view class="advertis-scroll" scrollIntoView="item{{index-1}}" scrollWithAnimation="true" scrollX="true">
+            <view bindtap="titletap" class="type-item {{categoryCode==item.code?'active':''}}" data-code="{{item.code}}" data-index="{{index}}" id="item{{index}}" wx:for="{{cateList}}" wx:key="{{item.id}}">
+                    {{item.itemName}}
+                </view>
+        </scroll-view>
+    </view>
+    <view class="rec-pros-frame" hidden="{{isPerson}}">
+        <view class="classname">
+            <view class="rec-pros-list clearfix">
+                <view bindtap="toProDetail" class="rec-pros-item" data-pid="{{item.id}}" wx:for="{{productList}}" wx:key="{{item.id}}">
+                    <view class="group-label1 style2" wx:if="{{item.activityType=='5'}}">拼团</view>
+                    <view class="seckill-label1" wx:if="{{item.activityType=='3'}}">秒杀</view>
+                    <view class="dis-label" style="background-color: {{actDistribution.identificationColor}}" wx:if="{{item.activityType=='6'&&memberType=='3'&&actDistribution.enable&&actDistribution.identificationOpened}}">{{actDistribution.identificationName}}</view>
+                    <image lazyLoad="{{true}}" src="{{item.productImageVOList[0].imageURL}}"></image>
+                    <view class="rec-pros-name">
+                        <text class="iconfont icon-trangle videoLabel" wx:if="{{!item.video==''}}"></text>
+                                {{item.productName}}</view>
+                    <view class="rec-pros-price" wx:if="{{item.purpose=='1'||item.purpose=='3'}}">
+                        <text class="priceColor" wx:if="{{item.activityType=='6'&&memberType=='3'&&actDistribution.enable}}">￥<text class="bigBlue">{{item.price}}</text>
+                        </text>
+                        <text class="priceColor" wx:elif="{{item.activityType=='5'||item.activityType=='3'}}">￥<text class="bigBlue">{{item.price}}</text>
+                        </text>
+                        <text class="priceColor" wx:else>￥<text class="bigBlue">{{item.productModelList[0].price}}</text>
+                        </text>
+                        <text class="ori-price">￥{{item.productModelList[0].originalprice}}</text>
+                        <text class="saleCount">销量：{{item.saleCount}}</text>
+                    </view>
+                    <view class="rec-pros-price2" wx:else>
+                        <text class="bigBlue">{{item.showName}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="bottom-hint" hidden="{{!bottomHint}}">
+            <text>没有更多商品啦</text>
+        </view>
+    </view>
+</view>

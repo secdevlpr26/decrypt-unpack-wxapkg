@@ -1,0 +1,29 @@
+<view>
+    <view class="testBlock" wx:if="{{!btnClicked}}">
+        <view class="blockTitle">听筒及距离感应器检测</view>
+        <view class="blockContent">
+            <view bindtap="call112" class="testBtn">拨打112</view>
+            <view class="tipText">点击按钮，拨打112，根据通话情况，判断听筒及距离感应器功能是否异常</view>
+        </view>
+    </view>
+    <view class="testBlock" wx:if="{{btnClicked}}">
+        <view class="blockTitle errTitle">听筒及距离感应器功能是否正常？</view>
+        <view class="blockContent">
+            <view>
+                <view bindtap="errItemBind" class="flex-between errItem {{faultArr[index].val==1?'on':''}}" data-index="{{index}}" wx:for="{{['听筒','距离感应器']}}" wx:key="{{index}}">
+                    <text class="col666">{{item}}异常</text>
+                    <text class="circle"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottomBtns" wx:if="{{btnClicked}}">
+        <view bindtap="errBtnBind" class="submitErrBtn">提交异常</view>
+        <view bindtap="setResult" class="okBtn">全部正常</view>
+    </view>
+    <view style="position: fixed; top:0; bottom:0; left: 0; right: 0; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;" wx:if="{{!btnClicked}}">
+        <view style="margin-top: 150rpx;font-size: 32rpx; text-align: center; padding: 0 80rpx; color: #333;">点击按钮，拨打112，根据通话情况，判断听筒及距离感应器功能是否异常</view>
+        <image src="./12.png" style="display: block;margin: 140rpx 0;height: 375rpx; width: 235rpx;"></image>
+        <view bindtap="call112" style="width: 650rpx; height: 100rpx; text-align: center; line-height: 100rpx; background: #ff5000;color: #fff; border-radius: 4px; font-size: 32rpx;">拨打112</view>
+    </view>
+</view>

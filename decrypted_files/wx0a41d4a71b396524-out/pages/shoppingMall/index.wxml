@@ -1,0 +1,1 @@
+<web-view bindmessage="webMessages" src="{{webviewRoute}}"></web-view>

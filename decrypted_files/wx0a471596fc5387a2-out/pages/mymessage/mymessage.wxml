@@ -1,0 +1,13 @@
+<view class="addrcon">
+    <view class="addrlist" wx:for="{{addressList}}" wx:key="{{item.id}}">
+        <view class="addr">姓名：{{item.NAME}}</view>
+        <view class="dianhua">电话：{{item.PHONENUM}}</view>
+        <view class="dianhua">内容：{{item.CONTENT}}</view>
+        <view class="dianhua">日期：{{item.UPDATETIME}}</view>
+        <view class="addrb">
+            <view class="moren" style="color:green;">回复：{{item.TEXTPARAM1==null?'':item.TEXTPARAM1}}</view>
+            <button bindtap="delete" class="delete" data-id="{{item.MESSAGEID}}">
+                <image src="{{hostUrl}}/images/scico.png"></image>删除</button>
+        </view>
+    </view>
+</view>

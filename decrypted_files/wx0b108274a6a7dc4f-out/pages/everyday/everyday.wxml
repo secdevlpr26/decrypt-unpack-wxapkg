@@ -1,0 +1,28 @@
+<view wx:for="{{contentList}}">
+    <view class="title3">{{item.title}}</view>
+    <video controls bindplay="play" class="video" data-id="{{item.id}}" enablePlayGesture="true" objectFit="cover" poster="{{imgUrl+item.image}}" src="{{hotel.Sub(item.video)=='Uploads'?'https://syb.qhkltn.com/'+item.video:item.video}}"></video>
+    <view class="title2">上传时间：{{item.update_time}}</view>
+    <view class="line"></view>
+    <view class="btn">
+        <view class="btn_item">
+            <view class="z">
+                <image src="../../icon/zuji.png" style="width:50rpx;height:50rpx"></image>
+        {{item.browser}}人浏览
+      </view>
+        </view>
+        <view class="btn_item" style="border-right:1px solid #eeeeee;border-left:1px solid #eeeeee">
+            <view bindtap="video_zan" class="z" data-id="{{item.id}}">
+                <image src="../../icon/zan.png" style="width:50rpx;height:50rpx"></image>
+                <view>{{item.zan}}人点赞</view>
+            </view>
+        </view>
+        <view bindtap="toDetail" class="btn_item" data-id="{{item.id}}">
+            <view class="z">
+                <image src="../../icon/comment.png" style="width:30rpx;height:30rpx;margin-right:10rpx"></image>
+                <view>评论({{item.comment}})</view>
+            </view>
+        </view>
+    </view>
+    <view class="line"></view>
+</view>
+<wxs module="hotel" src="everyday.wxs" />

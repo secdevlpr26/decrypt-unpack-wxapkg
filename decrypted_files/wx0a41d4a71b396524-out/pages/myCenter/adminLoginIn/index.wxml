@@ -1,0 +1,19 @@
+<view class="page-container">
+    <view class="header">
+        <image class="header-image" src="../../../images/admin_head.png"></image>
+    </view>
+    <view class="form-container">
+        <form bindsubmit="formSubmit">
+            <view class="form-line">
+                <input class="line-input" name="userName" placeholder="请输入管理员账号" type="text" value="{{userName}}"></input>
+            </view>
+            <view class="form-line">
+                <input class="line-input" name="password" password="{{true}}" placeholder="请输入管理员密码" value="{{password}}"></input>
+            </view>
+            <view class="button-line">
+                <button bindtap="cancelLogin" class="cancel">取消</button>
+                <button class="confirm" formType="submit">登录</button>
+            </view>
+        </form>
+    </view>
+</view>

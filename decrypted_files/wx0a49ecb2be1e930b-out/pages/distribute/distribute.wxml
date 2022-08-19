@@ -1,0 +1,76 @@
+<view class="wrap" wx:if="{{activityDistribution.enable&&!isLoading}}">
+    <view class="dis-wrap">
+        <view class="top" style="background-color: {{styleConfig.isWhite?'#E50029':styleConfig.mainColor}};">
+            <view class="user-info">
+                <image lazyLoad="{{true}}" src="{{iconPath}}"></image>
+                <text>{{nickName}}</text>
+            </view>
+            <view class="revenue">
+                <text class="txt">总收入金额（元）</text>
+                <text class="money">{{detail.incomeTotal}}</text>
+            </view>
+        </view>
+        <view class="withdraw">
+            <view class="withdraw-item">
+                <text>可提现（元）</text>
+                <text>{{detail.mayApplyMoney}}</text>
+            </view>
+            <view class="withdraw-item">
+                <text>待结算（元）</text>
+                <text>{{detail.waitClearing}}</text>
+            </view>
+            <view class="withdraw-item">
+                <text>已提现（元）</text>
+                <text>{{detail.alreadyApplyMoney}}</text>
+            </view>
+        </view>
+        <view class="content">
+            <view bindtap="toDistributeFee" class="content-item">
+                <text class="iconfont icon-money"></text>
+                <text>分销佣金</text>
+                <text>
+                    <text class="color-yellow">{{detail.distributeMoney}}</text> 元</text>
+            </view>
+            <view bindtap="toDistributionOrder" class="content-item">
+                <text class="iconfont icon-h_layout"></text>
+                <text>分销订单</text>
+                <text>
+                    <text class="color-yellow">{{detail.distributeOrder}}</text> 笔</text>
+            </view>
+            <view bindtap="toWithdrawList" class="content-item">
+                <text class="iconfont icon-memDetail"></text>
+                <text>提现明细</text>
+                <text>
+                    <text class="color-yellow">{{detail.applyCashCount}}</text> 笔</text>
+            </view>
+            <view bindtap="toApplyCash" class="content-item">
+                <text class="iconfont icon-guanyuwomen"></text>
+                <text>我要提现</text>
+            </view>
+            <view bindtap="toQRCode" class="content-item">
+                <text class="iconfont icon-erweima"></text>
+                <text>推广二维码</text>
+            </view>
+            <view bindtap="ruletap" class="content-item">
+                <text class="iconfont icon-zixunzhuanhuan"></text>
+                <text>分销规则</text>
+            </view>
+            <view bindtap="toDistributePro" class="content-item">
+                <text class="iconfont icon-all"></text>
+                <text>分销专区</text>
+            </view>
+        </view>
+    </view>
+    <view class="login-frame" hidden="{{hideLogin}}">
+        <view class="iconfont icon-time"></view>
+        <view wx:if="{{!(disType==3&&!activated)}}">您还没有申请成为分销商</view>
+        <view>{{disType==3&&!activated?'正在审核中，请耐心等待':'请申请成为分销商'}}</view>
+        <block wx:if="{{!(disType==3&&!activated)}}">
+            <button bindtap="apply" class="btn-apply" wx:if="{{mobilePhone}}">申请分销</button>
+            <button bindgetphonenumber="getPhoneNumber" class="btn-apply" openType="getPhoneNumber" wx:else>申请分销</button>
+        </block>
+    </view>
+</view>
+<view class="not-started" wx:if="{{!activityDistribution.enable&&!isLoading}}">
+    分销功能暂未开启，敬请期待
+</view>

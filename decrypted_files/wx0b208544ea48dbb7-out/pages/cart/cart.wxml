@@ -1,0 +1,86 @@
+<view class="cart-wrap">
+    <view class="empty" wx:if="{{goodsList.length==0}}">
+        <view class="cart-icon">
+            <image src="./icon/shoping.png"></image>
+        </view>
+        <view class="hint-text">
+            <text>
+               您的购物车没有商品
+            </text>
+        </view>
+        <view class="hint-text">
+            <text>
+                赶快去挑选吧!
+            </text>
+        </view>
+        <view bindtap="toIndex" class="btn-default">
+            <text>去挑选</text>
+        </view>
+    </view>
+    <view class="goods-list">
+        <view class="goods-item" wx:for="{{goodsList}}" wx:key="index">
+            <view bindtap="selected" class="check" data-index="{{index}}">
+                <view class="check-icon">
+                    <image src="../../assets/icons/check.png" wx:if="{{item.selected==1}}"></image>
+                    <image src="../../assets/icons/check-none.png" wx:else></image>
+                </view>
+            </view>
+            <view class="pic">
+                <image src="{{item.original_img}}"></image>
+            </view>
+            <view class="info">
+                <view class="name">
+                    <view class="text text-ellipsis">
+                        <text>{{item.goods_name}}</text>
+                    </view>
+                    <view bindtap="deleteGoods" class="delete" data-index="{{index}}">
+                        <view class="icon">
+                            <image src="./icon/delete-icon.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="standard">
+                    <text>{{item.spec_key_name}}</text>
+                </view>
+                <view class="handle">
+                    <view class="goods-price">
+                        <text>{{item.goods_price}}</text>
+                    </view>
+                    <view class="goods-count">
+                        <view class="shop-handle">
+                            <view bindtap="reduce" data-index="{{index}}">
+                                <text>-</text>
+                            </view>
+                            <view>
+                                <text>{{item.goods_num}}</text>
+                            </view>
+                            <view bindtap="increase" data-index="{{index}}">
+                                <text>+</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="foot-container" wx:if="{{goodsList.length>=1}}">
+        <view class="info">
+            <view bindtap="checkGoodsList" class="check">
+                <view class="icon">
+                    <image src="../../assets/icons/check.png" wx:if="{{checkAll}}"></image>
+                    <image src="../../assets/icons/check-none.png" wx:else></image>
+                </view>
+                <text>全选</text>
+            </view>
+            <view class="price">
+                <text class="t_1">总计<text class="t_2">¥{{total.price}}</text>
+                </text>
+                <text class="t_3">
+(不含运费)</text>
+            </view>
+        </view>
+        <view bindtap="toOrderform" class="btn">
+           去结算({{total.count}}件)
+        </view>
+    </view>
+</view>

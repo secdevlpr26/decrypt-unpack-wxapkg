@@ -1,0 +1,188 @@
+<view class="top">
+    <view bindtap="singleMonitor" class="single-tank-title">
+        <view>单罐监控</view>
+    </view>
+    <view class="tank-area-title">
+        <view>罐区数据</view>
+    </view>
+    <view class="clearfix"></view>
+</view>
+<view class="tank-area">
+    <view class="percent">
+        <image class="rotate1" src="../../images/tank-area/1-r.png"></image>
+        <image class="rotate2" src="../../images/tank-area/2-r.png"></image>
+        <image class="rotate3" src="../../images/tank-area/3-r.png"></image>
+        <image class="rotate4" src="../../images/tank-area/4-r.png"></image>
+        <image class="rotate5" src="../../images/tank-area/5-r.png"></image>
+        <image class="rotate6" src="../../images/tank-area/6-r.png"></image>
+        <image class="rotate7" src="../../images/tank-area/7-r.png"></image>
+        <image class="rotate8" src="../../images/tank-area/8-r.png"></image>
+        <image class="rotate9" src="../../images/tank-area/9-r-s.png"></image>
+        <image class="rotate10" src="../../images/tank-area/10-r-s.png"></image>
+        <image class="rotate11" src="../../images/tank-area/11-r.png"></image>
+        <image class="rotate12" src="../../images/tank-area/12-r.png"></image>
+        <view id="oil-percent">68%</view>
+    </view>
+    <view class="oil-saturations">
+        <view id="tank-area-name">N-T1罐区</view>
+        <view class="saturations" style="margin-bottom:27rpx;">
+            <text>罐区储油量 :</text>
+            <text id="saturations-value" style="color:#156DD5;margin-left:23rpx;">40.8 / 60</text>
+            <text style="color:#156DD5;">万立</text>
+        </view>
+        <view class="histogram">
+            <view bindtap="gotoSingleTankData" class="single-tank" id="{{item_index}}" wx:for="{{list}}" wx:for-index="item_index">
+                <view class="value-image">
+                    <image class="beaker" src="../../images/tank-area/beaker.png"></image>
+                    <image class="beaker-bottom" src="../../images/tank-area/beaker-bottom.png"></image>
+                    <view style="bottom:8rpx;height:{{item.saturation*0.65}}rpx;"></view>
+                </view>
+                <view class="tank-name">{{item.name}}</view>
+                <view class="tank-percent-value" style="color:{{item.status==1?'#D92224':item.levelStatus==0?'#156DD5':'#D92224'}};">{{item.saturation}}%</view>
+            </view>
+            <view class="clearfix"></view>
+        </view>
+    </view>
+    <view class="clearfix"></view>
+</view>
+<view class="count">
+    <view class="count-title">历史统计 ：</view>
+    <view class="count-button">
+        <view id="day">近七天</view>
+        <view id="month">月</view>
+        <view id="year">年</view>
+    </view>
+    <view class="clearfix"></view>
+</view>
+<view class="line-chart">
+    <view class="title">
+        <image src="../../images/tank-area/line-icon.png"></image>
+        <text>储油量趋势图</text>
+    </view>
+    <view class="oil-reserves-line">
+        <view style="font-size:20rpx;line-height:20rpx;margin-bottom:14rpx;color:#7A7B7C;">(万立)</view>
+        <canvas canvasId="oilReservesCanvas" class="canvas" disableScroll="true" style="margin-left:-24rpx;"></canvas>
+    </view>
+</view>
+<view class="line-chart" style="margin-top:-41rpx;">
+    <view class="title">
+        <image src="../../images/tank-area/plus-minus-icon.png"></image>
+        <text>输入输出对照图</text>
+    </view>
+    <view class="input-output-comparison">
+        <view class="bg-line">
+            <view style="float:left;color:#7A7B7C;">+5</view>
+            <view class="line"></view>
+            <view class="clearfix"></view>
+        </view>
+        <view class="bg-line">
+            <view style="float:left;color:#7A7B7C;margin-left:14rpx;">0</view>
+            <view class="line" style="border: 2rpx dashed #E1E1E6;"></view>
+            <view class="clearfix"></view>
+        </view>
+        <view class="bg-line">
+            <view style="float:left;color:#7A7B7C;">-5</view>
+            <view class="line"></view>
+            <view class="clearfix"></view>
+        </view>
+        <view style="color:#7A7B7C;font-size:20rpx;line-height:20rpx;">(万立)</view>
+        <movable-area style="position:absolute;top:0;left:75rpx;width:100%;height:346rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+            <movable-view class="comparison-area" direction="horizontal">
+                <view class="single-area">
+                    <view class="single-up-bg">
+                        <view style="height:44rpx;"></view>
+                    </view>
+                    <view class="single-down-bg">
+                        <view style="height:71rpx;"></view>
+                    </view>
+                    <view style="color:#7A7B7C;margin-bottom:16rpx;">11</view>
+                    <view style="font-size:20rpx;">
+                        <view style="color:#008744;margin-right:14rpx;">+8.2</view>
+                        <view style="color:#D81414">-13.3</view>
+                    </view>
+                </view>
+                <view class="single-area">
+                    <view class="single-up-bg">
+                        <view style="height:80rpx;"></view>
+                    </view>
+                    <view class="single-down-bg">
+                        <view style="height:32rpx;"></view>
+                    </view>
+                    <view style="color:#7A7B7C;margin-bottom:16rpx;">12</view>
+                    <view style="font-size:20rpx;">
+                        <view style="color:#008744;margin-right:14rpx;">+15.0</view>
+                        <view style="color:#D81414">-6.8</view>
+                    </view>
+                </view>
+                <view class="single-area">
+                    <view class="single-up-bg">
+                        <view style="height:14rpx;"></view>
+                    </view>
+                    <view class="single-down-bg">
+                        <view style="height:23rpx;"></view>
+                    </view>
+                    <view style="color:#7A7B7C;margin-bottom:16rpx;">13</view>
+                    <view style="font-size:20rpx;">
+                        <view style="color:#008744;margin-right:14rpx;">+2.6</view>
+                        <view style="color:#D81414">-4.4</view>
+                    </view>
+                </view>
+                <view class="single-area">
+                    <view class="single-up-bg">
+                        <view style="height:31rpx;"></view>
+                    </view>
+                    <view class="single-down-bg">
+                        <view style="height:59rpx;"></view>
+                    </view>
+                    <view style="color:#7A7B7C;margin-bottom:16rpx;">14</view>
+                    <view style="font-size:20rpx;">
+                        <view style="color:#008744;margin-right:14rpx;">+5.8</view>
+                        <view style="color:#D81414">-11.2</view>
+                    </view>
+                </view>
+                <view class="single-area">
+                    <view class="single-up-bg">
+                        <view style="height:54rpx;"></view>
+                    </view>
+                    <view class="single-down-bg">
+                        <view style="height:30rpx;"></view>
+                    </view>
+                    <view style="color:#7A7B7C;margin-bottom:16rpx;">15</view>
+                    <view style="font-size:20rpx;">
+                        <view style="color:#008744;margin-right:14rpx;">+10.2</view>
+                        <view style="color:#D81414">-5.6</view>
+                    </view>
+                </view>
+                <view class="single-area">
+                    <view class="single-up-bg">
+                        <view style="height:18rpx;"></view>
+                    </view>
+                    <view class="single-down-bg">
+                        <view style="height:19rpx;"></view>
+                    </view>
+                    <view style="color:#7A7B7C;margin-bottom:16rpx;">16</view>
+                    <view style="font-size:20rpx;">
+                        <view style="color:#008744;margin-right:14rpx;">+3.4</view>
+                        <view style="color:#D81414">-3.2</view>
+                    </view>
+                </view>
+                <view class="single-area">
+                    <view class="single-up-bg">
+                        <view style="height:80rpx;"></view>
+                    </view>
+                    <view class="single-down-bg">
+                        <view style="height:80rpx;"></view>
+                    </view>
+                    <view style="color:#7A7B7C;margin-bottom:16rpx;">17</view>
+                    <view style="font-size:20rpx;">
+                        <view style="color:#008744;">+15.0</view>
+                        <view style="color:#D81414;">-15.0</view>
+                    </view>
+                </view>
+                <view class="clearfix"></view>
+            </movable-view>
+        </movable-area>
+    </view>
+</view>
+<zy-modal areaName="{{areaName}}出现火灾预警!" bindconfirm="modalConfirm" confirmText="确定" hidden="{{modalHidden}}" imageReady="block"></zy-modal>
+<audio id="audio" loop="false" src="{{src}}"></audio>

@@ -1,0 +1,52 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view wx:if="{{isShow}}">
+    <view bindtap="selectMyDevice" class="wodeshebei" wx:if="{{model}}">
+      我的设备：{{model}}
+    </view>
+    <view class="content {{model!=null?'top90':'top0'}}">
+        <scroll-view scrollY scrollTop="{{scrollTop}}" style="height:{{scrollHeight}};">
+            <view class="sidebar">
+                <block wx:for="{{categorys}}" wx:for-index="brandIndex" wx:for-item="brandItem" wx:key="brand">
+                    <view bindtap="selectBrand" class="menu on" data-id="{{brandItem.id}}" data-idx="{{brandIndex}}" wx:if="{{selectedBrand.id==brandItem.id}}">
+                        <view class="txt {{brandItem.BrandId=='35'||brandItem.BrandId=='36'?'brand':''}}">{{brandItem.mobile_name}}
+              <view class="yuan"></view>
+                        </view>
+                    </view>
+                    <view bindtap="selectBrand" class="menu" data-id="{{brandItem.id}}" data-idx="{{brandIndex}}" wx:else>
+                        <view class="txt {{brandItem.BrandId=='35'||brandItem.BrandId=='36'?'brand':''}}">{{brandItem.mobile_name}}
+              <view class="yuan"></view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+        <view class="right">
+            <block wx:if="{{segIndex==0}}">
+                <view class="tabs {{count==0?'onlyPhone':''}}">
+                    <button class="nav on">手机</button>
+                    <button catchtap="showPadList" class="nav">平板</button>
+                </view>
+                <scroll-view scrollY class="list" scrollTop="{{scrollTop}}" style="height:{{scrollHeight}};">
+                    <view bindtap="selectPhone" class="item" data-brandId="{{phoneItem.BrandId}}" data-brandName="{{phoneItem.BrandName}}" data-faultId="{{faultInfo.faultid}}" data-faultName="{{faultInfo.faultname}}" data-id="{{phoneItem.goods_id}}" data-idx="{{phoneIndex}}" data-mouldId="{{phoneItem.Id}}" data-mouldName="{{phoneItem.MouldName}}" data-productId="{{phoneItem.ProductId}}" wx:if="{{phoneItem.ptype==2}}" wx:for="{{goods}}" wx:for-index="phoneIndex" wx:for-item="phoneItem" wx:key="phone">
+                        <image lazyload bindload="imgLoad" class="img {{animate?'animated fadeIn':''}}" mode="widthFix" src="{{phoneItem.image}}"></image>
+                        <view class="con">{{phoneItem.mobile_name}}</view>
+                    </view>
+                </scroll-view>
+            </block>
+            <block wx:if="{{segIndex==1}}">
+                <view class="tabs">
+                    <button catchtap="showPhoneList" class="nav">手机</button>
+                    <button class="nav on">平板</button>
+                </view>
+                <scroll-view scrollY class="list" style="height:{{scrollHeight}};">
+                    <view bindtap="selectPhone" class="item" data-brandId="{{padItem.BrandId}}" data-brandName="{{padItem.BrandName}}" data-faultId="{{faultInfo.faultid}}" data-faultName="{{faultInfo.faultname}}" data-id="{{padItem.id}}" data-idx="{{padIndex}}" data-mouldId="{{padItem.Id}}" data-mouldName="{{padItem.MouldName}}" data-productId="{{padItem.ProductId}}" wx:if="{{padItem.ptype==3}}" wx:for="{{goods}}" wx:for-index="padIndex" wx:for-item="padItem" wx:key="pad">
+                        <image lazyload bindload="imgLoad" class="img {{animate?'animated fadeIn':''}}" mode="widthFix" src="{{padItem.image}}"></image>
+                        <view class="con">{{padItem.mobile_name}}</view>
+                    </view>
+                </scroll-view>
+            </block>
+        </view>
+        <view class="maskView" hidden="{{maskHidden}}"></view>
+    </view>
+</view>

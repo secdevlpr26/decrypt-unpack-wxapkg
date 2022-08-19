@@ -1,0 +1,63 @@
+{
+    "pages": [
+        "pages/info/info",
+        "pages/index/index",
+        "pages/editmoney/editmoney",
+        "pages/order/order",
+        "pages/orderIntro/orderIntro",
+        "pages/billlist/billlist",
+        "pages/empower/empower",
+        "pages/activation/activation",
+        "pages/authorize/authorize",
+        "pages/frozen/frozen",
+        "pages/yulu/yulu",
+        "pages/xiaopiao/xiaopiao",
+        "pages/orderUploadzxd/orderUploadzxd",
+        "pages/orderUpload/orderUpload",
+        "pages/withlist/withlist",
+        "pages/withdraw/withdraw",
+        "pages/authentication/authentication",
+        "pages/information/information",
+        "pages/login/login",
+        "pages/passwd/passwd",
+        "pages/signin/signin",
+        "pages/guize/guize",
+        "pages/question/question",
+        "pages/orderMoneyIntro/orderMoneyIntro",
+        "pages/addmoney/addmoney",
+        "pages/integral/integral"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#000",
+        "navigationBarTitleText": "集运58",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "color": "#666666",
+        "selectedColor": "#31bbcb",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "position": "bottom",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "快速接单",
+                "iconPath": "images/quickorder.png",
+                "selectedIconPath": "images/quickorder-color.png"
+            },
+            {
+                "pagePath": "pages/order/order",
+                "text": "我的订单",
+                "iconPath": "images/myorder.png",
+                "selectedIconPath": "images/myorder-color.png"
+            },
+            {
+                "pagePath": "pages/info/info",
+                "text": "个人中心",
+                "iconPath": "images/mycenter.png",
+                "selectedIconPath": "images/mycenter-color.png"
+            }
+        ]
+    }
+}

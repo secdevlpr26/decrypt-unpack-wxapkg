@@ -1,0 +1,8 @@
+<template name="list">
+    <view class="cells" wx:for="{{cells}}" wx:for-index="cellsIndex" wx:for-item="cellsItem" wx:key="cells">
+        <view bindtap="{{cellItem.fn}}" class="cell {{cellItem.access?'cell-access':''}}" wx:for="{{cellsItem}}" wx:for-index="cellIndex" wx:for-item="cellItem" wx:key="cells">
+            <view class="cell-bd">{{cellItem.title}}</view>
+            <view class="cell-ft">{{cellItem.text}}</view>
+        </view>
+    </view>
+</template>

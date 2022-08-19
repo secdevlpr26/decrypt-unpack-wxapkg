@@ -1,0 +1,21 @@
+<view class="container">
+    <image mode="widthFix" src="{{hostUrl}}/images/banner3.jpg" style="width:100%"></image>
+    <view style="height:{{scrollHeight}}px;">
+        <scroll-view bindscrolltolower="bindDownLoad" class="list" scrollY="true" style="height:{{scrollHeight}}px;">
+            <navigator url="/pages/newsinfo/newsinfo?id={{item.ARTICLEID}}" wx:for="{{newsList}}" wx:for-index="idx" wx:key="newsList">
+                <view class="news-list">
+                    <image src="{{hostUrl}}{{item.PHOTOURL}}"></image>
+                    <view class="news-list-right">
+                        <text class="news-title">{{item.TITLE}}</text>
+                        <view class="news-text">{{item.INTRO}}</view>
+                    </view>
+                </view>
+            </navigator>
+        </scroll-view>
+    </view>
+    <view class="body-view">
+        <loading bindchange="loadingChange" hidden="{{hidden}}">
+             加载中...
+         </loading>
+    </view>
+</view>

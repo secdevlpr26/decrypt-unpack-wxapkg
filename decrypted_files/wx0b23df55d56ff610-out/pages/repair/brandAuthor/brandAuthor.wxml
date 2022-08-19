@@ -1,0 +1,14 @@
+<view class="pinpailist">
+    <view hidden bindtap="goToMeizu" class="pinpaimain">
+        <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/meizu2.png"></image>
+        <text>魅族官方授权</text>
+    </view>
+    <view hidden bindtap="goToGionee" class="pinpaimain">
+        <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/gionee.png"></image>
+        <text>金立官方授权</text>
+    </view>
+    <view class="pinpaimain">
+        <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/qidai.png"></image>
+        <text class="gray">敬请期待</text>
+    </view>
+</view>

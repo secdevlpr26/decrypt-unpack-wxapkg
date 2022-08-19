@@ -1,0 +1,23 @@
+<view class="container {{copyrightInfo.contentClassName}}">
+    <view class="personal-center">
+        <view class="personal-content">
+            <image mode="widthFix" src="{{HeadImg}}"></image>
+        </view>
+        <view class="personal-tit">{{Name}}</view>
+    </view>
+    <navigator hoverClass="changestyle" openType="navigate" url="myreserve">
+        <view class="data-list">
+            <view class="data-item">
+                <text class="iconfont icon-wodeyuyue"></text>
+                <view class="navText">
+                    <view class="data-name">我的预约<text class="reservenum">({{mycenterdata.reservenum}})</text>
+                    </view>
+                </view>
+                <text class="iconfont icon-xiangyou"></text>
+            </view>
+        </view>
+    </navigator>
+</view>
+<include src="/pages/template/copyright.wxml"></include>
+<include src="/pages/template/floatLayer.wxml"></include>
+<include src="/pages/template/getUserInfo.wxml"></include>

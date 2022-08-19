@@ -1,0 +1,34 @@
+<view class="Empty">
+    <form bindsubmit="Empty">
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <textarea bindblur="Empty" bindfocus="Empty" bindinput="Empty" data-form-txt="Empty" maxlength="Empty" value="Empty"></textarea>
+            </view>
+            <view class="Empty">
+                <view bindtap="Empty" class="Empty" data-form-pic="Empty" wx:if="Empty">
+                    <image class="Empty" mode="Empty" src="Empty"></image>
+                </view>
+                <view class="Empty">Empty</view>
+            </view>
+        </view>
+        <view class="Empty" wx:if="Empty">
+            <view bindlongpress="Empty" bindtap="Empty" class="Empty" data-form-pic="Empty" data-form-pic-index="Empty" wx:for="Empty" wx:key="index">
+                <image class="Empty" mode="Empty" src="Empty"></image>
+                <view class="Empty" style="Empty"></view>
+                <view class="Empty">
+                    <block wx:if="Empty">Empty</block>
+                    <block wx:elif="Empty"></block>
+                    <block wx:else>Empty</block>
+                </view>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">
+                <image class="Empty" mode="Empty" src="Empty"></image>
+            </view>
+            <view class="Empty">Empty</view>
+        </view>
+        <button class="Empty" disabled="Empty" formType="Empty" loading="Empty">Empty</button>
+    </form>
+</view>

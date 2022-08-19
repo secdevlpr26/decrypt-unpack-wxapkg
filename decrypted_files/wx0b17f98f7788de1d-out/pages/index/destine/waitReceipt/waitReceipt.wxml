@@ -1,0 +1,58 @@
+<view class="waitBox">
+    <view class="waitTitle">{{waitReceitName}}</view>
+    <view class="waitTT">
+        <view class="waitText">距离自动取消订单还有</view>
+        <view class="waitTime">{{minute}}分{{second}}秒</view>
+    </view>
+    <view class="waitNotice">注：提交订单后，商家10分钟之内未接单将自动取消订单</view>
+</view>
+<view class="waitTel">商家电话：{{phone}}</view>
+<view class="waitAddr">店铺地址：{{address}}</view>
+<view class="waitInfo">预订信息
+  <image class="img" src="/images/yd.png"></image>
+</view>
+<view class="destineInfo">
+    <view class="destineInfo-item">
+        <text class="destineInfo-item-title">预定日期</text>
+        <text class="destineInfo-item-line">：</text>
+        <text class="destineInfo-item-content">{{date}}</text>
+    </view>
+    <view class="destineInfo-item">
+        <text class="destineInfo-item-title">预定时间</text>
+        <text class="destineInfo-item-line">：</text>
+        <text class="destineInfo-item-content">{{time}}</text>
+    </view>
+    <view class="destineInfo-item">
+        <text class="destineInfo-item-title">选择桌型</text>
+        <text class="destineInfo-item-line">：</text>
+        <text class="destineInfo-item-content">{{tableType}}</text>
+    </view>
+    <view class="destineInfo-item">
+        <text class="destineInfo-item-title">用餐人数</text>
+        <text class="destineInfo-item-line">：</text>
+        <text class="destineInfo-item-content">{{mealsNumber}}</text>
+    </view>
+    <view class="destineInfo-item">
+        <text class="destineInfo-item-title">联系人</text>
+        <text class="destineInfo-item-line">：</text>
+        <text class="destineInfo-item-content">{{contants}}</text>
+    </view>
+    <view class="destineInfo-item">
+        <text class="destineInfo-item-title">联系电话</text>
+        <text class="destineInfo-item-line">：</text>
+        <text class="destineInfo-item-content">{{contantsTel}}</text>
+    </view>
+    <view class="destineInfo-item">
+        <text class="destineInfo-item-title">详细说明</text>
+        <text class="destineInfo-item-line">：</text>
+        <text class="destineInfo-item-content">{{textDesc}}</text>
+    </view>
+</view>
+<button bindtap="back" class="destineButton">取 消 预 约</button>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<component-alertview bind:chkOrder0="chkOrder0_0" carname="{{carname_0}}" displayy="{{displayy_0}}" titlename="{{titlename_0}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder0_1" carname="{{carname_1}}" displayy="{{displayy_1}}" titlename="{{titlename_1}}"></component-alertview>

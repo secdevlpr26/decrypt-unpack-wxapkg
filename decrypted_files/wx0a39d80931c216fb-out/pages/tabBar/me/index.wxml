@@ -1,0 +1,68 @@
+<view class="page" style="padding-top:240rpx;">
+    <view class="user-info-box">
+        <view class="user-info">
+            <image mode class="wx-headimg" src="{{userInfo.avatarUrl||'/static/default_avatar.png'}}"></image>
+            <view class="account-nickname">
+                <view class="nickname">{{userInfo.nickName||''}}<view>{{'帐号: '+(userInfo.userName||'')}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="my-menu-box">
+        <view class="menu-header">
+            <view class="t-h">我的订单</view>
+            <view bindtap="__e" class="t-f" data-event-opts="{{[ [ 'tap',[ [ 'viewMyOrders',[0] ] ] ] ]}}">查看全部</view>
+        </view>
+        <view class="menu-grid menu-grid-4">
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewMyOrders',[1] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <uni-badge bind:__l="__l" inverted="{{false}}" text="{{memberOrderList.WaitingForPay==0?'':memberOrderList.WaitingForPay}}" type="danger" vueId="36cf2a83-1"></uni-badge>
+                <image mode src="../../../static/menber_center/1.png"></image>待付款</view>
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewMyOrders',[2] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <uni-badge bind:__l="__l" inverted="{{false}}" text="{{memberOrderList.WaitingForDelivery==0?'':memberOrderList.WaitingForDelivery}}" type="danger" vueId="36cf2a83-2"></uni-badge>
+                <image mode src="../../../static/menber_center/3.png"></image>待发货</view>
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewMyOrders',[3] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <uni-badge bind:__l="__l" inverted="{{false}}" text="{{memberOrderList.WaitingForRecieve==0?'':memberOrderList.WaitingForRecieve}}" type="danger" vueId="36cf2a83-3"></uni-badge>
+                <image mode src="../../../static/menber_center/4.png"></image>待收货</view>
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewMyOrders',[4] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <uni-badge bind:__l="__l" inverted="{{false}}" text="{{memberOrderList.WaitingForComments==0?'':memberOrderList.WaitingForComments}}" type="danger" vueId="36cf2a83-4"></uni-badge>
+                <image mode src="../../../static/menber_center/5.png"></image>待评价</view>
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'memberRefundOrders',['$event'] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <image mode src="../../../static/menber_center/10.png"></image>退款/售后</view>
+        </view>
+    </view>
+    <view class="my-menu-box">
+        <view class="menu-grid menu-grid-5">
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewMyCoupons',['$event'] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <image mode src="../../../static/menber_center/6.png"></image>优惠券</view>
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewMyFavorites',['$event'] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <image mode src="../../../static/menber_center/7.png"></image>商品收藏</view>
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewMyAddress',['$event'] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <image mode src="../../../static/menber_center/11.png"></image>收货地址</view>
+            <view hoverClass="uni-list-cell-hover">
+                <image mode src="../../../static/menber_center/13.png"></image>
+                <button openType="contact" sessionFrom="{{sessionfromString}}">微信客服</button>微信客服</view>
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewMyAccount',['$event'] ] ] ] ]}}" hoverClass="uni-list-cell-hover">
+                <image mode src="../../../static/menber_center/14.png"></image>设置</view>
+        </view>
+    </view>
+    <view class="group-menu">
+        <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewHistoryVisite',['$event'] ] ] ] ]}}" hoverClass="uni-list-cell-hover">我的浏览</view>
+        <view class="app-version">{{'版本号： '+appVersion}}</view>
+    </view>
+    <view class="rec-p" wx:if="{{recommendProduct!=null&&recommendProduct.length>0}}">
+        <view class="details-title">为您推荐</view>
+        <view class="product-grid">
+            <view bindtap="__e" class="product" data-event-opts="{{[ [ 'tap',[ [ 'gotoProductDetails',['$0'],[ [ ['recommendProduct','',index,'Id'] ] ] ] ] ] ]}}" wx:for="{{recommendProduct}}" wx:for-item="product" wx:key="index">
+                <view class="product-inner">
+                    <view class="image-view">
+                        <image class="product-image" lazyLoad="{{true}}" mode="aspectFit" src="{{product.ImagePath}}"></image>
+                    </view>
+                    <view class="product-title">{{product.ProductName}}</view>
+                    <view class="product-price">
+                        <view>{{'￥'+product.MinSalePrice}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

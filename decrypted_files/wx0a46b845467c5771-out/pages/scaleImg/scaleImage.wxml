@@ -1,0 +1,28 @@
+<view class="container">
+    <swiper bindchange="swipChange" class="scrollMsgItem" current="{{swipIndex}}">
+        <swiper-item wx:for="{{arrayStatus}}" wx:key="{{item.id}}">
+            <scroll-view class="scroll" scrollX="true" scrollY="true">
+                <image bindtap="previewImage" class="imgItem" data-src="{{item.imageUrl}}" mode="aspectFit" src="{{item.imageUrl}}" wx:if="{{item.imageUrl}}"></image>
+                <image bindtap="previewImage" class="imgItem" mode="aspectFit" src="../../image/mini-program/defaultImg.png" wx:else></image>
+                <view class="swip-desc">
+                    <view class="swip-title">
+                        <view>{{index+1}}/{{currentType.atlasResponseList.length}} {{item.name||''}}</view>
+                        <view bindtap="likeAdd" data-id="{{item.id}}" data-item="{{item}}" data-like="{{item.like}}" data-type="{{currentType.groupType}}" style="display:flex;align-items:center;">
+                            <image src="{{likeImg}}" style="width:34rpx;height:31rpx;margin-right:10rpx;" wx:if="{{!currentType.atlasResponseList[index].like}}"></image>
+                            <image src="{{likeImgRed}}" style="width:34rpx;height:31rpx;margin-right:10rpx;" wx:else></image>
+                               {{currentType.atlasResponseList[index].likeNumber}}
+                        </view>
+                    </view>
+                    <view class="swip-text">{{item.remark||''}}</view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>
+<movable-area class="swip-tab" style="height: 100rpx; width: 100%;">
+    <movable-view class="top" direction="horizontal" style="width:{{(imgTotal.length-1)*40+movableWidth>710?(imgTotal.length-1)*40+movableWidth+20+'rpx':'100%'}}">
+        <view bindtap="selectTap" class="tab-box " data-type="{{item.groupType}}" id="{{imgTotal.groupType}}" style="{{isChosed==item.groupType?'background-image: linear-gradient(-270deg, '+gradient1+' 0%, '+gradient2+' 100%);border: 2px solid #FFFFFF;color:#fff;':''}}" wx:for="{{imgTotal}}" wx:key="{{imgTotal.groupType}}">
+		  	{{item.groupName=='样板间图'?'精彩生活':item.groupName=='效果图'?'古镇新貌':item.groupName}}
+		</view>
+    </movable-view>
+</movable-area>

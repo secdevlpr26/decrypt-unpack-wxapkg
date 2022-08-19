@@ -1,0 +1,15 @@
+<view class="order">
+    <view class="r_box1">
+        <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/order_icon.png"></image>我们已经收到您的订单！
+    </view>
+    <view class="r_box2 clearfix">
+        <view class="s_w s_w1">订单号：{{oid}}</view>
+        <view class="s_w s_w2">价格：{{price}}</view>
+        <view class="s_w s_w3">状态：订单创建成功</view>
+    </view>
+    <view class="r_box3">
+        <view>请耐心等待，客服将会马上联系您</view>
+        <view>客服电话  400-017-1010</view>
+    </view>
+    <view bindtap="goToHome" class="fhsybtn">返回首页</view>
+</view>

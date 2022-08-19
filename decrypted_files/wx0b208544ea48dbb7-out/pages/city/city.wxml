@@ -1,0 +1,34 @@
+<view class="city-wrap">
+    <scroll-view class="scroll-wrap" scrollIntoView="{{scorllId}}" scrollY="true">
+        <view class="city-container hot">
+            <view class="city-title">
+                 热门城市
+            </view>
+            <view class="city-list">
+                <view bindtap="setCityTwo" class="city-item" data-id="{{item}}" data-name="{{key}}" wx:for="{{city.hot}}" wx:for-index="key" wx:key="key">
+                        {{key}}
+                    </view>
+            </view>
+        </view>
+        <view class="city-container all">
+            <view class="city-title">
+                 所有城市
+            </view>
+            <view class="city-list">
+                <view bindtap="scrollIntoCity" class="city-item" data-id="{{item.letter}}" wx:for="{{city.all}}" wx:key="index">
+                        {{item.letter}}
+                    </view>
+            </view>
+        </view>
+        <view class="city-list-wrap">
+            <view class="city-list" id="{{item.letter}}" wx:for="{{city.all}}" wx:key="index">
+                <view class="city-item" wx:if="{{item.city.length}}">
+                        {{item.letter}}
+                    </view>
+                <view bindtap="setCity" class="city-item" data-city="{{item}}" wx:for="{{item.city}}">
+                            {{item.name}}
+                        </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

@@ -1,0 +1,23 @@
+<view class="parent">
+    <form bindsubmit="formSubmit">
+        <view class="view-row">
+            <text>商户名称</text>
+            <input id="title" name="title" placeholder="请输入商户名称" placeholderClass="input-placeholder"></input>
+        </view>
+        <view class="view-row">
+            <text>主营项目</text>
+            <input id="leibie" name="leibie" placeholder="例如水果蛋糕等" placeholderClass="input-placeholder"></input>
+        </view>
+        <view class="view-row">
+            <text>联系人</text>
+            <input id="name" name="name" placeholder="您的姓名" placeholderClass="input-placeholder"></input>
+        </view>
+        <view class="view-row">
+            <text>联系电话</text>
+            <input id="mobile" name="mobile" placeholder="您的手机号码" placeholderClass="input-placeholder"></input>
+        </view>
+        <view class="btnWrap">
+            <button class="btn" formType="submit">申请入驻</button>
+        </view>
+    </form>
+</view>

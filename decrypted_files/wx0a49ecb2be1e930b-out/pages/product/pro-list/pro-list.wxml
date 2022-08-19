@@ -1,0 +1,49 @@
+<view class="pro-frame">
+    <view class="pro-search-wrap">
+        <view bindtap="toSearch" class="search-frame">
+            <view class="iconfont icon-search"></view>
+            <text>搜索你喜欢的商品</text>
+        </view>
+        <view bindtap="changeclum" class="iconfont  {{listStyle?'icon-v_layout':'icon-h_layout'}}"></view>
+    </view>
+    <view class="pro-list clearfix {{listStyle?'v-layout':'h-layout'}}">
+        <view bindtap="toProDetail" class="pro-item" data-pid="{{item.id}}" wx:for="{{productList.pageList}}" wx:key="{{item.id}}">
+            <view class="group-label1" wx:if="{{item.activityType=='5'}}">拼团</view>
+            <view class="seckill-label1" wx:if="{{item.activityType=='3'}}">秒杀</view>
+            <view class="dis-label" style="background-color: {{actDistribution.identificationColor}}" wx:if="{{item.activityType=='6'&&memberType=='3'&&actDistribution.enable&&actDistribution.identificationOpened}}">{{actDistribution.identificationName}}</view>
+            <block wx:if="{{item.productImageVOList}}">
+                <image lazyLoad="{{true}}" src="{{item.productImageVOList[0].imageURL}}" wx:if="{{item.productImageVOList.length>0&&item.productImageVOList[0].imageURL!=''}}"></image>
+                <image lazyLoad="{{true}}" src="../../../img/img-default.png" wx:else></image>
+            </block>
+            <block wx:else>
+                <image lazyLoad="{{true}}" src="{{item.productImageList[0].imageURL}}" wx:if="{{item.productImageList.length>0&&item.productImageList[0].imageURL!=''}}"></image>
+                <image lazyLoad="{{true}}" src="../../../img/img-default.png" wx:else></image>
+            </block>
+            <view class="pro-info">
+                <view class="pro-title">
+                    <text class="iconfont icon-trangle videoLabel" wx:if="{{!item.video==''}}"></text>
+                {{item.productName}}</view>
+                <view class="price-frame" wx:if="{{item.purpose!=2&&item.purpose!=4}}">
+                    <text class="price">
+                        <text class="min">￥</text>{{item.price}}</text>
+                    <text class="ori-price">￥{{item.productModelList[0].originalprice}}</text>
+                </view>
+                <view class="noprice" wx:else>
+                    <text>{{item.showName}}</text>
+                </view>
+                <view class="pro-info-detail" hidden="{{!listStyle}}" wx:if="{{item.purpose!=2&&item.purpose!=4}}">
+                    <text class="saleCount">销量：{{item.quantity<0?-item.quantity:item.quantity}}</text>
+                    <text class="readTimes">浏览量：{{item.readTimes}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="pro-null {{hasPro?'dn':''}}">
+        <view class="iconfont icon-vz-null"></view>
+        <text>没有找到商品</text>
+    </view>
+    <view class="bottom-hint" hidden="{{bottomHint}}">
+        <view class="line"></view>
+        <text>没有更多商品啦</text>
+    </view>
+</view>

@@ -1,0 +1,96 @@
+<form bindsubmit="formSubmit">
+    <view class="realTitle">注：（*） 表示此项为必填项</view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view style="color:#000;">区域：</view>
+                <view class="weui-input" style="color:#428bca;">{{area}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view style="color:#000;">街道：</view>
+                <view class="weui-cell__hd">
+                    <picker bindchange="changeStreet" range="{{streetNameArray}}" value="{{streetIdArray[streetIndex]}}">
+                        <view class="weui-input">{{streetNameArray[streetIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view style="color:#000;">社区：</view>
+                <view class="weui-cell__hd">
+                    <picker bindchange="changeCommunity" range="{{communityNameArray}}" value="{{communityCodeArray[communityIndex]}}">
+                        <view class="weui-input">{{communityNameArray[communityIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view style="color:#000;">单位：</view>
+                </view>
+                <view class="weui-cell__hd">
+                    <picker bindchange="changeUnit" name="unit_code" range="{{unitNameArray}}" value="{{unitCodeArray[unitIndex]}}">
+                        <view class="weui-input">{{unitNameArray[unitIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view style="color:#000;">地址（*）：</view>
+                </view>
+                <input class="weui-input" name="yardName" placeholder="当前居住小区或院落名称"></input>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view style="color:#000;">姓名（*）：</view>
+                </view>
+                <input class="weui-input" name="name" placeholder="请输入姓名"></input>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view style="color:#000;">电话（*）：</view>
+                </view>
+                <input class="weui-input" maxlength="11" name="phone" placeholder="请输入电话" type="number"></input>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view style="color:#000;">性别（*）：</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="changeSex" name="sex" range="{{array}}" value="{{index}}">
+                        <view class="weui-input">{{array[index]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="commit">
+        <button formType="submit" type="primary">提交</button>
+    </view>
+</form>

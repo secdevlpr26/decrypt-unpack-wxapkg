@@ -1,0 +1,91 @@
+<view class="Empty">
+    <form bindsubmit="Empty">
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <radio-group bindchange="Empty">
+                    <radio checked="Empty" value="Empty" wx:for="Empty" wx:key="index">Empty</radio>
+                </radio-group>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <picker bindchange="Empty" end="Empty" mode="Empty" value="Empty">
+                    <view class="Empty">
+                        <view class="Empty" style="Empty">Empty</view>
+                        <view class="Empty">Empty</view>
+                        <view class="Empty">Empty</view>
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <picker bindchange="Empty" data-form-picker="Empty" range="Empty" value="Empty">Empty</picker>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <picker bindchange="Empty" mode="Empty" value="Empty">Empty</picker>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <input bindblur="Empty" bindfocus="Empty" bindinput="Empty" confirmType="Empty" data-form-txt="Empty" maxlength="Empty" type="Empty" value="Empty"></input>
+            </view>
+        </view>
+        <button class="Empty" formType="Empty">Empty</button>
+    </form>
+</view>

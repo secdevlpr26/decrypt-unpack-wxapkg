@@ -1,0 +1,70 @@
+<view class="store-head">
+    <view class="search_wrap" style="{{'background-color:'+styleConfig.mainColor}}">
+        <view class="search-frame">
+            <view class="iconfont icon-search"></view>
+            <input bindconfirm="searchTap" confirmType="search" placeholder="搜你喜欢"></input>
+        </view>
+    </view>
+    <view class="store-nav">
+        <view bindtap="isShowCategory" class="nav-item {{curIdx==0?'active':''}}" data-idx="0">
+            分类
+            <view class="iconfont {{hiddenCate?'icon-unfold':'icon-fold'}}"></view>
+        </view>
+        <view bindtap="navtap" class="nav-item {{curIdx==1?'active':''}}" data-idx="1">综合排序</view>
+        <view bindtap="navtap" class="nav-item {{curIdx==2?'active':''}}" data-idx="2">距离最近</view>
+    </view>
+</view>
+<view class="store-main">
+    <view class="store-item" wx:for="{{merchantList}}" wx:for-item="mItem">
+        <view bindtap="toStoreDetail" class="store-top" data-mid="{{mItem.id}}">
+            <image lazyLoad="{{true}}" src="{{mItem.pic1}}"></image>
+            <view class="store-info">
+                <view class="store-name">{{mItem.branchName}}</view>
+                <view class="store-right">
+                    <view class="brand" wx:if="{{mItem.isRecommend==true}}">品牌</view>
+                    <view class="distance">{{mItem.distance}}{{mItem.disUnit?mItem.disUnit:'m'}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="store-pro">
+            <view bindtap="toProduct" class="pro-item" data-cid="{{pItem.bigCateGoryCode}}" data-pid="{{pItem.id}}" wx:for="{{mItem.isShowMorePro?mItem.productList:mItem.newProductList}}" wx:for-item="pItem">
+                <image lazyLoad="{{true}}" src="{{pItem.image}}"></image>
+                <view class="pro-info">
+                    <text class="pro-name">{{pItem.productName}}</text>
+                    <view class="rating-saleCount">
+                        <view wx:for="{{5}}" wx:for-index="idx" wx:for-item="itemCount">
+                            <view class="iconfont icon-star1 gold" wx:if="{{idx<pItem.rating}}"></view>
+                            <view class="iconfont icon-star1 gray" wx:else></view>
+                        </view>
+                        <view class="saleCount">月售{{pItem.saleCount}}单</view>
+                    </view>
+                    <text class="price" wx:if="{{pItem.purpose=='1'||pItem.purpose=='3'}}">￥{{pItem.price}}</text>
+                    <text class="showname" wx:else>{{pItem.showName}}</text>
+                </view>
+            </view>
+        </view>
+        <view bindtap="showMoreProduct" class="more" data-idx="{{index}}" hidden="{{mItem.productList.length<=2}}">
+			{{mItem.isShowMorePro?'收起更多商品':'展开更多商品'}}
+			<view class="iconfont {{mItem.isShowMorePro?'icon-fold':'icon-unfold'}}"></view>
+        </view>
+    </view>
+</view>
+<view class="category-frame" hidden="{{hiddenCate}}">
+    <view bindtap="isShowCategory" class="cate-bg"></view>
+    <view class="bigcate-frame">
+        <view class="bigcate-box">
+            <view bindtap="bigCateAllTap" class="bigcate-item {{bigcategory==''?'active':''}}">全部</view>
+            <view bindtap="getSmallCategory" class="bigcate-item {{bigcategory==item.code?'active':''}}" data-code="{{item.code}}" wx:for="{{bigCateList}}">
+                {{item.itemName}}
+            </view>
+        </view>
+    </view>
+    <view class="smallcate-frame">
+        <view class="smallcate-box">
+            <view bindtap="smallCataTap" class="smallcate-item {{smallCategory==''?'active':''}}" data-scode="" hidden="{{hiddenSCAll}}">全部</view>
+            <view bindtap="smallCataTap" class="smallcate-item {{smallCategory==item.code?'active':''}}" data-scode="{{item.code}}" wx:for="{{smallCateList}}">
+                {{item.itemName}}
+            </view>
+        </view>
+    </view>
+</view>

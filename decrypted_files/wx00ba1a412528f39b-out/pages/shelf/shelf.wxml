@@ -1,0 +1,32 @@
+<import src="../../ui/shelf/module1.wxml"></import>
+<import src="../../ui/shelf/module2.wxml"></import>
+<import src="../../ui/shelf/module3.wxml"></import>
+<import src="../../ui/shelf/module4.wxml"></import>
+<import src="../../ui/shelf/module5.wxml"></import>
+<import src="../../ui/shelf/module8.wxml"></import>
+<view class="wx_page" wx:if="{{status==2}}">
+    <view class="wx_body">
+        <view class="shop_module_banner" wx:if="{{!showOnlyEid5}}">
+            <view class="weui-toptips">微信小店将在09月03日进行升级，届时将无法进行下单。</view>
+            <image class="banner_logo" mode="aspectFit" src="{{imgUrl}}/0" wx:if="{{imgUrl}}"></image>
+            <view class="shop_banner_title">{{nickname}}</view>
+        </view>
+        <template is="module{{item.eid}}" data="{{...item}}" wx:for="{{module_infos}}" wx:key="index"></template>
+        <view class="shop_module_all">
+            <navigator class="more_link" url="/pages/list/list?sort_type=asc&sort_key=price">
+          店铺全部商品
+        </navigator>
+        </view>
+    </view>
+</view>
+<view class="loading_box" wx:if="{{status==1}}">
+    <image class="icon_loading" mode="aspectFit" src="/images/loadin.png"></image>
+</view>
+<view class="error_box" wx:if="{{status==3||status==4}}">
+    <image class="icon_reload" mode="aspectFit" src="/images/reload.png"></image>
+    <view class="reload_desc">
+      {{errMsg}}
+      <block wx:if="{{!!errDetail}}">({{errDetail}})</block>
+    </view>
+    <view bindtap="reloadHanlder" class="reload_link">重新加载</view>
+</view>

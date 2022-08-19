@@ -1,0 +1,23 @@
+<view class="register-info">
+    <view class="register-item">
+        <i class="iconfont icon-phone1"></i>
+        <input bindinput="phoneInput" maxlength="11" placeholder="请输入你的手机号码" type="number"></input>
+    </view>
+    <view class="register-item">
+        <i class="iconfont icon-email"></i>
+        <input bindinput="emailInput" placeholder="请输入你的邮箱"></input>
+    </view>
+    <view class="register-item">
+        <i class="iconfont icon-pwd"></i>
+        <input password bindinput="pwdInput" placeholder="请输入你的密码"></input>
+    </view>
+    <view class="register-item">
+        <i class="iconfont icon-pwd"></i>
+        <input password bindinput="repwdInput" placeholder="请确认你的密码"></input>
+    </view>
+    <view class="register-item">
+        <i class="iconfont icon-user"></i>
+        <input bindinput="userInput" placeholder="请填写你的账号名"></input>
+    </view>
+</view>
+<view bindtap="register" class="register-btn" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">注册</view>

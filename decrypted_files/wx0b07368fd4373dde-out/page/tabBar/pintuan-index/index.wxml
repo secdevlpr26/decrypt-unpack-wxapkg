@@ -1,0 +1,48 @@
+<view class="container">
+    <view class="swiper-container">
+        <swiper autoplay="true" class="swiper_box" duration="1000" indicatorDots="true">
+            <swiper-item wx:for="{{images}}" wx:key="key">
+                <image class="slide-image" height="562.5rpx" src="{{item.thumb}}" width="750rpx"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="type-container" wx:if="{{navs&&navs!=''}}">
+        <view class="type-navbar" scrollX="true" style="width: 100%">
+            <view class="type-box" wx:for="{{navs}}" wx:key="key">
+                <view bindtap="getNavDetail" class="type-navbar-item {{activeCategoryId==item.id?'type-item-on':''}}" data-id="{{item.url}}" id="{{item.id+'_'+item.name}}">
+                    <image class="slide-image-navs" height="562.5rpx" src="{{item.thumb}}" width="750rpx"></image>
+                    <view class="first_nav">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="jb_index_rec">
+        <view class="jb_index_rec_p">
+            <image src="{{photo_url}}images/on_sale.png"></image>
+        </view>
+    </view>
+    <view bindtap="toDetailsTap" class="jb_index_list_ul" data-id="{{item.id}}" data-isindex="{{item.isindex}}" wx:for="{{goods_recommend}}" wx:key="{{index}}">
+        <view class="jb_index_list_li">
+            <view class="pt_bj">
+                <image class="external" mode="widthFix" src="{{item.thumb}}"></image>
+            </view>
+            <view class="jb_index_list_info fui-list-inner">
+                <view class="jb_index_list_info_h">{{item.title}}</view>
+                <view class="jb_index_list_team">
+                    <view class="jb_index_list_team_left">
+                        <view class="jb_index_list_team_left_strong">
+                            <image class="groups_img" src="{{photo_url}}images/my_groups.png"></image>
+                        </view>
+                        <view class="classname">
+                            <view class="tuan"> {{item.groupnum}}人团 <text class="jb_Present">￥{{item.groupsprice}}</text> /{{item.goodsnum}}{{item.units}}</view>
+                            <view class="jb_index_list_info_del">原价：￥{{item.price}}</view>
+                        </view>
+                        <view class="lynn_index_list_team_a">去拼团></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="more">没有更多了</view>
+</view>
+<loading hidden="{{hiddenLoading}}">正在加载</loading>

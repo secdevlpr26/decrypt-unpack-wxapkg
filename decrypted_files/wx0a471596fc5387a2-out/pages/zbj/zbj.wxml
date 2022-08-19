@@ -1,0 +1,47 @@
+<import src="../common/line.wxml"></import>
+<import src="../template/template.wxml"></import>
+<view class="tr" style=" padding-top:150rpx;">
+    <view id="section_list1" wx:if="{{switchTabOne==true}}">
+        <template is="tz_zbj" data="{{data:item}}" wx:if="{{switchTabOne==true}}" wx:for="{{list1}}" wx:key="Id"></template>
+    </view>
+    <view id="section_list2" wx:if="{{switchTabTwo==true}}">
+        <template is="tz_zbj1" data="{{data:item}}" wx:if="{{switchTabTwo==true}}" wx:for="{{list2}}" wx:key="Id"></template>
+    </view>
+    <view id="section_list3" wx:if="{{switchTabThree==true}}">
+        <template is="tz_zbj2" data="{{data:item}}" wx:for="{{list3}}" wx:key="Id"></template>
+    </view>
+    <image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%;"></image>
+    <include src="../footer/footer.wxml"></include>
+    <view class="body-view">
+        <loading bindchange="loadingChange" hidden="{{hidden}}">
+    加载中...
+  </loading>
+    </view>
+</view>
+<view style="position:fixed; top:0;width: 750rpx;opacity:1.0;background:white;">
+    <view class="switch_box">
+        <navigator bindtap="switchTab" class="{{switchTabOne==true?'active':''}}" data-order="1" hoverClass="none">准备金统计表</navigator>
+        <navigator bindtap="switchTab" class="{{switchTabTwo==true?'active':''}}" data-order="2" hoverClass="none">注入</navigator>
+        <navigator bindtap="switchTab" class="{{switchTabThree==true?'active':''}}" data-order="3" hoverClass="none">使用</navigator>
+    </view>
+    <view class="lisetview_data_container B1" style="height: 70rpx" wx:if="{{switchTabOne==true}}">
+        <text class="S2 T2 lisetview_item_left_container" wx:if="{{switchTabOne==true}}">月份</text>
+        <text class="S2 T2 lisetview_item_middle_container">准备金</text>
+        <text class="S2 T2 lisetview_item_middle_container">注入</text>
+        <text class="S2 T2 lisetview_item_middle_container">使用</text>
+        <text class="S2 T2 lisetview_item_middle_container">结余</text>
+    </view>
+    <view class="lisetview_data_container B1" style="height: 70rpx" wx:if="{{switchTabTwo==true}}">
+        <text class="S2 T2 lisetview_item_left_container">部门</text>
+        <text class="S2 T2 lisetview_item_middle_container">预算编码</text>
+        <text class="S2 T2 lisetview_item_middle_container">明细项</text>
+        <text class="S2 T2 lisetview_item_middle_container">名称</text>
+        <text class="S2 T2 lisetview_item_middle_container">金额</text>
+    </view>
+    <view class="lisetview_data_container B1" style="height: 70rpx" wx:if="{{switchTabThree==true}}">
+        <text class="S2 T2 lisetview_item_left_container">单号</text>
+        <text class="S2 T2 lisetview_item_left_container">部门</text>
+        <text class="S2 T2 lisetview_item_middle_container">摘要</text>
+        <text class="S2 T2 lisetview_item_middle_container">金额</text>
+    </view>
+</view>

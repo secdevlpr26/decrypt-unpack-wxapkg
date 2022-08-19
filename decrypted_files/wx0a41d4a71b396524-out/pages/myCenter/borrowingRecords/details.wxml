@@ -1,0 +1,54 @@
+<view class="page">
+    <view class="type-list">
+        <view class="borrow-most">
+            <image binderror="imgError" src="{{book.pic1=='no_cover'?noCover:imgRootPath+book.pic1}}"></image>
+            <view class="box-sd">
+                <text class="title">{{book.bookName}}</text>
+                <text class="author">作者：{{book.author==null?'--':book.author}}</text>
+                <text class="author">类别：{{book.bookCategory}}</text>
+                <text class="author">借阅时间：{{record.borrowTime}}</text>
+                <text class="author" decode="{{true}}">&nbsp;</text>
+            </view>
+        </view>
+    </view>
+    <view class="box-sd m10">
+        <view class="pad10">
+            <view class="title-name">
+                <image src="../../../images/books_icon_01.png" style="width:21px; height:15px"></image>
+                <text class="">借书状态</text>
+            </view>
+        </view>
+        <view class="page__bd page__bd_spacing">
+            <view class="weui-flex" wx:if="{{record.state==1}}">
+                <view class="status-time">
+                    <view>{{tools.getDate(record.returnTime)}}</view>
+                    <view>{{tools.getTime(record.returnTime)}}</view>
+                </view>
+                <view class="{{record.state==1?'status-img active':'status-img'}}">
+                    <image src="../../../images/details_complete_02.png"></image>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="status">已还书</view>
+                    <view class="status-word">图书已入柜，感谢您使用24小时图书柜，期待再次为您服务。</view>
+                </view>
+            </view>
+            <view class="weui-flex">
+                <view class="status-time">
+                    <view>{{tools.getDate(record.borrowTime)}}</view>
+                    <view>{{tools.getTime(record.borrowTime)}}</view>
+                </view>
+                <view class="{{record.state==0?'status-img active last':'status-img last'}}">
+                    <image src="../../../images/details_complete_01.png"></image>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="status">待还书</view>
+                    <view class="status-word">借阅书籍已经取走，请您预读完毕后及时还书</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="toTel" class="server-tel" data-phone="{{telPhone}}">客服电话：<i>{{telPhone}}</i>
+    </view>
+</view>
+<view class="zhanwei" style="height:212px"></view>
+<wxs module="tools" src="../../../utils/appDate.wxs" />

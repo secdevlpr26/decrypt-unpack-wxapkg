@@ -1,0 +1,18 @@
+<view class="mycenter-bill-detail">
+    <view class="detail-bt">
+        <text>账单明细</text>
+    </view>
+    <view class="detail-item" wx:for="{{list}}" wx:key="index">
+        <view class="detail-time">
+            <text class="day">{{item.day}}</text>
+            <text class="date">{{item.month}}</text>
+        </view>
+        <view class="detail-address">
+            <text>{{item.area_1}}{{item.area_2}}{{item.area_3}}{{item.area_4}}</text>
+        </view>
+        <view class="detail-cost">
+            <text class="money">￥{{item.money}}</text>
+            <text bindtap="onCostDetail" class="money_detail" id="{{item.id}}">费用明细</text>
+        </view>
+    </view>
+</view>

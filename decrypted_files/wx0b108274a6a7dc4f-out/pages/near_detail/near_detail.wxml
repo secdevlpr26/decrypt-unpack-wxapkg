@@ -1,0 +1,11 @@
+<video class="video" poster="{{imgUrl+fengmian}}" src="{{detail.video}}"></video>
+<view class="info">
+    <image src="../../icon/school.png"></image>
+    <view class="name">{{name}}</view>
+    <view bindtap="copy" class="copy">复制该名称</view>
+</view>
+<view class="content">
+    <view style="font-size:32rpx;display:inline-block">简介:</view>
+  {{content}}
+  <view style="font-size:28rpx;color:#FF3300;text-align:center;margin-top:40rpx"> * 想要了解更多，请在微信内搜索该小程序哦</view>
+</view>

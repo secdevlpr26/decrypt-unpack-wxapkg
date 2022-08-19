@@ -1,0 +1,18 @@
+<view class="Empty">
+    <text class="Empty">Empty</text>
+    <view class="Empty">
+        <view class="Empty">
+            <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty"></input>
+            <view class="Empty">
+                <image bindtap="Empty" src="Empty"></image>
+            </view>
+        </view>
+    </view>
+    <view class="Empty">
+        <image src="Empty"></image>
+        <text class="Empty">Empty</text>
+    </view>
+    <view class="Empty">
+        <text bindtap="Empty" class="Empty" data-word="Empty" wx:for="Empty">Empty</text>
+    </view>
+</view>

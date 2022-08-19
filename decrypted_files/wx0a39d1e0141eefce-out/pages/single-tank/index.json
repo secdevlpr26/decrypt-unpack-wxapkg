@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "zy-modal": "/components/zy-modal/zy-modal"
+    },
+    "backgroundColor": "#ffffff",
+    "navigationBarTitleText": "N-T1罐区"
+}

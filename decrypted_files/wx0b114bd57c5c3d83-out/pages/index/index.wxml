@@ -1,0 +1,103 @@
+<view>
+    <contact-button class="img-plus-style zindex100 yc" sessionFrom="weapp" size="30" type="default-dark"></contact-button>
+    <image class="img-plus-style" src="../../images/kefu01.png"></image>
+    <image bindtap="GotoCart" class="img-cart-style" data-phone="{{store_phone}}" src="../../images/phone.png"></image>
+</view>
+<swiper autoplay="true" duration="1000" indicatorDots="true" interval="5000" style="height:{{bannerHeight}}px;">
+    <swiper-item wx:for="{{banner}}">
+        <image bindtap="clickcate" class="swiper-image" data-cate-id="{{item.ad_link}}" mode="aspectFill" src="{{item.ad_code}}"></image>
+    </swiper-item>
+</swiper>
+<view class="view_search">
+    <view class="view_searchbg1">
+        <image src="/images/ding.png"></image>
+        <text bindtap="switchcity">{{currentCity}}</text>
+    </view>
+    <view bindtap="search" class="view_searchbg">
+        <text class="input_search" placeholder="请输入您所搜索的商品" placeholderStyle="color:#999999">请输入您所搜索的商品</text>
+        <view class="view1">
+            <view class="line"></view>
+            <image src="/images/search.png"></image>
+        </view>
+    </view>
+</view>
+<view class="NavClass">
+    <view bindtap="sidebarUrl" data-url="{{item.url}}" style="width:{{width}}" wx:for="{{sidebar}}">
+        <image class="orange" mode="aspectFill" src="{{app.globalUrl_Host+item.icon}}"></image>
+        <text>{{item.name}}</text>
+    </view>
+</view>
+<view class="swoper-block">
+    <view>
+        <image src="/images/hot.png"></image>
+    </view>
+    <view>
+        <swiper autoplay="{{autoplay}}" circular="true" duration="{{duration}}" interval="{{interval}}" vertical="true">
+            <swiper-item wx:for="{{stores}}">
+                <text>热烈庆祝<text style="color:red">{{item.store_name}}</text>入驻成功!<text decode="true" style="color:red;">&nbsp;&nbsp;&nbsp;{{item.store_time}}</text>
+                </text>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>
+<view class="store_line">
+    <view class="store_title">
+        <text>店铺街</text>
+        <text bindtap="GoMore" class="storeMore" data-id="{{store.store_id}}" data-store-title="{{store.store_name}}">更多</text>
+    </view>
+    <scroll-view scrollX="true" style=" white-space: nowrap; display: flex">
+        <view bindtap="shop" class="storename" data-id="{{item.store_id}}" wx:for="{{stores}}">
+            <image class="store_id" src="https://mp.qq.kfy.cn/{{item.store_logo}}"></image>
+        </view>
+    </scroll-view>
+    <text style="margin:36rpx auto; width:100%; text-align:center;" wx:if="{{stores==''}}">该城市暂无入驻的品牌店铺</text>
+</view>
+<view class="view-ad">
+    <view class="ad-footer">
+        <image bindtap="GoJoin" data-goods-id="{{ad[0].ad_link}}" src="{{ad[0].ad_code}}"></image>
+    </view>
+    <view class="ad-header">
+        <image bindtap="clickBanner" data-goods-id="{{ad[1].ad_link}}" src="{{ad[1].ad_code}}"></image>
+        <image bindtap="clickBanner" data-goods-id="{{ad[2].ad_link}}" src="{{ad[2].ad_code}}"></image>
+    </view>
+</view>
+<view class="newgoods_line">
+    <view class="newgoods_title">
+        <text class="caption" style="font-size:25rpx">新品专区</text>
+    </view>
+    <view class="newgoods-shu-list">
+        <view bindtap="showDetail" class="newgoodsname_shu" data-goods-id="{{item.goods_id}}" wx:if="{{item.is_new=='1'}}" wx:for="{{navgoods}}">
+            <image mode="aspectFill" src="{{app.globalUrl_Host+item.original_img}}"></image>
+            <view style="position:relative; height:200rpx;">
+                <text class="newgoodsText_shu">{{item.goods_name}}</text>
+                <text class="price_shu">￥{{item.shop_price}}</text>
+                <text class="list-more">查看详情</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="container-class">
+    <view class="container-goods">
+        <view class="category_title">
+            <text class="caption">店铺推荐</text>
+        </view>
+        <view class="main-goods">
+            <view bindtap="showDetail" class="single-goods" data-goods-id="{{item.goods_id}}" data-index="{{index}}" wx:if="{{item.is_recommend=='1'}}" wx:for="{{navgoods}}">
+                <image class="avatar" mode="aspectFill" src="{{app.globalUrl_Host+item.original_img}}"></image>
+                <text class="title">{{item.goods_name}}</text>
+                <view class="summary">
+                    <text class="price">￥{{item.shop_price}}元</text>
+                    <text class="sale">已售{{item.sales_sum}}件</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="foot">
+    <view>
+        <text>版权所有-{{store_name}}</text>
+    </view>
+    <view>
+        <image mode="aspectFile" src="../../images/logo.png"></image>
+    </view>
+</view>

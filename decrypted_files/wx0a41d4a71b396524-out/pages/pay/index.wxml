@@ -1,0 +1,27 @@
+<block wx:if="{{vo!=null}}">
+    <view class="fine">
+  书籍借阅总金额：<text>￥{{vo.actual}}</text>
+    </view>
+    <view class="fine-list">
+        <view class="type-list" wx:for="{{books}}">
+            <view class="borrow-most">
+                <text class="borrow-success-img">已归还</text>
+                <image binderror="imgError" data-index="{{index}}" src="{{item.pic=='no_cover'?noCover:imgRootPath+item.pic}}"></image>
+                <view class="box-sd">
+                    <text class="title">{{item.bookName}}</text>
+                    <text class="author mt10">借书时间：{{item.borrowDate}}</text>
+                    <text class="author">还书时间：{{item.returnDate}}</text>
+                    <text class="fine-word">已借阅{{item.days}}天，金额¥{{item.money}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="height:90rpx"></view>
+    <view class="footer">
+        <button bindtap="toPay">立即支付</button>
+    </view>
+</block>
+<view class="noData" wx:if="{{vo==null}}">
+    <image src="../../images/no-data.png"></image>
+    <view>暂无书籍借阅费用</view>
+</view>

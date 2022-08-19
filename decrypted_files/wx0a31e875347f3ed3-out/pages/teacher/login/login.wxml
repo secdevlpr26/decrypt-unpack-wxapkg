@@ -1,0 +1,11 @@
+<view>
+    <image class="login" mode="widthFix" src="../../../image/teacher/login.png"></image>
+    <input autoFocus bindinput="hanleUsername" class="user_name" maxlength="25" placeholder="用户名" value="{{username}}"></input>
+    <input bindinput="handlePassword" class="password" maxlength="20" placeholder="密码" type="password" value="{{password}}"></input>
+    <view class="option-view">
+        <switch bindchange="switchChanged" checked="{{inner_teacher_switch}}"></switch>
+        <label>内部老师</label>
+        <view class="clearfix"></view>
+    </view>
+    <view bind:tap="teacherLogin" class="login_btn {{btnCanClick?'':'btnDisable'}}" hoverClass="btn_hover">登录</view>
+</view>

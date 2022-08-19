@@ -1,0 +1,4 @@
+<view class="header">
+    <image src="/images/58_logo.png"></image>
+</view>
+<view class="content">账号已被冻结</view>

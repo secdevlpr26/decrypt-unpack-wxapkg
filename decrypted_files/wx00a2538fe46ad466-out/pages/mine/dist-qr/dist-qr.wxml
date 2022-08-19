@@ -1,0 +1,5 @@
+<view class="Empty">
+    <image bindtap="Empty" id="Empty" mode="Empty" src="Empty"></image>
+    <view class="Empty">Empty</view>
+</view>
+<wxs module="filter" src="../../filter/filter.wxs" />

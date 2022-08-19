@@ -1,0 +1,24 @@
+<view class="container login">
+    <view class="login-banner">
+        <image src="/images/login_banner.png"></image>
+    </view>
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="login-body">
+            <view class="login-ipt">
+                <input bindinput="mobileText" class="weui-input" name="mobile" placeholder="请输入手机号码" type="number"></input>
+            </view>
+            <view class="login-ipt">
+                <input bindinput="passwdText" class="weui-input" name="passwd" placeholder="请输入密码" type="password"></input>
+            </view>
+            <view class="login-btn">
+                <button formType="submit"> 登 录 </button>
+            </view>
+            <view class="login-txt">
+                <text bindtap="onPasswd">忘记密码？</text>|<text bindtap="onSignin" style="color:#ff155b;">注册新会员</text>
+            </view>
+        </view>
+    </form>
+    <view class="login-bg">
+        <image src="/images/bg.png"></image>
+    </view>
+</view>

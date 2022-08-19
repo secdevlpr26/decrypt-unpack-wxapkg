@@ -1,0 +1,39 @@
+<view class="top">
+    <view class="top-info">
+        <view class="come-frame">
+            <text class="come-txt">入住</text>
+            <text>
+                <text>{{comeDateInfo.date}}</text>
+                <text class="come-week">{{comeDateInfo.week}}</text>
+            </text>
+        </view>
+        <view class="top-center">(共{{differDays}}晚)</view>
+        <view class="leave-frame">
+            <text class="leave-txt">退房</text>
+            <text>
+                <text>{{leaveDateInfo.date}}</text>
+                <text class="leave-week">{{leaveDateInfo.week}}</text>
+            </text>
+        </view>
+    </view>
+    <view class="week">
+        <text class="week-item" wx:for="{{week}}">{{week[index]}}</text>
+    </view>
+</view>
+<view class="main">
+    <view class="month-item" wx:for="{{date}}" wx:for-index="mIdx">
+        <view class="month-top">
+            {{item[0].year}}年{{item[0].month}}月
+        </view>
+        <view class="month-main clearfix">
+            <view class="day-item" wx:for="{{weeks[mIdx]}}" wx:for-item="dayItem"></view>
+            <view bindtap="daytap" class="day-item {{dayItem.start==1?'start':''}} {{dayItem.end==1?'end':''}} {{dayItem.center==1?'center':''}}" data-didx="{{index}}" data-midx="{{mIdx}}" wx:for="{{item}}" wx:for-item="dayItem">
+                <text>{{dayItem.day}}</text>
+                <text class="day-tips" wx:if="{{dayItem.start}}">入住</text>
+                <text class="day-tips" wx:elif="{{dayItem.end}}">退房</text>
+                <text class="day-tips" wx:else></text>
+            </view>
+        </view>
+    </view>
+</view>
+<view bindtap="sure" class="btn-sure">确定</view>

@@ -1,0 +1,46 @@
+<view class="mycenter-withdraw">
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="withdraw-header">
+            <text class="header-bt">提现金额</text>
+            <view class="header-ipt">
+                <text>￥</text>
+                <view class="num-ipt">
+                    <input class="weui-input" name="number" placeholder="请输入提现金额" type="number" value="{{allmoney}}"></input>
+                </view>
+            </view>
+            <view class="header-btn">
+                <text>可提现金额：￥{{money}}</text>
+                <text bindtap="all" class="header-btn-link">全部提现</text>
+            </view>
+        </view>
+        <view bindtap="onQuestion" class="question">
+            <icon class="icon-small" color="#666" size="18" type="info_circle"></icon>
+            <text>常见问题</text>
+        </view>
+        <view class="swiper-tab">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0">提现到银行卡</view>
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1">提现到支付宝</view>
+        </view>
+        <swiper bindchange="swiperTab" current="{{currentTab}}" duration="300">
+            <swiper-item catchtouchmove="stopTouchMove">
+                <view class="item-ipt">
+                    <input class="weui-input" name="bank_name" placeholder="姓名" type="text" value="{{userinfo.bank_name}}"></input>
+                </view>
+                <view class="item-ipt">
+                    <input class="weui-input" name="bank_account" placeholder="银行卡号" type="number" value="{{userinfo.bank_account}}"></input>
+                </view>
+                <view class="item-ipt">
+                    <input class="weui-input" name="bank_addr" placeholder="开户行地址" type="text" value="{{userinfo.bank_addr}}"></input>
+                </view>
+            </swiper-item>
+            <swiper-item catchtouchmove="stopTouchMove">
+                <view class="item-ipt">
+                    <input class="weui-input" name="alipay" placeholder="支付宝账号" type="text" value="{{userinfo.alipay}}"></input>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="submit-cost-btn">
+            <button formType="submit">确认提交</button>
+        </view>
+    </form>
+</view>

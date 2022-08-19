@@ -1,0 +1,113 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="bgJianbian animated fadeIn" wx:if="{{isShow}}">
+    <view class="topBanner">
+        <image class="topImg" src="../../../img/huodong/banner_fn_t.png"></image>
+    </view>
+    <view class="userView">
+        <block wx:if="{{!shareMode}}">
+            <view class="userPic">
+                <image src="{{wxUserInfo.avatarUrl?wxUserInfo.avatarUrl:'https://pic.hiweixiu.com/hiweixiu-app/weapp/img/17020405.png'}}"></image>
+            </view>
+            <view class="userName">{{wxUserInfo.nickName?wxUserInfo.nickName:'小Hi'}}</view>
+        </block>
+        <block wx:else>
+            <view class="userPic">
+                <image src="{{shareManInfo.avatarUrl?shareManInfo.avatarUrl:'https://pic.hiweixiu.com/hiweixiu-app/weapp/img/17020405.png'}}"></image>
+            </view>
+            <view class="userName">{{shareManInfo.nickName?shareManInfo.nickName:'小Hi'}}</view>
+        </block>
+        <button bindtap="{{shareMode?'callBind':''}}" class="callBtn {{shareMode?'dacall':'invit'}}" openType="{{!shareMode?'share':''}}" wx:if="{{callClickable&&status==0}}"></button>
+        <view class="upperLimit" wx:if="{{status==1&&shareMode}}">
+            <view>亲！TA的礼包已塞满</view>
+        </view>
+        <view class="upperLimit" wx:if="{{status==1&&!shareMode}}">
+            <view>叮！您的礼包已塞满</view>
+        </view>
+        <view class="upperLimit" wx:if="{{status==2}}">
+            <view>活动已结束</view>
+            <view>欢迎关注后续优惠活动</view>
+        </view>
+        <button bindtap="addIn" class="callBtn addIn" wx:if="{{status!=2&&!callClickable&&shareMode}}"></button>
+    </view>
+    <view class="newticketInfo">
+        <view class="topBody">
+            <view class="bodyTop">
+                <view class="right">享收技术支持手机平台</view>
+            </view>
+            <view class="progressView">
+                <view class="leftNum">
+                    <i>¥</i>
+                    <text>{{call.coupon_money}}</text>
+                </view>
+                <view class="zero">0</view>
+                <view class="midProgress">
+                    <progress activeColor="#ff5000" backgroundColor="#ddd" class="progress" percent="{{call.coupon_money/15*100}}" strokeWidth="3"></progress>
+                    <view class="curNum" style="left:{{call.coupon_money/15*100}}%" wx:if="{{call.coupon_money!=0}}">{{call.coupon_money}}</view>
+                </view>
+                <view class="rightNum">15</view>
+            </view>
+            <view class="bodyDown">
+         已获取<i class="ticketView">{{call.coupon_num}}</i>张<i class="priceView">15</i>元优惠券
+      </view>
+            <view class="deadLine">2020-01-18到期</view>
+        </view>
+        <view class="btnView" wx:if="{{!shareMode}}">
+            <view bindtap="toTicket" class="useBtn seeBtn">我的优惠券</view>
+            <view bindtap="toHome" class="useBtn">立即使用</view>
+        </view>
+    </view>
+    <view class="tipView" wx:if="{{!shareMode}}">
+        <view class="bottom">
+            <text>发放到账户</text>
+            <text class="accountNum">{{userInfo.nickName}}</text>
+            <text hidden bindtap="editBind" class="changeNum">修改</text>
+        </view>
+        <view class="tip">可在享收技术支持登录使用</view>
+    </view>
+    <view class="callerList">
+        <view class="callerListHead">
+            <image src="../../../img/huodong/dacall@2x.png"></image>
+        </view>
+        <view class="callerListBody" wx:if="{{list.length>0}}">
+            <scroll-view scrollY class="scrollList">
+                <view class="callerListItem" wx:for="{{list}}">
+                    <view class="left">
+                        <image src="{{item.user.head_pic}}"></image>
+                    </view>
+                    <view class="right">
+                        <view class="top">
+                            <view class="name">{{item.user.nick_name}}</view>
+                            <view class="time">{{item.time}}</view>
+                            <view class="price">{{item.money}}元</view>
+                        </view>
+                        <view class="bottom">{{callContent[index%6]}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="noCallerView" wx:if="{{list.length<1}}">
+            <image class="tipimg" src="../../../img/huodong/nikong.png" wx:if="{{!shareMode}}"></image>
+            <image class="tipimg" src="../../../img/huodong/takong.png" wx:else></image>
+        </view>
+    </view>
+    <view class="callerList">
+        <view class="ruleHead">
+            <image src="../../../img/huodong/huodongguize@2x.png"></image>
+        </view>
+        <view class="ruleViewBody">
+            <view>1、分享链接邀请好友为你打CALL</view>
+            <view>2、好友点击打CALL按钮，生成随机金额优惠券</view>
+            <view>3、满15元可获得一张15元优惠券，累计金额上限300</view>
+            <view>4、限每笔订单使用一张15元优惠券</view>
+            <view>5、本活动优惠券可在享收技术支持平台登录后直接使用</view>
+            <view>6、本活动优惠券只限本微信号使用</view>
+            <view>7、本活动优惠券使用期限为2020-01-18</view>
+            <view>8、如有疑问可咨询客服</view>
+            <view>9、享收技术支持保留法律范围内允许的对活动的解释权</view>
+        </view>
+    </view>
+    <view hidden class="down">
+        <image src="../../../img/huodong/down.jpg"></image>
+    </view>
+</view>

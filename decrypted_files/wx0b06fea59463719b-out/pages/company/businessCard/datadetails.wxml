@@ -1,0 +1,89 @@
+<view class="fixedTopBorder"></view>
+<view class="container">
+    <view class="data-title">
+        <text class="filter-tip">{{isNoMember?cardFilterDay:dataFilterDay}}天内被查看的行为分析</text>
+        <view class="day-btn">
+            <view catchtap="chooseValue" class="sevenDay {{isNoMember?cardFilterDay==7?'isActive':'':dataFilterDay==7?'isActive':''}}" data-value="7">
+                <form reportSubmit bindsubmit="from_send">
+                    <button class="normal-btn" formType="submit">
+              最近7天
+            </button>
+                </form>
+            </view>
+            <view catchtap="chooseValue" class="fifDay {{isNoMember?cardFilterDay==15?'isActive':'':dataFilterDay==15?'isActive':''}}" data-value="15">
+                <form reportSubmit bindsubmit="from_send">
+                    <button class="normal-btn" formType="submit">
+              最近15天
+            </button>
+                </form>
+            </view>
+        </view>
+    </view>
+    <view class="tab-content-box" style="height: {{height}}px;margin-top:{{statisticsBlank?'0':'88'}}rpx;">
+        <view class="default-off" wx:if="{{statisticsBlank}}">
+            <image mode="widthFix" src="{{baseUrl}}/images/wxapp/chakanxiangxi.png" wx:if="{{isNoMember}}"></image>
+            <image mode="widthFix" src="{{baseUrl}}/images/wxapp/default_xinzenghuiyuan.png" wx:if="{{!isNoMember}}"></image>
+            <view class="blank-title">{{isNoMember?'暂无详细':'暂无用户浏览'}}</view>
+        </view>
+        <scroll-view scrollY bindscroll="scrolling" bindscrolltolower="loadMoreData" class="tab-con-item" enableBackToTop="true" lowerThreshold="20" scrollTop="{{toTop}}" scrollWithAnimation="true" style="height: {{height}}px; box-sizing:border-box;" wx:if="{{haveStatistics}}">
+            <view class="statistics-echarts-box">
+                <view class="echarts-box">
+                    <ec-canvas canvasId="statistics-line" ec="{{statisticsLines}}" id="mychart-dom" style="display:{{hideCanvas?'none':''}};"></ec-canvas>
+                </view>
+            </view>
+            <view class="check-record" wx:if="{{haveStatistics}}">
+                <text>{{isNoMember?'查看记录':'新增会员'}}：共{{total}}{{isNoMember?'次':'个'}}</text>
+            </view>
+            <view class="time-item" wx:if="{{isNoMember}}" wx:for="{{statisticsList}}" wx:key="index">
+                <view class="visit-time">{{item.time}}</view>
+                <view class="member-list">
+                    <view catchtap="touserdetails" class="member-item" data-headimgurl="{{v.headImgUrl}}" data-nickname="{{v.nickName}}" data-userid="{{v.userId}}" style="margin-bottom: {{item.list.length==i+1?'0':''}}rpx;" wx:for="{{item.list}}" wx:for-index="i" wx:for-item="v" wx:key="i">
+                        <form reportSubmit bindsubmit="from_send">
+                            <button class="member-item-btn" formType="submit">
+                                <view class="member-item-box">
+                                    <view class="unread-circle" wx:if="{{v.Status=='0'}}"></view>
+                                    <image src="{{v.headImgUrl}}"></image>
+                                    <view class="item-right">
+                                        <view class="member-nickname">{{v.nickName}}</view>
+                                        <view class="incident">
+                                            <text style="color: #ff7200;" wx:if="{{v.quantity>0}}">第{{v.quantity}}{{v.showwan?'万':''}}次</text>
+                                            <text class="typetext">{{v.text}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                                <text class="iconfont icon-iconfont_arrow-right"></text>
+                            </button>
+                        </form>
+                    </view>
+                </view>
+            </view>
+            <view class="memberList" wx:if="{{!isNoMember}}" wx:for="{{memberList}}" wx:key="index">
+                <view class="visit-time">{{item.time}}</view>
+                <view class="member-list">
+                    <view catchtap="touserdetails" class="member-item" data-headimgurl="{{v.avatar}}" data-nickname="{{v.nickname}}" data-userid="{{v.user_id}}" style="margin-bottom: {{item.list.length==i+1?'0':''}}rpx;" wx:for="{{item.list}}" wx:for-index="i" wx:for-item="v" wx:key="i">
+                        <form reportSubmit bindsubmit="from_send">
+                            <button class="member-item-btn" formType="submit">
+                                <view class="member-item-box member-align">
+                                    <image src="{{v.avatar}}"></image>
+                                    <view class="item-right">
+                                        <view class="member-nickname">{{v.nickname}}</view>
+                                    </view>
+                                </view>
+                                <text class="iconfont icon-iconfont_arrow-right"></text>
+                            </button>
+                        </form>
+                    </view>
+                </view>
+            </view>
+            <view class="noMore" wx:if="{{noMoreDataTip}}">
+                <view class="line"></view>
+                <text class="text">没有更多</text>
+                <view class="line"></view>
+            </view>
+            <view style="height: 40rpx;"></view>
+            <view class="isLoading" wx:if="{{isLoading}}">
+                <image src="{{baseUrl}}/images/wxapp/loadMoreData.gif"></image>
+            </view>
+        </scroll-view>
+    </view>
+</view>

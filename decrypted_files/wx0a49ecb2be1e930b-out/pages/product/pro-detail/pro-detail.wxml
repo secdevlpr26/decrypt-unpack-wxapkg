@@ -1,0 +1,294 @@
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+<view class="pro-wrap">
+    <view class="pro-image">
+        <view wx:if="{{hasVideo}}">
+            <view class="video-wamp" wx:if="{{proImageNavIdx==0}}">
+                <video autoplay="{{netWorkType=='wifi'?true:false}}" objectFit="fill" src="{{video}}"></video>
+            </view>
+            <swiper autoplay="true" circular="true" duration="1000" interval="5000" wx:else>
+                <swiper-item wx:for="{{proInfoDetail.productImageVOList}}" wx:key="{{item.id}}">
+                    <image class="slide-image" lazyLoad="{{true}}" src="{{item.imageURL}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="pro-top-bot">
+                <view bindtap="proImageNavTap" class="{{proImageNavIdx==0?'active':''}}" data-idx="0">视频</view>
+                <view bindtap="proImageNavTap" class="{{proImageNavIdx==1?'active':''}}" data-idx="1">图片</view>
+            </view>
+        </view>
+        <view class="" wx:else>
+            <swiper autoplay="true" circular="true" duration="1000" indicatorDots="true" interval="5000">
+                <swiper-item wx:for="{{proInfoDetail.productImageVOList}}" wx:key="{{item.id}}">
+                    <image class="slide-image" lazyLoad="{{true}}" src="{{item.imageURL}}"></image>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="count-frame" wx:if="{{proInfoDetail.activityType==3}}">
+            <view class="count-price">
+                <view class="priceframe">
+                     秒杀价 ￥<text class="price">{{activityPrice}}</text>
+                    <text class="orign-price">￥{{originalPrice}}</text>
+                </view>
+            </view>
+            <view class="countdown">
+                <view class="seckill-countdown">
+                    {{seckillStart?'距结束还剩':'距开始还有'}}
+                    <text class="day" wx:if="{{seckillCount.day!='0'}}"> {{seckillCount.day}}</text>
+                    <text wx:if="{{seckillCount.day!='0'}}"> 天 </text>
+                    <view>
+                        <text class="hour">{{seckillCount.hours}}</text>:
+                        <text class="minute">{{seckillCount.minute}}</text>:
+                        <text class="second">{{seckillCount.second}} </text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="pro-info" style="{{proInfoDetail.activityType=='3'?'margin-top:70rpx;':''}}">
+        <view class="pi-top">
+            <view class="pro-title">{{proInfoDetail.productName}}</view>
+            <view bindtap="onShowShareBox" class="btn-distribute" wx:if="{{activityType==6&&memberType==3}}">我要分销</view>
+            <view class="btn-share" wx:else>
+                <view class="iconfont icon-share"></view>
+                <button openType="share" plain="true"></button>
+            </view>
+        </view>
+        <view class="share-bigbox" wx:if="{{showShareBox}}">
+            <view class="share-box">
+                <view class="share-box-b">
+                    <view class="share-open">
+                        <view class="share-friendbox">
+                            <view class="iconfont icon-friend"></view>
+                        </view>
+                        <button class="share-friendbox-btn" openType="share"></button>
+                        <text>分享给朋友</text>
+                    </view>
+                    <view class="share-open">
+                        <view class="share-friendbox">
+                            <view class="iconfont icon-friends"></view>
+                        </view>
+                        <button bindtap="refresh" class="share-friendbox-btn"></button>
+                        <text>刷新</text>
+                    </view>
+                </view>
+                <view class="share-no">
+                    <button bindtap="onShowShareBox" class="no-boxbtn share-bigbox-hide{{showView?'':'share-bigbox-show'}}">
+                        <text>取消</text>
+                    </button>
+                </view>
+            </view>
+        </view>
+        <view class="pi-center">
+            <view class="price-frame">
+                <text class="price" wx:if="{{proInfoDetail.purpose=='2'||proInfoDetail.purpose=='4'}}">
+                    <text>{{proInfoDetail.showName}}</text>
+                </text>
+                <text class="price" wx:else>
+                    <text class="rmb">￥</text>
+                    <text wx:if="{{activityType==3&&seckillStart||activityType==5}}">{{activityPrice}}</text>
+                    <text wx:elif="{{activityType==6&&(memberType==3||parentId)}}">{{activityPrice}}</text>
+                    <text wx:else>{{price}}</text>
+                </text>
+                <text class="ori-price" wx:if="{{proInfoDetail.purpose=='2'||proInfoDetail.purpose=='4'}}"></text>
+                <text class="ori-price" wx:else>￥{{originalPrice}}</text>
+            </view>
+            <view class="star-frame">
+                <block wx:for="{{5}}" wx:key="{{item}}">
+                    <view class="iconfont icon-star1" wx:if="{{index<proInfoDetail.rating}}"></view>
+                    <view class="iconfont icon-star" wx:else></view>
+                </block>
+            </view>
+        </view>
+        <view class="pi-bottom" wx:if="{{proInfoDetail.purpose!='2'&&proInfoDetail.purpose!='4'}}">
+            <view class="pro-stock">
+                <text class="explain-txt">库存：</text>
+                <text>{{stock}}</text>
+            </view>
+            <view class="pro-sales">
+                <text class="explain-txt">销量：</text>
+                <text>{{proInfoDetail.saleCount}}</text>
+            </view>
+            <view class="pro-pageView">
+                <text class="explain-txt">浏览量：</text>
+                <text>{{proInfoDetail.readTimes}}</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="showCouponList" class="pro-coupon" hidden="{{couponList.length==0}}">
+        <view>
+            <text class="iconfont icon-youhuiquan"></text>
+            <text>领取优惠券</text>
+        </view>
+        <view class="iconfont icon-arrow-right"></view>
+    </view>
+    <navigator class="goto-store" hidden="{{isStoreHidden}}" openType="redirect" url="../../store/store-detail/store-detail?tabContentId={{proInfoDetail.branchInfoId}}">
+        <view>
+            <text class="iconfont icon-store"></text>
+            <text class="store-name">{{proInfoDetail.branchName}}</text>
+        </view>
+        <view>
+            <text>进店逛逛</text>
+            <text class="iconfont icon-arrow-right"></text>
+        </view>
+    </navigator>
+    <view bindtap="toggleProAttrFrame" class="pro-attr" hidden="{{proInfoDetail.purpose=='2'||proInfoDetail.purpose=='4'}}">
+        <text>{{modelName==''?'请选择商品规格':'规格：'+modelName}}</text>
+        <view class="iconfont icon-arrow-right"></view>
+    </view>
+    <view class="group-booking" wx:if="{{activityType=='5'}}">
+        <view class="gb-tips">支付开团并邀请{{proInfoDetail.orderCount}}人参团，人数不足自动退款</view>
+        <view class="gb-title" hidden="{{groupList.length<=0}}">正在拼团中，您可以直接参与</view>
+        <view class="gb-list">
+            <view bindtap="joinGroup" class="gb-item" data-actid="{{item.activityId}}" data-no="{{item.groupOrderNo}}" wx:for="{{groupList}}">
+                <view class="gb-item-left">
+                    <image lazyLoad="{{true}}" src="{{item.headPortrait}}"></image>
+                    <view>{{item.personName}}</view>
+                </view>
+                <view class="gb-item-right">
+                    <view class="gb-info">
+                        <view class="gb-info-tips">还差<text>{{item.lackCount}}人</text>成团</view>
+                        <view>剩余{{item.timeFormat}}结束</view>
+                    </view>
+                    <view class="gb-join">去参团</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="detail-comment">
+        <view class="pro-nav">
+            <view bindtap="navtap" class="pro-nav-item {{navIdx==0?'active':''}}" data-idx="0">图文详情</view>
+            <view bindtap="navtap" class="pro-nav-item {{navIdx==1?'active':''}}" data-idx="1">评论</view>
+            <view bindtap="navtap" class="pro-nav-item {{navIdx==2?'active':''}}" data-idx="2">相关推荐</view>
+        </view>
+        <view class="pro-nav-content">
+            <view class="pro-detail clearfix" wx:if="{{navIdx==0}}">
+                <rich-text nodes="{{remark}}"></rich-text>
+            </view>
+            <view class="comment-list" wx:if="{{navIdx==1}}">
+                <block wx:if="{{commentList.length>0}}">
+                    <view class="comment-item" wx:if="{{commentList[0]}}">
+                        <view class="dis-top">
+                            <image lazyLoad="{{true}}" src="{{commentList[0].memberVO.headPortrait}}"></image>
+                            <text class="dis-name">{{commentList[0].commentator}}</text>
+                        </view>
+                        <view class="dis-content">{{commentList[0].comment}}</view>
+                    </view>
+                    <view class="comment-item" wx:if="{{commentList[1]}}">
+                        <view class="dis-top">
+                            <image lazyLoad="{{true}}" src="{{commentList[1].memberVO.headPortrait}}"></image>
+                            <text class="dis-name">{{commentList[1].commentator}}</text>
+                        </view>
+                        <view class="dis-content">{{commentList[1].comment}}</view>
+                    </view>
+                    <view bindtap="seeAllComment" class="btn-all">查看全部评价</view>
+                </block>
+                <view class="comment-null" wx:else>
+                    <view>暂无评价！</view>
+                </view>
+            </view>
+            <view class="maybe-like" wx:if="{{navIdx==2}}">
+                <view class="pro-list">
+                    <view bindtap="toProDetail" class="pro-item" data-pid="{{item.id}}" wx:for="{{likeProductList}}">
+                        <image lazyLoad="{{true}}" src="{{item.productImageVOList[0].imageURL}}"></image>
+                        <view class="pro-name">{{item.productName}}</view>
+                        <view class="price-box">
+                            <text class="pro-price">￥{{item.productModelList[0].price}}</text>
+                            <text class="pro-orignalprice">￥{{item.productModelList[0].originalprice}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="float-icon">
+        <view bindtap="hometap" class="iconfont icon-home"></view>
+    </view>
+    <view class="btn-wrap">
+        <view class="btn-frame" wx:if="{{proInfoDetail.activityType==3&&seckillStart}}">
+            <view bindtap="{{collectStatus=='1'?'cancelCollect':'collect'}}" class="btn-collect">
+                <view class="iconfont {{collectStatus=='1'?'icon-star1':'icon-star'}}"></view>
+                <text>收藏</text>
+            </view>
+            <view bindtap="makeCall" class="btn-phone">
+                <view class="iconfont icon-dianhua"></view>
+                <text>客服</text>
+            </view>
+            <view bindtap="toSeckill" class="btn-seckill">
+                <view>￥{{activityPrice}}</view>
+                <text>立即抢购</text>
+            </view>
+        </view>
+        <view class="btn-frame" wx:elif="{{proInfoDetail.activityType=='5'}}">
+            <view bindtap="{{collectStatus=='1'?'cancelCollect':'collect'}}" class="btn-collect">
+                <view class="iconfont {{collectStatus=='1'?'icon-star1':'icon-star'}}"></view>
+                <text>收藏</text>
+            </view>
+            <view bindtap="makeCall" class="btn-phone">
+                <view class="iconfont icon-dianhua"></view>
+                <text>客服</text>
+            </view>
+            <view bindtap="toBuy" class="btn-alone">
+                <view>￥{{price}}</view>
+                <text>单独购买</text>
+            </view>
+            <view bindtap="toCreateGroup" class="btn-join">
+                <view>￥{{activityPrice}}</view>
+                <text>一键开团</text>
+            </view>
+        </view>
+        <view class="btn-frame" wx:elif="{{activityType=='6'&&(memberType==3||parentId)}}">
+            <view bindtap="{{collectStatus=='1'?'cancelCollect':'collect'}}" class="btn-collect">
+                <view class="iconfont {{collectStatus=='1'?'icon-star1':'icon-star'}}"></view>
+                <text>收藏</text>
+            </view>
+            <view bindtap="makeCall" class="btn-phone">
+                <view class="iconfont icon-dianhua"></view>
+                <text>客服</text>
+            </view>
+            <view bindtap="toBuy" class="btn-buy" style="color:{{styleConfig.foregroundColor}};background-color: {{styleConfig.mainColor}};">立即购买</view>
+        </view>
+        <view class="btn-frame" wx:else>
+            <view bindtap="{{collectStatus=='1'?'cancelCollect':'collect'}}" class="btn-collect">
+                <view class="iconfont {{collectStatus=='1'?'icon-star1':'icon-star'}}"></view>
+                <text>收藏</text>
+            </view>
+            <view bindtap="makeCall" class="btn-call" style="color:{{styleConfig.foregroundColor}};background-color: {{styleConfig.mainColor}};" wx:if="{{proInfoDetail.purpose=='2'}}">{{proInfoDetail.showName}}</view>
+            <block wx:if="{{proInfoDetail.purpose=='1'}}">
+                <view bindtap="carttap" class="btn-cart">
+                    <view class="ico-point" hidden="{{showCartPoint}}"></view>
+                    <view class="iconfont icon-cart"></view>
+                    <text>购物车</text>
+                </view>
+                <view bindtap="makeCall" class="btn-phone">
+                    <view class="iconfont icon-dianhua"></view>
+                    <text>客服</text>
+                </view>
+                <view bindtap="addcarttap" class="btn-add-cart">加入购物车</view>
+                <view bindtap="toBuy" class="btn-buy" style="color:{{styleConfig.foregroundColor}};background-color: {{styleConfig.mainColor}};">立即购买</view>
+            </block>
+            <view bindtap="beforehand" class="btn-call" data-purpose="4" style="color:{{styleConfig.foregroundColor}};background-color: {{styleConfig.mainColor}};" wx:if="{{proInfoDetail.purpose=='4'}}">马上预约</view>
+            <view bindtap="toBuy" class="btn-call" data-purpose="3" style="color:{{styleConfig.foregroundColor}};background-color: {{styleConfig.mainColor}};" wx:if="{{proInfoDetail.purpose=='3'}}">立即预约</view>
+        </view>
+    </view>
+    <view class="coupon-frame" hidden="{{hiddenCouponList}}">
+        <view bindtap="showCouponList" class="coupon-bg"></view>
+        <view class="coupon-box">
+            <view class="coupon-headline">店铺优惠券</view>
+            <view class="coupon-list">
+                <view class="coupon-item" wx:for="{{couponList}}">
+                    <image lazyLoad="{{true}}" src="../../../img/coupon/bg-merchant-coupon.png"></image>
+                    <view class="item-left">
+                        <view class="coupon-info">
+                            <text>￥{{item.discountAmount}}</text>
+                            <text>{{item.title}}</text>
+                        </view>
+                        <view class="coupon-indate">有效期：{{item.validDate}}</view>
+                    </view>
+                    <view bindtap="getCoupon" class="item-right" data-id="{{item.id}}">
+                    {{item.getCoupon==false?'已领取':'立即领取'}}</view>
+                </view>
+            </view>
+            <view bindtap="showCouponList" class="btn-complete">完成</view>
+        </view>
+    </view>
+    <include src="../common/pro-attr.wxml"></include>
+</view>

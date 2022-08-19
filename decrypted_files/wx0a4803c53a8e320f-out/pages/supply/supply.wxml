@@ -1,0 +1,28 @@
+<view class="wrap">
+    <view class="nav">
+        <view bindtap="navtap" class="nav-item " data-index="2" style="{{supplyAndDemand==2?'color: #000;border-bottom: 4rpx solid '+styleConfig.mainColor+';':''}}">供应</view>
+        <view bindtap="navtap" class="nav-item " data-index="1" style="{{supplyAndDemand==1?'color: #000;border-bottom: 4rpx solid '+styleConfig.mainColor+';':''}}">求购</view>
+    </view>
+    <view class="main">
+        <navigator url="supply-detail/supply-detail?tabContentId={{item.id}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+            <view class="item">
+                <view class="icon">
+                    <image lazyLoad="{{true}}" src="{{item.picture1}}"></image>
+                </view>
+                <view class="item-main">
+                    <text class="item-title">{{item.title}}</text>
+                    <text class="item-content">{{item.briefDescription}}</text>
+                </view>
+            </view>
+        </navigator>
+        <view class="bottom-hint" hidden="{{bottomHint}}">
+            <view class="line"></view>
+            <text>没有更多供求啦</text>
+        </view>
+    </view>
+    <view class="supply-null" hidden="{{notNull}}">
+        <view class="iconfont icon-vz-null"></view>
+        <text>暂时还没有信息</text>
+    </view>
+    <view bindtap="publishtap" class="publish" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">发布信息</view>
+</view>

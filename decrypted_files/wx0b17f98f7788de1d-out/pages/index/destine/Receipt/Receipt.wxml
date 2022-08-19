@@ -1,0 +1,68 @@
+<view class="waitBox" wx:if="{{orderState=='2'}}">
+    <view class="waitTitle">{{jiedanStatu}}</view>
+    <view class="waitTT">
+        <view class="waitText" style="padding-left:0">距离预定时间过期还有</view>
+        <view class="waitTime">{{hour}}时{{minute}}分{{second}}秒</view>
+    </view>
+    <view class="waitNotice">注：商家为您预留1小时订位，超时订单自动取消</view>
+</view>
+<view class="waitBox" wx:if="{{orderState=='6'}}">
+    <view class="waitTitle">{{jiedanStatu}}</view>
+    <view class="waitBox-Notice">
+        <view class="waitNotice1">拒绝原因</view>
+        <view class="waitNotice2">{{reason}}</view>
+    </view>
+</view>
+<view style="color:#999;font-size:14px;padding-left:40px;">商家电话：{{phone}}</view>
+<view style="color:#999;font-size:14px;padding-left:40px;padding-top:4px;overflow:hidden">
+    <view style="float:left;width:70px">店铺地址：</view>
+    <view style="float:left;width:200px">{{address}}</view>
+</view>
+<view style="border-left:4px #ffbf20 solid;padding-left:20px;color:#fff;margin-top:24px;margin-left:38px;">预订信息
+    <image class="img" src="/images/yd.png"></image>
+</view>
+<view class="destineInfo">
+    <view class="destineInfo-view">
+        <text class="destineInfo-title">预定日期</text>
+        <text>：</text>
+        <text class="destineInfo-content">{{date0}}</text>
+    </view>
+    <view class="destineInfo-view">
+        <text class="destineInfo-title">预定时间</text>
+        <text>：</text>
+        <text class="destineInfo-content">{{time0}}</text>
+    </view>
+    <view class="destineInfo-view">
+        <text class="destineInfo-title">选择桌型</text>
+        <text>：</text>
+        <text class="destineInfo-content">{{orderInfo.tableName}}</text>
+    </view>
+    <view class="destineInfo-view">
+        <text class="destineInfo-title">用餐人数</text>
+        <text>：</text>
+        <text class="destineInfo-content">{{orderInfo.reservedCount}}</text>
+    </view>
+    <view class="destineInfo-view">
+        <text class="destineInfo-title">联系人</text>
+        <text>：</text>
+        <text class="destineInfo-content">{{orderInfo.reservedName}}</text>
+    </view>
+    <view class="destineInfo-view">
+        <text class="destineInfo-title">联系电话</text>
+        <text>：</text>
+        <text class="destineInfo-content">{{orderInfo.reservedPhoneNum}}</text>
+    </view>
+    <view class="destineInfo-view">
+        <text class="destineInfo-title">详细说明</text>
+        <text>：</text>
+        <text class="destineInfo-content">{{orderInfo.orderRemarke}}</text>
+    </view>
+</view>
+<button bindtap="directOrder" style="background:#777;color:#ffbf20;border-radius:8px;width:80%;margin-top:50rpx" wx:if="{{orderState!='6'}}">直 接 点 餐</button>
+<button bindtap="back" style="background:#444;color:#999;border-radius:8px;width:80%;margin-top:10px;margin-bottom:24px;" wx:if="{{orderState!='6'}}">取 消 预 约</button>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<component-alertview bind:chkOrder0="chkOrder0_0" carname="{{carname_0}}" displayy="{{displayy_0}}" titlename="{{titlename_0}}"></component-alertview>

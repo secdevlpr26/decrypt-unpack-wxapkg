@@ -1,0 +1,7 @@
+{
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "门店列表",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+}

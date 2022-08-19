@@ -1,0 +1,48 @@
+<view class="mycenter-information">
+    <view class="mycenter-information-header">
+        <image src="/images/bg2.png" style="width:750rpx; height:312rpx;"></image>
+        <view class="information-btn">
+            <view class="information-img"></view>
+            <text>{{userinfo.nickname}}：{{userinfo.mobile}}</text>
+        </view>
+    </view>
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="mycenter-information-body">
+            <view class="information-ipt">
+                <text>姓名</text>
+                <input class="weui-input" name="nickname" placeholder="请输入姓名" type="text" value="{{userinfo.nickname}}"></input>
+            </view>
+            <view class="information-ipt">
+                <text>挂靠公司</text>
+                <input class="weui-input" name="fleet" placeholder="请输入挂靠公司" type="text" value="{{userinfo.fleet}}"></input>
+            </view>
+            <view class="information-ipt">
+                <text>车牌号码</text>
+                <input class="weui-input" disabled="true" name="car_num" placeholder="请输入车牌号码" type="text" value="{{userinfo.car_num}}"></input>
+            </view>
+            <view class="information-ipt">
+                <text>联系电话</text>
+                <input class="weui-input" name="driver_phone" placeholder="请输入联系电话" type="number" value="{{userinfo.driver_phone}}"></input>
+            </view>
+            <view class="information-ipt">
+                <text>支付宝账号</text>
+                <input class="weui-input" name="alipay" placeholder="请输入支付宝账号" type="text" value="{{userinfo.alipay}}"></input>
+            </view>
+            <view class="information-ipt">
+                <text>开户人姓名</text>
+                <input class="weui-input" name="bank_name" placeholder="请输入开户人姓名" type="text" value="{{userinfo.bank_name}}"></input>
+            </view>
+            <view class="information-ipt">
+                <text>开户人银行卡号</text>
+                <input class="weui-input" name="bank_account" placeholder="开户人银行卡号" type="number" value="{{userinfo.bank_account}}"></input>
+            </view>
+            <view class="information-ipt">
+                <text>开户银行地址</text>
+                <input class="weui-input" name="bank_addr" placeholder="开户银行地址" type="text" value="{{userinfo.bank_addr}}"></input>
+            </view>
+            <view class="information-btn">
+                <button formType="submit"> 确 定 </button>
+            </view>
+        </view>
+    </form>
+</view>

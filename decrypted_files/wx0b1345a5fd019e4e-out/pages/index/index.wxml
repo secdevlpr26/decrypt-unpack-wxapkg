@@ -1,0 +1,276 @@
+<view wx:if="{{!isQuery&&isLoading}}">
+    <view class="nav-wamp" style="{{'height: '+topHeight}}rpx">
+        <swiper autoplay="true" circular="true" class="banner-swiper" duration="1000" indicatorActiveColor="{{styleConfig.mainColor}}" indicatorColor="rgba({{styleConfig.mainRGB.r}},{{styleConfig.mainRGB.g}},{{styleConfig.mainRGB.b}},.4)" interval="5000">
+            <swiper-item wx:for="{{advertisements}}" wx:key="{{item.id}}">
+                <image bindtap="adtap" class="slide-image" data-idx="{{index}}" lazyLoad="{{true}}" src="{{item.image}}"></image>
+            </swiper-item>
+        </swiper>
+        <view bindtap="exitBigImage" class="bigImage" hidden="{{hideBigImg}}">
+            <image lazyLoad="{{true}}" mode="widthFix" src="{{adBigImage}}"></image>
+        </view>
+        <view class="search-wrap">
+            <view bindtap="toPosition" class="cur-address">
+                <text class="iconfont icon-location"></text>
+                <text>{{showAddress==''?'全国':showAddress}}</text>
+            </view>
+            <view class="search-right">
+                <view bindtap="toSearch" class="search-frame">
+                    <view class="iconfont icon-search"></view>
+                    <text>输入搜索</text>
+                </view>
+                <view bindtap="toAIRecognize" class="iconfont icon-saoyisao"></view>
+            </view>
+        </view>
+        <view class="swiper-frame" hidden="{{moreArr.length==0}}">
+            <swiper bindchange="swiperChange_advertisemore" circular="true" class="{{label.lineLimit==4?'more-swiper-other':'more-swiper'}}" style="height: {{customHeight}}rpx">
+                <swiper-item class="clearfix" wx:for="{{moreArr}}" wx:key="{{index}}">
+                    <block wx:for="{{item[0]}}" wx:for-index="moreItemIndex" wx:for-item="moreItem" wx:key="{{moreItemIndex}}">
+                        <button class="type-item" openType="contact" plain="true" wx:if="{{moreItem.sysTabName=='Online-Chat'}}">
+                            <image lazyLoad="{{true}}" src="{{moreItem.iconURL}}"></image>
+                            <text>{{moreItem.tabTitle}}</text>
+                            <contact-button size="27" type="default-light"></contact-button>
+                        </button>
+                        <button bindtap="toProductList" class="type-item" data-code="{{moreItem.id}}" data-idx="{{moreItem.code}}" data-location="{{moreItem.sysTabNameTag==null||moreItem.sysTabNameTag==''?moreItem.sysTabName:moreItem.sysTabNameTag}}" data-title="{{moreItem.tabTitle}}" plain="true" wx:else>
+                            <image lazyLoad="{{true}}" src="{{moreItem.iconURL}}"></image>
+                            <text>{{moreItem.tabTitle}}</text>
+                        </button>
+                    </block>
+                </swiper-item>
+            </swiper>
+            <view class="dots" wx:if="{{moreArr.length>1}}">
+                <view class="dot {{index==currentSwipermoreArr?' active':''}}" style="background-color:{{styleConfig.mainColor}}" wx:for="{{moreArr}}" wx:key="{{index}}"></view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="toAIRecognize" class="ai-Img" hidden="{{hiddenAiImg}}">
+        <image class="ai_img" src="{{PCAdevertising_mid}}"></image>
+    </view>
+    <view class="group-frame" wx:if="{{activitySeckill.productList.length>0}}">
+        <view class="group-title">
+            <view class="group-title-left">
+                <view class="group-txt">秒杀活动</view>
+                <view class="group-countdown">
+                    {{activitySeckill.activityStart?'距结束':'距开始'}}
+                    <text class="day" wx:if="{{activitySeckill.countDown.d!='0'}}"> {{activitySeckill.countDown.d}}</text>
+                    <text wx:if="{{activitySeckill.countDown.d!='0'}}"> 天 </text>
+                    <text class="hour">{{activitySeckill.countDown.h}} </text> 时
+                    <text class="minute">{{activitySeckill.countDown.m}} </text> 分
+                    <text class="second">{{activitySeckill.countDown.s}} </text> 秒
+                </view>
+            </view>
+            <view bindtap="toSeckillActivity" class="group-more">
+                <text>更多</text>
+                <text class="iconfont icon-arrow-right"></text>
+            </view>
+        </view>
+        <scroll-view class="group-product" scrollX="true">
+            <view bindtap="toProductDetail" class="gp-item" data-pid="{{item.produceId}}" wx:for="{{activitySeckill.productList}}" wx:key="{{item.id}}">
+                <image lazyLoad="{{true}}" src="{{item.image}}"></image>
+                <view class="gp-item-info">
+                    <view class="gp-name">{{item.produceName}}</view>
+                    <view class="gp-price">
+                        <text>￥{{item.groupsPrice}}</text>
+                        <text>{{saleCount}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="group-frame" wx:if="{{isGroup=='1'&&activityInfo.productList.length>0}}">
+        <view class="group-title">
+            <view class="group-title-left">
+                <view class="group-txt">拼团特卖</view>
+                <view class="group-countdown">
+                    {{activityInfo.activityStart?'距结束':'距开始'}}
+                    <text class="day" wx:if="{{activityInfo.countDown.d!='0'}}"> {{activityInfo.countDown.d}}</text>
+                    <text wx:if="{{activityInfo.countDown.d!='0'}}"> 天 </text>
+                    <text class="hour">{{activityInfo.countDown.h}} </text> 时
+                    <text class="minute">{{activityInfo.countDown.m}} </text> 分
+                    <text class="second">{{activityInfo.countDown.s}} </text> 秒
+                </view>
+            </view>
+            <view bindtap="toGroupActivity" class="group-more">
+                <text>更多</text>
+                <text class="iconfont icon-arrow-right"></text>
+            </view>
+        </view>
+        <scroll-view class="group-product" scrollX="true">
+            <view bindtap="toProductDetail" class="gp-item" data-pid="{{item.produceId}}" wx:for="{{activityInfo.productList}}" wx:key="{{item.id}}">
+                <image lazyLoad="{{true}}" src="{{item.image}}"></image>
+                <view class="gp-item-info">
+                    <view class="gp-name">{{item.produceName}}</view>
+                    <view class="gp-price">
+                        <text>￥{{item.groupsPrice}}</text>
+                        <text>{{saleCount}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="video-frame" wx:if="{{videoList[0].video&&!minaInfo.videoHidden}}">
+        <video autoplay="{{netWorkType=='wifi'?true:false}}" objectFit="fill" src="{{videoList[0].video}}"></video>
+    </view>
+    <view bindtap="toMyCoupon" class="coupon-ad" hidden="{{!couponAdImg}}">
+        <view class="coupon-ad-title"></view>
+        <image lazyLoad="{{true}}" src="{{couponAdImg}}"></image>
+    </view>
+    <view class="rec-store-frame" wx:if="{{!minaInfo.storeHidden}}">
+        <view class="hotPro-top">
+            <image lazyLoad="{{true}}" mode="widthFix" src="/img/fjmd.png"></image>
+        </view>
+        <view bindtap="toStoreDetail" class="store-item" data-sid="{{item.id}}" hidden="{{!hasBranch}}" wx:for="{{adBranchList}}" wx:key="index">
+            <view class="store-head">
+                <image lazyLoad="{{true}}" mode="aspectFill" src="{{item.pic1}}"></image>
+            </view>
+            <view class="store-content">
+                <view class="store-name">{{item.branchName}}</view>
+                <view class="store-distance">
+                    <text>浏览量：{{item.readTimes}}</text> | <text>距离：{{item.distance}}</text>
+                </view>
+                <view class="store-products">
+                    <view catchtap="toProductDetail" class="store-pro-item" data-pid="{{proItem.id}}" wx:for="{{item.productList}}" wx:for-item="proItem" wx:key="{{item.id}}">
+                        <image lazyLoad="{{true}}" src="{{proItem.image}}"></image>
+                        <view class="store-pro-name">{{proItem.productName}}</view>
+                        <view class="store-pro-price" wx:if="{{proItem.purpose=='1'||proItem.purpose=='3'}}">￥{{proItem.price}}</view>
+                        <view class="store-pro-price" wx:else>{{proItem.showName}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="adBranch-null" hidden="{{hasBranch}}">
+            <text>附近暂无入驻的门店</text>
+        </view>
+    </view>
+    <view class="hotPro-frame" hidden="{{hotSaleList.length==0}}">
+        <view class="hotPro-top">
+            <image lazyLoad="{{true}}" mode="widthFix" src="/img/jxtj.png"></image>
+        </view>
+        <scroll-view class="hotPro-list" scrollX="true">
+            <view bindtap="toProductDetail" class="hotPro-item" data-pid="{{item.id}}" wx:for="{{hotSaleList}}" wx:key="{{item.id}}">
+                <view class="group-label1" wx:if="{{item.actType=='5'}}">拼团</view>
+                <view class="seckill-label1" wx:if="{{item.actType=='3'}}">秒杀</view>
+                <view class="dis-label" style="background-color: {{actDistribution.identificationColor}}" wx:if="{{item.actType=='6'&&memberType=='3'&&actDistribution.enable&&actDistribution.identificationOpened}}">{{actDistribution.identificationName}}</view>
+                <image lazyLoad="{{true}}" src="{{item.hotSaleImage}}"></image>
+                <view class="hotPro-name">
+                    <text class="iconfont icon-trangle videoLabel" wx:if="{{!item.video==''}}"></text>
+                    {{item.productName}}</view>
+                <view class="hotPro-price" wx:if="{{item.purpose=='2'||item.purpose=='4'}}">{{item.showName}}</view>
+                <view class="hotPro-price" wx:else>￥{{item.curPrice}}</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="distribute-frame" hidden="{{disProList.length==0||!actDistribution.enable}}">
+        <view class="top-common">
+            <view class="top-common-txt">
+                <text>分销专区</text>
+                <text>distribute region</text>
+            </view>
+            <view bindtap="toDistributePro" class="iconfont icon-arrow-right"></view>
+        </view>
+        <view class="distribute-content clearfix">
+            <view bindtap="toProductDetail" class="disPro-item" data-pid="{{item.produceId}}" wx:for="{{disProList}}" wx:key="index">
+                <view class="dis-label" style="background-color: {{actDistribution.identificationColor}}" wx:if="{{actDistribution.identificationOpened}}">{{actDistribution.identificationName}}</view>
+                <image src="{{item.image}}"></image>
+                <view class="disPro-main">
+                    <view class="disPro-name">{{item.produceName}}</view>
+                    <view>
+                        <text class="disPro-price">￥{{item.groupsPrice}}</text>
+                    </view>
+                    <view class="disPro-bottom">
+                        <text class="disPro-new">{{item.newArrival?'新上架':'库存：'+item.stock}}</text>
+                        <text class="disPro-saleCount">销量：{{item.saleCount}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="rec-pros-frame" hidden="{{productArr.length==0}}">
+        <view class="rec-pros-top">
+            <image lazyLoad="{{true}}" mode="widthFix" src="/img/cnxh.png"></image>
+        </view>
+        <view class="rec-pros-list">
+            <view bindtap="toProductDetail" class="rec-pros-item" data-pid="{{item.id}}" wx:for="{{productArr}}" wx:key="{{item.id}}">
+                <view class="group-label1" wx:if="{{item.actType=='5'}}">拼团</view>
+                <view class="seckill-label1" wx:if="{{item.actType=='3'}}">秒杀</view>
+                <view class="dis-label" style="background-color: {{actDistribution.identificationColor}}" wx:if="{{item.actType=='6'&&memberType=='3'&&actDistribution.enable&&actDistribution.identificationOpened}}">{{actDistribution.identificationName}}</view>
+                <image lazyLoad="{{true}}" mode="widthFix" src="{{item.productImageVOList[0].imageURL}}"></image>
+                <view class="rec-pros-name">
+                    <text class="iconfont icon-trangle videoLabel" wx:if="{{!item.video==''}}"></text>
+                {{item.productName}}</view>
+                <view class="new-pro" wx:if="{{item.newArrival}}">新上架</view>
+                <view class="rec-pros-price" wx:if="{{item.purpose=='1'||item.purpose=='3'}}">
+                    <text>￥<text class="bigBlue">{{item.curPrice}}</text>
+                    </text>
+                    <text class="ori-price">￥{{item.productModelList[0].originalprice}}</text>
+                    <text class="saleCount">销量:{{item.saleCount}}</text>
+                </view>
+                <view class="rec-pros-price2" wx:else>
+                    <text class="bigBlue">{{item.showName}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="float-icon">
+        <view class="online-chat" wx:if="{{hiddenService}}">
+            <text class="iconfont icon-server"></text>
+            <contact-button size="27" type="default-light"></contact-button>
+        </view>
+        <view bindtap="joinPhoneCall" class="call-up" wx:if="{{joinPhone}}">
+            <text class="iconfont icon-dianhua"></text>
+        </view>
+    </view>
+    <view class="share-frame" hidden="{{hideShareCoupon}}">
+        <view class="share-bg"></view>
+        <view class="share-coupon">
+            <image mode="widthFix" src="http://img1.vzmapp.com/common-img/share.png"></image>
+            <view class="coupon-main">
+                <view>
+                    <text class="coupon-price">￥<text>{{shareActivity.discountAmount}}</text>
+                    </text>
+                    <text class="coupon-condition">满{{shareActivity.amountReached}}元可使用</text>
+                </view>
+                <view bindtap="toMoreFunction" class="btn-use" data-location="LynxProductList">立即使用</view>
+                <view class="coupon-tips">本券有效期到{{shareActivity.endTime}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view wx:if="{{isQuery&&isLoading}}">
+    <swiper autoplay="true" circular="true" class="banner-swiper" duration="1000" indicatorActiveColor="{{styleConfig.mainColor}}" indicatorColor="rgba({{styleConfig.mainRGB.r}},{{styleConfig.mainRGB.g}},{{styleConfig.mainRGB.b}},.4)" indicatorDots="true" interval="5000">
+        <swiper-item wx:for="{{advertisements}}" wx:key="{{item.id}}">
+            <image class="slide-image" lazyLoad="{{true}}" src="{{item.image}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="query-wrap">
+        <view bindtap="toSignup" class="func1-item">
+            <text class="cost-text">信息查询<text class="iconfont icon-arrow-right"></text>
+            </text>
+        </view>
+        <form bindsubmit="formSubmit">
+            <view class="query-main">
+                <view class="query-item">
+                    <text class="query-name">
+                        <text class="redColor">*</text>姓名:</text>
+                    <input name="branchName" placeholder="请输入你的姓名"></input>
+                </view>
+                <view class="query-item">
+                    <text class="query-name">
+                        <text class="redColor">*</text>年龄:</text>
+                    <input name="mainProject" placeholder="请输入你的年龄" type="number"></input>
+                </view>
+                <view class="query-item">
+                    <text class="query-name">
+                        <text class="redColor">*</text>手机号码:</text>
+                    <input maxlength="11" name="phone" placeholder="请输入你的手机号" type="number"></input>
+                </view>
+                <view class="query-text">
+                    <text>
+                        <text class="redColor">*</text>问题描述:</text>
+                    <textarea class="textQuery" name="textCon" placeholder="请描述你的问题"></textarea>
+                </view>
+                <button class="btn-query" formType="submit">提交</button>
+                <button class="btn-reset" formType="reset">重置</button>
+            </view>
+        </form>
+    </view>
+</view>

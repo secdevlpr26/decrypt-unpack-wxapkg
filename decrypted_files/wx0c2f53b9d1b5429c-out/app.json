@@ -1,0 +1,68 @@
+{
+    "pages": [
+        "pages/shop/index",
+        "pages/shop/shopcart",
+        "pages/shop/productdetail",
+        "pages/shop/square",
+        "pages/shop/userorder",
+        "pages/shop/userfinance",
+        "pages/shop/orderdetail",
+        "pages/shop/refundreson",
+        "pages/shop/kuaidi100",
+        "pages/company/mycenter",
+        "pages/company/mycoupon",
+        "pages/shop/collection",
+        "pages/shop/myinfomation",
+        "pages/shop/customer-service",
+        "pages/shop/refundswuliu",
+        "pages/shop/record",
+        "pages/shop/refund",
+        "pages/shop/balance",
+        "pages/shop/recharge",
+        "pages/shop/withdrawal",
+        "pages/shop/refundsuc",
+        "pages/shop/chooseBank",
+        "pages/shop/refundfail",
+        "pages/shop/mymember",
+        "pages/shop/paymentPage",
+        "pages/company/couponcenter",
+        "pages/shop/poster",
+        "pages/shop/shopcart_tabbar",
+        "pages/company/mycenter_tabbar",
+        "pages/webview/webview"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "宋氏开锁"
+    },
+    "tabBar": {
+        "backgroundColor": "#fff",
+        "color": "#999",
+        "selectedColor": "#091d55",
+        "list": [
+            {
+                "pagePath": "pages/shop/index",
+                "text": "首页",
+                "iconPath": "images/tarbaricons/5b28d55a843c5.jpg",
+                "selectedIconPath": "images/tarbaricons/5b2cc7a194a0c.jpg"
+            },
+            {
+                "pagePath": "pages/shop/shopcart_tabbar",
+                "text": "购物车",
+                "iconPath": "images/tarbaricons/5b28d5b54f149.jpg",
+                "selectedIconPath": "images/tarbaricons/5b2cc7a992e59.jpg"
+            },
+            {
+                "pagePath": "pages/company/mycenter_tabbar",
+                "text": "我的",
+                "iconPath": "images/tarbaricons/5b28d5bd81e3d.jpg",
+                "selectedIconPath": "images/tarbaricons/5b2cc7b18783c.jpg"
+            }
+        ]
+    },
+    "debug": true
+}

@@ -1,0 +1,25 @@
+<scroll-view bindscrolltolower="loadMore" class="scroll-container" scrollY="true">
+    <view class="comment-list">
+        <view class="comment-item" wx:for="{{commentList}}" wx:key="{{index}}">
+            <view class="user">
+                <view class="avatar">
+                    <image src="{{item.head_pic}}"></image>
+                </view>
+                <view class="name">
+                        {{item.username}}
+                    </view>
+            </view>
+            <view class="content">
+                        {{item.content}}
+                </view>
+            <view bindtap="chooseImage" class="images" data-images="{{item.img}}" wx:if="{{item.img}}">
+                <view class="images-item" wx:if="{{key<4}}" wx:for="{{item.img}}" wx:for-index="key" wx:for-item="val">
+                    <image src="{{val}}"></image>
+                </view>
+            </view>
+            <view class="time">
+                    {{item.add_time}}
+                </view>
+        </view>
+    </view>
+</scroll-view>

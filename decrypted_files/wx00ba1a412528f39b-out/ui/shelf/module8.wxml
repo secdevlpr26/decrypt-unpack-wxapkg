@@ -1,0 +1,12 @@
+<template name="module8">
+    <view class="gift_card_area" wx:if="{{gift_info.appid}}">
+        <view bindtap="goGiftCard" class="gift_card">
+            <image class="gift_card_image" mode="aspectFill" src="{{gift_info.pic_url}}"></image>
+            <view class="gift_card_opr">
+                <image class="gift_icon" mode="aspectFit" src="/images/gift_icon@3x.png"></image>
+                <text class="gift_desc">{{gift_info.title?gift_info.title:'选购礼品卡'}}</text>
+                <icon class="icon_arrow" type=""></icon>
+            </view>
+        </view>
+    </view>
+</template>

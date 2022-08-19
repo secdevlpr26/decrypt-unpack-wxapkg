@@ -1,0 +1,39 @@
+<import src="../wxParse/wxParse.wxml"></import>
+<view class="xzdz">
+    <view class="xzdzBox">
+        <view class="xzdzTitle">
+            <view class="xzdzC">商家信息
+        <image class="xzdz_img" src="../../images/buss.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="gq">
+    <view class="storeAddress">
+        <text>店铺名称：</text>
+        <text>{{storeInfoName}}</text>
+    </view>
+    <view class="storeAddress">
+        <text class="dpclass">店铺地址：</text>
+        <text class="dpdzclass">{{storeInfoAddress}}</text>
+    </view>
+    <view bindtap="call" class="dhtCall">
+        <text>商家电话：{{storeInfoTelephoneNum==null?'':storeInfoTelephoneNum}}</text>
+        <image bindtap="call" class="dht" src="../../images/dht.png"></image>
+    </view>
+</view>
+<view class="hx"></view>
+<view class="xzdz">
+    <view class="xzdzBox">
+        <view class="xzdzTitle">
+            <view class="xzdzC">定位导航
+        <image class="xzdz_img" src="../../images/pos.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="brandDetailBox">
+    <map bindcontroltap="controlClick" bindregionchange="regionChange" bindtap="locationClick" circles="{{circles}}" class="dt" controls="{{controls}}" id="map" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" style=""></map>
+</view>
+<button bindtap="dh" class="jr" style="color: #FFBD21;">进 入 导 航</button>
+<button bindtap="goToUser" class="jr" style="color: #FFBD21;" wx:if="{{saoma}}">返回首页</button>

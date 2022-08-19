@@ -1,0 +1,14 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <image class="share_bg" mode="widthFix" src="/images/sa@3x.png"></image>
+    <view class="bg_body">
+        <image class="share_bg02" src="/images/shareEnter.png"></image>
+        <view class="text_body">
+            <view class="title_first">全城家政大放价</view>
+            <view class="title_second">现金优惠券大礼包</view>
+            <input bindinput="validatePhone" class="phone" maxlength="11" placeholder="请输入您的手机号" placeholderClass="input_phone" type="number"></input>
+            <view bindtap="getEnter" class="getCoupons">立即领券</view>
+        </view>
+    </view>
+</view>

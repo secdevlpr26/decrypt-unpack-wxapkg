@@ -1,0 +1,23 @@
+<view class="addrcon">
+    <view class="addrlist" wx:for="{{addressList}}" wx:key="{{item.id}}">
+        <view class="addr">{{item.ADDRESS}}</view>
+        <view class="dianhua">
+            <text>{{item.CONSIGNEE}}</text>{{item.CELLPHONE}}</view>
+        <view class="addrb">
+            <view class="moren">
+                <label>
+                    <radio bindtap="radio" checked="true" color="#e6442d" data-id="{{item.ID}}" wx:if="{{item.IS_DEFAULT==1}}"></radio>
+                    <radio bindtap="radio" color="#e6442d" data-id="{{item.ID}}" wx:else></radio>
+      设成默认</label>
+            </view>
+            <button bindtap="select" class="edit" data-id="{{item.XH}}">
+                <image src="{{hostUrl}}/images/455.png"></image>选择</button>
+            <button bindtap="edit" class="edit" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/bjico.png"></image>编辑</button>
+            <button bindtap="delete" class="delete" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/scico.png"></image>删除</button>
+        </view>
+    </view>
+</view>
+<view bindtap="addAddress" class="addbtn">新增个人地址<image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>

@@ -1,0 +1,110 @@
+<view class="top" wx:if="{{homePageLayout==1}}">
+    <view bindtap="menutap" class="iconfont icon-list"></view>
+    <view bindtap="toSearch" class="search-frame">
+        <view class="iconfont icon-search"></view>
+        <text>搜索商家</text>
+    </view>
+</view>
+<view class="top-style2" style="background: linear-gradient(to bottom, rgba({{styleConfig.mainRGB.r}}, {{styleConfig.mainRGB.g}}, {{styleConfig.mainRGB.b}}, 1), rgba({{styleConfig.mainRGB.r}}, {{styleConfig.mainRGB.g}}, {{styleConfig.mainRGB.b}}, .01));" wx:else>
+    <view bindtap="menutap" class="iconfont icon-list"></view>
+    <view bindtap="toSearch" class="search-frame">
+        <view class="iconfont icon-search"></view>
+        <text>搜索商家</text>
+    </view>
+</view>
+<view class="store-frame">
+    <view class="slider" hidden="{{!adArr.length}}">
+        <swiper autoplay="true" circular="true" duration="1000" indicatorDots="true" interval="5000">
+            <navigator url="./store-detail/store-detail?tabContentId={{item.id}}" wx:for="{{adArr}}" wx:key="{{item.id}}">
+                <swiper-item bindtap="adtap">
+                    <image class="slider-image" lazyLoad="{{true}}" src="{{item.advertisingImage}}"></image>
+                </swiper-item>
+            </navigator>
+        </swiper>
+    </view>
+    <view class="store" wx:if="{{homePageLayout==1}}">
+        <view bindtap="toStoreDetails" class="store-item" data-pid="{{item.id}}" wx:for="{{storeArr}}" wx:key="{{item.id}}">
+            <image class="store-image" lazyLoad="{{true}}" src="{{item.pic1}}"></image>
+            <view class="item-bottom">
+                <view class="item-main">
+                    <view class="item-main-background"></view>
+                    <text class="item-title">{{item.branchName}}</text>
+                </view>
+                <view class="item-adress">
+                    <text>址址：{{item.address}}</text>
+                </view>
+                <view class="item-phone">
+                    <text>电话：{{item.phone==''?item.tel:item.phone}}</text>
+                </view>
+            </view>
+            <image class="is-recommend" hidden="{{!item.isRecommend==true}}" lazyLoad="{{true}}" src="../../../img/recommend.png"></image>
+            <view bindtap="toStoreDetails" class="btn-store" data-pid="{{item.id}}">进店</view>
+        </view>
+    </view>
+    <view class="store-style2 clearfix" wx:else>
+        <navigator class="store-item" url="./store-detail/store-detail?tabContentId={{item.id}}" wx:for="{{storeArr}}" wx:key="{{item.id}}">
+            <image lazyLoad="{{true}}" src="{{item.pic1}}"></image>
+            <view class="item-main">
+                <text class="item-title">{{item.branchName}}</text>
+            </view>
+        </navigator>
+    </view>
+</view>
+<view bindtap="menutap" class="shade" wx:if="{{show}}"></view>
+<view class="popup {{show?'active':''}}">
+    <view class="category">
+        <text class="title">所有分类</text>
+        <span bindtap="bigCate_unfold" class="iconfont {{showBigCate?'icon-fold':'icon-unfold'}}"></span>
+        <view class="category-all">
+            <span bindtap="getSmallCategory" class="category-title {{bCate_code==''?'active':''}}" data-code="" style="{{'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.mainColor+';'+(bCate_code==''?'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':'')}}">全部</span>
+        </view>
+        <view hidden="{{!showBigCate}}">
+            <view class="big-category">
+                <span bindtap="getSmallCategory" class="category-title {{bCate_code==item.code?'active':''}}" data-code="{{item.code}}" style="{{'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.mainColor+';'+(bCate_code==item.code?'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':'')}}" wx:for="{{bigCategory}}" wx:key="{{item.code}}">{{item.itemName}}</span>
+            </view>
+            <view class="small-category" hidden="{{showSmallCate||!smallCategory.length}}">
+                <view bindtap="smCateTap" class="category-title {{smCate_code=='0'?'active':''}}" data-code="0" style="{{'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.mainColor+';'+(smCate_code=='0'?'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':'')}}">全部</view>
+                <view bindtap="smCateTap" class="category-title {{smCate_code==item.code?'active':''}}" data-code="{{item.code}}" style="{{'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.mainColor+';'+(smCate_code==item.code?'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':'')}}" wx:for="{{smallCategory}}" wx:key="{{item.code}}">{{item.itemName}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="area clearfix province">
+        <view class="area-top">
+            <text class="title">省份选择</text>
+            <i bindtap="prov_unfold" class="iconfont {{showProvince?'icon-fold':'icon-unfold'}}"></i>
+        </view>
+        <view bindtap="getCityInfo" class="area-item {{provinceId==-1?'active':''}}" data-proId="-1" style="{{'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.mainColor+';'+(provinceId==-1?'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':'')}}">
+            <span class="iconfont icon-location"></span>
+            <text class="area-name">全部</text>
+        </view>
+        <view bindtap="getCityInfo" class="area-item {{showProvince?'':'dn'}} {{provinceId==item.id?'active':''}}" data-proId="{{item.id}}" style="{{'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.mainColor+';'+(provinceId==item.id?'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':'')}}" wx:for="{{provinceArr}}" wx:key="{{item.id}}">
+            <span class="iconfont icon-location"></span>
+            <text class="area-name">{{item.provinceName}}</text>
+        </view>
+    </view>
+    <view class="area clearfix {{showCity&&showProvince?'':'dn'}} city">
+        <view class="area-top">
+            <text class="title">城市选择</text>
+        </view>
+        <view bindtap="citytap" class="area-item {{cityId==-1?'active':''}}" data-cityid="-1" style="{{'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.mainColor+';'+(cityId==-1?'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':'')}}">
+            <span class="iconfont icon-location"></span>
+            <text class="area-name">全部</text>
+        </view>
+        <view bindtap="citytap" class="area-item {{cityId==item.id?'active':''}}" data-cityid="{{item.id}}" style="{{'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.mainColor+';'+(cityId==item.id?'border: 1rpx solid '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':'')}}" wx:for="{{cityArr}}" wx:key="{{item.id}}">
+            <span class="iconfont icon-location"></span>
+            <text class="area-name">{{item.cityName}}</text>
+        </view>
+    </view>
+    <view class="popup-bottom">
+        <span bindtap="reset" class="bottom-btn">重置</span>
+        <span bindtap="confirm" class="bottom-btn " style="{{'background-color: '+styleConfig.mainColor+';color: '+styleConfig.foregroundColor+';'}}">确认</span>
+    </view>
+</view>
+<view class="store-null" hidden="{{noStore}}">
+    <view class="iconfont icon-vz-null"></view>
+    <text>没有商铺信息</text>
+</view>
+<view class="bottom-hint" hidden="{{bottomHint}}">
+    <view class="line"></view>
+    <text>没有更多商铺啦</text>
+</view>

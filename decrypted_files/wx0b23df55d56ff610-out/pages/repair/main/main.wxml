@@ -1,0 +1,29 @@
+<view class="container bgf5 pb100">
+    <view class="w100">
+        <view class="pt30 pl30 pr30">
+            <image class="w100 banner" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/banner.jpg"></image>
+        </view>
+    </view>
+    <view class="w100 mt10">
+        <view class="pl30 lh100 ft30 fb col333">
+            <text class="pl25 dianorange">选择故障点</text>
+        </view>
+    </view>
+    <view class="w100">
+        <view class="p15">
+            <view catchtap="bindTapFault" class="fl w33 pb30" data-id="{{faultItem.Id}}" wx:for="{{faultList}}" wx:for-index="faultIndex" wx:for-item="faultItem" wx:key="fault">
+                <view class="bgw m15 gzd pt20">
+                    <view class="ft30 col333 lh34 pt14">{{faultItem.Name}}</view>
+                    <view class="ft24 col999 lh28 pb24">{{faultItem.english_name}}</view>
+                    <image class="w100 gzdimg" src="{{faultItem.imgurl}}"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="w100 pb40">
+        <view catchtap="bindTapFault" class="bgw ml30 mr30 other" data-id="{{other.Id}}">
+            <text class="ft30 col333">其他</text>
+            <text class="ft24 col999">Other</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,12 @@
+<cover-view class="modal" hidden="{{hidden}}">
+    <cover-view class="modal-bottom" hidden="{{hidden}}">
+        <cover-view class="container" hidden="{{hidden}}">
+            <cover-view class="content">
+                <cover-image class="image" mode="aspectFill" src="../../images/alarm-pop-fire.png" style="width: 189rpx;height: 168rpx;margin-bottom:58rpx;margin-left:249.5rpx;display:{{imageReady}};"></cover-image>
+                <cover-view>请注意：{{areaName}}</cover-view>
+            </cover-view>
+            <cover-view bindtap="confirm" class="confirm-btn" style="{{tintColor}}">{{confirmText}}</cover-view>
+        </cover-view>
+    </cover-view>
+</cover-view>
+<slot></slot>

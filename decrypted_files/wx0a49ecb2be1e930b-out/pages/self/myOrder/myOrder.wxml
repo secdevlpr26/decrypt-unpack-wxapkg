@@ -1,0 +1,48 @@
+<view class="order-wrap">
+    <view class="order_statue">
+        <view bindtap="selectTab" class="{{showTabIndex==index?'statue_list_other':'statue_list'}}" data-selectindex="{{index}}" wx:for="{{statueList}}" wx:key="{{index}}">{{item}}</view>
+    </view>
+    <view class="order-ls">
+        <block wx:for="{{orderList}}" wx:key="{{item.orderNO}}">
+            <view class="order-item" wx:for="{{item.children}}" wx:for-item="orderNoItem" wx:key="{{orderNoItem.children.id}}">
+                <navigator url="myOrder-detail/myOrder-detail?id={{orderNoItem.id}}&orderNO={{item.orderNO}}">
+                    <view class="ori-top">
+                        <text class="order-number">订单号：{{item.orderNO}}</text>
+                        <text>
+                            <text class="order-state" wx:if="{{orderNoItem.status=='6'}}">申请退款中</text>
+                            <text class="order-state" wx:elif="{{orderNoItem.status=='7'}}">退款已拒绝</text>
+                            <text class="order-state" wx:elif="{{orderNoItem.status=='8'}}">已退款</text>
+                            <text class="order-state" wx:elif="{{orderNoItem.status=='9'}}">已完成</text>
+                        </text>
+                    </view>
+                    <view class="product" wx:for="{{orderNoItem.productOrderVOList}}" wx:for-item="proItem" wx:key="{{orderNoItem.productOrderVOList.productId}}">
+                        <image lazyLoad="{{true}}" src="{{proItem.imageURL}}"></image>
+                        <view class="name">
+                            <text class="group-label" wx:if="{{item.groupOrderNo!=''}}">拼团</text>
+                            {{proItem.productName}}</view>
+                        <view class="pro-right">
+                            <view class="unit_price">￥{{proItem.price}}</view>
+                            <view class="unit_num">x{{proItem.amount}}</view>
+                            <view catchtap="goComment" class="btn-comment" data-id="{{proItem.id}}" wx:if="{{orderNoItem.status=='4'}}">去评价</view>
+                        </view>
+                    </view>
+                    <view class="order-bottom">
+                        <view class="ori-allPrice">
+                            <text>总金额￥</text>{{orderNoItem.totalMoney}}<text>含运费￥{{orderNoItem.transportCost}}</text>
+                        </view>
+                        <view catchtap="deleteOrder" class="btn-delete" data-oid="{{orderNoItem.id}}" wx:if="{{orderNoItem.payStatus=='0'&&orderNoItem.payType!=3}}">删除订单</view>
+                        <view catchtap="sureReceive" class="btn-sure" data-oid="{{orderNoItem.id}}" wx:elif="{{orderNoItem.status=='3'}}">确认收货</view>
+                    </view>
+                    <view class="btn-frame dn">
+                        <text class="btn-calcel">申请取消订单</text>
+                        <text class="btn-pay">去支付</text>
+                    </view>
+                </navigator>
+            </view>
+        </block>
+    </view>
+</view>
+<view class="order-null" hidden="{{!noOrder}}">
+    <view class="iconfont icon-order-null"></view>
+    <text>您暂时还没有订单</text>
+</view>

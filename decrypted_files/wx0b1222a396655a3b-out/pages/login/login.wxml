@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="usermotto">
+        <view class="kuang">
+            <form bindsubmit="formSubmit">
+                <view class="zi">
+                    <text>登录账号</text>
+                </view>
+                <view>
+                    <input name="user" type="text" value=""></input>
+                </view>
+                <view class="zi">
+                    <text>登录密码</text>
+                </view>
+                <view>
+                    <input name="pwd" type="text" value=""></input>
+                </view>
+                <button formType="submit">登录</button>
+            </form>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,72 @@
+<button bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo?'tologin':''}}" class="newP" hoverClass="none" openType="{{userInfo?'':'getUserInfo'}}" wx:if="{{show}}">{{msg}}</button>
+<swiper autoplay="true" class="banner" indicatorDots="true">
+    <swiper-item bindtap="toGoodsDetail" data-id="{{item.id}}" wx:for="{{bannerList}}" wx:key="{{index}}">
+        <image src="{{imgurl+item.image}}" style="height:100%;width:100%"></image>
+    </swiper-item>
+</swiper>
+<view class="first">
+    <view bindtap="look" class="first_l">
+        <image src="{{imgurl+jishikan.image}}" style="width:100rpx;height:100rpx;border-radius:50%"></image>
+        <view style="width:40%">{{jishikan.name}}</view>
+    </view>
+    <swiper autoplay="true" bindtap="toPintuan" class="banner2">
+        <block wx:if="{{groupList}}">
+            <swiper-item class="ban_item" wx:for="{{groupList}}">
+                <image src="{{imgurl+item.fengmian}}" style="width:200rpx;height:120rpx"></image>
+                <view class="ban_info">
+                    <view class="info_name">{{item.goods_name}}</view>
+                    <view class="info_num">
+                        <view style="display:inline-block;color:#cc0000">{{item.gb_num}}</view>人团</view>
+                    <view class="info_btn">去拼团</view>
+                </view>
+            </swiper-item>
+        </block>
+        <swiper-item class="empty" wx:else>
+            <image src="../../icon/empty2.svg" style="width:120rpx;height:80rpx"></image>
+            <view>暂无优惠活动哦</view>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="second" wx:if="{{showFujin}}">
+    <view class="title">
+        <image src="../../icon/addr.png" style="width:25rpx;height:25rpx"></image>
+        <view style="margin-left:20rpx">离我最近</view>
+    </view>
+    <view style="display:flex;align-items:center;" wx:if="{{list}}">
+        <view class="wrap">
+            <view bindtap="tonear" class="item" wx:for="{{list}}">
+                <image class="hasP" src="../../icon/sheng.png" style="width:30rpx;height:30rpx" wx:if="{{item.yinzi==1}}"></image>
+                <image src="{{imgurl+item.fengmian}}"></image>
+                <view class="name">{{item.school_name}}</view>
+            </view>
+        </view>
+        <view class="more">
+            <image bindtap="tonear" src="../../icon/more.png" style="width:30rpx;height:30rpx;"></image>
+        </view>
+    </view>
+    <view class="wrap2" wx:else>
+        <image src="../../icon/empty2.png" style="width:120rpx;height:80rpx"></image>
+        <view>您的附近暂无生员宝商家哦</view>
+    </view>
+</view>
+<view class="third">
+    <view class="third_top">
+        <view bindtap="tokc" class="third_l" data-status="0">
+            <view style="width:40%">{{zhudake.name}}</view>
+            <image src="{{imgurl+zhudake.image}}" style="width:120rpx;height:120rpx;border-radius:50%"></image>
+        </view>
+        <view bindtap="toslqj" class="third_r" data-status="1">
+            <view style="width:40%">{{shenlin.name}}</view>
+            <image src="{{imgurl+shenlin.image}}" style="width:120rpx;height:120rpx;border-radius:50%"></image>
+        </view>
+    </view>
+    <view class="third_bot">
+        <image bindtap="togame" src="../../image/1.png" style="width:100%;height:110rpx"></image>
+    </view>
+</view>
+<view class="icon">
+    <view class="icon_img">
+        <image src="../../icon/icon.png" style="width:100%;height:100%"></image>
+    </view>
+    <view style="margin-top:15rpx">—— 快乐童年提供技术支持 ——</view>
+</view>

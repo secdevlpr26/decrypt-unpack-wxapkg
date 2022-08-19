@@ -1,0 +1,15 @@
+<template name="module5">
+    <view class="shop_module_cover_mode">
+        <image class="cover_bg_img" mode="aspectFill" src="{{group_infos.img_background}}"></image>
+        <view class="category_list_wrp">
+            <view class="category_list">
+                <view class="category_item" wx:for="{{group_infos.groups}}" wx:for-item="group" wx:key="group_id">
+                    <navigator class="goods_link" url="/pages/list/list?gid={{group.group_id}}&sort_type=asc&sort_key=price">{{group.group_name}}</navigator>
+                </view>
+            </view>
+            <view class="shop_module_all">
+                <navigator class="more_link" url="/pages/list/list?sort_type=asc&sort_key=price">店铺全部商品</navigator>
+            </view>
+        </view>
+    </view>
+</template>

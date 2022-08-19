@@ -1,0 +1,133 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="after-navber">
+    <view bindtap="news" class="notice flex-row" style="color:#ffffff;background-color:{{color}}">
+        <view class="flex-grow-0 flex-y-center notice-a">
+            <image src="/images/icon_laba.png" style="width:15px;height:15px;margin-right:10px;"></image>
+            <view>公告</view>
+        </view>
+        <view class="flex-grow-1 notice-box">
+            <view class="notice-content">
+                <view style="display: inline-block;">{{article}}</view>
+            </view>
+        </view>
+        <view class="flex-grow-0 flex-y-center notice-b">
+            <image src="/images/icon-notice-jiantou.png" style="width:4px;height:7px;margin-left:13px;"></image>
+        </view>
+    </view>
+</view>
+<view class="container-sy animated fadeIn" wx:if="{{isShow}}">
+    <view class="topSwiper">
+        <swiper circular autoplay="{{autoplay}}" class="indexbanner" duration="{{duration}}" indicatorActiveColor="{{active_color}}" indicatorColor="{{color}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+            <swiper-item wx:for="{{banner}}" wx:key="key">
+                <image class="banner" mode="aspectFill" src="{{item.ad_code}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <image bindtap="coupon" mode="widthFix" src="https://xcx006.ycdongxu.com/coupon.png" style="width:750rpx;"></image>
+    <view class="bigIcon">
+        <view bindtap="navication" class="bigIconItem" data-type="{{item.type}}" data-url="{{item.url}}" wx:for="{{navigations}}" wx:key="index">
+            <image src="{{item.image}}"></image>
+            <text>{{item.name}}</text>
+        </view>
+    </view>
+    <view class="block scrollView iconList ">
+        <view class="scrollViewItem">
+            <view class="itemList">
+                <view class="item" wx:for="{{spec}}" wx:key="key">
+                    <view bindtap="faultDetail" data-id="{{item.id}}" data-type="{{item.types}}" wx:if="{{item.name!='内存升级'}}">
+                        <view class="itemTop">
+                            <image src="{{item.icon}}"></image>
+                        </view>
+                        <view class="itemBottom">
+                            <text>{{item.name}}</text>
+                        </view>
+                    </view>
+                    <view wx:else>
+                        <view bindtap="faultDetail1" class="itemTop">
+                            <image src="{{item.icon}}"></image>
+                        </view>
+                        <view bindtap="faultDetail1" class="itemBottom">
+                            <text>{{item.name}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="block hotFix">
+        <view class="blockTop">热门维修</view>
+        <view class="scrollView">
+            <scroll-view scrollWithAnimation scrollX class="hotFixScroll">
+                <view bindtap="goToFaultDetail" class="scrollViewItem" data-id="{{item.id}}" data-spec="{{item.spec.id}}" data-type="{{item.spec.type_id}}" hoverClass="animated itemHover" wx:for="{{hots}}" wx:key="key">
+                    <view class="item">
+                        <view class="itemTop">{{item.mobile_name}}</view>
+                        <view class="errInfo">{{item.spec.item}}</view>
+                        <view class="unit">
+                            <view class="line"></view>
+                        </view>
+                        <view class="itemBottom">¥{{item.spec.price}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="block oneKeyOrder animated fadeIn">
+        <view bindtap="goToOneKeyOrder" class="orderItem">
+            <view class="blockTop">
+                <view class="iconfont rightArray">一键下单 </view>
+            </view>
+            <view class="blockBottom">下单后，客服人员会与您联系确认问题</view>
+        </view>
+        <view bindtap="goToTestHome" class="orderItem">
+            <view class="blockTop">
+                <view class="iconfont rightArray">本机检测 </view>
+            </view>
+            <view class="blockBottom">极速检测手机系统</view>
+        </view>
+    </view>
+    <view bindtap="goToBrandAuthor" class="block brandBlock animated fadeIn">
+        <image lazyload src="{{authorizeUrl}}"></image>
+    </view>
+    <view class="block showBlock animated fadeIn">
+        <view class="showBlockTop">维修实力</view>
+        <view class="showBlockBottom showList">
+            <view class="showListItem">
+                <view>
+                    <image src="https://xcx006.ycdongxu.com/imgs/wxzl.png"></image>
+                </view>
+                <view class="itemContent">维修保障</view>
+            </view>
+            <view class="showListItem mid">
+                <view>
+                    <image src="https://xcx006.ycdongxu.com/imgs/jsyz.png"></image>
+                </view>
+                <view class="itemContent">极速优质服务</view>
+            </view>
+            <view class="showListItem">
+                <view>
+                    <image src="https://xcx006.ycdongxu.com/imgs/jgtm.png"></image>
+                </view>
+                <view class="itemContent">价格公开透明</view>
+            </view>
+        </view>
+    </view>
+    <view hidden class="block footBlock animated fadeIn">
+        <view bindtap="goToAboutus" class="footItem">关于我们</view>
+        <view bindtap="goToServiceFlow" class="footItem">服务流程</view>
+        <view bindtap="goToUserAgreement" class="footItem">用户协议</view>
+    </view>
+</view>
+<button class="fenxiang animated shake" openType="share" wx:if="{{isShow}}"></button>
+<view class="refresher" wx:if="{{showRefresher}}">
+    <text>网络开小差了~</text>
+    <button bindtap="onLoad" class="refreshBtn">点击刷新</button>
+</view>
+<view class="footer">
+    <image src="/images/contact.png"></image>
+    <contact-button sessionFrom="weapp" size="160" style="opacity:0.05;margin-bottom:100rpx;" type="default-dark"></contact-button>
+</view>
+<view bindtap="take" class="footer1">
+    <image src="/images/takephone.png"></image>
+</view>
+<view bindtap="center" class="center">活动中心</view>

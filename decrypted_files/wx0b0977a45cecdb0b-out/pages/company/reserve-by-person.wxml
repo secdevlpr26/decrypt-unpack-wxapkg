@@ -1,0 +1,20 @@
+<import src="/pages/customform.wxml"></import>
+<view class="container">
+    <view class="person-info">
+        <view class="person-img">
+            <image src="{{PersonInfo.HeadImg}}"></image>
+        </view>
+        <view class="person-text">
+            <view class="person-name">{{PersonInfo.Name}}</view>
+            <view class="person-intro">{{PersonInfo.Intro}}</view>
+            <view class="person-rcount">{{PersonInfo.rcount}}人预约过</view>
+        </view>
+    </view>
+    <view class="onlineMessage">
+        <view class="onlineMessageContent">
+            <template is="customform" data="{{customformdata:subscribeFormData,customformvalues:customformvalues,resetvalues:resetvalues}}"></template>
+        </view>
+    </view>
+</view>
+<include src="/pages/template/floatLayer.wxml"></include>
+<include src="/pages/template/getUserInfo.wxml"></include>

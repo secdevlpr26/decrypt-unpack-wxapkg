@@ -1,0 +1,31 @@
+<view class="swiper">
+    <view class="top-view">
+        <view class="top-text-view">
+            <text class="top-text">访问：{{views}}人</text>
+            <view style="height:11px; width:1px; background-color:#eee;"></view>
+            <text class="top-text">解答：{{info.replyCount}}次</text>
+            <view style="height:11px; width:1px; background-color:#eee;"></view>
+            <text class="top-text">好评：100%</text>
+        </view>
+    </view>
+    <view style="margin-top:60px;">
+        <view class="horiz padding_spacing" style="background-color: #ffffff;padding-top:30rpx;padding-bottom:30rpx;border-bottom: 1rpx solid #eee;" wx:for="{{logins}}" wx:key="index">
+            <view>
+                <image src="{{item.avatarUrl}}" style="width:100rpx;height:100rpx;border-radius:50%;"></image>
+            </view>
+            <view class="verti " style="padding-top:5px;margin-left:20px;">
+                <text style="font-size:16px;color:#333; font-weight: bold;">{{item.nickName}}</text>
+                <text class="intor ">{{item.loginTime}} 来访</text>
+            </view>
+        </view>
+        <view bindtap="more" class="{{showMore?'more':'hide'}}">展开更多
+  </view>
+    </view>
+    <view class="tipsText" wx:if="{{list.length==0}}">
+          无相关数据
+        </view>
+    <view bindtap="goback" class="backBottom" hover="true" hoverClass="button-hover">
+        <image class="backImg" mode="aspectFit" src="../../images/left_black.png"></image>
+        <text class="backtxt">返回至首页</text>
+    </view>
+</view>

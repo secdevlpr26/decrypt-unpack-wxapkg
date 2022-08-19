@@ -1,0 +1,35 @@
+<view class="container">
+    <view class="navbar">
+        <view bindtap="changeCoupons" class="navbar-item {{flag==1?'active':''}}" data-flag="1">
+            <text>可用优惠券</text>
+        </view>
+        <view bindtap="changeCoupons" class="navbar-item {{flag==2?'active':''}}" data-flag="2">
+            <text>不可用优惠券</text>
+        </view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="lower" class="coupons-content" scrollTop="{{scrollTop}}">
+        <view class="coupons_list">
+            <button bindtap="unUse" class="not-select" wx:if="{{canSelect&&flag==1&&couponsList.length>0}}">
+        不使用优惠券
+      </button>
+            <view bindtap="selectCoupon" class="coupons_body" data-index="{{index}}" wx:if="{{item.validType==1}}" wx:for="{{couponsList}}" wx:key="id">
+                <image class="coupons" hidden="{{flag!=1}}" src="/images/2112@3x.png"></image>
+                <image class="coupons" hidden="{{flag!=2}}" src="/images/12334@3x.png"></image>
+                <view class="money_left">
+                    <image src="/images/ren.png"></image>
+                    <view class="price">{{item.price}}</view>
+                </view>
+                <view class="coupons_text">
+                    <view>{{item.content}}</view>
+                    <view class="coupons_time">{{item.timeLimit}}</view>
+                </view>
+                <image class="unUseful" hidden="{{flag==1}}" mode="widthFix" src="/images/shixiao@3x.png"></image>
+                <image class="selected" hidden="{{!(canSelect&&flag==1&&item.selected)}}" mode="widthFix" src="/images/select.png"></image>
+            </view>
+            <view class="noMsg_bg" hidden="{{couponsList.length>0}}">
+                <image src="/images/42@3x.png"></image>
+                <view class="noMsg_text">暂无可使用优惠券</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

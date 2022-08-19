@@ -1,0 +1,164 @@
+<view class="editcard">
+    <view class="sizeb colora editcard-title">主要资料</view>
+    <form bindsubmit="formSubmit">
+        <view class="editcard-content">
+            <view class="editcard-input border1px sizec">
+                <view class="editcard-input-l">
+                    <text class="editcard-color">*</text>
+                    <text class="sizec editcard-font"> 公司</text>
+                </view>
+                <view class="editcard-input-r">
+                    <input bindinput="Inputcompanyname" name="companyname" placeholder="请输入公司名称" placeholderClass="placeholder" value="{{CompanyName}}"></input>
+                </view>
+            </view>
+            <view class="editcard-input border1px sizec">
+                <view class="editcard-input-l">
+                    <text class="editcard-color">*</text>
+                    <text class="sizec editcard-font"> 姓名</text>
+                </view>
+                <view class="editcard-input-r">
+                    <input bindinput="Inputcompellation" name="compellation" placeholder="请输入姓名" placeholderClass="placeholder" value="{{UserName}}"></input>
+                </view>
+            </view>
+            <view class="editcard-input border1px sizec">
+                <view class="editcard-input-l">
+                    <text class="editcard-color">*</text>
+                    <text class="sizec editcard-font"> 电话</text>
+                </view>
+                <view class="editcard-input-r">
+                    <input bindinput="Inputtelephone" name="telephone" placeholder="请输入电话" placeholderClass="placeholder" type="number" value="{{Mobile}}"></input>
+                </view>
+            </view>
+            <view class="editcard-input border1px sizec">
+                <view class="editcard-input-l">
+                    <text class="editcard-color">*</text>
+                    <text class="sizec editcard-font"> 职位</text>
+                </view>
+                <view class="editcard-input-r">
+                    <input bindinput="Inputpost" name="post" placeholder="请输入职位" placeholderClass="placeholder" value="{{Position}}"></input>
+                </view>
+            </view>
+            <view class="editcard-pto sizec">
+                <view class="editcard-input-l editcard-i">
+                    <text class="editcard-color">*</text>
+                    <text class="sizec editcard-font"> 头像</text>
+                </view>
+                <view class="editcard-pto-r">
+                    <view bindtap="uploadplp" class="editcard-picture" wx:if="{{!mycarsrc}}">
+                        <text class=" iconfont icon-jia"></text>
+                    </view>
+                    <view bindtap="uploadplp" class="editcard-picture editcard-border" wx:else>
+                        <image class="avatar" src="{{mycarsrc}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="editcard-information">
+            <view class="sizeb colora editcard-title">更多信息</view>
+            <view>
+                <view class="editcard-input border1px sizec">
+                    <view class="editcard-input-l">
+                        <text class="sizec editcard-font"> 微信</text>
+                    </view>
+                    <view class="editcard-input-r">
+                        <input bindinput="InputweChat" name="wechat" placeholder="请输入微信号" placeholderClass="placeholder" value="{{WeChat}}"></input>
+                    </view>
+                </view>
+                <view class="editcard-input border1px sizec">
+                    <view class="editcard-input-l">
+                        <text class="sizec editcard-font"> QQ</text>
+                    </view>
+                    <view class="editcard-input-r">
+                        <input bindinput="Inputqq" name="qq" placeholder="请输入QQ" placeholderClass="placeholder" type="number" value="{{QQ}}"></input>
+                    </view>
+                </view>
+                <view class="editcard-input border1px sizec">
+                    <view class="editcard-input-l">
+                        <text class="sizec editcard-font"> 邮箱</text>
+                    </view>
+                    <view class="editcard-input-r">
+                        <input bindinput="Inputemail" name="email" placeholder="请输入邮箱" placeholderClass="placeholder" value="{{Email}}"></input>
+                    </view>
+                </view>
+                <view class="editcard-input border1px sizec">
+                    <view class="editcard-input-l">
+                        <text class="sizec editcard-font"> 地区</text>
+                    </view>
+                    <view class="editcard-input-r">
+                        <picker bindchange="onAddrRegionChange" class="pickerBox" mode="region" value="{{[0,0,0]}}">
+                            <text class="input {{cardcolor?'colora':''}}">{{selectedArea?selectedArea:currentAddr.AreaList?currentAddr.AreaList:'请选择地区'}}</text>
+                        </picker>
+                        <input name="AreaList" style="display:none" value="{{selectedArea?selectedArea:currentAddr.AreaList}}"></input>
+                    </view>
+                </view>
+                <view class="editcard-input sizec">
+                    <view class="editcard-input-l">
+                        <text class="sizec editcard-font">地址</text>
+                    </view>
+                    <view class="editcard-input-r">
+                        <input bindinput="InputcurrentPosition" name="location" placeholder="请输入详细地址" placeholderClass="placeholder" value="{{currentPosition}}"></input>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="editcard-person">
+            <view class="sizeb colora editcard-title">个人介绍</view>
+            <view class="{{ellipsis?'ellipsis':'unellipsis'}}">
+                <view class="bio-recording">
+                    <view class="recording-box">
+                        <view class="recording-box-l editcard-input-l">
+                            <text class="sizec editcard-font">语音</text>
+                        </view>
+                        <view class="recording-box-r">
+                            <view class="r-b-t">
+                                <text class="iconfont icon-record"></text>
+                                <text class="no-recording" wx:if="{{!haveRecording}}">暂无录音</text>
+                                <view catchtap="play" class="have-recording" wx:if="{{haveRecording}}">
+                                    <view class="square"></view>
+                                    <text class="iconfont icon-sound" wx:if="{{!isPlay}}"></text>
+                                    <image src="{{baseUrl}}/images/wxapp/play_audio.gif" wx:if="{{isPlay}}"></image>
+                                    <text class="duration">{{RecordingTime}}</text>
+                                </view>
+                                <view catchtap="deleteRecord" class="delete-box" wx:if="{{haveRecording}}">
+                                    <text class="iconfont icon-trash"></text>
+                                </view>
+                            </view>
+                            <view bindlongpress="longTap" bindtouchend="touchEnd" bindtouchstart="touchStart" class="r-b-b {{isLongPress?'pressing':''}}" wx:if="{{recordAuthMethod==2}}">长按{{haveRecording?'重新':'开始'}}录音</view>
+                            <button catchtap="openSet" class="r-b-b" openType="openSetting" wx:if="{{recordAuthMethod==1}}">长按{{haveRecording?'重新':'开始'}}录音</button>
+                        </view>
+                    </view>
+                    <view class="bio-box">
+                        <view class="bio-box-l editcard-input-l">
+                            <text class="sizec editcard-font">简介</text>
+                        </view>
+                        <view class="bio-box-r">
+                            <textarea bindinput="inputBio" maxlength="-1" name="Bio" placeholder="请输入个人简介，建议100字内" placeholderStyle="font-size:28rpx;color: #999;" value="{{Bio}}"></textarea>
+                        </view>
+                    </view>
+                </view>
+                <view class="bio-recording-line"></view>
+                <view class="more-pictures">
+                    <view class="sizec editcard-font editcard-i editcard-input-l">照片</view>
+                    <view class="images-pics">
+                        <view class="images-pic editcard-border" wx:for="{{upload_picture_list}}" wx:key="index">
+                            <image bindtap="closepic" class="jiaotou" data-index="{{index}}" data-item="{{item}}" src="{{baseUrl}}/images/wxapp/close_pic.png"></image>
+                            <view class="img">
+                                <image class="pic" mode="aspectFill" src="{{baseUrl}}{{item}}"></image>
+                            </view>
+                        </view>
+                        <view bindtap="joinPicture" class="images-pic" data-index="{{0}}" wx:if="{{upload_picture_list.length<9}}">
+                            <text class=" iconfont icon-jia"></text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="button-bg">
+            <button class="editcard-button" formType="submit">保存</button>
+        </view>
+    </form>
+    <view class="toast-panel" wx:if="{{showToastFlag}}">
+        <image src="{{baseUrl}}/images/wxapp/recorderManager.gif"></image>
+        <view class="panel-title">松开结束录音</view>
+    </view>
+</view>

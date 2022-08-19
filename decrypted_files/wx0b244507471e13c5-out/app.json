@@ -1,0 +1,44 @@
+{
+    "pages": [
+        "pages/tabBar/home/home",
+        "pages/tabBar/my/my",
+        "pages/tabBar/grid/grid",
+        "pages/template/list2detail-list/list2detail-list",
+        "pages/template/list2detail-detail/list2detail-detail",
+        "pages/views/business/product-time-machine/product-time-machine",
+        "pages/views/business/plan-info/plan-info",
+        "pages/views/business/login/login"
+    ],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "demo",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    },
+    "tabBar": {
+        "color": "#7A7E83",
+        "selectedColor": "#007AFF",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/tabBar/home/home",
+                "text": "主页",
+                "iconPath": "static/home.png",
+                "selectedIconPath": "static/homeHL.png"
+            },
+            {
+                "pagePath": "pages/tabBar/grid/grid",
+                "text": "业务",
+                "iconPath": "static/template.png",
+                "selectedIconPath": "static/templateHL.png"
+            },
+            {
+                "pagePath": "pages/tabBar/my/my",
+                "text": "我的",
+                "iconPath": "static/my.png",
+                "selectedIconPath": "static/myHL.png"
+            }
+        ]
+    }
+}

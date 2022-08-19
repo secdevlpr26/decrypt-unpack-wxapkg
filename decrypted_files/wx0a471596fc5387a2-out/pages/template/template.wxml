@@ -1,0 +1,491 @@
+<template name="CGJSD">
+    <view class="order200">
+        <view class="order_xx">
+            <text class="left"> 存货编码:{{data.YSXMBM}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.DJ}}元/{{data.DW}}*{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">存货名称:{{data.YSXMMXMC}}</text>
+            <text class="cl_df0c1d right" style="color:green;">￥{{data.HSJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">规格型号:{{data.GG}}{{data.XH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left" wx:if="{{data.ZY!=null}}">{{data.ZY}}</text>
+        </view>
+    </view>
+</template>
+<template name="XMSZD">
+    <view class="order200">
+        <view class="order_xx">
+            <text class="left"> 项目名称:{{data.XMMC}}</text>
+            <text class="cl_df0c1d right">{{data.LX=='1'?'项目支出':'项目收入'}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">合同名称:{{data.HTMC}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left"> 预算项目:{{data.YSXMBM}}-{{data.YSXMMXMC}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.SQJE}}元</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">摘要:{{data.ZY}}</text>
+        </view>
+    </view>
+</template>
+<template name="CGHTD">
+    <view class="order200">
+        <view class="order_xx">
+            <text class="left"> 存货编码:{{data.YSXMBM}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.JSDJ}}元/{{data.DW}}*{{data.SHJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">存货名称:{{data.YSXMMXMC}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.HSJE}}元</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">规格型号:{{data.GG}}{{data.XH}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">其他费用：{{data.FY}}元</text>
+        </view>
+        <view class="order_xx">
+            <text class="left" wx:if="{{data.BZ!=null}}">{{data.BZ}}</text>
+        </view>
+    </view>
+</template>
+<template name="CKDBD">
+    <view class="order200">
+        <view class="order_xx">
+            <text class="left"> 存货编码:{{data.YSXMBM}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.DJ}}元/{{data.DW}}*{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">存货名称:{{data.YSXMMXMC}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.HSJE}}元</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">规格型号:{{data.GG}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.XH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left" wx:if="{{data.BZ!=null}}">{{data.BZ}}</text>
+        </view>
+    </view>
+</template>
+<template name="tz_zbj2">
+    <view bindtap="onItemClickEvent" class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="lisetview_item_left_container">
+            <text class="S2 T3">{{data.ID}}</text>
+        </view>
+        <view class="lisetview_item_right_container">
+            <text class="S2 T3">{{data.MC}}</text>
+        </view>
+        <view class="lisetview_item_right_container ">
+            <text class="S2 T3">{{data.ZY}}</text>
+        </view>
+        <view class="lisetview_item_right_container">
+            <text class="S2 T3">{{data.JE}}</text>
+        </view>
+    </view>
+</template>
+<template name="tz_zbj1">
+    <view bindtap="onItemClickEvent" class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="lisetview_item_left_container">
+            <text class="S2 T3">{{data.ZRZXMC}}</text>
+        </view>
+        <view class="lisetview_item_left_container">
+            <text class="S2 T3">{{data.YSXMBM}}</text>
+        </view>
+        <view class="lisetview_item_left_container ">
+            <text class="S2 T3">{{data.YSXMMXBH}}</text>
+        </view>
+        <view class="lisetview_item_left_container">
+            <text class="S2 T3">{{data.YSXMMXMC}}</text>
+        </view>
+        <view class="lisetview_item_right_container ">
+            <text class="S2 T3">{{data.JE}}</text>
+        </view>
+    </view>
+</template>
+<template name="tz_zbj">
+    <view bindtap="onItemClickEvent" class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="lisetview_item_left_container  {{data.YF=='13'?'B5':''}}">
+            <text class="S2 T2">{{data.YF=='13'?data.MC:data.YF}}</text>
+        </view>
+        <view class="lisetview_item_right_container {{data.YF=='13'?'B5':''}}">
+            <text class="S2 T3" style="color:green">{{data.JE}}</text>
+        </view>
+        <view class="lisetview_item_right_container {{data.YF=='13'?'B5':''}}">
+            <text class="S2 T3" style="color:blue">{{data.JZJE}}</text>
+        </view>
+        <view class="lisetview_item_right_container {{data.YF=='13'?'B5':''}}">
+            <text class="S2 T3" style="color:red">{{data.SJJE}}</text>
+        </view>
+        <view class="lisetview_item_right_container {{data.YF=='13'?'B5':''}}">
+            <text class="S2 T3" style="color:{{data.YE>='0'?'blue':'red'}}">{{data.YE}}</text>
+        </view>
+    </view>
+</template>
+<template name="KHB_Y">
+    <view class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="order_hao">
+            <text class="left">{{data.YSXMBM}}:第一月度:</text>
+            <text class="right" style="color:{{data.Y1>='0'?'blue':'red'}}"> {{data.Y1}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二月度:</text>
+            <text class="right" style="color:{{data.Y2>='0'?'blue':'red'}}"> {{data.Y2}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三月度:</text>
+            <text class="right" style="color:{{data.Y3>='0'?'blue':'red'}}"> {{data.Y3}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第四月度:</text>
+            <text class="right" style="color:{{data.Y4>='0'?'blue':'red'}}"> {{data.Y4}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第五月度:</text>
+            <text class="right" style="color:{{data.Y5>='0'?'blue':'red'}}"> {{data.Y5}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第六月度:</text>
+            <text class="right" style="color:{{data.Y6>='0'?'blue':'red'}}"> {{data.Y6}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第七月度:</text>
+            <text class="right" style="color:{{data.Y7>='0'?'blue':'red'}}"> {{data.Y7}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第八月度:</text>
+            <text class="right" style="color:{{data.Y8>='0'?'blue':'red'}}"> {{data.Y8}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第九月度:</text>
+            <text class="right" style="color:{{data.Y9>='0'?'blue':'red'}}"> {{data.Y9}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十月度:</text>
+            <text class="right" style="color:{{data.Y10>='0'?'blue':'red'}}"> {{data.Y10}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十一月度:</text>
+            <text class="right" style="color:{{data.Y11>='0'?'blue':'red'}}"> {{data.Y11}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二月度:</text>
+            <text class="right" style="color:{{data.Y12>='0'?'blue':'red'}}"> {{data.Y12}}元</text>
+        </view>
+    </view>
+</template>
+<template name="KHB_J">
+    <view class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="order_hao">
+            <text class="left">{{data.YSXMBM}}:第一季度:</text>
+            <text class="right" style="color:{{data.J1>='0'?'blue':'red'}}"> {{data.J1}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二季度:</text>
+            <text class="right" style="color:{{data.J2>='0'?'blue':'red'}}"> {{data.J2}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三季度:</text>
+            <text class="right" style="color:{{data.J3>='0'?'blue':'red'}}"> {{data.J3}}元</text>
+        </view>
+        <view class="order_hao">
+            <text class="left" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第四季度:</text>
+            <text class="right" style="color:{{data.J4>='0'?'blue':'red'}}"> {{data.J4}}元</text>
+        </view>
+    </view>
+</template>
+<template name="KHB_N">
+    <view class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="order_hao">
+            <text class="left">{{data.YSXMBM}}:</text>
+            <text class="right" style="color:{{data.N1>='0'?'blue':'red'}}">{{filters.add_comma_toThousands(data.N1)}} 元</text>
+        </view>
+    </view>
+</template>
+<template name="jkd_tz2">
+    <view bindtap="onItemClickEvent" class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="lisetview_item_right_container B5">
+            <text class="S2 T3">{{data.ID}}</text>
+        </view>
+        <view class="lisetview_item_right_container  B5">
+            <text class="S2 T3">{{data.ZRZXMC}}</text>
+        </view>
+        <view class="lisetview_item_right_container B5 ">
+            <text class="S2 T3">{{data.SQJE}}</text>
+        </view>
+        <view class="lisetview_item_right_container B5">
+            <text class="S2 T3">{{data.YWRQ}}</text>
+        </view>
+    </view>
+</template>
+<template name="CGFKD">
+    <view>
+        <view class="order_xx">
+            <text class="left">付款帐户:{{data.FKFS}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">采购合同:{{data.HTMC}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">说明:{{data.FKZT}}</text>
+        </view>
+        <view class="order_xx"></view>
+        <view class="order_xx">
+            <text class="left">收款单位:{{data.SSDW}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">开户行:{{data.KHH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">帐户:{{data.ZH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">税号:{{data.SH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">付款金额:</text>
+            <text class="cl_df0c1d right" style="color:blue;">￥{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">人民币大写: </text>
+            <text class="cl_df0c1d right">{{data.DX}}</text>
+        </view>
+    </view>
+</template>
+<template name="DBD">
+    <view>
+        <view class="order_xx">
+            <text class="left">转出单位:{{data.ZCDW}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">转出帐户:{{data.ZCZH}}</text>
+        </view>
+        <view class="order_xx"></view>
+        <view class="order_xx">
+            <text class="left">转入单位:{{data.ZCDW1}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">转入帐户:{{data.ZCZH1}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">调拨金额:</text>
+            <text class="cl_df0c1d right" style="color:blue;">￥{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">人民币大写: </text>
+            <text class="cl_df0c1d right">{{data.DX}}</text>
+        </view>
+    </view>
+</template>
+<template name="SKD">
+    <view>
+        <view class="order_xx">
+            <text class="left">收款帐户:{{data.FKZH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">收款金额:</text>
+            <text class="cl_df0c1d right" style="color:blue;">￥{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">摘要:{{data.FKZT}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">人民币大写: </text>
+            <text class="cl_df0c1d right">{{data.DX}}</text>
+        </view>
+        <view class="order_xx"></view>
+        <view class="order_xx">
+            <text class="left">付款单位:{{data.SSDW}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">开户银行:{{data.KHH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">帐户:{{data.ZH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">税号:{{data.SH}}</text>
+        </view>
+    </view>
+</template>
+<template name="CKD">
+    <view class="order250">
+        <view class="order_xx">
+            <text class="left"> 存货编码:{{data.YSXMBM}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.DJ}}元/{{data.DW}}*{{data.SHJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">存货名称:{{data.YSXMMXMC}}</text>
+            <text class="cl_df0c1d right" style="color:green;">￥{{data.HSJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">出库仓库:{{data.CKMC}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">预算执行:{{data.YSXMMC}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left" wx:if="{{data.BZ!=null}}">备注：{{data.BZ}}</text>
+        </view>
+    </view>
+</template>
+<template name="XJD">
+    <view class="order200">
+        <view class="order_xx">
+            <text class="left"> 存货编码:{{data.YSXMBM}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.DJ}}元/{{data.DW}}*{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">存货名称:{{data.YSXMMXMC}}</text>
+            <text class="cl_df0c1d right" style="color:green;">￥{{data.HSJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">供应厂商:{{data.GYSMC}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left" wx:if="{{data.ZY!=null}}">{{data.ZY}}</text>
+        </view>
+    </view>
+</template>
+<template name="SGD">
+    <view class="order">
+        <view class="order_xx">
+            <text class="left"> 存货编码:{{data.YSXMBM}}</text>
+            <text class="cl_df0c1d right" style="color:blue;">{{data.SQJE}}{{data.DW}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">存货名称:{{data.YSXMMXMC}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left" wx:if="{{data.ZY!=null}}">备注:{{data.ZY}}</text>
+        </view>
+    </view>
+</template>
+<template name="JKD">
+    <view>
+        <view class="order_xx">
+            <text class="left">用途:{{data.ZY}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">金额:</text>
+            <text class="cl_df0c1d right" style="color:blue;">￥{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">人民币大写: </text>
+            <text class="cl_df0c1d right">{{data.DX}}</text>
+        </view>
+    </view>
+</template>
+<template name="FKD">
+    <view>
+        <view class="order_xx">
+            <text class="left">付款帐户:{{data.FKZH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">付款金额:</text>
+            <text class="cl_df0c1d right" style="color:blue;">￥{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">摘要:{{data.FKZT}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">人民币大写: </text>
+            <text class="cl_df0c1d right">{{data.DX}}</text>
+        </view>
+        <view class="order_xx"></view>
+        <view class="order_xx">
+            <text class="left">收款单位:{{data.SSDW}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">开户银行:{{data.KHH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">帐户:{{data.ZH}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">税号:{{data.SH}}</text>
+        </view>
+    </view>
+</template>
+<template name="YSD">
+    <view class="order">
+        <view class="order_xx">
+            <text class="left" wx:if="{{data.FLZRZXBM!=null}}">执行部门:{{data.FLZRZXBM}}-{{data.FLZRZXMC}} 编码:{{data.YSXMBM}}-{{data.YSXMMXBH}}</text>
+            <text class="left" wx:if="{{data.FLZRZXBM==null}}"> 编码:{{data.YSXMBM}}-{{data.YSXMMXBH}}</text>
+            <text class="cl_df0c1d right" style="color:#999;">￥{{data.SQJE}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">名称:{{data.YSXMMXMC}}</text>
+        </view>
+        <view class="order_xx">
+            <text class="left">摘要:{{data.ZY}}</text>
+            <text class="cl_df0c1d right" wx:if="{{data.ZBJ!=0}}">￥{{data.ZBJ}}</text>
+        </view>
+    </view>
+</template>
+<template name="yssy_tz_zb2">
+    <view bindtap="onItemClickEvent" class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="lisetview_item_left_container">
+            <text class="S2 T3">{{data.ID}}</text>
+        </view>
+        <view class="lisetview_item_right_container">
+            <text class="S2 T3">{{data.MC}}</text>
+        </view>
+        <view class="lisetview_item_right_container ">
+            <text class="S2 T3">{{data.ZY}}</text>
+        </view>
+        <view class="lisetview_item_right_container">
+            <text class="S2 T3">{{data.JE}}</text>
+        </view>
+        <view class="lisetview_item_right_container ">
+            <text class="S2 T3">{{data.LC}}</text>
+        </view>
+    </view>
+</template>
+<template name="yssy_tz_zb1">
+    <view bindtap="onItemClickEvent" class="lisetview_data_container" data-item="{{data}}" hover="true" hoverClass="navigator-hover">
+        <view class="lisetview_item_left_container">
+            <text class="S2 T2">{{data.YSXMMXBH}}</text>
+            <text class="S2 T3">{{data.YSXMMXMC}}</text>
+        </view>
+        <view class="lisetview_item_right_container">
+            <text class="S2 T3">{{data.YSJE}}</text>
+        </view>
+        <view class="lisetview_item_right_container ">
+            <text class="S2 T3">{{data.SJJE}}</text>
+        </view>
+        <view class="lisetview_item_right_container">
+            <text class="S2 T3">{{data.ZYJE}}</text>
+        </view>
+        <view class="lisetview_item_right_container ">
+            <text class="S2 T3">{{data.KYJE}}</text>
+        </view>
+    </view>
+</template>
+<template name="yssy_tz_zb">
+    <view bindtap="onItemClickEvent" class="lisetview_data_container" data-desc="{{data.MX}}" data-item="{{data}}" data-name="{{data.WZ}}" data-x="{{data.X}}" data-y="{{data.Y}}" hover="true" hoverClass="navigator-hover">
+        <view class="lisetview_item_left_container  {{data.ZD=='×'?'B5':''}}">
+            <text class="S2 T3" style="width:120rpx;">{{data.BJNAME}}</text>
+        </view>
+        <view class="lisetview_item_left_container  {{data.ZD=='×'?'B5':''}}">
+            <text class="S2 T3" style="width:40rpx;">{{data.CODE}}</text>
+        </view>
+        <view class="lisetview_item_left_container {{data.ZD=='×'?'B5':''}}">
+            <text class="S2 T3" style="width:140rpx;">{{data.NAME}}</text>
+        </view>
+        <view class="lisetview_item_left_container {{data.ZD=='×'?'B5':''}}">
+            <text class="S2 T3" style="width:40rpx;">{{data.ZD==null?'':data.ZD}}</text>
+        </view>
+        <view class="lisetview_item_middle_container  {{data.ZD=='×'?'B5':''}}">
+            <text class="S2 T3" style="width:40rpx;">{{data.TW==null?'':data.TW}}</text>
+        </view>
+        <view class="lisetview_item_middle_container;">
+            <text class="S2 T3" style="width:150rpx;">{{data.BZ==null?'':data.BZ}}</text>
+        </view>
+    </view>
+</template>
+<wxs module="filters" src="../../utils/filters.wxs" />

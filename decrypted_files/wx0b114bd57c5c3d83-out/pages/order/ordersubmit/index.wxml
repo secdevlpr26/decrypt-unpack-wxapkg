@@ -1,0 +1,78 @@
+<view class="parent">
+    <view bindtap="addressSelect" class="view-address">
+        <view class="view-addressleft">
+            <image src="/images/white_loc.png"></image>
+            <view class="view-addressleft-info">
+                <text class="text-name">收货人:{{address.consignee}}</text>
+                <text class="text-address">收货地址:{{address.address}}</text>
+            </view>
+        </view>
+        <view class="view-addressright">
+            <text class="text-mobile">{{address.mobile}}</text>
+            <image src="/images/white_hint.png"></image>
+        </view>
+    </view>
+    <view class="container carts-list" wx:for="{{cartList}}" wx:key="index">
+        <view class="view-title" wx:if="{{item.show==1}}">
+            <image src="/images/icon_order.png"></image>
+            <text>供应商:{{item.store_name}}</text>
+        </view>
+        <view class="class-line" wx:if="{{item.show==1}}"></view>
+        <view class="carts-item">
+            <view>
+                <image class="carts-image" mode="aspectFill" src="{{item.image}}"></image>
+            </view>
+            <view class="carts-text">
+                <text class="carts-title">{{item.goods_name}}</text>
+                <text class="carts-key-name">{{item.spec_key_name}}</text>
+                <view class="carts-subtitle"></view>
+            </view>
+            <view class="carts-right">
+                <text class="text-red">￥{{item.member_goods_price}}</text>
+                <text class="text-price">x{{item.goods_num}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="class-line1"></view>
+    <view class="view-freemoney">
+        <radio bindtap="check1" checked="{{check[0]}}" class="radio-style" color="red" value="0"></radio>
+        <picker bindchange="bindPickerChange" range="{{coupon}}" value="{{index}}">
+            <view class="view-picker">
+    
+      {{cv}}
+    
+   </view>
+        </picker>
+        <text class="text-hint">或者</text>
+        <radio bindtap="check2" checked="{{check[1]}}" class="radio-style" color="red" value="1"></radio>
+        <input bindchange="bindChangeOfcoupon" class="input-money" placeholder="直接输入优惠劵" placeholderStyle="color:#999999" style="width:200rpx"></input>
+    </view>
+    <view class="view-freemoney">
+        <text class="text-hint">使用余额:</text>
+        <input bindchange="bindChange" class="input-money" placeholder="输入余额" placeholderStyle="color:#999999"></input>
+        <text bindtap="use" class="btn-use">使用</text>
+        <text class="text-hint1">您的可用余额{{freemoney}}</text>
+    </view>
+    <view class="view-freemoney">
+        <text class="text-hint">使用积分:</text>
+        <input bindchange="bindChangeOfPoint" class="input-money" placeholder="输入积分" placeholderStyle="color:#999999"></input>
+        <text bindtap="use_point" class="btn-use">使用</text>
+        <text class="text-hint1">您的可用积分{{pay_points}}</text>
+    </view>
+    <view class="class-line1"></view>
+    <view class="view-price">
+        <view class="view-price1">
+            <text class="text-price1">商品总额:</text>
+            <text class="text-red">￥{{totalPrice.total_fee}}元</text>
+        </view>
+        <view hidden class="view-price1">
+            <text class="text-price1">邮费:</text>
+            <text class="text-red">￥20元</text>
+        </view>
+        <view class="view-price1">
+            <text class="text-price1">应付总金额:</text>
+            <text class="text-red">￥{{totalPrice.total_fee}}元</text>
+        </view>
+    </view>
+    <text bindtap="formSubmit" class="text-save">提交订单</text>
+</view>

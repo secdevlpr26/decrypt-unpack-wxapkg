@@ -1,0 +1,32 @@
+<form bindreset="formReset" bindsubmit="formSubmit">
+    <view class="address">
+        <view class="li">
+            <text>名称：</text>
+            <input name="gsname" type="text" value="{{gsname}}"></input>
+        </view>
+        <view class="li">
+            <text>税号：</text>
+            <input name="gsxh" type="text" value="{{gsxh}}"></input>
+        </view>
+        <view class="li">
+            <text>单位地址：</text>
+            <input name="address" type="text" value="{{address}}"></input>
+        </view>
+        <view class="li">
+            <text>电话号码：</text>
+            <input name="tell" type="text" value="{{tell}}"></input>
+        </view>
+        <view class="li">
+            <text>开户银行：</text>
+            <input name="bank" type="text" value="{{bank}}"></input>
+        </view>
+        <view class="li">
+            <text>银行帐户：</text>
+            <input name="zh" type="text" value="{{zh}}"></input>
+        </view>
+        <input hidden="false" name="id" type="hidden" value="{{id}}"></input>
+    </view>
+    <view class="tijiao">
+        <button formType="submit">提交</button>
+    </view>
+</form>

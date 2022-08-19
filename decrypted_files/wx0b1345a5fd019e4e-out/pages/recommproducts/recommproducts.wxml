@@ -1,0 +1,46 @@
+<view class="advertis-top">
+    <scroll-view class="advertis-scroll" scrollX="true">
+        <view bindtap="titletap" class="type-item {{categoryCode==item.code?'active':''}}" data-code="{{item.code}}" data-index="{{index}}" wx:for="{{cateList}}" wx:key="{{item.id}}">
+              {{item.itemName}}
+            </view>
+    </scroll-view>
+</view>
+<view class="news-content">
+    <view class="news-item-ls">
+        <view bindtap="toProductDetail" class="news-item" data-pid="{{item.id}}" wx:for="{{productList}}">
+            <view class="group-label1" wx:if="{{item.activityType=='5'}}">拼团</view>
+            <image lazyLoad="{{true}}" src="{{item.productImageVOList[0].imageURL}}"></image>
+            <view class="news-item-info">
+                <view class="item-info-name">
+                    <text class="news-item-title">{{item.productName}}</text>
+                </view>
+                <view>
+                    <view class="item-info-price" wx:if="{{item.purpose=='1'||item.purpose=='3'}}">
+                        <view class="price-now">
+                            <text>￥<text class="bigBlue">{{item.price}}</text>
+                            </text>
+                        </view>
+                        <view class="price-old">￥{{item.productModelList[0].originalprice}}</view>
+                    </view>
+                    <view class="item-info-showName" wx:else>
+                        <text>{{item.showName}}</text>
+                    </view>
+                </view>
+                <view class="item-info-buy">
+                    <view class="btn-buy">去购买</view>
+                    <view class="progress">
+                        <text>已售{{item.saleCount}}件</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-hint" hidden="{{bottomHint}}">
+        <view class="line"></view>
+        <text>没有更多资讯啦</text>
+    </view>
+</view>
+<view class="news-null" hidden="{{hidden}}">
+    <view class="iconfont icon-vz-null"></view>
+    <text>暂时没有资讯信息</text>
+</view>

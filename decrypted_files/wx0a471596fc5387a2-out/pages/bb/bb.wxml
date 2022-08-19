@@ -1,0 +1,35 @@
+<import src="../common/line.wxml"></import>
+<import src="../template/template.wxml"></import>
+<view class="tr" style=" padding-top:150rpx;">
+    <view id="section_list1">
+        <template is="yssy_tz_zb" data="{{data:item}}" wx:for="{{list1}}" wx:key="Id"></template>
+    </view>
+    <include src="../footer/footer.wxml"></include>
+    <view class="body-view">
+        <loading bindchange="loadingChange" hidden="{{hidden}}">
+    加载中...
+  </loading>
+    </view>
+</view>
+<view style="position:fixed; font-size:28rpx;top:10rpx;width: 750rpx;opacity:1.0;background:white;">
+    <view class="search" style="height: 70rpx;">
+        <picker bindchange="datePickerBindchange" end="2999-12-12" mode="date" start="1999-01-01" value="{{ywrq}}">
+查询日期: {{ywrq}}
+  </picker>
+    </view>
+    <view class="lisetview_data_container B1" style="height: 70rpx">
+        <text class="S2 T1 lisetview_item_left_container">班级</text>
+        <text class="S2 T2 lisetview_item_left_container">序号</text>
+        <text class="S2 T2 lisetview_item_left_container">姓名</text>
+        <text class="S2 T2 lisetview_item_left_container">驻地</text>
+        <text class="S2 T2 lisetview_item_left_container">体温</text>
+        <text class="S2 T2 lisetview_item_left_container">备注</text>
+    </view>
+</view>
+<view style="white-space:pre-wrap"> 
+图例提示：
+驻地：√——未变  ×——改变；
+体温：√——正常  ×——异常； 
+
+
+   </view>

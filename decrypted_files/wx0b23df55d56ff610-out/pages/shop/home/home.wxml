@@ -1,0 +1,42 @@
+<view wx:if="{{isShow}}">
+    <swiper circular autoplay="{{autoplay}}" class="indexbanner" duration="{{duration}}" indicatorActiveColor="{{active_color}}" indicatorColor="{{color}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item wx:for="{{banner}}" wx:key="key">
+            <image class="banner" mode="scaleToFill" src="{{item.ad_code}}" style="height:360rpx;"></image>
+        </swiper-item>
+    </swiper>
+    <view class="hotCon" style="margin-top:-30rpx;">
+        <view class="hotTitle" style="color:#ff5000">
+            <image src="/images/dian.png" style="margin-top:0rpx;"></image>
+            <text style="margin-top:5rpx;"> | 热门品牌</text>
+        </view>
+        <view class="hot clearfix">
+            <view bindtap="service" class="hot_item" data-index="{{index}}" wx:for="{{categorys}}">
+                <image src="{{item.image}}"></image>
+                <text>{{item.mobile_name}}</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="service" class="more" data-index="0">
+  查看更多品牌
+  <image src="/images/icon_more.png"></image>
+    </view>
+    <view class="hotCon">
+        <view class="hotTitle" style="color:#ff5000">
+            <image src="/images/dian.png" style="margin-top:0rpx;"></image>
+            <text style="margin-top:5rpx;"> | 热门机型</text>
+        </view>
+        <view class="hot clearfix"></view>
+    </view>
+    <view class="hotRecycleContent">
+        <view bindtap="selectPhone" class="hotRecycleContentItem" data-bid="{{item.goods_id}}" data-bname="{{item.brand_name}}" data-id="{{item.goods_id}}" data-mid="{{item.mould_id}}" data-mname="{{item.mould_name}}" data-mpic="{{item.mould_picture}}" wx:for="{{hots}}" wx:key="index">
+            <image mode="widthFix" src="{{item.original_img}}"></image>
+            <view class="mould">{{item.goods_name}}</view>
+            <view class="price">
+                <text>¥{{item.shop_price}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="hotRecycleFoot" style="background:#fff;">
+        <view bindtap="service" class="findMoreBtn" data-index="0">查看更多机型</view>
+    </view>
+</view>

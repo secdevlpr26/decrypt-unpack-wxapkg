@@ -1,0 +1,67 @@
+<view class="wrap">
+    <view class="nav">
+        <view bindtap="navtap" class="nav-item {{item.navIdx==currentIdx?'active':''}}" data-index="{{item.navIdx}}" hidden="{{!item.isShow}}" wx:for="{{navArr}}">{{item.navName}}</view>
+    </view>
+    <view class="main">
+        <block wx:if="{{currentIdx==3}}">
+            <view bindtap="toNewsDetail" class="news-item" data-tabId="{{item.objId}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+                <view class="news-icon">
+                    <image lazyLoad="{{true}}" src="{{item.pic_url}}"></image>
+                </view>
+                <view class="news-main">
+                    <text class="news-title">{{item.name}}</text>
+                    <text class="news-content">{{item.detailDescription}}</text>
+                </view>
+            </view>
+        </block>
+        <block wx:elif="{{currentIdx==4}}">
+            <view bindtap="toNewsCenter" class="news-item" data-tabId="{{item.objId}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+                <view class="news-icon">
+                    <image lazyLoad="{{true}}" src="{{item.pic_url}}"></image>
+                </view>
+                <view class="news-main">
+                    <text class="news-title">{{item.name}}</text>
+                    <text class="news-content">{{item.detailDescription}}</text>
+                </view>
+            </view>
+        </block>
+        <block wx:elif="{{currentIdx==2}}">
+            <view bindtap="toStoreDetail" class="store-item" data-tabId="{{item.objId}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+                <image lazyLoad="{{true}}" src="{{item.pic_url}}"></image>
+                <view class="store-main">
+                    <text class="store-title">{{item.name}}</text>
+                    <text class="store-content">{{item.address}}</text>
+                </view>
+            </view>
+        </block>
+        <block wx:elif="{{currentIdx==1}}">
+            <view bindtap="toProDetail" class="pro-item" data-tabId="{{item.objId}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+                <image lazyLoad="{{true}}" src="{{item.pic_url}}"></image>
+                <view class="pro-info">
+                    <text class="pro-title">{{item.name}}</text>
+                    <text class="pro-price">
+                        <text class="rmb">￥</text>{{item.price}}</text>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view bindtap="toSupplyDetail" class="supply-item" data-tabId="{{item.objId}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+                <view class="supply-icon">
+                    <image lazyLoad="{{true}}" src="{{item.pic_url}}"></image>
+                </view>
+                <view class="supply-main">
+                    <text class="supply-title">{{item.name}}</text>
+                    <text class="supply-content">{{item.detailDescription}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="collect-null" hidden="{{collectNull}}">
+        <view class="iconfont icon-vz-null"></view>
+        <text>您还没有添加收藏</text>
+    </view>
+    <view class="bottom-hint" hidden="{{bottomHint}}">
+        <view class="line"></view>
+        <text>没有更多收藏啦</text>
+    </view>
+</view>

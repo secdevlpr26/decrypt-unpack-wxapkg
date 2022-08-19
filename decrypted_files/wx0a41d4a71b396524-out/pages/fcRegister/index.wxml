@@ -1,0 +1,15 @@
+<view class="camera-container">
+    <view class="picture-preview" wx:if="{{isTake}}">
+        <image src="{{tempImagePath}}"></image>
+    </view>
+    <camera class="camera" devicePosition="front" frameSize="large" resolution="medium" wx:else></camera>
+</view>
+<view class="button-container">
+    <view class="shot-choose" wx:if="{{isTake}}">
+        <view bindtap="uploadImage" class="shot-upload" hoverClass="active">确认上传</view>
+        <view bindtap="takeAgain" class="shot-again">重新拍摄</view>
+    </view>
+    <view bindtap="takePicture" class="shot-button" hoverClass="active" wx:else>
+        <image src="../../images/shot.png"></image>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+<view class="wrap">
+    <view>流水号：{{applyCash.serialNO}}</view>
+    <view>账号类型：{{applyCash.bank.bankName}}</view>
+    <view wx:if="{{applyCash.bank.type!=2}}">开户行：{{applyCash.bank.bankInfo}}</view>
+    <view>用户名：{{applyCash.applyCashName}}</view>
+    <view>账号：{{applyCash.account}}</view>
+    <view>提现金额：{{applyCash.money}}元</view>
+    <view>状态：{{statusStr}}</view>
+    <view wx:if="{{applyCash.status==4}}">驳回原因：{{applyCash.rejectReason}}</view>
+    <view wx:if="{{disposeDate}}">{{disposeDate}}</view>
+</view>

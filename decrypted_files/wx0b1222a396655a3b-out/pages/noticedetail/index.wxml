@@ -1,0 +1,12 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<import src="/pages/noticedetail/tabbar.wxml"></import>
+<template is="tabbar" data="{{tabbar:tabbar}}"></template>
+<view class="page-index">
+    <view class="content">
+        <view class="card">
+            <view class="title">{{info?info.title:''}}</view>
+            <view class="time">{{info?info.createtime:''}}</view>
+            <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+        </view>
+    </view>
+</view>

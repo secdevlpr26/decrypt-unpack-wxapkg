@@ -1,0 +1,20 @@
+<view class="container">
+    <view class="sidebar">
+        <text bindtap="tapTopCategory" class="{{highlight[index]}}" data-banner="{{item.mobile_name}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{topCategories}}" wx:key="id">{{item.mobile_name}}</text>
+    </view>
+    <view class="sidebar" wx:if="{{topCategories2}}">
+        <text bindtap="tapTopCategory2" class="{{highlight2[index]}}" data-banner="{{item.mobile_name}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{topCategories2}}" wx:key="id">{{item.mobile_name}}</text>
+    </view>
+    <view class="main">
+        <view class="gridview">
+            <dl wx:for="{{subCategories}}" wx:key="id">
+                <dt>
+                    <image bindtap="avatarTap" data-object-id="{{item.id}}" mode="scaleToFit" src="{{item.image}}"></image>
+                </dt>
+                <dd>
+                    <text>{{item.mobile_name}}</text>
+                </dd>
+            </dl>
+        </view>
+    </view>
+</view>

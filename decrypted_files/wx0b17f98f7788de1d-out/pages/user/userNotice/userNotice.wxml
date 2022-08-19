@@ -1,0 +1,125 @@
+<view class="line"></view>
+<view class="noticebox" wx:for="{{notices}}" wx:key="key">
+    <view>
+        <view class="date" wx:if="{{notices[index].record!=''}}">{{notices[index].createTime}}</view>
+        <view class="textbox" wx:if="{{notices[index].record!=''}}">
+            <view class="title" style="font-size:18px !important">{{notices[index].record}}</view>
+            <view class="title" wx:if="{{notices[index].title=='充值撤销'}}">{{notices[index].money}}</view>
+            <view class="title" wx:if="{{notices[index].title=='会员卡核销'||notices[index].title=='权益卡核销'}}">{{notices[index].verificationWay}}</view>
+            <view class="title" style="" wx:if="{{notices[index].title=='领取权益卡'}}">{{notices[index].Money}}</view>
+            <view class="title" wx:if="{{notices[index].title=='领取权益卡'}}">{{notices[index].payType}}</view>
+            <view class="title" wx:if="{{notices[index].title=='优惠券到期提醒'}}">
+                <text class="jgg" decode="{{true}}">优&ensp;惠&nbsp;券</text>
+                <em class="dd">：</em>
+                <view class="hh">
+                    <text>{{notices[index].couponName}}</text>
+                </view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title=='优惠券到期提醒'}}">{{notices[index].couponNumber}}</view>
+            <view class="title" wx:if="{{notices[index].title=='优惠券到期提醒'}}">{{notices[index].couponFinalTime}}</view>
+            <view class="title" wx:if="{{notices[index].title==''}}">
+                <text class="jgg" decode="{{true}}">订&ensp;单&nbsp;号</text>
+                <em class="dd">：</em>
+                <view class="hh">{{notices[index].orderNumber}}</view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title==''}}">
+                <em class="" style="float:left;letter-spacing:0.5px">送达时间</em>
+                <em class="dd">：</em>
+                <view class="hh">{{notices[index].takeOutTime}}</view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title==''}}">{{notices[index].takeOutMan}}</view>
+            <view class="title" wx:if="{{notices[index].title=='积分操作'}}">{{notices[index].integral}}</view>
+            <view class="title" wx:if="{{notices[index].title=='积分操作'}}">{{notices[index].verificationWay}}</view>
+            <view class="title" wx:if="{{notices[index].title=='赠券'}}">{{notices[index].couponType}}</view>
+            <view class="title" wx:if="{{notices[index].title=='赠券'}}">{{notices[index].refundWay}}</view>
+            <view class="title" wx:if="{{notices[index].title=='赠券'}}">{{notices[index].couponNumber}}</view>
+            <view class="title" wx:if="{{notices[index].title=='余额核销'}}">{{notices[index].Money}}</view>
+            <view class="title" wx:if="{{notices[index].title=='积分核销'}}">{{notices[index].integral}}</view>
+            <view class="title" wx:if="{{notices[index].title=='余额核销'||notices[index].title=='积分核销'}}">{{notices[index].verificationWay}}</view>
+            <view class="title" wx:if="{{notices[index].title=='排队'}}">{{notices[index].currentnumber}}</view>
+            <view class="title" wx:if="{{notices[index].title=='排队'}}">{{notices[index].waitTableNumber}}</view>
+            <view class="title" wx:if="{{notices[index].title=='排队'}}">{{notices[index].waitTime}}</view>
+            <view class="title" wx:if="{{notices[index].title=='摇一摇'}}">{{notices[index].shakeName}}</view>
+            <view class="title" wx:if="{{notices[index].title=='摇一摇'}}">
+                <em class="jpg">奖品</em>
+                <em class="dd">：</em>
+                <view class="hh">{{notices[index].shakePrice}}</view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title=='预定接单'}}">
+                <em class="" style="float:left;letter-spacing:0.5px">到店时间</em>
+                <em class="dd">：</em>
+                <view class="hh">{{notices[index].arriveTime}}</view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title=='优惠券领取'}}">{{notices[index].couponName}}</view>
+            <view class="title" wx:if="{{notices[index].title=='优惠券核销'}}">
+                <text class="jgg" decode="{{true}}">优&ensp;惠&nbsp;券</text>
+                <em class="dd">：</em>
+                <view class="hh">
+                    <text>{{notices[index].couponName}}</text>
+                </view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title=='优惠券领取'||notices[index].title=='优惠券核销'}}">{{notices[index].couponNumber}}</view>
+            <view class="title" wx:if="{{notices[index].title=='优惠券核销'}}">{{notices[index].verificationWay}}</view>
+            <view class="title" wx:if="{{notices[index].title=='优惠券领取'}}">{{notices[index].couponType}}</view>
+            <view class="title" wx:if="{{notices[index].title=='外卖退款'}}">
+                <view class="order_0">
+                    <text class="order_1" decode="true">订&ensp;单&ensp;号：</text>
+                    <text class="order_2">{{notices[index].orderNumber}}</text>
+                </view>
+            </view>
+            <view wx:if="{{notices[index].record!=''}}">
+                <view class="title" wx:if="{{notices[index].title=='收银'||notices[index].title=='余额充值'||notices[index].title=='外卖支付'||notices[index].title=='点餐支付'||notices[index].title=='预定支付'||notices[index].title=='余额支付'||notices[index].title=='微信支付'||notices[index].title=='外卖退款'||notices[index].title=='点餐退款'||notices[index].title=='预定退款'||notices[index].title=='收银退款'}}">{{notices[index].Money}}</view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title=='外卖退款'||notices[index].title=='点餐退款'||notices[index].title=='预定退款'||notices[index].title=='收银退款'}}">{{notices[index].refundWay}}</view>
+            <view class="title" wx:if="{{notices[index].title=='点餐退款'||notices[index].title=='预定退款'||notices[index].title=='收银退款'}}">{{notices[index].refundFounction}}</view>
+            <view wx:if="{{notices[index].record!=''}}">
+                <view class="title" wx:if="{{notices[index].title=='收银'||notices[index].title=='余额充值'||notices[index].title=='外卖支付'||notices[index].title=='点餐支付'||notices[index].title=='预定支付'||notices[index].title=='余额支付'||notices[index].title=='微信支付'}}">{{notices[index].payType}}</view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title=='余额支付'&&notices[index].record=='外卖支付'}}">
+                <em class="jg">地址</em>
+                <em class="dd">：</em>
+                <view class="hh">{{notices[index].adress}}</view>
+            </view>
+            <view class="title" wx:if="{{notices[index].title=='微信支付'&&notices[index].record=='外卖支付'}}">
+                <em class="jg">地址</em>
+                <em class="dd">：</em>
+                <view class="hh">{{notices[index].adress}}</view>
+            </view>
+            <view class="text">
+                <view class="textcontent">
+                    <view style="overflow:hidden;width:100%" wx:if="{{notices[index].title!='摇一摇'&&notices[index].title!='赠券'&&notices[index].title!='领取会员卡'&&notices[index].title!='排队'&&notices[index].title!='优惠券到期提醒'&&notices[index].title!='优惠券领取'&&notices[index].title!='预定失败'&&notices[index].title!='优惠券核销'&&notices[index].title!='领取权益卡'&&notices[index].title!='会员卡核销'&&notices[index].record!=''&&notices[index].title!='权益卡核销'&&notices[index].record!='外卖送达'&&notices[index].title!='积分操作'}}">
+                        <view class="jg">其他</view>
+                        <view class="dd">：</view>
+                        <view class="hh" wx:if="{{notices[index].other[0]!='赠'&&notices[index].other[0]!='退'}}">{{notices[index].other}}</view>
+                        <view class="" style="float:left">
+                            <view class="" wx:if="{{notices[index].other[0]=='赠'}}">{{tools.sub(notices[index].other,0)}}</view>
+                            <view class="" wx:if="{{notices[index].other[0]=='赠'}}">{{tools.sub(notices[index].other,1)}}</view>
+                        </view>
+                        <view class="" style="float:left">
+                            <view class="" wx:if="{{notices[index].other[0]=='退'}}">{{tools.sub(notices[index].other,0)}}</view>
+                            <view class="" wx:if="{{notices[index].other[0]=='退'}}">{{tools.sub(notices[index].other,1)}}</view>
+                        </view>
+                    </view>
+                    <view wx:if="{{notices[index].title=='赠券'}}">
+                        <em class="" style="float:left">其他：</em>
+                        <view class="hh">{{notices[index].other}}</view>
+                    </view>
+                    <view wx:if="{{notices[index].title=='预定失败'}}">{{notices[index].loseCause}}</view>
+                    <view wx:if="{{notices[index].title==''}}">
+                        <em class="jg">地址</em>
+                        <em class="dd">：</em>
+                        <view class="hh">{{notices[index].adress}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<wxs module="filters" src="../../../addmu.wxs" />
+<wxs module="filters1" src="../../../addmul.wxs" />
+<wxs module="tools" src="../../../userNotice.wxs" />

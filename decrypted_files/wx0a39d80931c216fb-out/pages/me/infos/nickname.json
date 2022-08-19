@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "修改昵称",
+    "usingComponents": {
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

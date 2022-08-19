@@ -1,0 +1,8 @@
+<view class="container">
+    <view class="tit">
+    已开通城市
+  </view>
+    <view class="city-list">
+        <view bindtap="changeCity" class="city-item" data-name="{{item.name}}" wx:for="{{openCitys}}" wx:key="cityId">{{item.name}}</view>
+    </view>
+</view>

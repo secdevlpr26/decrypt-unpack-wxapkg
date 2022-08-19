@@ -1,0 +1,15 @@
+<view class="langFlag"></view>
+<import src="/wxParse/wxParse.wxml"></import>
+<view class="container">
+    <view class="particulars-text">
+        <text class="title">{{caseInfo.Name}}</text>
+        <text class="desc">{{caseInfo.Intro?caseInfo.Intro:'暂无简介'}}</text>
+    </view>
+    <view class="particulars-page">
+        <view class="particulars-content" hidden="{{currentTab!==0}}">
+            <template is="wxParse" data="{{wxParseData:DetailInfo.nodes}}"></template>
+        </view>
+    </view>
+</view>
+<include src="/pages/template/popupFromShare.wxml"></include>
+<include src="/pages/template/getUserInfo.wxml"></include>

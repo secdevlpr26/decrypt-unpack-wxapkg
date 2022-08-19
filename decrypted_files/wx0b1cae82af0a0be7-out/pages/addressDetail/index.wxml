@@ -1,0 +1,34 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <form bindsubmit="formSubmit">
+        <view class="address-info">
+            <view class="weui-cell addr-item">
+                <view class="weui-cell__ft">联系人</view>
+                <input bindinput="validateEmoji" class="weui-cell__bd" maxlength="12" name="name" placeholder="请输入姓名" placeholderStyle="color: #999;" value="{{name}}"></input>
+            </view>
+            <view class="weui-cell addr-item">
+                <view class="weui-cell__ft">联系电话</view>
+                <input bindinput="validatePhone" class="weui-cell__bd" maxlength="11" name="phone" placeholder="请输入手机号码" placeholderStyle="color: #999;" type="number" value="{{mobile}}"></input>
+            </view>
+            <navigator class="weui-cell weui-cell_access addr-item" url="../addressSearch/index">
+                <view class="weui-cell__ft" style="height: 1.4rem;line-height: 1.4rem;">服务地址</view>
+                <view class="weui-cell__bd weui-cell__ft_in-access">
+                    <text hidden="{{location}}" style="color: #999;">请输入您的小区或大厦、街道名称</text>
+                    <input disabled hidden="{{!location}}" name="addr" value="{{location}}"></input>
+                </view>
+            </navigator>
+            <textarea bindinput="validateEmoji" class="addr-mark" maxlength="80" name="mark" placeholder="请填写详细门牌地址~" placeholderStyle="color: #999;" value="{{detailAddr}}"></textarea>
+        </view>
+        <view class="addr-defalut-set">
+            <view class="left">
+                <view>设为默认地址</view>
+                <view class="tip">注：每次下单时会使用该地址</view>
+            </view>
+            <view class="right">
+                <switch bindchange="switch2Change" checked="{{isDefault}}" color="#26a2ff" name="isDefault"></switch>
+            </view>
+        </view>
+        <button class="btn-dafault btn-save" formType="submit">保存</button>
+    </form>
+</view>

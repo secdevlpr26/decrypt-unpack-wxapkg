@@ -1,0 +1,17 @@
+<view class="order-item" wx:for="{{collects}}">
+    <view class="carts-item">
+        <view>
+            <image class="carts-image" mode="aspectFill" src="{{item.image}}"></image>
+        </view>
+        <view class="carts-text">
+            <text class="carts-title">{{item.goods_name}}</text>
+            <view class="carts-subtitle">
+                <text>￥{{item.shop_price}}</text>
+            </view>
+            <view class="order-footer">
+                <text bindtap="details" class="btn-pay" data-goods-id="{{item.goods_id}}">加入购物车</text>
+                <text bindtap="deleteGoods" class="btn-delete" data-goods-id="{{item.goods_id}}">删除</text>
+            </view>
+        </view>
+    </view>
+</view>

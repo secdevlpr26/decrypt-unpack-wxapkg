@@ -1,0 +1,26 @@
+<view class="container">
+    <view class="balance-all">
+        <text>{{percent}}%</text> 满意
+  </view>
+    <scroll-view scrollY bindscrolltolower="lower" class="evaluate-list">
+        <view class="serve-list">
+            <view class="evaluate-item" wx:for="{{evaluateList}}" wx:key="headImage">
+                <view class="top">
+                    <view class="user">
+                        <image class="avatar" src="{{item.headImage}}"></image>
+                        <text>{{item.nickName}}</text>
+                    </view>
+                    <view class="score">
+                        <image mode="widthFix" src="/images/39@3x.png" wx:for="{{item.starLevel}}"></image>
+                        <image mode="widthFix" src="/images/40@3x.png" wx:for="{{5-item.starLevel}}"></image>
+                    </view>
+                </view>
+                <view class="text time">{{item.eTime}}</view>
+                <view class="text">
+            {{item.content}}
+          </view>
+            </view>
+        </view>
+        <view class="none-data" hidden="{{evaluateList.length>0}}">该服务暂时没有评价</view>
+    </scroll-view>
+</view>

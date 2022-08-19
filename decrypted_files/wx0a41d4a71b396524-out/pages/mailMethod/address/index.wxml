@@ -1,0 +1,28 @@
+<view class="page">
+    <view class="noData" wx:if="{{nodata}}">
+        <image src="../../../images/no-data.png"></image>
+        <view class="no-cart">暂无收货地址</view>
+    </view>
+    <view bindtap="chooseAddress" class="address-list" data-index="{{key}}" wx:for="{{addressList}}" wx:for-index="key">
+        <view class="addr-item">
+            <view class="addr-name">收货人：{{item.userName}} <text>{{item.phone}}</text>
+            </view>
+            <view class="addr-info">收货地址：{{item.area+item.address}}</view>
+            <view class="line">
+                <image src="../../../images/addr-line.png"></image>
+            </view>
+            <view class="addr-crud">
+                <block wx:if="{{item.id!=null}}">
+                    <view catchtap="delItem" class="del" data-id="{{item.id}}" data-index="{{index}}">
+                        <image src="../../../images/del.png"></image>删除</view>
+                    <view catchtap="toedit" class="edit" data-id="{{item.id}}">
+                        <image src="../../../images/edit.png"></image>编辑</view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view style=" height:100rpx;"></view>
+    <view class="footer">
+        <button bindtap="toAdd">添加地址</button>
+    </view>
+</view>

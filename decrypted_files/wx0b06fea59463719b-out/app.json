@@ -1,0 +1,80 @@
+{
+    "pages": [
+        "pages/company/index",
+        "pages/company/about",
+        "pages/company/productlist",
+        "pages/company/newslist",
+        "pages/company/productdetail",
+        "pages/company/newsdetail",
+        "pages/company/caselist",
+        "pages/company/noticedetail",
+        "pages/company/casedetail",
+        "pages/company/custompage",
+        "pages/company/businessCard/shareCard",
+        "pages/company/businessCard/editCard",
+        "pages/company/businessCard/upload",
+        "pages/company/businessCard/cardcase",
+        "pages/company/businessCard/accessRecord",
+        "pages/company/businessCard/cardDetails",
+        "pages/company/businessCard/material-library",
+        "pages/company/businessCard/dynamic",
+        "pages/company/businessCard/chatMessage",
+        "pages/company/businessCard/chatDialogue",
+        "pages/company/businessCard/airadar",
+        "pages/company/businessCard/userdetails",
+        "pages/company/businessCard/datadetails",
+        "pages/company/businessCard/rankinglist",
+        "pages/company/businessCard/workbench",
+        "pages/phoneauthorization/index",
+        "pages/company/productlist_tabbar",
+        "pages/company/newslist_tabbar",
+        "pages/company/about_tabbar",
+        "pages/webview/webview"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#fff",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "银星玻璃"
+    },
+    "tabBar": {
+        "backgroundColor": "#ffffff",
+        "color": "#a5a5a5",
+        "selectedColor": "#0c0c0c",
+        "list": [
+            {
+                "pagePath": "pages/company/index",
+                "text": "首页",
+                "iconPath": "images/tarbaricons/5b11fb4d60f85.png",
+                "selectedIconPath": "images/tarbaricons/5b11fb4d5b8ae.png"
+            },
+            {
+                "pagePath": "pages/company/productlist_tabbar",
+                "text": "产品",
+                "iconPath": "images/tarbaricons/5b11fb4d5de51.png",
+                "selectedIconPath": "images/tarbaricons/5b11fb4d62320.png"
+            },
+            {
+                "pagePath": "pages/company/newslist_tabbar",
+                "text": "新闻",
+                "iconPath": "images/tarbaricons/5b11fb4d5ef27.png",
+                "selectedIconPath": "images/tarbaricons/5b11fb4d634ee.png"
+            },
+            {
+                "pagePath": "pages/company/about_tabbar",
+                "text": "关于我们",
+                "iconPath": "images/tarbaricons/5b11fb4d5fe04.png",
+                "selectedIconPath": "images/tarbaricons/5b11fb4d6478d.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000,
+        "connectSocket": 10000
+    },
+    "navigateToMiniProgramAppIdList": [],
+    "debug": true
+}

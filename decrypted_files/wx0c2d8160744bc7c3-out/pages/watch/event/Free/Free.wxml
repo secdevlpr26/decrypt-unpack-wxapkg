@@ -1,0 +1,70 @@
+<form bindsubmit="formSubmit">
+    <input name="area_id" style="display:none;" value="{{area_id}}"></input>
+    <view class="weui-cells">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <view class="weui-uploader">
+                    <view class="weui-uploader__hd">
+                        <view class="weui-uploader__title">点击拍照</view>
+                    </view>
+                    <view class="weui-uploader__bd">
+                        <view class="weui-uploader__files">
+                            <view class="weui-uploader__file" wx:for="{{imageList}}" wx:for-item="image">
+                                <image bindtap="previewImage" class="weui-uploader__img" data-src="{{image}}" src="{{image}}"></image>
+                            </view>
+                        </view>
+                        <view class="weui-uploader__input-box">
+                            <view bindtap="chooseImage" class="weui-uploader__input"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="section">
+        <input name="event_type_id" style="display:none" type="text" value="{{event_type_id}}"></input>
+    </view>
+    <view class="page-section">
+        <view class="textarea-wrp">
+            <view class="ms">描述信息：</view>
+            <textarea name="detail" style="height: 5em"></textarea>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">事发地：</view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" name="location" placeholder="请输入事发地点" value="{{address}}"></input>
+                    <input name="coordination" style="display:none;" value="{{longitude}},{{latitude}}"></input>
+                </view>
+                <view class="weui-cell_dw">
+                    <view bindtap="getEventLocation" style="position:absolute;top:30rpx;right:50rpx">
+                        <image src="/dist/images/mapmark.png" style="width: 28px; height: 36px;"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">
+                        <text style="color:red">*</text>联系电话：</view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" name="phone" placeholder="请输电话方式方便联系您" value="{{phone}}"></input>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="btn-submit">
+        <button type="default" wx:if="{{action==false}}">提交中...
+      <icon color="orange" size="20" type="waiting"></icon>
+        </button>
+        <button class="btn-block btn-orange" formType="submit" type="primary" wx:if="{{action==true}}">提交</button>
+    </view>
+</form>

@@ -1,0 +1,13 @@
+<view class="headView">
+    <image class="headImg" mode="aspectFill" src="{{avatarUrl.length>0?avatarUrl:iconimg.default_pic}}"></image>
+    <text class="nickName">{{nickName}}</text>
+</view>
+<navigator class="cell padding_spacing" hoverClass="button-hover" url="../MyFreeAdviceInfo/MyFreeAdviceInfo?id={{item.id}}" wx:for="{{list}}" wx:for-index="idx" wx:key="index">
+    <view class="horiz" style="justify-content: space-between; margin-top:20px;">
+        <text class="cell-time">{{item.addTime}}</text>
+        <view class="cell-state horiz" style="color:{{item.replyStatus?'#333':'#bbb'}}">{{item.replyStatus?'已解答':'未解答'}}
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+    <text class="cell-content">{{item.askContent}}</text>
+</navigator>

@@ -1,0 +1,80 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="graybg">
+    <view bindtap="chooseDevice" class="weixiutitle">品牌/型号
+    <view class="zhankai">{{selectMould.MouldName}}</view>
+    </view>
+    <block wx:if="{{optionList.length!==0&&(selectMould.BrandName=='金立'||selectMould.BrandName=='魅族')}}">
+        <view bindtap="displayOptions" class="weixiutitle mt20">保障信息
+      <view class="zhankai">{{selectedOption.name}}</view>
+        </view>
+        <view class="xuanze_container" wx:if="{{options_hidden==false}}">
+            <block wx:for="{{optionList}}" wx:for-index="optionIndex" wx:for-item="optionItem" wx:key="option">
+                <view bindtap="selectOption" class="xuanze-text xuanzecur" data-id="{{optionItem.Id}}" data-idx="{{optionIndex}}" wx:if="{{optionItem.Id==selectedOption.Id}}">{{optionItem.name}}</view>
+                <view bindtap="selectOption" class="xuanze-text" data-id="{{optionItem.Id}}" data-idx="{{optionIndex}}" wx:else>{{optionItem.name}}</view>
+            </block>
+        </view>
+    </block>
+    <view bindtap="displayFaults" class="weixiutitle mt20">选择故障
+    <view class="zhankai">{{selectedFault.fault_name}}</view>
+    </view>
+    <view class="xuanze_container" wx:if="{{faults_hidden==false}}">
+        <block wx:for="{{faultList}}" wx:for-index="faultIndex" wx:for-item="faultItem" wx:key="fault">
+            <view bindtap="selectFault" class="xuanze-text xuanzecur" data-id="{{faultItem.fault_id}}" data-idx="{{faultIndex}}" wx:if="{{faultItem.fault_id==selectedFault.fault_id}}">{{faultItem.fault_name}}</view>
+            <view bindtap="selectFault" class="xuanze-text" data-id="{{faultItem.fault_id}}" data-idx="{{faultIndex}}" wx:else>{{faultItem.fault_name}}</view>
+        </block>
+    </view>
+    <block wx:if="{{colorList.length!==0}}">
+        <view bindtap="displayColors" class="weixiutitle mt20">颜色
+      <view class="zhankai">{{selectedColor.ColorName}}</view>
+        </view>
+        <view class="xuanze_container" wx:if="{{colors_hidden==false}}">
+            <block wx:for="{{colorList}}" wx:for-index="colorIndex" wx:for-item="colorItem" wx:key="color">
+                <view bindtap="selectColor" class="xuanze-text xuanzecur" data-id="{{colorItem.ColorId}}" data-idx="{{colorIndex}}" wx:if="{{colorItem.ColorId==selectedColor.ColorId}}">{{colorItem.ColorName}}</view>
+                <view bindtap="selectColor" class="xuanze-text" data-id="{{colorItem.ColorId}}" data-idx="{{colorIndex}}" wx:else>{{colorItem.ColorName}}</view>
+            </block>
+        </view>
+    </block>
+    <block wx:if="{{planList.length!==0}}">
+        <view class="weixiutitle mt20">维修方案
+      <view bindtap="diplayRepairDesView" class="tip">维修说明</view>
+        </view>
+        <view class="xuanze">
+            <block wx:for="{{planList}}" wx:for-index="planIndex" wx:for-item="planItem" wx:key="plan">
+                <view bindtap="selectPlan" class="xuanze-text1 xuanzecur1" data-id="{{planItem.Id}}" data-idx="{{planIndex}}" wx:if="{{planItem.Id==selectedPlan.Id}}">{{planItem.faultType}}
+            <view class="prize">{{planItem.Price}}</view>
+                </view>
+                <view bindtap="selectPlan" class="xuanze-text1" data-id="{{planItem.Id}}" data-idx="{{planIndex}}" wx:else>{{planItem.faultType}}
+            <view class="prize">{{planItem.Price}}</view>
+                </view>
+            </block>
+        </view>
+    </block>
+    <view class="blank" style="height:64px; width: 100%; background: transparent ;"></view>
+    <view class="xiayibu">
+        <text catchtap="next" wx:if="{{selectedPlan.Id}}">下一步</text>
+        <text class="gragbg" wx:else>下一步</text>
+    </view>
+    <view class="detailtip" wx:if="{{repairDesView_hidden==false}}">
+        <view class="detailtip1">
+            <block wx:for="{{explainList}}" wx:for-index="explainIndex" wx:for-item="explainItem" wx:key="explain">
+                <block wx:if="{{explainIndex==0}}">
+                    <view class="detailtitle">{{explainItem.title}}</view>
+                    <view class="detailmain">
+                        <view wx:for="{{explainItem.list}}" wx:key="item">{{item}}</view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="detailtitle bortop">{{explainItem.title}}</view>
+                    <view class="detailmain">
+                        <view wx:for="{{explainItem.list}}" wx:key="item">{{item}}</view>
+                    </view>
+                </block>
+            </block>
+        </view>
+        <view bindtap="diplayRepairDesView" class="detailtipFoot">
+            <image class="detailtipclose" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/close.png"></image>
+        </view>
+    </view>
+    <view class="maskView" hidden="{{maskHidden}}"></view>
+</view>

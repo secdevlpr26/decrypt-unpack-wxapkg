@@ -1,0 +1,54 @@
+<view class="wx_page">
+    <view class="wx_body">
+        <view class="list_nav_area">
+            <view bindtap="sortByPriceHandler" class="list_nav {{sort_key=='price'?'highlight':''}} {{sort_key=='price'?sort_type=='asc'?'up':sort_type=='desc'?'down':'':''}}" hoverClass="none" url="url">
+                <view class="list_nav_inner">
+          价格
+          <icon class="icon_sorter" type=""></icon>
+                </view>
+            </view>
+            <view bindtap="sortBySaleHandler" class="list_nav  {{sort_key=='sale'?'highlight':''}} {{sort_key=='sale'?sort_type=='asc'?'up':sort_type=='desc'?'down':'':''}}" hoverClass="none" url="url">
+                <view class="list_nav_inner">
+          销量
+        </view>
+            </view>
+            <view bindtap="sortBySaleTimeHandler" class="list_nav  {{sort_key=='sale_time'?'highlight':''}} {{sort_key=='sale_time'?sort_type=='asc'?'up':sort_type=='desc'?'down':'':''}}" hoverClass="none" url="url">
+                <view class="list_nav_inner">
+          上架时间
+        </view>
+            </view>
+        </view>
+        <scroll-view bindscrolltolower="loadMoreHandler" class="goods_list_area" enableBackToTop="true" lowerThreshold="200" scrollY="true" style="height:{{scrollHeight}}px;" wx:if="{{pageStatus==0}}">
+            <view class="good_list">
+                <view class="good_item" wx:for="{{list}}" wx:key="product_id">
+                    <navigator url="/pages/product/detail/detail?pid={{item.product_id}}">
+                        <image src="{{item.img_info}}"></image>
+                        <view class="title">{{item.name}}</view>
+                        <text class="price">{{item.fee_type=='CNY'?'¥':item.fee_type}}{{item.low_priceStr}}</text>
+                    </navigator>
+                </view>
+            </view>
+            <view class="list_extra_area">
+                <view class="tips_area no_more" wx:if="{{end&&!loading}}">
+                    <view class="tips_area_inner">
+            END
+          </view>
+                </view>
+                <view class="tips_area loading" wx:if="{{loading}}">
+                    <view class="tips_area loading">
+                        <image src="/images/icon16_loading_gray.gif"></image>
+            正在加载
+          </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="loading_box" wx:if="{{pageStatus==1}}">
+            <image class="icon_loading" mode="aspectFit" src="/images/loadin.png"></image>
+        </view>
+        <view class="error_box" wx:if="{{pageStatus==2}}">
+            <image class="icon_reload" mode="aspectFit" src="/images/reload.png"></image>
+            <view class="reload_desc">加载失败</view>
+            <view bindtap="reloadHandler" class="reload_link">重新加载</view>
+        </view>
+    </view>
+</view>

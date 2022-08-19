@@ -1,0 +1,17 @@
+<block wx:if="{{list}}">
+    <view class="wrap" wx:for="{{list}}">
+        <view class="wrap_item">预约人:
+      <view style="display:inline-block;">{{item.order_name}}</view>
+        </view>
+        <view class="wrap_item">联系方式:
+      <view style="display:inline-block;">{{item.phone}}</view>
+        </view>
+        <view class="wrap_item">预约时间:
+      <view style="display:inline-block;">{{item.yuyue_time}}</view>
+        </view>
+    </view>
+</block>
+<view class="empty" wx:else>
+    <image src="../../icon/empty2.png" style="width:128rpx;height:110rpx;margin-bottom:30rpx"></image>
+    <view>暂无预约记录哦</view>
+</view>

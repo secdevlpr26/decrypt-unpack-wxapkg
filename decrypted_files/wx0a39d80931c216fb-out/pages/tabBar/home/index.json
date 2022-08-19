@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "汉欧云商",
+    "usingComponents": {
+        "uni-icon": "/components/uni-icon",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

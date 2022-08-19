@@ -1,0 +1,59 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<view class="page">
+    <view style="background-color:#fff;position:relative; padding-top:107px; padding-bottom:15px;overflow:hidden;">
+        <image src="../../images/lawyer_bg@2x.png" style="width:100%;height:160px;position:absolute; top:0;"></image>
+        <view style="justify-content:center;align-items:center;left:{{topmargin}}px; position:relative; margin-left:-53px;">
+            <image src="{{info.photo}}" style="width:90px;height:90px;border-radius:50%;border: 8px solid #fff;background-color:#aaa;"></image>
+        </view>
+        <view style="background-color:#fff;margin-bottom:10px;margin-top:-2px;">
+            <view style="font-size:21px;color:#2b2b2b; text-align:center;">{{info.officeName}}律师</view>
+            <view style="justify-content:center;align-items:center;text-align:center;">
+                <text style="font-size:11px;color:#999;">  </text>
+                <text class="text22"> {{info.remark.appellation}} </text>
+                <text class="text22" style="margin-left:10px;"> 执业{{info.remark.year}}年 </text>
+                <text class="text22" style="margin-left:10px;"> {{info.pronviceName}}-{{info.cityName}} </text>
+                <text class="text22" style="margin-left:10px;"> {{info.remark.lawfirm}} </text>
+            </view>
+        </view>
+    </view>
+    <view class="gray20" style="margin-top:30rpx;"></view>
+    <view wx:if="{{info.introduction!=null&&info.introduction.length>0}}">
+        <view class="horiz " style="padding-top:30rpx;">
+            <image class="icon " src="../../images/icon_lvsj.png"></image>
+            <text class="txtBlack">律师简介</text>
+        </view>
+        <view class="line" style="margin-bottom:30rpx;margin-top:30rpx;"></view>
+        <view style="margin-left:30rpx; margin-right:30rpx;margin-top:30px;">
+            <view class="wxParse">
+                <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+            </view>
+        </view>
+    </view>
+    <view class="tipsText" wx:if="{{info.introduction==null||info.introduction.length==0}}">
+    暂无资料
+  </view>
+    <view bindtap="goback" class="backBottom" hover="true" hoverClass="button-hover">
+        <image class="backImg" mode="aspectFit" src="../../images/left_black.png"></image>
+        <text class="backtxt">返回至首页</text>
+    </view>
+    <view class="center footer" style="flex-direction: column;background-color: #f8f8f8;padding-bottom:160rpx;padding-top:40rpx;">
+        <text class="txt24">2018©{{info.pronviceName}}{{info.cityName}}律师{{info.officeName}}</text>
+        <text class="txt24" style="margin-top:7rpx;">技术支持：华律网</text>
+    </view>
+    <view class="horiz " style="height:60px;background-color:#33353c;position:fixed;bottom:0px;width:100%;">
+        <view style="flex:2.5;text-align:center;">
+            <text style="font-size:13px;color:#fff;">服务热线： </text>
+            <text style="font-size:16px;color:#fff;font-weight:blod;"> {{info.tel}}</text>
+        </view>
+        <view style="background-color: #e8e8e8;  height: 25px;  width: 1px;"></view>
+        <view bindtap="saveNumber" class="horiz " style="flex:1;align-items:center;justify-content:center;">
+            <image class="icon27 " src="../../images/baocun.png"></image>
+            <text style="color:#fff;font-size:11px;margin-left:5px;">保存</text>
+        </view>
+        <view style="background-color: #e8e8e8;  height: 25px;  width: 1px;"></view>
+        <view bindtap="callClick" class="horiz " style="flex:1;align-items:center;justify-content:center;margin-right:5px;">
+            <image class="icon27 " src="../../images/bohao.png"></image>
+            <text style="color:#fff;font-size:11px;margin-left:5px;">拨号</text>
+        </view>
+    </view>
+</view>

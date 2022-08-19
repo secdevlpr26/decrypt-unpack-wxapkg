@@ -1,0 +1,11 @@
+<view style="display: flex; flex-direction: row;">
+    <image class="fimg" src="{{xsinfo.fimg}}"></image>
+    <view style="display: flex; flex-direction: column;">
+        <view class="title">{{xsinfo.name}}</view>
+        <view class="codenum">字数：{{xsinfo.codenum}}</view>
+    </view>
+</view>
+<button class="bbtn" openType="contact">开始阅读</button>
+<view class="contxt">{{xsinfo.reviewcontent}}</view>
+<button class="bbtn" openType="contact">继续阅读</button>
+<view style="height:100rpx;"></view>

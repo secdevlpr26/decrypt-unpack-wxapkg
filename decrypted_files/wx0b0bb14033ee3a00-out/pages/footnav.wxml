@@ -1,0 +1,22 @@
+<template name="footnav">
+    <view style="background:#fff; height:96rpx;z-index:-1" wx:if="{{!productflag}}"></view>
+  `<view class="footnav" style="z-index:9999" wx:if="{{!productflag}}">
+        <view class="footnav-item home">
+            <navigator hoverClass="navigator-hover" openType="redirect" url="/pages/company/index">
+                <text class="iconfont iconNav icon-shouye"></text>
+                <text>首页</text>
+            </navigator>
+        </view>
+        <view class="footnav-item productListNav">
+            <navigator hoverClass="navigator-hover" openType="redirect" url="/pages/company/productlist">
+                <text class="iconfont iconNav icon-02-copy"></text>
+                <text>产品</text>
+            </navigator>
+        </view>
+        <view bindtap="appPhoneCall" class="footnav-item">
+            <text class="iconfont iconNav icon-dianhua"></text>
+            <text>一键拨号</text>
+        </view>
+    </view>
+</template>
+<include src="/pages/template/getUserInfo.wxml"></include>

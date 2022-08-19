@@ -1,0 +1,27 @@
+var filters = ({
+    toFix: (function(value) {
+        return (value.toFixed(2))
+    }),
+});
+module.exports = ({
+    toFix: filters.toFix,
+    toNumber: filters.toNumber,
+});
+var threeNum = ({
+    add_comma_toThousands: (function(num) {
+        var num = (parseInt(num) || 0).toString();
+        var result = '';
+        while (num.length > 3) {
+            result = ',' + num.slice(-3) + result;
+            num = num.slice(0, num.length - 3)
+        };
+        if (num) {
+            result = num + result
+        };
+        console.log(num);
+        return (result)
+    }),
+});
+module.exports = ({
+    add_comma_toThousands: threeNum.add_comma_toThousands,
+});

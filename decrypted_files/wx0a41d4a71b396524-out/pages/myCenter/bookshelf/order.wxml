@@ -1,0 +1,53 @@
+<view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+        <view bindtap="toAddress" class="weui-cell weui-cell_access" data-id="{{info.eqId}}">
+            <view class="weui-cell__bd" data-eqId="{{info.eqid}}">配送地址</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0;text-align:left;flex:1">
+                <text class="addr">{{info.eqName}}</text>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+            <view class="weui-cell__bd">配送时间</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access delivery-time">
+                <picker bindchange="bindPickerChange" range="{{weekObj}}" rangeKey="weekName" style="display:block">
+                    <text class="addr" data-id="{{weekObj[index].id}}">{{weekObj[index].weekName}}</text>
+                </picker>
+            </view>
+        </view>
+        <image class="bgline" src="../../../images/line-bg.jpg"></image>
+    </view>
+</view>
+<view class="type-list">
+    <view class="borrow-most" wx:for="{{books}}">
+        <image binderror="imgError" data-index="{{index}}" src="{{item.pic1=='no_cover'?noCover:imgRootPath+item.pic1}}"></image>
+        <view class="box-sd">
+            <text class="title">{{item.bookName}}</text>
+            <text class="author">分类：{{item.bookCategory}}</text>
+            <view class="author line-one">作者：{{item.author==null?'--':item.author}}</view>
+            <text class="author">图书数量：{{item.bookNum==null?0:item.bookNum}}</text>
+        </view>
+    </view>
+</view>
+<view class="word-title">友情提示</view>
+<view class="word">1、借阅不限时不限量</view>
+<view class="word">2、预约成功后请点击获取取书码按钮获取书柜取书码。</view>
+<view class="word">3、预约成功后管理员会在24小时内将书放入书柜中，请耐心等待管理员将书放入柜中再去取书。</view>
+<view>
+    <text class="author" decode="{{true}}">&nbsp;</text>
+</view>
+<view>
+    <text class="author" decode="{{true}}">&nbsp;</text>
+</view>
+<view class="footer">
+    <view class="page__bd page__bd_spacing">
+        <view class="weui-flex">
+            <view class="weui-flex__item text-left">
+                合计:
+                <text class="num">{{sum}}本</text>
+            </view>
+            <view class="app-borrow">
+                <button bindtap="toOrder">提交预约</button>
+            </view>
+        </view>
+    </view>
+</view>

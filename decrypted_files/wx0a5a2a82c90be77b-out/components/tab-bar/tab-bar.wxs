@@ -1,0 +1,5 @@
+module.exports = ({
+    floor: (function(val) {
+        return (Math.floor(val))
+    }),
+});

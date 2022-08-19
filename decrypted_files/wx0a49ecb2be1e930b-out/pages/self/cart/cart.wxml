@@ -1,0 +1,38 @@
+<view class="main" wx:if="{{!cartNull}}">
+    <view class="store-item" wx:for="{{cartList}}" wx:key="{{item.branchInfoId}}">
+        <view class="store-title">{{item.branchName}}</view>
+        <view class="product-list">
+            <view catchtap="toProDetail" class="product-item" data-pid="{{proItem.productId}}" wx:for="{{item.pro}}" wx:for-index="proIndex" wx:for-item="proItem" wx:key="{{proItem.moduleId}}">
+                <view catchtap="checkboxTap" class="iconfont {{proItem.isSelected?'icon-checkbox1':'icon-checkBox'}}" data-proId="{{proItem.productId}}"></view>
+                <view class="product-icon">
+                    <image lazyLoad="{{true}}" src="{{proItem.pic_url}}"></image>
+                </view>
+                <view class="product-main">
+                    <view class="product-title">{{proItem.productName}}</view>
+                    <text class="product-model">{{proItem.proAttrName}}</text>
+                    <view class="product-price">
+                        <text class="rmb">￥</text>
+                        <text class="price">{{proItem.price}}</text>
+                    </view>
+                    <view catchtap="delPro" class="iconfont icon-close" data-modelid="{{proItem.moduleId}}"></view>
+                    <view catchtap="preventBubbling" class="plus-minus">
+                        <view catchtap="arrowdowntap" class="iconfont icon-add" data-index="{{index}}" data-modleid="{{proItem.moduleId}}" data-proindex="{{proIndex}}"></view>
+                        <input bindinput="bindCountInput" data-index="{{index}}" data-modleid="{{proItem.moduleId}}" data-proindex="{{proIndex}}" type="number" value="{{proItem.count}}"></input>
+                        <view catchtap="arrowuptap" class="iconfont icon-subtract" data-index="{{index}}" data-modleid="{{proItem.moduleId}}" data-proindex="{{proIndex}}"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom">
+        <view class="total">
+            <text>合计 ￥ <text class="totalPrice">{{totalPrice}}</text>  (不含运费)</text>
+        </view>
+        <span bindtap="toClearing" class="jiesuan">去结算</span>
+    </view>
+</view>
+<view class="cart-null" wx:else>
+    <view class="iconfont icon-cart-null"></view>
+    <text>您的购物车没有商品</text>
+    <view bindtap="toProList" class="add-btn">赶紧去挑选吧</view>
+</view>

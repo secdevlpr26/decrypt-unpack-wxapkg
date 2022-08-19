@@ -1,0 +1,68 @@
+<view class="xzdz">
+    <view class="xzdzBox">
+        <view class="xzdzTitle">
+            <view class="xzdzC">优惠详情
+        <image class="xzdz_img" src="../../../images/orderDetails.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="brandDetailBox">
+    <view class="jl"></view>
+    <view class="flexx">
+        <view class="title-index" wx:if="{{code!=''}}">No.{{code}}</view>
+    </view>
+    <view class="flexx">
+        <view class="title-index">类型</view>
+        <text class="line">:</text>
+        <text class="title-item" wx:if="{{couponType=='4'}}">代金券</text>
+        <text class="title-item" wx:if="{{couponType=='2'}}">折扣券</text>
+        <text class="title-item" wx:if="{{couponType=='6'}}">兑换券</text>
+    </view>
+    <view class="flexx">
+        <view class="title-index">名称</view>
+        <text class="line">:</text>
+        <text class="title-item">{{couponName}}</text>
+    </view>
+    <view class="flexx">
+        <view class="title-index">优惠内容</view>
+        <text class="line">:</text>
+        <view class="title-item" wx:if="{{favourDetail!=''&&favourDetail!=null}}">{{favourDetail}}</view>
+        <view class="title-item" wx:if="{{favourDetail==''||favourDetail==null}}">暂无</view>
+    </view>
+    <view class="flexx">
+        <view class="title-index">使用限制 </view>
+        <text class="line">:</text>
+        <view class="title-item" wx:if="{{useNotice!=''&&useNotice!=null}}">{{useNotice}}</view>
+        <view class="title-item" wx:if="{{useNotice==''||useNotice==null}}">暂无</view>
+    </view>
+    <view class="flexx">
+        <view class="title-index">有效期限</view>
+        <text class="line">:</text>
+        <text class="title-item" wx:if="{{validityType!='DATE_TYPE_FIX_TERM'}}">{{validityBegin}}至{{validityEnd}}</text>
+        <text class="title-item" wx:if="{{validityType=='DATE_TYPE_FIX_TERM'}}">自领取{{validityBegin=='0'?'之日':'后'+validityBegin+'日'}}起{{validityEnd}}天有效</text>
+    </view>
+    <view class="jl"></view>
+</view>
+<view class="wei">
+    <button bindtap="lqyh" class="lq" wx:if="{{code==''}}">领 取</button>
+    <button bindtap="fh" class="fh" style="color: #CBCBCB;">返 回</button>
+</view>
+<view class="cover1" style="display:{{displayy}}">
+    <view class="cover1-1" style="display:{{displayy}}"></view>
+    <view class="container xiadan-box">
+        <view class="row">
+            <text class="flex80 writedesk">提示信息</text>
+        </view>
+        <view class="row">
+            <text class="col-12 xiadan-box-descrip">{{carname}}</text>
+        </view>
+        <view class="row row-button1">
+            <view bindtap="resumee" class="flex30 button-xiadan1">取 消</view>
+            <form bindsubmit="{{carbtn=='1'?'chkOrder0':'chkOrderr'}}" reportSubmit="true">
+                <button class="flex30 button-xiadan" formType="submit">确 定</button>
+            </form>
+        </view>
+    </view>
+</view>
+<component-alertview bind:chkOrder0="chkOrder0_1" bind:chkOrder1="chkOrder1_1" carname="{{carname}}" displayy="{{displayy}}" titlename="{{titlename}}"></component-alertview>

@@ -1,0 +1,175 @@
+<view class="card">
+    <view class="card-bg">
+        <view class="card-head">
+            <image src="{{userhead==null?'../../images/personal_head.png':userhead}}"></image>
+            <view class="head-info">
+                <view class="name">
+                    {{username==null?'游客':username}}
+                    <i>{{memberName==null?'普通':memberName+'用户'}}</i>
+                    <i bindtap="refund" class="refund" wx:if="{{isCash&&memberFlag==2}}">退押金</i>
+                </view>
+                <block wx:if="{{havingBuy}}">
+                    <view class="open">开通时间：{{startTime}}</view>
+                    <view class="overdue">到期时间：{{endTime}}</view>
+                </block>
+                <block wx:if="{{!havingBuy}}">
+                    <view class="open">还未购买会员</view>
+                    <view class="overdue"></view>
+                </block>
+            </view>
+        </view>
+        <view class="member">
+            <view>{{showName!=null?showName:''}}会员权益</view>
+            <block wx:if="{{showName==null}}">普通用户不能借书</block>
+            <block wx:else>当前可借书籍数量为{{limit}}本</block>
+        </view>
+    </view>
+</view>
+<view class="weui-navbar">
+    <view bindtap="tabClick" class="weui-navbar__item {{activeIndex==index?'weui-bar__item_on':''}}" data-idx="{{item.index}}" id="{{index}}" wx:for="{{tabs}}" wx:key="*this">
+        <view class="weui-navbar__title">{{item.value}}</view>
+    </view>
+    <view class="weui-navbar__slider" style="width: 80rpx; transform: translateX({{sliderOffset}}rpx); -webkit-transform: translateX({{sliderOffset}}rpx);"></view>
+</view>
+<view class="vip-grade" wx:if="{{memberFlag==1}}">
+    <view class="fs30">会员卡等级</view>
+    <view class="swiper-container">
+        <scroll-view scrollWithAnimation scrollX scrollLeft="{{scrollleft}}rpx" style="width: 100%; background:#fff">
+            <view class="vip-list">
+                <view bindtap="selecetLevel" class="vip-list-item" data-select="{{index}}" wx:for="{{list}}">
+                    <view class="post">
+                        <view class="{{selecIndex===index?'selecet':''}}">
+                                {{item.showName}}
+                            </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="fs30">会员卡类型</view>
+    <view class="swiper-container">
+        <scroll-view scrollWithAnimation scrollX scrollLeft="{{scrollleft}}rpx" style="width: 100%; background:#fff">
+            <view class="vip-type">
+                <view bindtap="selecetType" class="vip-type-item" data-select="0" wx:if="{{list[selecIndex].money!=null}}">
+                    <view class="post">
+                        <view class="{{typeIndex==0?'selecet':''}}">
+                            <view style="display:flex;align-items:center;justify-content: space-between">
+                                <view class="fs32">月卡</view>
+                                <image src="../../images/select.png" style="width:42rpx;height:42rpx;"></image>
+                            </view>
+                            <view class="fs32">
+                                        ￥{{tools.getPrice(list[selecIndex].money)}}
+                                    </view>
+                            <view class="fs32 oldPrice">
+                                        {{tools.getPrice(list[selecIndex].money)}}元/月
+                                    </view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="selecetType" class="vip-type-item" data-select="1" wx:if="{{list[selecIndex].moneyQuarter!=null}}">
+                    <view class="post">
+                        <view class="{{typeIndex==1?'selecet':''}}">
+                            <view style="display:flex;align-items:center;justify-content: space-between">
+                                <view class="fs32">季卡</view>
+                                <image src="../../images/select.png" style="width:42rpx;height:42rpx;"></image>
+                            </view>
+                            <view class="fs32">
+                                        ￥{{tools.getPrice(list[selecIndex].moneyQuarter)}}
+                                    </view>
+                            <view class="fs32 oldPrice">
+                                        {{tools.getPrice(list[selecIndex].moneyQuarter)}}元/月
+                                    </view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="selecetType" class="vip-type-item" data-select="2" wx:if="{{list[selecIndex].moneyYear!=null}}">
+                    <view class="post">
+                        <view class="{{typeIndex==2?'selecet':''}}">
+                            <view style="display:flex;align-items:center;justify-content: space-between">
+                                <view class="fs32">年卡</view>
+                                <image src="../../images/select.png" style="width:42rpx;height:42rpx;"></image>
+                            </view>
+                            <view class="fs32">
+                                        ￥{{tools.getPrice(list[selecIndex].moneyYear)}}
+                                    </view>
+                            <view class="fs32 oldPrice">
+                                        {{tools.getPrice(list[selecIndex].moneyYear)}}元/月
+                                    </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="swiper-container" wx:if="{{memberFlag==2}}">
+    <scroll-view scrollWithAnimation scrollX scrollLeft="{{scrollleft}}rpx" style="width: 100%; background:#fff">
+        <view class="vip-type">
+            <view bindtap="selecetLevel" class="vip-type-item" data-select="{{index}}" wx:for="{{list}}">
+                <view class="post">
+                    <view class="{{selecIndex===index?'selecet':''}}">
+                        <view style="display:flex;align-items:center;justify-content: space-between">
+                            <view class="fs32">{{item.showName}}</view>
+                            <image src="../../images/select.png" style="width:42rpx;height:42rpx;"></image>
+                        </view>
+                        <view class="fs32">￥{{tools.getPrice(item.money)}}</view>
+                        <view class="fs32 oldPrice">{{tools.getPrice(item.money)}}元</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<view class="vip-grade" wx:if="{{memberFlag==0}}">
+    <view class="fs30">会员卡等级</view>
+    <view class="swiper-container">
+        <scroll-view scrollWithAnimation scrollX scrollLeft="{{scrollleft}}rpx" style="width: 100%; background:#fff">
+            <view class="vip-list">
+                <view bindtap="selecetLevel" class="vip-list-item" data-select="{{index}}" wx:for="{{list}}">
+                    <view class="post">
+                        <view class="{{selecIndex===index?'selecet':''}}">
+                                {{item.showName}}
+                            </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="vip-privilege">
+    <view class="fs30" style="padding:20rpx 0;">会员权益</view>
+    <view style="display:flex;margin-bottom:20rpx;">
+        <view class="serial">
+            <view class="num fs30">1</view>
+        </view>
+        <view class="fs30">一次借阅{{list[selecIndex].num}}本</view>
+    </view>
+    <view style="display:flex;margin-bottom:20rpx;">
+        <view class="serial">
+            <view class="num fs30">2</view>
+        </view>
+        <view class="fs30">借阅时间{{list[selecIndex].days}}天</view>
+    </view>
+    <view style="display:flex;margin-bottom:20rpx;" wx:if="{{list[selecIndex].discount!=10}}">
+        <view class="serial">
+            <view class="num fs30">3</view>
+        </view>
+        <view class="fs30">购书折扣{{list[selecIndex].discount}}折</view>
+    </view>
+</view>
+<view class="vip-btn" wx:if="{{havingPay&&memberFlag!=0&&memberFlag!=2}}">
+    <button bindtap="toBuy" class="weui-btn" data-index="{{activeIndex}}" disabled="{{buttonClicked}}">
+            立即续费
+        </button>
+</view>
+<view class="vip-btn" wx:elif="{{!havingPay&&memberFlag!=0}}">
+    <button bindtap="toBuy" class="weui-btn" data-index="{{activeIndex}}" disabled="{{buttonClicked}}">
+            立即购买
+        </button>
+</view>
+<view class="vip-btn" wx:elif="{{!havingPay&&memberFlag!=1}}">
+    <button bindtap="toBind" class="weui-btn" data-index="{{activeIndex}}" disabled="{{buttonClicked}}">
+            绑定读者卡
+        </button>
+</view>
+<wxs module="tools" src="../../utils/appUtils.wxs" />

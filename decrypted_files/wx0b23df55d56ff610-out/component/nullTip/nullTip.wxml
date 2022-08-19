@@ -1,0 +1,5 @@
+<template name="nullTip">
+    <view class="null-tip">{{nullTip.tipText}}</view>
+    <view bindtap="{{nullTip.fn}}" class="null-action" wx:if="{{nullTip.routeUrl==undefined}}">{{nullTip.actionText}}</view>
+    <navigator class="null-action" url="{{nullTip.routeUrl}}" wx:else>{{nullTip.actionText}}</navigator>
+</template>

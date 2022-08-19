@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "订单确认",
+    "usingComponents": {
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index",
+        "wxc-price": "../../packages/@minui/wxc-price/dist/index"
+    }
+}

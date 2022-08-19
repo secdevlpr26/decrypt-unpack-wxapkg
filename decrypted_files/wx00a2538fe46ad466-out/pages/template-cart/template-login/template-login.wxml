@@ -1,0 +1,10 @@
+<template name="no-user">
+    <view class="Empty">
+        <view class="Empty">
+            <image class="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <button bindtap="Empty" class="Empty">Empty</button>
+        </view>
+    </view>
+</template>

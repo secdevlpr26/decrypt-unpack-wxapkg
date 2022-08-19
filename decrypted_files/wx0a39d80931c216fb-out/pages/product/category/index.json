@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "国家专场",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "uni-icon": "/components/uni-icon",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

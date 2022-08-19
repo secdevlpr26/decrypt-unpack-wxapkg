@@ -1,0 +1,6 @@
+<canvas canvasId="shareImg" style="width:545px;height:771px"></canvas>
+<button bindtap="share" class="share" type="primary">生成分享图</button>
+<view class="preview" hidden="{{hidden}}">
+    <image mode="widthFix" src="{{prurl}}"></image>
+    <button bindtap="save" size="mini" type="primary">保存分享图</button>
+</view>

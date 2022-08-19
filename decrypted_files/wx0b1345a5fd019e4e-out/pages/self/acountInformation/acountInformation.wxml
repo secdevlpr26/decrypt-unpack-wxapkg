@@ -1,0 +1,25 @@
+<view class="main_bg">
+    <view class="head_view">
+        <text>我的头像</text>
+        <view class="head_right_view">
+            <view class="a-head">
+                <image lazyLoad="{{true}}" src="{{imgPath}}"></image>
+            </view>
+            <view class="iconfont icon-arrow-right"></view>
+        </view>
+    </view>
+    <view class="nick">
+        <text>昵称</text>
+        <view class="right-view">
+            <text>{{nickname}}</text>
+            <view class="iconfont icon-arrow-right"></view>
+        </view>
+    </view>
+    <view class="nick">
+        <text>性别</text>
+        <view class="right-view">
+            <text>{{sex}}</text>
+            <view class="iconfont icon-arrow-right"></view>
+        </view>
+    </view>
+</view>

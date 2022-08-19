@@ -1,0 +1,11 @@
+<canvas canvasId="circleBar" style="width:{{canvasWidth}}px;height:{{canvasWidth}}px;">
+    <view class="circle-bar-wrap" style="height:{{canvasWidth}}px;">
+        <view class="font">
+      {{title}}
+    </view>
+        <view class="val" style="color: {{valueColor}}; margin-top:{{isMarginTop?'10':'-100'}}rpx">
+      {{value}}{{suffix}}
+    </view>
+    </view>
+</canvas>
+<slot></slot>

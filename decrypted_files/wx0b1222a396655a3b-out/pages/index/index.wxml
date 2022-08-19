@@ -1,0 +1,32 @@
+<view class="page-index">
+    <view class="slice1">
+        <view class="banner">
+            <image mode="scaleToFill" src="/images/banner1.jpg"></image>
+        </view>
+    </view>
+    <view class="content">
+        <view class="slice3">
+            <view class="tablename">您的库存最新数据总览</view>
+            <view class="commiditys">
+                <view class="flex-row" style="display: flex;">
+                    <view class="flex-view-item" style="width:40%">商品名称</view>
+                    <view class="flex-view-item" style="width:20%">库存</view>
+                    <view class="flex-view-item" style="width:20%">单位</view>
+                    <view class="flex-view-item" style="width:20%">备注</view>
+                </view>
+                <view class="flex-row" style="display: flex;" wx:for="{{listData}}" wx:key="{{code}}">
+                    <view class="flex-view-item-content" style="width:40%">{{item.name}}</view>
+                    <view class="flex-view-item-content" style="width:20%">{{item.amount}}</view>
+                    <view class="flex-view-item-content" style="width:20%">{{item.unit}}</view>
+                    <view class="flex-view-item-content" style="width:20%">
+                        <view bindtap="look" data-remarks="{{item.memo}}" wx:if="{{item.memo}}">ⓘ</view>
+                        <text wx:else>--</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="more">
+            <button bindtap="click" class="btn {{showbtn?'showbtn':'hidebtn'}}">查看更多 >></button>
+        </view>
+    </view>
+</view>

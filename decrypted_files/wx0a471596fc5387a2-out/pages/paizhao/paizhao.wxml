@@ -1,0 +1,17 @@
+<view>{{id}}</view>
+<view bindtap="scanCode" class="addrcon">
+    <view bindtap="scanCode" class="addr">
+        <text>单号：{{id}}</text>
+    </view>
+</view>
+<view class="lb"></view>
+<view bindtap="imgYu" class="zhichi">
+  图片附件（单击放大/缩小、滑动浏览、长按删除）
+</view>
+<view wx:for="{{getOrderFj}}" wx:key="{{item.id}}">
+    <image bindlongpress="deleteImage" bindtap="imgYu" data-index="{{index}}" data-list="{{getOrderFj.WEB}}/upload/Annex/{{getOrderFj.FILENAME}}" data-src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" mode="widthFix" src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" style="width:100%" wx:if="{{item.LX=='png'||item.LX=='jpg'||item.LX=='gif'||item.LX=='bmp'}}"></image>
+</view>
+<view bindtap="bindChooiceProduct" class="icon_search1 photo">
+    <image src="{{hostUrl}}/images/photo.png"></image>
+</view>
+<wxs module="filters" src="../../utils/filters.wxs" />

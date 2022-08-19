@@ -1,0 +1,182 @@
+<view class="bg">
+    <view class="tank">
+        <view class="single-tank-name">
+            <text style="font-size:48rpx;line-height:48rpx;margin-right:20rpx;opacity:1;">N-T101</text>
+            <text>N-T1罐区</text>
+        </view>
+        <view class="single-img">
+            <image src="../../images/single-tank-data/tank-big-normal.png" style="width:242rpx;height:164rpx;position:absolute;top:0;left:0;z-index:10"></image>
+            <view style="position:absolute;bottom:18rpx;left:0rpx;z-index:11;margin:0;padding:0;">
+                <view style="width:242rpx;height:30rpx;margin:0;padding:0;">
+                    <image src="../../images/single-tank-data/level-normal-big.png" style="width:242rpx;height:30rpx;margin:0;padding:0;"></image>
+                </view>
+                <view style="width:242rpx;height:84rpx;margin:0;padding:0;">
+                    <image src="../../images/single-tank-data/down-normal-big.png" style="width:242rpx;height:84rpx;margin:0;padding:0;"></image>
+                </view>
+            </view>
+            <view class="single-percent" style="color: #0263E5;">68%</view>
+        </view>
+        <view class="single-tank-message">
+            <view class="oil-level">
+                <text id="level-value0">液位: 14.824</text>
+                <text style="margin-right:16rpx;">m</text>
+                <text style="color:red;opacity:1;display:none;">液位异常</text>
+            </view>
+            <view class="tank-temperature ">
+                <text id="temperature-value0">温度: 40.7</text>
+                <text style="margin-right:16rpx;">℃</text>
+                <text style="color:red;opacity:1;display:none;">高温</text>
+            </view>
+            <view class="tap-status" style="margin-top:20rpx;">
+                <text>阀门N-T101-2:</text>
+                <text id="status-2-0" style="margin-left:10rpx;">关闭</text>
+            </view>
+            <view class="tap-status" style="margin-top:20rpx;">
+                <text>阀门N-T101-3:</text>
+                <text id="status-3-0" style="margin-left:10rpx;">关闭</text>
+            </view>
+        </view>
+        <view class="clearfix"></view>
+    </view>
+    <view class="count">
+        <view class="count-title">历史统计 ：</view>
+        <view class="count-button">
+            <view id="day">近七天</view>
+            <view id="month">月</view>
+            <view id="year">年</view>
+        </view>
+        <view class="clearfix"></view>
+    </view>
+    <view class="line-chart">
+        <view class="title">
+            <image src="../../images/tank-area/line-icon.png"></image>
+            <text>储油量趋势图</text>
+        </view>
+        <view class="oil-reserves-line">
+            <view style="font-size:20rpx;line-height:20rpx;margin-bottom:14rpx;color:#7A7B7C;">(万立)</view>
+            <canvas canvasId="oilReservesCanvas" class="canvas" disableScroll="true" style="margin-left:-24rpx;"></canvas>
+        </view>
+    </view>
+    <view class="line-chart" style="margin-top:-41rpx;">
+        <view class="title">
+            <image src="../../images/tank-area/plus-minus-icon.png"></image>
+            <text>输入输出对照图</text>
+        </view>
+        <view class="input-output-comparison">
+            <view class="bg-line">
+                <view style="float:left;color:#7A7B7C;">+3</view>
+                <view class="line"></view>
+                <view class="clearfix"></view>
+            </view>
+            <view class="bg-line">
+                <view style="float:left;color:#7A7B7C;margin-left:14rpx;">0</view>
+                <view class="line" style="border: 2rpx dashed #E1E1E6;"></view>
+                <view class="clearfix"></view>
+            </view>
+            <view class="bg-line">
+                <view style="float:left;color:#7A7B7C;">-3</view>
+                <view class="line"></view>
+                <view class="clearfix"></view>
+            </view>
+            <view style="color:#7A7B7C;font-size:20rpx;line-height:20rpx;">(万立)</view>
+            <movable-area style="position:absolute;top:0;left:75rpx;width:100%;height:346rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+                <movable-view class="comparison-area" direction="horizontal">
+                    <view class="single-area">
+                        <view class="single-up-bg">
+                            <view style="height:44rpx;"></view>
+                        </view>
+                        <view class="single-down-bg">
+                            <view style="height:71rpx;"></view>
+                        </view>
+                        <view style="color:#7A7B7C;margin-bottom:16rpx;">11</view>
+                        <view style="font-size:20rpx;">
+                            <view style="color:#008744;margin-right:14rpx;">+4.2</view>
+                            <view style="color:#D81414">-5.6</view>
+                        </view>
+                    </view>
+                    <view class="single-area">
+                        <view class="single-up-bg">
+                            <view style="height:80rpx;"></view>
+                        </view>
+                        <view class="single-down-bg">
+                            <view style="height:32rpx;"></view>
+                        </view>
+                        <view style="color:#7A7B7C;margin-bottom:16rpx;">12</view>
+                        <view style="font-size:20rpx;">
+                            <view style="color:#008744;margin-right:14rpx;">+5.0</view>
+                            <view style="color:#D81414">-2.8</view>
+                        </view>
+                    </view>
+                    <view class="single-area">
+                        <view class="single-up-bg">
+                            <view style="height:14rpx;"></view>
+                        </view>
+                        <view class="single-down-bg">
+                            <view style="height:23rpx;"></view>
+                        </view>
+                        <view style="color:#7A7B7C;margin-bottom:16rpx;">13</view>
+                        <view style="font-size:20rpx;">
+                            <view style="color:#008744;margin-right:14rpx;">+1.6</view>
+                            <view style="color:#D81414">-2.0</view>
+                        </view>
+                    </view>
+                    <view class="single-area">
+                        <view class="single-up-bg">
+                            <view style="height:31rpx;"></view>
+                        </view>
+                        <view class="single-down-bg">
+                            <view style="height:59rpx;"></view>
+                        </view>
+                        <view style="color:#7A7B7C;margin-bottom:16rpx;">14</view>
+                        <view style="font-size:20rpx;">
+                            <view style="color:#008744;margin-right:14rpx;">+3.2</view>
+                            <view style="color:#D81414">-5.2</view>
+                        </view>
+                    </view>
+                    <view class="single-area">
+                        <view class="single-up-bg">
+                            <view style="height:54rpx;"></view>
+                        </view>
+                        <view class="single-down-bg">
+                            <view style="height:30rpx;"></view>
+                        </view>
+                        <view style="color:#7A7B7C;margin-bottom:16rpx;">15</view>
+                        <view style="font-size:20rpx;">
+                            <view style="color:#008744;margin-right:14rpx;">+4.8</view>
+                            <view style="color:#D81414">-2.6</view>
+                        </view>
+                    </view>
+                    <view class="single-area">
+                        <view class="single-up-bg">
+                            <view style="height:18rpx;"></view>
+                        </view>
+                        <view class="single-down-bg">
+                            <view style="height:19rpx;"></view>
+                        </view>
+                        <view style="color:#7A7B7C;margin-bottom:16rpx;">16</view>
+                        <view style="font-size:20rpx;">
+                            <view style="color:#008744;margin-right:14rpx;">+4.6</view>
+                            <view style="color:#D81414">-4.2</view>
+                        </view>
+                    </view>
+                    <view class="single-area">
+                        <view class="single-up-bg">
+                            <view style="height:80rpx;"></view>
+                        </view>
+                        <view class="single-down-bg">
+                            <view style="height:80rpx;"></view>
+                        </view>
+                        <view style="color:#7A7B7C;margin-bottom:16rpx;">17</view>
+                        <view style="font-size:20rpx;">
+                            <view style="color:#008744;">+6.0</view>
+                            <view style="color:#D81414;">-6.0</view>
+                        </view>
+                    </view>
+                    <view class="clearfix"></view>
+                </movable-view>
+            </movable-area>
+        </view>
+    </view>
+</view>
+<zy-modal areaName="{{areaName}}出现火灾预警!" bindconfirm="modalConfirm" confirmText="确定" hidden="{{modalHidden}}" imageReady="block"></zy-modal>
+<audio id="audio" loop="false" src="{{src}}"></audio>

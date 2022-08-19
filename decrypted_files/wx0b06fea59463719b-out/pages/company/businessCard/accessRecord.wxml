@@ -1,0 +1,38 @@
+<view class="fixedTopBorder"></view>
+<view class="aRcss">
+    <view class="default-page" wx:if="{{isBlank}}">
+        <image mode="widthFix" src="{{baseUrl}}/images/wxapp/fangke.png"></image>
+        <view class="blank-title">快去分享名片吧</view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="PullloadData" enableBackToTop="true" lowerThreshold="20" style="height:100%; box-sizing:border-box" wx:if="{{!isBlank}}">
+        <view class="toptext">这些人最近访问了您的名片</view>
+        <view style="padding:0 46rpx 30rpx" wx:for="{{recordList}}" wx:key="item">
+            <view class="recordlist">
+                <view class="listimg">
+                    <view class="unread-circle" wx:if="{{item.Status=='0'}}"></view>
+                    <image mode="widthFix" src="{{item.Image}}"></image>
+                </view>
+                <view style="margin-left:28rpx;">
+                    <view style="color:#333;">
+                        <text class="name_text">{{item.UserName}}</text>
+                        <text class="ID_text">( ID：{{item.UserID}} )</text>
+                    </view>
+                    <view bindtap="todetialFn" class="browse_text" data-userId="{{item.UserID}}">浏览了你的名片{{item.RecordTotal}}次
+              <text class="icon-xiangyou iconfont" style="font-size:22rpx;"></text>
+                    </view>
+                    <view class="tel_text" wx:if="{{item.Mobile!=null&&item.Mobile!=''}}">{{item.Mobile}}</view>
+                </view>
+                <view catchtap="callPhone" class="icon-dianhua iconfont telIcon" data-phone="{{item.Mobile}}" wx:if="{{item.Mobile!=null&&item.Mobile!=''}}"></view>
+            </view>
+        </view>
+        <view class="placeholder-shape" wx:if="{{shape}}"></view>
+    </scroll-view>
+</view>
+<view bindtap="closeModal" class="recordModal" wx:if="{{isclose}}">
+    <view class="modal_box">
+        <view class="modal_title">最近浏览记录</view>
+        <view bindtap="closeModal" class="cancel icon-guanbi-copy iconfont"></view>
+        <view class="time" wx:if="{{index<3}}" wx:for="{{recordTimeList}}" wx:key="index">
+            <text class="icon-shijian iconfont listTime"></text>{{item}}</view>
+    </view>
+</view>

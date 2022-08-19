@@ -1,0 +1,109 @@
+<swiper autoplay="{{autoplay}}" class="banner" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+    <swiper-item wx:for="{{imgUrls}}" wx:key="{{item.ID}}">
+        <navigator url="{{item.LINKURL1}}">
+            <image class="slide-image" mode="widthFix" src="{{hostUrl}}{{item.PICURL}}"></image>
+        </navigator>
+    </swiper-item>
+</swiper>
+<view class="gong">
+    <text>公告</text>
+    <swiper autoplay="true" circular="true" class="swiper_container" interval="2000" vertical="true">
+        <swiper-item wx:for="{{newList}}" wx:key="{{item.ARTICLEID}}">
+            <view class="swiper_item gong_text">
+                <navigator url="/pages/noticeDe/noticeDe?id={{item.ARTICLEID}}"> {{item.TITLE}}</navigator>
+            </view>
+        </swiper-item>
+    </swiper>
+    <navigator class="more" url="/pages/notice/notice">更多
+                <image src="{{hostUrl}}/images/syico3.png"></image>
+    </navigator>
+</view>
+<view class="haohuo" wx:if="{{item.ISHIDDEN=='0'}}" wx:for="{{imgBanner}}" wx:key="{{item.ID}}">
+    <view class="title">{{item.NAME}}</view>
+    <navigator class="haoimg" url="{{item.LINKURL1}}">
+        <image mode="widthFix" src="{{hostUrl}}{{item.PICURL}}"></image>
+    </navigator>
+</view>
+<view class="category">
+    <navigator url="/pages/question/question">
+        <view class="category-list">
+            <image src="{{hostUrl}}/images/join.png"></image>
+            <text>操作指导</text>
+        </view>
+    </navigator>
+    <navigator url="/pages/noticeDe/noticeDe?id=6">
+        <view class="category-list">
+            <image src="{{hostUrl}}/images/news.png"></image>
+            <text>OBS实训平台</text>
+        </view>
+    </navigator>
+    <navigator url="/pages/noticeDe/noticeDe?id=5">
+        <view class="category-list">
+            <image src="{{hostUrl}}/images/contact.png"></image>
+            <text>联系我们</text>
+        </view>
+    </navigator>
+</view>
+<view class="cptit" wx:if="{{videoList}}">学员专区
+        <navigator class="more" url="/pages/video/video">更多
+                <image src="{{hostUrl}}/images/syico3.png"></image>
+    </navigator>
+</view>
+<view>
+    <view class="vv" wx:for="{{videoList}}" wx:key="videoList">
+        <view class="block" style="margin-left:20rpx;">
+            <image class="img1" src="{{hostUrl}}/images/bullet_red.png" style="margin-left:20rpx"></image>
+            <text class="text">{{item.TITLE}} </text>
+            <view bindtap="videoPlay" data-title="{{item.TITLE}}" data-vvid="{{item.ARTICLEID}}" id="{{index}}" style="display: {{_index==index?'none':'block'}};">
+                <image class="videoVideo2" mode="scaleToFill" src="{{hostUrl}}/{{item.PHOTOURL}}">
+                    <text class="videoPlay"> 建议在WIFI下点击播放</text>
+                </image>
+            </view>
+        </view>
+        <video class="video" id="{{index}}" src="{{hostUrl}}/{{item.ATTACHMENT}}" wx:if="{{_index==index}}"></video>
+    </view>
+</view>
+<view class="cptit">信息中心
+        <navigator class="more" url="/pages/newslist/newslist">更多
+                <image src="{{hostUrl}}/images/syico3.png"></image>
+    </navigator>
+</view>
+<view class="news">
+    <navigator url="/pages/newsinfo/newsinfo?id={{item.ARTICLEID}}" wx:for="{{article}}" wx:key="article">
+        <view class="news-list">
+            <image src="{{hostUrl}}{{item.PHOTOURL}}"></image>
+            <view class="news-list-right">
+                <text class="news-title">{{item.TITLE}}</text>
+                <view class="news-text">{{item.INTRO}}</view>
+            </view>
+        </view>
+    </navigator>
+</view>
+<view class="ly">
+    <image mode="widthFix" src="{{hostUrl}}/images/ly-title.jpg" style="width:100%"></image>
+    <view class="ly">
+        <form bindreset="formReset" bindsubmit="formSubmit">
+            <view class="ly-con">
+                <view class="user">
+                    <image src="{{hostUrl}}/images/user.png"></image>
+                    <input name="txtname" placeholder="请输入您的称呼" value="{{txtname}}"></input>
+                </view>
+                <view class="radio">
+                    <radio-group bindchange="radioChange" class="radio" name="sex">
+                        <radio checked="true" value="先生">先生</radio>
+                        <radio checked="" value="女士">女士</radio>
+                    </radio-group>
+                </view>
+                <view class="phone">
+                    <image src="{{hostUrl}}/images/phone.png"></image>
+                    <input name="mobile" placeholder="请输入您的电话" value="{{mobile}}"></input>
+                </view>
+                <view class="textarea">
+                    <textarea autoHeight bindblur="bindTextAreaBlur" class="textarea-style" name="desc" placeholder="请输入您想咨询或想反馈的内容" value="{{details}}">{{desc}}</textarea>
+                </view>
+                <button class="button" formType="submit">提交</button>
+            </view>
+        </form>
+        <include src="../footer/footer.wxml"></include>
+    </view>
+</view>

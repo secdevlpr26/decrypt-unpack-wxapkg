@@ -1,0 +1,266 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="container bgf5 pb100 animated fadeIn" wx:if="{{isShow}}">
+    <view class="bgred w100">
+        <view class="pt20 pr20 pl20 pb20">
+            <view class="bgw ddzt">
+                <image class="img88 ddzticon" src="{{info.icon}}"></image>
+                <view class="ft32 colorange lh50" wx:if="{{info.status==1&&info.pay_status==0}}">待支付</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.status==1&&info.pay_status==1&&info.order_status==0}}">待确认</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.status==1&&info.pay_status==1&&info.order_status==1&&info.shipping_status==0}}">待发货</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.status==1&&info.pay_status==1&&info.order_status==1&&info.shipping_status==2}}">已发货</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.status==1&&info.order_status==2}}">已完成</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.status==1&&info.order_status==3}}">已取消</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==0}}">订单处理中</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==1&&info.pay_status==1}}">订单已维修</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==1&&!info.cid}}">订单已预约</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==1&&info.cid&&info.type==0}}">工程师已指派</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==1&&info.cid&&info.type==1}}">正在维修</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==1&&info.cid&&info.type==2}}">正在维修</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==2||info.order_status==4}}">订单已完成</view>
+                <view class="ft32 colorange lh50" wx:elif="{{info.order_status==3}}">订单已取消</view>
+                <view class="ft24 col999 lh40">{{order.statusDesc}}</view>
+            </view>
+            <view wx:if="{{order.status==3}}">
+                <map latitude="{{workerLoc.lat}}" longitude="{{workerLoc.lng}}" markers="{{workerLoc.markers}}" scale="14" style="width: 100%; height: 320rpx;"></map>
+            </view>
+            <view class="ddjd ft22 oh" wx:if="{{info.type==0&&info.status==0}}">
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==0}}">订单已提交</view>
+                <view class="fl w25 txtc colgray" wx:else>订单已提交</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==1&&!info.cid}}">订单已预约</view>
+                <view class="fl w25 txtc colgray" wx:else>订单已预约</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==1&&info.cid&&info.d_status==0}}">工程师出发</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:elif="{{info.order_status==1&&info.cid&&info.d_status==1}}">工程师维修中</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:elif="{{info.order_status==1&&info.cid&&info.d_status==2}}">工程师维修完成</view>
+                <view class="fl w25 txtc colgray" wx:else>工程师出发</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==2||info.order_status==4}}">维修完成</view>
+                <view class="fl w25 txtc colgray" wx:else>维修完成</view>
+            </view>
+            <view class="ddjd ft22 oh" wx:if="{{info.type==1&&info.status==0}}">
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==0}}">订单已提交</view>
+                <view class="fl w25 txtc colgray" wx:else>订单已提交</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==1&&!info.cid}}">预约成功</view>
+                <view class="fl w25 txtc colgray" wx:else>预约成功</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==1&&info.cid}}">正在维修</view>
+                <view class="fl w25 txtc colgray" wx:else>正在维修</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==2||info.order_status==4}}">维修完成</view>
+                <view class="fl w25 txtc colgray" wx:else>维修完成</view>
+            </view>
+            <view class="ddjd ft22 oh" wx:if="{{info.type==2&&info.status==0}}">
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==0}}">订单已提交</view>
+                <view class="fl w25 txtc colgray" wx:else>订单已提交</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==1&&!info.cid}}">预约成功</view>
+                <view class="fl w25 txtc colgray" wx:else>预约成功</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==1&&info.cid}}">正在维修</view>
+                <view class="fl w25 txtc colgray" wx:else>正在维修</view>
+                <view class="fl w25 txtc colorange ddjdbtn" wx:if="{{info.order_status==2||info.order_status==4}}">维修完成</view>
+                <view class="fl w25 txtc colgray" wx:else>维修完成</view>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.status==0}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">订单：{{info.order_sn}}</view>
+            <view class="bb col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">设备型号</text>
+                    <text class="col333">{{info.modelname}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">设备颜色</text>
+                    <text class="col333">{{info.colorname}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">故障详细</text>
+                    <text class="col333">{{info.spec[0].item}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">维修方案</text>
+                    <text class="col333">{{info.spec[0].desc}}</text>
+                    <text class="colorange dingdanr">¥{{info.spec[0].price}}</text>
+                </view>
+                <view hidden class="lh34 dingdan">
+                    <text class="col999 dingdanl">其他费用</text>
+                    <text class="col333">上门费</text>
+                    <text class="colorange dingdanr">¥{{order.brand_home_visit_fee}}</text>
+                </view>
+                <view hidden class="lh34 dingdan">
+                    <text class="col333">维修费</text>
+                    <text class="colorange dingdanr">¥{{order.brand_manual_fee}}</text>
+                </view>
+                <view class="lh34 dingdan" wx:if="{{order.night_fee>0}}">
+                    <text class="col999 dingdanl">夜间服务费</text>
+                    <text class="col333"></text>
+                    <text class="colorange dingdanr">¥{{order.night_fee}}</text>
+                </view>
+                <view class="lh34 dingdan" wx:if="{{info.couponid>0}}">
+                    <text class="col999 dingdanl">优惠费用</text>
+                    <text class="col333"></text>
+                    <text class="colorange dingdanr">¥{{info.coupon_price}}</text>
+                </view>
+            </view>
+            <view class="ht100 lh100">
+                <text class="fr ft32 fb colorange">¥{{info.order_amount}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.status==0&&info.type==1}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">到店地址</view>
+            <view class="bb col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">门店名称</text>
+                    <text class="col333">{{info.store.title}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">门店地址</text>
+                    <text class="col333">{{info.store.address}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">联系电话</text>
+                    <text class="col333">{{info.store.phone}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">营业时间</text>
+                    <text class="col333">{{info.store.keywords}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.status==0&&info.type==2}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">邮寄地址</view>
+            <view class="bb col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">收 货 人</text>
+                    <text class="col333">{{info.contact}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">收货电话</text>
+                    <text class="col333">{{info.mobile1}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">收货地址</text>
+                    <text class="col333">{{info.shiping_content}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.status==0&&info.shipping_code!='0'}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">物流信息</view>
+            <view class="bb col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">物流公司</text>
+                    <text class="col333">{{info.shipping_name}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">物流单号</text>
+                    <text class="col333">{{info.shipping_code}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.status==0&&info.cid}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">工程师信息</view>
+            <view class="pt40 pb40 oh">
+                <view class="fl pl30">
+                    <view class="ft32 col333 lh60">{{info.customer_name}}</view>
+                    <view hidden class="ft24 col999 lh28">工号 {{order.rName}}</view>
+                </view>
+                <image bindtap="connectEngineer" class="fr mt10 mr20 icon80" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/phone.png" wx:if="{{order.status!=5&&order.status!=4}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.status==0}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">维修信息</view>
+            <view class="col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">联系人</text>
+                    <text class="col333">{{info.consignee}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">联系电话</text>
+                    <text class="col333">{{info.mobile}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">服务地址</text>
+                    <text class="col333">{{info.address}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">下单时间</text>
+                    <text class="col333">{{info.add_time}}</text>
+                </view>
+                <view class="lh34 dingdan" style="white-space: nowrap;">
+                    <text class="col999 dingdanl">预约时间</text>
+                    <text class="col333">{{info.ordertime}}</text>
+                </view>
+                <view class="lh34 dingdan" wx:if="{{order.RepairNumber}}">
+                    <text class="col999 dingdanl">设备号</text>
+                    <text class="col333">{{order.RepairNumber}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.status==1}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">订单：{{info.order_sn}}</view>
+            <view class="bb col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">设备型号</text>
+                    <text class="col333">{{info.brandname}}</text>
+                </view>
+                <view class="lh34 dingdan" wx:if="{{info.couponid>0}}">
+                    <text class="col999 dingdanl">优惠费用</text>
+                    <text class="col333"></text>
+                    <text class="colorange dingdanr">¥{{info.coupon_price}}</text>
+                </view>
+            </view>
+            <view class="ht100 lh100">
+                <text class="fr ft32 fb colorange">¥{{info.order_amount}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{info.status==1}}">
+        <view class="pl30 pr30 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">收货信息</view>
+            <view class="col333 ft28 pt14 pb14">
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">联系人</text>
+                    <text class="col333">{{info.consignee}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">联系电话</text>
+                    <text class="col333">{{info.mobile}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">服务地址</text>
+                    <text class="col333">{{info.address}}</text>
+                </view>
+                <view class="lh34 dingdan">
+                    <text class="col999 dingdanl">下单时间</text>
+                    <text class="col333">{{info.add_time}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bgw w100" wx:if="{{order.WarrantyPeriodMsg}}">
+        <view class="pl30 pr30 pb34 ft30">
+            <view class="ht100 bb col333 lh100 pl30 diangreen">售后保障</view>
+            <view class="lh baozhangtxt col333 ">{{order.WarrantyPeriodMsg}}</view>
+            <view class="baozhangtime colorange ft24 lh60" wx:if="{{order.status==4}}">保修截止日期：{{order.time}}</view>
+        </view>
+    </view>
+    <view class="fixedb w100  bgf8">
+        <button bindtap="pay1" class="xiadanbtn fr lh100 ft30" wx:if="{{info.status==1&&info.pay_status==0}}">支付</button>
+        <button bindtap="confirm" class="xiadanbtn fr lh100 ft30" wx:elif="{{info.status==1&&info.order_status==1&&info.shipping_status==2}}">确定收货</button>
+        <view wx:if="{{info.cid&&info.pay_status==0&&info.d_status==2}}">
+            <button bindtap="pay" class="xiadanbtn fr lh100 ft30" wx:if="{{info.pay_code==0}}">微信支付</button>
+            <button bindtap="home" class="xiadanbtn fr lh100 ft30" style="border-right:2rpx solid #fff;" wx:if="{{info.pay_code==0&&info.type!=2}}">现金支付</button>
+            <button class="xiadanbtn fr lh100 ft30" style="border-right:2rpx solid #fff;" wx:if="{{info.pay_code==1}}">现金支付审核中</button>
+        </view>
+        <button bindtap="connectService" class="xiadanbtn fr lh100 ft30" wx:else>联系客服</button>
+    </view>
+</view>

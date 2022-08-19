@@ -1,0 +1,7 @@
+{
+    "navigationBarBackgroundColor": "#36383C",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "选择存货",
+    "enablePullDownRefresh": false,
+    "usingComponents": {}
+}

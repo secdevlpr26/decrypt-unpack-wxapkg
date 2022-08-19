@@ -1,0 +1,6 @@
+<view class="Empty">
+    <view class="Empty">
+        <textarea bindinput="Empty" placeholder="Empty" value="Empty"></textarea>
+    </view>
+    <view bindtap="Empty" class="Empty">Empty</view>
+</view>

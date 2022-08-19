@@ -1,0 +1,4 @@
+<view class="no-data" style="{{'background:'+bgColor+';'}}">
+    <view>
+        <image src="/static/nodata.png"></image>暂无数据</view>
+</view>

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "购物车",
+    "usingComponents": {
+        "component-tag-name": "./component/c-product-list-1/c-product-list-1"
+    }
+}

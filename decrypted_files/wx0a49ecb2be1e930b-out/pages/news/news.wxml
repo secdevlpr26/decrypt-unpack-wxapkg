@@ -1,0 +1,38 @@
+<view class="news-type" hidden="{{!titles.length}}">
+    <view bindtap="turnLeft" class="iconfont icon-arrow-left btn-left {{leftHidden?'dn':''}}"></view>
+    <view class="news-type-list">
+        <view class="news-type-wrap" style="left: {{titleLeft}}rpx">
+            <view bindtap="titletap" class="news-type-item {{categoryId==item.code?'active':''}}" data-code="{{item.code}}" wx:for="{{titles}}" wx:key="{{item.id}}">
+				  {{item.itemName}}
+			</view>
+        </view>
+    </view>
+    <view bindtap="turnRight" class="iconfont icon-arrow-right btn-right {{rightHidden?'dn':''}}"></view>
+</view>
+<view class="news-content">
+    <swiper autoplay="true" circular="true" class="news-banner" duration="1000" hidden="{{!adList.length}}" interval="5000">
+        <swiper-item wx:for="{{adList}}" wx:key="{{item.id}}">
+            <image class="slide-image" lazyLoad="{{true}}" src="{{item.picture1}}"></image>
+            <text>{{item.title}}</text>
+        </swiper-item>
+    </swiper>
+    <view class="news-item-ls">
+        <view class="news-item" wx:for="{{pageList}}">
+            <navigator url="news-detail/news-detail?tabContentId={{item.id}}&type={{news_type}}">
+                <image lazyLoad="{{true}}" src="{{item.picture1}}"></image>
+                <view class="news-item-info">
+                    <text class="news-item-title">{{item.title}}</text>
+                    <text class="news-item-intro">{{item.briefDescription}}</text>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view class="bottom-hint" hidden="{{bottomHint}}">
+        <view class="line"></view>
+        <text>没有更多资讯啦</text>
+    </view>
+</view>
+<view class="news-null" hidden="{{hidden}}">
+    <view class="iconfont icon-vz-null"></view>
+    <text>暂时没有资讯信息</text>
+</view>

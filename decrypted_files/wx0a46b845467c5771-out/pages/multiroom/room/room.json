@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "视频看房",
+    "usingComponents": {
+        "rtc-room": "/pages/components/rtc-room/rtc-room"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "注册会员",
+    "usingComponents": {
+        "dialog": "./dialog"
+    }
+}

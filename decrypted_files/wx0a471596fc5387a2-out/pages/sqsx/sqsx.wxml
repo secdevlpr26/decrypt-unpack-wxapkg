@@ -1,0 +1,41 @@
+<view>{{index}}</view>
+<view class="addrcon">
+    <view class="addrlist" wx:for="{{addressList}}" wx:key="{{item.XH}}">
+        <view class="addr">
+            <text>姓名：{{item.USERNAME==null?'':item.USERNAME}}</text>
+        </view>
+        <view class="dianhua">公司名称：{{item.GSNAME==null?'':item.GSNAME}}</view>
+        <view class="dianhua">职务：{{item.ZW==null?'':item.ZW}}</view>
+        <view class="dianhua" wx:if="{{item.LX==1||item.LX==3}}">职称：{{item.ZC==null?'':item.ZC}}</view>
+        <view class="dianhua" wx:if="{{item.LX==4}}">末级部门数：{{item.ZC==null?'':item.ZC}}</view>
+        <view class="dianhua">通信地址：{{item.ADDRESS==null?'':item.ADDRESS}}</view>
+        <view class="dianhua">联系方式：{{item.TELL==null?'':item.TELL}}</view>
+        <view class="dianhua" wx:if="{{item.LX==1}}">报名时间：{{item.UPDATETIME}}</view>
+        <view class="dianhua" wx:if="{{item.LX==2||item.LX==4||item.LX==3}}">申请时间：{{item.UPDATETIME}}</view>
+        <view class="addrb">
+            <view class="moren">
+                <label>
+                    <radio checked="true" color="#e6442d" wx:if="{{item.IS_DEFAULT==1}}"></radio>
+                    <radio disabled color="#e6442d" wx:else></radio>
+                </label>
+                                        {{item.HF==null?'':item.HF}}
+                                </view>
+            <button bindtap="edit" class="edit" data-id="{{item.ID}}" data-index="{{item.LX}}" wx:if="{{item.IS_DEFAULT==0}}">
+                <image src="{{hostUrl}}/images/bjico.png"></image>编辑</button>
+            <button bindtap="delete" class="delete" data-id="{{item.ID}}" data-index="{{item.LX}}" wx:if="{{item.IS_DEFAULT==0}}">
+                <image src="{{hostUrl}}/images/scico.png"></image>删除</button>
+        </view>
+    </view>
+</view>
+<view bindtap="addAddress" class="addbtn" wx:if="{{index==1}}">新增实训报名信息
+        <image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>
+<view bindtap="addAddress" class="addbtn" wx:if="{{index==2}}">新增申请考试
+        <image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>
+<view bindtap="addAddress" class="addbtn" wx:if="{{index==3}}">新增申请证书
+        <image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>
+<view bindtap="addAddress" class="addbtn" wx:if="{{index==4}}">新增申请标准版
+        <image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>

@@ -1,0 +1,11 @@
+<view class="radioView">
+    <view class="radioItem" wx:for="{{faultArr}}" wx:for-index="index1" wx:for-item="item1" wx:key="{{index}}">
+        <view>{{item1.name}}</view>
+        <view bindtap="switchBind" class="switch {{item1.val=='1'?'on':''}}" data-index="{{index1}}">
+            <text>{{item1.val=='0'?'正常':'异常'}}</text>
+        </view>
+    </view>
+</view>
+<view class="submitView">
+    <view bindtap="createReport" class="submitBtn">点击生成检测报告</view>
+</view>

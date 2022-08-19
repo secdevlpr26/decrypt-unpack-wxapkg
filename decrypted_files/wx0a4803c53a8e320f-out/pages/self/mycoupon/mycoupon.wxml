@@ -1,0 +1,81 @@
+<view class="main">
+    <view class="tab-nav">
+        <view bindtap="setTab" class="nav-item {{showtab==index?'active':''}}" data-tabindex="{{index}}" data-type="{{item.type}}" wx:for="{{tabnav.tabitem}}" wx:key="{{item.type}}">
+            {{item.text}}
+        </view>
+    </view>
+    <view class="tab-content">
+        <view class="tab-panel" wx:if="{{showtab==0}}">
+            <view class="test-list" wx:if="{{couponInfo.length>0}}">
+                <view class="test-item" wx:for="{{couponInfo}}" wx:key="{{item.id}}">
+                    <image class="coupon-img" lazyLoad="{{true}}" src="../../../img/coupon/coupon_valid.png"></image>
+                    <view class="test-item-t">
+                        <view class="test-item-t-left">
+                            <text class="name">{{item.title}}</text>
+                            <text class="type">满减优惠</text>
+                        </view>
+                        <text class="coupon-price">￥{{item.discountAmount}}</text>
+                    </view>
+                    <view class="test-item-b">
+                        <view class="test-item-b-left">
+                            <text>满{{item.amountReached}}可用</text>
+                            <text>{{item.instructure==null?'':item.instructure}}</text>
+                            <text>有效期{{item.beginTime}}至{{item.endTime}}</text>
+                            <text class="test-item-tips" wx:if="{{item.branchName}}">仅限商家 <text class="branchName">{{item.branchName}}</text> 可使用</text>
+                            <text class="test-item-tips" wx:if="{{!item.branchName}}">全平台可使用</text>
+                            <view bindtap="useCoupon" class="btn-use" data-id="{{item.branchInfoId}}" wx:if="{{item.branchName}}">去使用</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="tab-panel" wx:if="{{showtab==1}}">
+            <view class="test-list" wx:if="{{couponInfo.length>0}}">
+                <view class="test-item" wx:for="{{couponInfo}}" wx:key="{{item.id}}">
+                    <image class="coupon-img" lazyLoad="{{true}}" src="../../../img/coupon/coupon_invalid.png"></image>
+                    <view class="test-item-t">
+                        <view class="test-item-t-left">
+                            <text class="name">{{item.title}}</text>
+                            <text class="type">满减优惠</text>
+                        </view>
+                        <text class="coupon-price">￥{{item.discountAmount}}</text>
+                    </view>
+                    <view class="test-item-b">
+                        <view class="test-item-b-left">
+                            <text>满{{item.amountReached}}可用</text>
+                            <text>{{item.instructure==null?'':item.instructure}}</text>
+                            <text>有效期{{item.beginTime}}</text>
+                        </view>
+                        <image class="coupon-right-img" lazyLoad="{{true}}" src="../../../img/coupon/coupon-used.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="tab-panel" wx:if="{{showtab==2}}">
+            <view class="test-list" wx:if="{{couponInfo.length>0}}">
+                <view class="test-item" wx:for="{{couponInfo}}" wx:key="{{item.id}}">
+                    <image class="coupon-img" lazyLoad="{{true}}" src="../../../img/coupon/coupon_invalid.png"></image>
+                    <view class="test-item-t">
+                        <view class="test-item-t-left">
+                            <text class="name">{{item.title}}</text>
+                            <text class="type">满减优惠</text>
+                        </view>
+                        <text class="coupon-price">￥{{item.discountAmount}}</text>
+                    </view>
+                    <view class="test-item-b">
+                        <view class="test-item-b-left">
+                            <text>满{{item.amountReached}}可用</text>
+                            <text>{{item.instructure==null?'':item.instructure}}</text>
+                            <text>有效期{{item.beginTime}}</text>
+                        </view>
+                        <image class="coupon-right-img" lazyLoad="{{true}}" mode="scaleToFill" src="../../../img/coupon/coupon-expired.png" style="width: 80rpx; height: 80rpx; "></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cart-null" hidden="{{couponInfo.length}}">
+        <view class="iconfont icon-vz-null"></view>
+        <text>您暂时还没有优惠券</text>
+    </view>
+</view>

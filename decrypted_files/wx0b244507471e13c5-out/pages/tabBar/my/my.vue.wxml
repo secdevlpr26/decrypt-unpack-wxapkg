@@ -1,0 +1,25 @@
+<template name="36d57b03">
+    <view class="_view M36d57b03 page">
+        <view class="_view M36d57b03 index-hd">
+            <image class="_image M36d57b03 index-logo" src="../../../static/templateIndex.png"></image>
+        </view>
+        <view class="_view M36d57b03 uni-list">
+            <view class="_view M36d57b03 uni-list-cell-divider">基本信息</view>
+            <view class="_view M36d57b03 uni-list-cell" hoverClass="uni-list-cell-hover">
+                <view class="_view M36d57b03 uni-list-cell-navigate uni-navigate-right">个人信息</view>
+            </view>
+            <view class="_view M36d57b03 uni-list-cell uni-list-cell-last" hoverClass="uni-list-cell-hover">
+                <view class="_view M36d57b03 uni-list-cell-navigate uni-navigate-right">我的收入</view>
+            </view>
+        </view>
+        <view class="_view M36d57b03 uni-list">
+            <view class="_view M36d57b03 uni-list-cell-divider">基本设置</view>
+            <view class="_view M36d57b03 uni-list-cell" hoverClass="uni-list-cell-hover">
+                <view class="_view M36d57b03 uni-list-cell-navigate uni-navigate-right">修改密码</view>
+            </view>
+            <view class="_view M36d57b03 uni-list-cell uni-list-cell-last" hoverClass="uni-list-cell-hover">
+                <view class="_view M36d57b03 uni-list-cell-navigate uni-navigate-right">更多设置</view>
+            </view>
+        </view>
+    </view>
+</template>

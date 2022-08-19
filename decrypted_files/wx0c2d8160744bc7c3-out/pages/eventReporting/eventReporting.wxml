@@ -1,0 +1,173 @@
+<view class="realTitle">请完善信息</view>
+<form bindsubmit="formSubmit">
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">类型：</view>
+                </view>
+                <view class="weui-cell__hd">
+                    <picker bindchange="changeBType" range="{{bEventTypeNameArr}}" value="{{bEventTypeArr[bEventTypeIndx]}}">
+                        <view class="weui-input">{{bEventTypeNameArr[bEventTypeIndx]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">类别：</view>
+                </view>
+                <view class="weui-cell__hd">
+                    <picker bindchange="changeSType" name="event_type_id" range="{{sEventTypeNameArr}}" value="{{sEventTypeArr[sEventTypeIndx]}}">
+                        <view class="weui-input">{{sEventTypeNameArr[sEventTypeIndx]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">地址：</view>
+                </view>
+                <view bindtap="open" class="weui-cell weui-cell_input">
+                    <view class="weui-input">{{addr||'请选择事件上报地址'}}</view>
+                    <input name="area_id" style="display:none;" value="{{area_id}}"></input>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">详址：</view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" name="location" placeholder="请输入事发地点" value="{{address}}"></input>
+                    <input name="coordination" style="display:none;" value="{{longitude}},{{latitude}}"></input>
+                </view>
+                <view class="weui-cell_dw">
+                    <view bindtap="getEventLocation">
+                        <image src="../../dist/images/mapmark.png" style="width: 28px; height: 36px;"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <view class="textarea-wrp">
+            <view class="ms">描述信息：</view>
+            <textarea autoFocus="true" name="detail" style="height: 3em"></textarea>
+        </view>
+    </view>
+    <view class="weui-cells">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <view class="weui-uploader">
+                    <view class="weui-uploader__hd">
+                        <view class="weui-uploader__title">点击选择图片</view>
+                        <view class="weui-uploader__info">{{imageList.length}}/9</view>
+                    </view>
+                    <view class="weui-uploader__bd">
+                        <view class="weui-uploader__files">
+                            <view class="weui-uploader__file" wx:for="{{imageList}}" wx:for-item="image">
+                                <image bindtap="previewImage" class="weui-uploader__img" data-src="{{image}}" src="{{image}}"></image>
+                            </view>
+                        </view>
+                        <view class="weui-uploader__input-box">
+                            <view bindtap="chooseImage" class="weui-uploader__input"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page-section">
+        <block wx:if="{{recording===false&&playing===false&&hasRecord===false}}">
+            <view class="page-body-time">
+                <text class="time-big">点击开始录音：{{formatedRecordTime}}</text>
+            </view>
+            <view class="page-body-buttons">
+                <view class="page-body-button"></view>
+                <view bindtap="startRecord" class="page-body-button">
+                    <image src="/dist/images/record.png"></image>
+                </view>
+                <view class="page-body-button"></view>
+            </view>
+        </block>
+        <block wx:if="{{recording===true}}">
+            <view class="page-body-time">
+                <text class="time-big">录音中：{{formatedRecordTime}}</text>
+            </view>
+            <view class="page-body-buttons">
+                <view class="page-body-button"></view>
+                <view bindtap="stopRecord" class="page-body-button">
+                    <view class="button-stop-record"></view>
+                </view>
+                <view class="page-body-button"></view>
+            </view>
+        </block>
+        <block wx:if="{{hasRecord===true&&playing===false}}">
+            <view class="page-body-time">
+                <text class="time-big">{{formatedPlayTime}}</text>
+                <text class="time-small">{{formatedRecordTime}}</text>
+            </view>
+            <view class="page-body-buttons">
+                <view class="page-body-button"></view>
+                <view bindtap="playVoice" class="page-body-button">
+                    <image src="/dist/images/play.png"></image>
+                </view>
+                <view bindtap="clear" class="page-body-button">
+                    <image src="/dist/images/trash.png"></image>
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{hasRecord===true&&playing===true}}">
+            <view class="page-body-time">
+                <text class="time-big">{{formatedPlayTime}}</text>
+                <text class="time-small">{{formatedRecordTime}}</text>
+            </view>
+            <view class="page-body-buttons">
+                <view bindtap="stopVoice" class="page-body-button">
+                    <image src="/dist/images/stop.png"></image>
+                </view>
+                <view bindtap="pauseVoice" class="page-body-button">
+                    <image src="/dist/images/pause.png"></image>
+                </view>
+                <view bindtap="clear" class="page-body-button">
+                    <image src="/dist/images/trash.png"></image>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="commit" wx:if="{{action==true}}">
+        <button formType="submit" type="primary">提交</button>
+    </view>
+    <view class="commit" wx:if="{{action==false}}">
+        <button type="default">事件上传中
+      <icon color="orange" size="20" type="waiting"></icon>
+        </button>
+    </view>
+</form>
+<view class="citypicker" wx:if="{{condition}}">
+    <picker-view bindchange="changeArea" class="citybody" indicatorStyle="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}">
+        <view class="cityheader">
+            <view bindtap="open" class="city-cancel">取消</view>
+            <view bindtap="open" class="city-true">确定</view>
+        </view>
+        <picker-view-column>
+            <view style="line-height: 50px;padding-left:10px;" wx:for="{{areaNames}}" wx:key="item">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view style="line-height: 50px;padding-left:10px;" wx:for="{{streetNames}}" wx:key="item">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view style="line-height: 50px;padding-left:10px;" wx:for="{{communityNames}}" wx:key="item">{{item}}</view>
+        </picker-view-column>
+    </picker-view>
+</view>

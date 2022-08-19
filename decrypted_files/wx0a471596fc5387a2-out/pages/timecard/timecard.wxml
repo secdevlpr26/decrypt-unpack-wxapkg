@@ -1,0 +1,25 @@
+<view>{{index}}</view>
+<scroll-view scrollY="true">
+    <view class="list-wrap" wx:for="{{list}}">
+        <view bindtap="toDetail" class="list" data-desc="{{item.LOCDESC}}" data-name="{{item.LOCNAME}}" data-x="{{item.LATITUDE}}" data-y="{{item.LONGITUDE}}">
+            <image class="rec-avatar" src="../../images/clockIn.png" wx:if="{{item.ZD=='0'}}"></image>
+            <image class="rec-avatar" src="../../images/clockOut.png" wx:if="{{item.ZD=='1'}}"></image>
+            <view class="mid">
+                <view class="title">驻地：{{item.ZD==0?'未变':'改变'}}--体温：{{item.TW==0?'正常':'异常'}}</view>
+                <view class="title">{{item.TIME}}</view>
+                <view class="discription">{{item.LOCDESC}}</view>
+                <view class="detail">
+                    <text class="radius">{{item.LOCNAME}}</text>
+                </view>
+                <view class="discription">{{item.BZ==null?'':item.BZ}}</view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<view bindtap="addAddress" class="addbtn">新增上报<image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>
+<view class="body-view">
+    <loading bindchange="loadingChange" hidden="{{hidden}}">
+    加载中...
+  </loading>
+</view>

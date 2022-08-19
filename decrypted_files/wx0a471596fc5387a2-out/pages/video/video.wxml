@@ -1,0 +1,16 @@
+<view class="container">
+    <image mode="widthFix" src="{{hostUrl}}/images/banner2.jpg" style="width:100%"></image>
+    <image mode="widthFix" src="{{hostUrl}}/images/video-title.jpg" style="width:100%"></image>
+    <view>
+        <view class="vv" wx:for="{{list}}" wx:key="list">
+            <view class="block" style="margin-left:20rpx;">
+                <image class="img1" src="{{hostUrl}}/images/bullet_red.png" style="margin-left:20rpx"></image>
+                <text class="text">{{item.TITLE}} </text>
+                <view bindtap="videoPlay" class="cover" data-title="{{item.TITLE}}" data-vvid="{{item.ARTICLEID}}" id="{{index}}" style="display: {{_index==index?'none':'block'}};">
+                    <image class="videoVideo2" mode="scaleToFill" src="{{hostUrl}}/{{item.PHOTOURL}}"></image>
+                </view>
+            </view>
+            <video class="video" id="{{index}}" src="{{hostUrl}}/{{item.ATTACHMENT}}" wx:if="{{_index==index}}"></video>
+        </view>
+    </view>
+</view>

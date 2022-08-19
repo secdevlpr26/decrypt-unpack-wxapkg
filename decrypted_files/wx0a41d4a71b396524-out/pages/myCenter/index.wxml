@@ -1,0 +1,122 @@
+<view class="top">
+    <view class="userinfo">
+        <image src="{{userhead}}"></image>
+        <view class="username">
+            <view>{{username}}</view>
+            <view>积分 {{readerAccount.score}}</view>
+        </view>
+        <view class="integrate">
+            <navigator class="jx_detail" hoverClass="navigator-hover" style="margin-left:30rpx;" url="score/index">
+                积分详情
+            </navigator>
+        </view>
+    </view>
+    <view class="vip_pay" style="margin:20rpx;">
+        <view class="box-sd my-list">
+            <view class=" weui-cells_after-title">
+                <navigator class="weui-cell weui-cell_access" url="../member/member">
+                    <view class="weui-cell__hd">
+                        <image src="../../images/personal_icon_02.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;margin-right:20rpx"></image>
+                    </view>
+                    <view class="weui-cell__bd">
+                        会员卡充值
+                        <view class="bd-word">查看会员卡信息以及会员卡充值</view>
+                    </view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="my">
+    <view class="box-sd mt20 my-list">
+        <view class=" weui-cells_after-title">
+            <view bind:tap="borrowbook" class="weui-cell weui-cell_access">
+                <view class="weui-cell__hd">
+                    <image src="../../images/ewm.png" style="vertical-align: middle;width:64rpx; height: 64rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">扫码借书</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <navigator class="weui-cell weui-cell_access" url="buybookorder/index">
+                <view class="weui-cell__hd">
+                    <image src="../../images/personal_icon_01.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">购书记录</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">
+                    <text wx:if="{{noPayOrderCount>0}}">{{noPayOrderCount}}未支付</text>
+                </view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access" url="borrowingRecords/index">
+                <view class="weui-cell__hd">
+                    <image src="../../images/personal_icon_02.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">借阅记录</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">
+                    <text wx:if="{{borrowCount>0}}">{{borrowCount}}未还</text>
+                </view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access" url="../shoppingMall/index?type=10">
+                <view class="weui-cell__hd">
+                    <image src="../../images/buybook.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">订单列表</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{bookOrderCount>0?bookOrderCount:''}}</view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access" url="bookshelf/index">
+                <view class="weui-cell__hd">
+                    <image src="../../images/sign.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">我的收藏</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{signCount>0?signCount:''}}</view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access" url="changedata/index">
+                <view class="weui-cell__hd">
+                    <image src="../../images/personal_icon_012.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">个人资料</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access" url="../borrowbook/index" wx:if="{{memberType==1}}">
+                <view class="weui-cell__hd">
+                    <image src="../../images/receive.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">代借书</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access" url="adminLoginIn/index">
+                <view class="weui-cell__hd">
+                    <image src="../../images/admin_head.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">管理员投书</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access" url="helpServer/index">
+                <view class="weui-cell__hd">
+                    <image src="../../images/personal_icon_03.png" style="margin-right: 5px;vertical-align: middle;width:54rpx; height: 54rpx;"></image>
+                </view>
+                <view class="weui-cell__bd">帮助与客服</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+    </view>
+    <view bindtap="toTel" class="server-tel" data-phone="{{telPhone}}">
+        客服电话：
+        <i>{{telPhone}}</i>
+    </view>
+</view>
+<view class="modal" hidden="{{modal}}">
+    <view class="modal-content">
+        <view class="title">{{modalTitle}}</view>
+        <image hidden="{{!success}}" src="../../images/success.png"></image>
+        <image hidden="{{success}}" src="../../images/error.png"></image>
+        <view class="msg c00ca" hidden="{{!success}}">{{modalMsg}}</view>
+        <view class="msg cf40" hidden="{{success}}">{{modalErrorMsg}}</view>
+        <button bind:tap="delmodal" wx:if="{{success}}">确定</button>
+        <button bind:tap="borrowbook" wx:else>重新扫码</button>
+        <view bind:tap="delmodal" class="modal-del">
+            <image class="" src="../../images/modal-del.png"></image>
+        </view>
+    </view>
+</view>
+<dialog bind:confirmEvent="getAndSetUserInfo" confirmText="确定" content="小程序需要您的授权才能提供更好的服务哦" id="dialog" title="授权信息"></dialog>

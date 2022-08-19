@@ -1,0 +1,25 @@
+<view class="record-wrap">
+    <scroll-view class="container" scrollY="true">
+        <view class="empty-container" wx:if="{{recordList.length===0}}">
+            <text>我的收藏</text>
+        </view>
+        <view bindtap="toToGoods" class="goods-list" data-id="{{item.goods_id}}" wx:for="{{recordList}}" wx:key="{{index}}">
+            <view class="goods-item">
+                <view class="goods-pic">
+                    <image src="{{item.original_img}}"></image>
+                </view>
+                <view class="goods-info">
+                    <view class="name text-ellipsis">
+                        <text>
+                                {{item.goods_name}}
+                            </text>
+                    </view>
+                    <view class="price">
+                            ¥<text>{{item.shop_price}}</text>
+                    </view>
+                </view>
+                <view catchtap="delRecord" class="del-btn" data-index="{{index}}">删除</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

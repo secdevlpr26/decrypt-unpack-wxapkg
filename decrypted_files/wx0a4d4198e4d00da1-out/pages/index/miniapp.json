@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "注册账号",
+    "usingComponents": {
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index"
+    }
+}

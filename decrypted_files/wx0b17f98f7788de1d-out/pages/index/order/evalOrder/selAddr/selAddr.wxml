@@ -1,0 +1,47 @@
+<view style="flex-direction:row;display:flex;">
+    <view class="view_tou">
+        <text class="text_timu">收货地址</text>
+        <image class="wddz_img" src="../../../../../images/sellect.png"></image>
+    </view>
+</view>
+<view>
+    <view wx:for="{{receivingAddresses}}" wx:key="key">
+        <view bindtap="goDetail" class="view_meitiao" data-click-index="{{index}}" style="flex-direction:column;display:flex;" wx:if="{{item.isWithin=='Y'}}">
+            <view style="display:flex;justify-content: space-between">
+                <text class="text_dianming">{{item.wechatUserAddressReceiverName}}</text>
+                <text class="text_zhuangtai">{{item.wechatUserAddressReceiverPhoneNum}}</text>
+            </view>
+            <view class="view_dizhi">
+                <text class="text_dizhi">{{item.wechatUserAddressAddress}},{{item.wechatUserAddressFullAddress}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="view_xian">
+        <view class="view_y">以下地址超出配送范围不可选</view>
+    </view>
+    <view wx:for="{{receivingAddresses}}" wx:key="key">
+        <view class="view_meitiao meitiao1" style="flex-direction:column;display:flex;background-color:#333333;" wx:if="{{item.isWithin!='Y'}}">
+            <view style="display:flex;justify-content:flex-start;width:100%;">
+                <view style="width:100%;float:left;">
+                    <view style="justify-content:space-between;display:flex;width:600rpx;">
+                        <text class="text_dianming" style="color:#646464;">{{item.wechatUserAddressReceiverName}}</text>
+                        <text class="text_zhuangtai" style="padding-left:15px;color:#676767;">{{item.wechatUserAddressReceiverPhoneNum}}</text>
+                    </view>
+                    <view class="view_dizhi">
+                        <text class="text_dizhi" style="color:#666666;">{{item.wechatUserAddressAddress}}{{item.wechatUserAddressFullAddress}}</text>
+                    </view>
+                </view>
+                <view style="width:30%;float:right;"></view>
+                <view class="clear"></view>
+            </view>
+        </view>
+    </view>
+</view>
+<view style="margin-top:50px">
+    <view catchtap="tianJaDizhi" class="tu_xin">新增地址</view>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>

@@ -1,0 +1,11 @@
+<view class="Empty">
+    <image src="Empty"></image>
+    <text>Empty</text>
+</view>
+<view class="Empty"></view>
+<view class="Empty">
+    <text>Empty</text>
+    <text>Empty</text>
+    <text>Empty</text>
+    <button bindtap="Empty" type="Empty">Empty</button>
+</view>

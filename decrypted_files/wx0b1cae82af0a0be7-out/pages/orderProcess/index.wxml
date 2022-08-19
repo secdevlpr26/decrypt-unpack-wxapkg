@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="process-list" wx:for="{{orderFlow}}" wx:key="id">
+        <view class="process-item flex">
+            <view class="process-left">
+                <image class="process-icon" hidden="{{index!=0}}" src="/images/during.png"></image>
+                <image class="process-icon finish" hidden="{{index==0}}" src="/images/finish.png"></image>
+            </view>
+            <view class="process-right">
+                <view class="deg"></view>
+                <view class="flex tit">
+                    <text class="tit">{{item.flow}}</text>
+                    <text class="time_msg">{{item.time}}</text>
+                </view>
+                <view class="time_msg">{{item.info}}</view>
+            </view>
+        </view>
+    </view>
+</view>

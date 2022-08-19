@@ -1,0 +1,118 @@
+<view class="card">
+    <view class="card-bg">
+        <view class="card-head">
+            <image src="{{userhead==null?'../../images/personal_head.png':userhead}}"></image>
+            <view class="head-info">
+                <view class="name">
+                    {{username==null?'游客':username}}
+                    <i>{{memberName==null?'普通用户':memberName+'用户'}}</i>
+                </view>
+                <block wx:if="{{havingBuy}}">
+                    <view class="open">开通时间：{{startTime}}</view>
+                    <view class="overdue">到期时间：{{endTime}}</view>
+                </block>
+                <block wx:if="{{!havingBuy}}">
+                    <view class="open">还未购买会员</view>
+                    <view class="overdue"></view>
+                </block>
+            </view>
+        </view>
+        <view class="member">会员权益</view>
+        <view class="member-tips">
+            <block wx:if="{{showName==null}}">普通用户不能借书</block>
+            <block wx:else>当前可借书籍数量为{{limit}}本</block>
+        </view>
+    </view>
+</view>
+<view class="noData" wx:if="{{none}}">
+    <image src="../../images/no-data.png"></image>
+    <view>暂未开放哦！</view>
+</view>
+<block wx:else>
+    <scroll-view scrollWithAnimation scrollX scrollRight="{{scrollRight}}rpx" style="width: 100%; background:#fff">
+        <view class="vip-list" style="display:flex;padding:0 10rpx;" wx:if="{{memberFlag!=0}}">
+            <view bindtap="selectItem" class="vip-list-item" data-index="{{index}}" id="{{item.id}}" wx:for="{{list}}" wx:key="{{item.id}}">
+                <view class="post  {{selecIndex==item.id?'active':''}}">
+                    <view class="c298cad fs34">{{item.showName}}</view>
+                    <view class="c298cad fs26">￥{{tools.getPrice(item.money)}}</view>
+                    <view class="c999 fs26 cb3b3">￥{{tools.getPrice(item.money)}}</view>
+                    <view class="c999 fs24 c999">{{tools.getPrice(item.money)}}元/月</view>
+                </view>
+            </view>
+        </view>
+        <view class="vip-gradelist" style="display:flex;padding:0 10rpx;">
+            <view bindtap="selectItem" class="vip-gradelist-item" data-index="{{index}}" id="{{item.id}}" wx:for="{{list}}" wx:key="{{item.id}}">
+                <view class="post">
+                    <view class="fs26 c999 {{selecIndex==item.id?'select':''}}">
+                        <i>{{item.showName}}</i>
+                        <i>{{memberName}}</i>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="exchange box-sd fs26" wx:if="{{memberFlag!=0}}">
+        <image src="../../images/integr.png"></image>
+        <view class="msg">可用100积分兑换1.00元</view>
+        <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox">
+                <checkbox value=""></checkbox>
+            </label>
+        </checkbox-group>
+    </view>
+    <view class="vip-intro">
+        <view class="vip-intro-details flex">
+            <view class="vip-intro-item">
+                <text>一次借阅</text>
+            </view>
+            <view class="vip-intro-item">
+                <text>{{itemIfo.num}}本</text>
+            </view>
+        </view>
+        <view class="vip-intro-details flex">
+            <view class="vip-intro-item">
+                <text>借阅时间</text>
+            </view>
+            <view class="vip-intro-item">
+                <text>{{itemIfo.days}}天</text>
+            </view>
+        </view>
+        <view class="vip-intro-details flex">
+            <view class="vip-intro-item">
+                <text>有效期</text>
+            </view>
+            <view class="vip-intro-item">
+                <text>{{itemIfo.timeLimit}}月</text>
+            </view>
+        </view>
+        <view class="vip-intro-details flex" wx:if="{{memberFlag!=0}}">
+            <view class="vip-intro-item">
+                <text>单价</text>
+            </view>
+            <view class="vip-intro-item">
+                <text>{{tools.getPrice(itemIfo.money)}}元</text>
+            </view>
+        </view>
+        <view class="vip-intro-details flex">
+            <view class="vip-intro-item">
+                <text>购书折扣</text>
+            </view>
+            <view class="vip-intro-item">
+                <text>{{itemIfo.discount}}折</text>
+            </view>
+        </view>
+    </view>
+    <view style="height:90rpx"></view>
+    <view class="vip-btn">
+        <button bindtap="toBuy" class="weui-btn" data-index="{{activeIndex}}" disabled="{{buttonClicked}}">
+            <block wx:if="{{havingBuy}}">立即续期</block>
+            <block wx:if="{{memberFlag!=0}}">
+                <block wx:if="{{!havingBuy}}">立即购买</block>
+            </block>
+            <block wx:else>
+                <block wx:if="{{!havingBuy}}">立即领取</block>
+            </block>
+        </button>
+    </view>
+</block>
+<wxs module="tools" src="../../utils/appUtils.wxs" />

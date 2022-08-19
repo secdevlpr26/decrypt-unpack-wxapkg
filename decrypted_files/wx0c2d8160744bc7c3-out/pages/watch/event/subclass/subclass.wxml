@@ -1,0 +1,12 @@
+<view class="page">
+    <view class="weui-cells__title">请选择上报事件小类</view>
+    <view class="weui-cells weui-cells_after-title">
+        <navigator class="weui-cell weui-cell_access" hoverClass="weui-cell_active" url="../report/report?subclassId={{item.subclassId}}" wx:for="{{eventSubclassList}}">
+            <view class="weui-cell__hd">
+                <image class="item_image" src="/dist/images/upload.png"></image>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+</view>

@@ -1,0 +1,25 @@
+<view>
+    <view bindtap="goToRepairHome" class="bannerView">
+        <image src="../img/banner.png"></image>
+    </view>
+    <view class="infoView">
+        <view class="infos">
+            <view>型号：{{model}}</view>
+            <view>平台：{{system}}</view>
+        </view>
+        <view class="btnView report">
+            <view bindtap="goToTestHome" class="beginBtn">重新检测</view>
+        </view>
+    </view>
+    <view class="faultList2">
+        <view class="faultItem2 {{item.val==1?'err':''}}" wx:for="{{dataArr}}" wx:key="index">
+            <view class="itemTitle">
+                <image src="../img/{{index}}.png"></image>
+                <text>{{item.name}}</text>
+            </view>
+            <view class="itemStatus">
+                <view>{{item.val==0?'正常':'异常'}}</view>
+            </view>
+        </view>
+    </view>
+</view>

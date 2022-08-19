@@ -1,0 +1,54 @@
+<form bindreset="addAddress" bindsubmit="addressSubmit" class="add-address">
+    <view>
+        <view class="address-list">
+            <view class="address-item" wx:for="{{addressList}}">
+                <view class="item-content">
+                    <text class="item-contact">{{item.contactPerson}},{{item.mobilePhone}}</text>
+                    <text class="item-detail">{{item.proName}} {{item.cityName}} {{item.disName}} {{item.address}}</text>
+                </view>
+                <view class="item-bottom">
+                    <view class="bottom-left">
+                        <view bindtap="setDefault" class="iconfont {{item.isdefault==1?'icon-checkbox1':'icon-checkBox'}}" data-id="{{item.id}}"></view>
+                        <view>{{item.isdefault==1?'已设为默认':'设为默认'}}</view>
+                    </view>
+                    <view class="bottom-right">
+                        <view bindtap="editTap" data-info="{{item}}">
+                            <text class="iconfont icon-vz-edit">
+                                <text></text>编辑</text>
+                        </view>
+                        <view bindtap="deleteTap" data-info="{{item}}">
+                            <text class="iconfont icon-delete">
+                                <text></text>删除</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <button class="btn-add" formType="reset">添加地址</button>
+    <view class="pop-up" hidden="{{isHidden}}">
+        <view class="add-box">
+            <view bindtap="closeBtn" class="iconfont icon-close"></view>
+            <view class="add-txt">添加新收货地址</view>
+            <input name="name" placeholder="收货人姓名" value="{{addressInfo.name?addressInfo.name:''}}"></input>
+            <input maxlength="11" name="phone" placeholder="手机号码" value="{{addressInfo.phone?addressInfo.phone:''}}"></input>
+            <picker bindchange="provinceChange" range="{{provincArray}}" rangeKey="provinceName" value="{{provincIndex}}">
+                <view class="picker">
+                    {{provincIndex==''?'请选择省份':provincArray[provincIndex].provinceName}}
+                </view>
+            </picker>
+            <picker bindchange="cityChange" range="{{cityArray}}" rangeKey="cityName" value="{{'abc'}}">
+                <view class="picker">
+                    {{cityIndex==''?'请选择市区':cityArray[cityIndex].cityName}}
+                </view>
+            </picker>
+            <picker bindchange="areaChange" range="{{areaArray}}" rangeKey="districtName" value="{{areaIndex}}">
+                <view class="picker">
+                    {{areaIndex==''?'请选择地区':areaArray[areaIndex].districtName}}
+                </view>
+            </picker>
+            <input autoHeight name="address" placeholder="详细地址" value="{{addressInfo.address?addressInfo.address:''}}"></input>
+            <button class="btn-submit" formType="submit" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">保存</button>
+        </view>
+    </view>
+</form>

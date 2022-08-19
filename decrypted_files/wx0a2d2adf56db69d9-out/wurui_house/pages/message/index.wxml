@@ -1,0 +1,60 @@
+<view class="container">
+    <view class="swiper-container">
+        <swiper autoplay="{{autoplay}}" bindchange="swiperchange" class="swiper_box" duration="{{duration}}" interval="{{interval}}">
+            <swiper-item wx:for="{{banners}}">
+                <image bindtap="tapBanner" class="slide-image" data-id="{{item.id}}" height="562.5rpx" src="{{item.thumb}}" width="750rpx"></image>
+            </swiper-item>
+        </swiper>
+        <view class="dots">
+            <view class="dot{{index==swiperCurrent?' active':''}}" wx:for="{{banners}}" wx:key="unique"></view>
+        </view>
+    </view>
+    <form reportSubmit bindsubmit="bindSave">
+        <view class="form-box">
+            <view class="row-wrap">
+                <view class="label">联系人</view>
+                <view class="label-right">
+                    <input class="input" name="name" placeholder="姓名" type="text" value=""></input>
+                </view>
+            </view>
+            <view class="row-wrap">
+                <view class="label">手机号码</view>
+                <view class="label-right">
+                    <input class="input" maxlength="11" name="tel" placeholder="11位手机号码" type="number" value=""></input>
+                </view>
+            </view>
+            <view class="row-wrap">
+                <view class="label">备注</view>
+                <view class="label-right">
+                    <input class="input" name="companyname" placeholder="请输入备注" value=""></input>
+                </view>
+            </view>
+        </view>
+        <button class="save-btn" formType="submit">申请认证</button>
+    </form>
+    <view class="news">
+        <view class="newstitle">
+            <view></view>
+            <view>关于我们</view>
+        </view>
+        <view class="content">
+            <block wx:for="{{companyinfo}}" wx:for-index="idy" wx:for-item="cellData">
+                <view class="p" wx:if="{{cellData.type=='view'}}">
+                    <block wx:for="{{cellData.child}}" wx:key="text">
+                        <text bindtap="stockClick" class="a" data-seccode="{{item.attr['data-seccode']}}" data-secname="{{item.attr['data-secname']}}" wx:if="{{item.type=='a'}}">{{item.text}}</text>
+                        <text wx:else>{{item.text}}</text>
+                    </block>
+                </view>
+                <image bindload="imageLoad" class="img" data-index="{{idy}}" mode="aspectFit" src="{{cellData.attr.src}}" wx:if="{{cellData.type=='img'}}"></image>
+            </block>
+        </view>
+    </view>
+</view>
+<view class="weixinmao-float">
+    <view class="weixinmao-foot">
+        <button bindtap="goMap" class="footer">
+            <image src="../../resource/images/lbs.png"></image>一键导航</button>
+        <button class="footer" data-tel="{{data.tel}}" openType="contact">
+            <image src="../../resource/img/tel.png"></image>联系客服</button>
+    </view>
+</view>

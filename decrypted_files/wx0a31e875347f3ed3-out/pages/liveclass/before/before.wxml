@@ -1,0 +1,11 @@
+<view>
+    <view class="bg">
+        <image src="../../../image/liveclass/bg_home.png"></image>
+    </view>
+    <view class="bg-image-box">
+        <image class="before-live-class" src="../../../image/liveclass/before.png"></image>
+        <view style="position: relative;display: flex;justify-content: center;">
+            <view class="live-class-text">课程{{webcast_time}}开始，请耐心等待哦~</view>
+        </view>
+    </view>
+</view>

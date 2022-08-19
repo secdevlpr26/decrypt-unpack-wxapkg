@@ -1,0 +1,232 @@
+<view class="weui-loadmore" wx:if="{{isRefreshing}}">
+    <view class="weui-loadmore-tips">小程序技术支持2.4.0</view>
+    <view class="weui-loadmore-tips">
+    沈阳众德润科技有限公司</view>
+    <view class="weui-loadmore-tips">咨询电话：024-31284032</view>
+</view>
+<view style="display:flex;">
+    <view class="userInfo">
+        <image class="userhead" src="{{userInfo.avatarUrl}}"></image>
+        <view class="vipname">
+            <text class="loginUser">{{wechatUserNickName}}</text>
+            <view class="vip" style="color:{{vipColor}}">VIP会员</view>
+        </view>
+    </view>
+    <view bindtap="getNotice" class="userInfoImgBox">
+        <image class="userInfoImg" src="/images/user_info.png"></image>
+        <text class="userInfoText" wx:if="{{noticeCount>0||noticeCount=='9+'}}">{{noticeCount}}</text>
+    </view>
+</view>
+<view class="userpour">
+    <view class="userpour_coun1" wx:if="{{isVip!=false}}">
+        <view class="coun_box1">
+            <view class="coun_text1">
+                <em class="coun_data1">{{filters.toFix(wechatUserStoreIntegeal*1)==null||filters.toFix(wechatUserStoreIntegeal*1)==''?0:filters.toFix(wechatUserStoreIntegeal*1)}}</em>
+                <em class="coun_data2">分</em>
+            </view>
+            <view class="coun_text2">积分</view>
+        </view>
+    </view>
+    <button class="coun_btn" wx:if="{{isVip==false}}">
+        <view class="coun_box20">
+            <view class="coun_text8">
+                <em class="coun_data111">{{filters.toFix(wechatUserStoreIntegeal*1)==null||filters.toFix(wechatUserStoreIntegeal*1)==''?0:filters.toFix(wechatUserStoreIntegeal*1)}}</em>
+                <em class="coun_data222">分</em>
+            </view>
+            <view class="coun_text6">积分</view>
+        </view>
+    </button>
+    <view class="split-line"></view>
+    <button bindgetphonenumber="getPhonexuj" class="coun_btn" openType="getPhoneNumber" wx:if="{{isVip==false}}">
+        <view class="coun_box20">
+            <view class="coun_text8">
+                <em class="coun_data111">{{wechatUserStoreBalance==null||wechatUserStoreBalance==''?0:wechatUserStoreBalance}}</em>
+                <em class="coun_data222">元</em>
+            </view>
+            <view class="coun_text6">余额</view>
+        </view>
+    </button>
+    <view bindtap="checkCash" class="userpour_coun1" wx:if="{{isVip!=false}}">
+        <view class="coun_box2">
+            <view class="coun_text3">
+                <em class="coun_data11">{{wechatUserStoreBalance==null||wechatUserStoreBalance==''?0:wechatUserStoreBalance}}</em>
+                <em class="coun_data22">元</em>
+            </view>
+            <view class="coun_text4">余额</view>
+        </view>
+    </view>
+    <view class="split-line"></view>
+    <button bindgetphonenumber="getPhonexuj" class="coun_btn" openType="getPhoneNumber" wx:if="{{isVip==false}}">
+        <view class="coun_box20">
+            <view class="coun_text8">
+                <em class="coun_data111">{{receiveConfigNum==null||receiveConfigNum==''?0:receiveConfigNum}}</em>
+                <em class="coun_data222">张</em>
+            </view>
+            <view class="coun_text6">优惠券</view>
+        </view>
+    </button>
+    <view bindtap="checkCoupon" class="userpour_coun1" wx:if="{{isVip!=false}}">
+        <view class="coun_box2">
+            <view class="coun_text3">
+                <em class="coun_data11">{{receiveConfigNum==null||receiveConfigNum==''?0:receiveConfigNum}}</em>
+                <em class="coun_data22">张</em>
+            </view>
+            <view class="coun_text4">优惠券</view>
+        </view>
+    </view>
+</view>
+<view bindtap="changeToggle" class="li" data-index="5" wx:if="{{forceShowFlg=='Y'}}">
+    <view class="wid84">
+        <view class="left-border"></view>
+        <text class="left hyk" decode="true">权&ensp;益&ensp;卡</text>
+    </view>
+    <view class="right">
+        <text class="iconfont {{selectedFlag[5]&&isExistenceForce&&forceUseFlg=='Y'?'icon-jiantouarrow483':'icon-angle-up-copy'}}"></text>
+    </view>
+</view>
+<view hidden="{{!selectedFlag[5]||!isExistenceForce||forceUseFlg!='Y'}}">
+    <button bindgetphonenumber="getPhone" bindtap="" class="li bg-gray" openType="getPhoneNumber" wx:if="{{isEquitycardn!='Y'&&isVip==false}}">
+        <view class="nav-two">我的权益卡</view>
+    </button>
+    <view bindtap="receiveForceCard" class="li bg-gray" wx:if="{{isEquitycardn=='Y'||isVip!=false}}">
+        <view class="nav-two">我的权益卡</view>
+    </view>
+</view>
+<view bindtap="changeToggle" class="li" data-index="0" wx:if="{{vipShowFlg=='Y'}}">
+    <view class="wid84">
+        <view class="left-border"></view>
+        <text class="left hyk" decode="true">会&ensp;员&ensp;卡</text>
+    </view>
+    <view class="right">
+        <text class="iconfont {{selectedFlag[0]&&isExistenceVip&&vipUseFlg=='Y'?'icon-jiantouarrow483':'icon-angle-up-copy'}}"></text>
+    </view>
+</view>
+<view hidden="{{!selectedFlag[0]||!isExistenceVip||vipUseFlg!='Y'}}">
+    <button bindgetphonenumber="getPhoneNumber" bindtap="" class="li bg-gray" openType="getPhoneNumber" wx:if="{{isVip==false}}">
+        <view class="nav-two">我的会员卡</view>
+    </button>
+    <button bindtap="myCard" class="li bg-gray" wx:if="{{isVip!=false}}">
+        <view class="nav-two">我的会员卡</view>
+    </button>
+    <button bindgetphonenumber="getNumber" class="li bg-gray" openType="getPhoneNumber" style="border-bottom:1px #666 solid;" wx:if="{{isVip==false}}">
+        <view class="nav-two">修改个人信息</view>
+    </button>
+    <button bindtap="alterMyCard" class="li bg-gray" style="border-bottom:1px #666 solid;" wx:if="{{isVip!=false}}">
+        <view class="nav-two">修改个人信息</view>
+    </button>
+</view>
+<view bindtap="" class="li" data-index="1" wx:if="{{vipShowFlg=='Y'}}">
+    <view bindtap="changeToggle" class="wid84 " data-index="1">
+        <view class="left-border"></view>
+        <view class="left yhq cc">领券中心</view>
+    </view>
+    <view bindtap="changeToggle" class="right" data-index="1"></view>
+</view>
+<view bindtap="changeToggle" class="li" data-index="2">
+    <view class="wid84">
+        <view class="left-border"></view>
+        <view class="left sjxx">商家信息</view>
+    </view>
+    <view class="right">
+        <text class="iconfont {{selectedFlag[2]?'icon-jiantouarrow483':'icon-angle-up-copy'}}"></text>
+    </view>
+</view>
+<view hidden="{{!selectedFlag[2]}}">
+    <view bindtap="comment" class="li bg-gray">
+        <view class="nav-two">顾客点评</view>
+    </view>
+    <view bindtap="shopNotice" class="li bg-gray">
+        <view class="nav-two">店铺公告</view>
+    </view>
+</view>
+<view bindtap="shippingAddress" class="address" data-index="3" wx:if="{{vipShowFlg=='Y'}}">
+    <view class="wid84">
+        <view class="left-border"></view>
+        <view class="left shdz">收货地址</view>
+    </view>
+    <view class="rights">
+        <image src="/images/arrow_up.png" style="width:12px;height:12px;"></image>
+    </view>
+</view>
+<view bindtap="changeToggle" class="lis " data-index="7" wx:if="{{shakeShowFlg=='Y'&&isVip!=false}}">
+    <view class="wid84">
+        <view class="left-border"></view>
+        <text class="left lxwm" decode="true">摇&ensp;一&ensp;摇</text>
+    </view>
+</view>
+<view class="lis" data-index="7" wx:if="{{shakeShowFlg=='Y'&&isVip==false}}">
+    <button bindgetphonenumber="getPhoneNumbery" class=" o" openType="getPhoneNumber">
+        <view class="left-borders"></view>
+        <text class="left lxwm cc" decode="true">摇&ensp;一&ensp;摇</text>
+    </button>
+</view>
+<view bindtap="changeToggle" class="li" data-index="4">
+    <view class="wid84">
+        <view class="left-border"></view>
+        <view class="left lxwm">联系我们</view>
+    </view>
+    <view class="rights">
+        <text class="iconfont {{selectedFlag[4]?'icon-jiantouarrow483':'icon-angle-up-copy'}}"></text>
+    </view>
+</view>
+<view hidden="{{!selectedFlag[4]}}">
+    <view class="li bg-gray contact-contain">
+        <text class="contact-title" decode="{{true}}">联系人</text>
+        <text class="contact-line" decode="{{true}}">:</text>
+        <view class="contact-text">{{contactName}}</view>
+    </view>
+    <view class="li bg-gray contact-contain">
+        <text class="contact-title" decode="{{true}}">电话</text>
+        <text class="contact-line" decode="{{true}}">:</text>
+        <view class="contact-text">{{contactTel}}</view>
+    </view>
+    <view class="li bg-gray contact-contain">
+        <text class="contact-title" decode="{{true}}">地址</text>
+        <text class="contact-line" decode="{{true}}">:</text>
+        <view class="contact-text">{{contactAddr}}</view>
+    </view>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<view class="cover1" style="display:{{display}}">
+    <view class="" style="display:{{display}}"></view>
+    <view class="containers xiadan-box">
+        <view class="row2">
+            <text class="flex80 writedesk">请先领取会员卡</text>
+        </view>
+        <view class="row2">
+            <text class="col-12 xiadan-box-descrip"></text>
+        </view>
+        <view class="row2 row-button1">
+            <view bindtap="quxiao" class="flex30 button-xiadan1">取 消</view>
+            <button bindgetphonenumber="getPhoneNumber" class="flex30 button-xiadan" openType="getPhoneNumber">确定</button>
+        </view>
+    </view>
+</view>
+<view class="cover1" style="display:{{displayy}}">
+    <view class="cover1-1" style="display:{{displayy}}"></view>
+    <view class="container xiadan-box">
+        <view class="row">
+            <text class="flex80 writedesk">提示信息</text>
+        </view>
+        <view class="row">
+            <text class="col-12 xiadan-box-descrip">{{carname}}</text>
+        </view>
+        <view class="row row-button1">
+            <view bindtap="resumee" class="flex30 button-xiadan1">取 消</view>
+            <form bindsubmit="{{carbtn=='1'?'chkOrder0':'chkOrderr'}}" reportSubmit="true">
+                <button class="flex30 button-xiadan" formType="submit">确 定</button>
+            </form>
+        </view>
+    </view>
+</view>
+<component-alertview bind:chkOrder0="chkOrder4" carname="{{carname_0}}" displayy="{{displayy_0}}" titlename="{{titlename_0}}"></component-alertview>
+<component-alertview carname="{{carname_1}}" displayy="{{displayy_1}}" titlename="{{titlename_1}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder2" carname="{{carname_2}}" displayy="{{displayy_2}}" titlename="{{titlename_2}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder3" carname="{{carname_3}}" displayy="{{displayy_3}}" titlename="{{titlename_3}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder4" carname="{{carname_4}}" displayy="{{displayy_4}}" titlename="{{titlename_4}}"></component-alertview>
+<component-alertview cancel="{{cancel}}" carname="{{carname_0}}" display_alone1="{{display_alone1}}" titlename="{{titlename_0}}"></component-alertview>
+<wxs module="filters" src="../../addmu.wxs" />

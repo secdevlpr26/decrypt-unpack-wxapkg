@@ -1,0 +1,43 @@
+<view class="wrap">
+    <view class="top">
+        <view class="total-fee">
+            <text>累计佣金</text>
+            <text>{{inCome}}（元）</text>
+        </view>
+        <view bindtap="toWithdrawList" class="btn-withdraw">提现明细</view>
+    </view>
+    <view class="main">
+        <view class="main-top">
+            <text>佣金收入明细</text>
+            <text bindtap="isShowComoBox">{{searchTxt}}<text class="iconfont icon-trangle"></text>
+            </text>
+        </view>
+        <view class="chart">
+            <cover-view class="pull-down" hidden="{{!showComboBox}}">
+                <cover-view bindtap="selectSearchType" data-time="1days">最近1天</cover-view>
+                <cover-view bindtap="selectSearchType" data-time="3days">最近3天</cover-view>
+                <cover-view bindtap="selectSearchType" data-time="theweek">本周</cover-view>
+                <cover-view bindtap="selectSearchType" data-time="themonth">本月</cover-view>
+                <cover-view bindtap="selectSearchType" data-time="thequarter">本自然季度</cover-view>
+                <cover-view bindtap="selectSearchType" data-time="">取消</cover-view>
+            </cover-view>
+        </view>
+        <view class="list">
+            <view class="nav">
+                <text class="nav-item">时间</text>
+                <text class="nav-item">用户名</text>
+                <text class="nav-item">门店名</text>
+                <text class="nav-item">成交额</text>
+                <text class="nav-item">直销收入</text>
+            </view>
+            <view class="detail-item" wx:for="{{detailList}}">
+                <text>{{item.orderTime}}</text>
+                <text>{{item.userName}}</text>
+                <text>{{item.branchName}}</text>
+                <text>{{item.totalMoney}}</text>
+                <text>{{item.lineMoney}}</text>
+            </view>
+        </view>
+        <view class="null" wx:if="{{detailList==0}}">暂无记录</view>
+    </view>
+</view>

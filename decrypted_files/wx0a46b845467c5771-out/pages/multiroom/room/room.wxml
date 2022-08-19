@@ -1,0 +1,60 @@
+<view class="container-box">
+    <view style="width:100vw;margin-left:0px;padding-top:0px;">
+        <rtc-room assistant="{{assistant}}" beauty="{{beauty}}" bind:decline="decline" bind:onliveplay="onliveplay" bind:trigVideo="trigVideo" bindonRoomEvent="onRoomEvent" bindstatechange="onPush" debug="{{debug}}" flag="{{flag}}" flagStatus="{{flagStatus}}" hideBg="{{hideBg}}" id="rtcroom" muted="{{muted}}" roomID="{{roomID}}" roomInfo="{{roomname}}" startTime="{{startTime}}" template="1v1"></rtc-room>
+    </view>
+    <view class="operate">
+        <image bindtap="decline" src="../../../image/wepy_pro/decline.png"></image>
+    </view>
+    <view class="info">
+        <view class="headImg">
+            <image src="{{assistant.head}}"></image>
+        </view>
+        <view class="mainInfo">
+            <div class="row1">
+                <text>{{assistant.name||''}}</text>
+                <div class="gw">新房顾问</div>
+            </div>
+            <hr style=" height:1px;border:none;border-top:1px solid #FFFFFF;"></hr>
+            <div class="row2">
+                <text>{{status}}</text>
+            </div>
+        </view>
+    </view>
+    <view class="evaluate " style="background-color:{{backColor}};" wx:if="{{evaluateFlag=='0'}}">
+        <image class="phone" src="http://skyforest.static.elab-plus.com/wepy_pro/phone.png"></image>
+        <image bindtap="handlehzdl" class="hzdl" src="{{hzdlFlag==false?'http://skyforest.static.elab-plus.com/wepy_pro/hzdl.png':'http://skyforest.static.elab-plus.com/wepy_pro/hzdl-select.png'}}"></image>
+        <image bindtap="handleysgl" class="ysgl" src="{{ysglFlag==false?'http://skyforest.static.elab-plus.com/wepy_pro/ysgl.png':'http://skyforest.static.elab-plus.com/wepy_pro/ysgl-select.png'}}"></image>
+        <image bindtap="handlehqcs" class="hqcs" src="{{hqcsFlag==false?'http://skyforest.static.elab-plus.com/wepy_pro/hqcs.png':'http://skyforest.static.elab-plus.com/wepy_pro/hqcs-select.png'}}"></image>
+        <image bindtap="handlewlkd" class="wlkd" src="{{wlkdFlag==false?'http://skyforest.static.elab-plus.com/wepy_pro/wlkd.png':'http://skyforest.static.elab-plus.com/wepy_pro/wlkd-select.png'}}"></image>
+        <image bindtap="handlefwbj" class="fwbj" src="{{fwbjFlag==false?'http://skyforest.static.elab-plus.com/wepy_pro/fwbj.png':'http://skyforest.static.elab-plus.com/wepy_pro/fwbj-select.png'}}"></image>
+        <image bindtap="handlebmsy" class="bmsy" src="{{bmsyFlag==false?'http://skyforest.static.elab-plus.com/wepy_pro/bmsy.png':'http://skyforest.static.elab-plus.com/wepy_pro/bmsy-select.png'}}"></image>
+        <image bindtap="handleqtyy" class="qtyy" src="{{qtyyFlag==false?'http://skyforest.static.elab-plus.com/wepy_pro/qtyy.png':'http://skyforest.static.elab-plus.com/wepy_pro/qtyy-select.png'}}"></image>
+        <view class="section">
+            <p>您有吐槽吗？您的评价是我们前进的不竭动力</p>
+            <textarea bindblur="bindTextAreaBlur" placeholder="您的评价"></textarea>
+        </view>
+        <view bindtap="submitEvaluate" class="btn" style="background-image: linear-gradient(-270deg,{{color1}} 0%, {{color2}} 100%);">立即提交</view>
+    </view>
+    <view class="evaluate " style="background-color:{{backColor}};" wx:if="{{evaluateFlag=='1'}}">
+        <p class="t1">您如何评价刚才的服务体验？</p>
+        <view class="row">
+            <view bindtap="handleIndex" class="item{{goodIndex=='1'?' active':''}}" data-index="1">
+                <image class="good" src="{{goodIndex=='1'?'http://skyforest.static.elab-plus.com/wepy_pro/good-select.png':'http://skyforest.static.elab-plus.com/wepy_pro/good.png'}}"></image>
+                <p>非常棒</p>
+            </view>
+            <view bindtap="handleIndex" class="item{{goodIndex=='2'?' active':''}}" data-index="2">
+                <image class="nice" src="{{goodIndex=='2'?'http://skyforest.static.elab-plus.com/wepy_pro/nice-select.png':'http://skyforest.static.elab-plus.com/wepy_pro/nice.png'}}"></image>
+                <p>还不错</p>
+            </view>
+            <view bindtap="handleIndex" class="item{{goodIndex=='3'?' active':''}}" data-index="3">
+                <image class="bad" src="{{goodIndex=='3'?'http://skyforest.static.elab-plus.com/wepy_pro/bad-select.png':'http://skyforest.static.elab-plus.com/wepy_pro/bad.png'}}"></image>
+                <p>需努力</p>
+            </view>
+        </view>
+        <view class="section">
+            <p class="more-p">您有吐槽吗？您的评价是我们前进的不竭动力</p>
+            <textarea bindblur="bindTextAreaBlur" placeholder="您的评价"></textarea>
+        </view>
+        <view bindtap="submitEvaluate2" class="btn" style="background-image: linear-gradient(-270deg,{{color1}} 0%, {{color2}} 100%);">立即提交</view>
+    </view>
+</view>

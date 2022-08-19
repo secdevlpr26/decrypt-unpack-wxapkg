@@ -1,0 +1,87 @@
+{
+    "pages": [
+        "wurui_house/pages/index/index",
+        "wurui_house/pages/search/index",
+        "wurui_house/pages/mortgage/mortgage",
+        "wurui_house/pages/mortgage/detail/detail",
+        "wurui_house/pages/user/index",
+        "wurui_house/pages/lethouselist/index",
+        "wurui_house/pages/oldhouselist/index",
+        "wurui_house/pages/contact/index",
+        "wurui_house/pages/saleletpub/index",
+        "wurui_house/pages/salepub/index",
+        "wurui_house/pages/saleoldpub/index",
+        "wurui_house/pages/pub/index",
+        "wurui_house/pages/oldhousedetail/index",
+        "wurui_house/pages/newhouselist/index",
+        "wurui_house/pages/salelist/index",
+        "wurui_house/pages/letpub/index",
+        "wurui_house/pages/salebuypub/index",
+        "wurui_house/pages/map/index",
+        "wurui_house/pages/article/index",
+        "wurui_house/pages/newsdetail/index",
+        "wurui_house/pages/picdetail/index",
+        "wurui_house/pages/message/index",
+        "wurui_house/pages/newhousedetail/index",
+        "wurui_house/pages/lethousedetail/index",
+        "wurui_house/pages/agentlist/index",
+        "wurui_house/pages/agentdetail/index",
+        "wurui_house/pages/activedetail/index",
+        "wurui_house/pages/active/index",
+        "wurui_house/pages/orderlist/index",
+        "wurui_house/pages/mypub/index",
+        "wurui_house/pages/myletpub/index",
+        "wurui_house/pages/saledetail/index",
+        "wurui_house/pages/mysalepub/index",
+        "wurui_house/pages/counter/index",
+        "wurui_house/pages/login/index",
+        "wurui_house/pages/canvar",
+        "wurui_house/pages/myseek/index"
+    ],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "讯商房产经纪",
+        "navigationBarBackgroundColor": "#38b2f8",
+        "backgroundColor": "#fff",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "color": "#6e6d6b",
+        "selectedColor": "#3c84e4",
+        "borderStyle": "white",
+        "backgroundColor": "#fff",
+        "box-shadow": "0 0 6px 0",
+        "list": [
+            {
+                "pagePath": "wurui_house/pages/index/index",
+                "text": "首页",
+                "iconPath": "wurui_house/resource/images/nav/homoff.png",
+                "selectedIconPath": "wurui_house/resource/images/nav/homeon.png"
+            },
+            {
+                "pagePath": "wurui_house/pages/newhouselist/index",
+                "text": "新房",
+                "iconPath": "wurui_house/resource/images/nav/newsoff.png",
+                "selectedIconPath": "wurui_house/resource/images/nav/newson.png"
+            },
+            {
+                "pagePath": "wurui_house/pages/oldhouselist/index",
+                "text": "二手房",
+                "iconPath": "wurui_house/resource/images/nav/er.png",
+                "selectedIconPath": "wurui_house/resource/images/nav/eron.png"
+            },
+            {
+                "pagePath": "wurui_house/pages/lethouselist/index",
+                "text": "租房",
+                "iconPath": "wurui_house/resource/images/nav/zuoff.png",
+                "selectedIconPath": "wurui_house/resource/images/nav/zuon.png"
+            },
+            {
+                "pagePath": "wurui_house/pages/user/index",
+                "text": "我的",
+                "iconPath": "wurui_house/resource/images/nav/user-off.png",
+                "selectedIconPath": "wurui_house/resource/images/nav/user-on.png"
+            }
+        ]
+    }
+}

@@ -1,0 +1,62 @@
+<view bindtap="blanktap" class="search-wrap">
+    <view class="search-frame">
+        <view class="input-frame">
+            <view catchtap="navtap" class="nav-select">
+                <text class="search-show">{{showVal}}</text>
+                <i class="iconfont {{hidden?'icon-unfold':'icon-fold'}}"></i>
+                <view class="pull-down" hidden="{{hidden}}">
+                    <text bindtap="navItemtap" data-idx="0">产品</text>
+                    <text bindtap="navItemtap" data-idx="1">商家</text>
+                    <text bindtap="navItemtap" data-index="2" hidden="">资讯</text>
+                </view>
+            </view>
+            <input bindinput="searchInput" placeholder="输入搜索"></input>
+        </view>
+        <view bindtap="search" class="btn-search">搜索</view>
+    </view>
+</view>
+<scroll-view bindscrolltolower="scrolltolower" bindtap="blanktap" class="main" scrollY="true">
+    <view class="store" wx:if="{{search_type=='1'}}">
+        <view bindtap="toStoreDetail" class="store-item" data-id="{{item.id}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+            <image lazyLoad="{{true}}" src="{{item.pic1==''?'../../img/img-default.png':item.pic1}}"></image>
+            <view class="item-main">
+                <text class="item-title">{{item.branchName}}</text>
+                <text class="item-content">{{item.address}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="news" wx:elif="{{search_type=='2'}}">
+        <view bindtap="toNewsDetail" class="news-item" data-id="{{item.id}}" wx:for="{{pageList}}" wx:key="{{item.code}}">
+            <image lazyLoad="{{true}}" src="{{item.picture1}}"></image>
+            <view class="news-item-info">
+                <text class="news-item-title">{{item.title}}</text>
+                <text class="news-item-intro">{{item.briefDescription}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="product" wx:else>
+        <view bindtap="toProDetail" class="recommend-item" data-pid="{{item.id}}" wx:for="{{pageList}}" wx:key="{{item.id}}">
+            <image lazyLoad="{{true}}" src="{{item.productImageVOList[0].imageURL!=''?item.productImageVOList[0].imageURL:'../../img/img-default.png'}}"></image>
+            <view class="pro-info">
+                <text class="pro-title">{{item.productName}}</text>
+                <view class="price-frame" wx:if="{{item.purpose!=2&&item.purpose!=4}}">
+                    <text class="price">
+                        <text class="min">￥</text>{{item.productModelList[0].price}}</text>
+                    <text class="ori-price">￥{{item.productModelList[0].originalprice}}</text>
+                </view>
+                <view class="noprice" wx:else>
+                    <text>{{item.showName}}</text>
+                </view>
+                <button wx:if="{{item.purpose!=2&&item.purpose!=4}}">点击抢购</button>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-hint" hidden="{{bottomHint}}">
+        <view class="line"></view>
+        <text>没有更多供求啦</text>
+    </view>
+    <view class="search-null" hidden="{{noSearch}}">
+        <view class="iconfont icon-vz-null"></view>
+        <text>没有您搜索的信息</text>
+    </view>
+</scroll-view>

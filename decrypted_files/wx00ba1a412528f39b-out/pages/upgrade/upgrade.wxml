@@ -1,0 +1,14 @@
+<view class="page-offline">
+    <view class="weui-msg__icon-area">
+        <view class="weui-icon-info weui-icon_msg"></view>
+    </view>
+    <view class="weui-msg__text-area">
+        <view class="weui-msg__title">小店已升级</view>
+        <view class="weui-msg__desc">改微信小店已升级为微信小商店</view>
+    </view>
+    <view class="weui-msg__opr-area">
+        <view class="weui-btn-area">
+            <view catchtap="goToMinishop" class="weui-btn weui-btn_default">前往小商店</view>
+        </view>
+    </view>
+</view>

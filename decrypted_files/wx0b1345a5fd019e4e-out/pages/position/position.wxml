@@ -1,0 +1,25 @@
+<view class="wrap" style="height: {{winHeight}}px">
+    <scroll-view class="city-wrap" scrollIntoView="{{toView}}" scrollY="true">
+        <view class="cur-city">
+            <view class="cur-city-txt">当前的城市</view>
+            <view class="cur-city-frame">
+                <text wx:if="{{curCity!='全国'}}">{{curCity}}</text>
+                <text bindtap="citytap" data-info="0">全国</text>
+            </view>
+        </view>
+        <view class="hot-city">
+            <view class="hot-txt">热门城市</view>
+            <view class="hot-city-content">
+                <text bindtap="citytap" class="hot-city-item" data-info="{{item}}" wx:for="{{hotCityList}}">{{item.cityName}}</text>
+            </view>
+        </view>
+        <view class="city-cate" wx:for="{{cityList}}" wx:key="{{index}}">
+            <view class="city-initial" id="{{item[0].cityFirstPinyin}}">{{item[0].cityFirstPinyin}}</view>
+            <view bindtap="citytap" class="city-item" data-info="{{cityItem}}" wx:for="{{item}}" wx:for-item="cityItem" wx:key="{{index}}">{{cityItem.cityName}}</view>
+        </view>
+    </scroll-view>
+    <view class="initial-frame">
+        <view class="initial-txt">当前热门</view>
+        <view bindtap="initialtap" class="initial-item" data-init="{{item}}" wx:for="{{initialList}}">{{item}}</view>
+    </view>
+</view>

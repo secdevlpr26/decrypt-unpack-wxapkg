@@ -1,0 +1,45 @@
+<view class="Empty">
+    <view class="Empty">
+        <image src="Empty"></image>
+        <input bindchange="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty"></input>
+    </view>
+    <text bindtap="Empty">Empty</text>
+</view>
+<dl class="Empty">
+    <dt bindtap="Empty" class="Empty" data-index="Empty">Empty</dt>
+    <dd class="Empty">
+        <ul>
+            <li bindtap="Empty" class="Empty" data-index="Empty">Empty</li>
+            <li bindtap="Empty" class="Empty" data-index="Empty">Empty</li>
+        </ul>
+    </dd>
+    <dt bindtap="Empty" class="Empty" data-index="Empty">Empty</dt>
+    <dd class="Empty">
+        <ul>
+            <li bindtap="Empty" class="Empty" data-index="Empty">Empty</li>
+            <li bindtap="Empty" class="Empty" data-index="Empty">Empty</li>
+        </ul>
+    </dd>
+    <dt bindtap="Empty" class="Empty" data-index="Empty">Empty</dt>
+    <dd class="Empty">
+        <ul>
+            <li bindtap="Empty" class="Empty" data-index="Empty">Empty</li>
+            <li bindtap="Empty" class="Empty" data-index="Empty">Empty</li>
+        </ul>
+    </dd>
+    <dt bindtap="Empty" class="Empty" data-index="Empty">Empty</dt>
+</dl>
+<view class="Empty" wx:if="Empty">
+    <view bindtap="Empty" class="Empty" data-object-id="Empty" wx:for="Empty" wx:key="objectId">
+        <view>
+            <image class="Empty" mode="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <text class="Empty">Empty</text>
+        </view>
+    </view>
+</view>
+<view class="Empty" wx:else>
+    <text>Empty</text>
+</view>

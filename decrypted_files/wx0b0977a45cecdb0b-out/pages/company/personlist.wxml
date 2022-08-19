@@ -1,0 +1,15 @@
+<view class="star-coach">
+    <view class="star-coach-list">
+        <view bindtap="goPersonDetails" class="coach-list border1px" data-personid="{{plist.PersonID}}" wx:for="{{personlist}}" wx:for-index="idx" wx:for-item="plist" wx:key="*this">
+            <view class="coach-list-img">
+                <image src="{{plist.HeadImg}}"></image>
+            </view>
+            <view class="coach-list-content">
+                <text class="coach-name">{{plist.Name}}</text>
+                <text class="coach-good">{{plist.Intro}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<include src="/pages/template/popupFromShare.wxml"></include>
+<include src="/pages/template/getUserInfo.wxml"></include>

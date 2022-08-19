@@ -1,0 +1,130 @@
+<view class="page">
+    <view class="page-body">
+        <view class="page-section">
+            <view class="receiving-address">
+                <view class="t">收货地址</view>
+                <view bindtap="__e" class="c-address" data-event-opts="{{[ [ 'tap',[ [ 'changeAddress',['$event'] ] ] ] ]}}" wx:if="{{SubmitModel.Address!=null}}">
+                    <view class="address-name">
+                        <view class="n">{{SubmitModel.Address.ShipTo}}</view>
+                        <view class="p">{{SubmitModel.Address.Phone}}</view>
+                    </view>
+                    <view class="address-details">{{SubmitModel.Address.Address}}</view>
+                </view>
+                <view bindtap="__e" class="add-new-address" data-event-opts="{{[ [ 'tap',[ [ 'changeAddress',['$event'] ] ] ] ]}}" wx:else>+ 新增收货地址</view>
+            </view>
+            <view class="payment-method">
+                <view class="l">支付方式</view>
+                <view class="r">在线支付</view>
+            </view>
+            <view class="split-order" wx:if="{{SubmitModel.products&&SubmitModel.products.length>1}}">您选购的商品来自不同店铺,系统已为您自动拆分订单。</view>
+            <view class="cart-wrapper" wx:for="{{SubmitModel.products}}" wx:for-index="productkey" wx:for-item="productItem" wx:key="productkey">
+                <view class="shop-name">{{''+productItem.ShopName+''}}</view>
+                <view class="cart-item" wx:for="{{productItem.CartItemModels}}" wx:for-index="key" wx:key="key">
+                    <view class="p-image">
+                        <image src="{{item.imgUrl}}"></image>
+                    </view>
+                    <view class="p-title">
+                        <view class="t">{{item.name}}</view>
+                        <view class="s">{{(item.color!=null?item.ColorAlias+':':'')+(item.color!=null?item.color:'')+'  '+(item.size!=null?item.SizeAlias+':':'')+(item.size!=null?item.size:'')+'  '+(item.version!=null?item.VersionAlias+':':'')+(item.version!=null?item.version:'')}}</view>
+                    </view>
+                    <view class="p-price">
+                        <view class="p">{{'¥'+item.price}}</view>
+                        <view class="d">{{'X '+item.count}}</view>
+                    </view>
+                </view>
+                <view class="delivery-type">
+                    <view class="t">配送方式</view>
+                    <view bindtap="__e" class="t-n" data-event-opts="{{[ [ 'tap',[ [ 'selectExpress',['$0'],[ [ ['SubmitModel.products','',productkey] ] ] ] ] ] ]}}">
+                        <text>{{productItem.displayDeliveryType}}</text>
+                    </view>
+                </view>
+                <view class="delivery-fee">
+                    <view class="delivery-item" wx:if="{{productItem.FullDiscount>0}}">
+                        <view class="t">满额减</view>
+                        <view class="t-n">{{''+productItem.FullDiscount+' 元'}}</view>
+                    </view>
+                    <view class="delivery-item">
+                        <view class="t">运费</view>
+                        <view class="t-n" wx:if="{{productItem.DisplayFreight==0}}">免运费</view>
+                        <view class="t-n" wx:else>{{productItem.DisplayFreight}}</view>
+                    </view>
+                </view>
+                <view class="coupon-items" wx:if="{{productItem.BaseCoupons!=null&&productItem.BaseCoupons.length>0}}">
+                    <view class="t">优惠券</view>
+                    <view class="t" wx:if="{{productItem.OneCoupons!=null&&productItem.OneCoupons.BasePrice>0}}">{{'抵扣 '+productItem.OneCoupons.BasePrice+' 元'}}</view>
+                    <view bindtap="__e" class="t-n" data-event-opts="{{[ [ 'tap',[ [ 'couponSelector',['$0'],[ [ ['SubmitModel.products','',productkey] ] ] ] ] ] ]}}">{{productItem.BaseCoupons.length+'张可用'}}</view>
+                </view>
+                <view class="leave-message">
+                    <view class="t">备注</view>
+                    <view>
+                        <textarea bindinput="__e" class="uni-input-ordermemo" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','orderRemark','$event',[] ],[ [ ['SubmitModel.products','',productkey] ] ] ] ] ] ]}}" maxlength="100" placeholder="汉欧国际所出售跨境商品为保证正常海关通关,请输入姓名,身份证号." value="{{productItem.orderRemark}}"></textarea>
+                    </view>
+                </view>
+                <view class="submit-footer">
+                    <view class="l">
+                        <text>在线支付</text>
+                    </view>
+                    <view class="r">合计<text>{{'￥'+productItem.ShopTotal}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="use-points" wx:if="{{SubmitModel.userIntegrals>0}}">
+                <view class="l">{{'可用'+SubmitModel.userIntegrals+'积分抵扣'}}<text>{{'￥'+SubmitModel.integralPerMoney}}</text>
+                </view>
+                <view class="r">
+                    <switch bindchange="__e" checked="{{isUseIntegral}}" data-event-opts="{{[ [ 'change',[ [ 'changeUseIntegral',['$event'] ] ] ] ]}}"></switch>
+                </view>
+            </view>
+            <view class="cart-footer">
+                <view class="cart-total">
+                    <view>总金额：<text>{{'¥'+SubmitModel.orderAmount}}</text>
+                    </view>
+                </view>
+                <view bindtap="__e" class="submit-btn" data-event-opts="{{[ [ 'tap',[ [ 'SubmiteOrder',['$event'] ] ] ] ]}}">提交</view>
+            </view>
+        </view>
+    </view>
+    <view class="uni-popup-wrapper" wx:if="{{showPopupBottom}}">
+        <view bindtap="__e" class="uni-mask" data-event-opts="{{[ [ 'tap',[ [ 'hidePopup',['$event'] ] ] ] ]}}"></view>
+        <view class="uni-popup-bottom">
+            <view bindtap="__e" class="close-popup" data-event-opts="{{[ [ 'tap',[ [ 'hidePopup',['$event'] ] ] ] ]}}">关闭</view>
+            <view class="pt">请选择支付方式</view>
+            <view class="pm">付款金额<text>{{'￥'+SubmitModel.orderAmount}}</text>
+            </view>
+            <view class="payment-list">
+                <radio-group bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'radioChange',['$event'] ] ] ] ]}}">
+                    <label class="uni-list-cell uni-list-cell-pd" wx:for="{{payMethod}}" wx:for-index="__i0__" wx:key="*this">
+                        <view>{{item.name}}</view>
+                        <radio checked="{{item.checked}}" disabled="{{item.disabled}}" value="{{item.value}}"></radio>
+                    </label>
+                </radio-group>
+            </view>
+            <view bindtap="__e" class="submit-popup-btn" data-event-opts="{{[ [ 'tap',[ [ 'pay',['$event'] ] ] ] ]}}">提交</view>
+        </view>
+    </view>
+    <view class="uni-popup-wrapper" wx:if="{{isShowCouponList}}">
+        <view bindtap="__e" class="uni-mask" data-event-opts="{{[ [ 'tap',[ [ 'hideCouponPopup',['$event'] ] ] ] ]}}"></view>
+        <view class="uni-popup-bottom">
+            <view bindtap="__e" class="close-popup" data-event-opts="{{[ [ 'tap',[ [ 'hideCouponPopup',['$event'] ] ] ] ]}}">关闭</view>
+            <view class="pt">优惠券</view>
+            <view class="pn">每次仅限使用一张且不可叠加</view>
+            <view class="coupon-list">
+                <view class="coupon-item" wx:for="{{UserCounponList}}" wx:key="index">
+                    <view class="text">
+                        <view class="t">
+                            <view wx:if="{{item.OrderAmount>0}}">{{'满'+item.OrderAmount+'减'+item.BasePrice}}</view>
+                            <view wx:else>{{'减'+item.BasePrice+'元 无门槛(不含运费)'}}</view>
+                        </view>
+                        <view class="n">
+                            <view>{{'有效期至 '+item.EndTime}}</view>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="get-btn" data-event-opts="{{[ [ 'tap',[ [ 'selectCoupon',['$0'],[ [ ['UserCounponList','',index] ] ] ] ] ] ]}}">
+                        <view class="{{[item.show?'checked':'',true?'coupon-item-check':'']}}"></view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="__e" class="submit-popup-btn" data-event-opts="{{[ [ 'tap',[ ['useCoupon'] ] ] ]}}">确定</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="wrap">
+    <view class="tips-img">
+        <image class="img" src="../img/17020401.png"></image>
+    </view>
+    <view bindtap="show" class="tips-con">
+        <text class="txt">还没有订单，立即去下个单吧</text>
+    </view>
+    <view bindtap="hide" class="lijixiadan">立即下单</view>
+</view>

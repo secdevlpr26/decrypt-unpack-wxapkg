@@ -1,0 +1,15 @@
+<view class="top-box">
+    <view class="scroll-box" style="width:115vw">
+        <view bindtap="switch" class="top-item {{current==index?'curr':''}}" data-index="{{index}}" wx:for="{{dreamList}}" wx:key="index">
+            {{item}}
+        </view>
+    </view>
+</view>
+<view>
+    <swiper autoplay="{{false}}" bindanimationfinish="animationfinish" bindchange="switchImg" class="swiper-box" current="{{current}}" duration="200" style="height:{{imgheights[current]+370}}rpx;">
+        <swiper-item wx:for="{{imgList}}" wx:key="index">
+            <image data-index="{{index}}" data-item="{{item}}" mode="widthFit" src="{{item.cover}}" style="width:100vw;height:370rpx"></image>
+            <image bindload="load" data-index="{{index}}" data-item="{{item}}" mode="widthFit" src="{{item.url}}" style="width:100vw;height:{{imgheights[current]}}rpx;"></image>
+        </swiper-item>
+    </swiper>
+</view>

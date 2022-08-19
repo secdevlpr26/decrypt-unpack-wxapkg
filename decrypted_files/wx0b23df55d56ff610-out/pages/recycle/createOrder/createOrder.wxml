@@ -1,0 +1,116 @@
+<import src="../../../component/XYReserveTimeView-bak/XYReserveTimeView.wxml"></import>
+<template is="XYReserveTimeView" data="{{...$wux.picker.phone}}"></template>
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="container">
+    <view bindtap="selecttype" class="bgw w100 col333 ljxdbg">
+        <view class="pl30 pr30 add">
+            <view class="ft30 pl50 tianjia">{{types}}</view>
+        </view>
+    </view>
+    <view bindtap="selectAddress" class="mb20 bgw w100 col333 ljxdbg " wx:if="{{isShowPlaceHold&&typesv==0}}">
+        <view class="pl30 pr30 add">
+            <view class="ft30 pl50 tianjia">添加服务地址</view>
+        </view>
+    </view>
+    <view bindtap="selectAddress" class="mb20 bgw w100 col333 ljxdbg" wx:elif="{{typesv==0}}">
+        <view class="pl30 pr30 add">
+            <view class="ft32 h45">
+                <text class="fb pr20">{{selectedAddress.contacts}}</text>
+                <text wx:if="{{selectedAddress.selectedGenderId==1}}">先生</text>
+                <text wx:if="{{selectedAddress.selectedGenderId==2}}">女士</text>
+            </view>
+            <view class="ft26 address">
+                <text>{{selectedAddress.address}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="mb20 bgw w100">
+        <view class="pl30 pr30 pb80 ft30">
+            <view class="ht100 bb col000" wx:if="{{typesv==1}}">
+                <input bindinput="inputName" class="ht100" maxlength="11" placeholder="请输入姓名" placeholderClass="col999"></input>
+            </view>
+            <view class="ht100 bb col000">
+                <input bindinput="inputPhone" class="ht100" maxlength="11" placeholder="请输入手机号" placeholderClass="col999" type="number"></input>
+            </view>
+            <view class="ht100 bb col000" wx:if="{{hasLogin==false}}">
+                <input bindinput="inputCode" class="sryzm" maxlength="8" placeholder="请输入验证码" placeholderClass="col999" type="number" value="{{code}}"></input>
+                <text catchtap="sendCode" class="hqyzm ht100 lh100 colorange pr30 ft28" style="color:{{getAuthCodeTextColor}}">{{getSmsCode}}</text>
+            </view>
+            <view bindtap="onTapTime" class="ht100 bb col333" wx:if="{{typesv==0}}">
+                <text class="lh100">预约时间</text>
+                <view class="xzfwsj ht100 lh100 {{time?'col000':'col999'}} pr30 ft28">{{time?time:'选择服务时间'}}</view>
+            </view>
+            <view class="ht100 col000">
+                <input bindinput="inputDetail" class="ht100" placeholder="如有其它问题请留言" placeholderClass="col999" value="{{remark}}"></input>
+            </view>
+        </view>
+    </view>
+    <view class="payWay" wx:if="{{typesv==1}}">
+        <view class="payWayTop" style="border-bottom: 0 solid #e8e8e8;line-height:70rpx;height:70rpx;">
+      邮寄地址
+      <text style="color:red">(自行联系快递,邮费到付)</text>
+        </view>
+        <view class="payWayTop1" style="font-weight: bold;color:#000;">
+      {{userInfo.shiping_title}}
+    </view>
+        <view class="payWayTop1" style="color:#999;margin-bottom:10rpx;">
+      {{userInfo.shiping_content}}
+    </view>
+    </view>
+    <view class="payWay">
+        <view class="payWayTop">
+      选择支付方式
+    </view>
+        <view class="payWayDown">
+            <view class="payWayDownItem {{payment===index?'selected':''}}" wx:for="{{payWayList}}" wx:key="index">
+                <view bindtap="payWayTap" class="payWayDownItemTop" data-index="{{index}}" wx:if="{{typesv!=1||item.content!='当面现金支付'}}">
+                    <view class="payWayDownItemTopleft">
+                        <image src="../../../img/{{item.icon}}@2x.png"></image>
+                        <text>{{item.content}}</text>
+                    </view>
+                    <view class="payWayDownItemTopRight">
+                        <image src="../../../img/{{payment===index?'xzzf':'wxzzf'}}@2x.png"></image>
+                    </view>
+                </view>
+                <view class="payWayDownItemDown" wx:if="{{item.input}}">
+                    <input bindinput="payWayVal" class="downInput" placeholder="请输入{{item.content}}账号"></input>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="goodsList">
+        <view class="goodsListTop">
+      交易清单
+    </view>
+        <view class="goodsListDown" wx:if="{{goods}}">
+            <view class="goodsListDownLeft">
+                <image mode="widthFix" src="{{goods.original_img}}"></image>
+            </view>
+            <view class="goodsListDownRight">
+                <text>品牌：{{goods.model_name}}</text>
+                <text class="midText">型号：{{goods.goods_name}}</text>
+                <view class="priceView">
+                    <text>回收报价：</text>
+                    <text class="rmb">¥</text>
+                    <text class="num">{{shop_price}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="placeholderView"></view>
+<view class="fixedb w100  bgf8">
+    <view class="fl pt14">
+        <view class="ft30">
+            <text class="col333 pl30 lh40">回收金额：</text>
+            <text class="colorange lh40">¥{{shop_price}}</text>
+        </view>
+        <view class="ft22 col666 pl30">
+            <view hidden bindtap="toUserAgreement" class="">提交订单等同于同意
+        <text class="bluei">维修服务条款</text>
+            </view>
+        </view>
+    </view>
+    <button bindtap="submit" class="xiadanbtn fr lh100 ft30">去下单</button>
+</view>

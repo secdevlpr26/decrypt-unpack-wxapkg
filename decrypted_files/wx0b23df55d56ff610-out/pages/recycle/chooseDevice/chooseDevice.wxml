@@ -1,0 +1,29 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="selectBlock animated fadeIn">
+    <view class="topTabBar">
+        <view bindtap="tabBarTap" class="tabBarItem {{curTabBarIndex==='0'?'selected':''}}" data-index="0" data-pid="15">
+            <text>手机回收</text>
+        </view>
+        <view bindtap="tabBarTap" class="tabBarItem {{curTabBarIndex==='1'?'selected':''}}" data-index="1" data-pid="16">
+            <text>平板回收</text>
+        </view>
+    </view>
+    <view class="downSelectBlock">
+        <view class="brandList">
+            <view bindtap="brandTap" class="brandListItem {{curBrandItemIndex==index?'selected':''}}" data-id="{{item.Id}}" data-index="{{index}}" wx:for="{{categorys}}" wx:key="index">
+          {{item.mobile_name}}
+        </view>
+        </view>
+        <scroll-view scrollY class="mouldListScrollView" scrollTop="{{scrollTop}}" style="height:{{scrollHeight}};">
+            <view class="mouldList">
+                <view bindtap="itemTap" class="'mouldListItem" data-bid="{{item.goods_id}}" data-bname="{{item.BrandName}}" data-mid="{{item.Id}}" data-mname="{{item.MouldName}}" data-mpic="{{item.Pic}}" wx:for="{{goods}}" wx:key="index">
+                    <image mode="widthFix" src="{{item.image}}"></image>
+                    <view class="mould">{{item.mobile_name}}</view>
+                    <view class="price">回收最高价 <text>¥{{item.shop_price}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

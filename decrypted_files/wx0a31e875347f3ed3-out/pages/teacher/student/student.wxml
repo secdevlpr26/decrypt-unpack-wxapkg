@@ -1,0 +1,95 @@
+<view class="top">
+    <view class="title">
+        <text class="teacherName">{{teacherName}}</text>
+        <text bind:tap="selectClass" class="lessonName" style="background-color:{{groupInfo.bgColor}}">请选择班级</text>
+        <text bind:tap="logout" class="className" style="background-color:{{groupInfo.bgColor}}">退出登录</text>
+    </view>
+    <view class="date">
+        <view class="pickerWrapper">
+            <text class="itemTitle">跟读日期</text>
+            <picker bindchange="bingStartDateChange" class="startDate" mode="date" value="{{startDate}}">
+                {{startDate}}
+            </picker>
+            <picker bindchange="bingEndDateChange" mode="date" value="{{endDate}}">
+                {{endDate}}
+            </picker>
+        </view>
+    </view>
+    <view class="userIdWrapper">
+        <text class="itemTitle">输入学号</text>
+        <input bindinput="userIdInput" class="userId" type="number" value="{{user_id}}"></input>
+        <view bind:tap="search" class="serachBtn" hoverClass="btn_hover" style="background-color:{{groupInfo.bgColor}}">
+            搜索学号
+        </view>
+    </view>
+    <view class="serachWrapper">
+        <text class="itemTitle">课程时间</text>
+        <picker bindchange="bingClassDateChange" class="" mode="selector" range="{{scheduleDateList}}" rangeKey="class_date" value="{{scheduleDateListIndex}}">
+            {{scheduleDateList[scheduleDateListIndex].class_date}}
+        </picker>
+        <text class="itemTitle">是否已点评</text>
+        <switch bindchange="switchChange" checked="{{is_finish==2?false:true}}" color="{{groupInfo.bgColor}}" type="checkbox"></switch>
+    </view>
+</view>
+<view class="student" wx:for="{{userList}}" wx:key="i">
+    <view class="studentTitle">
+        <text class="studentbaby studentName">
+            <text>宝宝昵称：</text>{{item.user.user_name}}</text>
+        <text class="studentpatriarch studentName">
+            <text>用户名：</text>{{item.user.nick_name}}</text>
+        <text class="studentId">ID：{{item.user.user_id}}</text>
+        <text class="studentDate">{{item.schedule_date}}</text>
+    </view>
+    <view class="studentContent">
+        <view class="studentWord" wx:for="{{item.picBookData}}" wx:for-item="picBookData" wx:key="record_id">
+            <view class="studentWordLeft">
+                <view class="word">{{picBookData.en_sentence}}</view>
+                <text class="userDate">{{picBookData.created_time_at}}</text>
+            </view>
+            <view catch:tap="playStudentVoice" class="studentVoiceBtn" data-user-audio-url="{{picBookData.user_audio_url}}" hoverClass="btn_hover">
+                <image mode="widthFix" src="../../../image/teacher/play.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="control">
+        <view bind:tap="showModel" class="voiceBtn" data-commentid="{{item.comment.id}}" data-istext="{{false}}" data-useraudiourl="{{item.comment.user_audio_url}}" hoverClass="btn_hover">
+            语音点评
+        </view>
+        <view bind:tap="showModel" class="textBtn" data-commentid="{{item.comment.id}}" data-istext="{{true}}" data-textcomment="{{item.comment.text_comment}}" hoverClass="btn_hover">
+            文字点评
+        </view>
+    </view>
+    <view class="teacherContent">
+        <view class="wordContent" wx:if="{{item.comment.text_comment}}">
+            文字点评:
+            <view class="">{{item.comment.text_comment}}</view>
+        </view>
+        <view bind:tap="playAlreadyVoice" class="voiceConent" data-already-voice="{{item.comment.audio_comment}}" hoverClass="btn_hover" wx:if="{{item.comment.audio_comment}}">
+            播放点评
+        </view>
+    </view>
+</view>
+<view class="mask" hidden="{{maskHidden}}">
+    <view class="model">
+        <textarea bindinput="inputFn" class="textarea" fixed="true" id="" maxlength="300" name="" placeholder="请在此输入点评内容..." value="{{text_comment}}" wx:if="{{istext}}"></textarea>
+        <view wx:else>
+            <view bindtap="startRecord" class="recordClass {{isRecord?'isRecordClass':''}}" wx:if="{{!teacherHaveComment&&!is_start}}">
+                点击此处录音
+            </view>
+            <view bindtap="stopRecord" class="recordClass {{isRecord?'isRecordClass':''}}" wx:elif="{{!teacherHaveComment&&is_start}}">
+                点击结束录音
+            </view>
+            <view class="playClassWrapper" wx:else>
+                <view bind:tap="playTemp" class="playClass" hoverClass="btn_hover">
+                    <image class="playIcon" mode="widthFix" src="{{iconSrc}}"></image>
+                    <text>{{playText}}  录音时长 {{tempVoiceTime}} s </text>
+                </view>
+                <view bind:tap="againRecord" class="againClass">重录</view>
+            </view>
+        </view>
+        <view class="control">
+            <view bind:tap="cancel" class="cancel" hoverClass="btn_hover">取消</view>
+            <view bind:tap="confirm" class="confirm" hoverClass="btn_hover">确认</view>
+        </view>
+    </view>
+</view>

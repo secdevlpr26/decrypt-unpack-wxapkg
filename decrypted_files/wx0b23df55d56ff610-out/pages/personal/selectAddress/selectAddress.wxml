@@ -1,0 +1,19 @@
+<view class="map-box">
+    <view class="search">
+        <view bindtap="goToSearchAddress" class="searchTap">搜索</view>
+    </view>
+    <view class="map_container">
+        <map bindmarkertap="makertap" bindregionchange="regionchange" class="map" controls="{{controls}}" id="map" latitude="{{latitude}}" longitude="{{longitude}}" scale="12" showLocation="true"></map>
+    </view>
+    <view class="nav-scroll">
+        <scroll-view class="scroll-view_H" scrollX="true" style="width: 100%">
+            <text catchtap="handleTap" class="nav-name {{item.id==currentId?'nav-hover':''}}" id="{{item.id}}" wx:for="{{section}}" wx:key="id">{{item.name}}</text>
+        </scroll-view>
+    </view>
+    <view bindtap="selectAddress" class="address-item" data-id="{{addressItem.id}}" data-idx="{{addressIndex}}" wx:for="{{addressList}}" wx:for-index="addressIndex" wx:for-item="addressItem" wx:key="address">
+        <view class="info">
+            <text class="name">{{addressItem.title}}</text>
+            <text class="area">{{addressItem.address}}</text>
+        </view>
+    </view>
+</view>

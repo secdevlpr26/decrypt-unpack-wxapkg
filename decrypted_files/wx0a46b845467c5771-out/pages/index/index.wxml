@@ -1,0 +1,189 @@
+<scroll-view class="gjcontainer" wx:if="{{InitFlag=='0'}}">
+    <view class="star white"></view>
+    <view class="row hang">
+        <view class="white left" style="width:478rpx; height:387rpx;"></view>
+        <view class="white right" style="width:262rpx; height:387rpx;"></view>
+    </view>
+    <view class="row hang">
+        <view class="white left" style="width:553rpx; height:380rpx;"></view>
+        <view class="white right" style="width:186rpx; height:380rpx;"></view>
+    </view>
+</scroll-view>
+<view class="model" wx:if="{{showPhoneModel}}">
+    <view class="modelTitle">
+      请求获取信息
+    </view>
+    <view class="modelBody">为了更好的为您提供服务，我们请求获取您的手机号码</view>
+    <view class="btns">
+        <button bindgetphonenumber="getPhoneNumber" class="agree" lang="zh_CN" openType="getPhoneNumber" plain="true">下一步</button>
+    </view>
+</view>
+<view class="model" wx:if="{{showInfoModel}}">
+    <view class="modelTitle">
+      请求获取信息
+    </view>
+    <view class="modelBody">为了更好的为您提供服务，我们请求获取您的昵称、头像等公开信息</view>
+    <view class="btns">
+        <button bindgetuserinfo="getUserInfo" class="agree" lang="zh_CN" openType="getUserInfo" plain="true">下一步</button>
+    </view>
+</view>
+<view class="mask2" wx:if="{{showPhoneModel||showInfoModel}}"></view>
+<scroll-view bindscroll="scrollExp" class="container" scrollIntoView="{{toView}}" scrollY="{{!showPhoneModel&&!showInfoModel}}" style="height:100vh;background-color:{{color2}};" wx:if="{{InitFlag=='1'}}">
+    <image bindtap="goToNoticeList" class="notification" src="http://skyforest.static.elab-plus.com/wepy_pro/v1-2/notification.png"></image>
+    <view class="banner-container">
+        <swiper autoplay="false" bindchange="swiperChange" circular="true" class="titleswiper" duration="500" interval="7000">
+            <swiper-item style="position:relative" wx:if="{{item.coverUrl}}" wx:for="{{homeBanner||defaultBanner}}" wx:key="item.id">
+                <image bindload="imageLoad" class="titleswiper-image {{loadComplete?'':load}}" data-clkid="clk_2cmina_3" data-despage="yunyingtoutu" data-item="{{item}}" data-jump="{{item.jumpUrl}}" data-title="{{item.title}}" mode="aspectFit" src="{{loadComplete?item.coverUrl:defaultImagePath}}"></image>
+                <view class="swip-title"></view>
+            </swiper-item>
+        </swiper>
+        <view class="dots" wx:if="{{homeBanner.length>1}}">
+            <view class="dot{{index==swiperCurrent?' active':''}}" wx:for="{{homeBanner}}" wx:key="item.showOrder"></view>
+        </view>
+    </view>
+    <view class="scrollMsg" wx:if="{{newsModule.length>0}}">
+        <span class="msg-left">最新动态</span>
+        <span class="msg-line">|</span>
+        <swiper autoplay="true" circular="true" class="scrollMsgItem" interval="3000" vertical="true">
+            <swiper-item bindtap="goJump" data-clkId="clk_2cmina_4" data-despage="zuixindongtai" data-item="{{item}}" data-jump="{{item.linkUrl}}" data-title="{{item.title}}" wx:for="{{newsModule}}" wx:key="{{index}}">
+                <view class="scroll-news">{{item.title}}</view>
+            </swiper-item>
+        </swiper>
+        <image src="{{rightButtonUrl}}" style="height:18rpx;width:11rpx;margin-right:20rpx;"></image>
+    </view>
+    <view class="operationModule" data-clkId="clk_2cmina_5" data-despage="zidingyiyunyingwei" data-item="{{item}}" data-jump="{{item.jumpUrl}}" data-title="{{item.title}}" wx:for="{{operationModule}}" wx:key="{{index}}">
+        <image class="banner1-image" mode="widthFix" src="{{item.coverUrl}}"></image>
+        <view class="white-line"></view>
+    </view>
+    <view class="container2" hidden="{{editControl&&editControl.viewShowable&&editControl.viewShowable==2}}" id="jingcaishijiao">
+        <view class="left-box">
+            <view class="left-top" style="background-image: linear-gradient(-270deg, {{gradient1}} 0%, {{gradient2}} 100%);">
+                <view class="text" style="line-height:60rpx">{{editControl&&editControl.viewValue?editControl.viewValue:'项目背景'}}</view>
+            </view>
+            <view bindtap="goBearVideo" class="left-down" data-clkId="clk_2cmina_7" data-despage="xiangmutedian" data-item="{{featureModule}}" data-jump="{{featureModule.jumpUrl}}" data-title="{{'项目特色'}}">
+                <image mode="aspectFill" src="{{featureModule.coverUrl||projectFeatureUrl}}"></image>
+                <view class="mask" style="background-image: linear-gradient(-180deg,{{mask1}} 0%, {{mask2}} 100%);"></view>
+                <view class="text">{{featureModule.title||'项目特色'}}</view>
+            </view>
+        </view>
+        <view class="right-box">
+            <view bindtap="goImgSwip" class="right-top" data-clkId="clk_2cmina_13" data-despage="yangbanjiantu" data-type="2">
+                <image src="{{sampleModule.coverUrl||showroomsUrl}}"></image>
+                <view class="mask" style="background-image: linear-gradient(-180deg, {{mask1}} 0%,{{mask2}} 100%);"></view>
+                <view class="text">{{sampleModule.title||'精彩生活'}}</view>
+                <view class="liveCount">{{initData.sampleModule.likeCount?initData.sampleModule.likeCount+'人点赞':''}}</view>
+            </view>
+            <view bindtap="goBearVideo" class="right-down" data-clkId="clk_2cmina_11" data-despage="diduanpeitao" data-item="{{areaModule}}" data-jump="{{areaModule.jumpUrl}}" data-title="{{areaModule.title||'地段交通'}}">
+                <image src="{{areaModule.coverUrl||locationUrl}}"></image>
+                <view class="mask" style="background-image: linear-gradient(-180deg, {{mask1}} 0%, {{mask2}} 100%);"></view>
+                <view class="text">{{areaModule.title||'地段交通'}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="goJump" class="banner1 quanjin-box" data-clkId="clk_2cmina_9" data-despage="720xiangmuquanjing" data-item="{{viewModule}}" data-jump="{{viewModule.jumpUrl}}" data-title="{{viewModule.title||'项目全景'}}" wx:if="{{viewModule.jumpUrl}}">
+        <image mode="widthFix" src="{{viewModule.coverUrl||quanjinUrl}}"></image>
+        <view class="mask" style="background-image: linear-gradient(-180deg,rgba(255,255,255,0.0) 00%, #272A34 100%)"></view>
+        <image class="quanjinIcon" mode="widthFix" src="{{quanjinIconUrl}}" style="width:88rpx;height:54rpx"></image>
+        <view class="text">{{viewModule.title||'项目全景'}}</view>
+    </view>
+    <view class="white-line" wx:if="{{viewModule.jumpUrl}}"></view>
+    <view class="container2" hidden="{{editControl&&editControl.projectShowable&&editControl.projectShowable==2}}" id="liaojiexiangmu">
+        <view class="right-box">
+            <view bindtap="goHealthCenter" class="right-top" data-despage="kangyantiyan" data-jump="https://dm-mng.elab-plus.cn/touFangBao/index.html#/pages/preview?id=169&templateCode=0&foot=no" data-title="康养体验">
+                <image src="{{valueModule.coverUrl||investmentUrl}}"></image>
+                <view class="mask" style="background-image: linear-gradient(-180deg, {{mask1}} 0%,{{mask2}} 100%);"></view>
+                <view class="text">{{valueModule.title||'康养中心'}}</view>
+            </view>
+            <view bindtap="goDreamHabitat" class="right-down" data-despage="xiandaicunluo" data-jump="https://dm-mng.elab-plus.cn/touFangBao/index.html#/pages/preview?id=168&templateCode=0&foot=no" data-title="现代村落">
+                <image src="{{effectModule.coverUrl||renderUrl}}"></image>
+                <view class="mask" style="background-image: linear-gradient(-180deg,{{mask1}} 0%, {{mask2}} 100%);"></view>
+                <view class="text">{{effectModule.title||'现代村落'}}</view>
+            </view>
+        </view>
+        <view class="left-box">
+            <view class="left-top" style="background-image: linear-gradient(-270deg, {{gradient2}} 0%, {{gradient1}} 100%);">
+                <view class="text" style="text-align:right;padding-right:10rpx;line-height:60rpx">{{editControl&&editControl.projectValue?editControl.projectValue:'了解项目'}}</view>
+            </view>
+            <view bindtap="goImgSwip" class="left-down" data-clkId="clk_2cmina_14" data-despage="xiaoguotu" data-type="1">
+                <image bindload="asd" src="{{layoutModule.coverUrl||typesUrl}}"></image>
+                <view class="mask" style="background-image: linear-gradient(-180deg,{{mask1}} 0%, {{mask2}} 100%);"></view>
+                <view class="text">{{layoutModule.title||'古镇新貌'}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="goJump" class="banner1" data-clkId="clk_2cmina_16" data-despage="3Dkanfang" data-item="{{watchModule}}" data-jump="{{watchModule.jumpUrl}}" data-title="{{watchModule.title||'3D看房'}}" wx:if="{{watchModule.jumpUrl}}">
+        <view class="mask" style="background-image: linear-gradient(-180deg, {{mask1}} 0%, {{mask2}} 100%);"></view>
+        <image mode="widthFix" src="{{watchModule.coverUrl||threeDUrl}}"></image>
+        <view class="text">{{watchModule.title||'3D看房'}}</view>
+    </view>
+    <view bindtap="goImgSwip" class="banner1" data-clkId="clk_2cmina_17" data-despage="zhoubianpeitaotu" data-type="4" wx:if="{{matchModule.coverUrl}}">
+        <view class="mask" style="background-image: linear-gradient(-180deg, {{mask1}} 0%, {{mask2}} 100%);"></view>
+        <image mode="widthFix" src="{{matchModule.coverUrl||neighborUrl}}"></image>
+        <view class="text">{{matchModule.title||'周边配套图'}}</view>
+        <view class="liveCount">{{initData.matchModule.likeCount||'0'}}人点赞</view>
+    </view>
+    <view class="white-line"></view>
+    <view bindtap="goJump" data-clkId="clk_2cmina_5" data-despage="shangjuyunyinwei" data-item="{{item}}" data-jump="{{item.url}}" data-title="{{item.title}}" wx:for="{{shangjuModel}}" wx:key="{{index}}">
+        <view class="banner1">
+            <view class="mask" style="background-image: linear-gradient(-180deg, {{mask1}} 0%, {{mask2}} 100%);"></view>
+            <view class="text">{{item.title||'上居运营位'}}</view>
+            <image mode="aspectFill" src="{{item.effectImage}}"></image>
+        </view>
+        <view class="white-line"></view>
+    </view>
+    <view class="container2">
+        <view class="right-box">
+            <view bindtap="goJump" class="right-top" data-despage="touzhijiazhi" data-jump="https://dm-mng.elab-plus.cn/touFangBao/index.html#/pages/preview?id=173&templateCode=0&foot=no" data-title="投资价值">
+                <image src="https://dm.static.elab-plus.com/tn/zhaoshang.png"></image>
+            </view>
+        </view>
+        <view class="left-box left-box1">
+            <view bindtap="goJump" class="left-down" data-despage="touzhihuibao" data-jump="https://dm-mng.elab-plus.cn/touFangBao/index.html#/pages/preview?id=174&templateCode=0&foot=no" data-title="投资回报" style="margin-top:0rpx;height:220rpx;">
+                <image src="https://dm.static.elab-plus.com/tn/huibao.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="white-line"></view>
+    <view class="new-div">
+        <image bindtap="goJump" class="new-heng" data-despage="xianshangzhengxuan" data-jump="https://dm-mng.elab-plus.cn/touFangBao/index.html#/pages/preview?id=165&templateCode=0&foot=no" data-title="线上甄选" src="https://dm.static.elab-plus.com/tn/xianshang.png"></image>
+        <image bindtap="goJump" class="new-heng1" data-despage="xianshangzhengxuan" data-jump="https://dm-mng.elab-plus.cn/touFangBao/index.html#/pages/preview?id=165&templateCode=0&foot=no" data-title="线上甄选" src="https://dm.static.elab-plus.com/tn/zhenxuan1.png"></image>
+    </view>
+    <view class="container2">
+        <view class="right-box">
+            <view bindtap="goJump" class="right-top" data-despage="bentufencha" data-jump="https://dm-mng.elab-plus.cn/touFangBao/index.html#/pages/preview?id=166&templateCode=0&foot=no" data-title="本土夯茶" style="margin-top:0rpx;height:360rpx;">
+                <image src="https://dm.static.elab-plus.com/tn/cha.png"></image>
+            </view>
+        </view>
+        <view class="left-box">
+            <view bindtap="goJump" class="left-down" data-despage="shanlinmiju" data-jump="https://dm-mng.elab-plus.cn/touFangBao/index.html#/pages/preview?id=167&templateCode=0&foot=no" data-title="山林蜜桔" style="margin-top:0rpx;height:360rpx;">
+                <image src="https://dm.static.elab-plus.com/tn/ju.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="share" id="fenxianggeipengyou" style="background-image: linear-gradient(-270deg, {{gradient1}} 0%, {{gradient2}} 100%);">
+        <view class="white-border">
+            <view class="title">
+              分享给朋友
+          </view>
+            <view class="row">
+                <view class="word">
+                    <text>把资料分享给朋友,立即获得免费体验大礼包</text>
+                </view>
+            </view>
+            <view class="btnrow">
+                <button bindTap="goToShare" class="btn new" openType="share"> 我要分享</button>
+                <div class="btn sharefriend">我分享的好友</div>
+            </view>
+        </view>
+    </view>
+    <view class="white-line"></view>
+    <view class="wx-number">400-8888-8888</view>
+    <view class="phone phoneAuthorize" style="margin:0;" wx:if="{{!showAuth}}"></view>
+    <view class="rights">2018ELAB团队出品 all rights reserved</view>
+    <view class="empty-box" id="empty-box"></view>
+</scroll-view>
+<view class="IM" style="background-image: linear-gradient(-270deg, {{gradient1}} 0%, {{gradient2}} 100%);z-index:100">
+    <button bindtap="goChatList" class="title">
+        <image class="icon_liaotian" mode="widthFix" src="../../image/wepy_pro/icon_liaotian.png"></image>快速了解，一对一解答
+    </button>
+</view>

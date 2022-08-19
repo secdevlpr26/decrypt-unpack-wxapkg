@@ -1,0 +1,66 @@
+{
+    "pages": [
+        "pages/company/index",
+        "pages/company/productlist",
+        "pages/company/productdetail",
+        "pages/company/personlist",
+        "pages/company/newslist",
+        "pages/company/newsdetail",
+        "pages/company/about",
+        "pages/company/reserve-by-person",
+        "pages/company/reserve-by-product",
+        "pages/company/mycenter",
+        "pages/company/myreserve",
+        "pages/company/mycoupon",
+        "pages/company/noticedetail",
+        "pages/company/custompage",
+        "pages/company/personlist_tabbar",
+        "pages/company/productlist_tabbar",
+        "pages/company/mycenter_tabbar",
+        "pages/webview/webview"
+    ],
+    "window": {
+        "backgroundColor": "#ffffff",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "山西太原长城电脑计算机培训学校",
+        "navigationBarBackgroundColor": "#2a292f",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "backgroundColor": "#ffffff",
+        "color": "#666666",
+        "selectedColor": null,
+        "list": [
+            {
+                "pagePath": "pages/company/index",
+                "text": "首页",
+                "iconPath": "images/tarbaricons/20180115163948a44df7.jpg",
+                "selectedIconPath": "images/tarbaricons/20180115163948a44df7.jpg"
+            },
+            {
+                "pagePath": "pages/company/personlist_tabbar",
+                "text": "师资",
+                "iconPath": "images/tarbaricons/201801151639489de3c9.jpg",
+                "selectedIconPath": "images/tarbaricons/201801151639489de3c9.jpg"
+            },
+            {
+                "pagePath": "pages/company/productlist_tabbar",
+                "text": "课程",
+                "iconPath": "images/tarbaricons/20180115163948b36eff.jpg",
+                "selectedIconPath": "images/tarbaricons/20180115163948b36eff.jpg"
+            },
+            {
+                "pagePath": "pages/company/mycenter_tabbar",
+                "text": "我的",
+                "iconPath": "images/tarbaricons/20180115163948f42435.jpg",
+                "selectedIconPath": "images/tarbaricons/20180115163948f42435.jpg"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
+}

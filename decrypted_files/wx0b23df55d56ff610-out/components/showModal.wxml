@@ -1,0 +1,11 @@
+<template name="showModal">
+    <view class="modal">
+        <view class="modal_content">
+            <text class="modal_title">
+        小程序需要获得你的公开信息
+(昵称、头像)
+      </text>
+            <button bindgetuserinfo="onGotUserInfo" class="modal_btn" lang="zh_CN" openType="getUserInfo" style="background:#ff5000;color:#fff;">确认授权</button>
+        </view>
+    </view>
+</template>

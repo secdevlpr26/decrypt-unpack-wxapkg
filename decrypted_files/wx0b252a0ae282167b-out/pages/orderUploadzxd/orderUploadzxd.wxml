@@ -1,0 +1,122 @@
+<view class="pre-recorded-receipt">
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="pre-recorded-receipt-header">
+            <view class="receipt-header-bt">禁止危险品预录（请务必核对件毛体等信息）</view>
+            <view class="receipt-header-btn">
+                <button disabled="{{buttonClicked}}" formType="submit">预录</button>
+            </view>
+        </view>
+        <view class="pre-recorded-receipt-body">
+            <view class="section">
+                <view class="section__title">船名/航次</view>
+                <input bindinput="bindKeyInput" name="shipName_voyNo" value="{{result.shipname}}/{{result.voyage}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">交货地</view>
+                <input bindinput="bindKeyInput" name="placeDelivery" value="{{result.transit_port}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">卸港</view>
+                <input bindinput="bindKeyInput" name="portDischargeCode" value="{{result.unloading_port}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">港区</view>
+                <input bindinput="bindKeyInput" name="docks" value="{{result.port}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">开港时间</view>
+                <input bindinput="bindKeyInput" name="jxTime1" value="{{result.ets}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">截港时间</view>
+                <input bindinput="bindKeyInput" name="jxTime2" value="{{result.cycutoff}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">箱号</view>
+                <input bindinput="bindKeyInput" name="contNo" value="{{result.box_num}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">封号</view>
+                <input bindinput="bindKeyInput" name="sealNo" value="{{result.seal_num}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">箱型</view>
+                <input bindinput="bindKeyInput" name="boxtype" value="{{result.box_type}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">箱皮重</view>
+                <input bindinput="bindKeyInput" name="contTareWt" value="{{result.void_box_weight}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">营运人</view>
+                <input bindinput="bindKeyInput" name="cntrOptr" value="{{result.shipcompany}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">装箱人</view>
+                <input bindinput="bindKeyInput" name="packerName" value="{{result.box_contact_info2}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">装箱地址</view>
+                <input bindinput="bindKeyInput" name="packerAddress" value="{{result.box_address2}}"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">冷藏温度</view>
+                <input bindinput="bindKeyInput" name="RTR"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">前超</view>
+                <input bindinput="bindKeyInput" name="overLengthFront"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">后超</view>
+                <input bindinput="bindKeyInput" name="overLengthBack"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">左超</view>
+                <input bindinput="bindKeyInput" name="overWidthLeft"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">右超</view>
+                <input bindinput="bindKeyInput" name="overWidthRight"></input>
+            </view>
+            <view class="section">
+                <view class="section__title">超高</view>
+                <input bindinput="bindKeyInput" name="overHeight"></input>
+            </view>
+        </view>
+        <view class="pre-recorded-receipt-add">
+            <view class="tab-item">
+                <view class="section">
+                    <text>提单号</text>
+                </view>
+                <view class="section">
+                    <text>件数</text>
+                </view>
+                <view class="section">
+                    <text>毛重</text>
+                </view>
+                <view class="section">
+                    <text>尺码</text>
+                </view>
+            </view>
+            <view class="tab-item" wx:for="{{info.details}}" wx:key="key">
+                <view class="section">
+                    <input bindinput="setArrbillNo" id="arrbillNo-{{index}}" name="arrbillNo" value="{{item.arrbillNo}}"></input>
+                </view>
+                <view class="section">
+                    <input bindinput="setArrPackages" id="arrPackages-{{index}}" name="arrPackages" value="{{item.arrPackages}}"></input>
+                </view>
+                <view class="section">
+                    <input bindinput="setArrGW" id="arrGW-{{index}}" name="arrGW" value="{{item.arrGW}}"></input>
+                </view>
+                <view class="section">
+                    <input bindinput="setArrMEAS" id="arrMEAS-{{index}}" name="arrMEAS" value="{{item.arrMEAS}}"></input>
+                </view>
+            </view>
+            <view class="weui-cell" hidden="{{info.isPreDetail}}">
+                <button bindtap="addItem" type="primary">添加一行</button>
+                <button bindtap="removeItem" type="primary">删除一行</button>
+            </view>
+        </view>
+    </form>
+</view>

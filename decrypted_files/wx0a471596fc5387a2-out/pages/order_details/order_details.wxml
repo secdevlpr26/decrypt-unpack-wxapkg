@@ -1,0 +1,74 @@
+<view class="text_box first">
+    <text>订   单   号:</text>
+    <text>{{order.ORDER_NUM}}</text>
+</view>
+<view class="text_box last">
+    <text>订单状态:</text>
+    <text class="cl_3b40df">{{orderStatus}}</text>
+</view>
+<view class="text_box height">
+    <text>收 货 人:</text>
+    <text>{{address.CONSIGNEE}}  {{address.CELLPHONE}}</text>
+</view>
+<view class="text_box height">
+    <text>备注:</text>
+    <text>{{order.NOTE}}</text>
+</view>
+<view class="order" wx:for="{{orderSubList}}" wx:key="{{item.ID}}">
+    <image class="order_img" src="{{hostUrl}}{{item.LITPIC}}"></image>
+    <view class="order_xx">
+        <text class="left">{{item.TITLE}}</text>
+        <text class="cl_df0c1d right">￥{{item.PRICE}}</text>
+    </view>
+    <view class="order_xx">
+        <text class="left">规格:/{{item.PROPERTY_VALUE}}</text>
+        <text class="del right">￥{{item.MARKETPRICE}}</text>
+    </view>
+    <view class="order_xx">
+        <text class="right">X{{item.QUANTITY}}</text>
+    </view>
+</view>
+<view class="fangshi">
+    <view class="weixin what">
+        <text class="left">支付方式：</text>
+        <text class="right">微信支付</text>
+    </view>
+    <view class="weixin fs_last">
+        <text class="left">配送方式：</text>
+        <text class="right">{{order.SHIPPING_METHOD}}</text>
+    </view>
+</view>
+<view class="spxx">
+    <view class="spxx_box">
+        <text class="left">商品金额</text>
+        <text class="right">{{order.PRICE_SUM}}</text>
+    </view>
+    <view class="spxx_box">
+        <text class="left">运费</text>
+        <text class="right">+￥0</text>
+    </view>
+    <view class="spxx_box">
+        <text class="left">优惠金额</text>
+        <text class="right">-￥0</text>
+    </view>
+    <view class="spxx_box spxx_last">
+        <text class="left">实付款</text>
+        <text class="right">￥{{order.PRICE_SUM}}</text>
+    </view>
+</view>
+<view class="fangshi time_box">
+    <view class="weixin time">
+        <text class="left">提交时间:</text>
+        <text class="right">{{order.UPDATETIME}}</text>
+    </view>
+    <view class="weixin time">
+        <text class="left">自提时间:</text>
+        <text class="right">2018-03-23 12:05:00</text>
+    </view>
+</view>
+<view class="bottom">
+    <block wx:if="{{order.IS_PAYMENT==0}}">
+        <button bindtap="pay" data-id="{{order.ID}}" wx:if="{{order.ORDER_STATUS==0}}">立即支付</button>
+        <button bindtap="canalOrder" data-id="{{order.ID}}" wx:if="{{order.ORDER_STATUS==0}}">取消订单</button>
+    </block>
+</view>

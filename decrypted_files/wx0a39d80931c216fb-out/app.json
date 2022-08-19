@@ -1,0 +1,188 @@
+{
+    "pages": [
+        "pages/tabBar/home/index",
+        "pages/tabBar/products/index",
+        "pages/tabBar/shoppingCart/index",
+        "pages/tabBar/shoppingCart/submit",
+        "pages/tabBar/me/index"
+    ],
+    "subPackages": [
+        {
+            "root": "pages/me/",
+            "pages": [
+                "merchantsJoin/index",
+                "orders/expressInfo",
+                "orders/orderAppendComment",
+                "orders/orderComment",
+                "infos/index",
+                "infos/nickname",
+                "infos/updatecellphone",
+                "address/index",
+                "orders/list",
+                "favorites/index",
+                "orders/orderRefund",
+                "orders/refundDetails",
+                "orders/details",
+                "coupons/list",
+                "address/new",
+                "address/edit",
+                "account/index",
+                "identity/index",
+                "account/bindphone",
+                "account/paypassword",
+                "account/haspassword",
+                "account/lostpassword"
+            ]
+        },
+        {
+            "root": "pages/product/",
+            "pages": [
+                "category/index",
+                "productComments",
+                "productCategoryList",
+                "historyList",
+                "poster",
+                "index"
+            ]
+        },
+        {
+            "root": "pages/enterprise/",
+            "pages": [
+                "list",
+                "enterpriseOrderList",
+                "authentication",
+                "enterpriseOrder"
+            ]
+        },
+        {
+            "root": "pages/storekeeper/",
+            "pages": [
+                "team/index",
+                "team/gift/usedgiftlist",
+                "team/gift/unauditgiftlist",
+                "team/members/index",
+                "account/index",
+                "account/bankcard/list",
+                "account/bankcard/bind",
+                "account/withdraw/index",
+                "account/withdraw/cards",
+                "account/withdraw/history",
+                "account/income/index",
+                "account/income/capitalIncomes",
+                "account/income/agentIncome",
+                "orders/Settlement",
+                "article/articleList",
+                "article/detail",
+                "index",
+                "invitation/vip",
+                "invitation/shop"
+            ]
+        },
+        {
+            "root": "pages/coupon/",
+            "pages": [
+                "list"
+            ]
+        },
+        {
+            "root": "pages/webview/",
+            "pages": [
+                "index"
+            ]
+        },
+        {
+            "root": "pages/essentials/",
+            "pages": [
+                "index"
+            ]
+        },
+        {
+            "root": "pages/LimitTimeBuy/",
+            "pages": [
+                "index"
+            ]
+        },
+        {
+            "root": "pages/search/",
+            "pages": [
+                "index"
+            ]
+        },
+        {
+            "root": "pages/vshop/",
+            "pages": [
+                "index"
+            ]
+        },
+        {
+            "root": "pages/login/",
+            "pages": [
+                "index"
+            ]
+        },
+        {
+            "root": "pages/openshop/",
+            "pages": [
+                "index"
+            ]
+        },
+        {
+            "root": "pages/articledetails/",
+            "pages": [
+                "index"
+            ]
+        },
+        {
+            "root": "pages/aboutus/",
+            "pages": [
+                "index"
+            ]
+        }
+    ],
+    "window": {
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "丝路优优",
+        "navigationBarBackgroundColor": "#FE6901",
+        "backgroundColor": "#FE6901"
+    },
+    "tabBar": {
+        "color": "#505050",
+        "selectedColor": "#fa6727",
+        "borderStyle": "white",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/tabBar/home/index",
+                "iconPath": "static/tabicons/home.png",
+                "selectedIconPath": "static/tabicons/homeHL.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/tabBar/products/index",
+                "iconPath": "static/tabicons/cate.png",
+                "selectedIconPath": "static/tabicons/cateHL.png",
+                "text": "商品"
+            },
+            {
+                "pagePath": "pages/tabBar/shoppingCart/index",
+                "iconPath": "static/tabicons/cart.png",
+                "selectedIconPath": "static/tabicons/cartHL.png",
+                "text": "购物车"
+            },
+            {
+                "pagePath": "pages/tabBar/me/index",
+                "iconPath": "static/tabicons/me.png",
+                "selectedIconPath": "static/tabicons/meHL.png",
+                "text": "我的"
+            }
+        ]
+    },
+    "requiredBackgroundModes": [
+        "audio"
+    ],
+    "usingComponents": {
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    },
+    "sitemapLocation": "sitemap.json"
+}

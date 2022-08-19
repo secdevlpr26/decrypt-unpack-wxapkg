@@ -1,0 +1,14 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <view class="news-list">
+        <view class="news-item" wx:for="{{newsList}}" wx:key="send_time">
+            <view class="news-time">{{item.send_time}}</view>
+            <view class="news-content">
+                <view class="news-tit">{{item.title}}</view>
+                <view class="news-text">{{item.content}}</view>
+            </view>
+        </view>
+        <view class="none-data" hidden="{{newsList.length>0}}">暂无消息</view>
+    </view>
+</view>

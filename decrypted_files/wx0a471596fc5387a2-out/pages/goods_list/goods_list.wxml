@@ -1,0 +1,51 @@
+<view class="search">
+    <image src="{{hostUrl}}/images/search.jpg"></image>
+    <input bindblur="searchSubmit" bindinput="searchActiveChangeinput" placeholder="搜索商品名称" type="text" value="{{word}}"></input>
+</view>
+<view class="switch_box">
+    <view bindtap="switchTab" class="{{switchTabOne==true?'active':''}}" data-order="1" hoverClass="none">
+        <text>排序</text>
+    </view>
+    <view bindtap="switchTab" class="{{switchTabTwo==true?'active':''}}" data-order="2" hoverClass="none">
+        <text>默认</text>
+    </view>
+    <view bindtap="switchTab" class="{{switchTabThree==true?'active':''}}" data-order="3" hoverClass="none">
+        <text>价格</text>
+    </view>
+    <view bindtap="switchTab" class="{{switchTabFour==true?'active':''}}" data-order="4" hoverClass="none">
+        <text>销量</text>
+    </view>
+    <view bindtap="switchTab" class="{{switchTabFive==true?'active':''}}" data-order="5" hoverClass="none">
+        <text>上新</text>
+    </view>
+</view>
+<scroll-view bindchange="switchTab" bindscrolltolower="bindDownLoad" class="scoll-h" current="{{currentTab}}" duration="300" scrollY="true" style="height:{{winHeight}}rpx">
+    <view class="list_box">
+        <navigator url="/pages/details/details?id={{item.ID}}" wx:for="{{productList}}" wx:key="{{item.ID}}">
+            <view class="good">
+                <view class="img">
+                    <image mode="aspectFill" src="{{hostUrl}}{{item.LITPIC}}"></image>
+                    <text>已售:{{item.SALES}}</text>
+                </view>
+                <text class="title">{{item.NAME}}</text>
+                <view class="jiege">
+                    <view class="jiage_box">
+                        <text class="small">￥</text>
+                        <text class="yuan">{{item.PRICE}}</text>
+                        <text class="jiao"></text>
+                    </view>
+                    <text class="del">￥{{item.MARKETPRICE}}</text>
+                    <navigator url="#">
+                        <image src="{{hostUrl}}/images/good_gwc.png"></image>
+                    </navigator>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</scroll-view>
+<view>
+    <loading hidden="{{hidden}}">
+      加载中...
+    </loading>
+</view>
+<include src="../footer/footer.wxml"></include>

@@ -1,0 +1,51 @@
+<view>{{index}}</view>
+<form bindreset="formReset" bindsubmit="formSubmit">
+    <view class="address">
+        <view class="li">
+            <text>姓名：</text>
+            <input name="username" type="text" value="{{username}}"></input>
+        </view>
+        <view class="li">
+            <text>公司名称：</text>
+            <input name="gsname" type="text" value="{{gsname}}"></input>
+        </view>
+        <view class="li">
+            <text>职务：</text>
+            <input name="zw" type="text" value="{{zw}}"></input>
+        </view>
+        <view class="li" wx:if="{{index==1||index==3}}">
+            <text>职称：</text>
+            <input name="zc" type="text" value="{{zc}}"></input>
+        </view>
+        <view class="li" wx:if="{{index==4}}">
+            <text>末级部门数：</text>
+            <input name="zc" type="text" value="{{zc}}"></input>
+        </view>
+        <view class="li">
+            <text>通讯地址：</text>
+            <input name="address" type="text" value="{{address}}"></input>
+        </view>
+        <view class="li">
+            <text>联系方式：</text>
+            <input name="tell" type="text" value="{{tell}}"></input>
+        </view>
+        <input hidden="false" name="id" type="hidden" value="{{id}}"></input>
+    </view>
+    <view class="tijiao">
+        <button formType="submit">提交</button>
+    </view>
+</form>
+<view wx:if="{{index==3}}">
+    <view bindtap="imgYu1" class="zhichi1">
+                下载《中国中小企业协会专业能力测评申请》模板
+        </view>
+    <view class="zhichi">
+                图片资料（1、身份证正反面；2、两寸免冠蓝色背景照片（电子版）；3、学历证；4、中国中小企业协会专业能力测评申请）
+        </view>
+    <view wx:for="{{getOrderFj}}" wx:key="{{item.id}}">
+        <image bindlongpress="deleteImage" bindtap="imgYu" data-index="{{index}}" data-list="{{getOrderFj.WEB}}/upload/Annex/{{getOrderFj.FILENAME}}" data-src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" mode="widthFix" src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" style="width:100%" wx:if="{{item.LX=='png'||item.LX=='jpg'||item.LX=='gif'||item.LX=='bmp'}}"></image>
+    </view>
+    <view bindtap="bindChooiceProduct" class="icon_search1 photo">
+        <image src="{{hostUrl}}/images/photo.png"></image>
+    </view>
+</view>

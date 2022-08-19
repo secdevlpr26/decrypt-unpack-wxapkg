@@ -1,0 +1,93 @@
+<view>{{djlx}}{{djmc}}{{lcbm}}{{nf}}{{zrzxbm}}{{zrzxmc}}{{ztbm}}{{ls_tj}}</view>
+<view class="addrcon">
+    <view class="addrlist" wx:for="{{addressList}}" wx:key="{{item.ID}}">
+        <view class="addr">
+            <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+        </view>
+        <view bindtap="selectzrzxbm" class="addr search" data-index="{{index}}">
+            <text>预算部门：</text>
+            <input disabled="true" name="zrzxbm" placeholder="请选择预算部门" type="text" value="{{item.ZRZXBM}}{{item.ZRZXMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view class="addr">
+            <text>摘要：</text>
+            <input bindinput="inputzy" data-index="{{index}}" name="zy" placeholder="业务摘要" type="text" value="{{item.ZY}}"></input>
+        </view>
+        <view bindtap="selectysxmbm" class="addr search" data-index="{{index}}" data-zrzxbm="{{item.ZRZXBM}}">
+            <text>预算项目：</text>
+            <input disabled="true" name="ysxmbm" placeholder="请选择预算项目" type="text" value="{{item.YSXMBM}}{{item.YSXMMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view bindtap="selectysxmmxbh" class="addr search" data-index="{{index}}" data-ysxmbm="{{item.YSXMBM}}" data-zrzxbm="{{item.ZRZXBM}}">
+            <text>预算明细：</text>
+            <input disabled="true" name="ysxmmxbh" placeholder="请选择预算项目明细" type="text" value="{{item.YSXMMXBH}}{{item.YSXMMXMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view class="addr">
+            <text>金额：</text>
+            <input bindinput="inputsqje" data-index="{{index}}" name="sqje" style="width:200rpx;" type="digit" value="{{item.SQJE}}"></input>
+        </view>
+        <view class="addr">
+            <text>冲借款金额：</text>
+            <input bindinput="inputczje" data-index="{{index}}" name="czje" type="digit" value="{{item.CZJE}}"></input>
+        </view>
+        <view class="addr">
+            <text>备注：</text>
+            <input bindinput="inputbz" data-index="{{index}}" name="bz" placeholder="我还有要说的：）" type="text" value="{{item.BZ}}"></input>
+        </view>
+        <view class="addrb">
+            <text style="color:red;font-size:30rpx;" wx:if="{{item.YBF>0}}">准备金：{{item.YBF}}</text>
+            <button bindtap="delete" class="delete" data-bh="{{item.BH}}" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/cross.png"></image>删除明细</button>
+            <button bindtap="tijiao" class="delete" data-bh="{{item.BH}}" data-bz="{{item.BZ}}" data-czje="{{item.CZJE}}" data-id="{{item.ID}}" data-index="{{index}}" data-sqje="{{item.SQJE}}" data-ysxmbm="{{item.YSXMBM}}" data-ysxmmxbh="{{item.YSXMMXBH}}" data-ysxmmxmc="{{item.YSXMMXMC}}" data-ywrq="{{item.YWRQ}}" data-zrzxbm="{{item.ZRZXBM}}" data-zy="{{item.ZY}}">
+                <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+        </view>
+    </view>
+</view>
+<view bindtap="addzf" class="zhichi1">
+  点击新增支付明细
+</view>
+<view wx:for="{{orderzhList}}" wx:key="{{item.id}}">
+    <view class="addr search">
+        <text>单位名称：</text>
+        <input bindinput="inputskr" data-index="{{index}}" name="skr" placeholder="请选择单位" type="text" value="{{item.SKR}}"></input>
+        <image bindtap="selectzh" data-index="{{index}}" src="{{hostUrl}}/images/ssico.png"></image>
+    </view>
+    <view class="addr">
+        <text>开户行：</text>
+        <input bindinput="inputkhh" data-index="{{index}}" name="khh" placeholder="请输入开户行" type="text" value="{{item.KHH}}"></input>
+    </view>
+    <view class="addr">
+        <text>帐号：</text>
+        <input bindinput="inputzh" data-index="{{index}}" name="zh" placeholder="请输入帐号" type="text" value="{{item.ZH}}"></input>
+    </view>
+    <view class="addr">
+        <text>金额：</text>
+        <input bindinput="inputje" data-index="{{index}}" name="je" placeholder="请输入金额" type="digit" value="{{item.JE}}"></input>
+    </view>
+    <view class="addrb">
+        <button bindtap="deletezf" class="delete" data-id="{{item.ID}}">
+            <image src="{{hostUrl}}/images/coll2.gif"></image>删除明细</button>
+        <button bindtap="savezf" class="delete" data-id="{{item.ID}}" data-je="{{item.JE}}" data-khh="{{item.KHH}}" data-skr="{{item.SKR}}" data-zh="{{item.ZH}}">
+            <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+    </view>
+    <view class="lb"></view>
+</view>
+<view class="lb"></view>
+<view class="zhichi">
+  图片附件（单击放大/缩小、滑动浏览、长按删除）
+</view>
+<view wx:for="{{getOrderFj}}" wx:key="{{item.id}}">
+    <image bindlongpress="deleteImage" bindtap="imgYu" data-index="{{index}}" data-list="{{getOrderFj.WEB}}/upload/Annex/{{getOrderFj.FILENAME}}" data-src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" mode="widthFix" src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" style="width:100%" wx:if="{{item.LX=='png'||item.LX=='jpg'||item.LX=='gif'||item.LX=='bmp'}}"></image>
+</view>
+<image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+<view class="addbtn1">合计：{{hj}}元
+
+</view>
+<view bindtap="bindChooiceProduct" class="icon_search1 photo">
+    <image src="{{hostUrl}}/images/photo.png"></image>
+</view>
+<view bindtap="addAddress" class="icon_search2">新增明细
+
+</view>
+<wxs module="filters" src="../../utils/filters.wxs" />

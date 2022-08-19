@@ -1,0 +1,50 @@
+<view class="Empty" wx:if="Empty">
+    <image src="Empty"></image>
+    <text class="Empty">Empty</text>
+    <text bindtap="Empty" class="Empty">Empty</text>
+</view>
+<view wx:else>
+    <scroll-view scrollY="Empty" style="Empty">
+        <view class="Empty" wx:for="Empty" wx:key="index">
+            <view class="Empty">
+                <image src="Empty"></image>
+                <text>Empty</text>
+            </view>
+            <view class="Empty">
+                <icon bindtap="Empty" data-index="Empty" size="Empty" type="Empty" wx:if="Empty"></icon>
+                <icon bindtap="Empty" data-index="Empty" size="Empty" type="Empty" wx:else></icon>
+                <view>
+                    <image class="Empty" mode="Empty" src="Empty"></image>
+                </view>
+                <view class="Empty">
+                    <text class="Empty">Empty</text>
+                    <text class="Empty">Empty</text>
+                    <view class="Empty">
+                        <view>
+                            <view class="Empty">
+                                <text bindtap="Empty" class="Empty" data-index="Empty">Empty</text>
+                                <input bindchange="Empty" data-index="Empty" type="Empty" value="Empty"></input>
+                                <text bindtap="Empty" class="Empty" data-index="Empty">Empty</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="Empty">
+                    <text class="Empty">Empty</text>
+                    <text class="Empty">Empty</text>
+                    <image bindtap="Empty" class="Empty" data-index="Empty" src="Empty"></image>
+                </view>
+            </view>
+        </view>
+        <view style="Empty"></view>
+    </scroll-view>
+    <view class="Empty">
+        <view bindtap="Empty" class="Empty">
+            <icon size="Empty" type="Empty" wx:if="Empty"></icon>
+            <icon size="Empty" type="Empty" wx:else></icon>
+            <text>Empty</text>
+            <text style="Empty">Empty</text>
+        </view>
+        <view bindtap="Empty" class="Empty">Empty</view>
+    </view>
+</view>

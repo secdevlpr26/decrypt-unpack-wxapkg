@@ -1,0 +1,61 @@
+<view class="header-search-title header" style="background-image:url('../../images/index_bg.png');">
+    <view class="x-row" style="margin-top:10rpx;">
+        <image bindtap="switchTeam" class="addr-icon" src="../../images/icon_switch.png" style="width:16px; height:20px;"></image>
+        <text bindtap="switchTeam" class="addr">{{team?team:'去注册'}}</text>
+        <view bindtap="gotoSearch" class="header-search x-row">
+            <view class="">
+                <i class="iconfont icon-sousuo"></i>
+            </view>
+            <view class="x-col-center">
+                <text style="font-size:13px;color:#fff;">书名/作者/ISBN/年龄/功能</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="zhanwei"></view>
+<swiper circular autoplay="{{autoplay}}" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" style="width:96%; height:125px;margin:2%;border-radius:5px;margin-top:50rpx;overflow:hidden;">
+    <swiper-item wx:for="{{imgUrls}}">
+        <image binderror="bannerImgError" bindtap="toGuangGao" class="slide-image" data-index="{{index}}" src="{{bannerBool?item=='no_cover'?noBanner:imgRootPath+item:item}}" style="width:100%;height:100%;"></image>
+    </swiper-item>
+</swiper>
+<view class="title-name">
+    <image src="../../images/home_new.png" style="width:21px; height:15px"></image>
+    <text class="">新书上架</text>
+    <view bindtap="toMoreNew" class="right">
+        更多
+        <i class="iconfont icon-icon-arrow-right2"></i>
+    </view>
+</view>
+<view class="new-book">
+    <view class="scroll_box">
+        <scroll-view scrollX class="scroll-view_x" style="width: auto;overflow:hidden;">
+            <view bindtap="toArticle" class="item_list" data-id="{{nb.id}}" wx:for="{{newBook}}" wx:for-item="nb">
+                <image binderror="newImgError" class="item_book_img" data-index="{{index}}" mode="aspectFill" src="{{nb.pic1=='no_cover'?noCover:imgRootPath+nb.pic1}}"></image>
+                <view class="item_book_text">{{nb.bookName}}</view>
+                <view class="author">{{nb.author==null?'--':nb.author}} 著</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="title-name">
+    <image src="../../images/home_hot.png" style="width:50rpx; height:26rpx"></image>
+    <text class="">热门推荐</text>
+    <view bindtap="toMoreHot" class="right">
+        更多
+        <i class="iconfont icon-icon-arrow-right2"></i>
+    </view>
+</view>
+<view class="borrow-most" wx:for="{{hot}}" wx:for-item="h">
+    <text class="borrow-most-img">借阅最多</text>
+    <image binderror="hotImgError" data-index="{{index}}" mode="aspectFill" src="{{h.pic1=='no_cover'?noCover:imgRootPath+h.pic1}}"></image>
+    <view bindtap="toArticle" class="box-sd" data-id="{{h.id}}">
+        <text class="title">{{h.bookName}}</text>
+        <view class="author line-one">作者：{{h.author==null?'--':h.author}}</view>
+        <view class="book-intro line-two">
+            {{h.bookintr==null||h.bookintr==''?'':h.bookintr}}
+        </view>
+    </view>
+</view>
+<view bindtap="scanCode" class="scan-button">扫码借书</view>
+<view class="zhanwei" style="height:20rpx"></view>
+<dialog bind:confirmEvent="confirmEvent" bind:getPhoneNumber="getPhoneNumber" confirmText="确定" content="小程序需要您的授权才能提供更好的服务哦" id="dialog" title="授权信息"></dialog>

@@ -1,0 +1,19 @@
+<view class="bg">
+    <image src="../../../image/liveclass/bg_home.png"></image>
+</view>
+<view class="bg-image-box">
+    <view class="title-icon">
+        <image src="../../../image/liveclass/title_icon.png"></image>
+    </view>
+    <view class="progress">
+        <view class="progress-bar progress-bar-info progress-bar-striped active" style="width: 88%;">
+            <view class="progress-value">
+                <image class="progress-img" src="../../../image/liveclass/rocket_icon_home.png"></image>
+            </view>
+            <text>正在前往教室，请稍等...</text>
+        </view>
+    </view>
+    <view class="bg-text">
+        <image src="../../../image/liveclass/comsoon_icon.png" style="width: 94vmin;height: 7vmin;"></image>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "文章内容详情",
+    "usingComponents": {
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

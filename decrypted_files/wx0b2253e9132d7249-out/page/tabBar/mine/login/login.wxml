@@ -1,0 +1,7 @@
+<view class="grant">
+    <view class="grant_title">提示</view>
+    <view class="grant_content">请您授权您的用户信息，否则核心功能将无法使用</view>
+    <button bindgetuserinfo="getUserInfo" class="grant_button" data-url="/pages/guanjialist/index" disabled="{{loading}}" loading="{{loading}}" openType="getUserInfo">去授权</button>
+    <view class="grant_yes">去授权</view>
+</view>
+<view style="width:100%;height:100%;position:fixed;background:#000;opacity:0.8;z-index:2;"></view>

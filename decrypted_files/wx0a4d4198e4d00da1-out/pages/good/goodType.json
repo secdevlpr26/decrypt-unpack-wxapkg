@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index",
+        "wxc-loadmore": "../../packages/@minui/wxc-loadmore/dist/index",
+        "wxc-abnor": "../../packages/@minui/wxc-abnor/dist/index"
+    },
+    "navigationBarTitleText": "分类"
+}

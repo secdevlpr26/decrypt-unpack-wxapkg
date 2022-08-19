@@ -1,0 +1,6 @@
+<view style="padding:15rpx;line-height:1.5">
+    <view style="margin-top:25rpx;text-align:center">平安大丰使用指南</view>
+    <view style="margin-top:25rpx">第一步：实名认证，请正确填写相关信息后等待中心审核，审核通过后可获得积分奖励</view>
+    <view style="margin-top:25rpx">第一步：事件上报，事件上报针对游客支持随手拍功能，认证用户可使用事件上报事件查询功能</view>
+    <view style="margin-top:25rpx">第三步：认证用户可查看所上报的事件流转过程，根据事件有效性可获得相应积分奖励，具体奖励规则制定中</view>
+</view>

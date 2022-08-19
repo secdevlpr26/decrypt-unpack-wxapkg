@@ -1,0 +1,38 @@
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+<view class="view_head">
+    <image src="{{articles.msgpath}}"></image>
+    <view class="view_yy"></view>
+    <view class="view_headcontent">
+        <text class="head_title" style="color:#fff;font-size:38rpx;">{{articles.title}}</text>
+        <text class="head_time" style="color:#ddd;font-size:25rpx;margin-top:10rpx">{{articles.updatedat}} </text>
+    </view>
+</view>
+<view class="food" wx:if="{{articles.video}}">
+    <video controls id="myVideo" src="{{articles.video}}"></video>
+</view>
+<view class="page__detail">
+    <view class="detail">
+        <view class="article__content wxParse">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+        </view>
+    </view>
+</view>
+<view class="page__detail" wx:if="{{user_member==1}}">
+    <view class="detail">
+        <view class="food" wx:if="{{articles.mvideo}}">
+            <video controls id="myVideo" src="{{articles.video}}"></video>
+        </view>
+        <view class="article__content wxParse">
+            <template is="wxParse" data="{{wxParseData:marticle.nodes}}"></template>
+        </view>
+    </view>
+</view>
+<view class="view_open" wx:if="{{user_member==0&&articles.is_member==1}}">
+    <text class="text_hint">文章精华,需开通会员</text>
+    <text bindtap="open" class="text_open">立即开通</text>
+</view>
+<view bindtap="details" class="view_item" data-index="{{index}}" wx:for="{{articlelist}}">
+    <text class="text_title">{{item.title}}</text>
+    <image class="image_new" src="{{item.itempath}}"></image>
+    <text class="text_date">{{item.updatedat}}</text>
+</view>

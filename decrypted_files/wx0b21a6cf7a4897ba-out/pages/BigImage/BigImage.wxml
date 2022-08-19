@@ -1,0 +1,6 @@
+<view class="page">
+    <image bindload="imageLoad" src="{{picUrl}}" style="width:{{picWidth}};height:{{picHeight}};justify-content:center;align-items:center; align-items: center;"></image>
+    <view style="position:fixed;width:100%;left:0px;bottom:0px;background-color:#000;padding:20px;opacity:0.8;">
+        <text style="font-size:17px;color:#fff;">{{txt}}</text>
+    </view>
+</view>

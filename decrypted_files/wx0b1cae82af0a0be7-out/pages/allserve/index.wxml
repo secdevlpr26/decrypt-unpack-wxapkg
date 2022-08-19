@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="allserve_left">
+        <view bindtap="selectMenu" class="allserve_nav_item {{currIndex==index?'active':''}}" data-index="{{index}}" wx:for="{{menuList}}" wx:key="id">
+            <view class="title">{{item.name}}</view>
+        </view>
+    </view>
+    <view class="allserve_right">
+        <view class="serve_img">
+            <image src="{{currMenu.picture}}"></image>
+        </view>
+        <view class="serve_tit">{{currMenu.name}}</view>
+        <view class="serve_list">
+            <navigator url="../servecont/index?id={{item.id}}" wx:for="{{currMenu.childList}}">
+                <image class="img-box" mode="aspectFit" src="{{item.picture}}"></image>
+                <view class="serve_name">
+                    {{item.name}}
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view>

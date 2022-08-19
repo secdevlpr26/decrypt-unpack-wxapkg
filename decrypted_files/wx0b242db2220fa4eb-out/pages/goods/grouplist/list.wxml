@@ -1,0 +1,25 @@
+<view class="Empty">
+    <view class="Empty"></view>
+    <text class="Empty">Empty</text>
+</view>
+<view class="Empty" wx:if="Empty">
+    <view bindtap="Empty" class="Empty" data-object-id="Empty" wx:for="Empty" wx:key="objectId">
+        <view>
+            <image class="Empty" mode="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <view class="Empty">
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+                <text class="Empty">Empty</text>
+            </view>
+            <view class="Empty">
+                <text>Empty</text>
+            </view>
+            <view class="Empty">
+                <text>Empty</text>
+            </view>
+        </view>
+    </view>
+</view>

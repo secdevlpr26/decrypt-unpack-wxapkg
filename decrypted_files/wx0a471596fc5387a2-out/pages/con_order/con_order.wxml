@@ -1,0 +1,102 @@
+<form bindreset="formReset" bindsubmit="formSubmit">
+    <view class="box">
+        <view class="qhfs">
+            <view class="list">
+                <view class="biao">配送方式:</view>
+                <view class="listr">
+                    <button bindtap="shippingMethod" class="fangshi {{shippingMethodActive==1?'on':''}}" data-id="1">门店自提</button>
+                    <button bindtap="shippingMethod" class="fangshi  {{shippingMethodActive==2?'on':''}}" data-id="2">送货上门</button>
+                    <input hidden="true" name="shipping_method" type="hidden" value="{{shipping_method}}"></input>
+                </view>
+            </view>
+            <view class="list">
+                <view class="biao">联系方式:</view>
+                <view class="listr lxfs_b">
+                    <input class="lxfs" name="recommended_code" type="text" value="{{recommended_code}}"></input>
+                    <image class="rightico" src="{{hostUrl}}/images/syico3.png"></image>
+                </view>
+            </view>
+            <view class="list" wx:if="{{shippingMethodActive==2}}">
+                <view class="biao">收货地址:</view>
+                <view class="listr lxfs_b">
+                    <input bindtap="addAddress" class="shdz" placeholder="请添加收货地址" type="text" value="{{address}}"></input>
+                </view>
+            </view>
+            <input hidden="true" name="addressId" type="hidden" value="{{addressId}}"></input>
+        </view>
+        <view class="list yysj">
+            <view class="biao">营业时间:</view>
+            <view class="listr lxfs_b">
+                <view class="time">07:30-22:30</view>
+            </view>
+        </view>
+        <view class="spinfo">
+            <view class="splist" wx:for="{{cartList}}" wx:key="{{item.ID}}">
+                <image class="spimg" mode="aspectFill" src="{{hostUrl}}{{item.LITPIC}}"></image>
+                <view class="info">
+                    <view class="info_l">
+                        <view class="spname">{{item.TITLE}}<text></text>
+                        </view>
+                        <view class="guige">规格:/{{item.PROPERTY_VALUE}}</view>
+                    </view>
+                    <view class="price">
+                        <view class="xian">
+                            <text class="fuhao">￥</text>{{item.PRICE}}<text></text>
+                        </view>
+                        <view class="yuanq">￥{{item.MARKETPRICE}}</view>
+                        <view class="yuanq"> X {{item.QUANTITY}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="list yysj">
+            <view class="biao">买家留言</view>
+            <view class="listr lxfs_b">
+                <input class="shdz" name="note" placeholder="有什么话要对商家说的" type="text" value="{{note}}"></input>
+                <input hidden="true" name="quantity_sum" type="hidden" value="{{quantity}}"></input>
+                <input hidden="true" name="price_sum" type="hidden" value="{{dTotal}}"></input>
+                <input hidden="true" name="price_sum" type="hidden" value="{{dTotal}}"></input>
+            </view>
+        </view>
+        <view class="zffs">
+            <view class="tits">支付方式</view>
+            <view class="pay">
+                <image src="{{hostUrl}}/images/wechat.png"></image>
+                <text>微信支付</text>
+                <radio checked="true" color="#ed4630" name="pay_method" value="{{pay_method}}"></radio>
+            </view>
+        </view>
+        <view class="det">
+            <view class="all">
+                <view class="zuo">合计金额</view>
+                <view class="xian">
+                    <text class="fuhao">￥</text>{{dTotal}}<text></text>
+                </view>
+            </view>
+            <view class="fen">
+                <view class="zuo">合计数量</view>
+                <view>{{quantity}}</view>
+            </view>
+            <view class="fen">
+                <view class="zuo">活动</view>
+                <view>-0</view>
+            </view>
+            <view class="fen">
+                <view class="zuo">运费</view>
+                <view>+0</view>
+            </view>
+            <view class="fen">
+                <view class="zuo">优惠</view>
+                <view>-0</view>
+            </view>
+        </view>
+    </view>
+    <view class="fix_bot">
+        <view class="jine">实付款：
+    <text class="fuhao">￥</text>
+            <text class="qian">{{dTotal}}</text>
+            <text></text>
+        </view>
+        <button class="tjdd" formType="submit">提交订单</button>
+    </view>
+</form>

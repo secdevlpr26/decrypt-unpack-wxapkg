@@ -1,0 +1,61 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <view bindtap="tabClick" class="weui-navbar__item {{activeIndex==index?'weui-bar__item_on':''}}" id="{{index}}" wx:for="{{tabs}}" wx:key="*this">
+                    <view class="weui-navbar__title">{{item}}</view>
+                </view>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex!=0}}">
+                    <view class="type-list">
+                        <view bindtap="toDeatil" class="borrow-most" data-id="{{not.recordId}}" wx:for="{{nots}}" wx:for-item="not">
+                            <image binderror="notImgError" data-index="{{index}}" mode="aspectFill" src="{{not.pic1=='no_cover'?noCover:imgRootPath+not.pic1}}"></image>
+                            <view class="box-sd">
+                                <view class="title line-one">{{not.bookName}}</view>
+                                <text class="author">作者：{{not.author==null?'--':not.author}}</text>
+                                <text class="author">类别：{{not.bookCategory}}</text>
+                                <text class="author">借阅时间：{{not.borrowDate}}</text>
+                                <text class="author" wx:if="{{not.expireDate!=null}}">到期时间：{{not.expireDate}}</text>
+                                <text class="author" decode="{{true}}" wx:if="{{not.expireDate==null}}">&nbsp;</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="noData" wx:if="{{nots==null||nots.length<=0}}">
+                        <image src="../../../images/no-data.png"></image>
+                        <view>暂无未还书籍</view>
+                    </view>
+                    <view bindtap="toTel" class="server-tel" data-phone="{{telPhone}}" wx:if="{{telPhone!=null&&telPhone!=''}}">
+                            客服电话：
+                            <i>{{telPhone}}</i>
+                    </view>
+                    <text class="author" decode="{{true}}">&nbsp;&nbsp;</text>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex!=1}}">
+                    <view class="type-list">
+                        <view bindtap="toDeatil" class="borrow-most" data-id="{{his.recordId}}" wx:for="{{hiss}}" wx:for-item="his">
+                            <image binderror="hisImgError" data-index="{{index}}" mode="aspectFill" src="{{his.pic1=='no_cover'?noCover:imgRootPath+his.pic1}}"></image>
+                            <view class="box-sd">
+                                <view class="title line-one">{{his.bookName}}</view>
+                                <text class="author">作者：{{his.author==null?'--':his.author}}</text>
+                                <text class="author">类别：{{his.bookCategory+''=='null'?'':his.bookCategory}}</text>
+                                <text class="author">借阅时间：{{his.borrowDate}}</text>
+                                <text class="author">还书时间：{{his.returnDate}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="noData" wx:if="{{hiss==null||hiss.length<=0}}">
+                        <image src="../../../images/no-data.png"></image>
+                        <view>暂无历史借阅</view>
+                    </view>
+                    <view bindtap="toTel" class="server-tel" data-phone="{{telPhone}}" wx:if="{{telPhone!=null&&telPhone!=''}}">
+                            客服电话：
+                            <i>{{telPhone}}</i>
+                    </view>
+                    <text class="author" decode="{{true}}">&nbsp;&nbsp;</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

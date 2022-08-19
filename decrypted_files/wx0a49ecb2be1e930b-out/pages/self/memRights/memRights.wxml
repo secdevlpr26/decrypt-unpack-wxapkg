@@ -1,0 +1,4 @@
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+<view class="wrap">
+    <template is="wxParse" data="{{wxParseData:scoreRule.nodes}}"></template>
+</view>

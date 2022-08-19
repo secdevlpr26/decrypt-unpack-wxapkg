@@ -1,0 +1,2346 @@
+function i() {
+    return i;
+}
+
+var c = [ {
+    id: "33",
+    provincecode: "",
+    city: "嘉峪关市",
+    code: "",
+    initial: "J"
+}, {
+    id: "34",
+    provincecode: "",
+    city: "金昌市",
+    code: "",
+    initial: "J"
+}, {
+    id: "35",
+    provincecode: "",
+    city: "白银市",
+    code: "",
+    initial: "B"
+}, {
+    id: "",
+    provincecode: "",
+    city: "",
+    code: "",
+    initial: ""
+}, {
+    id: "36",
+    provincecode: "",
+    city: "兰州市",
+    code: "",
+    initial: "L"
+}, {
+    id: "37",
+    provincecode: "",
+    city: "酒泉市",
+    code: "",
+    initial: "J"
+}, {
+    id: "38",
+    provincecode: "",
+    city: "大兴安岭地区",
+    code: "",
+    initial: "D"
+}, {
+    id: "39",
+    provincecode: "",
+    city: "黑河市",
+    code: "",
+    initial: "H"
+}, {
+    id: "40",
+    provincecode: "",
+    city: "伊春市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "41",
+    provincecode: "",
+    city: "齐齐哈尔市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "42",
+    provincecode: "",
+    city: "佳木斯市",
+    code: "",
+    initial: "J"
+}, {
+    id: "43",
+    provincecode: "",
+    city: "鹤岗市",
+    code: "",
+    initial: "H"
+}, {
+    id: "44",
+    provincecode: "",
+    city: "绥化市",
+    code: "",
+    initial: "S"
+}, {
+    id: "45",
+    provincecode: "",
+    city: "双鸭山市",
+    code: "",
+    initial: "S"
+}, {
+    id: "46",
+    provincecode: "",
+    city: "鸡西市",
+    code: "",
+    initial: "J"
+}, {
+    id: "47",
+    provincecode: "",
+    city: "七台河市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "48",
+    provincecode: "",
+    city: "哈尔滨市",
+    code: "",
+    initial: "H"
+}, {
+    id: "49",
+    provincecode: "",
+    city: "牡丹江市",
+    code: "",
+    initial: "M"
+}, {
+    id: "50",
+    provincecode: "",
+    city: "大庆市",
+    code: "",
+    initial: "D"
+}, {
+    id: "51",
+    provincecode: "",
+    city: "白城市",
+    code: "",
+    initial: "B"
+}, {
+    id: "52",
+    provincecode: "",
+    city: "松原市",
+    code: "",
+    initial: "S"
+}, {
+    id: "53",
+    provincecode: "",
+    city: "长春市",
+    code: "",
+    initial: "C"
+}, {
+    id: "54",
+    provincecode: "",
+    city: "延边朝鲜族自治州",
+    code: "",
+    initial: "Y"
+}, {
+    id: "55",
+    provincecode: "",
+    city: "吉林市",
+    code: "",
+    initial: "J"
+}, {
+    id: "56",
+    provincecode: "",
+    city: "四平市",
+    code: "",
+    initial: "S"
+}, {
+    id: "57",
+    provincecode: "",
+    city: "白山市",
+    code: "",
+    initial: "B"
+}, {
+    id: "58",
+    provincecode: "",
+    city: "沈阳市",
+    code: "",
+    initial: "S"
+}, {
+    id: "59",
+    provincecode: "",
+    city: "阜新市",
+    code: "",
+    initial: "F"
+}, {
+    id: "60",
+    provincecode: "",
+    city: "铁岭市",
+    code: "",
+    initial: "T"
+}, {
+    id: "61",
+    provincecode: "",
+    city: "呼伦贝尔市",
+    code: "",
+    initial: "H"
+}, {
+    id: "62",
+    provincecode: "",
+    city: "兴安盟",
+    code: "",
+    initial: "X"
+}, {
+    id: "63",
+    provincecode: "",
+    city: "锡林郭勒盟",
+    code: "",
+    initial: "X"
+}, {
+    id: "64",
+    provincecode: "",
+    city: "通辽市",
+    code: "",
+    initial: "T"
+}, {
+    id: "65",
+    provincecode: "",
+    city: "海西蒙古族藏族自治州",
+    code: "",
+    initial: "H"
+}, {
+    id: "66",
+    provincecode: "",
+    city: "西宁市",
+    code: "",
+    initial: "X"
+}, {
+    id: "67",
+    provincecode: "",
+    city: "海北藏族自治州",
+    code: "",
+    initial: "H"
+}, {
+    id: "68",
+    provincecode: "",
+    city: "海南藏族自治州",
+    code: "",
+    initial: "H"
+}, {
+    id: "69",
+    provincecode: "",
+    city: "海东地区",
+    code: "",
+    initial: "H"
+}, {
+    id: "70",
+    provincecode: "",
+    city: "黄南藏族自治州",
+    code: "",
+    initial: "H"
+}, {
+    id: "71",
+    provincecode: "",
+    city: "玉树藏族自治州",
+    code: "",
+    initial: "Y"
+}, {
+    id: "72",
+    provincecode: "",
+    city: "果洛藏族自治州",
+    code: "",
+    initial: "G"
+}, {
+    id: "73",
+    provincecode: "",
+    city: "甘孜藏族自治州",
+    code: "",
+    initial: "G"
+}, {
+    id: "74",
+    provincecode: "",
+    city: "德阳市",
+    code: "",
+    initial: "D"
+}, {
+    id: "75",
+    provincecode: "",
+    city: "成都市",
+    code: "",
+    initial: "C"
+}, {
+    id: "76",
+    provincecode: "",
+    city: "雅安市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "77",
+    provincecode: "",
+    city: "眉山市",
+    code: "",
+    initial: "M"
+}, {
+    id: "78",
+    provincecode: "",
+    city: "自贡市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "79",
+    provincecode: "",
+    city: "乐山市",
+    code: "",
+    initial: "L"
+}, {
+    id: "80",
+    provincecode: "",
+    city: "凉山彝族自治州",
+    code: "",
+    initial: "L"
+}, {
+    id: "81",
+    provincecode: "",
+    city: "攀枝花市",
+    code: "",
+    initial: "P"
+}, {
+    id: "82",
+    provincecode: "",
+    city: "和田地区",
+    code: "",
+    initial: "H"
+}, {
+    id: "83",
+    provincecode: "",
+    city: "喀什地区",
+    code: "",
+    initial: "K"
+}, {
+    id: "84",
+    provincecode: "",
+    city: "克孜勒苏柯尔克孜自治州",
+    code: "",
+    initial: "K"
+}, {
+    id: "85",
+    provincecode: "",
+    city: "阿克苏地区",
+    code: "",
+    initial: "A"
+}, {
+    id: "86",
+    provincecode: "",
+    city: "巴音郭楞蒙古自治州",
+    code: "",
+    initial: "B"
+}, {
+    id: "88",
+    provincecode: "",
+    city: "博尔塔拉蒙古自治州",
+    code: "",
+    initial: "B"
+}, {
+    id: "89",
+    provincecode: "",
+    city: "吐鲁番地区",
+    code: "",
+    initial: "T"
+}, {
+    id: "90",
+    provincecode: "",
+    city: "伊犁哈萨克自治州",
+    code: "",
+    initial: "Y"
+}, {
+    id: "91",
+    provincecode: "",
+    city: "哈密地区",
+    code: "",
+    initial: "H"
+}, {
+    id: "92",
+    provincecode: "",
+    city: "乌鲁木齐市",
+    code: "",
+    initial: "W"
+}, {
+    id: "93",
+    provincecode: "",
+    city: "昌吉回族自治州",
+    code: "",
+    initial: "C"
+}, {
+    id: "94",
+    provincecode: "",
+    city: "塔城地区",
+    code: "",
+    initial: "T"
+}, {
+    id: "95",
+    provincecode: "",
+    city: "克拉玛依市",
+    code: "",
+    initial: "K"
+}, {
+    id: "96",
+    provincecode: "",
+    city: "阿勒泰地区",
+    code: "",
+    initial: "A"
+}, {
+    id: "97",
+    provincecode: "",
+    city: "山南地区",
+    code: "",
+    initial: "S"
+}, {
+    id: "98",
+    provincecode: "",
+    city: "林芝地区",
+    code: "",
+    initial: "L"
+}, {
+    id: "99",
+    provincecode: "",
+    city: "昌都地区",
+    code: "",
+    initial: "C"
+}, {
+    id: "100",
+    provincecode: "",
+    city: "拉萨市",
+    code: "",
+    initial: "L"
+}, {
+    id: "101",
+    provincecode: "",
+    city: "那曲地区",
+    code: "",
+    initial: "N"
+}, {
+    id: "102",
+    provincecode: "",
+    city: "日喀则地区",
+    code: "",
+    initial: "R"
+}, {
+    id: "103",
+    provincecode: "",
+    city: "阿里地区",
+    code: "",
+    initial: "A"
+}, {
+    id: "104",
+    provincecode: "",
+    city: "昆明市",
+    code: "",
+    initial: "K"
+}, {
+    id: "105",
+    provincecode: "",
+    city: "楚雄彝族自治州",
+    code: "",
+    initial: "C"
+}, {
+    id: "106",
+    provincecode: "",
+    city: "玉溪市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "107",
+    provincecode: "",
+    city: "红河哈尼族彝族自治州",
+    code: "",
+    initial: "H"
+}, {
+    id: "108",
+    provincecode: "",
+    city: "普洱市",
+    code: "",
+    initial: "P"
+}, {
+    id: "109",
+    provincecode: "",
+    city: "西双版纳傣族自治州",
+    code: "",
+    initial: "X"
+}, {
+    id: "110",
+    provincecode: "",
+    city: "临沧市",
+    code: "",
+    initial: "L"
+}, {
+    id: "111",
+    provincecode: "",
+    city: "大理白族自治州",
+    code: "",
+    initial: "D"
+}, {
+    id: "112",
+    provincecode: "",
+    city: "保山市",
+    code: "",
+    initial: "B"
+}, {
+    id: "113",
+    provincecode: "",
+    city: "怒江傈僳族自治州",
+    code: "",
+    initial: "N"
+}, {
+    id: "114",
+    provincecode: "",
+    city: "丽江市",
+    code: "",
+    initial: "L"
+}, {
+    id: "115",
+    provincecode: "",
+    city: "迪庆藏族自治州",
+    code: "",
+    initial: "D"
+}, {
+    id: "116",
+    provincecode: "",
+    city: "德宏傣族景颇族自治州",
+    code: "",
+    initial: "D"
+}, {
+    id: "117",
+    provincecode: "",
+    city: "张掖市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "118",
+    provincecode: "",
+    city: "武威市",
+    code: "",
+    initial: "W"
+}, {
+    id: "119",
+    provincecode: "",
+    city: "东莞市",
+    code: "",
+    initial: "D"
+}, {
+    id: "120",
+    provincecode: "",
+    city: "东沙群岛",
+    code: "",
+    initial: "D"
+}, {
+    id: "121",
+    provincecode: "",
+    city: "三亚市",
+    code: "",
+    initial: "S"
+}, {
+    id: "122",
+    provincecode: "",
+    city: "鄂州市",
+    code: "",
+    initial: "E"
+}, {
+    id: "123",
+    provincecode: "",
+    city: "乌海市",
+    code: "",
+    initial: "W"
+}, {
+    id: "124",
+    provincecode: "",
+    city: "莱芜市",
+    code: "",
+    initial: "L"
+}, {
+    id: "125",
+    provincecode: "",
+    city: "海口市",
+    code: "",
+    initial: "H"
+}, {
+    id: "126",
+    provincecode: "",
+    city: "蚌埠市",
+    code: "",
+    initial: "B"
+}, {
+    id: "127",
+    provincecode: "",
+    city: "合肥市",
+    code: "",
+    initial: "H"
+}, {
+    id: "128",
+    provincecode: "",
+    city: "阜阳市",
+    code: "",
+    initial: "F"
+}, {
+    id: "129",
+    provincecode: "",
+    city: "芜湖市",
+    code: "",
+    initial: "W"
+}, {
+    id: "130",
+    provincecode: "",
+    city: "安庆市",
+    code: "",
+    initial: "A"
+}, {
+    id: "131",
+    provincecode: "",
+    city: "北京市",
+    code: "",
+    initial: "B"
+}, {
+    id: "132",
+    provincecode: "",
+    city: "重庆市",
+    code: "",
+    initial: "C"
+}, {
+    id: "133",
+    provincecode: "",
+    city: "南平市",
+    code: "",
+    initial: "N"
+}, {
+    id: "134",
+    provincecode: "",
+    city: "泉州市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "135",
+    provincecode: "",
+    city: "庆阳市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "136",
+    provincecode: "",
+    city: "定西市",
+    code: "",
+    initial: "D"
+}, {
+    id: "137",
+    provincecode: "",
+    city: "韶关市",
+    code: "",
+    initial: "S"
+}, {
+    id: "138",
+    provincecode: "",
+    city: "佛山市",
+    code: "",
+    initial: "F"
+}, {
+    id: "139",
+    provincecode: "",
+    city: "茂名市",
+    code: "",
+    initial: "M"
+}, {
+    id: "140",
+    provincecode: "",
+    city: "珠海市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "141",
+    provincecode: "",
+    city: "梅州市",
+    code: "",
+    initial: "M"
+}, {
+    id: "142",
+    provincecode: "",
+    city: "桂林市",
+    code: "",
+    initial: "G"
+}, {
+    id: "143",
+    provincecode: "",
+    city: "河池市",
+    code: "",
+    initial: "H"
+}, {
+    id: "144",
+    provincecode: "",
+    city: "崇左市",
+    code: "",
+    initial: "C"
+}, {
+    id: "145",
+    provincecode: "",
+    city: "钦州市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "146",
+    provincecode: "",
+    city: "贵阳市",
+    code: "",
+    initial: "G"
+}, {
+    id: "147",
+    provincecode: "",
+    city: "六盘水市",
+    code: "",
+    initial: "L"
+}, {
+    id: "148",
+    provincecode: "",
+    city: "秦皇岛市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "149",
+    provincecode: "",
+    city: "沧州市",
+    code: "",
+    initial: "C"
+}, {
+    id: "150",
+    provincecode: "",
+    city: "石家庄市",
+    code: "",
+    initial: "S"
+}, {
+    id: "151",
+    provincecode: "",
+    city: "邯郸市",
+    code: "",
+    initial: "H"
+}, {
+    id: "152",
+    provincecode: "",
+    city: "新乡市",
+    code: "",
+    initial: "X"
+}, {
+    id: "153",
+    provincecode: "",
+    city: "洛阳市",
+    code: "",
+    initial: "L"
+}, {
+    id: "154",
+    provincecode: "",
+    city: "商丘市",
+    code: "",
+    initial: "S"
+}, {
+    id: "155",
+    provincecode: "",
+    city: "许昌市",
+    code: "",
+    initial: "X"
+}, {
+    id: "156",
+    provincecode: "",
+    city: "襄阳市",
+    code: "",
+    initial: "X"
+}, {
+    id: "157",
+    provincecode: "",
+    city: "荆州市",
+    code: "",
+    initial: "J"
+}, {
+    id: "158",
+    provincecode: "",
+    city: "长沙市",
+    code: "",
+    initial: "C"
+}, {
+    id: "159",
+    provincecode: "",
+    city: "衡阳市",
+    code: "",
+    initial: "H"
+}, {
+    id: "160",
+    provincecode: "",
+    city: "镇江市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "161",
+    provincecode: "",
+    city: "南通市",
+    code: "",
+    initial: "N"
+}, {
+    id: "162",
+    provincecode: "",
+    city: "淮安市",
+    code: "",
+    initial: "H"
+}, {
+    id: "163",
+    provincecode: "",
+    city: "南昌市",
+    code: "",
+    initial: "N"
+}, {
+    id: "164",
+    provincecode: "",
+    city: "新余市",
+    code: "",
+    initial: "X"
+}, {
+    id: "165",
+    provincecode: "",
+    city: "通化市",
+    code: "",
+    initial: "T"
+}, {
+    id: "166",
+    provincecode: "",
+    city: "锦州市",
+    code: "",
+    initial: "J"
+}, {
+    id: "167",
+    provincecode: "",
+    city: "大连市",
+    code: "",
+    initial: "D"
+}, {
+    id: "168",
+    provincecode: "",
+    city: "乌兰察布市",
+    code: "",
+    initial: "W"
+}, {
+    id: "169",
+    provincecode: "",
+    city: "巴彦淖尔市",
+    code: "",
+    initial: "B"
+}, {
+    id: "170",
+    provincecode: "",
+    city: "渭南市",
+    code: "",
+    initial: "W"
+}, {
+    id: "171",
+    provincecode: "",
+    city: "宝鸡市",
+    code: "",
+    initial: "B"
+}, {
+    id: "172",
+    provincecode: "",
+    city: "枣庄市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "173",
+    provincecode: "",
+    city: "日照市",
+    code: "",
+    initial: "R"
+}, {
+    id: "174",
+    provincecode: "",
+    city: "东营市",
+    code: "",
+    initial: "D"
+}, {
+    id: "175",
+    provincecode: "",
+    city: "威海市",
+    code: "",
+    initial: "W"
+}, {
+    id: "176",
+    provincecode: "",
+    city: "太原市",
+    code: "",
+    initial: "T"
+}, {
+    id: "177",
+    provincecode: "",
+    city: "文山壮族苗族自治州",
+    code: "",
+    initial: "W"
+}, {
+    id: "178",
+    provincecode: "",
+    city: "温州市",
+    code: "",
+    initial: "W"
+}, {
+    id: "179",
+    provincecode: "",
+    city: "杭州市",
+    code: "",
+    initial: "H"
+}, {
+    id: "180",
+    provincecode: "",
+    city: "宁波市",
+    code: "",
+    initial: "N"
+}, {
+    id: "181",
+    provincecode: "",
+    city: "中卫市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "182",
+    provincecode: "",
+    city: "临夏回族自治州",
+    code: "",
+    initial: "L"
+}, {
+    id: "183",
+    provincecode: "",
+    city: "辽源市",
+    code: "",
+    initial: "L"
+}, {
+    id: "184",
+    provincecode: "",
+    city: "抚顺市",
+    code: "",
+    initial: "F"
+}, {
+    id: "185",
+    provincecode: "",
+    city: "阿坝藏族羌族自治州",
+    code: "",
+    initial: "A"
+}, {
+    id: "186",
+    provincecode: "",
+    city: "宜宾市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "187",
+    provincecode: "",
+    city: "中山市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "188",
+    provincecode: "",
+    city: "亳州市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "189",
+    provincecode: "",
+    city: "滁州市",
+    code: "",
+    initial: "C"
+}, {
+    id: "190",
+    provincecode: "",
+    city: "宣城市",
+    code: "",
+    initial: "X"
+}, {
+    id: "191",
+    provincecode: "",
+    city: "廊坊市",
+    code: "",
+    initial: "L"
+}, {
+    id: "192",
+    provincecode: "",
+    city: "宁德市",
+    code: "",
+    initial: "N"
+}, {
+    id: "193",
+    provincecode: "",
+    city: "龙岩市",
+    code: "",
+    initial: "L"
+}, {
+    id: "194",
+    provincecode: "",
+    city: "厦门市",
+    code: "",
+    initial: "X"
+}, {
+    id: "195",
+    provincecode: "",
+    city: "莆田市",
+    code: "",
+    initial: "P"
+}, {
+    id: "196",
+    provincecode: "",
+    city: "天水市",
+    code: "",
+    initial: "T"
+}, {
+    id: "197",
+    provincecode: "",
+    city: "清远市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "198",
+    provincecode: "",
+    city: "湛江市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "199",
+    provincecode: "",
+    city: "阳江市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "200",
+    provincecode: "",
+    city: "河源市",
+    code: "",
+    initial: "H"
+}, {
+    id: "201",
+    provincecode: "",
+    city: "潮州市",
+    code: "",
+    initial: "C"
+}, {
+    id: "202",
+    provincecode: "",
+    city: "来宾市",
+    code: "",
+    initial: "L"
+}, {
+    id: "203",
+    provincecode: "",
+    city: "百色市",
+    code: "",
+    initial: "B"
+}, {
+    id: "204",
+    provincecode: "",
+    city: "防城港市",
+    code: "",
+    initial: "F"
+}, {
+    id: "205",
+    provincecode: "",
+    city: "铜仁地区",
+    code: "",
+    initial: "T"
+}, {
+    id: "206",
+    provincecode: "",
+    city: "毕节地区",
+    code: "",
+    initial: "B"
+}, {
+    id: "207",
+    provincecode: "",
+    city: "承德市",
+    code: "",
+    initial: "C"
+}, {
+    id: "208",
+    provincecode: "",
+    city: "衡水市",
+    code: "",
+    initial: "H"
+}, {
+    id: "209",
+    provincecode: "",
+    city: "濮阳市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "210",
+    provincecode: "",
+    city: "开封市",
+    code: "",
+    initial: "K"
+}, {
+    id: "211",
+    provincecode: "",
+    city: "焦作市",
+    code: "",
+    initial: "J"
+}, {
+    id: "212",
+    provincecode: "",
+    city: "三门峡市",
+    code: "",
+    initial: "S"
+}, {
+    id: "213",
+    provincecode: "",
+    city: "平顶山市",
+    code: "",
+    initial: "P"
+}, {
+    id: "214",
+    provincecode: "",
+    city: "信阳市",
+    code: "",
+    initial: "X"
+}, {
+    id: "215",
+    provincecode: "",
+    city: "鹤壁市",
+    code: "",
+    initial: "H"
+}, {
+    id: "216",
+    provincecode: "",
+    city: "十堰市",
+    code: "",
+    initial: "S"
+}, {
+    id: "217",
+    provincecode: "",
+    city: "荆门市",
+    code: "",
+    initial: "J"
+}, {
+    id: "218",
+    provincecode: "",
+    city: "武汉市",
+    code: "",
+    initial: "W"
+}, {
+    id: "219",
+    provincecode: "",
+    city: "常德市",
+    code: "",
+    initial: "C"
+}, {
+    id: "220",
+    provincecode: "",
+    city: "岳阳市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "221",
+    provincecode: "",
+    city: "娄底市",
+    code: "",
+    initial: "L"
+}, {
+    id: "222",
+    provincecode: "",
+    city: "株洲市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "223",
+    provincecode: "",
+    city: "盐城市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "224",
+    provincecode: "",
+    city: "苏州市",
+    code: "",
+    initial: "S"
+}, {
+    id: "225",
+    provincecode: "",
+    city: "景德镇市",
+    code: "",
+    initial: "J"
+}, {
+    id: "226",
+    provincecode: "",
+    city: "抚州市",
+    code: "",
+    initial: "F"
+}, {
+    id: "227",
+    provincecode: "",
+    city: "本溪市",
+    code: "",
+    initial: "B"
+}, {
+    id: "228",
+    provincecode: "",
+    city: "盘锦市",
+    code: "",
+    initial: "P"
+}, {
+    id: "229",
+    provincecode: "",
+    city: "包头市",
+    code: "",
+    initial: "B"
+}, {
+    id: "230",
+    provincecode: "",
+    city: "阿拉善盟",
+    code: "",
+    initial: "A"
+}, {
+    id: "231",
+    provincecode: "",
+    city: "榆林市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "232",
+    provincecode: "",
+    city: "铜川市",
+    code: "",
+    initial: "T"
+}, {
+    id: "233",
+    provincecode: "",
+    city: "西安市",
+    code: "",
+    initial: "X"
+}, {
+    id: "234",
+    provincecode: "",
+    city: "临沂市",
+    code: "",
+    initial: "L"
+}, {
+    id: "235",
+    provincecode: "",
+    city: "滨州市",
+    code: "",
+    initial: "B"
+}, {
+    id: "236",
+    provincecode: "",
+    city: "青岛市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "237",
+    provincecode: "",
+    city: "朔州市",
+    code: "",
+    initial: "S"
+}, {
+    id: "238",
+    provincecode: "",
+    city: "晋中市",
+    code: "",
+    initial: "J"
+}, {
+    id: "239",
+    provincecode: "",
+    city: "巴中市",
+    code: "",
+    initial: "B"
+}, {
+    id: "240",
+    provincecode: "",
+    city: "绵阳市",
+    code: "",
+    initial: "M"
+}, {
+    id: "241",
+    provincecode: "",
+    city: "广安市",
+    code: "",
+    initial: "G"
+}, {
+    id: "242",
+    provincecode: "",
+    city: "资阳市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "243",
+    provincecode: "",
+    city: "衢州市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "244",
+    provincecode: "",
+    city: "台州市",
+    code: "",
+    initial: "T"
+}, {
+    id: "245",
+    provincecode: "",
+    city: "舟山市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "246",
+    provincecode: "",
+    city: "固原市",
+    code: "",
+    initial: "G"
+}, {
+    id: "247",
+    provincecode: "",
+    city: "甘南藏族自治州",
+    code: "",
+    initial: "G"
+}, {
+    id: "248",
+    provincecode: "",
+    city: "内江市",
+    code: "",
+    initial: "N"
+}, {
+    id: "249",
+    provincecode: "",
+    city: "曲靖市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "250",
+    provincecode: "",
+    city: "淮南市",
+    code: "",
+    initial: "H"
+}, {
+    id: "251",
+    provincecode: "",
+    city: "巢湖市",
+    code: "",
+    initial: "C"
+}, {
+    id: "252",
+    provincecode: "",
+    city: "黄山市",
+    code: "",
+    initial: "H"
+}, {
+    id: "253",
+    provincecode: "",
+    city: "淮北市",
+    code: "",
+    initial: "H"
+}, {
+    id: "254",
+    provincecode: "",
+    city: "三明市",
+    code: "",
+    initial: "S"
+}, {
+    id: "255",
+    provincecode: "",
+    city: "漳州市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "256",
+    provincecode: "",
+    city: "陇南市",
+    code: "",
+    initial: "L"
+}, {
+    id: "257",
+    provincecode: "",
+    city: "广州市",
+    code: "",
+    initial: "G"
+}, {
+    id: "258",
+    provincecode: "",
+    city: "云浮市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "259",
+    provincecode: "",
+    city: "揭阳市",
+    code: "",
+    initial: "J"
+}, {
+    id: "260",
+    provincecode: "",
+    city: "贺州市",
+    code: "",
+    initial: "H"
+}, {
+    id: "261",
+    provincecode: "",
+    city: "南宁市",
+    code: "",
+    initial: "N"
+}, {
+    id: "262",
+    provincecode: "",
+    city: "遵义市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "263",
+    provincecode: "",
+    city: "安顺市",
+    code: "",
+    initial: "A"
+}, {
+    id: "264",
+    provincecode: "",
+    city: "张家口市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "265",
+    provincecode: "",
+    city: "唐山市",
+    code: "",
+    initial: "T"
+}, {
+    id: "266",
+    provincecode: "",
+    city: "邢台市",
+    code: "",
+    initial: "X"
+}, {
+    id: "267",
+    provincecode: "",
+    city: "安阳市",
+    code: "",
+    initial: "A"
+}, {
+    id: "268",
+    provincecode: "",
+    city: "郑州市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "269",
+    provincecode: "",
+    city: "驻马店市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "270",
+    provincecode: "",
+    city: "宜昌市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "271",
+    provincecode: "",
+    city: "黄冈市",
+    code: "",
+    initial: "H"
+}, {
+    id: "272",
+    provincecode: "",
+    city: "益阳市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "273",
+    provincecode: "",
+    city: "邵阳市",
+    code: "",
+    initial: "S"
+}, {
+    id: "274",
+    provincecode: "",
+    city: "湘西土家族苗族自治州",
+    code: "",
+    initial: "X"
+}, {
+    id: "275",
+    provincecode: "",
+    city: "郴州市",
+    code: "",
+    initial: "C"
+}, {
+    id: "276",
+    provincecode: "",
+    city: "泰州市",
+    code: "",
+    initial: "T"
+}, {
+    id: "277",
+    provincecode: "",
+    city: "宿迁市",
+    code: "",
+    initial: "S"
+}, {
+    id: "278",
+    provincecode: "",
+    city: "宜春市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "279",
+    provincecode: "",
+    city: "鹰潭市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "280",
+    provincecode: "",
+    city: "朝阳市",
+    code: "",
+    initial: "C"
+}, {
+    id: "281",
+    provincecode: "",
+    city: "营口市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "282",
+    provincecode: "",
+    city: "丹东市",
+    code: "",
+    initial: "D"
+}, {
+    id: "283",
+    provincecode: "",
+    city: "鄂尔多斯市",
+    code: "",
+    initial: "E"
+}, {
+    id: "284",
+    provincecode: "",
+    city: "延安市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "285",
+    provincecode: "",
+    city: "商洛市",
+    code: "",
+    initial: "S"
+}, {
+    id: "286",
+    provincecode: "",
+    city: "济宁市",
+    code: "",
+    initial: "J"
+}, {
+    id: "287",
+    provincecode: "",
+    city: "潍坊市",
+    code: "",
+    initial: "W"
+}, {
+    id: "288",
+    provincecode: "",
+    city: "济南市",
+    code: "",
+    initial: "J"
+}, {
+    id: "289",
+    provincecode: "",
+    city: "上海市",
+    code: "",
+    initial: "S"
+}, {
+    id: "290",
+    provincecode: "",
+    city: "晋城市",
+    code: "",
+    initial: "J"
+}, {
+    id: "291",
+    provincecode: "",
+    city: "南充市",
+    code: "",
+    initial: "N"
+}, {
+    id: "292",
+    provincecode: "",
+    city: "丽水市",
+    code: "",
+    initial: "L"
+}, {
+    id: "293",
+    provincecode: "",
+    city: "绍兴市",
+    code: "",
+    initial: "S"
+}, {
+    id: "294",
+    provincecode: "",
+    city: "湖州市",
+    code: "",
+    initial: "H"
+}, {
+    id: "295",
+    provincecode: "",
+    city: "北海市",
+    code: "",
+    initial: "B"
+}, {
+    id: "297",
+    provincecode: "",
+    city: "赤峰市",
+    code: "",
+    initial: "C"
+}, {
+    id: "298",
+    provincecode: "",
+    city: "六安市",
+    code: "",
+    initial: "L"
+}, {
+    id: "299",
+    provincecode: "",
+    city: "池州市",
+    code: "",
+    initial: "C"
+}, {
+    id: "300",
+    provincecode: "",
+    city: "福州市",
+    code: "",
+    initial: "F"
+}, {
+    id: "301",
+    provincecode: "",
+    city: "惠州市",
+    code: "",
+    initial: "H"
+}, {
+    id: "302",
+    provincecode: "",
+    city: "江门市",
+    code: "",
+    initial: "J"
+}, {
+    id: "303",
+    provincecode: "",
+    city: "汕头市",
+    code: "",
+    initial: "S"
+}, {
+    id: "304",
+    provincecode: "",
+    city: "梧州市",
+    code: "",
+    initial: "W"
+}, {
+    id: "305",
+    provincecode: "",
+    city: "柳州市",
+    code: "",
+    initial: "L"
+}, {
+    id: "306",
+    provincecode: "",
+    city: "黔南布依族苗族自治州",
+    code: "",
+    initial: "Q"
+}, {
+    id: "307",
+    provincecode: "",
+    city: "保定市",
+    code: "",
+    initial: "B"
+}, {
+    id: "308",
+    provincecode: "",
+    city: "周口市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "309",
+    provincecode: "",
+    city: "南阳市",
+    code: "",
+    initial: "N"
+}, {
+    id: "310",
+    provincecode: "",
+    city: "孝感市",
+    code: "",
+    initial: "X"
+}, {
+    id: "311",
+    provincecode: "",
+    city: "黄石市",
+    code: "",
+    initial: "H"
+}, {
+    id: "312",
+    provincecode: "",
+    city: "张家界市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "313",
+    provincecode: "",
+    city: "湘潭市",
+    code: "",
+    initial: "X"
+}, {
+    id: "314",
+    provincecode: "",
+    city: "永州市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "315",
+    provincecode: "",
+    city: "南京市",
+    code: "",
+    initial: "N"
+}, {
+    id: "316",
+    provincecode: "",
+    city: "徐州市",
+    code: "",
+    initial: "X"
+}, {
+    id: "317",
+    provincecode: "",
+    city: "无锡市",
+    code: "",
+    initial: "W"
+}, {
+    id: "318",
+    provincecode: "",
+    city: "吉安市",
+    code: "",
+    initial: "J"
+}, {
+    id: "319",
+    provincecode: "",
+    city: "葫芦岛市",
+    code: "",
+    initial: "H"
+}, {
+    id: "320",
+    provincecode: "",
+    city: "鞍山市",
+    code: "",
+    initial: "A"
+}, {
+    id: "321",
+    provincecode: "",
+    city: "呼和浩特市",
+    code: "",
+    initial: "H"
+}, {
+    id: "322",
+    provincecode: "",
+    city: "吴忠市",
+    code: "",
+    initial: "W"
+}, {
+    id: "323",
+    provincecode: "",
+    city: "咸阳市",
+    code: "",
+    initial: "X"
+}, {
+    id: "324",
+    provincecode: "",
+    city: "安康市",
+    code: "",
+    initial: "A"
+}, {
+    id: "325",
+    provincecode: "",
+    city: "泰安市",
+    code: "",
+    initial: "T"
+}, {
+    id: "326",
+    provincecode: "",
+    city: "烟台市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "327",
+    provincecode: "",
+    city: "吕梁市",
+    code: "",
+    initial: "L"
+}, {
+    id: "328",
+    provincecode: "",
+    city: "运城市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "329",
+    provincecode: "",
+    city: "广元市",
+    code: "",
+    initial: "G"
+}, {
+    id: "330",
+    provincecode: "",
+    city: "遂宁市",
+    code: "",
+    initial: "S"
+}, {
+    id: "331",
+    provincecode: "",
+    city: "泸州市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "332",
+    provincecode: "",
+    city: "天津市",
+    code: "",
+    initial: "T"
+}, {
+    id: "333",
+    provincecode: "",
+    city: "金华市",
+    code: "",
+    initial: "J"
+}, {
+    id: "334",
+    provincecode: "",
+    city: "嘉兴市",
+    code: "",
+    initial: "J"
+}, {
+    id: "335",
+    provincecode: "",
+    city: "石嘴山市",
+    code: "",
+    initial: "S"
+}, {
+    id: "336",
+    provincecode: "",
+    city: "昭通市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "337",
+    provincecode: "",
+    city: "铜陵市",
+    code: "",
+    initial: "T"
+}, {
+    id: "338",
+    provincecode: "",
+    city: "肇庆市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "339",
+    provincecode: "",
+    city: "汕尾市",
+    code: "",
+    initial: "S"
+}, {
+    id: "340",
+    provincecode: "",
+    city: "深圳市",
+    code: "",
+    initial: "S"
+}, {
+    id: "341",
+    provincecode: "",
+    city: "贵港市",
+    code: "",
+    initial: "G"
+}, {
+    id: "342",
+    provincecode: "",
+    city: "黔东南苗族侗族自治州",
+    code: "",
+    initial: "Q"
+}, {
+    id: "343",
+    provincecode: "",
+    city: "黔西南布依族苗族自治州",
+    code: "",
+    initial: "Q"
+}, {
+    id: "344",
+    provincecode: "",
+    city: "漯河市",
+    code: "",
+    initial: "L"
+}, {
+    id: "346",
+    provincecode: "",
+    city: "扬州市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "347",
+    provincecode: "",
+    city: "连云港市",
+    code: "",
+    initial: "L"
+}, {
+    id: "348",
+    provincecode: "",
+    city: "常州市",
+    code: "",
+    initial: "C"
+}, {
+    id: "349",
+    provincecode: "",
+    city: "九江市",
+    code: "",
+    initial: "J"
+}, {
+    id: "350",
+    provincecode: "",
+    city: "萍乡市",
+    code: "",
+    initial: "P"
+}, {
+    id: "351",
+    provincecode: "",
+    city: "辽阳市",
+    code: "",
+    initial: "L"
+}, {
+    id: "352",
+    provincecode: "",
+    city: "汉中市",
+    code: "",
+    initial: "H"
+}, {
+    id: "353",
+    provincecode: "",
+    city: "菏泽市",
+    code: "",
+    initial: "H"
+}, {
+    id: "354",
+    provincecode: "",
+    city: "淄博市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "355",
+    provincecode: "",
+    city: "大同市",
+    code: "",
+    initial: "D"
+}, {
+    id: "356",
+    provincecode: "",
+    city: "长治市",
+    code: "",
+    initial: "C"
+}, {
+    id: "357",
+    provincecode: "",
+    city: "阳泉市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "358",
+    provincecode: "",
+    city: "马鞍山市",
+    code: "",
+    initial: "M"
+}, {
+    id: "359",
+    provincecode: "",
+    city: "平凉市",
+    code: "",
+    initial: "P"
+}, {
+    id: "360",
+    provincecode: "",
+    city: "银川市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "361",
+    provincecode: "",
+    city: "玉林市",
+    code: "",
+    initial: "Y"
+}, {
+    id: "362",
+    provincecode: "",
+    city: "咸宁市",
+    code: "",
+    initial: "X"
+}, {
+    id: "363",
+    provincecode: "",
+    city: "怀化市",
+    code: "",
+    initial: "H"
+}, {
+    id: "364",
+    provincecode: "",
+    city: "上饶市",
+    code: "",
+    initial: "S"
+}, {
+    id: "365",
+    provincecode: "",
+    city: "赣州市",
+    code: "",
+    initial: "G"
+}, {
+    id: "366",
+    provincecode: "",
+    city: "聊城市",
+    code: "",
+    initial: "L"
+}, {
+    id: "367",
+    provincecode: "",
+    city: "忻州市",
+    code: "",
+    initial: "X"
+}, {
+    id: "368",
+    provincecode: "",
+    city: "临汾市",
+    code: "",
+    initial: "L"
+}, {
+    id: "369",
+    provincecode: "",
+    city: "达州市",
+    code: "",
+    initial: "D"
+}, {
+    id: "370",
+    provincecode: "",
+    city: "宿州市",
+    code: "",
+    initial: "S"
+}, {
+    id: "371",
+    provincecode: "",
+    city: "随州市",
+    code: "",
+    initial: "S"
+}, {
+    id: "372",
+    provincecode: "",
+    city: "德州市",
+    code: "",
+    initial: "D"
+}, {
+    id: "373",
+    provincecode: "",
+    city: "恩施土家族苗族自治州",
+    code: "",
+    initial: "E"
+}, {
+    id: "731",
+    provincecode: "",
+    city: "阿拉尔市",
+    code: "",
+    initial: "A"
+}, {
+    id: "770",
+    provincecode: "",
+    city: "石河子市",
+    code: "",
+    initial: "S"
+}, {
+    id: "789",
+    provincecode: "",
+    city: "五家渠??",
+    code: "",
+    initial: "W"
+}, {
+    id: "792",
+    provincecode: "",
+    city: "图木舒克市",
+    code: "",
+    initial: "T"
+}, {
+    id: "1214",
+    provincecode: "",
+    city: "定安县",
+    code: "",
+    initial: "D"
+}, {
+    id: "1215",
+    provincecode: "",
+    city: "儋州市",
+    code: "",
+    initial: "Z"
+}, {
+    id: "1216",
+    provincecode: "",
+    city: "万宁市",
+    code: "",
+    initial: "W"
+}, {
+    id: "1217",
+    provincecode: "",
+    city: "保亭黎族苗族自治县",
+    code: "",
+    initial: "B"
+}, {
+    id: "1218",
+    provincecode: "",
+    city: "西沙群岛",
+    code: "",
+    initial: "X"
+}, {
+    id: "1277",
+    provincecode: "",
+    city: "济源市",
+    code: "",
+    initial: "J"
+}, {
+    id: "1293",
+    provincecode: "",
+    city: "潜江市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "1498",
+    provincecode: "",
+    city: "中沙群岛",
+    code: "",
+    initial: "Z"
+}, {
+    id: "1515",
+    provincecode: "",
+    city: "南沙群岛",
+    code: "",
+    initial: "N"
+}, {
+    id: "1641",
+    provincecode: "",
+    city: "屯昌县",
+    code: "",
+    initial: "T"
+}, {
+    id: "1642",
+    provincecode: "",
+    city: "昌江黎族自治县",
+    code: "",
+    initial: "C"
+}, {
+    id: "1643",
+    provincecode: "",
+    city: "陵水黎族自治县",
+    code: "",
+    initial: "L"
+}, {
+    id: "1644",
+    provincecode: "",
+    city: "五指山市",
+    code: "",
+    initial: "W"
+}, {
+    id: "1713",
+    provincecode: "",
+    city: "仙桃市",
+    code: "",
+    initial: "X"
+}, {
+    id: "2031",
+    provincecode: "",
+    city: "琼中黎族苗族自治县",
+    code: "",
+    initial: "Q"
+}, {
+    id: "2032",
+    provincecode: "",
+    city: "乐东黎族自治县",
+    code: "",
+    initial: "L"
+}, {
+    id: "2033",
+    provincecode: "",
+    city: "临高县",
+    code: "",
+    initial: "L"
+}, {
+    id: "2358",
+    provincecode: "",
+    city: "琼海市",
+    code: "",
+    initial: "Q"
+}, {
+    id: "2359",
+    provincecode: "",
+    city: "白沙黎族自治县",
+    code: "",
+    initial: "B"
+}, {
+    id: "2634",
+    provincecode: "",
+    city: "东方市",
+    code: "",
+    initial: "D"
+}, {
+    id: "2654",
+    provincecode: "",
+    city: "天门市",
+    code: "",
+    initial: "T"
+}, {
+    id: "2734",
+    provincecode: "",
+    city: "神农架林区",
+    code: "",
+    initial: "S"
+}, {
+    id: "2757",
+    provincecode: "",
+    city: "澄迈县",
+    code: "",
+    initial: "C"
+}, {
+    id: "2758",
+    provincecode: "",
+    city: "文昌市",
+    code: "",
+    initial: "W"
+}, {
+    id: "2911",
+    provincecode: "",
+    city: "澳门特别行政区",
+    code: "",
+    initial: "A"
+}, {
+    id: "2912",
+    provincecode: "",
+    city: "香港特别行政区",
+    code: "",
+    initial: "X"
+}, {
+    id: "9001",
+    provincecode: "",
+    city: "桃园市",
+    code: "",
+    initial: "T"
+}, {
+    id: "9002",
+    provincecode: "",
+    city: "台北市",
+    code: "",
+    initial: "T"
+}, {
+    id: "9003",
+    provincecode: "",
+    city: "南投县",
+    code: "",
+    initial: "N"
+}, {
+    id: "9004",
+    provincecode: "",
+    city: "嘉义市",
+    code: "",
+    initial: "J"
+}, {
+    id: "9005",
+    provincecode: "",
+    city: "彰化县",
+    code: "",
+    initial: "Z"
+}, {
+    id: "9006",
+    provincecode: "",
+    city: "新竹县",
+    code: "",
+    initial: "X"
+}, {
+    id: "9007",
+    provincecode: "",
+    city: "澎湖县",
+    code: "",
+    initial: "P"
+}, {
+    id: "9008",
+    provincecode: "",
+    city: "台东县",
+    code: "",
+    initial: "T"
+}, {
+    id: "9009",
+    provincecode: "",
+    city: "宜兰县",
+    code: "",
+    initial: "Y"
+}, {
+    id: "9010",
+    provincecode: "",
+    city: "新北市",
+    code: "",
+    initial: "X"
+}, {
+    id: "9011",
+    provincecode: "",
+    city: "基隆市",
+    code: "",
+    initial: "J"
+}, {
+    id: "9012",
+    provincecode: "",
+    city: "屏东县",
+    code: "",
+    initial: "P"
+}, {
+    id: "9013",
+    provincecode: "",
+    city: "嘉义县",
+    code: "",
+    initial: "J"
+}, {
+    id: "9014",
+    provincecode: "",
+    city: "云林县",
+    code: "",
+    initial: "Y"
+}, {
+    id: "9015",
+    provincecode: "",
+    city: "花莲县",
+    code: "",
+    initial: "H"
+}, {
+    id: "9016",
+    provincecode: "",
+    city: "台南市",
+    code: "",
+    initial: "T"
+}, {
+    id: "9017",
+    provincecode: "",
+    city: "台中市",
+    code: "",
+    initial: "T"
+}, {
+    id: "9018",
+    provincecode: "",
+    city: "新竹市",
+    code: "",
+    initial: "X"
+}, {
+    id: "9019",
+    provincecode: "",
+    city: "高雄市",
+    code: "",
+    initial: "G"
+} ], i = [ "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z" ];
+
+module.exports = {
+    searchLetter: i,
+    cityList: function() {
+        for (var e = [], o = 0; o < i.length; o++) {
+            var d = i[o], t = [], n = {};
+            n.initial = d;
+            for (var r = 0; r < c.length; r++) d == c[r].initial && t.push(c[r]);
+            n.cityInfo = t, e.push(n);
+        }
+        return e;
+    }
+};

@@ -1,0 +1,22 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="gerenxinxi">
+    <view class="xinxi">
+        <view class="line">
+            <view class="left">名字</view>
+            <input bindinput="inputName" class="inp" maxlength="20" value="{{name}}"></input>
+        </view>
+        <view class="line">
+            <view class="left">生日</view>
+            <picker bindchange="inputBirthday" class="txt" end="{{date}}" mode="date" start="1900-09-01" value="{{birthday}}">
+                <view class="picker">{{birthday}}</view>
+            </picker>
+        </view>
+        <view class="line">
+            <view class="left">电话</view>
+            <view class="txt1">{{phone}}</view>
+        </view>
+    </view>
+</view>
+<view bindtap="submitEdit" class="btnsubmit">确认修改</view>
+<view bindtap="logout" class="btnexit">退出登陆</view>

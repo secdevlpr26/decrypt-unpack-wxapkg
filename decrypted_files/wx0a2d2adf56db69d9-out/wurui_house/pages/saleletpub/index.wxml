@@ -1,0 +1,103 @@
+<form reportSubmit bindsubmit="savepubinfo">
+    <view class="container">
+        <view class="backgroud"></view>
+        <view class="main">
+            <view class="list">
+                <view class="item">
+                    <view class="name">区域</view>
+                    <view bindtap="showdec" class="selectitem">{{decorate?decorate:'请选择地区'}}
+            <image src="../../resource/images/right.png"></image>
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="name">租金</view>
+                    <view bindtap="showrent" class="selectitem">{{decrent?decrent:'请选择租金'}}
+            <image src="../../resource/images/right.png"></image>
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="name">户型</view>
+                    <view class="selectitem">
+                        <input name="name" placeholder="【  】室 【  】厅 【  】卫" type="text"></input>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="backgroud"></view>
+        <view class="main">
+            <view class="title">
+        求租房屋描述
+      </view>
+            <view class="list" wx:if="{{decmsg}}">
+                <view class="item" style="height: 150rpx;">
+                    <view class="selectitem" style="width:100%;height: 150rpx;">
+                        <textarea name="content" placeholder="填写建议：户型、位置、租期、租金、特殊要求等 (为了保护隐私，请不要填写手机或QQ)"></textarea>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="main">
+            <view class="title">
+        房屋要求
+      </view>
+            <view class="checklist">
+                <checkbox-group bindchange="checkboxChange">
+                    <label bindtap="clicks" class="{{item.checked?'checkitem-check':'checkitem'}}" data-index="{{index}}" wx:for="{{checks}}" wx:key="{{checks}}">
+                        <checkbox checked="{{item.checked}}" hidden="false" name="special" value="{{item.name}}"></checkbox>{{item.name}}</label>
+                </checkbox-group>
+            </view>
+        </view>
+        <view class="backgroud"></view>
+        <view class="main">
+            <view class="list">
+                <view class="item">
+                    <view class="name">您的姓名</view>
+                    <view class="selectitem">
+                        <input name="name" placeholder="请输入您的姓名" type="text"></input>
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="name">您的电话</view>
+                    <view class="selectitem">
+                        <input name="tel" placeholder="请输入您的电话" type="text"></input>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="foot">
+        <button class="footer" formType="submit">立即发布</button>
+    </view>
+</form>
+<view class="weixinmao-msg" hidden="{{decmsg}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>请选择地区</view>
+            <view bindtap="closedec">
+                <image src="../../resource/newimage/clear.png"></image>
+            </view>
+        </view>
+        <scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="height:450rpx; left: 0; top:0; bottom: 0; right: 0;">
+            <view class="list">
+                <view bindtap="selectdec" class="item" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{arealist}}">{{item.name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="weixinmao-msg" hidden="{{rentmsg}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>请选择租金区间</view>
+            <view bindtap="closerent">
+                <image src="../../resource/newimage/clear.png"></image>
+            </view>
+        </view>
+        <scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="height:450rpx; left: 0; top:0; bottom: 0; right: 0;">
+            <view class="list">
+                <view bindtap="selectrent" class="item" data-id="{{item.id}}" data-name="{{item.rentprice}}" wx:for="{{rent}}">{{item.rentprice}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,33 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/chat/chat",
+        "pages/multiroom/room/room",
+        "pages/multiroom/roomname/roomname",
+        "pages/h5page/h5page",
+        "pages/bearVideo/bearVideo",
+        "pages/multiroom/aide/aide",
+        "pages/multiroom/roomlist/roomlist",
+        "pages/multiroom/chatlist/chatList",
+        "pages/counselorList/counselorList",
+        "pages/scaleImg/scaleImage",
+        "pages/messagesList/messagesList",
+        "pages/savephone/savephone",
+        "pages/webView/webView",
+        "pages/video/video",
+        "pages/shareFriend/shareFriend",
+        "pages/noticeList/noticeList",
+        "pages/share/share",
+        "pages/houseType/houseType",
+        "pages/houseTypeDetail/houseTypeDetail",
+        "pages/shareProgram/shareProgram",
+        "pages/healthCenter/healthCenter",
+        "pages/dreamHabitat/dreamHabitat"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#272A34",
+        "navigationBarTitleText": "泰宁养生现代村落",
+        "navigationBarTextStyle": "#fff"
+    }
+}

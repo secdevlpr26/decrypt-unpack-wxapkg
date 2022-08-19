@@ -1,0 +1,25 @@
+<template name="XYReserveTimeView">
+    <view catchtap="stopTap" catchtouchmove="stopTouchMove" class="wux-picker-container" wx:if="{{visible}}">
+        <view bindtap="{{hide}}" class="weui-mask {{animateCss[1]}}" hidden="{{!visible}}"></view>
+        <view class="selecttime {{animateCss[0]}}">
+            <view class="selecttimetop">
+                <view bindtap="{{hide}}" class="selecttimequxiao">取消</view>
+                <text>选择上门回收时间</text>
+                <view class="selecttimetishi" wx:if="{{dateList[0].notice}}">{{dateList[0].notice}}</view>
+            </view>
+            <view class="selecttimemain">
+                <scroll-view scrollY class="riqi" style="height: 500rpx;">
+                    <block wx:for="{{dateList}}" wx:for-index="dateIndex" wx:for-item="dateItem" wx:key="date">
+                        <view bindtap="{{dateCellClicked}}" class="riqiday chengshiCur" data-id="{{dateItem.Id}}" data-idx="{{dateIndex}}" wx:if="{{dateItem.selected===1}}">{{dateItem.dateStr}}
+                </view>
+                        <view bindtap="{{dateCellClicked}}" class="riqiday" data-id="{{dateItem.Id}}" data-idx="{{dateIndex}}" wx:else>{{dateItem.dateStr}}
+                </view>
+                    </block>
+                </scroll-view>
+                <scroll-view scrollY class="shijian" scrollIntoView="{{toView}}" scrollTop="{{scrollTop}}" style="height: 500rpx;">
+                    <view bindtap="{{periodCellClicked}}" class="shijiantime" data-id="{{periodItem.Id}}" data-idx="{{periodIndex}}" data-start_time="{{periodItem.start_time}}" wx:for="{{periodList}}" wx:for-index="periodIndex" wx:for-item="periodItem" wx:key="period">{{periodItem.start_time}}</view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</template>

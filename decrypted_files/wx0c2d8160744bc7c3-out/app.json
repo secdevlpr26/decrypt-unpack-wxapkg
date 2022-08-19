@@ -1,0 +1,52 @@
+{
+    "pages": [
+        "pages/first-page/firstPage",
+        "pages/watch/watch",
+        "pages/watch/event/main-class/main-class",
+        "pages/watch/event/report/report",
+        "pages/watch/event/subclass/subclass",
+        "pages/watch/event/report/report-success",
+        "pages/watch/event/my-event/my-event",
+        "pages/watch/event/select/select",
+        "pages/watch/event/my-point/myPoint",
+        "pages/watch/event/Free/Free",
+        "pages/watch/event/Sm/Sm",
+        "pages/watch/event/jfgz/jfgz",
+        "pages/watch/event/my-event/my-event-detail/my-event-detail",
+        "pages/watch/event/select/event-detail/eventDetail",
+        "pages/mine/mine",
+        "pages/mine/auth/auth"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#333",
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "线索举报",
+        "backgroundColor": "#eeeeee",
+        "backgroundTextStyle": "light"
+    },
+    "tabBar": {
+        "color": "#686868",
+        "selectedColor": "#47a86c",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "#f7f7f7",
+        "list": [
+            {
+                "pagePath": "pages/watch/watch",
+                "text": "上报",
+                "iconPath": "dist/images/find.png",
+                "selectedIconPath": "dist/images/find_2.png"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "text": "我的",
+                "iconPath": "dist/images/my_icon.png",
+                "selectedIconPath": "dist/images/my_active_icon.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 2000,
+        "downloadFile": 10000
+    },
+    "debug": true
+}

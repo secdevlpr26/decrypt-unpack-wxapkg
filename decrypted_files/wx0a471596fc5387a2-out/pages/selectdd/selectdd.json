@@ -1,0 +1,7 @@
+{
+    "navigationBarBackgroundColor": "#36383C",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "选择出差城市",
+    "enablePullDownRefresh": false,
+    "usingComponents": {}
+}

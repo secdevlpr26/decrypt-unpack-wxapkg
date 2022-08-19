@@ -1,0 +1,29 @@
+<view class="page-index">
+    <view class="slice1">
+        <view class="banner"></view>
+    </view>
+    <view class="content">
+        <view class="suremessage">
+          尊敬的 <text style="font-size:14px;font-weight:bold;">{{info.customer_name}}</text> 您好!
+          <text style="font-weight:bold;font-size:14px;">绍兴悦瑄商贸有限公司</text>提示您:您有一条新的库存变更记录。
+           请仔细查看并进行回执。如有疑问请前往【我的】-【联系电话】或【留言反馈】与我们联系！
+        </view>
+        <view class="slice3">
+            <view class="smial" wx:if="{{info}}">
+                <view class="line">交易时间：{{info.operation_createtime}}</view>
+                <view class="line">变更类型：{{info.operation_type}}</view>
+                <view class="line">商品名称：{{info.operation_stock}}</view>
+                <view class="line">数量：{{info.operation_sum}}</view>
+                <view class="line">单位：{{info.stock_unit}}</view>
+                <view class="line">单价：{{info.operation_price}}</view>
+                <view class="line">总金额：{{info.count_money}}</view>
+            </view>
+        </view>
+        <button bindtap="showmodal" class="btn" style="font-size:16px;">已阅读并确认回执</button>
+        <view>
+            <modal bindcancel="cancel" bindconfirm="confirm" confirmText="确认" hidden="{{hidden}}" noCancel="{{nocancel}}" title="提示">
+    确认对此次商品变更无疑义，本次变更将在商品变化详情中呈现，谢谢。
+</modal>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,56 @@
+<view class="tr" style=" padding-top:230rpx;">
+    <view class="muen_box">
+        <navigator class="nav_muen" url="/pages/grzl/grzl">
+            <image src="{{hostUrl}}/images/user.gif"></image>
+                        绑定信息
+                </navigator>
+        <navigator class="nav_muen" url="/pages/timecard/timecard">
+            <image src="{{hostUrl}}/images/icon_CSR_HL.png"></image>
+                        每日上报
+                </navigator>
+        <navigator class="nav_muen" url="/pages/bb/bb">
+            <image src="{{hostUrl}}/images/kh.png"></image>
+                        统计查询
+                </navigator>
+        <navigator bindtap="calling" class="nav_muen" data-mobile="13810975558">
+            <image src="{{hostUrl}}/images/uesr_icon7.png"></image>
+                        技术咨询
+                </navigator>
+    </view>
+    <view style="white-space:pre-wrap">
+        <view class="zhichi"></view>
+        <view class="news">
+            <navigator url="/pages/newsinfo/newsinfo?id={{item.ARTICLEID}}" wx:for="{{article}}" wx:key="article">
+                <view class="news-list">
+                    <image src="{{hostUrl}}{{item.PHOTOURL}}"></image>
+                    <view class="news-list-right">
+                        <text class="news-title">{{item.TITLE}}</text>
+                        <view class="news-text">{{item.INTRO}}</view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="btn1" id="buttonContainer">
+            <button type="info">抗击疫情，有你有我！</button>
+        </view>
+    </view>
+    <view bindtap="update" class="body-view">
+        <loading bindchange="loadingChange" hidden="{{hidden}}">
+                        加载中...
+                </loading>
+    </view>
+</view>
+<view style="position:fixed; top:0;width: 750rpx;opacity:1.0;background:white;">
+    <image class="top_img" src="{{hostUrl}}/images/my_top_back.jpg"></image>
+    <view class="nicheng">
+        <view bindtap="bindChooiceProduct" class="tx">
+            <image src="http://www.obs-wx.com/{{user.HOSTURL}}/{{user.HEADIMGURL}}"></image>
+        </view>
+        <button bindgetuserinfo="bindGetUserInfo" bindtap="login" openType="getUserInfo" wx:if="{{canIUse}}">点击登录</button>
+        <view wx:else>
+            <text class="title1">学生：{{user.STNAME==null?'---':user.STNAME}}</text>
+            <text class="title1">班级：{{user.BJNAME==null?'---':user.BJNAME}} </text>
+            <text class="title1">家长：{{user.USERNAME==null?'':user.USERNAME}}</text>
+        </view>
+    </view>
+</view>

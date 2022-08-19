@@ -1,0 +1,27 @@
+<view style="overflow:hidden;padding-bottom:28rpx;width:750rpx;">
+    <block wx:for="{{list}}" wx:for-index="item_index">
+        <view bindtap="showOrHideList" class="entry" id="{{item_index}}">
+            <view class="entry-title" style="position:absolute;top:0;left:0;z-index:99;">
+                <label>{{item.plcName}}</label>
+                <text style="opacity:0.5;margin-right:23rpx;">成功 :</text>
+                <text style="opacity:0.5;margin-right:55rpx;">{{item.normalNum}}</text>
+                <text style="color:#E60000;margin-right:23rpx;">失败 :</text>
+                <text style="color:#E60000;margin-right:85rpx;">{{item.abnormalNum}}</text>
+                <image src="../../images/net-monitor/icon-menu-{{open?'up':'down'}}.png" style="width:26rpx;height:14rpx;"></image>
+            </view>
+        </view>
+        <view class="entry-message{{item.open?'-show':''}}">
+            <view>
+                <view class="single-message" wx:for="{{item.dataList}}" wx:for-index="inItem_index" wx:for-item="inItem">
+                    <view class="message-name">
+                        <image src="../../images/net-monitor/{{inItem.status==0?'success':'failed'}}.png"></image>
+                        <text style="color:{{inItem.status==0?'#4D4D4D':'#E60000'}};">{{inItem.name}}</text>
+                    </view>
+                    <view class="message-id" style="margin-left:72rpx;color:{{inItem.status==0?'#4D4D4D':'#E60000'}};">{{inItem.ip}}</view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+<zy-modal areaName="{{areaName}}出现火灾预警!" bindconfirm="modalConfirm" confirmText="确定" hidden="{{modalHidden}}" imageReady="block"></zy-modal>
+<audio id="audio" loop="false" src="{{src}}"></audio>

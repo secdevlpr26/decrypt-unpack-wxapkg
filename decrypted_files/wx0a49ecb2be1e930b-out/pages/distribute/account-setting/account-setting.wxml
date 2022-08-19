@@ -1,0 +1,25 @@
+<view class="as-wrap">
+    <view class="select-bank">
+        <view class="common-title">请选择您所需要绑定的账号类型</view>
+        <view bindtap="accountType" class="add-account">
+            <text>{{accountType.bankName?accountType.bankName:'点击添加账号类型'}}</text>
+            <text class="iconfont icon-arrow-right"></text>
+        </view>
+    </view>
+    <form bindsubmit="formSubmit">
+        <view class="as-main">
+            <view class="tips">请输入真实的姓名和其对应的身份证号码：</view>
+            <view hidden="{{accountType.bankName=='支付宝'}}">
+                <view class="common-title">开户行</view>
+                <input name="bankInfo" placeholder="请输入您的开户行"></input>
+            </view>
+            <view class="common-title">姓名</view>
+            <input name="name" placeholder="请输入您的真实姓名"></input>
+            <view class="common-title">身份证</view>
+            <input maxlength="18" name="card" placeholder="请输入您的身份证" type="idcard"></input>
+            <view class="common-title">账号</view>
+            <input name="account" placeholder="请输入您的账号"></input>
+        </view>
+        <button class="btn-submit" formType="submit">提交</button>
+    </form>
+</view>

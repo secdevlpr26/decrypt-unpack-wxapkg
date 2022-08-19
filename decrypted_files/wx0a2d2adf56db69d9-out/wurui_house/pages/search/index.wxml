@@ -1,0 +1,122 @@
+<view class="container">
+    <form bindsubmit="bindSave">
+        <view class="search">
+            <icon size="14" type="search"></icon>
+            <input bindconfirm="bindSave" confirmType="search" name="keyword" placeholder="请输入相关信息" placeholderClass="search_plac" type="text"></input>
+            <view bindtap="backspace" class="clear">取消</view>
+        </view>
+    </form>
+    <block wx:if="{{list}}">
+        <view wx:for="{{list}}">
+            <view class="news" wx:if="{{item.type=='newhousedetail'}}">
+                <view class="newslist">
+                    <view bindtap="toNewsDetail" class="pic" data-id="{{item.id}}" data-type="{{item.type}}">
+                        <image src="{{item.thumb}}"></image>
+                    </view>
+                    <view bindtap="toNewsDetail" class="title" data-id="{{item.id}}" data-type="{{item.type}}">
+                        <view class="address">
+                            <view>{{item.housename}}
+          <image src="../../resource/newimage/sellOut.png" wx:if="{{item.salestatus_str=='售完'}}"></image>
+                                <image src="../../resource/newimage/sellOn.png" wx:if="{{item.salestatus_str=='在售'}}"></image>
+                            </view>
+                            <view>{{item.houseaddress}}</view>
+                        </view>
+                        <view class="price">
+                            <view class="money">{{item.houseprice}}元/㎡</view>
+                        </view>
+                        <view class="price">
+                            <view>
+                                <text>{{item.areaname}}</text>
+                                <text>{{item.housetypename}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="news" wx:if="{{item.type=='oldhousedetail'}}">
+                <view class="oldlist">
+                    <view bindtap="toNewsDetail" class="pic" data-id="{{item.id}}" data-type="{{item.type}}">
+                        <image src="{{item.thumb}}"></image>
+                    </view>
+                    <view bindtap="toNewsDetail" class="title" data-id="{{item.id}}" data-type="{{item.type}}">
+                        <view class="address">
+                            <view>{{item.title}}</view>
+                            <view class="housearea">{{item.housearea}}</view>
+                            <view class="perprice">
+                  {{item.saleprice}}万
+                  <text>均价{{item.perprice}}元/㎡</text>
+                            </view>
+                        </view>
+                        <view class="price">
+                            <view>
+                                <text>{{item.area}}㎡</text>
+                                <text>{{item.housetypename}}</text>
+                                <text>{{item.housestyle}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="news" wx:if="{{item.type=='lethousedetail'}}">
+                <view class="oldlist">
+                    <view bindtap="toNewsDetail" class="pic" data-id="{{item.id}}" data-type="{{item.type}}">
+                        <image src="{{item.thumb}}"></image>
+                    </view>
+                    <view bindtap="toNewsDetail" class="title" data-id="{{item.id}}" data-type="{{item.type}}">
+                        <view class="address">
+                            <view>{{item.title}}</view>
+                            <view class="housearea">
+                                 {{item.housearea}}
+                                <text></text>
+                            </view>
+                            <view class="perprice">
+                                      {{item.money}}元/月
+                                </view>
+                        </view>
+                        <view class="price">
+                            <view>
+                                <text>{{item.area}}㎡</text>
+                                <text>{{item.roomtype}}</text>
+                                <text>{{item.payway}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="nonews" wx:if="{{!history}}">
+            <view>
+                <image src="../../resource/newimage/noserach.png"></image>
+            </view>
+            <view>
+          暂无任何搜索记录
+        </view>
+        </view>
+        <block wx:if="{{history}}">
+            <view class="history">
+                <text>历史记录</text>
+            </view>
+            <view class="historylist" wx:for="{{historylist}}">
+                <view bindtap="toSerach" class="historytitle" data-historykey="{{item}}">
+                    <view>{{item}}</view>
+                </view>
+                <view bindtap="historyClearOne" data-historykeyid="{{index}}">
+                    <image src="../../resource/newimage/clear.png"></image>
+                </view>
+            </view>
+            <view bindtap="historyclear" class="historyclear">
+                <text> 删除所有历史记录</text>
+            </view>
+        </block>
+    </block>
+    <view class="nonews" wx:if="{{!loadmore}}">
+        <view>
+            <image src="../../resource/newimage/nothing.png"></image>
+        </view>
+        <view>
+        没有相关信息，换个关键词试试
+      </view>
+    </view>
+</view>

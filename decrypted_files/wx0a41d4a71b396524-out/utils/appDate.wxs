@@ -1,0 +1,43 @@
+var getDate = (function(date) {
+    if (date == null || date == '') {
+        return ("")
+    };
+    var dats = date.split(" ");
+    var dat1s = dats[(0)].split("-");
+    return (dat1s[(0)] + "-" + dat1s[(1)] + "-" + dat1s[(2)])
+});
+var getTime = (function(time) {
+    if (time == null || time == '') {
+        return ("")
+    };
+    var dats = time.split(" ");
+    var dat1s = dats[(1)].split(":");
+    return (dat1s[(0)] + ":" + dat1s[(1)])
+});
+var getDateStr = (function(date) {
+    if (date == null || date == '') {
+        return ("")
+    };
+    var dats = date.split(" ");
+    return (dats[(0)])
+});
+var getHMTime = (function(date) {
+    if (date == null || date == '') {
+        return ("")
+    };
+    var dats = date.split(" ");
+    var dat2s = dats[(1)].split(":");
+    return (dats[(0)] + " " + dat2s[(0)] + ":" + dat2s[(1)])
+});
+var compareDate = (function(now, date) {
+    var t = date.replace("/-/g", "/");
+    var nDat = getDate(t);
+    return (false)
+});
+module.exports = ({
+    getDate: getDate,
+    getTime: getTime,
+    getDateStr: getDateStr,
+    getHMTime: getHMTime,
+    compareDate: compareDate,
+});

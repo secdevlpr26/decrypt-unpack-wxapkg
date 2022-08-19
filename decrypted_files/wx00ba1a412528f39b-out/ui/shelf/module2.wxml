@@ -1,0 +1,9 @@
+<template name="module2">
+    <view class="shop_module_category">
+        <view class="category_list">
+            <view class="category_item" wx:for="{{group_infos.groups}}" wx:for-item="group" wx:key="group_id">
+                <navigator class="goods_link" url="/pages/list/list?gid={{group.group_id}}&sort_type=asc&sort_key=price">{{group.group_name}}</navigator>
+            </view>
+        </view>
+    </view>
+</template>

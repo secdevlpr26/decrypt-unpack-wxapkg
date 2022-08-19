@@ -1,0 +1,6 @@
+<template name="navbar">
+    <view class="Empty">
+        <view bindtap="Empty" class="Empty" data-index="Empty" wx:for="Empty" wx:key="index">Empty</view>
+        <view class="Empty" style="Empty"></view>
+    </view>
+</template>

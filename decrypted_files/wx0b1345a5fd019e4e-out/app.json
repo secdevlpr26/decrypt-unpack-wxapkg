@@ -1,0 +1,174 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/rich-text/rich-text",
+        "pages/recommproducts/recommproducts",
+        "pages/store/store",
+        "pages/store/layout-o2o/store",
+        "pages/store/store-detail/store-detail",
+        "pages/store/layout-meirong/store",
+        "pages/store/layout-enterprise/store-detail/store-detail",
+        "pages/store/custom/custom",
+        "pages/self/card/card",
+        "pages/self/card/prestore-rule/prestore-rule",
+        "pages/self/card/prestore-money/prestore-money",
+        "pages/self/card/prestore-detail/prestore-detail",
+        "pages/self/card/recharge/recharge",
+        "pages/product/pro-detail/pro-detail",
+        "pages/product/pro-list/pro-list",
+        "pages/product/product",
+        "pages/product/sub-category/sub-category",
+        "pages/product/beforehand/beforehand",
+        "pages/product/beforehand/bh-detail/bh-detail",
+        "pages/product/comment/comment",
+        "pages/product/comment/publish-comment/publish-comment",
+        "pages/self/self/self",
+        "pages/self/myOrder/myOrder",
+        "pages/self/myOrder/myOrder-detail/myOrder-detail",
+        "pages/self/myOrder/myOrder-detail/logistics/logistics",
+        "pages/self/myOrder/refund/refund",
+        "pages/self/mySupply/mySupply",
+        "pages/self/acountInformation/acountInformation",
+        "pages/self/cart/cart",
+        "pages/self/collect/collect",
+        "pages/self/memRights/memRights",
+        "pages/self/bindPhone/bindPhone",
+        "pages/self/myBeforehand/myBeforehand",
+        "pages/self/myCustom/myCustom",
+        "pages/self/mycoupon/mycoupon",
+        "pages/supply/supply",
+        "pages/supply/supply-publish/supply-publish",
+        "pages/supply/supply-detail/supply-detail",
+        "pages/search/search",
+        "pages/news/news",
+        "pages/news/layout-o2o/news",
+        "pages/news/news-detail/news-detail",
+        "pages/news/news-list/news-list",
+        "pages/news/layout-meirong/news",
+        "pages/news/layout-meirong/news-list/news-list",
+        "pages/order/order",
+        "pages/address/address",
+        "pages/login/login",
+        "pages/login/register/register",
+        "pages/login/forget/forget",
+        "pages/publicity/publicity",
+        "pages/publicity/publicity-detail/publicity-detail",
+        "pages/position/position",
+        "pages/about-us/about-us",
+        "pages/join/join",
+        "pages/query/query",
+        "pages/seckill/seckill",
+        "pages/order/calendar/calendar",
+        "pages/packages/points/points-product/points-product",
+        "pages/packages/points/points-exchange/points-exchange",
+        "pages/packages/points/points-guides/points-guides",
+        "pages/packages/AI/index/index",
+        "pages/packages/AI/AIImageRecognize/AIImageRecognize",
+        "pages/packages/AI/recognizeResult/recognizeResult",
+        "pages/packages/group/group-detail/group-detail",
+        "pages/packages/group/group-prolist/group-prolist",
+        "pages/packages/group/my-group/my-group",
+        "pages/packages/group/group-introduce/group-introduce",
+        "pages/packages/distribute/distribute",
+        "pages/packages/distribute/applycash/applycash",
+        "pages/packages/distribute/distribute-qrcode/distribute-qrcode",
+        "pages/packages/distribute/account-setting/account-setting",
+        "pages/packages/distribute/withdraw-list/withdraw-list",
+        "pages/packages/distribute/withdraw-list/withdraw-detail/withdraw-detail",
+        "pages/packages/distribute/account-select/account-select",
+        "pages/packages/distribute/distribute-order/distribute-order",
+        "pages/packages/distribute/distribute-rule/distribute-rule",
+        "pages/packages/distribute/distribute-product/distribute-product",
+        "pages/packages/distribute/distribute-fee/distribute-fee",
+        "pages/packages/distribute/distribute-myfee/distribute-myfee",
+        "pages/packages/distribute/distribute-inferior/distribute-inferior",
+        "pages/packages/distribute/distribute-statistics/distribute-statistics"
+    ],
+    "window": {
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#f78ea5"
+    },
+    "tabBar": {
+        "backgroundColor": "#FFF",
+        "list": [
+            {
+                "text": "首页",
+                "pagePath": "pages/index/index",
+                "iconPath": "img/res-meirong/icon-home.png",
+                "selectedIconPath": "img/res-meirong/tab_pink/icon-home1.png"
+            },
+            {
+                "text": "分类",
+                "pagePath": "pages/product/product",
+                "iconPath": "img/res-meirong/icon-pro.png",
+                "selectedIconPath": "img/res-meirong/tab_pink/icon-pro1.png"
+            },
+            {
+                "text": "商家",
+                "pagePath": "pages/store/layout-meirong/store",
+                "iconPath": "img/res-meirong/icon-store.png",
+                "selectedIconPath": "img/res-meirong/tab_pink/icon-store1.png"
+            },
+            {
+                "text": "资讯",
+                "pagePath": "pages/news/layout-meirong/news",
+                "iconPath": "img/res-meirong/icon-news.png",
+                "selectedIconPath": "img/res-meirong/tab_pink/icon-news1.png"
+            },
+            {
+                "text": "我的",
+                "pagePath": "pages/self/self/self",
+                "iconPath": "img/res-meirong/icon-my.png",
+                "selectedIconPath": "img/res-meirong/tab_pink/icon-my1.png"
+            }
+        ],
+        "selectedColor": "#f78ea5",
+        "color": "#BFBFBF"
+    },
+    "subPackages": [
+        {
+            "root": "pages/packages/points",
+            "pages": [
+                "pages/packages/points/points-product/points-product",
+                "pages/packages/points/points-exchange/points-exchange",
+                "pages/packages/points/points-guides/points-guides"
+            ]
+        },
+        {
+            "root": "pages/packages/AI",
+            "pages": [
+                "pages/packages/AI/index/index",
+                "pages/packages/AI/AIImageRecognize/AIImageRecognize",
+                "pages/packages/AI/recognizeResult/recognizeResult"
+            ]
+        },
+        {
+            "root": "pages/packages/group",
+            "pages": [
+                "pages/packages/group/group-detail/group-detail",
+                "pages/packages/group/group-prolist/group-prolist",
+                "pages/packages/group/my-group/my-group",
+                "pages/packages/group/group-introduce/group-introduce"
+            ]
+        },
+        {
+            "root": "pages/packages/distribute",
+            "pages": [
+                "pages/packages/distribute/distribute",
+                "pages/packages/distribute/applycash/applycash",
+                "pages/packages/distribute/distribute-qrcode/distribute-qrcode",
+                "pages/packages/distribute/account-setting/account-setting",
+                "pages/packages/distribute/withdraw-list/withdraw-list",
+                "pages/packages/distribute/withdraw-list/withdraw-detail/withdraw-detail",
+                "pages/packages/distribute/account-select/account-select",
+                "pages/packages/distribute/distribute-order/distribute-order",
+                "pages/packages/distribute/distribute-rule/distribute-rule",
+                "pages/packages/distribute/distribute-product/distribute-product",
+                "pages/packages/distribute/distribute-fee/distribute-fee",
+                "pages/packages/distribute/distribute-myfee/distribute-myfee",
+                "pages/packages/distribute/distribute-inferior/distribute-inferior",
+                "pages/packages/distribute/distribute-statistics/distribute-statistics"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+var getPrice = (function(money) {
+    return (money.toFixed(2))
+});
+module.exports = ({
+    getPrice: getPrice,
+});

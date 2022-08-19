@@ -1,0 +1,27 @@
+<view class="container" style="border-top:1px solid #ccc">
+    <view class="nonewstips" style="display:{{hasnews?'none':'block'}}">
+        当前条件下搜索不到资讯
+    </view>
+    <view class="news-list">
+        <scroll-view bindscrolltolower="onNewsListScroll" lowerThreshold="20" scrollY="true" style="height:{{scrollHeight}}rpx;">
+            <view catchtap="goNewsDetail" class="news-item" data-newsid="{{item.ArticleID}}" wx:for="{{newslist}}" wx:key="id">
+                <view class="news-img">
+                    <view class="news-date">{{item.PublishDate}}</view>
+                    <view class="news-year">{{item.PublishYear}}</view>
+                </view>
+                <view class="news-text">
+                    <view class="title">{{item.Title}}</view>
+                    <view class="desc">{{item.Descriptor}}</view>
+                    <view class="news-time">
+                        <view class="hits">
+                            <image mode="widthFix" src="/images/eyes.png" style="width:18px"></image> {{item.Hits}}</view>
+                        <view class="time">{{item.PublishTime}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <include src="../nav.wxml"></include>
+</view>
+<include src="/pages/template/popupFromShare.wxml"></include>
+<include src="/pages/template/getUserInfo.wxml"></include>

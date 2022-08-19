@@ -1,0 +1,38 @@
+<view class="wx_page">
+    <view class="sku_hd goods_item">
+        <view class="goods_item_hd">
+            <image src="{{product.base_attr.img_info[0]}}"></image>
+        </view>
+        <view class="goods_item_bd">
+            <view class="goods_item_title">{{product.base_attr.name}}</view>
+            <view class="goods_item_price">
+                <block wx:if="{{upPrice!=lowPrice}}">{{feeTxt}}{{lowPriceTxt}}-{{upPriceTxt}}</block>
+                <block wx:else>￥{{lowPriceTxt}}</block>
+            </view>
+        </view>
+    </view>
+    <view class="sku_bd">
+        <view class="sku_group" wx:if="{{!!skuGroup}}">
+            <view class="sku_group_item" wx:for="{{skuGroup}}" wx:for-index="groupName" wx:for-item="group" wx:key="{{catName}}">
+                <view class="sku_group_title">{{groupName}}</view>
+                <view catchtap="tapBtnSkuAttr" class="sku_choose_item {{attr.selected?'selected':''}} {{attr.enabled==0?'disabled':''}}" data-attr="{{attrName}}" data-group="{{groupName}}" data-id="{{attr.id}}" wx:for="{{group}}" wx:for-index="attrName" wx:for-item="attr" wx:key="{{attr.key}}">
+          {{attrName}}
+        </view>
+            </view>
+        </view>
+        <view class="sku_froup_count">
+            <view class="sku_group_title">
+                <text>数量</text>
+                <text class="quantity_Limit">（库存 {{quantityMaxLimit}} 件<text wx:if="{{product.base_attr.buy_limit>0}}">; 限购 {{product.base_attr.buy_limit}} 件</text>）</text>
+            </view>
+            <view class="sku_group_box">
+                <view catchtap="tapChangeQuantity" class="editor editor_remove" data-delta="-1">-</view>
+                <input class="editor editor_input" type="number" value="{{selectedQuantity}}"></input>
+                <view catchtap="tapChangeQuantity" class="editor editor_add" data-delta="1">+</view>
+            </view>
+        </view>
+    </view>
+    <view class="sku_ft">
+        <button bindtap="tapBtnBuy" disabled="{{!canBuy}}" type="primary">购买</button>
+    </view>
+</view>

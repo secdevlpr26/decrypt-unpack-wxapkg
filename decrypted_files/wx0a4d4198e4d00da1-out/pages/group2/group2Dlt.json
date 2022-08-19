@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "开团成功",
+    "usingComponents": {
+        "wxc-price": "../../packages/@minui/wxc-price/dist/index"
+    }
+}

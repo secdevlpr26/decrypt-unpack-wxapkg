@@ -1,0 +1,28 @@
+<view class="" wx:if="{{!isShowGetCard&&!isloading}}">
+    <view class="card-img">
+        <image lazyLoad="{{true}}" mode="widthFix" src="{{cardImage}}"></image>
+        <text class="cardno">NO:{{cardNo}}</text>
+    </view>
+    <view class="prestore-money">
+        <text>预存金额：</text>
+        <text>{{preMoney}}元</text>
+    </view>
+    <view class="card-content">
+        <view bindtap="toPrestoreMoney" class="card-item">
+            <text>我要充值</text>
+            <text class="iconfont icon-arrow-right"></text>
+        </view>
+        <view bindtap="toPrestoreRule" class="card-item">
+            <text>预存规则</text>
+            <text class="iconfont icon-arrow-right"></text>
+        </view>
+    </view>
+</view>
+<view class="getcard" wx:if="{{isShowGetCard&&!isloading}}">
+    <view class="getcard-top">
+        <view class="getcard-blank">
+            <image lazyLoad="{{true}}" mode="widthFix" src="{{cardImage}}"></image>
+        </view>
+    </view>
+    <view bindtap="getCard" class="btn-get">领取会员卡</view>
+</view>

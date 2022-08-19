@@ -1,0 +1,119 @@
+<view style="width:0px;height:0px;overflow:hidden;">
+    <canvas canvasId="shareImg" style="width:700px;height:710px"></canvas>
+</view>
+<scroll-view bindscrolltolower="scrolltolower" class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">
+    <view catchtouchmove="true" class="preview" hidden="{{hidden}}">
+        <image bindtap="closetype" class="close" src="../../resource/images/gb.png"></image>
+        <image class="tu" mode="widthFix" src="{{prurl}}"></image>
+        <button bindtap="share" class="save1" size="mini" type="primary">重新加载</button>
+        <button bindtap="save" class="save" size="mini" type="primary">保存分享图</button>
+    </view>
+    <image bindtap="share" class="fenx" src="../../resource/images/share2x.png"></image>
+    <view class="container">
+        <view class="swiper-container">
+            <swiper autoplay="{{autoplay}}" circular="{{circular}}" duration="{{duration}}" interval="{{interval}}" style="height:{{imgheight}}rpx;">
+                <swiper-item wx:for="{{piclist}}">
+                    <image bindload="imageLoad" class="slide-image" src="{{item}}" style="height:{{imgheight}}rpx;width:{{imgwidth}}rpx;"></image>
+                </swiper-item>
+            </swiper>
+            <view class="dots">
+                <view class="dot{{index==swiperCurrent?' active':''}}" wx:for="{{piclist}}" wx:key="index"></view>
+            </view>
+        </view>
+        <view class="main">
+            <view class="title" style="font-size:16px;">
+                <view> {{data.title}}</view>
+            </view>
+            <view class="special">
+                <text wx:for="{{data.speciallist}}" wx:key="index">{{item}}</text>
+            </view>
+        </view>
+        <view class="contentlist">
+            <view class="introduce">
+                <view class="halfintroduce" style="border-right:1rpx solid #e5e5e5;">
+                    <view class="huintroduce">
+                        <text>户型</text>
+                    </view>
+                    <view class="wordintroduce">
+                        <text>{{data.housestyle}}</text>
+                    </view>
+                </view>
+                <view class="halfintroduce">
+                    <view class="huintroduce">
+                        <text>总价</text>
+                    </view>
+                    <view class="wordintroduce" style="color:#ed4e33">
+                        <text>{{data.saleprice}}万</text>
+                    </view>
+                </view>
+            </view>
+            <view class="listitem">
+                <view class="items">小区<text>{{data.housearea}}</text>
+                </view>
+                <view class="items">均价<text>{{data.perprice}}元/㎡</text>
+                </view>
+                <view class="items">面积<text>{{data.area}}㎡</text>
+                </view>
+                <view class="items">楼层<text>{{data.floor}}</text>
+                </view>
+                <view class="items">朝向<text>{{data.direction}}</text>
+                </view>
+                <view class="items">装修<text>{{data.decorate}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="backgrond"></view>
+        <view class="agent" wx:if="{{data.agentid>0}}">
+            <view class="agentinfo">
+                <view class="left">
+                    <view bindtap="toAgentDetail" class="headpic" data-id="{{data.agentid}}">
+                        <image src="{{data.agentthumb}}"></image>
+                    </view>
+                    <view class="username">
+                        <view>{{data.agentname}}</view>
+                        <view>{{data.agenttel}}</view>
+                    </view>
+                </view>
+                <view class="right">
+                    <view class="contact">
+                        <view bindtap="doCall" data-tel="{{data.agenttel}}">
+                            <image src="../../resource/images/telnew.png"></image>
+                        </view>
+                        <view>联系经纪人</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="backgrond"></view>
+        <view class="contentlist">
+            <view class="title">
+                <view></view>
+                <view>详情介绍</view>
+            </view>
+            <view class="intro">
+                <block wx:for="{{content}}" wx:for-item="cellData" wx:key="index">
+                    <view class="p" wx:if="{{cellData.type=='view'}}">
+                        <block wx:for="{{cellData.child}}" wx:key="text">
+                            <text bindtap="stockClick" class="a" data-seccode="{{item.attr['data-seccode']}}" data-secname="{{item.attr['data-secname']}}" wx:if="{{item.type=='a'}}">{{item.text}}</text>
+                            <text wx:else>{{item.text}}</text>
+                        </block>
+                    </view>
+                    <image bindload="imageLoad" class="img" data-index="{{index}}" mode="widthFix" src="{{cellData.attr.src}}" style="width:40px; height:40px;" wx:if="{{cellData.type=='img'}}"></image>
+                </block>
+            </view>
+        </view>
+        <view style="height:130rpx;width:40px"></view>
+    </view>
+</scroll-view>
+<view class="weixinmao-float">
+    <view class="weixinmao-foot">
+        <view bindtap="goMap" class="footer1">
+      一键导航</view>
+        <view bindtap="doCall" class="footer2" data-tel="{{data.agenttel}}" wx:if="{{data.agentid>0}}">联系电话</view>
+        <view bindtap="doCall" class="footer2" data-tel="{{data.tel}}" wx:else>联系电话</view>
+        <view bindtap="jump" class="back">
+            <image class="fenx2" src="../../resource/images/home@2x.png">123</image>
+            <view class="backup">返回首页</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "油库智能监控移动平台",
+    "enablePullDownRefresh": true,
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FAFAFF",
+    "usingComponents": {
+        "canvas-ring": "/components/canvas-ring/canvas-ring",
+        "zy-modal": "/components/zy-modal/zy-modal"
+    }
+}

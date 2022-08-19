@@ -1,0 +1,9 @@
+<view class="page-offline">
+    <view class="page-offline__tips">该小店已下线</view>
+    <view class="weui-footer">
+        <view class="weui-footer__links">
+            <view bindtap="goConcat" class="weui-footer__link">联系商家</view>
+            <view bindtap="goComplain" class="weui-footer__link">投诉</view>
+        </view>
+    </view>
+</view>

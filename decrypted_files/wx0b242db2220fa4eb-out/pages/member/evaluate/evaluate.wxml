@@ -1,0 +1,34 @@
+<view class="Empty">
+    <text bindtap="Empty" class="Empty" data-index="Empty">Empty</text>
+    <text bindtap="Empty" class="Empty" data-index="Empty">Empty</text>
+    <text bindtap="Empty" class="Empty" data-index="Empty">Empty</text>
+</view>
+<view class="Empty" wx:for="Empty">
+    <view class="Empty">
+        <text>Empty</text>
+    </view>
+    <view class="Empty">
+        <view>
+            <image class="Empty" mode="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <text class="Empty">Empty</text>
+            <view class="Empty">
+                <text>Empty</text>
+            </view>
+            <view class="Empty">
+                <text bindtap="Empty" class="Empty" data-index="Empty" wx:if="Empty">Empty</text>
+                <text bindtap="Empty" class="Empty" data-index="Empty" wx:else>Empty</text>
+            </view>
+        </view>
+    </view>
+    <view class="Empty" wx:if="Empty">
+        <text>Empty</text>
+        <image class="Empty" src="Empty" wx:if="Empty"></image>
+        <image class="Empty" src="Empty" wx:if="Empty"></image>
+        <image class="Empty" src="Empty" wx:if="Empty"></image>
+        <image class="Empty" src="Empty" wx:if="Empty"></image>
+        <image class="Empty" src="Empty" wx:if="Empty"></image>
+        <text style="Empty">Empty</text>
+    </view>
+</view>

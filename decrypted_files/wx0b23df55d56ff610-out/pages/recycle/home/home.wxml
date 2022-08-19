@@ -1,0 +1,87 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="animated fadeIn" wx:if="{{isShow}}">
+    <view class="topBanner">
+        <image src="{{banner[0].ad_code}}"></image>
+    </view>
+    <view style="background:#fff;padding-top:20rpx;padding-bottom:20rpx;">
+        <view class="header" style="background:#fff;margin-top:20rpx;margin-bottom:20rpx;">
+            <view class="model">
+                <view class="img-wrap" style="background:#fff">
+                    <image class="image-view" height="110" mode="widthFix" src="{{goods.original_img}}"></image>
+                </view>
+                <view class="phone-msg">
+                    <view class="phone-name">{{model}}</view>
+                    <view class="phone-des">检测到您的手机型号</view>
+                </view>
+                <view bindtap="goToChooseDevice" class="change-btn" data-pid="15">
+                    <text>更换机型</text>
+                </view>
+            </view>
+            <view bindtap="goToChooseFault" class="model-color" data-bid="{{goods.goods_id}}" wx:if="{{model}}">
+                <view class="color-choose">
+               
+                点击进入故障信息选择，下单回收
+                
+            <image class="icon-right" src="/images/new-right.png"></image>
+                </view>
+            </view>
+            <view bindtap="wxphone" class="model-color" wx:else>
+                <view class="color-choose">机型检测失败，点击<text>【更换机型】</text>切换机型                   <image class="icon-right" src="/images/new-right.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="recycleTabBar" style="margin-top:20rpx;">
+        <view bindtap="goToChooseDevice" class="tabBarItem firstItem" data-pid="15">
+            <view class="tabBarLeftItem">
+                <view class="leftTop">手机回收</view>
+                <view class="leftBottom">给旧手机找个家</view>
+            </view>
+            <view class="tabBarRightItem">
+                <image src="../../../img/sjhs@2x.png"></image>
+            </view>
+        </view>
+        <view bindtap="goToChooseDevice" class="tabBarItem" data-pid="16">
+            <view class="tabBarLeftItem">
+                <view class="leftTop">平板回收</view>
+                <view class="leftBottom">高价回收，钱不闲置</view>
+            </view>
+            <view class="tabBarRightItem">
+                <image src="../../../img/pbhs@2x.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="hotRecycle">
+        <view class="hotRecycleHead">
+            <image src="../../../img/rmhsjx@2x.png"></image>
+            <text>热门回收机型</text>
+        </view>
+        <view class="hotRecycleContent">
+            <view bindtap="goToChooseFault" class="hotRecycleContentItem" data-bid="{{item.goods_id}}" data-bname="{{item.brand_name}}" data-mid="{{item.mould_id}}" data-mname="{{item.mould_name}}" data-mpic="{{item.mould_picture}}" wx:for="{{hots}}" wx:key="index">
+                <image mode="widthFix" src="{{item.original_img}}"></image>
+                <view class="mould">{{item.goods_name}}</view>
+                <view class="price">回收最高价 <text>¥{{item.shop_price}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="hotRecycleFoot">
+            <view bindtap="goToChooseDevice" class="findMoreBtn" data-pid="15">查看更多机型</view>
+        </view>
+    </view>
+    <view class="showBlock">
+        <view class="showBlockTop">回收承诺</view>
+        <view class="showBlockBottom">
+            <view class="showListItem {{index==1?'mid':''}}" wx:for="{{showList}}" wx:key="key">
+                <view class="">
+                    <image src="{{item.imgUrl}}"></image>
+                </view>
+                <view class="itemContent">{{item.content}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view hidden class="refresher" wx:if="{{false}}">
+    <text>网络开小差了~</text>
+    <button bindtap="onLoad" class="refreshBtn">点击刷新</button>
+</view>

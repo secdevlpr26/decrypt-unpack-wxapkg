@@ -1,0 +1,27 @@
+<view class="chatMessageNoData" wx:if="{{DefaultImg}}">
+    <image mode="widthFix" src="{{baseUrl}}/images/wxapp/chatMessage.png"></image>
+    <text>暂无会话</text>
+</view>
+<scroll-view class="border1px" scrollY="true">
+    <form bindsubmit="onMessageSubmit" reportSubmit="true">
+        <view catchtap="goChatDialogue" class="msg flexBox" data-chatname="{{item.UserInfo.NickName}}" data-imgurl="{{item.UserInfo.HeadImgUrl}}" data-userid="{{item.UserInfo.UserID}}" wx:for="{{lists}}" wx:key="item.id">
+            <button class="form_button flexBox borderTop1px" formType="submit">
+                <view class="msg-img">
+                    <image class="img" mode="aspectFill" src="{{item.UserInfo.HeadImgUrl}}"></image>
+                    <view class="msg-font" wx:if="{{item.count!=0}}">{{item.IsReadCount>99?'...':item.IsReadCount}}</view>
+                </view>
+                <view class="msg-name">
+                    <view class="text_box">
+                        <view class="flexBox flexJustifyBetween">
+                            <text class="title">{{item.UserInfo.NickName}}</text>
+                            <text class="messagetime">{{item.LastMessageInfo.CrTime}}</text>
+                        </view>
+                        <view class="name-message">
+                            <text class="message">{{item.LastMessageInfo.Content}}</text>
+                        </view>
+                    </view>
+                </view>
+            </button>
+        </view>
+    </form>
+</scroll-view>

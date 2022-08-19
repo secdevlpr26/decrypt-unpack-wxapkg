@@ -1,0 +1,82 @@
+<view class="container">
+    <view class="header">
+        <view class="pic">
+            <view>
+                <image src="{{userinfo.wxInfo.avatarUrl}}"></image>
+            </view>
+            <view>{{userinfo.wxInfo.nickName}}</view>
+        </view>
+    </view>
+    <view class="order">
+        <view class="title">
+      我的发布
+    </view>
+        <view class="content">
+            <view bindtap="toMypub" class="item" data-id="1">
+                <image src="../../resource/newimage/oldHouser.png"></image>
+                <view> 二手房</view>
+            </view>
+            <view bindtap="toMyletpub" class="item" data-id="1">
+                <image src="../../resource/newimage/pubHouse.png"></image>
+                <view> 出租房</view>
+            </view>
+        </view>
+    </view>
+    <view class="order">
+        <view class="title">
+      我的服务
+    </view>
+        <view class="content" style="padding-top:40rpx;">
+            <view bindtap="toSalePub" class="item" data-id="1">
+                <image src="../../resource/newimage/sale1.png" style="width:60rpx;height:60rpx;"></image>
+                <view> 发布出租</view>
+            </view>
+            <view bindtap="toSaleLetPub" class="item" data-id="1">
+                <image src="../../resource/newimage/sale2.png" style="width:60rpx;height:60rpx;"></image>
+                <view> 发布求租</view>
+            </view>
+            <view bindtap="Puboldhouse" class="item" data-id="1">
+                <image src="../../resource/newimage/sale3.png" style="width:60rpx;height:60rpx;"></image>
+                <view> 发布出售</view>
+            </view>
+            <view bindtap="toSaleBuyPub" class="item" data-id="1">
+                <image src="../../resource/newimage/sale4.png" style="width:60rpx;height:60rpx;"></image>
+                <view> 发布求购</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="toNewHouse" class="order" style="  border-bottom: 1rpx solid #efefef;display: flex;flex-direction: row;">
+        <view class="title" style="  border-bottom: 0rpx solid #efefef;">
+      联系我们
+    </view>
+        <view class="opentel">
+            <image src="../../resource/images/right.png"></image>
+        </view>
+    </view>
+    <view class="centsung">
+        <image src="../../resource/images/logo.png"></image>
+  讯商提供技术支持 centsung.com
+</view>
+</view>
+<view class="weixinmao-msg" hidden="{{showmsg}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>绑定手机号</view>
+            <view bindtap="closemsg">关闭</view>
+        </view>
+        <form bindsubmit="saveuserinfo">
+            <view class="content">
+                <view class="item">
+                    <input class="inputlist" name="name" placeholder="请输入您的姓名" type="text" value="{{user.name}}"></input>
+                </view>
+                <view class="item">
+                    <input class="inputlist" name="tel" placeholder="请输入您的手机号" type="text" value="{{user.tel}}"></input>
+                </view>
+                <view class="item tops">
+                    <button class="bindtel" formType="submit">立即绑定</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>

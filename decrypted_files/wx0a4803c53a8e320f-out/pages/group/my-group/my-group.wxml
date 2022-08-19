@@ -1,0 +1,43 @@
+<view class="mygroup-wrap">
+    <view class="nav">
+        <view bindtap="navtap" class="nav-item" data-idx="0">
+            <text class="{{navCurIdx=='0'?'active':''}}">全部</text>
+        </view>
+        <view bindtap="navtap" class="nav-item" data-idx="1">
+            <text class="{{navCurIdx=='1'?'active':''}}">待成团</text>
+        </view>
+        <view bindtap="navtap" class="nav-item" data-idx="2">
+            <text class="{{navCurIdx=='2'?'active':''}}">已成团</text>
+        </view>
+        <view bindtap="navtap" class="nav-item" data-idx="3">
+            <text class="{{navCurIdx=='3'?'active':''}}">拼团失败</text>
+        </view>
+    </view>
+    <view class="mygroup-list">
+        <view class="mygroup-item" wx:for="{{groupOrderList}}">
+            <view class="item-main">
+                <image lazyLoad="{{true}}" src="{{item.imageUrl}}"></image>
+                <view class="item-content">
+                    <view class="item-proName">{{item.productName}}</view>
+                    <view class="pro-detail">
+                        <text>{{item.orderCount}}人团</text>
+                        <text class="price">￥{{item.price}}</text>
+                    </view>
+                    <view class="group-status">
+                        <text wx:if="{{item.activityStatus==1}}">待成团</text>
+                        <text wx:elif="{{item.activityStatus==2}}">拼团成功</text>
+                        <text wx:else>拼团失败</text>
+                    </view>
+                </view>
+            </view>
+            <view class="item-bottom">
+                <view bindtap="toGroupDetail" class="btn" data-aid="{{item.activityId}}" data-gno="{{item.groupOrderNo}}" data-pid="{{item.productId}}">查看团详情</view>
+                <view bindtap="toOderDetail" class="btn" data-oid="{{item.childOrderId}}">查看订单详情</view>
+            </view>
+        </view>
+    </view>
+    <view class="group-null" hidden="{{hasGroupOrder}}">
+        <view class="iconfont icon-order-null"></view>
+        <text>您还没有相关拼团订单</text>
+    </view>
+</view>

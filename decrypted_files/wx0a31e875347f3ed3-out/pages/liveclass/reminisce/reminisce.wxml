@@ -1,0 +1,39 @@
+<view class="bg-reminisce">
+    <image src="../../../image/liveclass/bg_home.png"></image>
+</view>
+<view class="reminisce-content-box">
+    <view class="reminisce-info">
+        <view class="reminisce-info-box">
+            <view class="reminisceMedal">
+                <image class="reminisceMedalKind" src="../../../image/liveclass/1_icon.png"></image>
+                <view class="reminisceMedalNumber">
+                    <text>X</text>
+                    <text>{{goldNumber}}</text>
+                </view>
+            </view>
+            <view class="reminisceMedal">
+                <image class="reminisceMedalKind1" src="../../../image/liveclass/2_icon.png"></image>
+                <view class="reminisceMedalNumber1">
+                    <text>X</text>
+                    <text>{{silverNumber}}</text>
+                </view>
+            </view>
+            <view class="reminisceMedal">
+                <image class="reminisceMedalKind2" src="../../../image/liveclass/3_icon.png"></image>
+                <view class="reminisceMedalNumber2">
+                    <text>X</text>
+                    <text>{{copperNumber}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="reminisce-info">
+        <view class="reminisce-content">
+            <image class="huizhang" src="../../../image/liveclass/huizhang_icon.png"></image>
+            <image bindtap="toVideo" class="back-btn" src="../../../image/liveclass/lijihuikan_btn.png"></image>
+        </view>
+    </view>
+    <view class="reminisce-info star">
+        <image src="../../../image/liveclass/star_light_icon.png " wx:for="{{starList}}" wx:key="index"></image>
+    </view>
+</view>

@@ -1,0 +1,20 @@
+<import src="../common/SearchBar/SearchBar.wxml"></import>
+<import src="../common/line.wxml"></import>
+<view style="position:relative;">
+    <view hidden class="search_view B1">
+        <template is="SearchBar" data="{{searchData:searchData}}"></template>
+    </view>
+    <block wx:for="{{list}}" wx:key="optional">
+        <view catchtap="onShowStockDetail" class="list_item  {{item.SFMJ=='Y'?'B5':''}}" data-stock="{{item}}">
+            <text class="item_name T3 S5">{{item.NAME}}</text>
+            <text class="item_code T1 S7">{{item.CODE}}</text>
+            <image catchtap="onAddOrDelStock" id="{{index}}" mode="aspectFit" src="../../images/icon_optional_add.png"></image>
+        </view>
+        <template is="lineView" data></template>
+    </block>
+</view>
+<view>
+    <loading hidden="{{hidden}}">
+      加载中...
+    </loading>
+</view>

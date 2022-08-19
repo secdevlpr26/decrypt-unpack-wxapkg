@@ -1,0 +1,68 @@
+<view class="tabs">
+    <view class="tabs_title1">等待桌数</view>
+    <view class="tabs_line"></view>
+    <view class="tabs_title2">预计等待</view>
+</view>
+<view class="tabs_data">
+    <view class="tabs_data_text1">
+        <em class="color-orange">{{tableNum==null||tableNum==''?0:tableNum}}</em>
+        <em class="color-white">桌</em>
+    </view>
+    <view class="tabs_data_line"></view>
+    <view class="tabs_data_text2">
+        <em class="color-orange">{{minute==null||minute==''?0:minute}}</em>
+        <em class="color-white">分钟</em>
+    </view>
+</view>
+<button bindtap="qr" class="pdqh">排队取号</button>
+<view class="pdsm">
+    <view>.听到叫号请到前台</view>
+    <view>.过号不作废，顺延3桌安排</view>
+    <view>.排队取号成功后行程有变，到号前可取消排队</view>
+</view>
+<view class="zxrxBox">
+    <view class="zxrx">咨询热线：{{hotline}}</view>
+</view>
+<view class="dpdzBox">
+    <view class="contains">
+        <view class="dpdz">店铺地址：</view>
+        <view class="dpdz1">{{address}}</view>
+        <view class="clear"></view>
+    </view>
+</view>
+<view class="yysjBox">
+    <view class="yysj">营业时间：{{startTime}}-{{endTime}}</view>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<view class="cover1" style="display:{{display}}">
+    <view class="cover1-1" style="display:{{display}}"></view>
+    <view class="container xiadan-box">
+        <view class="row">
+            <text class="flex80 writedesk">请选择就餐人数</text>
+        </view>
+        <view class="row_select">
+            <view bindtap="bindShowMsg" class="list-msg2" style="position:relative;width:70%;height:40px;background-color:#505050;border-radius:5px;">
+                <text style="line-height:40px;color:#fff">{{personNum}}人</text>
+                <image class="personal_image {{selectArea?'rotateRight':''}}" src="img/jian.png"></image>
+            </view>
+            <view class="select_box" wx:if="{{select}}">
+                <view bindtap="mySelect" class="select_one" data-name="2" wx:if="{{personNum!='2'}}">2人</view>
+                <view bindtap="mySelect" class="select_one" data-name="1" wx:if="{{personNum!='1'}}">1人</view>
+                <view bindtap="mySelect" class="select_one" data-name="3" wx:if="{{personNum!='3'}}">3人</view>
+                <view bindtap="mySelect" class="select_one" data-name="4" wx:if="{{personNum!='4'}}">4人</view>
+                <view bindtap="mySelect" class="select_one" data-name="5-10" wx:if="{{personNum!='5-10'}}">5-10人</view>
+                <view bindtap="mySelect" class="select_one" data-name="10-20" wx:if="{{personNum!='10-20'}}">10-20人</view>
+                <view bindtap="myS" class="select_one" data-name="">关 闭</view>
+            </view>
+        </view>
+        <view class="row row-button1">
+            <view bindtap="resume" class="flexx button-xiadan1">暂不排队</view>
+            <view bindtap="queuingNumber" class="flexx button-xiadan">确认排队</view>
+        </view>
+    </view>
+</view>
+<button bindtap="goToUser" class="pdqh" style="margin-top:50rpx" wx:if="{{saoma}}">返回首页</button>

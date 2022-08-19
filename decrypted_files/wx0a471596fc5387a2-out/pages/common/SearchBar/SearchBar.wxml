@@ -1,0 +1,7 @@
+<template name="SearchBar">
+    <view class="search_bar B2">
+        <icon size="15" type="search"></icon>
+        <input autoFocus="true" bindinput="onSearchBarChangedEvent" class="T1 S4" placeholder="{{searchData.placeholder}}" value="{{searchData.searchContent}}"></input>
+        <image bindtap="onSearchBarClearEvent" mode="aspectFit" src="../common/SearchBar/icon_clear.png" wx:if="{{searchData.showClearButton==true}}"></image>
+    </view>
+</template>

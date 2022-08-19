@@ -1,0 +1,45 @@
+<view class="errorMsg" wx:if="{{errorMsg.length>0}}">{{errorMsg}}</view>
+<textarea bindinput="textareaInput" class="textarea" placeholder="请输入咨询内容" placeholderClass="textarea-placeholder"></textarea>
+<view class="horiz padding_spacing" style="margin-bottom:20px;">
+    <view class="selectedImgView" wx:for="{{selectedImagePaths}}" wx:for-index="idx" wx:key="index">
+        <image bindtap="deleteImageAction" class="deleteImg" data-imageindex="{{idx}}" src="{{iconimg.deleteIcon}}"></image>
+        <image mode="aspectFill" src="{{item}}" style="width:{{imgW}}px;height:{{imgW}}px;"></image>
+    </view>
+    <view bindtap="addImagesAction" class="addImgBtn horiz" style="width:{{imgW}}px;height:{{imgW}}px;" wx:if="{{selectedImagePaths.length<maxImgNum}}">
+        <image src="{{iconimg.addicon}}" style="width:30px; height:30px;"></image>
+    </view>
+</view>
+<view class="spaceline margin_spacing"></view>
+<view class="cell padding_spacing">
+    <view class="spaceline"></view>
+    <view class="horiz">
+        <image class="cell-icon" mode="aspectFit" src="{{iconimg.orderphone}}"></image>
+        <input bindinput="inputPhone" class="inputPhone" maxlength="11" placeholder="请输入手机号" placeholderStyle="font-size:15px; color:#bbb;" type="number"></input>
+    </view>
+    <view class="spaceline"></view>
+</view>
+<view class="cell padding_spacing">
+    <view class="horiz">
+        <view class="horiz" style="flex:1;">
+            <image class="cell-icon" mode="aspectFit" src="{{iconimg.order_name}}"></image>
+            <input bindinput="inputName" class="inputName" maxlength="4" placeholder="您的称呼" placeholderStyle="font-size:15px; color:#bbb;" type="text"></input>
+        </view>
+        <view class="horiz" style="flex:1;">
+            <view bindtap="changeSex" class="horiz" data-sex="0" style="flex:1;">
+                <image mode="aspectFit" src="{{sex==0?iconimg.selected:iconimg.select}}" style="height:15px;width:15px;"></image>
+                <view style="margin-left:10px;">女士</view>
+            </view>
+            <view bindtap="changeSex" class="horiz" data-sex="1" style="flex:1;">
+                <image mode="aspectFit" src="{{sex==1?iconimg.selected:iconimg.select}}" style="height:15px;width:15px;"></image>
+                <view style="margin-left:10px;">先生</view>
+            </view>
+        </view>
+    </view>
+    <view class="spaceline"></view>
+</view>
+<view class="tips margin_spacing">
+  注：留言咨询由律师空闲时间义务解答，回复时间会有延后，如紧急，推荐使用付费咨询。
+  <text bindtap="showPadAdvicePage" style="color:#5b89fa">点击前往</text>
+    <image src="../../images/arrow@2x.png" style="height:8px; width:10px;margin-left:2px;"></image>
+</view>
+<button bindtap="submit" class="submitBtn margin_spacing" loading="{{loading}}" style="margin-top:40px;margin-bottom:20px;">发送</button>

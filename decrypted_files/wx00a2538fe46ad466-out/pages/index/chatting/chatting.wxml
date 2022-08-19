@@ -1,0 +1,23 @@
+<view class="Empty">
+    <view class="Empty">
+        <view class="Empty" wx:for="Empty">
+            <view class="Empty">
+                <image src="Empty" style="Empty"></image>
+            </view>
+            <view class="Empty">
+                <view style="Empty"></view>
+            </view>
+            <view class="Empty" style="Empty">
+                <view style="Empty">
+                    <text selectable="Empty">Empty</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="Empty">
+        <view class="Empty">
+            <input bindinput="Empty" type="Empty" value="Empty"></input>
+        </view>
+        <view bindtap="Empty" class="Empty">Empty</view>
+    </view>
+</view>

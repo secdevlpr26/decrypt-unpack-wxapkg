@@ -1,0 +1,29 @@
+<view class="mycenter">
+    <view class="mycenter-header">
+        <image src="/images/bg2.png" style="width:750rpx; height:312rpx;"></image>
+        <view class="head-peo">
+            <view class="head-peo-tu2">
+                <image src="{{head}}" wx:if="{{head}}"></image>
+            </view>
+            <view wx:if="{{result}}">
+                <text>{{result.name}}：{{result.code}}</text>
+            </view>
+            <view wx:else>
+                <button bindgetuserinfo="bindGetUserInfo" class="bottom" lang="zh_CN" openType="getUserInfo" type="primary">
+                    授权登录
+                </button>
+            </view>
+        </view>
+    </view>
+    <view class="mycenter-body">
+        <view bindtap="onBillDetail" class="list-item">
+            <view class="item-left">
+                <image src="/images/mingxi2.png"></image>
+                <text>账单明细</text>
+            </view>
+            <view class="item-right">
+                <image src="/images/right.png" style="width:9px; height:14px;"></image>
+            </view>
+        </view>
+    </view>
+</view>

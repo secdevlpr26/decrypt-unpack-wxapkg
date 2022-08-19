@@ -1,0 +1,77 @@
+<view class="top">
+    <view class="single-tank-title">
+        <view>单罐监控</view>
+    </view>
+    <view bindtap="gotoTankArea" class="tank-area-title">
+        <view>罐区数据</view>
+    </view>
+    <view class="clearfix"></view>
+</view>
+<view class="area">
+    <view bindtap="gotoSingleData" class="single-area" id="{{item_index}}" wx:for="{{list}}" wx:for-index="item_index">
+        <view class="single-img{{item.temperatureStatus==0?'':'-blink'}}">
+            <image src="../../images/single-tank/tank-{{item.temperatureStatus==1?'ab':item.status==1?'ab':item.levelStatus==0?item.tap1==1?'in':item.tap2==1?'out':'':'ab'}}normal.png" style="width:169rpx;height:114rpx;position:absolute;top:0;left:0;z-index:10"></image>
+            <view style="width:169rpx;position:absolute;left:0rpx;bottom:13rpx;z-index:13;margin:0;padding:0;">
+                <view style="margin:0;padding:0;height:21rpx;margin-bottom:{{item.levelStatus==1?item.oilHeight/21.8*89:0}}rpx;">
+                    <image src="../../images/single-tank/line-{{item.temperatureStatus==1?'ab':item.status==1?'ab':item.levelStatus==0?item.tap1==1?'in':item.tap2==1?'out':'':item.levelStatus==1?'no':'ab'}}normal-{{item.oilHeight<=20.372?'1':'2'}}.png" style="margin:0;padding:0;width:169rpx;height:21rpx;"></image>
+                </view>
+                <view style="margin:0;padding:0;height:{{item.oilHeight/21.8*84}}rpx;display:{{item.levelStatus==1?'none':'block'}};">
+                    <image src="../../images/single-tank/down-{{item.temperatureStatus==1?'ab':item.status==1?'ab':item.levelStatus==0?item.tap1==1?'in':item.tap2==1?'out':'':'ab'}}normal.png" style="margin:0;padding:0;width:167rpx;height:{{item.oilHeight/21.8*84}}rpx;margin-left:1rpx;"></image>
+                </view>
+            </view>
+            <view class="single-percent" style="color: {{item.temperatureStatus==1?'#E60000':item.status==1?'#E60000':item.levelStatus==0?item.tap1==1?'#088b4a':item.tap2==1?'#E6D200':'#0263E5':'#E60000'}};">{{item.saturation}}%</view>
+        </view>
+        <view class="single-message">
+            <view class="tank-name">
+                <view class="name-message{{item.temperatureStatus==0?'':'-blink'}}" style="color:{{item.temperatureStatus==0?'#000000':'#E60000'}};">{{item.name}}</view>
+                <view class="tank-fire" style="display:{{item.temperatureStatus==0?'none':'block'}};">
+                    <image src="../../images/single-tank/fire-alarm.png"></image>
+                </view>
+                <view class="tank-status" style="display:{{item.levelStatus==0?'none':'block'}};">{{item.levelStatus==1?'低液位':item.levelStatus==2?'高液位':item.levelStatus==3?'高高液位':''}}</view>
+                <view class="tank-status" style="display:{{item.status==0?'none':'block'}};">{{item.status==1?'液位异常':''}}</view>
+                <view class="clearfix"></view>
+            </view>
+            <view class="tank-message">
+                <view class="tank-data">
+                    <view class="oil-level">
+                        <view>
+                            <text style="color:{{item.levelStatus==0?'rgba(0,0,0,0.8)':'#FF0000'}}">液位：{{item.oilHeight}}m</text>
+                        </view>
+                        <view style="clear:both;float:none;"></view>
+                    </view>
+                    <view class="tank-temperature ">
+                        <view>
+                            <text>温度：{{item.temperature}}℃</text>
+                        </view>
+                        <view style="clear:both;float:none;"></view>
+                    </view>
+                </view>
+                <view class="tap-status">
+                    <view class="tap-status-two">
+                        <view>
+                            <text style="color:{{item.tap1==0?'':'#008744;'}}">阀门{{item.name}}-2:</text>
+                        </view>
+                        <view>
+                            <text id="status-2-0" style="margin-left:10rpx;{{item.tap1==0?'':'color:#008744;'}}">{{item.tap1==0?'关闭':'开启'}}</text>
+                        </view>
+                        <view style="clear:both;float:none;"></view>
+                    </view>
+                    <view class="tap-status-three" style="margin-top:22rpx;">
+                        <view>
+                            <text style="color:{{item.tap2==0?'':'#008744;'}} ">阀门{{item.name}}-3:</text>
+                        </view>
+                        <view>
+                            <text id="status-3-0" style="margin-left:10rpx;{{item.tap2==0?'':'color:#008744;'}}">{{item.tap2==0?'关闭':'开启'}}</text>
+                        </view>
+                        <view style="clear:both;float:none;"></view>
+                    </view>
+                </view>
+                <view class="clearfix"></view>
+            </view>
+        </view>
+        <view class="clearfix"></view>
+    </view>
+</view>
+<zy-modal areaName="{{areaName}}出现火灾预警!" bindconfirm="modalConfirm" confirmText="确定" hidden="{{modalHidden}}" imageReady="block"></zy-modal>
+<zy-modal areaName="{{alarmDescribe}}" bindconfirm="confirmModal" confirmText="确定" hidden="{{hiddenModal}}" imageReady="none"></zy-modal>
+<audio id="audio" loop="false" src="{{src}}"></audio>

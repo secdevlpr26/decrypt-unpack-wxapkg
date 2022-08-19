@@ -1,0 +1,13 @@
+<view class="parameter_box area_box">
+    <view class="detail_box_title">商品参数</view>
+    <view class="detail_box_content" wx:if="{{product.base_attr.property.length>0}}">
+        <view class="table_wrp detail_box_bd">
+            <view class="table">
+                <view class="tr" wx:for="{{product.base_attr.property}}" wx:key="{{item.name}}">
+                    <view class="td">{{item.name}}</view>
+                    <view class="td td_value">{{item.value}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

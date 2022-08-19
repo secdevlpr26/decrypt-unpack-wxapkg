@@ -1,0 +1,76 @@
+<view class="wrap-main">
+    <view class="head">
+        <view class="shop-image">
+            <image src="{{shopInfo.shop_img}}"></image>
+        </view>
+        <image class="gold" src="../../assets/icons/gold.png"></image>
+        <view class="flow">
+            <view class="num">{{shopInfo.collectnum}}</view>
+            <view>粉丝数</view>
+        </view>
+        <view bindtap="flow" class="flow-btn" wx:if="{{!collect}}">收藏店铺</view>
+        <view class="flow-btn" wx:if="{{collect}}">已收藏</view>
+        <view class="shop-info">
+            <view class="name row">{{shopInfo.shop_name}}</view>
+            <view class="stars row">
+                <image src="../../assets/icons/star.png"></image>
+                <image src="../../assets/icons/star.png"></image>
+                <image src="../../assets/icons/star.png"></image>
+                <image src="../../assets/icons/star.png"></image>
+                <image src="../../assets/icons/star.png"></image>
+            </view>
+            <view class="other row">销量：{{shopInfo.sales_sum}}</view>
+        </view>
+        <view class="shim"></view>
+        <image class="bg" src="{{shopInfo.shop_bimg}}"></image>
+    </view>
+    <view class="nav">
+        <view bindtap="changeTab" class="tab {{currentTab==1?'current':''}}" data-tab="1">
+            <view class="num">1</view>
+            <view class="text">全部商品</view>
+        </view>
+        <view bindtap="changeTab" class="tab {{currentTab==2?'current':''}}" data-tab="2">
+            <view class="num">1</view>
+            <view class="text">推荐</view>
+        </view>
+        <view bindtap="changeTab" class="tab {{currentTab==3?'current':''}}" data-tab="3">
+            <view class="num">1</view>
+            <view class="text">新品</view>
+        </view>
+        <view bindtap="changeTab" class="tab {{currentTab==4?'current':''}}" data-tab="4">
+            <view class="num">1</view>
+            <view class="text">热卖</view>
+        </view>
+        <view class="tab">
+            <view class="num">1</view>
+            <view class="text">
+                <navigator url="../shopdetails/shopdetails?id={{id}}">店铺简介</navigator>
+            </view>
+        </view>
+    </view>
+    <view class="goods-container">
+        <scroll-view bindscrolltolower="loadMore" class="goods-scroll" scrollX="false" scrollY="true">
+            <view class="goods-list">
+                <view bindtap="toToGoods" class="goods-item" data-id="{{goods.goods_id}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="index">
+                    <view class="pic">
+                        <image src="{{goods.original_img}}"></image>
+                    </view>
+                    <view class="info">
+                        <view class="name text-ellipsis">
+                                {{goods.goods_name}}
+                            </view>
+                        <view class="brand text-ellipsis">
+                                {{goods.shop_name}} </view>
+                        <view class="price">
+                                ¥{{goods.shop_price}}
+                            </view>
+                        <view class="comment">
+                                {{goods.comments_num*1>0?goods.comments_num+'人评论':'新上架'}}
+                                <view class="salenum">销量：{{goods.sales_sum}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

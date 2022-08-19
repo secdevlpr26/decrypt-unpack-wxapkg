@@ -1,0 +1,80 @@
+<view class="spreadTip" wx:if="{{twitterInfo.partner_status==0||tip_status}}">
+    <image src="{{sourceURL}}/applet_weapp/images/icon/icon_191.png"></image>审核中</view>
+<view class="spread">
+    <i wx:if="{{userInfo.is_distribut==1}}">
+        <image src="{{user.avatarUrl}}"></image>
+    </i>
+    <i class="noSpead {{check_status?'spreatHide':''}}" wx:if="{{userInfo.is_distribut==0}}">
+        <image src="{{user.avatarUrl}}"></image>
+        <view class="font30 font-blank mt10">{{user.nickName}}</view>
+    </i>
+    <view wx:if="{{userInfo.is_distribut==1}}">
+        <view>我是
+        <text class="orangeName">{{user.nickName}}</text>
+        </view>
+        <view>我为
+        <text class="orangeName">享收技术支持</text>代言</view>
+        <image class="spreadCode" src="{{userInfo.qrcode}}"></image>
+        <view class="spreadTxt">成为推客，分享赚佣金</view>
+    </view>
+    <view class="noTwitter {{check_status?'spreatHide':''}}" wx:if="{{userInfo.is_distribut==0}}">
+        <image src="/images/sy.png"></image>
+        <view class="">代言
+        <text class="font-orange">享收技术支持</text>
+            <view class="mt10">成为推客，赚取佣金</view>
+        </view>
+        <image src="/images/xy.png"></image>
+    </view>
+</view>
+<button bindtap="showModal" class="spreatBtn {{twitterShow==0?'':'spreatHide'}}" wx:if="{{userInfo.is_distribut==0}}">立即成为推客</button>
+<button class="spreatBtn" openType="share" wx:if="{{userInfo.is_distribut==1}}">我要分享</button>
+<view bindtap="center" class="center" wx:if="{{userInfo.is_distribut==1}}">推广中心</view>
+<view class="font28 center font-blank mt30" wx:if="{{twitterInfo.is_partner==1&&twitterInfo.partner_status==1}}">点击右上角
+    <image class="shareImg" src="{{sourceURL}}/applet_weapp/images/icon/share.png"></image>,邀请好友一起代言</view>
+<view bindtap="gotoIndex" class="twitterHome1" wx:if="{{share_status==1}}">
+    <image src="{{sourceURL}}/applet_weapp/images/home1.png"></image>
+</view>
+<view bindtap="hideModal" class="mask" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="card-modal" wx:if="{{showModalStatus}}">
+    <form reportSubmit bindsubmit="submit">
+        <view class="spreadTle">申请成为推客
+        <text>请填写下方信息</text>
+        </view>
+        <view class="speardForm">
+            <view class="weui-cell weui-cell_access bgfff">
+                <view class="weui-cell__bd">
+                    <text class="font-blank font28">姓名</text>
+                </view>
+                <view class="weui-cell__ft spreadItem">
+                    <input adjustPosition class="spreadInp" confirmType="next" name="name" placeholder="请填写您的姓名" placeholderStyle="color:#ccc" type="text"></input>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_access bgfff">
+                <view class="weui-cell__bd">
+                    <text class="font-blank font28">手机号</text>
+                </view>
+                <view class="weui-cell__ft spreadItem">
+                    <input adjustPosition bindinput="bindHideKeyboard" class="spreadInp" maxlength="11" name="mobile" placeholder="请填写手机号" placeholderStyle="color:#ccc" type="number"></input>
+                </view>
+            </view>
+            <view hidden class="weui-cell weui-cell_access bgfff">
+                <view class="weui-cell__bd">
+                    <text class="font-blank font28">身份证</text>
+                </view>
+                <view class="weui-cell__ft spreadItem">
+                    <input adjustPosition class="spreadInp" maxlength="32" name="card" placeholder="请填写身份证号" placeholderStyle="color:#ccc"></input>
+                </view>
+            </view>
+        </view>
+        <button class="card-btn" formType="submit" wx:if="{{!disabled}}">确认</button>
+        <button class="card-btn" style="background:#ccc" wx:else>确认</button>
+    </form>
+</view>
+<view class="mask" wx:if="{{showModalShare}}"></view>
+<view class="spreadShare" wx:if="{{showModalShare}}">
+    <i bindtap="closeAlert">X</i>
+    <image src="https://xcx006.ycdongxu.com//share.jpg"></image>
+    <view>恭喜你！成为推客</view>
+    <view>点击右上角
+      <image class="shareImg" src="https://xcx006.ycdongxu.com/shareicon.png"></image>,邀请好友一起代言</view>
+</view>

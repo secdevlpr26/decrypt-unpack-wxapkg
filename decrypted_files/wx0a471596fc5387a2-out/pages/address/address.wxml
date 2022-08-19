@@ -1,0 +1,20 @@
+<form bindreset="formReset" bindsubmit="formSubmit">
+    <view class="address">
+        <view class="li">
+            <text>联系人：</text>
+            <input name="consignee" type="text" value="{{CONSIGNEE}}"></input>
+        </view>
+        <view class="li">
+            <text>手机号码：</text>
+            <input name="cellphone" type="text" value="{{CELLPHONE}}"></input>
+        </view>
+        <view class="li">
+            <text>详细地址：</text>
+            <input name="address" placeholder="街道、楼牌号等" type="text" value="{{ADDRESS}}"></input>
+        </view>
+        <input hidden="false" name="id" type="hidden" value="{{ID}}"></input>
+    </view>
+    <view class="tijiao">
+        <button formType="submit">提交</button>
+    </view>
+</form>

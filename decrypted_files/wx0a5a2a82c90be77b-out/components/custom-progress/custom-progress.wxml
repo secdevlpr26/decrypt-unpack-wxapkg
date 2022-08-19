@@ -1,0 +1,11 @@
+<view class="custom-progress">
+    <view class="dot" style="margin-left: {{x}}rpx; margin-top: {{y}}rpx;" wx:if="{{step>0}}"></view>
+    <view class="left-circle" style="background-color: {{left_background}}; transform: rotate({{left_deg}}deg);"></view>
+    <view class="right-circle" style="background-color: {{right_background}}; transform: rotate({{right_deg}}deg);"></view>
+    <view class="img-background" style="background-color: {{img_background}};"></view>
+    <image class="image" src="../../images/home/cp-mask-progress.png"></image>
+    <view class="tip-layout">
+        <text class="tip-txt">{{title}}</text>
+        <text class="progress-txt">{{receivePercent}}%</text>
+    </view>
+</view>

@@ -1,0 +1,32 @@
+<template name="XYReserveTimeView">
+    <view class="wux-picker-container" wx:if="{{visible}}">
+        <view bindtap="{{hide}}" class="weui-mask {{animateCss[1]}}" hidden="{{!visible}}"></view>
+        <view class="selecttime {{animateCss[0]}}">
+            <view class="selecttimetop">
+                <view bindtap="{{hide}}" class="selecttimequxiao">取消</view>
+                <text>选择上门维修时间</text>
+                <view class="selecttimetishi" wx:if="{{dateList[0].notice}}">{{dateList[0].notice}}</view>
+            </view>
+            <view class="selecttimemain">
+                <scroll-view scrollY class="riqi" style="height: 500rpx;">
+                    <block wx:for="{{dateList}}" wx:for-index="dateIndex" wx:for-item="dateItem" wx:key="date">
+                        <view bindtap="{{dateCellClicked}}" class="riqiday chengshiCur" data-id="{{dateItem.Id}}" data-idx="{{dateIndex}}" wx:if="{{dateItem.selected===1}}">{{dateItem.dateStr}}
+                </view>
+                        <view bindtap="{{dateCellClicked}}" class="riqiday" data-id="{{dateItem.Id}}" data-idx="{{dateIndex}}" wx:else>{{dateItem.dateStr}}
+                </view>
+                    </block>
+                </scroll-view>
+                <scroll-view scrollY class="shijian" scrollIntoView="{{toView}}" scrollTop="{{scrollTop}}" style="height: 500rpx;">
+                    <view bindtap="{{periodCellClicked}}" class="shijiantime" data-id="{{periodItem.Id}}" data-idx="{{periodIndex}}" wx:for="{{periodList}}" wx:for-index="periodIndex" wx:for-item="periodItem" wx:key="period">
+                        <view class="shijiantimeSubView1" style="height: {{periodItem.timeSubViewHeight}};line-height: {{periodItem.timeSubViewHeight}};">              
+                {{periodItem.start_time}}-{{periodItem.next_time}}  
+              </view>
+                        <view class="shijiantimeSubView2" wx:if="{{periodItem.night_fee>0}}">              
+                {{periodItem.nightFeeTitle}}  
+              </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</template>

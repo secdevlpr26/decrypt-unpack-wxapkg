@@ -1,0 +1,31 @@
+<view class="container passwd">
+    <view class="login-banner">
+        <image src="/images/login_banner.png"></image>
+    </view>
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="passwd-body">
+            <view class="passwd-ipt">
+                <input bindinput="mobileText" class="weui-input" name="mobile" placeholder="请输入手机号码" type="number"></input>
+            </view>
+            <view class="passwd-ipt">
+                <input bindinput="codeText" class="weui-input TestGetCode-ipt" name="code" placeholder="请输入验证码" type="number"></input>
+                <button bindtap="getCode" class="TestGetCode" disabled="{{disabled}}">{{codeText}}</button>
+            </view>
+            <view class="passwd-ipt">
+                <input bindinput="passwdText" class="weui-input" name="passwd" placeholder="请输入密码" type="password"></input>
+            </view>
+            <view class="passwd-ipt">
+                <input class="weui-input" name="repasswd" placeholder="请确定密码" type="password"></input>
+            </view>
+            <view class="passwd-btn">
+                <button formType="submit"> 确 定</button>
+            </view>
+            <view class="passwd-txt">
+                <text bindtap="onLogin">会员登录</text>|<text bindtap="onSignin">注册新账号</text>
+            </view>
+        </view>
+    </form>
+    <view class="login-bg">
+        <image src="/images/bg.png"></image>
+    </view>
+</view>

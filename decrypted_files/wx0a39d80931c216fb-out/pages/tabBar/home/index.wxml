@@ -1,0 +1,82 @@
+<view class="page" wx:if="{{renderPage}}">
+    <view class="input-header">
+        <view class="input-view">
+            <uni-icon bind:__l="__l" color="#666666" size="22" type="search" vueId="0b198cdc-1"></uni-icon>
+            <input bindconfirm="__e" bindinput="__e" class="input" confirmType="search" data-event-opts="{{[ [ 'confirm',[ [ 'confirm',['$event'] ] ] ],[ 'input',[ [ '__set_model',[ '','seachkeywords','$event',[] ] ] ] ] ]}}" placeholder="输入搜索关键词" type="text" value="{{seachkeywords}}"></input>
+        </view>
+    </view>
+    <swiper autoplay="{{autoplay}}" bindchange="__e" circular="{{circular}}" data-event-opts="{{[ [ 'change',[ [ 'swiperChange',['$event'] ] ] ] ]}}" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item data-pagetype="{{item.PageType}}" data-title="{{item.Desc}}" data-url="{{item.Url}}" wx:for="{{home.Slide}}" wx:key="index">
+            <view bindtap="__e" class="swiper-item" data-event-opts="{{[ [ 'tap',[ [ 'SlideRedirectProduct',['$0'],[ [ ['home.Slide','',index,'Url'] ] ] ] ] ] ]}}">
+                <image class="swiper-banner" src="{{item.ImageUrl}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="swiper-dots">
+        <view class="{{['swiper-dot-item',currentSwiperIndex==index?'active':'']}}" wx:for="{{home.Slide}}" wx:key="index">
+            <view class="dot"></view>
+        </view>
+    </view>
+    <view class="tri-icons">
+        <view class="tri-icons-wrapper">
+            <view bindtap="__e" class="icon-item" data-event-opts="{{[ [ 'tap',[ [ 'goPage',['$event'] ] ] ] ]}}" data-pagetype="{{item.PageType}}" data-title="{{item.Desc}}" data-url="{{item.Url}}" wx:for="{{homeJson.Icon}}" wx:key="index">
+                <image src="{{item.ImageUrl}}"></image>
+                <view>{{item.Desc}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="yuan">
+        <image src="/static/home/yuan.png"></image>
+    </view>
+    <view class="country-area" wx:for="{{home.FirstCategories}}" wx:for-index="categoryIndex" wx:for-item="category" wx:key="categoryIndex">
+        <image bindtap="__e" class="t-img" data-event-opts="{{[ [ 'tap',[ [ 'CountryProductList',['$0'],[ [ ['home.FirstCategories','',categoryIndex,'CategoryId'] ] ] ] ] ] ]}}" src="{{category.ImageUrl}}"></image>
+        <view class="product-grid">
+            <view bindtap="__e" class="product" data-event-opts="{{[ [ 'tap',[ [ 'gotoProductDetails',['$0'],[ [ ['home.FirstCategories','',categoryIndex],['ProductList','',index,'Id'] ] ] ] ] ] ]}}" wx:for="{{category.ProductList}}" wx:for-item="product" wx:key="index">
+                <view class="product-inner">
+                    <view class="p-label" wx:if="{{product.Title!=null}}">{{product.Title}}</view>
+                    <view class="image-view">
+                        <image class="product-image" lazyLoad="{{true}}" mode="aspectFit" src="{{product.ImageUrl}}" wx:if="{{renderImage}}"></image>
+                        <view class="miao" wx:if="{{product.IsLimitBuy=='true'}}">秒杀</view>
+                        <view class="pd-label" wx:if="{{product.ShortDescription!=null}}">{{product.ShortDescription}}</view>
+                        <view class="pd-label" wx:else>汉欧优选</view>
+                    </view>
+                    <view class="product-title">{{product.Name}}</view>
+                    <view class="product-price">
+                        <view>{{'￥'+product.SalePrice}}<text>{{'市场价:￥'+product.MarketPrice}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="home-essential">
+        <view class="header">
+            <image src="/static/home/essential.png"></image>
+        </view>
+        <view class="product-grid">
+            <view bindtap="__e" class="product" data-event-opts="{{[ [ 'tap',[ [ 'gotoProductDetails',['$0'],[ [ ['recommendProduct','',index,'Id'] ] ] ] ] ] ]}}" wx:for="{{recommendProduct}}" wx:for-item="product" wx:key="index">
+                <view class="product-inner">
+                    <view class="p-label" wx:if="{{product.Title!=null}}">{{product.Title}}</view>
+                    <view class="image-view">
+                        <image class="product-image" lazyLoad="{{true}}" mode="aspectFit" src="{{product.ImagePath}}" wx:if="{{renderImage}}"></image>
+                        <view class="miao" wx:if="{{product.IsLimitBuy=='true'}}">秒杀</view>
+                        <view class="pd-label" wx:if="{{product.ShortDescription!=null}}">{{product.ShortDescription}}</view>
+                        <view class="pd-label" wx:else>汉欧优选</view>
+                    </view>
+                    <view class="product-title">{{product.ProductName}}</view>
+                    <view class="product-price">
+                        <view>{{'￥'+product.MinSalePrice}}<text>{{'市场价:￥'+product.MarketPrice}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="{{['share-icon',showGoTop?'mtop':'']}}">
+        <image src="/static/product/share.png"></image>
+        <button openType="share" type="primary">微信好友</button>
+    </view>
+    <view bindtap="__e" class="gotop-icon" data-event-opts="{{[ [ 'tap',[ [ 'goTop',['$event'] ] ] ] ]}}" wx:if="{{showGoTop}}">
+        <image src="/static/product/gotop.png"></image>
+    </view>
+</view>

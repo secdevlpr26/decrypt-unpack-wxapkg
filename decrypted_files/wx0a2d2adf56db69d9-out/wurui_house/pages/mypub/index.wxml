@@ -1,0 +1,42 @@
+<view class="container">
+    <block wx:if="{{!check}}">
+        <view class="type-container">
+            <scroll-view class="type-navbar" scrollX="true">
+                <view class="type-box">
+                    <view bindtap="tabClick" class="type-navbar-item {{ordertype==1?'type-item-on':''}}" id="1">
+            待审核
+          </view>
+                </view>
+                <view class="type-box">
+                    <view bindtap="tabClick" class="type-navbar-item {{ordertype==3?'type-item-on':''}}" id="3">
+            已审核
+          </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="news">
+            <view class="newslist" wx:for="{{list}}">
+                <view bindtap="toNewsDetail" class="pic" data-id="{{item.id}}">
+                    <image mode="scaleToFill" src="{{item.thumb}}"></image>
+                    <image mode="scaleToFill" src="../../resource/newimage/pass.png" wx:if="{{item.statusStr=='通过'}}"></image>
+                    <image mode="scaleToFill" src="../../resource/newimage/nopass.png" wx:if="{{item.statusStr=='未过'}}"></image>
+                </view>
+                <view bindtap="toNewsDetail" class="title" data-id="{{item.id}}">
+                    <view>{{item.housearea}}</view>
+                    <view>发布于{{item.createtime}}</view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class="nonews" wx:if="{{check}}">
+        <view>
+            <image src="../../resource/newimage/edit.png"></image>
+        </view>
+        <view>
+        暂时没有发布需求哦~
+      </view>
+        <view>
+            <button bindtap="toSaleOldPub">立即发布</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,18 @@
+<import src="../../resource/wxParse/wxParse.wxml"></import>
+<view class="container">
+    <view class="title">
+        <view>{{data.title}}</view>
+        <view>{{data.createtime}}</view>
+    </view>
+    <view class="content">
+        <block wx:for="{{content}}" wx:for-index="idy" wx:for-item="cellData">
+            <view class="p" wx:if="{{cellData.type=='view'}}">
+                <block wx:for="{{cellData.child}}" wx:key="text">
+                    <text bindtap="stockClick" class="a" data-seccode="{{item.attr['data-seccode']}}" data-secname="{{item.attr['data-secname']}}" wx:if="{{item.type=='a'}}">{{item.text}}</text>
+                    <text wx:else>{{item.text}}</text>
+                </block>
+            </view>
+            <image bindload="imageLoad" class="img" data-index="{{idy}}" mode="aspectFit" src="{{cellData.attr.src}}" wx:if="{{cellData.type=='img'}}"></image>
+        </block>
+    </view>
+</view>

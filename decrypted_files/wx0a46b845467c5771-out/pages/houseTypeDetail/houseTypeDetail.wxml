@@ -1,0 +1,33 @@
+<scroll-view class="contain">
+    <movable-area class="top_flex" style="height: 120rpx; width: 100%;">
+        <movable-view class="top" direction="horizontal" style="width:{{dataList.length>2?dataList.length*280+'rpx':'100%'}}">
+            <view bindtap="checkOutHouse" class="item" data-id="{{item.id}}" data-index="{{index}}" style="background:{{active==item.id?'linear-gradient(-270deg, '+jbColor1+' 0%, '+jbColor2+' 100%);opacity:1':'#272A34'}}" wx:for="{{dataList}}" wx:key="index">{{item.name}}</view>
+        </movable-view>
+    </movable-area>
+    <view class="preview">
+        <view style="overflow: hidden">
+            <text class="left">{{houseType}}</text>
+            <text class="right">{{houseDetail}}</text>
+        </view>
+    </view>
+    <view class="con">
+        <image class="click-big-btn" src="../../image/wepy_pro/click-big.png"></image>
+        <swiper bindchange="bindchange" class="swipe" current="{{current}}">
+            <swiper-item bindtap="priviewPic1" current="{{current}}" data-index="{{index}}" wx:for="{{picList}}" wx:key="index">
+                <image binderror="error" bindload="load" class="slide-image" data-index="{{index}}" data-item="{{item}}" hidden="{{item.loadComplete==false}}" mode="aspectFit" src="{{item.imageUrl}}"></image>
+                <image class="slide-image" hidden="{{item.loadComplete}}" mode="center" src="{{defaultImagePath}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="tip">
+            <view class="text">
+                <image bindtap="pre" class="pre" src="{{serverUrl}}left-arrow.png" wx:if="{{current!=0}}"></image>
+                <text style="background:{{'linear-gradient(-270deg, '+jbColor1+' 0%, '+jbColor2+' 100%);opacity:1'}}">{{picList[current].name?picList[current].name:'户型'}}</text>
+                <image bindtap="next" class="next" src="{{serverUrl}}right-arrow.png" wx:if="{{current!=picList.length-1}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="remark">注：本资料提供的所有的信息仅供参考，不作为购房交付标准，最终以政府批准文件及双方签订的买卖合同为准。</view>
+    <view class="IM">
+        <button bindtap="goChatList" class="_title" style="background:url('{{serverUrl}}wenan.png') no-repeat center center/403rpx 38rpx,{{'linear-gradient(-270deg, '+jbColor1+' 0%, '+jbColor2+' 100%);'}}"></button>
+    </view>
+</scroll-view>

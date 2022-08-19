@@ -1,0 +1,100 @@
+<view class="xzdz" wx:if="{{!comment}}">
+    <view class="xzdzBox">
+        <view class="xzdzTitle">
+            <view class="xzdzC">订单详情
+        <image class="xzdz_img" src="/images/orderDetails.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="xzdz" wx:if="{{comment}}">
+    <view class="xzdzBox">
+        <view class="xzdzTitle">
+            <view class="xzdzC">评价详情
+        <image class="xzdz_img" src="/images/orderDetails.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="order-detail-box">
+    <view class="order-detail-title">
+        <image class="order-detail-storelogo" src="{{storeInfo.storeInfoHeadImgUrl}}"></image>
+        <view class="order-detail-storename">{{storeInfo.storeInfoName}}</view>
+    </view>
+    <view wx:for="{{foodInfo.foodList}}" wx:for-item="food" wx:key="key">
+        <view class="row order-detail-content">
+            <view class="col-9">
+                <image class="order-detail-foodsrc" src="{{food.imgUrl}}"></image>
+                <view style="float:left;">
+                    <view class="order-detail-foodname" wx:if="{{food.sizeName==null||food.sizeName==''}}">{{food.foodName}}</view>
+                    <view class="order-detail-foodname" wx:else>{{food.foodName}}({{food.sizeName}})</view>
+                    <view class="order-detail-foodcount">×{{food.foodCount}}</view>
+                </view>
+            </view>
+            <view class="col-3 order-detail-price">￥{{filters.toFix(food.realPrice)}}</view>
+        </view>
+    </view>
+    <view class="mj-box" wx:if="{{takeOutDispatchType=='0'&&derateMoney>0}}">
+        <view class="mj-box-youhui">
+            <view class="float-left">
+                <image class="mj-logo-size" src="../../../../../images/manjian.png"></image>
+            </view>
+            <view class="float-left" wx:if="{{derateMoney>0&&discountFlg=='V'}}">折扣</view>
+            <view class="float-left" wx:if="{{derateMoney>0&&discountFlg=='Y'}}">优惠</view>
+            <view class="float-left" wx:if="{{derateMoney>0&&discountFlg=='Q'}}">优惠</view>
+        </view>
+        <view class="mj-box-price" wx:if="{{derateMoney>0&&discountFlg=='V'}}">会员卡折扣</view>
+        <view class="mj-box-price" wx:if="{{derateMoney>0&&discountFlg=='Y'}}">优惠券优惠</view>
+        <view class="mj-box-price" wx:if="{{derateMoney>0&&discountFlg=='Q'}}">权益卡优惠</view>
+    </view>
+    <view class="mj-box" wx:if="{{takeOutDispatchType=='1'&&derateMoney>0}}">
+        <view class="mj-box-youhui">
+            <view class="float-left" wx:if="{{discountFlg=='V'||discountFlg=='Y'||discountFlg=='Q'}}">
+                <image class="mj-logo-size" src="../../../../../images/manjian.png"></image>
+            </view>
+            <view class="float-left" wx:if="{{discountFlg=='V'}}">折扣</view>
+            <view class="float-left" wx:if="{{discountFlg=='Y'}}">优惠</view>
+            <view class="float-left" wx:if="{{discountFlg=='Q'}}">优惠</view>
+        </view>
+        <view class="mj-box-price" wx:if="{{discountFlg=='V'}}">会员卡折扣</view>
+        <view class="mj-box-price" wx:if="{{discountFlg=='Y'}}">优惠券优惠</view>
+        <view class="mj-box-price" wx:if="{{discountFlg=='Q'}}">权益卡优惠</view>
+    </view>
+    <view class="mj-yyhs" wx:if="{{wmFlg==true}}"> 配送费
+    <em class="ky">￥{{filters.toFix(peisongfei)}}</em>
+    </view>
+    <view class="mj-yyhs" wx:if="{{wmFlg==true}}"> 餐盒费
+    <em class="ky">￥{{filters.toFix(canhefei)}}</em>
+    </view>
+    <view class="mj-detail">
+        <view class="mj-zhuo" wx:if="{{dcFlg==true&&wmFlg==false}}">桌:{{foodInfo.orderTableId}}</view>
+        <view class="float-right0">
+            <em class="mj-yyh">已优惠￥{{filters.toFix(derateMoney)}}</em>
+            <em class="mj-hj">合计</em>
+            <em class="mj-jm">￥{{foodInfo.orderRealPrice}}</em>
+        </view>
+    </view>
+</view>
+<view class="order-number">
+    <view>订单号码：{{foodInfo.orderNum}}</view>
+    <view>订单时间：{{foodInfo.orderCreateTimes}}</view>
+    <view>支付方式：{{foodInfo.orderPayType=='B'?'余额支付':'微信支付'}}</view>
+</view>
+<view class="user-eval">
+    <view class="user-eval-title">
+        <view class="user-eval-myeval">我的评价</view>
+        <image class="user-eval-xing" src="{{starUrls[index]}}" wx:for="{{starUrls}}" wx:key="key"></image>
+        <view class="clear"></view>
+    </view>
+    <view class="user-eval-content">
+        <text class="user-eval-detail" wx:if="{{storeRatedRemarke=='无评论'}}">{{storeRatedRemarke}}</text>
+        <text class="user-eval-detail" wx:else>评价详情：{{storeRatedRemarke}}</text>
+    </view>
+</view>
+<button bindtap="resume" class="saveAddress">返 回 首 页</button>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<wxs module="filters" src="../../../../../addmul.wxs" />

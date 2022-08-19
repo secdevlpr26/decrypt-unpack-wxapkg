@@ -1,0 +1,27 @@
+<view class="query-wrap">
+    <form bindsubmit="formSubmit">
+        <view class="query-main">
+            <view class="query-item">
+                <text class="query-name">
+                    <text class="redColor">*</text>姓名:</text>
+                <input name="branchName" placeholder="请输入你的姓名"></input>
+            </view>
+            <view class="query-item">
+                <text class="query-name">
+                    <text class="redColor">*</text>年龄:</text>
+                <input name="mainProject" placeholder="请输入你的年龄" type="number"></input>
+            </view>
+            <view class="query-item">
+                <text class="query-name">
+                    <text class="redColor">*</text>手机号码:</text>
+                <input maxlength="11" name="phone" placeholder="请输入你的手机号" type="number"></input>
+            </view>
+            <view class="query-text">
+                <text>
+                    <text class="redColor">*</text>问题描述:</text>
+                <textarea class="textQuery" name="textCon" placeholder="请描述你的问题"></textarea>
+            </view>
+            <button class="btn-query" formType="submit">提交</button>
+        </view>
+    </form>
+</view>

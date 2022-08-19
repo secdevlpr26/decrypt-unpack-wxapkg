@@ -1,0 +1,11 @@
+var sub = (function(val, num) {
+    console.log(val + "\x3d\x3d\x3d\x3d\x3d\x3e");
+    var a = val.split("，");
+    console.log(a[(0)] + "\x3d\x3d\x3d\x3d?");
+    if (num == 0) {
+        return (a[(0)])
+    } else {
+        return (a[(1)])
+    }
+});
+module.exports.sub = sub;

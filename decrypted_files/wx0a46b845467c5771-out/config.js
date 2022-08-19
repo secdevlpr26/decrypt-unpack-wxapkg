@@ -1,0 +1,21 @@
+module.exports = {
+    sdkAppID: "1400107457",
+    accType: "30285",
+    houseId: 10011,
+    color1: "#4E8789",
+    color2: "#272A34",
+    color3: "#3F7071",
+    color4: "#C8E2E2",
+    backColor: "#474952",
+    projectName: "泰宁养生现代村落",
+    url: "https://dm-api.elab-plus.cn/",
+    newUrl: "https://dm-api.elab-plus.cn/",
+    ImgUrl: "http://skyforest.static.elab-plus.com/",
+    parameterUrl: "https://m.elab-plus.com/sell/#/houseParameter?houseId=",
+    tdviewUrl: "https://m.elab-plus.com/sell/#/tdview?houseId=",
+    serverUrl: "https://dm-api.elab-plus.cn/elab-marketing-rtc",
+    roomServiceUrl: "https://dm-api.elab-plus.cn/elab-marketing-rtc",
+    webrtcServerUrl: "https://dm-api.elab-plus.cn/elab-marketing-rtc",
+    templateUrl: "https://m.elab-plus.com/launch/#/pages/preview?projectId=",
+    newTemplateUrl: "https://dm-mng.elab-plus.cn/touFangBao/#/pages/preview?houseId="
+};

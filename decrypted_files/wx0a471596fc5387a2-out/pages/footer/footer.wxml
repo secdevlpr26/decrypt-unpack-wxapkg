@@ -1,0 +1,8 @@
+<view class="footer">
+    <navigator class="foo_nav" hoverClass="nav_ah" openType="redirect" url="/pages/user/user">
+        <view class="img_box">
+            <image class="foo_nav_img" src="{{hostUrl}}/images/footer_img4.png"></image>
+        </view>
+        <text>我的</text>
+    </navigator>
+</view>

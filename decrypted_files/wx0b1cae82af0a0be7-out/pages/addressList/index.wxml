@@ -1,0 +1,34 @@
+<view class="container">
+    <view class="address-list">
+        <view class="none-addr" hidden="{{addressList.length>0}}">暂无服务地址</view>
+        <view class="address-item" wx:for="{{addressList}}" wx:key="id">
+            <view bindtap="selectAddr" class="address-text" data-id="{{item.id}}">
+                <view class="address-contact">
+                    <text>联系人： {{item.consignee}}</text>
+                    <text>{{item.mobile}}</text>
+                </view>
+                <view class="address-location">
+          {{item.location}}  {{item.detailAddr}}
+        </view>
+                <view class="address-stree">
+          {{item.address}}
+        </view>
+            </view>
+            <view class="address-operate" wx:if="{{!selectStatus}}">
+                <view bindtap="defaultAddr" class="default-icon" data-id="{{item.id}}">
+                    <image hidden="{{!item.isDefault}}" src="/images/35@3x.png"></image>
+                    <image hidden="{{item.isDefault}}" src="/images/36@3x.png"></image> 
+          默认地址
+          
+        </view>
+                <view class="address-done">
+                    <text bindtap="editAddr" class="edit" data-id="{{item.id}}">编辑</text>
+                    <text bindtap="deleteAddr" class="delete" data-id="{{item.id}}" data-index="{{index}}">删除</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="btn-block appoint" wx:if="{{!selectStatus}}">
+        <navigator url="../addressDetail/index">添加服务地址</navigator>
+    </view>
+</view>

@@ -1,0 +1,13 @@
+<view class="container">
+    <navigator openType="redirect" url="../serveDetail/index?id={{item.id}}" wx:for="{{serveList}}" wx:key="id">
+        <view class="serve_item">
+            <image src="{{item.listImage}}"></image>
+            <view class="serve_item_text">
+                <view class="serve_item_name">{{item.title}}</view>
+                <view class="serve_item_attr">{{item.abstractContent}}</view>
+                <view class="serve_item_price">¥{{item.price}}</view>
+            </view>
+        </view>
+    </navigator>
+    <view class="none-data" hidden="{{serveList.length>0}}">暂无该服务</view>
+</view>

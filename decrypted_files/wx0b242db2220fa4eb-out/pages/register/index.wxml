@@ -1,0 +1,20 @@
+<view class="Empty" style="Empty">
+    <view class="Empty">
+        <view class="Empty">
+            <input bindinput="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty" type="Empty"></input>
+            <view catchtap="Empty" class="Empty">Empty</view>
+        </view>
+        <view class="Empty" style="Empty">
+            <input bindinput="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty" type="Empty"></input>
+        </view>
+        <view class="Empty"></view>
+        <view class="Empty" style="Empty">
+            <input password bindinput="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty" type="Empty"></input>
+        </view>
+        <view class="Empty"></view>
+        <view class="Empty" style="Empty">
+            <input password bindinput="Empty" class="Empty" placeholder="Empty" placeholderStyle="Empty" type="Empty"></input>
+        </view>
+    </view>
+    <button bindtap="Empty" class="Empty" data-id="Empty" hoverClass="Empty" size="Empty" type="Empty">Empty</button>
+</view>

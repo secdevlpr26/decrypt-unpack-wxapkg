@@ -1,0 +1,15 @@
+<view class="login-frame">
+    <view class="login-info">
+        <view class="login-item">
+            <i class="iconfont icon-phone"></i>
+            <input bindinput="phoneInput" maxlength="11" placeholder="请输入手机号码" type="number"></input>
+        </view>
+        <view class="login-item">
+            <i class="iconfont icon-pwd"></i>
+            <input password bindinput="pwdInput" placeholder="请输入你的密码"></input>
+        </view>
+        <view bindtap="forgetPwd" class="wjmm">忘记密码?</view>
+    </view>
+    <view bindtap="logintap" class="login-btn" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">登录</view>
+    <view bindtap="register" class="register">还没有账号？点击去注册</view>
+</view>

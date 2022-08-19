@@ -1,0 +1,33 @@
+<view class="order-item" wx:for="{{orders}}">
+    <view class="view-title">
+        <image src="/images/order_icon.png"></image>
+        <text>订单号:{{item.order_sn}}({{item.user.nick_name}})</text>
+    </view>
+    <view bindtap="details" class="carts-item" data-index="{{index}}" wx:for="{{item.goods_list}}" wx:for-item="mapping">
+        <view>
+            <image class="carts-image" mode="aspectFill" src="{{mapping.image}}"></image>
+        </view>
+        <view class="carts-text">
+            <text class="carts-title">{{mapping.goods_name}}</text>
+            <view class="carts-subtitle">
+                <text>{{mapping.spec_key_name}}</text>
+            </view>
+        </view>
+        <view class="carts-right">
+            <text class="carts-price">￥{{mapping.distribut}}</text>
+            <text class="carts-num">x{{mapping.goods_num}}</text>
+        </view>
+    </view>
+    <view class="order-footer" wx:if="{{item.status!=3}}">
+        <text>待收益：</text>
+        <text style="color:red">￥{{item.money}}元</text>
+    </view>
+    <view class="order-footer" wx:else>
+        <text>获得佣金：</text>
+        <text style="color:red">￥{{item.money}}元</text>
+    </view>
+</view>
+<view class="view-tint" wx:if="{{orders.length==0}}">
+    <image src="/images/icon_empty.png"></image>
+    <text>亲,没有数据</text>
+</view>

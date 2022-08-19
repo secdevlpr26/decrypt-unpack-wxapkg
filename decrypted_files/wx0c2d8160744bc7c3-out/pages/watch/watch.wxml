@@ -1,0 +1,61 @@
+<view class="page">
+    <view class="weui-cells__title">事件</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view bindtap="queryFree" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image class="item_image" src="/dist/images/youxi.png"></image>
+            </view>
+            <view class="weui-cell__bd">随手拍</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+        <view bindtap="saveEvent" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image class="item_image" src="/dist/images/upload.png"></image>
+            </view>
+            <view class="weui-cell__bd">事件上报</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+        <view bindtap="queryMyEvent" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image class="item_image" src="/dist/images/search_active_icon.png"></image>
+            </view>
+            <view class="weui-cell__bd">事件查询</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+        <view bindtap="queryEvent" class="weui-cell weui-cell_access" hoverClass="weui-cell_active" wx:if="{{wgy}}">
+            <view class="weui-cell__hd">
+                <image class="item_image" src="/dist/images/find_2.png"></image>
+            </view>
+            <view class="weui-cell__bd">事件处置</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+    <view class="weui-cells__title">积分</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view bindtap="queryPoint" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image class="item_image" src="/dist/images/card.png"></image>
+            </view>
+            <view class="weui-cell__bd">我的积分</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+        <view bindtap="querysm" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image class="item_image" src="/dist/images/find_2.png"></image>
+            </view>
+            <view class="weui-cell__bd">使用指南</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+        <view bindtap="queryjfgz" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image class="item_image" src="/dist/images/notice.png"></image>
+            </view>
+            <view class="weui-cell__bd">积分规则</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,72 @@
+<view class="page">
+    <view class="page-body">
+        <view class="page-section" wx:if="{{ShoppingCarts.length>0}}">
+            <view bindtap="__e" class="remove-items" data-event-opts="{{[ [ 'tap',[ [ 'deleteCartSelectProduct',['$event'] ] ] ] ]}}">
+                <text class="uni-icon uni-icon-trash"></text>删除商品</view>
+            <view class="cart-header">
+                <view bindtap="__e" class="{{['cart-header-check-all',isAllChecked?'checked':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'checkAll',['$event'] ] ] ] ]}}">全选</view>
+            </view>
+            <view class="cart-wrapper" wx:for="{{ShoppingCarts}}" wx:for-index="shoppingCartKey" wx:for-item="shoppingCartItem" wx:key="shoppingCartKey">
+                <view class="cart-item" wx:for="{{shoppingCartItem}}" wx:for-index="key" wx:key="key">
+                    <view class="{{['p-check',item.Checked?'checked':'']}}">
+                        <checkbox-group bindchange="__e" data-cartitemid="{{item.CartItemId}}" data-event-opts="{{[ [ 'change',[ [ 'checkboxChange',['$event'] ] ] ] ]}}" data-price="{{item.Price}}">
+                            <label class="check-wrapper">
+                                <checkbox value="{{item.Price}}"></checkbox>
+                            </label>
+                        </checkbox-group>
+                    </view>
+                    <view class="p-image">
+                        <image src="{{item.ImgUrl}}"></image>
+                    </view>
+                    <view class="p-title">
+                        <view bindtap="__e" class="t" data-event-opts="{{[ [ 'tap',[ [ 'gotoProductDetails',['$0'],[ [ ['ShoppingCarts','',shoppingCartKey],['','',key,'Id'] ] ] ] ] ] ]}}">{{item.Name}}</view>
+                        <view class="s">{{(item.Color!=null?item.ColorAlias+':':'')+(item.Color!=null?item.Color:'')+'\n\t\t\t\t\t\t\t\t'+(item.Size!=null?item.SizeAlias+':':'')+(item.Size!=null?item.Size:'')+'\n\t\t\t\t\t\t\t\t'+(item.Version!=null?item.VersionAlias+':':'')+(item.Version!=null?item.Version:'')}}</view>
+                        <view bindtap="__e" data-cartitemid="{{item.CartItemId}}" data-event-opts="{{[ [ 'tap',[ [ 'getCount',['$event'] ] ] ] ]}}" data-price="{{item.Price}}" data-skuid="{{item.SkuId}}">
+                            <uni-number-box bind:__l="__l" bind:change="__e" data-event-opts="{{[ [ '^change',[ ['changeCount'] ] ] ]}}" disabled="{{true}}" min="{{1}}" value="{{item.Count}}" vueId="{{'54593d73-1-'+shoppingCartKey+'-'+key}}"></uni-number-box>
+                        </view>
+                    </view>
+                    <view class="p-price">
+                        <view class="p">{{'¥'+item.Price}}</view>
+                        <view bindtap="__e" class="d" data-event-opts="{{[ [ 'tap',[ [ 'deleteCartProduct',['$0'],[ [ ['ShoppingCarts','',shoppingCartKey],['','',key,'SkuId'] ] ] ] ] ] ]}}">
+                            <text>X</text>删除</view>
+                    </view>
+                </view>
+            </view>
+            <view class="cart-footer">
+                <view bindtap="__e" class="{{['cart-check-all',isAllChecked?'checked':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'checkAll',['$event'] ] ] ] ]}}">全选</view>
+                <view class="cart-total">
+                    <view>合计：<text>{{'¥'+sumPrice}}</text>
+                    </view>
+                    <view class="ct-note">不含运费</view>
+                </view>
+                <view bindtap="__e" class="submit-btn" data-event-opts="{{[ [ 'tap',[ [ 'SubmiteByCart',['$event'] ] ] ] ]}}">结算</view>
+            </view>
+        </view>
+        <block wx:else>
+            <view class="cart-empty">
+                <view>
+                    <view class="n">购物车空空如也</view>
+                    <view bindtap="__e" class="btn" data-event-opts="{{[ [ 'tap',[ [ 'goCategory',['$event'] ] ] ] ]}}">
+                        <view>去选购</view>
+                    </view>
+                </view>
+            </view>
+            <view class="rec-p" wx:if="{{recommendProduct!=null&&recommendProduct.length>0}}">
+                <view class="details-title">为您推荐</view>
+                <view class="product-grid">
+                    <view bindtap="__e" class="product" data-event-opts="{{[ [ 'tap',[ [ 'gotoProductDetails',['$0'],[ [ ['recommendProduct','',index,'Id'] ] ] ] ] ] ]}}" wx:for="{{recommendProduct}}" wx:for-item="product" wx:key="index">
+                        <view class="product-inner">
+                            <view class="image-view">
+                                <image class="product-image" lazyLoad="{{true}}" mode="aspectFit" src="{{product.ImagePath}}"></image>
+                            </view>
+                            <view class="product-title">{{product.ProductName}}</view>
+                            <view class="product-price">
+                                <view>{{'￥'+product.MinSalePrice}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

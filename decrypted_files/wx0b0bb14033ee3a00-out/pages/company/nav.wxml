@@ -1,0 +1,30 @@
+<view class="bgColor {{plugNavFlag?'':'active'}}"></view>
+<view class="plugNav {{plugNavFlag?'plugNavHide':''}}">
+    <view bindtap="navBtnShowAndHide" class="closeNav"></view>
+    <view class="broadsideNav">
+        <view class="navAllItem">
+            <view class="navItem">
+                <image src="../../images/home.png"></image>
+                <navigator bindtap="navBtnShowAndHide" class="navText" openType="redirect" url="index">首页</navigator>
+            </view>
+            <view class="navItem">
+                <image src="../../images/aboutus.png"></image>
+                <navigator bindtap="navBtnShowAndHide" class="navText" openType="redirect" url="about">关于我们</navigator>
+            </view>
+            <view class="navItem">
+                <image src="../../images/shoppingShow.png"></image>
+                <navigator bindtap="navBtnShowAndHide" class="navText" openType="redirect" url="productlist">商品展示</navigator>
+            </view>
+            <view class="navItem">
+                <image src="../../images/companyNews.png"></image>
+                <navigator bindtap="navBtnShowAndHide" class="navText" openType="redirect" url="newslist">企业资讯</navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<view bindtap="navBtnShowAndHide" class="navShowAndHide {{plugNavFlag?'navHide':''}} ">
+    <text class="vertical"></text>
+    <text class="vertical"></text>
+    <text class="vertical"></text>
+</view>
+<include src="/pages/template/getUserInfo.wxml"></include>

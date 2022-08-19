@@ -1,0 +1,26 @@
+<view class="page padding_spacing">
+    <view class="horiz" style="padding-top:30px;">
+        <view class="questionicon">Q</view>
+        <text class="title">我的咨询：</text>
+    </view>
+    <view class="content">{{info.askContent}}</view>
+    <view class="images horiz">
+        <image bindtap="previewImg" data-url="{{item.askimage}}" mode="aspectFill" src="{{item.askimage}}" style="width:{{imgW}}px;height:{{imgW}}px; margin-right:10px;" wx:for="{{info.askimage}}" wx:for-index="idx" wx:key="index"></image>
+    </view>
+    <view class="time">{{info.addTime}}</view>
+    <view class="spaceline"></view>
+    <view class="horiz" style="padding-top:30px;">
+        <view class="answericon">A</view>
+        <text class="title" style="color: #555555;">律师回复：</text>
+    </view>
+    <view class="content" wx:if="{{info.replyStatus==1}}">{{info.replyContent}}</view>
+    <view class="time" wx:if="{{info.replyStatus==1}}">{{info.replyTime}}</view>
+    <view class="shang" wx:if="{{info.replyStatus==1}}">
+        <image bindtap="shangAction" class="shangIcon" src="../../images/detailspage_small_shang@2x.png"></image>
+    </view>
+    <view class="noanswer" wx:if="{{info.replyStatus==0}}">律师暂未回复，请耐心等待</view>
+</view>
+<button bindtap="popToConsult" class="submitButton margin_spacing" wx:if="{{info.replyStatus==1}}">
+  还有问题？继续提问
+  <image src="../../images/right_black.png" style="width:8px;height:12px;margin-left:10px;"></image>
+</button>

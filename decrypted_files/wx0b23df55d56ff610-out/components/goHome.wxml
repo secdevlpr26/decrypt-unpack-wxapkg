@@ -1,0 +1,8 @@
+<template name="goHome">
+    <view bindtap="goHome" class="goHome_box go_home_box">
+        <view class="goHome_content">
+            <image class="goHome_img" src="../../images/icon_home.png"></image>
+            <view style="margin-top: -4rpx">首页</view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,113 @@
+<view class="wx_page">
+    <view class="empty_box" wx:if="{{list.length==0}}">购物车还是空的</view>
+    <view class="cart_area" wx:else>
+        <view class="cart_bd">
+            <view class="enabled_list" wx:if="{{enabledList.length>0}}">
+                <view class="enabled_list_hd">
+                    <view class="checkbox_wrp">
+                        <checkbox-group bindchange="changeCheckAll">
+                            <label class="checkbox">
+                                <checkbox checked="{{isCheckedAll}}" value="all"></checkbox>
+                  全选
+                </label>
+                        </checkbox-group>
+                    </view>
+                    <view class="opr_area">
+                        <view catchtap="tapBtnOpenEdit" class="edit_btn" wx:if="{{!isInEdit}}">编辑</view>
+                        <view catchtap="tapBtnEndEdit" class="edit_btn" wx:if="{{isInEdit}}">完成</view>
+                    </view>
+                </view>
+                <view class="enabled_list_bd">
+                    <checkbox-group bindchange="changeCheck">
+                        <view class="goods_list {{isInEdit?'edit_list':''}}">
+                            <block wx:if="{{enabledList.length>0}}">
+                                <view class="goods_item" wx:for="{{enabledList}}" wx:for-index="idx" wx:key="{{idx}}">
+                                    <view class="checkbox_wrp">
+                                        <label class="checkbox">
+                                            <checkbox checked="{{isInEdit?item.editChecked:item.checked}}" value="{{idx}}"></checkbox>
+                                        </label>
+                                    </view>
+                                    <view catchtap="tapProduct" class="goods_cover" data-idx="{{idx}}" data-pid="{{item.product.product_id}}">
+                                        <image class="goods_cover_img" mode="aspectFill" src="{{item.skuImg||item.product.base_attr.img_info[0]}}"></image>
+                                    </view>
+                                    <view catchtap="tapProduct" class="goods_info" data-idx="{{idx}}" data-pid="{{item.product.product_id}}">
+                                        <view class="goods_title">{{item.product.base_attr.name}}</view>
+                                        <view class="goods_description">
+                                            <text class="goods_description_item" wx:for="{{item.attrs}}" wx:for-index="i" wx:for-item="attr" wx:key="{{attr}}">
+                          {{attr}}
+                        </text>
+                                        </view>
+                                        <view class="goods_cost">
+                                            <text class="goods_price">{{feeTxt}}{{item.priceTxt}}</text>
+                                            <text class="goods_num" wx:if="{{!isInEdit}}">x{{item.buyCount}}</text>
+                                        </view>
+                                    </view>
+                                    <view class="sku_group_box" wx:if="{{isInEdit}}">
+                                        <view catchtap="tapChangeQuantity" class="editor editor_remove {{item.canChangeQuantityDown?'':'disabled'}}" data-delta="-1" data-idx="{{idx}}">
+                        -
+                      </view>
+                                        <input bindblur="inputChangeQuantity" class="editor editor_input" data-idx="{{idx}}" type="number" value="{{item.editBuyCount}}"></input>
+                                        <view catchtap="tapChangeQuantity" class="editor editor_add {{item.canChangeQuantityUp?'':'disabled'}}" data-delta="1" data-idx="{{idx}}">
+                        +
+                      </view>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </checkbox-group>
+                </view>
+            </view>
+            <view class="disabled_list" wx:if="{{!isInEdit}}">
+                <view class="goods_item disabled_item" wx:for="{{disabledList}}" wx:for-index="idx" wx:key="{{idx}}">
+                    <view class="disabled_label_area">
+                        <view class="disabled_label">已失效</view>
+                    </view>
+                    <view catchtap="tapProduct" class="goods_cover" data-pid="{{item.product.product_id}}">
+                        <image class="goods_cover_img" mode="aspectFill" src="{{item.skuImg||item.product.base_attr.img_info[0]}}"></image>
+                    </view>
+                    <view catchtap="tapProduct" class="goods_info" data-pid="{{item.product.product_id}}">
+                        <view class="goods_title">{{item.product.base_attr.name}}</view>
+                        <view class="goods_description">
+                            <text class="goods_description_item" wx:for="{{item.attrs}}" wx:for-index="i" wx:for-item="attr" wx:key="{{attr}}">
+                  {{attr}}
+                </text>
+                        </view>
+                        <view class="goods_cost">
+                            <text class="goods_price">{{feeTxt}}{{item.priceTxt}}</text>
+                            <text class="goods_num">x{{item.buyCount}}</text>
+                        </view>
+                        <view class="goods_disabled_desc">
+                            <block wx:if="{{item.disabled==1}}">商品已下架</block>
+                            <block wx:if="{{item.disabled==2}}">商品库存不足</block>
+                            <block wx:if="{{item.disabled==3}}">超出可购数量</block>
+                        </view>
+                    </view>
+                    <view class="goods_opr">
+                        <view catchtap="tapBtnDeleteItem" class="delete_btn" data-idx="{{idx}}" data-type="disabled">
+                删除
+              </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cart_ft" wx:if="{{list.length>0}}">
+        <view class="normal_mode" wx:if="{{!isInEdit}}">
+            <view class="total_price_area">
+                <view class="total_price">
+                    <text>合计：</text>
+                    <text class="total_price_num">{{feeTxt}}{{totalPriceTxt}}</text>
+                </view>
+                <view class="total_price_desc">不含运费</view>
+            </view>
+            <view class="opration_area">
+                <button class="buy_btn" disabled="true">立即购买</button>
+            </view>
+        </view>
+        <view class="edit_mod" wx:if="{{isInEdit}}">
+            <button catchtap="tapBtnDeleteChecked" class="buy_btn" disabled="{{checkedNum==0}}">
+        删除
+      </button>
+        </view>
+    </view>
+</view>

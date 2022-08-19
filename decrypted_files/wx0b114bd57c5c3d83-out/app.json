@@ -1,0 +1,81 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/address/list/list",
+        "pages/address/add/add",
+        "pages/address/select/index",
+        "pages/address/edit/index",
+        "pages/order/payment/payment",
+        "pages/member/coupon/index",
+        "pages/member/index/index",
+        "pages/member/aboutus/aboutus",
+        "pages/category/category",
+        "pages/cart/cart",
+        "pages/goods/list/list",
+        "pages/goods/detail/detail",
+        "pages/goods/grouplist/list",
+        "pages/goods/groupDetail/detail",
+        "pages/order/checkout/checkout",
+        "pages/member/money/money",
+        "pages/member/point/point",
+        "pages/order/list/list",
+        "pages/order/details/index",
+        "pages/order/orderpay/payment",
+        "pages/order/ordersubmit/index",
+        "pages/register/index",
+        "pages/member/evaluate/evaluate",
+        "pages/member/evaluate/addevaluate/index",
+        "pages/member/collect/collect",
+        "pages/member/gbook/gbook",
+        "pages/search/index",
+        "pages/seller/index",
+        "pages/seller/shop",
+        "pages/seller/goods",
+        "pages/detail/detail",
+        "pages/news/list/list",
+        "pages/news/detail/detail",
+        "pages/news/news_cat/news_cat",
+        "pages/switchcity/switchcity"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "white",
+        "navigationBarTitleText": "船木家具批发网",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "selectedColor": "#000",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/icon_home.png",
+                "selectedIconPath": "images/icon_home_selected.png"
+            },
+            {
+                "pagePath": "pages/category/category",
+                "text": "分类",
+                "iconPath": "images/icon_cate.png",
+                "selectedIconPath": "images/icon_cate_selected.png"
+            },
+            {
+                "pagePath": "pages/seller/index",
+                "text": "推荐商家",
+                "iconPath": "images/icon_shanghu.png",
+                "selectedIconPath": "images/icon_shanghu_selected.png"
+            },
+            {
+                "pagePath": "pages/cart/cart",
+                "text": "购物车",
+                "iconPath": "images/icon_cart.png",
+                "selectedIconPath": "images/icon_cart_selected.png"
+            },
+            {
+                "pagePath": "pages/member/index/index",
+                "text": "我的",
+                "iconPath": "images/icon_member.png",
+                "selectedIconPath": "images/icon_member_selected.png"
+            }
+        ]
+    }
+}

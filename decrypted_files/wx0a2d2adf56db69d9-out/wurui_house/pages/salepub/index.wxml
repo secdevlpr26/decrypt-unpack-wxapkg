@@ -1,0 +1,254 @@
+<form reportSubmit bindsubmit="savepubinfo">
+    <scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">
+        <view class="container">
+            <view class="main" wx:if="{{imagelist.length!=0}}">
+                <view class="imglist">
+                    <view class="imgitem" wx:for="{{imagelist}}">
+                        <image bindtap="uploadPicture" data-id="index" src="{{item}}"></image>
+                        <view bindtap="deletePicture" class="sum" data-id="{{index}}">
+                            <text>×</text>
+                        </view>
+                    </view>
+                    <view class="imgitem">
+                        <image bindtap="uploadPicture" src="../../resource/images/pub.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="main" wx:if="{{imagelist.length==0}}">
+                <view class="upLoadPicture">
+                    <image bindtap="uploadPicture" src="../../resource/newimage/uploadPic.png"></image>
+                </view>
+            </view>
+            <view class="backgroud"></view>
+            <view class="main">
+                <view class="list">
+                    <view class="item" style="width:690rpx;">
+                        <view class="letwayItem">
+                            <view class="letwayList" wx:for="{{letwayList}}">
+                                <view bindtap="letwayCheck" class=" {{item.value==letwayCheck?'letwayCheck':'letway'}}" data-id="{{item.value}}">
+                  {{item.name}}
+                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view class="redname">*</view>
+                        <view class="name">小区名称</view>
+                        <view class="selectitem">
+                            <input name="housearea" placeholder="请输入小区名称" type="text"></input>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view class="redname">
+                            <text decode="{{true}}">&nbsp;</text>
+                        </view>
+                        <view class="name">门牌号码</view>
+                        <view class="selectitem">
+                            <input name="housenumber" placeholder="请输入门牌号码" type="text"></input>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view class="redname">
+                            <text decode="{{true}}">&nbsp;</text>
+                        </view>
+                        <view class="name"> 房屋面积</view>
+                        <view class="selectitem">
+                            <input name="area" placeholder="请输入房屋面积" type="text"></input>
+                            <view class="name">平米</view>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view class="redname">
+                            <text decode="{{true}}">&nbsp;</text>
+                        </view>
+                        <view class="name">装修状况</view>
+                        <view bindtap="showdec" class="selectitem">{{decorate?decorate:'请选择装修'}}
+              <image src="../../resource/images/right.png"></image>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view class="redname">*</view>
+                        <view class="name">月租金</view>
+                        <view class="selectitem">
+                            <input name="money" placeholder="请输入月租价格" type="text"></input>
+                            <view class="name">元/月</view>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view class="redname">
+                            <text decode="{{true}}">&nbsp;</text>
+                        </view>
+                        <view class="name">付款方式</view>
+                        <view bindtap="houseInter" class="selectitem">{{payway?payway:'请选择付款方式'}}
+              <image src="../../resource/images/right.png"></image>
+                        </view>
+                    </view>
+                    <view class="item" style="height:140rpx;">
+                        <view class="redname"></view>
+                        <view class="name">配套设施</view>
+                        <view class="checklist">
+                            <checkbox-group bindchange="radioChange">
+                                <label bindtap="clicks" class="{{item.checked?'checkitem-check':'checkitem'}}" data-index="{{index}}" wx:for="{{checks}}" wx:key="{{checks}}">
+                                    <checkbox checked="{{item.checked}}" hidden="false" name="special" value="{{item.name}}"></checkbox>{{item.name}}</label>
+                            </checkbox-group>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="backgroud"></view>
+            <view class="main">
+                <view class="list">
+                    <view class="item" style="height:120rpx;">
+                        <view class="redname"></view>
+                        <view class="name">备注说明</view>
+                        <view class="selectitem">
+                            <input name="content" placeholder="请输入您的备注信息" type="text"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="backgroud"></view>
+            <view class="main">
+                <view class="list">
+                    <view class="item">
+                        <view class="redname">
+                            <text decode="{{true}}">&nbsp;</text>
+                        </view>
+                        <view class="name">您的姓名</view>
+                        <view class="selectitem">
+                            <input name="fdname" placeholder="请输入您的姓名" type="text"></input>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view class="redname">*</view>
+                        <view class="name">您的电话</view>
+                        <view class="selectitem">
+                            <input name="fdtel" placeholder="请输入您的电话" type="text"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="foot">
+            <button class="footer" formType="submit">立即发布</button>
+        </view>
+    </scroll-view>
+</form>
+<view class="weixinmao-msg" hidden="{{housemap}}">
+    <view class="weixinmao-content map">
+        <view class="title">
+            <view></view>
+            <view>请选择地图位置</view>
+            <view bindtap="closemap">关闭</view>
+        </view>
+        <view class="list">
+            <map bindregionchange="regionchange" controls="{{controls}}" id="map4select" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" scale="20" style="width:700rpx;height:700rpx"></map>
+        </view>
+        <button bindtap="getmap" class="mapbtn">获取坐标</button>
+    </view>
+</view>
+<view class="weixinmao-msg" hidden="{{areamsg}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>请选择区域</view>
+            <view bindtap="closemsg">关闭</view>
+        </view>
+        <scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="height:350rpx; left: 0; top:0; bottom: 0; right: 0;">
+            <view class="list">
+                <view bindtap="selectarea" class="item" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{citylist}}">{{item.name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="weixinmao-msg" hidden="{{decmsg}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>请选择装修</view>
+            <view bindtap="closedec">
+                <image src="../../resource/newimage/clear.png"></image>
+            </view>
+        </view>
+        <scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="height:450rpx; left: 0; top:0; bottom: 0; right: 0;">
+            <view class="list">
+                <view bindtap="selectdec" class="item" data-id="简易装修">简装</view>
+                <view bindtap="selectdec" class="item" data-id="中档装修">中等</view>
+                <view bindtap="selectdec" class="item" data-id="高档装修">精装</view>
+                <view bindtap="selectdec" class="item" data-id="豪华装修">豪装</view>
+                <view bindtap="selectdec" class="item" data-id="毛坯">毛坯</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="weixinmao-msg" hidden="{{household}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>付款方式</view>
+            <view bindtap="closeroom">
+                <image src="../../resource/newimage/clear.png"></image>
+            </view>
+        </view>
+        <scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="height:350rpx; left: 0; top:0; bottom: 0; right: 0;">
+            <view class="list">
+                <view bindtap="roomctdec" class="item" data-id="押一付三" data-name="押一付三">押一付三</view>
+                <view bindtap="roomctdec" class="item" data-id="压一付六" data-name="压一付六">压一付六</view>
+                <view bindtap="roomctdec" class="item" data-id="压一付年" data-name="压一付年">压一付年</view>
+                <view bindtap="roomctdec" class="item" data-id="面议" data-name="面议">面议</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="weixinmao-msg" hidden="{{letwayhouse}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>请选择租房方式</view>
+            <view bindtap="closelet">关闭</view>
+        </view>
+        <scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="height:350rpx; left: 0; top:0; bottom: 0; right: 0;">
+            <view class="list">
+                <view bindtap="Renting" class="item" data-id="1" data-name="整租">整租</view>
+                <view bindtap="Renting" class="item" data-id="2" data-name="合租">合租</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="weixinmao-msg" hidden="{{typemsg}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>请选择房型</view>
+            <view bindtap="closetype">关闭</view>
+        </view>
+        <scroll-view class="bigWrap" scrollTop="{{scrollTop}}" scrollY="true" style="height:350rpx; left: 0; top:0; bottom: 0; right: 0;">
+            <view class="list">
+                <view bindtap="selecttype" class="item" data-id="1" data-name="住宅">住宅</view>
+                <view bindtap="selecttype" class="item" data-id="2" data-name="别墅">别墅</view>
+                <view bindtap="selecttype" class="item" data-id="3" data-name="公寓">公寓</view>
+                <view bindtap="selecttype" class="item" data-id="4" data-name="商铺">商铺</view>
+                <view bindtap="selecttype" class="item" data-id="5" data-name="写字楼">写字楼</view>
+                <view bindtap="selecttype" class="item" data-id="6" data-name="酒店">酒店</view>
+                <view bindtap="selecttype" class="item" data-id="7" data-name="厂房">厂房</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="weixinmao-msg" hidden="{{ismaster}}">
+    <view class="weixinmao-content">
+        <view class="title">
+            <view></view>
+            <view>消息提醒</view>
+            <view></view>
+        </view>
+        <view class="list ismaster">
+
+      对不起，请先申请认证再发布！
+
+
+
+    </view>
+        <view bindtap="toMessage" class="masterbtn">前往认证</view>
+    </view>
+</view>

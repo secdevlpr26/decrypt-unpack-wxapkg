@@ -1,0 +1,3 @@
+<view>
+    <image mode="widthFix" src="/dist/images/nb.jpg" style="width:100%;height:100%;"></image>
+</view>

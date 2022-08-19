@@ -1,0 +1,5 @@
+<view class="page-view">
+    <web-view src="{{url}}" wx:if="{{isWebView}}"></web-view>
+    <login-dialog bindonlogin="eventLogin" loginHidden="{{isLogin}}"></login-dialog>
+    <tab-bar wx:if="{{!isWebView}}"></tab-bar>
+</view>

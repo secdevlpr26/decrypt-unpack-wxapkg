@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "首页",
+    "navigationBarBackgroundColor": "#00ca9d",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "dialog": "./dialog"
+    }
+}

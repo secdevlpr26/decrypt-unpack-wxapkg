@@ -1,0 +1,18 @@
+<view class="wrap">
+    <view class="comment-list">
+        <view class="comment-item" wx:for="{{commentList}}">
+            <view class="dis-top">
+                <image lazyLoad="{{true}}" src="{{item.memberVO.headPortrait}}"></image>
+                <text class="dis-name">{{item.commentator}}</text>
+            </view>
+            <view class="create-time">{{item.createDate}}</view>
+            <view class="dis-content">{{item.comment}}</view>
+            <view bindtap="pictap" class="dis-pic" data-pic="{{item.pic}}" wx:if="{{item.pic}}">
+                <image lazyLoad="{{true}}" mode="aspectFill" src="{{item.pic}}"></image>
+            </view>
+        </view>
+    </view>
+    <view bindtap="exitBigImg" class="bigImage" hidden="{{hideBigImg}}">
+        <image lazyLoad="{{true}}" mode="widthFix" src="{{bigImage}}"></image>
+    </view>
+</view>

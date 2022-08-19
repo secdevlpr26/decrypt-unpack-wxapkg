@@ -1,0 +1,8 @@
+<view class="wrap">
+    <view class="email">
+        <i class="iconfont icon-email"></i>
+        <input bindinput="emailInput" placeholder="请输入你的注册邮箱"></input>
+    </view>
+    <view bindtap="sure" class="sure" style="background-color: {{styleConfig.mainColor}};color: {{styleConfig.foregroundColor}};">确认</view>
+    <view class="tips">系统将会随机产生一个密码发送至你的邮箱，在收到新的密码后可到个人资料更改密码。</view>
+</view>

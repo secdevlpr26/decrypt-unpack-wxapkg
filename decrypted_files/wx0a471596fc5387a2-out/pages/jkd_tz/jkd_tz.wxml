@@ -1,0 +1,44 @@
+<import src="../common/line.wxml"></import>
+<import src="../template/template.wxml"></import>
+<view class="switch_box">
+    <navigator bindtap="switchTab" class="{{switchTabOne==true?'active':''}}" data-order="1" hoverClass="none">借款汇总</navigator>
+    <navigator bindtap="switchTab" class="{{switchTabThree==true?'active':''}}" data-order="3" hoverClass="none">单据列表</navigator>
+</view>
+<view class="lisetview_data_container B1" style="height: 70rpx" wx:if="{{switchTabThree==true}}">
+    <text class="S2 T2 lisetview_item_left_container">单号</text>
+    <text class="S2 T2 lisetview_item_middle_container">部门</text>
+    <text class="S2 T2 lisetview_item_middle_container">金额</text>
+    <text class="S2 T2 lisetview_item_middle_container">业务日期</text>
+</view>
+<view id="section_list1" wx:if="{{switchTabOne==true}}">
+    <block wx:for="{{list1}}" wx:key="Id">
+        <view bindtap="onItemClickEvent" class="li" data-djlx="借款单">
+            <text>总借款额：</text>
+            <text>{{jkje}}</text>
+            <text class="right C4-font">></text>
+        </view>
+        <view bindtap="onItemClickEvent" class="li " data-djlx="预算单">
+            <text>已冲账额：</text>
+            <text>{{czje}}</text>
+            <text class="right C4-font">></text>
+        </view>
+        <view bindtap="onItemClickEvent" class="li " data-djlx="还款单">
+            <text>还款金额：</text>
+            <text>{{hkje}}</text>
+            <text class="right C4-font">></text>
+        </view>
+        <view class="li ">
+            <text>借款余额：</text>
+            <text class="S9 C1-font">{{sykx}}</text>
+        </view>
+    </block>
+</view>
+<view id="section_list3" wx:if="{{switchTabThree==true}}">
+    <template is="jkd_tz2" data="{{data:item}}" wx:for="{{list3}}" wx:key="Id"></template>
+</view>
+<include src="../footer/footer.wxml"></include>
+<view class="body-view">
+    <loading bindchange="loadingChange" hidden="{{hidden}}">
+    加载中...
+  </loading>
+</view>

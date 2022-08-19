@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "追加评价",
+    "usingComponents": {
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "component-timeLine": "../components/timeLine/timeLine",
+        "component-alertview": "../components/alertview/alertview"
+    }
+}

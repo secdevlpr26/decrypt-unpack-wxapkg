@@ -1,0 +1,7 @@
+{
+    "navigationBarBackgroundColor": "#36383C",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "选择职员属性",
+    "enablePullDownRefresh": false,
+    "usingComponents": {}
+}

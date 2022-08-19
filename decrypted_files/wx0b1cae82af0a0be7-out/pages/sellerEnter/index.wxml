@@ -1,0 +1,25 @@
+<view class="container">
+    <view class="enter-tit">入驻流程</view>
+    <view class="enter-tip1">三天过审，快速上线</view>
+    <view class="process-item">
+        <image class="process-icon" src="/images/process.png"></image>
+        <view class="tit">1、提交资料</view>
+        <view class="text">填写您的开店真实资料， 提交后三个工作日完成审核</view>
+    </view>
+    <view class="process-item">
+        <image class="process-icon" src="/images/process.png"></image>
+        <view class="tit">2、在线签约</view>
+        <view class="text">确认合同信息，生成电子印章，完成签约后提交法务印章</view>
+    </view>
+    <view class="process-item">
+        <image class="process-icon" src="/images/process.png"></image>
+        <view class="tit">3、完善资料</view>
+        <view class="text">在商家端完成开店任务</view>
+    </view>
+    <view class="process-item" style="padding: 0;">
+        <view class="tit">4、上线营业</view>
+    </view>
+    <view bindtap="callPhone" class="btn-block appoint">
+    咨询电话
+  </view>
+</view>

@@ -1,0 +1,47 @@
+<view class="Empty">
+    <view id="Empty">
+        <view id="Empty">
+            <image mode="Empty" src="Empty"></image>
+        </view>
+        <view id="Empty">
+            <view id="Empty">
+                <image mode="Empty" src="Empty"></image>
+            </view>
+            <view id="Empty">Empty<view id="Empty">Empty<block wx:if="Empty">Empty</block>
+                </view>
+            </view>
+            <view id="Empty">
+                <view class="Empty">
+                    <view class="Empty">Empty</view>
+                    <view class="Empty">Empty</view>
+                </view>
+                <view class="Empty">
+                    <navigator openType="Empty" url="Empty">
+                        <view class="Empty">Empty</view>
+                        <view class="Empty">Empty</view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view id="Empty">
+        <view bindtap="Empty" class="Empty">
+            <image src="Empty"></image>Empty</view>
+        <view bindtap="Empty" class="Empty">
+            <image src="Empty"></image>Empty</view>
+    </view>
+    <view id="Empty">
+        <view class="Empty" wx:for="Empty" wx:for-item="category" wx:key="categoryTitle">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <navigator class="Empty" openType="Empty" url="Empty" wx:for="Empty" wx:key="itemTitle">
+                    <view class="Empty">
+                        <image src="Empty"></image>
+                    </view>
+                    <view class="Empty">Empty</view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="filter" src="../../filter/filter.wxs" />

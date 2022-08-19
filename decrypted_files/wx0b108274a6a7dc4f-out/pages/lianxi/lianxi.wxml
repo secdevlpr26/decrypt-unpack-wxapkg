@@ -1,0 +1,16 @@
+<view class="top">
+    <image src="../../icon/daohang.png" style="width:45rpx;height:45rpx;margin-left:30rpx"></image>
+    <view style="font-size:28rpx">地图导航</view>
+</view>
+<map class="map" latitude="{{latitude}}" longitude="{{longitude}}"></map>
+<view class="bottom">
+    <view class="btn">
+        <view bindtap="phone" class="{{isSele?'item1':'item'}}">电话咨询</view>
+        <view bindtap="daohang" class="{{isSele?'item':'item1'}}">一键导航</view>
+    </view>
+</view>
+<view class="line"></view>
+<view class="share">
+    <image class="share_img" src="{{imgUrl+userInfo.image}}"></image>
+    <view style="font-size:28rpx;width:50%">{{userInfo.text_image}}</view>
+</view>

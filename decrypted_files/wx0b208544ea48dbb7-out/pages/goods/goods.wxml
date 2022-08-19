@@ -1,0 +1,256 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<view class="goods-wrap">
+    <view class="swiper-container">
+        <swiper autoplay="true" circular="true" indicatorDots="true" interval="2000">
+            <swiper-item class="swiper-item" wx:for="{{goods.goods_images_list}}" wx:key="index">
+                <image class="slide-image" src="{{item.image_url}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="goods-info">
+        <view class="name text-ellipsis">
+      {{goods.goods_name}}
+    </view>
+        <view class="sale">
+      {{goods.goods_remark}}
+    </view>
+        <view class="now_price">
+      ¥{{showPrice||goods.shop_price}}
+      <view class="sub-info">库存: {{goods.store_count}}</view>
+            <view class="sub-info">销量: {{goods.sales_sum}}</view>
+        </view>
+    </view>
+    <view bindtap="showBuy" class="standard-container">
+        <view class="text">
+      规格
+    </view>
+        <view class="selected text-ellipsis">
+      {{selectedName?'你已选择 '+selectedName:'此商品无规格'}}
+    </view>
+    </view>
+    <view class="store-container">
+        <view class="store-info">
+            <view class="logo">
+                <navigator openType="redirect" url="../shop/shop?id={{goods.shop_id}}">
+                    <image src="{{goods.shop_img}}"></image>
+                </navigator>
+            </view>
+            <view class="content">
+                <view class="name text-ellipsis">
+          {{goods.shop_name}}
+        </view>
+                <view class="stars">
+                    <image src="../../assets/icons/star.png"></image>
+                    <image src="../../assets/icons/star.png"></image>
+                    <image src="../../assets/icons/star.png"></image>
+                    <image src="../../assets/icons/star.png"></image>
+                    <image src="../../assets/icons/star.png"></image>
+                </view>
+            </view>
+            <image class="gold" src="../../assets/icons/gold.png"></image>
+        </view>
+        <view class="store-explain text-ellipsis">
+            <view class="explain-item" wx:for="{{goods.shop_cont}}" wx:key="{{index}}">
+         {{item}}
+          <view class="num">
+                    <view>5</view>
+                </view>
+            </view>
+        </view>
+        <view class="enter">
+            <navigator openType="redirect" url="../shop/shop?id={{goods.shop_id}}">
+                <view class="btn">进店逛逛</view>
+            </navigator>
+        </view>
+    </view>
+    <view class="comment-container" wx:if="{{commentList.length!=0}}">
+        <view bindtap="toCommentList" class="comment-info">
+            <view class="comment">
+        评论
+      </view>
+            <view class="count">
+        综合评论{{commentCount}}
+      </view>
+            <view class="more">
+        查看全部评论
+      </view>
+        </view>
+        <view class="comment-list">
+            <view class="comment-item" wx:if="{{index==0}}" wx:for="{{commentList}}" wx:key="{{index}}">
+                <view class="user">
+                    <view class="avatar">
+                        <image src="{{item.head_pic}}"></image>
+                    </view>
+                    <view class="name">
+              {{item.username}}
+            </view>
+                </view>
+                <view class="content">
+            {{item.content}}
+          </view>
+                <view bindtap="chooseImage" class="images" data-images="{{item.img}}" wx:if="{{item.img}}">
+                    <view class="images-item" wx:if="{{key<4}}" wx:for="{{item.img}}" wx:for-index="key" wx:for-item="val">
+                        <image src="{{val}}"></image>
+                    </view>
+                </view>
+                <view class="time">
+            {{item.add_time}}
+          </view>
+            </view>
+        </view>
+    </view>
+    <view class="comment-container none" wx:if="{{commentList.length<1}}">
+        <view bindtap="toCommentList" class="comment-info">
+            <view class="comment">
+        评论
+      </view>
+            <view class="count">
+        综合评论{{commentCount}}
+      </view>
+        </view>
+        <view class="comment-list">
+            <view class="comment-item">
+                <view class="content">
+            暂无评论
+          </view>
+                <view bindtap="chooseImage" class="images" data-images="{{item.img}}" wx:if="{{item.img}}"></view>
+            </view>
+        </view>
+    </view>
+    <view class="nav">
+        <view bindtap="changeTab" class="tab {{currentTab==1?'current':''}}" data-tab="1">图文详情</view>
+        <view bindtap="changeTab" class="tab {{currentTab==2?'current':''}}" data-tab="2">产品参数</view>
+        <view bindtap="changeTab" class="tab {{currentTab==3?'current':''}}" data-tab="3">相关推荐</view>
+    </view>
+    <view class="des-container" hidden="{{currentTab==1?false:true}}">
+        <template is="wxParse" data="{{wxParseData:imageText.nodes}}"></template>
+    </view>
+    <view class="d-attrs" hidden="{{currentTab==2?false:true}}">
+        <view class="row" wx:for="{{goods.goods_attr_list}}">
+            <view class="key text-ellipsis">{{goods.goods_attribute[item.attr_id]}}</view>
+            <view class="value text-ellipsis">{{item.attr_value}}</view>
+        </view>
+    </view>
+    <view class="d-list" hidden="{{currentTab==3?false:true}}">
+        <view class="goods-container">
+            <view bindtap="toToGoods" class="goods-item" data-id="{{goods.goods_id}}" wx:if="{{index<10}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="index">
+                <view class="pic">
+                    <image src="{{goods.original_img}}"></image>
+                </view>
+                <view class="info">
+                    <view class="name text-ellipsis">
+                      {{goods.goods_name}}
+                  </view>
+                    <view class="brand text-ellipsis">
+                      {{goods.shop_name}} 
+                  </view>
+                    <view class="price">
+                      ¥{{goods.shop_price}}
+                  </view>
+                    <view class="comment">
+                      {{goods.comments_num*1>0?goods.comments_num+'人评论':'新上架'}}
+                      <view class="salenum">销量：{{goods.sales_sum}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="foot-container">
+        <view class="service-cart">
+            <view class="service-center image" openType="contact" sessionFrom="{{appid}}">
+                <image mode="aspectFill" src="icons/sertt.png"></image>
+                <contact-button sessionFrom="{{time}}" size="28"></contact-button>
+            </view>
+            <view>
+                <text>客服</text>
+            </view>
+        </view>
+        <view bindtap="toCart" class="cart-icon">
+            <view class="icon">
+                <image src="./icons/shopping.png"></image>
+            </view>
+            <view>
+                <text>购物车</text>
+            </view>
+            <view class="cart-num" wx:if="{{cartNum}}">{{cartNum}}</view>
+        </view>
+        <view bindtap="tocollect" class="collect">
+            <view class="icon">
+                <image src="icons/collect.png" wx:if="{{iscollect}}"></image>
+                <image src="icons/collect-active.png" wx:else></image>
+            </view>
+            <view>
+                <text>收藏</text>
+            </view>
+        </view>
+        <view bindtap="buyShow" class="join-cart">
+      加入购物车
+    </view>
+        <view bindtap="nowBuy" class="now-buy">
+      立即购买
+    </view>
+        <view class="service">
+            <contact-button sessionFrom="weapp" size="20" style="opacity:0;" type="default-dark" wx:for="{{3}}"></contact-button>
+        </view>
+    </view>
+    <view class="buy-container" hidden="{{!isshow}}">
+        <view bindtap="buyHide" class="close-btn">
+            <image src="./icons/close-icon.png"></image>
+        </view>
+        <view class="goods-info ">
+            <view class="pic">
+                <image bindtap="bigImage" data-images="{{selectImg==''?goods.original_img:selectImg}}" src="{{selectImg==''?goods.original_img:selectImg}}"></image>
+            </view>
+            <view class="info">
+                <view class="name text-ellipsis">
+                    <text>{{goods.goods_name}}</text>
+                </view>
+                <view class="price">
+          ¥{{showPrice||goods.shop_price}}
+          </view>
+                <view class="cart-sub-info">{{selectedName?'选择: '+selectedName:'此商品无规格'}}</view>
+            </view>
+        </view>
+        <view class="type-choice" wx:if="{{goods.show_spec.length==0}}">
+            <view class="caption">
+        此商品无规格可选
+      </view>
+        </view>
+        <scroll-view class="type-choice" scrollY="{{true}}">
+            <block wx:if="{{goods.show_spec.length>0}}" wx:for="{{goods.show_spec}}" wx:for-item="mainitem">
+                <view class="caption">
+        {{mainitem.name}}
+      </view>
+                <view class="choice-scroll">
+                    <view class="scroll-box">
+                        <view bindtap="choiceType" class="choice-item {{subitem.item_id==mainitem.selected?'active':''}}" data-img="{{subitem.src}}" data-itemid="{{subitem.item_id}}" data-itemname="{{mainitem.name}}" wx:for="{{mainitem.value}}" wx:for-item="subitem">
+              {{subitem.item}}
+            </view>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+        <view class="handle-box">
+            <view class="caption">
+        购买数量
+      </view>
+            <view class="count">
+                <view class="envent">
+                    <view bindtap="goodsReduce" class="reduce">
+            -
+          </view>
+                    <view class="num">
+            {{count}}
+          </view>
+                    <view bindtap="goodsIncrease" class="increase">
+            +
+          </view>
+                </view>
+            </view>
+        </view>
+        <view class="total">
+      总价：<view class="price">¥{{(showPrice||goods.shop_price)*100*count/100}}</view>
+        </view>
+    </view>
+    <view class="mask" hidden="{{!isshow}}"></view>
+</view>

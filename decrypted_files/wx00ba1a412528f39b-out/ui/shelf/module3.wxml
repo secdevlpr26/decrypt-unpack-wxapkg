@@ -1,0 +1,7 @@
+<template name="module3">
+    <view class="shop_module_single_activity">
+        <navigator url="/pages/list/list?gid={{group_info.group_id}}&sort_type=asc&sort_key=price">
+            <image mode="aspectFill" src="{{group_info.img}}"></image>
+        </navigator>
+    </view>
+</template>

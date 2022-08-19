@@ -1,0 +1,59 @@
+<image class="headImg" mode="aspectFit" src="{{iconimg.consult_bg}}" style="height:{{imageH}}px;width:{{imageW}}px;"></image>
+<view class="item-row" wx:if="{{haveFreeConsult}}">
+    <view bindtap="showOnlineReservation" class="item" hoverClass="weui-cell_active">
+        <image class="item-icon" mode="aspectFit" src="{{iconimg.zx_zxyy}}"></image>
+        <text class="item-title">在线预约</text>
+        <text class="item-content">在线预约法律服务，到所直接交流更高效</text>
+    </view>
+    <view bindtap="showPaidAdvice" class="item" hoverClass="weui-cell_active" style="margin-left:10px;">
+        <image class="item-icon" mode="aspectFit" src="{{iconimg.zx_fuzx}}"></image>
+        <view class="item-title">付费咨询
+      <image mode="aspectFit" src="{{iconimg.tuijian}}" style="width:18px; height:17px; margin-left:3px;"></image>
+        </view>
+        <view class="item-content">仅需
+      <text style="color:#f13737;">{{price}}</text>元，专人律师及时响应，快速解决</view>
+    </view>
+</view>
+<view class="item-row" wx:if="{{haveFreeConsult}}">
+    <view bindtap="showMessageAdvice" class="item" hoverClass="weui-cell_active">
+        <image class="item-icon" mode="aspectFit" src="{{iconimg.zx_lyzx}}"></image>
+        <text class="item-title">留言咨询</text>
+        <text class="item-content">律师利用空闲时间，免费解答</text>
+    </view>
+    <view bindtap="callClick" class="item" hoverClass="weui-cell_active" style="margin-left:10px;">
+        <image class="item-icon" mode="aspectFit" src="{{iconimg.zx_dhyy}}"></image>
+        <text class="item-title">电话预约</text>
+        <text class="item-content">{{tel}}
+      服务时间:{{serverTime}}
+      </text>
+    </view>
+</view>
+<view wx:if="{{!haveFreeConsult}}">
+    <view bindtap="showPaidAdvice" class="cell" hoverClass="weui-cell_active">
+        <image class="cell-img" mode="aspectFit" src="{{iconimg.zx_fuzx}}" style=""></image>
+        <view style="display: flex; flex-direction: column;">
+            <text class="cell-title">付费咨询</text>
+            <view class="cell-content">仅需
+        <text style="color:#f13737;">{{price}}</text>元，专人律师及时响应，快速解决</view>
+        </view>
+    </view>
+    <view bindtap="showOnlineReservation" class="cell" hoverClass="weui-cell_active">
+        <image class="cell-img" mode="aspectFit" src="{{iconimg.zx_zxyy}}" style=""></image>
+        <view style="display: flex; flex-direction: column;">
+            <text class="cell-title">在线预约</text>
+            <view class="cell-content">在线预约法律服务，到所直接交流更高效</view>
+        </view>
+    </view>
+    <view bindtap="callClick" class="cell" hoverClass="weui-cell_active">
+        <image class="cell-img" mode="aspectFit" src="{{iconimg.zx_dhyy}}" style=""></image>
+        <view style="display: flex; flex-direction: column;">
+            <text class="cell-title">电话预约</text>
+            <text class="cell-content">电话:{{tel}}   服务时间:{{serverTime}}</text>
+        </view>
+    </view>
+</view>
+<view class="footer">
+    <text style="font-size:12px; color:#333; margin-left:15px;margin-top:35px;">服务说明：</text>
+    <text style="font-size:12px; color:#999; margin-left:15px;margin-top:8px;margin-rigth:15px;">1、所有咨询均由执业律师本人回复。</text>
+    <text style="font-size:12px; color:#999; margin-left:15px;margin-rigth:15px;">2、服务不满意可通过首页在线客服按钮申请退款。</text>
+</view>

@@ -1,0 +1,7 @@
+<template name="loading">
+    <view class="loading-mask">
+        <view class="loading">
+            <image src="../../images/logo.png"></image>
+        </view>
+    </view>
+</template>

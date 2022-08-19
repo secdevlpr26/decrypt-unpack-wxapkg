@@ -1,0 +1,6 @@
+<view class="page">
+    <view class="op"></view>
+    <view>{{tip}}</view>
+    <button bindgetuserinfo="bindGetUserInfo" openType="getUserInfo" wx:if="{{canIUse}}">授权登录</button>
+    <view wx:else>请升级微信版本</view>
+</view>

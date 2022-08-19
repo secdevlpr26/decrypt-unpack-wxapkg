@@ -1,0 +1,28 @@
+<view class="langFlag"></view>
+<view class="container">
+    <scroll-view class="scrollView_top  border1px" scrollX="true" style="width: 100%" wx:if="{{classlist.length}}">
+        <view class="class-list">
+            <view bindtap="onClassChange" class="class-item " data-classid="{{item.ClassID}}" wx:for="{{classlist}}" wx:key="ClassID">
+                <text class="{{classid==item.ClassID?'active':''}} itemText">{{item.Name}}</text>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="placeholderBox" wx:if="{{classlist.length}}"></view>
+    <view class="noproducttips" style="display: {{!hasproduct?'block':'none'}}">
+        当前条件下搜索不到产品
+    </view>
+    <view class="product-list">
+        <view catchtap="goProductdetail" class="product-item" data-productid="{{item.ProductID}}" style="width:{{imgWidth}}px" wx:for="{{productlist}}" wx:key="id">
+            <view class="pro-img">
+                <image src="{{baseUrl}}{{item.ImgSmall}}" style="width:{{imgWidth}}px;height:{{imgWidth}}px"></image>
+            </view>
+            <view class="productText">
+                <view class="title">{{item.Name}}</view>
+                <view class="desc">{{item.ProDesc?item.ProDesc:'暂无简介'}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<include src="/pages/template/popupFromShare.wxml"></include>
+<include src="/pages/common/popout/index.wxml"></include>
+<include src="/pages/common/phoneauthorization/index.wxml"></include>

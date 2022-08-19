@@ -1,0 +1,16 @@
+<view class="login-container">
+    <view class="login" wx:if="{{!logged}}">
+        <view class="alert">
+            <view class="alert-desc">
+                <image class="logged-icon" src="../../../we7/resource/images/login.png"></image>
+                <view class="alert-title">授权登陆开启完整体验</view>
+            </view>
+        </view>
+        <button bindgetuserinfo="login" class="weui-btn weui-btns" openType="getUserInfo" style="background-color: rgb(17, 113, 223);" type="primary">微信登陆</button>
+    </view>
+    <view class="logged" wx:else>
+        <image class="logged-icon" src="../../images/iconfont-weixin.png"></image>
+        <view class="logged-text">近期你已经授权登陆过{{title}}</view>
+        <view class="logged-text">自动登录中</view>
+    </view>
+</view>

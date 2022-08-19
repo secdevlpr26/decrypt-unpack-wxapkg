@@ -1,0 +1,35 @@
+<view class="fixedTopBorder"></view>
+<view class="container">
+    <view class="couponGetOver" wx:if="{{list.length==0}}">
+        <image mode="widthFix" src="{{baseUrl}}/images/wxapp/blank_10.png"></image>
+        <text>没有优惠劵</text>
+    </view>
+    <view class="couponCenter" wx:if="{{list.length>0}}">
+        <view class="couponItem" wx:for="{{list}}" wx:key="CouponID">
+            <view class="couponinfo flexBox flexDirectionColumn" style="background: linear-gradient(to right, {{item.color[0]}}, {{item.color[1]}});">
+                <view class="col1 flexBox flexAlign">
+                    <view class="moneyBox flexBox flexDirectionColumn">
+                        <view class="coupon-money ">
+                            <text class="moneyText" style="text-shadow: 0 0 10px {{item.color[1]}};">{{item.amount>=10000?item.amount/10000:item.amount}}</text>
+                            <text class="unit" style="text-shadow: 0 0 10px {{item.color[1]}}">{{item.amount>=10000&&item.Type=='1'?'万':''}}{{item.Type=='0'?'折':'元'}}</text>
+                        </view>
+                        <text class="astrict" style="text-shadow: 0 0 10px {{item.color[1]}}">满{{item.OrderMoney}}元可使用</text>
+                    </view>
+                    <view class="typeBox flexBox flexAlign flexDirectionColumn">
+                        <sapn class="unitText" style="text-shadow: 0 0 10px {{item.color[1]}};">{{item.Type=='1'?'现金券':'折扣券'}}</sapn>
+                        <view>
+                            <view bindtap="{{!buttonClicked?'M_getCoupon':''}}" class="coupon-getbtn" data-couponid="{{item.CouponID}}" data-idxitem="{{index}}" style="color: {{item.color[1]}};box-shadow: 0 0 10px {{item.color[1]}};" wx:if="{{item.CanGet==1&&item.Available>0}}">领取</view>
+                            <view class="coupon-getbtn coupon-getbtn2" style="color: #999;box-shadow: 0 0 10px {{item.color[1]}};background: #eaeaea;" wx:if="{{item.CanGet==0&&item.Available>0}}">已领取</view>
+                            <view class="coupon-getbtn coupon-getbtn2" style="color: #999;box-shadow: 0 0 10px {{item.color[1]}};background: #eaeaea;" wx:elif="{{item.Available<=0}}">已领完</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="col2 flexBox flexJustifyBetween ">
+                    <text>有效期至：{{item.timeLimit}}</text>
+                    <text wx:if="{{item.Limit!='0'}}">剩{{item.Available}}张</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<include src="/pages/template/popupFromShare.wxml"></include>

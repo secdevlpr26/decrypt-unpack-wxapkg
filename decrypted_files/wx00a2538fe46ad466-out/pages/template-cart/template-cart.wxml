@@ -1,0 +1,105 @@
+<template name="nogoods">
+    <view class="Empty">
+        <view class="Empty">
+            <image src="Empty"></image>
+        </view>
+        <view class="Empty">Empty</view>
+    </view>
+</template>
+<template name="content">
+    <view class="Empty" wx:for="Empty" wx:for-item="detail" wx:key="index">
+        <view bindtap="Empty" class="Empty" data-id="Empty">
+            <view catchtap="Empty" class="Empty" data-uid="Empty">
+                <image src="Empty"></image>
+            </view>
+            <view class="Empty">
+                <view class="Empty">
+                    <view class="Empty">
+                        <view class="Empty">
+                            <text style="Empty" wx:if="Empty">Empty</text>
+                            <text style="Empty">Empty</text>
+                        </view>
+                        <view class="Empty" wx:if="Empty">Empty</view>
+                    </view>
+                </view>
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <view class="Empty">
+                        <text style="Empty">Empty</text>
+                        <text>Empty</text>
+                    </view>
+                    <view class="Empty" style="Empty">Empty</view>
+                </view>
+                <view class="Empty">
+                    <image src="Empty"></image>
+                    <text>Empty</text>
+                </view>
+            </view>
+        </view>
+        <view class="Empty" wx:if="Empty">
+            <view bindtap="Empty" class="Empty" data-id="Empty">Empty</view>
+            <view bindtap="Empty" class="Empty" data-id="Empty">Empty</view>
+            <view bindtap="Empty" class="Empty" data-id="Empty">Empty</view>
+            <view bindtap="Empty" class="Empty" data-id="Empty" wx:if="Empty">Empty</view>
+            <view bindtap="Empty" class="Empty" data-id="Empty" wx:if="Empty">Empty</view>
+            <view bindtap="Empty" class="Empty" data-id="Empty" wx:if="Empty">Empty</view>
+            <view bindtap="Empty" class="Empty" data-id="Empty" wx:if="Empty">Empty</view>
+        </view>
+    </view>
+</template>
+<template name="notice">
+    <view class="Empty">
+        <image src="Empty"></image>
+    </view>
+    <view class="Empty">
+        <swiper autoplay="Empty" circular="Empty" duration="Empty" interval="Empty" vertical="Empty">
+            <swiper-item wx:for="Empty">
+                <navigator url="Empty">
+                    <text style="Empty">Empty</text>
+                    <text class="Empty">Empty</text>
+                </navigator>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>
+<template name="nav">
+    <swiper duration="Empty" indicatorActiveColor="Empty" indicatorDots="Empty">
+        <swiper-item wx:for="Empty">
+            <view bindtap="Empty" class="Empty" data-id="Empty" data-title="Empty" wx:if="Empty" wx:for="Empty" wx:for-item="nav">
+                <view class="Empty">
+                    <image src="Empty"></image>
+                </view>
+                <view class="Empty">Empty</view>
+            </view>
+            <view bindtap="Empty" class="Empty" data-id="Empty" data-title="Empty" style="Empty" wx:if="Empty" wx:for="Empty" wx:for-item="nav">
+                <view class="Empty">
+                    <image src="Empty"></image>
+                </view>
+                <view class="Empty">Empty</view>
+            </view>
+        </swiper-item>
+    </swiper>
+</template>
+<template name="rank">
+    <view class="Empty">
+        <image src="Empty"></image>
+    </view>
+    <view class="Empty">Empty</view>
+</template>
+<template name="banner">
+    <swiper autoplay="Empty" circular="Empty" duration="Empty" indicatorActiveColor="Empty" indicatorDots="Empty" interval="Empty">
+        <swiper-item wx:for="Empty">
+            <image class="Empty" mode="Empty" src="Empty"></image>
+        </swiper-item>
+    </swiper>
+</template>
+<template name="header">
+    <view bindtap="Empty" class="Empty">
+        <image src="Empty"></image>
+        <text>Empty</text>
+    </view>
+    <view class="Empty">
+        <image src="Empty"></image>
+        <input bindconfirm="Empty" confirmType="Empty" placeholder="Empty" type="Empty"></input>
+    </view>
+</template>

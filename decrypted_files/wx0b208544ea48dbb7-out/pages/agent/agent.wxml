@@ -1,0 +1,14 @@
+<view class="userinfo">
+    <view class="user">
+        <image src="{{userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="cont">
+        <view class="main">我是{{userInfo.nickName}}</view>
+        <view class="sub">我要为{{config.title}}代言</view>
+    </view>
+</view>
+<view class="codeinfo">
+    <image class="code" src="{{code}}"></image>
+    <view class="info">你已经是分销商了，点击右上角分享给朋友</view>
+    <view catchtap="saveimg" class="btn">保存图片</view>
+</view>

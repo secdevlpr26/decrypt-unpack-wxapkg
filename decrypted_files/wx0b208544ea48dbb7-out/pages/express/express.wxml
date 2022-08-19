@@ -1,0 +1,14 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<view class="container">
+    <view class="item-explain" wx:for="{{expressList}}" wx:key="{{index}}">
+        <view class="caption">
+            <text>{{item.title}}</text>
+        </view>
+        <view class="content">
+            <text>{{item.description}}</text>
+        </view>
+        <view class="content">
+            <template is="wxParse" data="{{wxParseData:imageText.nodes}}"></template>
+        </view>
+    </view>
+</view>

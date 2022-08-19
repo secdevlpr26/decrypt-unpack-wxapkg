@@ -1,0 +1,57 @@
+<view class="container">
+    <view class="banner">
+        <image class="banner" src="/images/banner.jpg"></image>
+    </view>
+    <view class="box">
+        <view class="header">
+            <view bindtap="getPickUsers" class="title {{one}}">人气总榜</view>
+            <view bindtap="getNewList" class="title {{two}}">新实力榜</view>
+        </view>
+        <view class="line" wx:if="{{one=='active'}}">
+            <image class="left" src="/images/left.jpg"></image>
+            <text>本周人气榜</text>
+            <image class="right" src="/images/right.jpg"></image>
+        </view>
+        <view class="top" wx:if="{{one=='active'}}">
+            <view class="top-item" wx:if="{{index<3}}" wx:for="{{pickUsers}}" wx:key="index">
+                <view class="item-box">
+                    <view class="title">TOP{{index+1}}</view>
+                    <view class="name">{{item.name}}</view>
+                    <view class="score">{{item.show_num}}</view>
+                    <view class="avatar-box">
+                        <image class="avatar" src="{{item.pic_url}}"></image>
+                    </view>
+                    <image class="one" src="/images/one.png" wx:if="{{index==0}}"></image>
+                    <view bindtap="goDetail" class="button" data-id="{{item.id}}">
+                        <text>+</text>
+                        <text>Pick</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="list">
+            <view class="list-item" wx:if="{{one=='active'&&index>2}}" wx:for="{{pickUsers}}" wx:key="index">
+                <text class="num">{{index+1}}</text>
+                <view class="avatar" style="background-color:#fff"></view>
+                <image class="avatar" src="{{item.pic_url}}"></image>
+                <text class="name">{{item.name}}</text>
+                <text class="score">{{item.show_num}}</text>
+                <view bindtap="goDetail" class="button" data-id="{{item.id}}">
+                    <text>+</text>
+                    <text>Pick</text>
+                </view>
+            </view>
+            <view class="list-item" wx:if="{{two=='active'}}" wx:for="{{newList}}" wx:key="index">
+                <text class="num">{{index+1}}</text>
+                <view class="avatar" style="background-color:#fff"></view>
+                <image class="avatar" src="{{item.pic_url}}"></image>
+                <text class="name">{{item.name}}</text>
+                <text class="score">{{item.show_num}}</text>
+                <view bindtap="goDetail" class="button" data-id="{{item.id}}">
+                    <text>+</text>
+                    <text>Pick</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

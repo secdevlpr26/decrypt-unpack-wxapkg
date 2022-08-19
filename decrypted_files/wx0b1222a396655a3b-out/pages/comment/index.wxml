@@ -1,0 +1,33 @@
+<import src="/pages/noticedetail/tabbar.wxml"></import>
+<template is="tabbar" data="{{tabbar:tabbar}}"></template>
+<view class="page-index">
+    <view class="content">
+        <view class="card">
+            <view class="card-first">
+                <view class="logo">
+                    <image mode="scaleToFill" src="{{pic}}"></image>
+                </view>
+            </view>
+            <view class="card-second">
+                <view class="info">
+                    <text>姓名：{{operator?operator.name:''}}</text>
+                </view>
+                <view class="info">
+                    <text>单位： {{operator?operator.company:''}}</text>
+                </view>
+                <view class="info">
+                    <text>电话： {{operator?operator.mobile:''}}</text>
+                </view>
+                <view class="info">
+                    <text>留言内容</text>
+                </view>
+                <form bindsubmit="bindFormSubmit">
+                    <view>
+                        <textarea name="content" placeholder=""></textarea>
+                    </view>
+                    <button formType="submit">确认留言</button>
+                </form>
+            </view>
+        </view>
+    </view>
+</view>

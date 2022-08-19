@@ -1,0 +1,70 @@
+<view class="page">
+    <view class="type-list">
+        <view class="borrow-most">
+            <image binderror="imgError" src="{{book.pic1=='no_cover'?noCover:imgRootPath+book.pic1}}"></image>
+            <view class="box-sd">
+                <text class="title">{{book.bookName}}</text>
+                <text class="author">作者：{{book.author==null?'--':item.author}}</text>
+                <text class="author">类别：{{book.bookCategory}}</text>
+                <text class="author">预约时间：{{appo.createDate}}</text>
+                <text class="author" decode="{{true}}">&nbsp;</text>
+            </view>
+        </view>
+    </view>
+    <view class="box-sd m10">
+        <view class="pad10">
+            <view class="title-name">
+                <image src="../../../images/books_icon_01.png" style="width:21px; height:15px"></image>
+                <text class="">预约状态</text>
+            </view>
+        </view>
+        <view class="page__bd page__bd_spacing">
+            <view class="weui-flex" wx:if="{{appo.state>1}}">
+                <view class="status-time">
+                    <view>{{tools.getDate(appo.getTime)}}</view>
+                    <view>{{tools.getTime(appo.getTime)}}</view>
+                </view>
+                <view class="{{appo.state==2?'status-img active':'status-img'}}">
+                    <image src="../../../images/details_complete_02.png"></image>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="status">待取书</view>
+                    <view class="status-word">管理员已将图书放入柜中，图书柜位置：{{appo.boxAddr}}</view>
+                </view>
+            </view>
+            <view class="weui-flex" wx:if="{{appo.state>0}}">
+                <view class="status-time">
+                    <view>{{tools.getDate(appo.appointmentDate)}}</view>
+                    <view>{{tools.getTime(appo.appointmentDate)}}</view>
+                </view>
+                <view class="{{appo.state==1?'status-img active':'status-img'}}">
+                    <image src="../../../images/details_complete_01.png"></image>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="status">预约借书成功</view>
+                    <view class="status-word">等待管理员将书放入柜中</view>
+                </view>
+            </view>
+            <view class="weui-flex">
+                <view class="status-time">
+                    <view>{{tools.getDate(appo.createDate)}}</view>
+                    <view>{{tools.getTime(appo.createDate)}}</view>
+                </view>
+                <view class="{{appo.state==0?'status-img active last':'status-img last'}}">
+                    <image src="../../../images/details_complete_01.png"></image>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="status">
+                已预约，待管理员审核
+              </view>
+                    <view class="status-word">
+                等待管理员审核
+              </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="toTel" class="server-tel" data-phone="{{telPhone}}">客服电话：<i>{{telPhone}}</i>
+    </view>
+</view>
+<wxs module="tools" src="../../../utils/appDate.wxs" />

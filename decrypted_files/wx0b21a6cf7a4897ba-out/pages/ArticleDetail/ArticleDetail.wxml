@@ -1,0 +1,30 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<view class="page">
+    <view class="title">{{title}}</view>
+    <view class="time">{{addTime}}</view>
+    <view style="margin-left:30rpx; margin-right:30rpx;margin-top:30px;">
+        <view class="wxParse">
+            <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+        </view>
+    </view>
+    <view class="horiz actionView">
+        <view bindtap="shangAction" class="verti actionViewItem" style="font-size:12px;color:#999999;">
+            <image class="shang" src="../../images/detailspage_shang.png"></image>
+      点赞
+    </view>
+        <button class="verti actionViewItem" openType="share" style="margin-left:50px;">
+            <image class="fenxiang" src="../../images/detailspage_fenxiang.png"></image>
+      分享
+    </button>
+    </view>
+    <view bindtap="goback" class="backBottom" hover="true" hoverClass="button-hover">
+        <image class="backImg" src="../../images/left_black.png"></image>
+        <text class="backtxt">返回至列表</text>
+    </view>
+    <view class="weui-footer">
+        <view class="weui-footer__links">
+            <text class="txt24">{{year}}©{{info.pronviceName}}{{info.cityName}}律师{{info.officeName}}</text>
+        </view>
+        <text class="txt24">技术支持：华律网</text>
+    </view>
+</view>

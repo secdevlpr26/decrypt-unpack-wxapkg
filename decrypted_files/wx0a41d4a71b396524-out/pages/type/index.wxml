@@ -1,0 +1,35 @@
+<view class="header-search-title">
+    <view class="x-row">
+        <view bindtap="gotoSearch" class="header-search x-row">
+            <view class="">
+                <i class="iconfont icon-sousuo"></i>
+            </view>
+            <view class="x-col-center">
+                <text style="font-size:13px;">书名/作者/ISBN编号/年龄/功能</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="zhanwei"></view>
+<scroll-view class="tab-h" scrollLeft="{{scrollLeft}}" scrollX="true">
+    <view bindtap="swichNav" class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" data-id="{{item.id}}" wx:for="{{cates}}">
+			{{item.categroyName}}
+		</view>
+</scroll-view>
+<block wx:if="{{typeList!=null&&typeList.length>0}}">
+    <view class="type-list" wx:for="{{typeList}}" wx:for-item="tl">
+        <view bindtap="toArticle" class="borrow-most" data-id="{{tl.id}}">
+            <image binderror="imgError" data-index="{{index}}" mode="aspectFill" src="{{tl.pic1=='no_cover'?noCover:imgRootPath+tl.pic1}}"></image>
+            <view class="box-sd">
+                <text class="title">{{tl.bookName}}</text>
+                <view class="author line-one">作者：{{tl.author==null?'--':tl.author}}</view>
+                <view class="book-intro line-two">{{tl.bookintr==null?'':tl.bookintr}}</view>
+            </view>
+        </view>
+    </view>
+</block>
+<view class="noData" style="margin-top:40%" wx:if="{{typeList==null||typeList.length<=0}}">
+    <image src="../../images/no-data.png"></image>
+    <view>该分类没有图书</view>
+</view>
+<wxs module="tools" src="../../utils/appUtils.wxs" />

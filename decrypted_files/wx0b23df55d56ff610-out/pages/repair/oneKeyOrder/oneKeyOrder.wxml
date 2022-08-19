@@ -1,0 +1,82 @@
+<view>
+    <view class="view-address">
+        <view class="address_item" style="height:200rpx;">
+            <textarea bindinput="input" data-type="content" placeholder="请告诉我您的任何需求" placeholderStyle="color:#c7c7c7;"></textarea>
+        </view>
+    </view>
+    <view class="view-address">
+        <view class="address_item">
+            <input bindinput="input" class="text input" data-type="name" placeholder="请输入您的姓名" placeholderClass="ptext" placeholderStyle="z-index: 0;" style="z-index: 0;"></input>
+        </view>
+    </view>
+    <view class="view-address">
+        <view class="address_item">
+            <input bindinput="input" class="text input" data-type="phone" placeholder="请输入您的手机号码" placeholderClass="ptext" placeholderStyle="z-index: 0;" style="z-index: 0;"></input>
+        </view>
+    </view>
+    <view class="view-address">
+        <view class="address_item">
+            <input bindinput="input" class="text input" data-type="code" placeholder="请输入短信验证码" placeholderClass="ptext" placeholderStyle="z-index: 0;" style="z-index: 0;"></input>
+            <text bindtap="getnum">{{time}}</text>
+        </view>
+    </view>
+    <view class="view-ares">
+        <view catchtap="open" class="area_item">
+            <text>{{province}}</text>
+            <image src="/images/icon_zx2.png"></image>
+        </view>
+        <view catchtap="open" class="area_item">
+            <text>{{city}}</text>
+            <image src="/images/icon_zx2.png"></image>
+        </view>
+        <view catchtap="open" class="area_item">
+            <text>{{county}}</text>
+            <image src="/images/icon_zx2.png"></image>
+        </view>
+    </view>
+    <view class="view-address" style="margin-top:2rpx;">
+        <view style="height:200rpx;background:#fff">
+            <view class="address_item">
+                <input bindinput="input" class="text input" data-type="address" placeholder="请输入详细地址" placeholderClass="ptext" placeholderStyle="z-index: 0;" style="z-index: 0;"></input>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view class="block"></view>
+        <view class="footer_visit">
+            <view catchtap="confirm" class="footer_visit_r">
+                <text catchtap="confirm" style="border-radius: 20rpx;">立即下单</text>
+            </view>
+        </view>
+    </view>
+    <view class="timeShade" hidden="{{timeShadeFlag?true:false}}">
+        <view class="timeSelectCon">
+            <view class="clearfix">
+                <view class="timeSelect_l">
+                    <view catchtap="selectDate" class="{{item.class?'active':''}}" data-index="{{index}}" wx:for="{{dateArr}}" wx:key="{{index}}">{{item.text}}</view>
+                </view>
+                <view class="timeSelect_r">
+                    <view catchtap="selectTime" class="{{item.class?'active':''}}" data-index="{{index}}" data-text="{{item.text}}" wx:for="{{timeArr}}" wx:key="{{index}}">{{item.text}}</view>
+                </view>
+            </view>
+            <view catchtap="cancle" class="timeSelect_btn">取消</view>
+        </view>
+    </view>
+    <view class="citypicker" wx:if="{{condition}}">
+        <picker-view bindchange="bindChange" class="citybody" indicatorStyle="height: 50px;" style="width: 100%; height: 340px;" value="{{value}}">
+            <view class="cityheader">
+                <view bindtap="open" class="city-cancel">取消</view>
+                <view bindtap="open" class="city-true">确定</view>
+            </view>
+            <picker-view-column>
+                <view style="line-height: 50px;padding-left:10px;" wx:for="{{provinces}}" wx:key="item">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view style="line-height: 50px;padding-left:10px;" wx:for="{{citys}}" wx:key="item">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view style="line-height: 50px;padding-left:10px;" wx:for="{{countys}}" wx:key="item">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+</view>

@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "个人中心",
+    "usingComponents": {
+        "uni-badge": "/components/uni-badge",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

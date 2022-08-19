@@ -1,0 +1,31 @@
+<view class="cover1" style="display:{{displayy}}">
+    <view bindtap="chkOrder1" class="cover1-1" style="display:{{displayy}}"></view>
+    <view class="container xiadan-box">
+        <view class="row">
+            <text class="flex80 writedesk">{{titlename}}</text>
+        </view>
+        <view class="row">
+            <text class="col-12 xiadan-box-descrip" decode="{{true}}">{{carname}}</text>
+        </view>
+        <view class="row row-button1">
+            <view bindtap="chkOrder1" class="flex30 button-xiadan1">取 消</view>
+            <form bindsubmit="chkOrder0" reportSubmit="true">
+                <button class="flex30 button-xiadan" formType="submit">确 定</button>
+            </form>
+        </view>
+    </view>
+</view>
+<view class="cover1" style="display:{{display_alone1}}">
+    <view bindtap="cancel" class="cover1-1" style="display:{{display_alone2}}"></view>
+    <view class="container xiadan-box">
+        <view class="row">
+            <text class="flex80 writedesk">{{titlename}}</text>
+        </view>
+        <view class="row">
+            <text class="col-12 xiadan-box-descrip" decode="{{true}}">{{carname}}</text>
+        </view>
+        <view class="row row-cancel">
+            <view bindtap="cancel" class="flex30 row-cancel-button">{{cancel}}</view>
+        </view>
+    </view>
+</view>

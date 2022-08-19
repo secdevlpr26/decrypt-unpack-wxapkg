@@ -1,0 +1,173 @@
+<view class="fixedTopBorder"></view>
+<view class="userDetails">
+    <view class="saveFormID flexBox flexAlign" formType="submit">
+        <image class="userDetailsImg" src="{{routerHeadImgUrl}}"></image>
+        <view class="userDetailsText">
+            <text>{{routerNickName}}</text>
+        </view>
+        <view class="userDetailsArrow flexBox flexAlign" wx:if="{{optionsobjMsg}}">
+            <form reportSubmit bindsubmit="from_send">
+                <button catchtap="initChatdialogue" class="sendMessage" formType="submit">
+          发消息
+        </button>
+            </form>
+        </view>
+    </view>
+</view>
+<view class="tab-box border1px">
+    <view catchtap="swichNav" class="tab-item {{currentTab==0?'active':''}}" data-current="0">
+        <form reportSubmit bindsubmit="from_send">
+            <button class="nav-btn" formType="submit">
+                <text class="{{currentTab==0?'item-color':''}}">互动情况</text>
+            </button>
+        </form>
+    </view>
+    <view catchtap="swichNav" class="tab-item {{currentTab==1?'active':''}}" data-current="1">
+        <form reportSubmit bindsubmit="from_send">
+            <button class="nav-btn" formType="submit">
+                <view class="{{currentTab==1?'item-color':''}}">互动记录 <text wx:if="{{RecordCount>0}}">({{RecordCount}})</text>
+                </view>
+            </button>
+        </form>
+    </view>
+    <view catchtap="swichNav" class="tab-item {{currentTab==2?'active':''}}" data-current="2">
+        <form reportSubmit bindsubmit="from_send">
+            <button class="nav-btn" formType="submit">
+                <text class="{{currentTab==2?'item-color':''}}">用户资料</text>
+            </button>
+        </form>
+    </view>
+</view>
+<swiper bindchange="switchTab" class="tab-content" current="{{currentTab}}" duration="300" style="height: {{winHeight}}rpx;">
+    <swiper-item>
+        <scroll-view scrollY="true" style="height: 100%;">
+            <view class="Situation">
+                <view class="SituationChart">
+                    <view class="SituationChartList flexBox flexAlign" wx:for="{{ChartList}}" wx:key="{{index}}">
+                        <view class="chartFont">{{item.name}}</view>
+                        <view class="chartColumn" style="width:{{item.column}}rpx"></view>
+                        <view class="chartNum" style="margin-left: {{item.maxQuantity>0?20:0}}rpx;">{{item.maxQuantity}}</view>
+                    </view>
+                </view>
+                <view class="ranking">
+                    <view class="rankingFont" wx:if="{{moreGoods}}">查看最多的商品</view>
+                    <view class="rankingList">
+                        <view catchtap="initBusiness" class="rankingListItem flexBox flexAlign" wx:for="{{rankingLists}}" wx:key="{{index}}">
+                            <view class="rankingNum flexBox flexAlign">
+                                <text class="rankingNumber">{{index+1}}</text>
+                            </view>
+                            <image binderror="errArticleImg" class="rankingListImg" data-err-img="/images/wxapp/article-default.png" data-err-index="{{index}}" src="{{baseUrl}}{{item.typeImg}}"></image>
+                            <view class="rankingListText">
+                                <view class="goodsName">{{item.typeName}}</view>
+                                <view class="seeCount">被查看了
+                  <text class="seeCountNum">{{item.maxQuantity}}</text>次</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <scroll-view bindscrolltolower="RecordListPage" scrollY="true" style="height: 100%;background:#fff;">
+            <view class="RecordNoData" wx:if="{{RecordCountNum}}">
+                <image mode="widthFix" src="{{baseUrl}}/images/wxapp/chakanxiangxi.png"></image>
+                <text>暂无互动记录</text>
+            </view>
+            <view class="Record flexBox flexAlign flexJustifyBetween border1px" wx:for="{{RecordList}}" wx:key="{{index}}">
+                <view class="RecordFont">
+                    <text class="RecordText">第{{item.quantity}}次</text>{{item.typeText}}</view>
+                <view class="RecordTime">
+                    <view>{{item.crTime}}</view>
+                    <view>{{item.minute}}</view>
+                </view>
+            </view>
+            <view class="noMore" wx:if="{{showNoMore}}">
+                <view class="line"></view>
+                <text class="text">没有更多</text>
+                <view class="line"></view>
+            </view>
+            <view style="height: 40rpx;"></view>
+            <view class="isLoading" wx:if="{{showMoreView}}">
+                <image src="{{baseUrl}}/images/wxapp/loadMoreData.gif"></image>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <scroll-view scrollY="true" style="height:100%;background-color:#fff;">
+            <view class="userData">
+                <form bindsubmit="saveUserInfo" data-status="{{butStatus?'0':'1'}}" reportSubmit="true">
+                    <view class="userDataItem flexBox flexAlign {{butStatus?'':'border1px'}}">
+                        <view class="userData-font {{butStatus?'userDataFontSure':''}}">姓名：</view>
+                        <view>
+                            <input name="username" placeholder="请输入姓名" placeholderClass="placeholder" value="{{userInfoData.name}}" wx:if="{{!butStatus}}"></input>
+                            <view wx:if="{{butStatus}}">{{userInfoData.name==''?'暂无':userInfoData.name}}</view>
+                        </view>
+                    </view>
+                    <view class="userDataItem flexBox flexAlign {{butStatus?'':'border1px'}}">
+                        <view class="userData-font {{butStatus?'userDataFontSure':''}}">电话：</view>
+                        <view>
+                            <input name="useriphone" placeholder="请输入电话" placeholderClass="placeholder" value="{{userInfoData.phone}}" wx:if="{{!butStatus}}"></input>
+                            <view class="butUserStatus flexBox flexAlign flexJustifyBetween" wx:if="{{butStatus}}">
+                                <text>{{userInfoData.phone==''?'暂无':userInfoData.phone}}</text>
+                                <i catchtap="onIphone" class="iconPhone icon iconfont icon-dianhua" data-iphone="{{userInfoData.phone}}" wx:if="{{userInfoData.phone!==''}}"></i>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="userDataItem flexBox flexAlign {{butStatus?'':'border1px'}}">
+                        <view class="userData-font {{butStatus?'userDataFontSure':''}}">性别：</view>
+                        <view wx:if="{{!butStatus}}">
+                            <radio-group bindchange="radioChange" class="radio-group">
+                                <label class="radio">
+                                    <radio checked="{{userInfoData.gender==1}}" class="radioSize" value="1"></radio>
+                                    <icon class="iconText" color="{{userInfoData.gender==1?'#ff7200':'#ddd'}}" size="{{userInfoData.gender==1?18:20}}" type="{{userInfoData.gender==1?'success':'circle'}}"></icon>男
+                </label>
+                                <label class="radio">
+                                    <radio checked="{{userInfoData.gender==2}}" class="radioSize" value="2"></radio>
+                                    <icon class="iconText" color="{{userInfoData.gender==2?'#ff7200':'#ddd'}}" size="{{userInfoData.gender==2?18:20}}" type="{{userInfoData.gender==2?'success':'circle'}}"></icon>女
+                </label>
+                            </radio-group>
+                        </view>
+                        <view wx:if="{{butStatus&&loadDone}}">{{userInfoData.gender==0?'暂无':userInfoData.gender==1?'男':'女'}}</view>
+                    </view>
+                    <view class="userDataItem flexBox flexAlign {{butStatus?'':'border1px'}}">
+                        <view class="userData-font {{butStatus?'userDataFontSure':''}}">微信：</view>
+                        <view>
+                            <input name="userwechat" placeholder="请输入微信" placeholderClass="placeholder" value="{{userInfoData.wechat}}" wx:if="{{!butStatus}}"></input>
+                            <view wx:if="{{butStatus}}">{{userInfoData.wechat==''?'暂无':userInfoData.wechat}}</view>
+                        </view>
+                    </view>
+                    <view class="userDataItem flexBox flexAlign {{butStatus?'':'border1px'}}">
+                        <view class="userData-font {{butStatus?'userDataFontSure':''}}">邮箱：</view>
+                        <view>
+                            <input name="useremail" placeholder="请输入邮箱" placeholderClass="placeholder" value="{{userInfoData.email}}" wx:if="{{!butStatus}}"></input>
+                            <view wx:if="{{butStatus}}">{{userInfoData.email==''?'暂无':userInfoData.email}}</view>
+                        </view>
+                    </view>
+                    <view class="userDataItem flexBox flexAlign {{butStatus?'':'border1px'}}" wx:if="{{!butStatus}}">
+                        <view class="userData-font {{butStatus?'userDataFontSure':''}}">地区：</view>
+                        <view class="editcard-input-r">
+                            <picker bindchange="onAddrRegionChange" class="pickerBox" mode="region" value="{{[0,0,0]}}">
+                                <text>{{selectedArea?selectedArea:currentAddr.AreaList?currentAddr.AreaList:'请选择地区'}}</text>
+                                <i class="arrow-right icon iconfont icon-iconfont_arrow-right"></i>
+                            </picker>
+                            <input name="AreaList" style="display:none" value="{{selectedArea?selectedArea:currentAddr.AreaList}}"></input>
+                        </view>
+                    </view>
+                    <view class="userDataItem flexBox {{butStatus?'':'border1px'}} {{butStatus?'address':'flexAlign'}}">
+                        <view class="userData-font {{butStatus?'userDataFontSure':''}}">地址：</view>
+                        <view>
+                            <input name="useraddress" placeholder="请输入地址" placeholderClass="placeholder" style="width:580rpx;" value="{{userInfoData.address}}" wx:if="{{!butStatus}}"></input>
+                            <view class="butUserStatus flexBox flexAlign flexJustifyBetween" wx:if="{{butStatus&&loadDone}}">
+                                <text class="addressText">{{useraddress!==''?useraddress:'暂无'}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="button-bg">
+                        <button catchtap="onButtonChange" class="editcard-button" data-status="{{butStatus?'0':'1'}}" formType="submit">{{butStatus?'补全资料':'确定'}}</button>
+                    </view>
+                </form>
+            </view>
+        </scroll-view>
+    </swiper-item>
+</swiper>

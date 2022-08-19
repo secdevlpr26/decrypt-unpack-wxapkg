@@ -1,0 +1,9 @@
+<view>
+    <image class="img" src="../../images/order_success.png"></image>
+    <view class="title">支付成功</view>
+    <view class="tip">谢谢您的信任和支持</view>
+    <view class="handler">
+        <view catchtap="home" class="btn">返回首页</view>
+        <view catchtap="look" class="btn" style="background-color:#00afec;color:#fff;">查看订单详情</view>
+    </view>
+</view>

@@ -1,0 +1,309 @@
+<view class="addrb">
+    <button bindtap="addAddress" class="delete">
+        <image src="{{hostUrl}}/images/coll3.gif"></image>点击新增【报销差旅主明细】</button>
+    <button bindtap="showFrom" class="delete" data-param="0" data-tp0="{{tp0}}">
+        <image src="{{tp0==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view>{{djlx}}{{djmc}}{{lcbm}}{{nf}}{{zrzxbm}}{{zrzxmc}}{{ztbm}}{{ls_tj}}</view>
+<view class="addrcon">
+    <view class="{{tp0==0?'header_view_show':'header_view_hide'}}" wx:for="{{addressList}}" wx:key="{{item.ID}}">
+        <view class="addr">
+            <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+        </view>
+        <view bindtap="selectzrzxbm" class="addr search" data-index="{{index}}">
+            <text>预算部门：</text>
+            <input disabled="true" name="zrzxbm" placeholder="请选择预算部门" type="text" value="{{item.ZRZXBM}}{{item.ZRZXMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view class="addr">
+            <text>摘要：</text>
+            <input bindinput="inputzy" data-index="{{index}}" name="zy" placeholder="业务摘要" type="text" value="{{item.ZY}}"></input>
+        </view>
+        <view bindtap="selectysxmbm" class="addr search" data-index="{{index}}" data-zrzxbm="{{item.ZRZXBM}}">
+            <text>预算项目：</text>
+            <input disabled="true" name="ysxmbm" placeholder="请选择预算项目" type="text" value="{{item.YSXMBM}}{{item.YSXMMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view bindtap="selectysxmmxbh" class="addr search" data-index="{{index}}" data-ysxmbm="{{item.YSXMBM}}" data-zrzxbm="{{item.ZRZXBM}}">
+            <text>预算明细：</text>
+            <input disabled="true" name="ysxmmxbh" placeholder="请选择预算项目明细" type="text" value="{{item.YSXMMXBH}}{{item.YSXMMXMC}}"></input>
+            <image src="{{hostUrl}}/images/ssico.png"></image>
+        </view>
+        <view class="addr">
+            <text>金额：</text>
+            <input bindinput="inputsqje" data-index="{{index}}" name="sqje" style="width:200rpx;" type="digit" value="{{item.SQJE}}"></input>
+        </view>
+        <view class="addr">
+            <text>冲借款金额：</text>
+            <input bindinput="inputczje" data-index="{{index}}" name="czje" type="digit" value="{{item.CZJE}}"></input>
+        </view>
+        <view class="addr">
+            <text>备注：</text>
+            <input bindinput="inputbz" data-index="{{index}}" name="bz" placeholder="我还有要说的：）" type="text" value="{{item.BZ}}"></input>
+        </view>
+        <view class="addrb">
+            <text style="color:red;font-size:30rpx;" wx:if="{{item.YBF>0}}">准备金：{{item.YBF}}</text>
+            <button bindtap="delete" class="delete" data-bh="{{item.BH}}" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/cross.png"></image>删除明细</button>
+            <button bindtap="tijiao" class="delete" data-bh="{{item.BH}}" data-bz="{{item.BZ}}" data-czje="{{item.CZJE}}" data-id="{{item.ID}}" data-index="{{index}}" data-sqje="{{item.SQJE}}" data-ysxmbm="{{item.YSXMBM}}" data-ysxmmxbh="{{item.YSXMMXBH}}" data-ysxmmxmc="{{item.YSXMMXMC}}" data-ywrq="{{item.YWRQ}}" data-zrzxbm="{{item.ZRZXBM}}" data-zy="{{item.ZY}}">
+                <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+        </view>
+    </view>
+</view>
+<view class="addrb2">
+    <button bindtap="addqt" class="delete" data-table="yssy_cc_jt">
+        <image src="{{hostUrl}}/images/coll3.gif"></image>点击新增【出差明细】</button>
+    <button bindtap="showFrom" class="delete" data-param="2" data-tp2="{{tp2}}">
+        <image src="{{tp2==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view class="{{tp2==0?'header_view_show':'header_view_hide'}}" wx:for="{{jtList}}" wx:key="{{item.id}}">
+    <view class="addr2">
+        <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+    </view>
+    <view class="addr2">
+        <picker bindchange="datePickerBindchange" data-index="{{index}}" end="2999-12-12" mode="date" start="1999-01-01" value="{{item.RQ}}">
+            <text>出发日期：</text>
+            <input bindinput="inputjtrq" data-index="{{index}}" disabled="true" name="rq" placeholder="出发日期" type="date" value="{{item.RQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr2">
+        <text>起点：</text>
+        <input bindinput="inputjtksdd" data-index="{{index}}" name="ksdd" placeholder="起点" type="text" value="{{item.KSDD}}"></input>
+    </view>
+    <view class="addr2">
+        <text>终点：</text>
+        <input bindinput="inputjtjsdd" data-index="{{index}}" name="jsdd" placeholder="终点" type="text" value="{{item.JSDD}}"></input>
+    </view>
+    <view bindtap="selectjtgj" class="addr2 search" data-index="{{index}}">
+        <text>交通工具：</text>
+        <input bindinput="inputjtsjmc" data-index="{{index}}" disabled="true" name="sjmc" placeholder="交通工具" type="text" value="{{item.SJMC}}"></input>
+        <image src="{{hostUrl}}/images/ssico.png"></image>
+        <input bindinput="inputjtsjgj" data-index="{{index}}" name="sjgj" type="text" value="{{item.SJGJ}}" wx:if="{{index==-1}}"></input>
+        <input bindinput="inputjtlx" data-index="{{index}}" name="lx" type="text" value="{{item.LX}}" wx:if="{{index==-1}}"></input>
+    </view>
+    <view class="addr2">
+        <text>金额：</text>
+        <input bindinput="inputjtsjje" data-index="{{index}}" name="sjje" placeholder="请输入金额" type="digit" value="{{item.SJJE}}"></input>
+    </view>
+    <view class="addr2">
+        <text>说明：</text>
+        <input bindinput="inputjtbz" data-index="{{index}}" name="bz" placeholder="我有其他要说的..." type="text" value="{{item.BZ}}"></input>
+    </view>
+    <view class="addrb">
+        <button bindtap="deleteqt" class="delete" data-bh="{{item.BH}}" data-id="{{item.ID}}" data-lx="交通费用" data-table="yssy_cc_jt">
+            <image src="{{hostUrl}}/images/coll2.gif"></image>删除明细</button>
+        <button bindtap="savejt" class="delete" data-bh="{{item.BH}}" data-bz="{{item.BZ}}" data-id="{{item.ID}}" data-jsdd="{{item.JSDD}}" data-ksdd="{{item.KSDD}}" data-lx="{{item.LX}}" data-rq="{{item.RQ}}" data-sjgj="{{item.SJGJ}}" data-sjje="{{item.SJJE}}">
+            <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+    </view>
+</view>
+<view class="addrb4">
+    <button bindtap="addqt" class="delete" data-table="yssy_cc_zs">
+        <image src="{{hostUrl}}/images/coll3.gif"></image>点击新增【住宿明细】</button>
+    <button bindtap="showFrom" class="delete" data-param="4" data-tp4="{{tp4}}">
+        <image src="{{tp4==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view class="{{tp4==0?'header_view_show':'header_view_hide'}}" wx:for="{{zsList}}" wx:key="{{item.id}}">
+    <view class="addr4">
+        <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+    </view>
+    <view class="addr4">
+        <picker bindchange="zsKSRQ" data-index="{{index}}" end="2999-12-12" mode="date" start="1999-01-01" value="{{item.KSRQ}}">
+            <text>入住日期：</text>
+            <input data-index="{{index}}" disabled="true" name="ksrq" placeholder="入住日期" type="date" value="{{item.KSRQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr4">
+        <picker bindchange="zsJSRQ" data-index="{{index}}" end="2999-12-12" mode="date" start="1999-01-01" value="{{item.JSRQ}}">
+            <text>离店日期：</text>
+            <input data-index="{{index}}" disabled="true" name="jsrq" placeholder="离店日期" type="date" value="{{item.JSRQ}}"></input>
+        </picker>
+    </view>
+    <view bindtap="selectzsdd" class="addr4 search" data-index="{{index}}">
+        <text>住宿城市：</text>
+        <input data-index="{{index}}" disabled="true" name="dd" placeholder="请选择住宿的城市" type="text" value="{{item.DD}}"></input>
+        <image src="{{hostUrl}}/images/ssico.png"></image>
+    </view>
+    <view class="addr4">
+        <text>地区分类：</text>
+        <input data-index="{{index}}" disabled="true" name="ddsxmc" type="text" value="{{item.DDSXMC}}"></input>
+    </view>
+    <view bindtap="selectzszysx" class="addr4 search" data-index="{{index}}" data-table="code_zs_bz" data-ztbm="{{ztbm}}">
+        <text>报销级别：</text>
+        <input data-index="{{index}}" disabled="true" name="zysxmc" placeholder="请选择报销级别" type="text" value="{{item.ZYSXMC}}"></input>
+        <image src="{{hostUrl}}/images/ssico.png"></image>
+        <input data-index="{{index}}" name="zysx" type="text" value="{{item.zysx}}" wx:if="{{index==-1}}"></input>
+        <input data-index="{{index}}" name="ddsx" type="text" value="{{item.DDSX}}" wx:if="{{index==-1}}"></input>
+    </view>
+    <view bindtap="bzje_ts" class="addr4">
+        <text>住宿标准：</text>
+        <input data-index="{{index}}" disabled="true" name="bzje" placeholder="自动计算" type="digit" value="{{item.BZJE}}"></input>
+    </view>
+    <view class="addr4">
+        <text>实际金额：</text>
+        <input bindinput="inputzssjje" data-index="{{index}}" name="sjje" placeholder="请输入实际金额" type="digit" value="{{item.SJJE}}"></input>
+    </view>
+    <view bindtap="bzje_ts" class="addr4">
+        <text>超额：</text>
+        <input data-index="{{index}}" disabled="true" name="ce" placeholder="自动计算" type="digit" value="{{item.CE}}"></input>
+    </view>
+    <view class="addr4">
+        <text>说明：</text>
+        <input bindinput="inputzsbz" data-index="{{index}}" name="bz" placeholder="我有其他要说的..." type="text" value="{{item.BZ}}"></input>
+    </view>
+    <view class="addrb">
+        <button bindtap="deleteqt" class="delete" data-bh="{{item.BH}}" data-id="{{item.ID}}" data-lx="住宿费用" data-table="yssy_cc_zs">
+            <image src="{{hostUrl}}/images/coll2.gif"></image>删除明细</button>
+        <button bindtap="savezs" class="delete" data-bh="{{item.BH}}" data-bz="{{item.BZ}}" data-dd="{{item.DD}}" data-ddsx="{{item.DDSX}}" data-ddsxmc="{{item.DDSXMC}}" data-id="{{item.ID}}" data-jsrq="{{item.JSRQ}}" data-ksrq="{{item.KSRQ}}" data-sjje="{{item.SJJE}}" data-zysx="{{item.ZYSX}}" data-zysxmc="{{item.ZYSXMC}}">
+            <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+    </view>
+</view>
+<view class="addrb1">
+    <button bindtap="addqt" class="delete" data-table="yssy_cc_bz">
+        <image src="{{hostUrl}}/images/coll3.gif"></image>点击新增【补贴明细】</button>
+    <button bindtap="showFrom" class="delete" data-param="1" data-tp1="{{tp1}}">
+        <image src="{{tp1==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view class="{{tp1==0?'header_view_show':'header_view_hide'}}" wx:for="{{bzList}}" wx:key="{{item.id}}">
+    <view class="addr1">
+        <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+    </view>
+    <view class="addr1">
+        <picker bindchange="bzKSRQ" data-index="{{index}}" end="2999-12-12" mode="date" start="1999-01-01" value="{{item.KSRQ}}">
+            <text>出发日期：</text>
+            <input data-index="{{index}}" disabled="true" name="ksrq" placeholder="出发日期" type="date" value="{{item.KSRQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr1">
+        <picker bindchange="bzKSSJ" data-index="{{index}}" end="23:59" mode="time" start="00:00" value="{{item.KSSJ}}">
+            <text>出发时间：</text>
+            <input data-index="{{index}}" disabled="true" name="kssj" placeholder="出发时间" type="time" value="{{item.KSSJ}}"></input>
+        </picker>
+    </view>
+    <view class="addr1">
+        <picker bindchange="bzJSRQ" data-index="{{index}}" end="2999-12-12" mode="date" start="1999-01-01" value="{{item.JSRQ}}">
+            <text>返回日期：</text>
+            <input data-index="{{index}}" disabled="true" name="jsrq" placeholder="返回日期" type="date" value="{{item.JSRQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr1">
+        <picker bindchange="bzJSSJ" data-index="{{index}}" end="23:59" mode="time" start="00:01" value="{{item.JSSJ}}">
+            <text>返回时间：</text>
+            <input data-index="{{index}}" disabled="true" name="jssj" placeholder="返回时间" type="time" value="{{item.JSSJ}}"></input>
+        </picker>
+    </view>
+    <view bindtap="selectbzdd" class="addr1 search" data-index="{{index}}">
+        <text>城市：</text>
+        <input data-index="{{index}}" disabled="true" name="dd" placeholder="请选择出差的城市" type="text" value="{{item.DD}}"></input>
+        <image src="{{hostUrl}}/images/ssico.png"></image>
+    </view>
+    <view class="addr1">
+        <text>地区分类：</text>
+        <input data-index="{{index}}" disabled="true" name="ddsx" type="text" value="{{item.DDSX}}"></input>
+    </view>
+    <view bindtap="selectbzzysx" class="addr1 search" data-index="{{index}}" data-table="CODE_BT_BZ" data-ztbm="{{ztbm}}">
+        <text>职员属性：</text>
+        <input data-index="{{index}}" disabled="true" name="zysxmc" placeholder="请选择职员属性" type="text" value="{{item.ZYSXMC}}"></input>
+        <image src="{{hostUrl}}/images/ssico.png"></image>
+        <input data-index="{{index}}" name="zysx" type="text" value="{{item.zysx}}" wx:if="{{index==-1}}"></input>
+    </view>
+    <view bindtap="bzje_ts" class="addr1">
+        <text>补贴金额：</text>
+        <input data-index="{{index}}" disabled="true" name="bzje" placeholder="自动计算" type="digit" value="{{item.BZJE}}"></input>
+    </view>
+    <view class="addr1">
+        <text>额外补贴：</text>
+        <input bindinput="inputbzewje" data-index="{{index}}" name="ewje" placeholder="请输入额外补贴" type="digit" value="{{item.EWJE}}"></input>
+    </view>
+    <view class="addr1">
+        <text>说明：</text>
+        <input bindinput="inputbzbz" data-index="{{index}}" name="bz" placeholder="我有其他要说的..." type="text" value="{{item.BZ}}"></input>
+    </view>
+    <view class="addrb">
+        <button bindtap="deleteqt" class="delete" data-bh="{{item.BH}}" data-id="{{item.ID}}" data-lx="补贴费用" data-table="yssy_cc_bz">
+            <image src="{{hostUrl}}/images/coll2.gif"></image>删除明细</button>
+        <button bindtap="savebz" class="delete" data-bh="{{item.BH}}" data-bz="{{item.BZ}}" data-bzje="{{item.BZJE}}" data-dd="{{item.DD}}" data-ddsx="{{item.DDSX}}" data-ewje="{{item.EWJE}}" data-id="{{item.ID}}" data-jsrq="{{item.JSRQ}}" data-jssj="{{item.JSSJ}}" data-ksrq="{{item.KSRQ}}" data-kssj="{{item.KSSJ}}" data-zysx="{{item.ZYSX}}">
+            <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+    </view>
+</view>
+<view class="addrb3">
+    <button bindtap="addqt" class="delete" data-table="yssy_cc_qt">
+        <image src="{{hostUrl}}/images/coll3.gif"></image>点击新增【其他费用】</button>
+    <button bindtap="showFrom" class="delete" data-param="3" data-tp3="{{tp3}}">
+        <image src="{{tp3==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view class="{{tp3==0?'header_view_show':'header_view_hide'}}" wx:for="{{qtList}}" wx:key="{{item.id}}">
+    <view class="addr3">
+        <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+    </view>
+    <view class="addr3">
+        <text>名称：</text>
+        <input bindinput="inputqtmc" data-index="{{index}}" name="mc" placeholder="费用名称" type="text" value="{{item.MC}}"></input>
+    </view>
+    <view class="addr3">
+        <text>金额：</text>
+        <input bindinput="inputqtje" data-index="{{index}}" name="je" placeholder="请输入金额" type="digit" value="{{item.JE}}"></input>
+    </view>
+    <view class="addr3">
+        <text>说明：</text>
+        <input bindinput="inputqtbz" data-index="{{index}}" name="bz" placeholder="我有其他要说的..." type="text" value="{{item.BZ}}"></input>
+    </view>
+    <view class="addrb">
+        <button bindtap="deleteqt" class="delete" data-bh="{{item.BH}}" data-id="{{item.ID}}" data-lx="其他费用" data-table="yssy_cc_qt">
+            <image src="{{hostUrl}}/images/coll2.gif"></image>删除明细</button>
+        <button bindtap="saveqt" class="delete" data-bh="{{item.BH}}" data-bz="{{item.BZ}}" data-id="{{item.ID}}" data-je="{{item.JE}}" data-mc="{{item.MC}}">
+            <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+    </view>
+    <view class="lb"></view>
+</view>
+<view bindtap="addzf" class="zhichi">
+  点击新增【汇款明细】
+</view>
+<view wx:for="{{orderzhList}}" wx:key="{{item.id}}">
+    <view class="addr search">
+        <text>单位名称：</text>
+        <input bindinput="inputskr" data-index="{{index}}" name="skr" placeholder="请选择单位" type="text" value="{{item.SKR}}"></input>
+        <image bindtap="selectzh" data-index="{{index}}" src="{{hostUrl}}/images/ssico.png"></image>
+    </view>
+    <view class="addr">
+        <text>开户行：</text>
+        <input bindinput="inputkhh" data-index="{{index}}" name="khh" placeholder="请输入开户行" type="text" value="{{item.KHH}}"></input>
+    </view>
+    <view class="addr">
+        <text>帐号：</text>
+        <input bindinput="inputzh" data-index="{{index}}" name="zh" placeholder="请输入帐号" type="text" value="{{item.ZH}}"></input>
+    </view>
+    <view class="addr">
+        <text>金额：</text>
+        <input bindinput="inputje" data-index="{{index}}" name="je" placeholder="请输入金额" type="digit" value="{{item.JE}}"></input>
+    </view>
+    <view class="addrb">
+        <button bindtap="deletezf" class="delete" data-id="{{item.ID}}">
+            <image src="{{hostUrl}}/images/coll2.gif"></image>删除明细</button>
+        <button bindtap="savezf" class="delete" data-id="{{item.ID}}" data-je="{{item.JE}}" data-khh="{{item.KHH}}" data-skr="{{item.SKR}}" data-zh="{{item.ZH}}">
+            <image src="{{hostUrl}}/images/455.png"></image>保存明细</button>
+    </view>
+    <view class="lb"></view>
+</view>
+<view class="lb"></view>
+<view class="zhichi">
+  图片附件（单击放大/缩小、滑动浏览、长按删除）
+</view>
+<view wx:for="{{getOrderFj}}" wx:key="{{item.id}}">
+    <image bindlongpress="deleteImage" bindtap="imgYu" data-index="{{index}}" data-list="{{getOrderFj.WEB}}/upload/Annex/{{getOrderFj.FILENAME}}" data-src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" mode="widthFix" src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" style="width:100%" wx:if="{{item.LX=='png'||item.LX=='jpg'||item.LX=='gif'||item.LX=='bmp'}}"></image>
+</view>
+<image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+<view class="addbtn1">合计：{{hj}}元
+
+</view>
+<view bindtap="bindChooiceProduct" class="icon_search1 photo">
+    <image src="{{hostUrl}}/images/photo.png"></image>
+</view>
+<view bindtap="addAddress" class="icon_search2">新增明细
+
+</view>
+<wxs module="filters" src="../../utils/filters.wxs" />

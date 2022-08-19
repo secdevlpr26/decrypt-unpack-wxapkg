@@ -1,0 +1,18 @@
+<view class="Empty">
+    <text class="Empty" style="Empty">Empty</text>
+    <form class="Empty">
+        <label class="Empty">
+            <text class="Empty">Empty</text>
+            <input class="Empty" placeholder="Empty" type="Empty"></input>
+        </label>
+        <label class="Empty" style="Empty">
+            <text class="Empty" style="Empty">Empty</text>
+            <input class="Empty" placeholder="Empty" type="Empty"></input>
+        </label>
+        <label class="Empty" style="Empty">
+            <checkbox checked="Empty" class="Empty" style="Empty" value="Empty"></checkbox>
+            <text class="Empty">Empty</text>
+        </label>
+        <button bindtap="Empty" class="Empty" style="Empty">Empty</button>
+    </form>
+</view>

@@ -1,0 +1,36 @@
+<view class="pro-attr-dialog {{showProAttr?'':'dn'}}">
+    <view class="pro-attr-frame">
+        <view bindtap="toggleProAttrFrame" class="iconfont icon-close btn-close"></view>
+        <view class="cur-info">
+            <image bindtap="previewImage" src="{{modelImage?modelImage:proInfoDetail.productImageVOList[0].imageURL}}"></image>
+            <view class="cur-info-right">
+                <text class="price">
+                    <text>￥</text>{{totalPrice}}</text>
+                <text class="stock">库存 {{stock}}</text>
+                <view class="choose-info" hidden="{{showCurAttr}}">已选 {{modelName}}，{{count}}个</view>
+            </view>
+        </view>
+        <view class="pro-attr-type" wx:for="{{proInfoDetail.attributeKeyVOList}}" wx:key="{{item.id}}">
+            <text class="pro-attr-name">{{item.keyName}}</text>
+            <view class="pro-attr-item">
+                <text bindtap="getModelInfo" data-attrindex="{{attrIndex}}" data-index="{{index}}" data-status="{{active[index][attrIndex]}}" data-typeid="{{attrItem.keyId}}-{{attrItem.id}}" style="{{active[index][attrIndex]?'color: '+styleConfig.foregroundColor+';background-color: '+styleConfig.mainColor+';':''}}" wx:for="{{item.valueList}}" wx:for-index="attrIndex" wx:for-item="attrItem" wx:key="{{attrItem.id}}">{{attrItem.valueName}}
+                    </text>
+            </view>
+        </view>
+        <view class="count">
+            <text>数量</text>
+            <view class="count-input">
+                <view bindtap="countSubtract" class="iconfont icon-subtract"></view>
+                <input bindinput="bindCountInput" type="number" value="{{count}}"></input>
+                <view bindtap="countAdd" class="iconfont icon-add"></view>
+            </view>
+        </view>
+        <view class="btn-attr-frame">
+            <view bindtap="changeProAttrFrame" class="btn-sure" style="background-color: {{styleConfig.mainColor}};color:{{styleConfig.foregroundColor}};" wx:if="{{attrBtnStatus==1}}">确定</view>
+            <view class="btn-box" wx:else>
+                <view bindtap="addcarttap1" class="btn-attr-cart">加入购物车</view>
+                <view bindtap="toBuy1" class="btn-attr-buy">立即购买</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,18 @@
+<view class="storeList">
+    <view class="storeItem" wx:for="{{stores}}">
+        <view bindtap="select" class="imgView" data-index="{{index}}">
+            <image src="{{item.store_image}}"></image>
+        </view>
+        <view class="textView">
+            <view bindtap="select" class="title" data-index="{{index}}">{{item.title}}</view>
+            <view class="openTime">
+                <view bindtap="select" data-index="{{index}}">{{item.keywords}}</view>
+                <view>
+                    <image bindtap="map" data-index="{{index}}" src="/images/dh.png" style="width:68rpx;height:68rpx;margin-right:20rpx;"></image>
+                    <image bindtap="phone" data-index="{{index}}" src="/images/bd2.png" style="width:68rpx;height:68rpx;margin-right:20rpx;"></image>
+                </view>
+            </view>
+            <view bindtap="select" class="addr" data-index="{{index}}">{{item.address}}</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,19 @@
+<scroll-view class="Empty" scrollX="Empty">
+    <view class="Empty">
+        <view wx:for="Empty">
+            <text bindtap="Empty" data-id="Empty" style="Empty" wx:if="Empty">Empty</text>
+            <text bindtap="Empty" data-id="Empty" wx:else>Empty</text>
+        </view>
+    </view>
+</scroll-view>
+<view class="Empty" wx:for="Empty">
+    <view bindtap="Empty" class="Empty" data-id="Empty">
+        <image mode="Empty" src="Empty"></image>
+        <view class="Empty">
+            <text>Empty</text>
+            <text>Empty</text>
+            <text>Empty</text>
+            <text style="Empty">Empty</text>
+        </view>
+    </view>
+</view>

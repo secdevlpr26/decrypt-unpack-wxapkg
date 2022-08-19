@@ -1,0 +1,110 @@
+<view class="Empty">
+    <form bindsubmit="Empty">
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <view bindlongpress="Empty" bindtap="Empty" class="Empty" data-filename="Empty" data-id="Empty" wx:for="Empty">
+                    <image mode="Empty" src="Empty"></image>
+                </view>
+                <view bindtap="Empty" class="Empty">
+                    <image mode="Empty" src="Empty"></image>
+                </view>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty" wx:if="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <input name="Empty" placeholder="Empty" type="Empty" value="Empty"></input>
+                </view>
+            </view>
+            <view class="Empty" wx:if="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <input name="Empty" placeholder="Empty" type="Empty" value="Empty"></input>
+                </view>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty" wx:if="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <input name="Empty" placeholder="Empty" type="Empty" value="Empty"></input>
+                </view>
+            </view>
+            <view class="Empty" wx:if="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <input name="Empty" placeholder="Empty" type="Empty" value="Empty"></input>
+                </view>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty" wx:if="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <input name="Empty" placeholder="Empty" type="Empty" value="Empty"></input>
+                </view>
+            </view>
+            <view class="Empty" wx:if="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <picker bindchange="Empty" end="Empty" mode="Empty" start="Empty" value="Empty">
+                        <view class="Empty">Empty</view>
+                    </picker>
+                    <picker bindchange="Empty" end="Empty" mode="Empty" start="Empty" value="Empty">
+                        <view class="Empty">Empty</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <view class="Empty" wx:if="Empty">
+            <view class="Empty" data-index="Empty" wx:for="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">
+                    <input name="Empty" type="Empty" value="Empty"></input>
+                </view>
+            </view>
+        </view>
+        <view class="Empty" wx:if="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <textarea name="Empty" placeholder="Empty" value="Empty"></textarea>
+            </view>
+        </view>
+        <view class="Empty" wx:if="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <view class="Empty">
+                    <checkbox bindtap="Empty" checked="Empty" color="Empty" id="Empty" name="Empty"></checkbox>
+                    <label for="Empty">Empty</label>
+                </view>
+                <view class="Empty">
+                    <view bindtap="Empty" class="Empty">
+                        <view>Empty</view>
+                    </view>
+                    <view class="Empty">
+                        <input bindinput="Empty" name="Empty" type="Empty" value="Empty"></input>
+                        <text>Empty</text>
+                    </view>
+                    <view bindtap="Empty" class="Empty">
+                        <view>Empty</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="Empty">
+            <button formType="Empty">
+                <text>Empty</text>
+                <text>
+                    <text wx:if="Empty">Empty</text>
+                    <text wx:else>
+                        <text wx:if="Empty">Empty</text>
+                        <text wx:else>Empty</text>
+                    </text>
+                </text>
+                <text>Empty</text>
+            </button>
+        </view>
+    </form>
+</view>

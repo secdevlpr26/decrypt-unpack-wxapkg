@@ -1,0 +1,15 @@
+<view class="news-detail-wrap">
+    <view class="news-title">{{detailInfo.title}}</view>
+    <view class="news-other">
+        <text class="news-time">{{detailInfo.date}}</text>
+        <view bindtap="{{collectStatus=='0'?'collect':'cancelCollect'}}" class="collect">
+            <i class="iconfont {{collectStatus=='0'?'icon-star':'icon-star1'}}"></i>
+			{{collectStatus=='0'?'收藏':'已收藏'}}
+		</view>
+    </view>
+    <view class="news-content">
+        <view class="news-detail">
+            <rich-text nodes="{{detailInfo.detailDescription}}"></rich-text>
+        </view>
+    </view>
+</view>

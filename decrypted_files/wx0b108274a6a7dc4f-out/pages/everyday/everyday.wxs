@@ -1,0 +1,4 @@
+var Sub = (function(val) {
+    return (val.substring(0, 7))
+});
+module.exports.Sub = Sub;

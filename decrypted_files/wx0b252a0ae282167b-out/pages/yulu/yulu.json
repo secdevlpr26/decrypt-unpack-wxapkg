@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "免费预录",
+    "navigationBarBackgroundColor": "#3abbcb",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {}
+}

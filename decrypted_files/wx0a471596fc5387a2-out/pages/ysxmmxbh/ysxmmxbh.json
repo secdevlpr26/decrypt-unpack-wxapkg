@@ -1,0 +1,7 @@
+{
+    "navigationBarBackgroundColor": "#36383C",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "选择自己的学生",
+    "enablePullDownRefresh": false,
+    "usingComponents": {}
+}

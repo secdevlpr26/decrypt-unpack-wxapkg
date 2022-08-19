@@ -1,0 +1,42 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="tianxiedizhi">
+    <view class="row topRow">
+        <view class="top">
+            <view class="topLeft">联系人</view>
+            <view class="name">
+                <input bindinput="inputName" class="txt" focus="{{nameFocus}}" placeholder="您的姓名" value="{{contacts}}"></input>
+            </view>
+        </view>
+        <view class="sex">
+            <view class="left"></view>
+            <view class="right">
+                <block wx:for="{{genderList}}" wx:for-index="genderIndex" wx:for-item="genderItem" wx:key="gender">
+                    <view catchtap="selectGender" class="radio checked" data-idx="{{genderItemIndex}}" id="{{genderItem.genderId}}" wx:if="{{genderItem.genderId==selectedGenderId}}">
+                        <image class="genderImg" src="{{checkedImg}}"></image>
+                        <text>{{genderItem.gender}}</text>
+                    </view>
+                    <view catchtap="selectGender" class="radio" data-idx="{{genderItemIndex}}" id="{{genderItem.genderId}}" wx:else>
+                        <image class="genderImg" src="{{defaultImg}}"></image>
+                        <text>{{genderItem.gender}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="row">
+        <view class="left">地址</view>
+        <view class="right">
+            <view bindtap="chooseSearchType" class="address" style="color:#999;">{{selectedAddress.address_name?selectedAddress.address_name:'小区/写字楼/学校等'}}</view>
+        </view>
+    </view>
+    <view class="row">
+        <view class="left"></view>
+        <view class="right">
+            <view class="detail-address-box">
+                <input bindinput="inputAddress" class="detail-address" focus="{{addressFocus}}" placeholder="详细地址（如门牌号）" value="{{selectedAddress.address_desc}}"></input>
+            </view>
+        </view>
+    </view>
+</view>
+<view bindtap="submit" class="btnsure">确定</view>

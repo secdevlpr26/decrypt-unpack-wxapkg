@@ -1,0 +1,54 @@
+<view class="page">
+    <view class="page__bd page__bd_spacing ">
+        <view class="weui-flex list">
+            <checkbox-group bindchange="checkboxChange">
+                <label wx:for="{{items}}" wx:key="{{item.id}}">
+                    <view class="icon">
+                        <checkbox checked="{{item.checked}}" value="{{item.id}}"></checkbox>
+                    </view>
+                    <view class="weui-flex__item">
+                        <view class="type-list">
+                            <view class="borrow-most">
+                                <image binderror="imgError" class="book" data-index="{{index}}" src="{{item.pic1=='no_cover'?noCover:imgRootPath+item.pic1}}"></image>
+                                <image catchtap="delBook" class="del" data-id="{{item.id}}" src="../../images/bookcase_icon.png"></image>
+                                <view class="box-sd">
+                                    <view class="title line-one">{{item.bookName}}</view>
+                                    <view class="author line-one" style="width:340rpx;">作者：{{item.author==null?'--':item.author}}</view>
+                                    <text class="book-intro">{{item.bookintr==null?' ':item.bookintr}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </label>
+            </checkbox-group>
+        </view>
+        <view class="noData" wx:if="{{items==null||items.length<=0}}">
+            <image src="../../images/no-data.png"></image>
+            <view>借书架上没有图书</view>
+        </view>
+        <view class="footer">
+            <view class="page__bd page__bd_spacing">
+                <view class="weui-flex">
+                    <view class="icon">
+                        <checkbox bindtap="checkAll" checked="{{ckBool}}"></checkbox>
+              全选
+          </view>
+                    <view class="weui-flex__item text-right">合计: <text class="num">{{sum==null?0:sum}}本</text>
+                    </view>
+                    <view class="app-borrow" wx:if="{{sum>0}}">
+                        <text bindtap="toOrder">预约借书</text>
+                    </view>
+                    <view class="app-borrow" wx:if="{{sum<=0}}">
+                        <text class="disabled">预约借书</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{needBind}}">
+        <view class="wbd">您还未绑定读者证</view>
+        <view class="qbd">
+            <navigator url="../bind/index">去绑定</navigator>
+        </view>
+    </block>
+</view>

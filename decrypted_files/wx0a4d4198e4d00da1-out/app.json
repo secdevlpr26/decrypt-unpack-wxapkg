@@ -1,0 +1,289 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/index/miniapp",
+        "pages/index/overdue",
+        "pages/news/news",
+        "pages/news/newsLst",
+        "pages/good/good",
+        "pages/good/goodOrder",
+        "pages/good/goodOlt",
+        "pages/good/goodList",
+        "pages/good/goodSub",
+        "pages/good/goodSubLst",
+        "pages/good/goodProLst",
+        "pages/good/goodShopCar",
+        "pages/good/goodSearch",
+        "pages/good/goodType",
+        "pages/good/goodValue",
+        "pages/good/goodValueLst",
+        "pages/good/goodProItem",
+        "pages/bargain/bargain",
+        "pages/bargain/bargainOrder",
+        "pages/bargain/barSuccess",
+        "pages/bargain/bargainList",
+        "pages/my/myaddress",
+        "pages/my/mysavePrice",
+        "pages/my/storeValue",
+        "pages/my/storePay",
+        "pages/my/storeSuccess",
+        "pages/my/myLogistics",
+        "pages/my/bindPhone",
+        "pages/my/myInfo",
+        "pages/my/myVipInfo",
+        "pages/my/myBargainAddress",
+        "pages/my/afterSale/serveType",
+        "pages/my/afterSale/selectOrder",
+        "pages/my/afterSale/appeal",
+        "pages/my/afterSale/appealResult",
+        "pages/my/afterSale/returnCargo",
+        "pages/group/group",
+        "pages/group/groupOrder",
+        "pages/group/groupOtl",
+        "pages/group/groupSuccess",
+        "pages/group/groupList",
+        "pages/group/groupMyShare",
+        "pages/group/groupInvite",
+        "pages/group/grouping",
+        "pages/group2/group2",
+        "pages/group2/group2Order",
+        "pages/group2/group2Dlt",
+        "pages/group2/group2Share",
+        "pages/group2/group2List",
+        "pages/live/live",
+        "pages/live/video",
+        "pages/discount/couponLst",
+        "pages/discount/couponCenter",
+        "pages/discount/reduction",
+        "pages/discount/reductionLst",
+        "pages/integral/integral",
+        "pages/integral/interRecord",
+        "pages/integral/interDlt",
+        "pages/integral/interOrder",
+        "pages/integral/interSuccess",
+        "pages/integral/interLst",
+        "pages/sellCenter/sell",
+        "pages/sellCenter/sellIndivi",
+        "pages/sellCenter/sellMain",
+        "pages/sellCenter/sellPostCash",
+        "pages/sellCenter/sellRecord",
+        "pages/sellCenter/sellSuccess",
+        "pages/sellCenter/sellShow",
+        "pages/sellCenter/sellSecond",
+        "pages/sellCenter/sellProLst",
+        "pages/sellCenter/sellRemark",
+        "pages/im/chat",
+        "pages/im/contact",
+        "pages/miaoSha/more",
+        "pages/miaoSha/detail",
+        "pages/miaoSha/order",
+        "pages/auth/auth",
+        "pages/agent/levelChoose",
+        "pages/agent/myAgent",
+        "pages/agent/myAssets",
+        "pages/agent/withdrawCash",
+        "pages/agent/withdrawRecord",
+        "pages/agent/detailList",
+        "pages/luckDraw/luckDraw",
+        "pages/luckDraw/awardRecord",
+        "pages/reward/myUser",
+        "pages/reward/rewardWallet",
+        "pages/reward/levelSelect",
+        "pages/reward/myReward",
+        "pages/reward/recharge",
+        "pages/reward/inviteFriend",
+        "pages/reward/rewardList",
+        "pages/album/album",
+        "pages/album/albumDetail",
+        "pages/album/scan"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "black"
+    },
+    "subPackages": [
+        {
+            "root": "pages/news",
+            "pages": [
+                "pages/news/news",
+                "pages/news/newsLst"
+            ]
+        },
+        {
+            "root": "pages/good",
+            "pages": [
+                "pages/good/good",
+                "pages/good/goodOrder",
+                "pages/good/goodOlt",
+                "pages/good/goodList",
+                "pages/good/goodSub",
+                "pages/good/goodSubLst",
+                "pages/good/goodProLst",
+                "pages/good/goodShopCar",
+                "pages/good/goodSearch",
+                "pages/good/goodType",
+                "pages/good/goodValue",
+                "pages/good/goodValueLst",
+                "pages/good/goodProItem"
+            ]
+        },
+        {
+            "root": "pages/bargain",
+            "pages": [
+                "pages/bargain/bargain",
+                "pages/bargain/bargainOrder",
+                "pages/bargain/barSuccess",
+                "pages/bargain/bargainList"
+            ]
+        },
+        {
+            "root": "pages/my",
+            "pages": [
+                "pages/my/myaddress",
+                "pages/my/mysavePrice",
+                "pages/my/storeValue",
+                "pages/my/storePay",
+                "pages/my/storeSuccess",
+                "pages/my/myLogistics",
+                "pages/my/bindPhone",
+                "pages/my/myInfo",
+                "pages/my/myVipInfo",
+                "pages/my/myBargainAddress",
+                "pages/my/afterSale/serveType",
+                "pages/my/afterSale/selectOrder",
+                "pages/my/afterSale/appeal",
+                "pages/my/afterSale/appealResult",
+                "pages/my/afterSale/returnCargo"
+            ]
+        },
+        {
+            "root": "pages/group",
+            "pages": [
+                "pages/group/group",
+                "pages/group/groupOrder",
+                "pages/group/groupOtl",
+                "pages/group/groupSuccess",
+                "pages/group/groupList",
+                "pages/group/groupMyShare",
+                "pages/group/groupInvite",
+                "pages/group/grouping"
+            ]
+        },
+        {
+            "root": "pages/group2",
+            "pages": [
+                "pages/group2/group2",
+                "pages/group2/group2Order",
+                "pages/group2/group2Dlt",
+                "pages/group2/group2Share",
+                "pages/group2/group2List"
+            ]
+        },
+        {
+            "root": "pages/live",
+            "pages": [
+                "pages/live/live",
+                "pages/live/video"
+            ]
+        },
+        {
+            "root": "pages/discount",
+            "pages": [
+                "pages/discount/couponLst",
+                "pages/discount/couponCenter",
+                "pages/discount/reduction",
+                "pages/discount/reductionLst"
+            ]
+        },
+        {
+            "root": "pages/integral",
+            "pages": [
+                "pages/integral/integral",
+                "pages/integral/interRecord",
+                "pages/integral/interDlt",
+                "pages/integral/interOrder",
+                "pages/integral/interSuccess",
+                "pages/integral/interLst"
+            ]
+        },
+        {
+            "root": "pages/sellCenter",
+            "pages": [
+                "pages/sellCenter/sell",
+                "pages/sellCenter/sellIndivi",
+                "pages/sellCenter/sellMain",
+                "pages/sellCenter/sellPostCash",
+                "pages/sellCenter/sellRecord",
+                "pages/sellCenter/sellSuccess",
+                "pages/sellCenter/sellShow",
+                "pages/sellCenter/sellSecond",
+                "pages/sellCenter/sellProLst",
+                "pages/sellCenter/sellRemark"
+            ]
+        },
+        {
+            "root": "pages/im",
+            "pages": [
+                "pages/im/chat",
+                "pages/im/contact"
+            ]
+        },
+        {
+            "root": "pages/miaoSha",
+            "pages": [
+                "pages/miaoSha/more",
+                "pages/miaoSha/detail",
+                "pages/miaoSha/order"
+            ]
+        },
+        {
+            "root": "pages/auth",
+            "pages": [
+                "pages/auth/auth"
+            ]
+        },
+        {
+            "root": "pages/agent",
+            "pages": [
+                "pages/agent/levelChoose",
+                "pages/agent/myAgent",
+                "pages/agent/myAssets",
+                "pages/agent/withdrawCash",
+                "pages/agent/withdrawRecord",
+                "pages/agent/detailList"
+            ]
+        },
+        {
+            "root": "pages/luckDraw",
+            "pages": [
+                "pages/luckDraw/luckDraw",
+                "pages/luckDraw/awardRecord"
+            ]
+        },
+        {
+            "root": "pages/reward",
+            "pages": [
+                "pages/reward/myUser",
+                "pages/reward/rewardWallet",
+                "pages/reward/levelSelect",
+                "pages/reward/myReward",
+                "pages/reward/recharge",
+                "pages/reward/inviteFriend",
+                "pages/reward/rewardList"
+            ]
+        },
+        {
+            "root": "pages/album",
+            "pages": [
+                "pages/album/album",
+                "pages/album/albumDetail",
+                "pages/album/scan"
+            ]
+        }
+    ],
+    "navigateToMiniProgramAppIdList": [
+        ""
+    ]
+}

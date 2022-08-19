@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "银行卡",
+    "usingComponents": {
+        "uni-icon": "/components/uni-icon",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

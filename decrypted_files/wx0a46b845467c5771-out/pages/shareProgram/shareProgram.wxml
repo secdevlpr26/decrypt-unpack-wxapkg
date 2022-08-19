@@ -1,0 +1,13 @@
+<view>
+    <view class="contain-box">
+        <view class="img-box">
+            <image mode="widthFix" src="{{shareImg}}" style="width:100%;"></image>
+        </view>
+        <view bindtap="save" class="save-btn" style="background-image: linear-gradient(-270deg, #3A4A80 0%, #6294A6 100%);">
+            保存至相册
+        </view>
+        <view class="bottom-text">
+            分享到微信群和朋友圈，让更多人打开你的分享
+        </view>
+    </view>
+</view>

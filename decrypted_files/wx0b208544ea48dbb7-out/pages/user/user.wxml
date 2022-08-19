@@ -1,0 +1,77 @@
+<view class="container">
+    <view class="uesr-info">
+        <view class="avatar">
+            <image src="{{userInfo.avatar}}"></image>
+        </view>
+        <view class="name">
+            <text>
+        {{userInfo.name}}
+      </text>
+        </view>
+    </view>
+    <view class="banner">
+        <view bindtap="toOrderList" class="banner-item" data-type="WAITPAY">
+            <view>
+                <image class="banner-img" src="icons/a2.png"></image>
+            </view>
+            <text class="ordernum" wx:if="{{daifukuanNum&&daifukuanNum>0}}">{{daifukuanNum}}</text>
+            <text class="banner-text">待付款</text>
+        </view>
+        <view bindtap="toOrderList" class="banner-item" data-type="WAITSEND">
+            <text class="ordernum" wx:if="{{daifahuoNum&&daifahuoNum>0}}">{{daifahuoNum}}</text>
+            <view>
+                <image class="banner-img" src="icons/a3.png"></image>
+            </view>
+            <view>
+                <text class="banner-text">待发货</text>
+            </view>
+        </view>
+        <view bindtap="toOrderList" class="banner-item" data-type="WAITRECEIVE">
+            <text class="ordernum" wx:if="{{daishouhuoNum&&daishouhuoNum>0}}">{{daishouhuoNum}}</text>
+            <view>
+                <image class="banner-img" src="icons/a4.png"></image>
+            </view>
+            <view>
+                <text class="banner-text">待收货</text>
+            </view>
+        </view>
+        <view bindtap="toOrderList" class="banner-item" data-type="WAITCCOMMENT">
+            <text class="ordernum" wx:if="{{daipingjiaNum&&daipingjiaNum>0}}">{{daipingjiaNum}}</text>
+            <view>
+                <image class="banner-img" src="icons/a1.png"></image>
+            </view>
+            <view>
+                <text class="banner-text">待评价</text>
+            </view>
+        </view>
+        <view bindtap="toAftersale" class="banner-item">
+            <text class="ordernum" wx:if="{{shouhouNum&&shouhouNum>0}}">{{shouhouNum}}</text>
+            <view>
+                <image class="banner-img" src="icons/a5.png"></image>
+            </view>
+            <view>
+                <text class="banner-text">退换/售后</text>
+            </view>
+        </view>
+    </view>
+    <view class="menu-list">
+        <view class="widgets__item" wx:if="{{item.show}}" wx:for="{{menu_list}}" wx:key="{{item.id}}">
+            <view bindtap="widgetsToggle" class="widgets__info {{item.open?'widgets__info_show':''}}" id="{{item.id}}">
+                <image class="icon" src="{{item.icon}}"></image>
+                <text class="widgets__info-name">{{item.name}}</text>
+                <image class="widgets__info-img" mode="aspectFill" src="./icons/arrowright.png"></image>
+            </view>
+            <view class="widgets__list{{item.open?'_show':''}}">
+                <view bindtap="jump" class="item draw" data-url="{{page.url}}" wx:if="{{item.open}}" wx:for="{{item.pages}}" wx:for-item="page">
+                    <image class="icon" src="{{page.icon}}"></image>
+                    <text>{{page.title}}</text>
+                    <image class="order-images" src="icons/arrows_03.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="customer">
+            <contact-button sessionFrom="weapp" size="36" style="position:absolute;top:8rpx;left:27rpx;color:#fff;" type="default-light">客服
+      </contact-button>
+        </view>
+    </view>
+</view>

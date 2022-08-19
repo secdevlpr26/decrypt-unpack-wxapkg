@@ -1,0 +1,60 @@
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+<view class="wrap">
+    <view class="top">
+        <image class="top-background" lazyLoad="{{true}}" mode="aspectFill" src="{{storeInfo.pic1}}"></image>
+        <view class="top-right">
+            <view bindtap="{{collectStatus=='0'?'collect':'cancelCollect'}}" class="collect">
+                <text class="iconfont {{collectStatus=='0'?'icon-xin1':'icon-xin'}}"></text>
+                <text>{{collectStatus=='0'?'收藏':'已收藏'}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="main">
+        <view class="nav">
+            <view bindtap="nav_tap" class="nav-item" data-index="1">
+                <text class="{{tapIndex==1?'active':''}}">全部商品</text>
+            </view>
+            <view bindtap="nav_tap" class="nav-item" data-index="2">
+                <text class="{{tapIndex==2?'active':''}}">店铺详情</text>
+            </view>
+            <view bindtap="nav_tap" class="nav-item" data-index="3">
+                <text class="{{tapIndex==3?'active':''}}">招聘信息</text>
+            </view>
+        </view>
+        <view class="main-wrap" wx:if="{{tapIndex==1}}">
+            <view class="product clearfix">
+                <view bindtap="toProDetail" class="product-item" data-pid="{{item.id}}" wx:for="{{productArr}}" wx:key="{{item.id}}">
+                    <view class="group-label1" wx:if="{{item.activityType=='5'}}">拼团</view>
+                    <image lazyLoad="{{true}}" src="{{!item.productImageVOList[0].imageURL?'../../../img/img-default.png':item.productImageVOList[0].imageURL}}"></image>
+                    <view class="title">{{item.productName}}</view>
+                    <view class="price" wx:if="{{item.purpose==2||item.purpose==4}}">
+                        <i class="rmb"></i>
+                        <text>{{item.showName}}</text>
+                    </view>
+                    <view class="price" wx:else>
+                        <i class="rmb">￥</i>
+                        <text>{{item.price}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom-hint" hidden="{{bottomHint}}">
+                <view class="line"></view>
+                <text>没有更多产品啦</text>
+            </view>
+        </view>
+        <view class="introduction" wx:elif="{{tapIndex==2}}">
+            <template is="wxParse" data="{{wxParseData:shortDescription.nodes}}"></template>
+        </view>
+        <view class="jobInfo" wx:else>{{storeInfo.longDescription}}</view>
+    </view>
+    <view class="bottom-btn">
+        <span bindtap="phonecall" class="btn-item">
+            <i class="iconfont icon-kefudianhua"></i> 电话客服</span>
+        <span bindtap="locationtap" class="btn-item">
+            <i class="iconfont icon-daohang"></i> 定位导航</span>
+        <span bindtap="customtap" class="btn-item">
+            <i class="iconfont icon-customized"></i> 定制需求</span>
+        <i class="line1"></i>
+        <i class="line2"></i>
+    </view>
+</view>

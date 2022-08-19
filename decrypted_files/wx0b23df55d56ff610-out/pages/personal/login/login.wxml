@@ -1,0 +1,25 @@
+<import src="../../../component/message/message.wxml"></import>
+<template is="message" data="{{message:message}}"></template>
+<view class="login">
+    <view class="logo">
+        <image class="logo-img" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/17020403.png"></image>
+    </view>
+    <view class="inps-wrap">
+        <view class="inps-inner">
+            <image class="icon-sjh" src="{{phoneImgUrl}}"></image>
+            <input autoFocus bindinput="inputPhone" class="inp-sjh" maxlength="11" placeholder="手机号" placeholderClass="moren" type="number"></input>
+        </view>
+        <view class="inps-inner">
+            <image class="icon-yzm" src="{{codeImgUrl}}"></image>
+            <input bindinput="inputCode" class="inp-yzm" maxlength="8" placeholder="验证码" placeholderClass="moren" type="number"></input>
+            <button bindtap="sendCode" class="hqyzm" disabled="{{disabled}}">
+                <text style="color:{{getAuthCodeTextColor}}">{{getSmsCode}}</text>
+            </button>
+        </view>
+    </view>
+    <view bindtap="submit" class="btnlogin" style="background:{{loginBackgroundColor}}">无需注册，验证码登录</view>
+    <view bindtap="goToUserTerms" class="tipslogin">
+        <image class="icon-xy" src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/17020408.png"></image>
+        <text class="tips">登录即表示您同意《用户协议》</text>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+<view class="Empty" wx:for="Empty">
+    <view bindtap="Empty" class="Empty" data-id="Empty">
+        <image mode="Empty" src="Empty"></image>
+        <view class="Empty">
+            <text>Empty</text>
+            <text>Empty</text>
+            <text>Empty</text>
+            <text style="Empty">Empty</text>
+        </view>
+    </view>
+</view>

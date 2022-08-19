@@ -1,0 +1,42 @@
+<view class="page-fxshoporder">
+    <scroll-view bindscrolltolower="loadMore" class="list-container" scrollY="true" style="height:{{listHeight}}px">
+        <view class="summary">
+            <view class="title-count">
+                <text>你已累计销售订单</text>
+                <text class="count"> {{summary.order_count||0}} </text>笔
+				</view>
+            <text class="title-money">总销售额</text>
+            <text class="money">¥ {{summary.totalPrice||'0.00'}}</text>
+        </view>
+        <view class="goods-container pannel" wx:for="{{orderList}}">
+            <view class="goods-item">
+                <view class="good-order">
+							订单号:{{item.order_sn}}
+						</view>
+                <view class="pic">
+                    <image src="{{item.original_img}}"></image>
+                </view>
+                <view class="info">
+                    <view class="name text-ellipsis">
+                        <text></text>
+                    </view>
+                    <view class="specification">
+                        <view class="size  text-ellipsis">{{item.goods_name}}</view>
+                        <view class="count">数量x{{item.goods_num}}</view>
+                    </view>
+                    <view class="price">
+                        <text>订单金额 ¥{{item.goods_price}}</text>
+                    </view>
+                    <view class="comission">
+                        <text class=""> 分成率 ¥{{item.proportion}}%</text>
+                        <text>分成金额 ¥{{item.commission}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="footer">
+        <text>分成总计:¥{{summary.order_total_commision||0}}</text>
+        <text>销售总计:¥{{summary.totalPrice||0}}</text>
+    </view>
+</view>

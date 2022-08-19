@@ -1,0 +1,4 @@
+<image class="avatr_img" src="{{imgurl}}"></image>
+<button bindgetuserinfo="goDetail" class="activate" openType="getUserInfo" wx:if="{{!onClickFlag}}">一键授权</button>
+<button bindtap="goToUser" class="activate" wx:if="{{shouye}}">返回首页</button>
+<view class="wxsq">微信规则限制，必须您主动授权</view>

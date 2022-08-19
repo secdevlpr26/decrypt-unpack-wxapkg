@@ -1,0 +1,16 @@
+<view class="wx_page">
+    <view wx:if="{{descList.length>0}}">
+        <block wx:for="{{descList}}" wx:key="{{index}}">
+            <view class="detail_static_desc" wx:if="{{item.type==1}}">
+                <text>{{item.value}}</text>
+            </view>
+            <view wx:if="{{item.type==2}}">
+                <image class="detail_static_image" mode="widthFix" src="{{item.value}}"></image>
+            </view>
+        </block>
+    </view>
+    <view class="detail_static_desc" wx:if="{{!descList||descList.length==0}}">
+
+    暂无详情。
+  </view>
+</view>

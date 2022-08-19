@@ -1,0 +1,81 @@
+<view class="wrap-main">
+    <swiper autoplay="true" circular="true" class="swiper-container" indicatorDots="true" interval="2000">
+        <swiper-item class="swiper-item" wx:for="{{indexData.banner}}" wx:key="index">
+            <view class="container" data-id="{{item.ad_link}}">
+                <navigator url="{{linkType[item.ad_type]}}?id={{item.ad_link}}">
+                    <image src="{{item.ad_code}}"></image>
+                </navigator>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="city-container">
+        <view bindtap="gotoCity" class="city text-ellipsis">
+            <view class="icon">
+                <image src="./icons/location-icon.png"></image>
+            </view>
+      {{city.name}}
+    </view>
+        <view class="search">
+            <view class="icon">
+                <image src="./icons/search-icon.png"></image>
+            </view>
+            <input bindconfirm="toSearch" bindinput="search" class="search-input" placeholder="输入搜索" placeholderStyle="color:#959494;" type="text"></input>
+        </view>
+    </view>
+    <view class="nav-container">
+        <view bindtap="jump" class="nav-item" data-entrance="category" data-id="{{item.ad_link}}" data-type="{{item.ad_type}}" wx:for="{{indexData.nav}}" wx:key="index">
+            <view class="icon">
+                <image src="{{item.ad_code}}"></image>
+            </view>
+            <view class="text text-ellipsis">
+          {{item.ad_name}}
+        </view>
+        </view>
+    </view>
+    <view class="store-container {{storeList.length==0?'short':''}}" wx:if="{{storeList.length>0}}">
+        <view bindtap="gotoStore" class="caption">
+      {{shop}}街
+      <view class="icon">
+                <image src="./icons/arrow-right.png"></image>
+            </view>
+        </view>
+        <view class="store-list" scrollX="true">
+            <view bindtap="toShop" class="store-item" data-entrance="store" data-id="{{item.shop_id}}" wx:for="{{storeList}}" wx:key="index">
+                <view class="logo">
+                    <image src="{{item.shop_img}}"></image>
+                </view>
+                <view class="line"></view>
+            </view>
+            <view class="empty-data" wx:if="{{storeList.length==0}}">
+        该城市暂无入驻的{{shop}},换个城市看看
+      </view>
+        </view>
+    </view>
+    <view class="goods-container">
+        <view bindtap="toToGoods" class="goods-item" data-id="{{goods.goods_id}}" wx:if="{{index<10}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="index">
+            <view class="pic">
+                <image src="{{goods.original_img}}"></image>
+            </view>
+            <view class="info">
+                <view class="name text-ellipsis">
+            {{goods.goods_name}}
+          </view>
+                <view class="brand text-ellipsis">
+            {{goods.shop_name}}
+            </view>
+                <view class="price">
+            ¥{{goods.shop_price}}
+          </view>
+                <view class="comment">
+            {{goods.comments_num*1>0?goods.comments_num+'人评论':'新上架'}}
+            <view class="salenum">销量：{{goods.sales_sum}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="showmore" wx:if="{{goodsList.length>=10||!isload}}">
+        <navigator url="../goodslist2/goodslist2">
+            <view class="btn">点击查看更多</view>
+        </navigator>
+    </view>
+</view>

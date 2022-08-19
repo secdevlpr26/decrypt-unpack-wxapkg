@@ -1,0 +1,56 @@
+<view class="container">
+    <view class="integral">
+        <text class="integralhead">＠积分规则</text>
+        <text class="integralmark">{{totalPoint}}</text>
+        <text class="integraltext">如何赚积分？</text>
+    </view>
+    <view class="top-tab flex-wrp flex-tab ">
+        <view bindtap="switchTab" class="toptab flex-item {{currentNavtab==idx?'active':''}}" data-idx="{{idx}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" wx:key="item.id">
+      {{itemName}}
+    </view>
+    </view>
+    <view class="ctnt1 placehold" hidden="{{currentNavtab==0?'':true}}">
+        <view class="message__list">
+            <block wx:if="{{item.state>0}}" wx:for="{{messages}}" wx:key="item.id">
+                <view class="item">
+                    <view class="item-middle">
+                        <view>
+                            <text class="title">{{item.reason}}奖励</text>
+                        </view>
+                        <view>
+                            <text class="time">{{item.time}}</text>
+                        </view>
+                    </view>
+                    <view class="item_right">
+                        <view class="mark">
+                            <text class="text">+{{item.count}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="line"></view>
+            </block>
+        </view>
+    </view>
+    <view class="ctnt2 placehold" hidden="{{currentNavtab==1?'':true}}">
+        <view class="message__list">
+            <block wx:if="{{item.state<1}}" wx:for="{{messages}}" wx:key="item.id">
+                <view class="item">
+                    <view class="item-middle">
+                        <view>
+                            <text class="title">{{item.unit}}兑换</text>
+                        </view>
+                        <view>
+                            <text class="time">{{item.time}}</text>
+                        </view>
+                    </view>
+                    <view class="item_right">
+                        <view class="mark2">
+                            <text class="text">-{{item.count}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="line"></view>
+            </block>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,35 @@
+<view class="noagent " wx:if="{{!isBind}}">
+    <view class="userinfo">
+        <image class="logo" src="{{userInfo.avatarUrl}}"></image>
+        <view class="name">{{userInfo.nickName}}</view>
+    </view>
+    <view class="phone">
+        <view class="key">手机号</view>
+        <view class="val">
+            <input bindinput="savedata" maxlength="11" placeholder="请填写手机号，其他用户不可见" type="number"></input>
+        </view>
+    </view>
+    <view class="act">
+        <view catchtap="jump" class="btn-default">申请分销</view>
+    </view>
+</view>
+<view class="isagent" wx:if="{{isBind}}">
+    <view class="userinfo">
+        <view class="user">
+            <image src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="cont">
+            <view class="main">我是{{userInfo.nickName}}</view>
+            <view class="sub">我要为{{config.title}}代言</view>
+        </view>
+    </view>
+    <view class="codeinfo">
+        <image class="code" src="{{code}}"></image>
+        <view class="info">你已经是分销商了，点击右上角分享给朋友</view>
+        <view catchtap="saveimg" class="btn-default">保存图片</view>
+    </view>
+</view>
+<view class="unuse" wx:if="{{unuse}}">
+    <view>您的分销功能已被停用</view>
+    <view>请联系客服</view>
+</view>

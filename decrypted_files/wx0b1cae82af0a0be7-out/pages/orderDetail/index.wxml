@@ -1,0 +1,113 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <view class="order-process flex">
+        <image class="process-icon" src="/images/32@3x.png"></image>
+        <view class="process-text">
+            <view class="flex">
+                <text>{{orderDetail.orderStatus}}</text>
+                <text class="time">{{orderDetail.orderTime}}</text>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                {{orderDetail.orderFlow[0].info}}
+              </view>
+                <navigator class="weui-cell__ft weui-cell__ft_in-access" hoverClass="none" url="../orderProcess/index?orderNo={{orderDetail.orderNo}}">更多状态</navigator>
+            </view>
+        </view>
+    </view>
+    <view class="order-detail">
+        <view class="serve-detail">
+            <view class="serve-info">
+                <image class="serve-img" src="{{orderDetail.serviceImage}}"></image>
+                <view class="serev-info-text">
+                    <view class="serve-name ellipsls-one">{{orderDetail.serviceTitle}}</view>
+                    <view class="serve-price flex">
+                ¥{{orderDetail.unitPrice}}
+                <text class="num" wx:if="{{orderDetail.priceType==1}}">x{{orderDetail.serviceMount}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="flex order-mark" wx:if="{{orderDetail.remark}}">
+                <view class="tit">备注：</view>
+                <view class="text">{{orderDetail.remark}}</view>
+            </view>
+        </view>
+        <view class="order-price">
+            <view class="flex org-price">
+                <text>服务金额</text>
+                <text>¥{{orderDetail.totalPrice}}</text>
+            </view>
+            <view class="flex org-price">
+                <text>优惠金额</text>
+                <text>¥{{orderDetail.couponPrice}}</text>
+            </view>
+            <view class="flex fin-price">
+                <text>实付金额</text>
+                <text class="price">¥{{orderDetail.actualPrice}}</text>
+            </view>
+        </view>
+        <view class="order-info">
+            <view class="order-info-tit">服务信息</view>
+            <view class="order-info-list">
+                <view class="order-info-item">
+                    <text class="tit">联系人：</text>
+                    <text class="text">{{orderDetail.linkMan}}</text>
+                </view>
+                <view class="order-info-item">
+                    <text class="tit">服务时间：</text>
+                    <text class="text">{{orderDetail.serviceTime}}</text>
+                </view>
+                <view class="order-info-item">
+                    <text class="tit">联系电话：</text>
+                    <text class="text">{{orderDetail.linkPhone}}</text>
+                </view>
+                <view class="order-info-item">
+                    <text class="tit">服务地址：</text>
+                    <text class="text">{{orderDetail.serviceAddr}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="order-info">
+            <view class="order-info-tit">订单信息</view>
+            <view class="order-info-list">
+                <view class="order-info-item">
+                    <text class="tit">订单号码：</text>
+                    <text class="text">{{orderDetail.orderNo}}</text>
+                </view>
+                <view class="order-info-item">
+                    <text class="tit">下单时间：</text>
+                    <text class="text">{{orderDetail.orderTime}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="order-operate" wx:if="{{orderDetail.operation}}">
+        <view class="{{obj.flag!=8?' operate-btn buy-btn':'operate-btn'}}" wx:for="{{orderDetail.operation}}" wx:for-item="obj" wx:key="key">
+            <view bindtap="orderOperate" data-event="{{obj.event}}" data-flag="{{obj.flag}}" data-operationtype="{{obj.operationType}}" data-orderno="{{orderDetail.orderNo}}" data-type="{{obj.type}}" wx:if="{{obj.operationType!=2}}">
+            {{obj.event}}
+          </view>
+            <view bindtap="callPhone" data-phone="{{obj.workerPhone}}" wx:if="{{obj.operationType==2}}">
+            {{obj.linkWorker}}
+          </view>
+        </view>
+    </view>
+    <movable-view class="evaluate_list" hidden="{{evaluate}}">
+        <view class="evaluate">
+            <view class="manner">
+            服务态度：
+            <view bindtouchend="changeStar" class="star-item " data-index="{{index}}" data-status="{{false}}" wx:for="{{star}}" wx:key="{{index+1}}">
+                    <image src="/images/39@3x.png"></image>
+                </view>
+                <view bindtouchend="changeStar" class="star-item" data-index="{{star+index+1}}" data-status="{{true}}" wx:for="{{5-star}}" wx:key="{{index}}">
+                    <image src="/images/40@3x.png"></image>
+                </view>
+            </view>
+            <textarea bindinput="editEvaluste" placeholder="点评一下吧，您的意见很重要哦！" placeholderStyle="color:#ddd" value="{{evaluateText}}"></textarea>
+        </view>
+        <view class="evaluate_btn">
+            <view bindtap="cancelEvaluste" style="border-right:solid 1px #ccc">取消</view>
+            <view bindtap="confirmEvaluste" style="color: #2173d6">确定</view>
+        </view>
+    </movable-view>
+</view>

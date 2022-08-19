@@ -1,0 +1,15 @@
+<template name="21f2fc83">
+    <view class="_view M21f2fc83 page">
+        <page-head class="_page-head M21f2fc83" title="{{title}}"></page-head>
+        <swiper autoplay="{{true}}" circular="{{isCircular}}" class="_swiper M21f2fc83" indicatorDots="{{true}}">
+            <swiper-item class="_swiper-item M21f2fc83">
+                <view class="_view M21f2fc83 uni-grid-9">
+                    <view bindtap="handleProxy" class="_view M21f2fc83 uni-grid-9-item {{index%3===2?'no-border-right':''}}" data-comkey="{{$k}}" data-eventid="{{'21f2fc83-0-'+index}}" hoverClass="uni-grid-9-item-hover" key="{{index}}" wx:for="{{grids}}" wx:key="index">
+                        <image class="_image M21f2fc83 uni-grid-9-image" src="{{item}}"></image>
+                        <text class="_text M21f2fc83 uni-grid-9-text txt">产品时光机</text>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>

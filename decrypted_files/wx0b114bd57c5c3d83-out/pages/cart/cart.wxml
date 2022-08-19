@@ -1,0 +1,50 @@
+<view class="view-empty" wx:if="{{empty}}">
+    <image src="/images/empty_cart.png"></image>
+    <text class="hint">购物车还是空的</text>
+    <text bindtap="see" class="btn">马上逛逛</text>
+</view>
+<view wx:else>
+    <scroll-view scrollY="true" style="width:100%;height:{{height}}px">
+        <view class="container carts-list" wx:for="{{carts}}" wx:key="index">
+            <view class="carts-item-title">
+                <image src="/images/icon_store.png"></image>
+                <text>供应商:{{item.store_name}}</text>
+            </view>
+            <view class="carts-item">
+                <icon bindtap="bindCheckbox" data-index="{{index}}" size="20" type="success_circle" wx:if="{{item.selected}}"></icon>
+                <icon bindtap="bindCheckbox" data-index="{{index}}" size="20" type="circle" wx:else></icon>
+                <view>
+                    <image class="carts-image" mode="aspectFill" src="{{item.image}}"></image>
+                </view>
+                <view class="carts-text">
+                    <text class="carts-title">{{item.goods_name}}</text>
+                    <text class="carts-key-name">{{item.spec_key_name}}</text>
+                    <view class="carts-subtitle">
+                        <view>
+                            <view class="stepper">
+                                <text bindtap="bindMinus" class="{{minusStatuses[index]}}" data-index="{{index}}">-</text>
+                                <input bindchange="bindManual" data-index="{{index}}" disabled="{{item.group_buy_limit_num}}" type="number" value="{{item.goods_num}}"></input>
+                                <text bindtap="bindPlus" class="normal" data-index="{{index}}" data-limit-buy="{{item.group_buy_limit_num}}">+</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="carts-right">
+                    <text class="text-price">￥{{item.market_price}}</text>
+                    <text class="text-red">￥{{item.member_goods_price}}</text>
+                    <image bindtap="deleteCart" class="image-delete" data-index="{{index}}" src="/images/delete.png"></image>
+                </view>
+            </view>
+        </view>
+        <view style="width:100%;height:100rpx;"></view>
+    </scroll-view>
+    <view class="carts-footer">
+        <view bindtap="bindSelectAll" class="carts-footer-left">
+            <icon size="20" type="success_circle" wx:if="{{selectedAllStatus}}"></icon>
+            <icon size="20" type="circle" wx:else></icon>
+            <text>全选</text>
+            <text style="color:red;">￥: {{total}}(不含运费)</text>
+        </view>
+        <view bindtap="bindCheckout" class="button">立即结算</view>
+    </view>
+</view>

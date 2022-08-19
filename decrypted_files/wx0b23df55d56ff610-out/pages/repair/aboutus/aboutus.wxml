@@ -1,0 +1,67 @@
+<view class="gywmtitle">关于我们</view>
+<view class="gywmtxt">
+Hi维修手机上门维修与回收服务平台于2015年3月6日正式上线，秉承着快乐方式解决“手机后服务市场维修与回收难题”的服务理念，致力于为用户提供价格便宜、方便快捷、安全可靠的手机上门维修与回收服务。目前平台入驻合格工程师超过600人。
+</view>
+<view class="gywmtxt">
+Hi维修一路矢志前行，始终用承诺实现超越期待的服务，成为每个用户最值得信赖的选择。我们深知百万次维修，每一次都是一份郑重的托付，是安心、是信任、是感动、是幸福，您托付的每一次在乎我们必全力以赴，用超越预期的体验，交付您的信赖，成就您的期待。但这还远远不够，今天的Hi维修不仅是您身边最有温度的上门手机维修品牌，更是值得您信赖的综合手机维修与回收平台，以精准的时效、专业的技术，为您创造极致的服务体验。我们了解手机后服务市场的用户痛点，为用户打通痛点环节，搭建新的手机后服务市场体系、提供价格透明、极致体验的上门维修回收服务是Hi维修一直不变的使命。
+</view>
+<view class="gywmtxt">
+Hi维修经过两年的发展，现已开通全国十多座大中城市的上门维修与回收服务，全部垂直管控模式，让用户更加放心。
+</view>
+<view class="gywmtxt">
+Hi维修拥有自主线上产品开发团队与线下入驻工程师团队。线上团队以追求极致的用户体验为目标，不断优化和完善各配套系统；线下的工程师团队，无论是经验丰富的资深维修人员还是初入行业的菜鸟均作统一要求、统一培训考核后方可入驻上岗。本着对用户负责的原则，每位入驻工程师必须经过Hi维修严格审查、层层筛选检验。不论何时在服务过程中产生的任何纠纷，Hi维修都会先行赔付，确保用户百分百满意。
+</view>
+<view class="gywmtitle">个人服务</view>
+<view class="gywmtxt">
+Hi维修为个人用户提供优质的手机上门维修与回收服务。用户可以通过网络或电话预约，随时随地享受Hi维修专业工程师的上门维修及售后服务，对于上门服务过程中的任何不满意，用户均可以向Hi维修申请免单权（服务监督热线：400-017-1010）。
+</view>
+<view class="gywmtitle">企业上门服务</view>
+<view class="gywmtxt">
+针对各地符合一定人数规模的企业或团体，Hi维修特别推出企业免费上门服务，让员工无需为了修手机到处奔波，也有益于企业为员工谋得福利，同时Hi维修提供不满意退款服务和无忧售后保障服务。
+</view>
+<view class="gywmtitle">Hi维修一直在前进…</view>
+<view class="qianjin">
+    <view class="qianjinlist">
+        <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/jinli.png"></image>
+        <text>金立智能手机</text>
+        <view class="shouquantxt">官方授权服务商</view>
+    </view>
+    <view class="qianjinlist">
+        <image src="https://pic.hiweixiu.com/hiweixiu-app/weapp/img/meizu.png"></image>
+        <text>魅族智能手机</text>
+        <view class="shouquantxt">官方授权服务商</view>
+    </view>
+</view>
+<view class="gywmtitle">地址</view>
+<view class="gywmtxt">
+    <view>上海静安区站：上海市静安区梅园路228号企业广场609室</view>
+    <view>上海浦东新区站：上海市浦东新区东方路899号浦东假日酒店1006室</view>
+    <view>北京朝阳区站：北京朝阳区农展馆南路13号瑞辰国际中心1011室</view>
+    <view>北京海淀区站：北京市海淀区复兴路17号国海广场D座（4号楼）1517室</view>
+    <view>深圳站：深圳市福田区华强北路1019号华强广场A座8C室</view>
+    <view>广州站：广州天河区天河南二路19-21号 宏发大厦三层世联空间A01</view>
+    <view>杭州站：杭州市西湖区黄姑山路29号颐高数码旗舰店A座一楼J1007室</view>
+    <view>重庆站：重庆市渝中区大坪英利国际2号楼二单元1702室</view>
+    <view>成都站：成都市锦江区提督街1号雄飞中心2408室</view>
+    <view>西安站：西安市莲湖区北大街55号新时代广场06-E</view>
+    <view>南京站：南京市玄武区珠江路67号华利国际大厦2517室</view>
+    <view>长沙站：长沙市芙蓉区五一大道618号银华大酒店1209室</view>
+    <view>大连站：辽宁省大连市西岗区黄河路151号 越秀大厦1102室</view>
+    <view>武汉站：武汉市洪山区珞瑜路78号长江传媒大厦1110室</view>
+    <view>天津站：天津市和平区建设路105号滨江国际大饭店1617室</view>
+    <view>郑州站：郑州市郑东新区文苑南路北，后贾东街西，安和小区5号楼2单元501室</view>
+    <view>苏州站：苏州市姑苏区广济南路258号百脑汇科技中心1006室</view>
+    <view>昆山站：开通上门维修回收服务</view>
+    <view>佛山站：开通上门维修回收服务</view>
+    <view>无锡站：开通上门维修回收服务</view>
+    <view>全国城市陆续开通中……</view>
+</view>
+<view class="gywmtitle">联系方式</view>
+<view class="gywmtxt">
+    <view>Hi维修-快乐方式解决“手机维修难”</view>
+    <view>免费上门维修与回收：400-017-1010</view>
+    <view>客服在线：7:00-23:00（周一到周日）</view>
+    <view>官方网站：www.hiweixiu.com </view>
+    <view>手机网站：m.hiweixiu.com </view>
+    <view>业务与监督：hiweixiu110@qq.com</view>
+</view>

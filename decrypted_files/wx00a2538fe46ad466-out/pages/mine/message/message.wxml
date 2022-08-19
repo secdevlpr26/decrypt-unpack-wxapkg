@@ -1,0 +1,28 @@
+<view class="Empty">
+    <navigator class="Empty" url="Empty" wx:for="Empty" wx:key="{{index}}">
+        <view class="Empty">
+            <image class="Empty" mode="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">Empty</view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty" wx:if="Empty">Empty</view>
+        </view>
+    </navigator>
+    <navigator class="Empty" url="Empty" wx:for="Empty" wx:key="{{index}}">
+        <view class="Empty">
+            <image class="Empty" mode="Empty" src="Empty"></image>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">Empty</view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty" wx:if="Empty">Empty</view>
+        </view>
+    </navigator>
+</view>

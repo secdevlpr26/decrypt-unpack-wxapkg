@@ -1,0 +1,46 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<view class="page">
+    <view class="title">{{title}}</view>
+    <view class="time">{{time}}</view>
+    <view style="margin-left:30rpx; margin-right:30rpx;margin-top:30px;">
+        <view class="wxParse">
+            <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+        </view>
+    </view>
+    <view class="horiz actionView">
+        <view bindtap="shangAction" class="verti actionViewItem" style="font-size:12px;color:#999999;">
+            <image class="shang" src="../../images/detailspage_shang.png"></image>
+      点赞
+    </view>
+        <button class="verti actionViewItem" openType="share" plain="true" style="margin-left:50px;border-style:none;">
+            <image class="fenxiang" src="../../images/detailspage_fenxiang.png"></image>
+      分享
+    </button>
+    </view>
+    <view bindtap="goback" class="backBottom" hover="true" hoverClass="button-hover">
+        <image class="backImg" mode="aspectFit" src="../../images/left_black.png"></image>
+        <text class="backtxt">返回至列表</text>
+    </view>
+    <view class="weui-footer">
+        <view class="weui-footer__links">
+            <text class="txt">{{year}}©{{info.pronviceName}}{{info.cityName}}律师{{info.officeName}}</text>
+        </view>
+        <text class="txt">技术支持：华律网</text>
+    </view>
+    <view class="horiz " style="height:60px;background-color:#33353c;position:fixed;bottom:0px;width:100%;">
+        <view style="flex:2.5;text-align:center;margin-left:5px;">
+            <text style="font-size:13px;color:#fff;">服务热线：</text>
+            <text style="font-size:16px;color:#fff;font-weight:bold;"> {{info.tel}}</text>
+        </view>
+        <view style="background-color: #e8e8e8;  height: 25px;  width: 1px;"></view>
+        <view bindtap="saveNumber" class="horiz " style="flex:1;align-items:center;justify-content:center;">
+            <image class="icon27 " src="../../images/baocun.png"></image>
+            <text style="color:#fff;font-size:11px;margin-left:5px;">保存</text>
+        </view>
+        <view style="background-color: #e8e8e8;  height: 25px;  width: 1px;"></view>
+        <view bindtap="callClick" class="horiz " style="flex:1;align-items:center;justify-content:center;margin-right:5px;">
+            <image class="icon27 " src="../../images/bohao.png"></image>
+            <text style="color:#fff;font-size:11px;margin-left:5px;">拨号</text>
+        </view>
+    </view>
+</view>

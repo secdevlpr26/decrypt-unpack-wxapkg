@@ -1,0 +1,169 @@
+<view class="fixedTopBorder"></view>
+<view class="container workbench">
+    <view class="bench-header">
+        <form reportSubmit bindsubmit="from_send">
+            <button bindtap="toCardDetails" class="card-btn" formType="submit" hoverClass="none">
+                <view class="card" style="background-image: url({{baseUrl}}/images/wxapp/card-bg.png);background-repeat:no-repeat; background-size:100% 100%;">
+                    <view class="card-left">
+                        <view class="company-name">{{cardcontent.CompanyName}}</view>
+                        <view class="nickname-position {{wrap?'canWrap':'canNoWrap'}}">
+                            <text class="nickname">{{cardcontent.UserName}}</text>
+                            <text class="position">{{cardcontent.Position}}</text>
+                        </view>
+                        <view class="mobile {{wrap?'mt36':'mt56'}}">{{cardcontent.Mobile}}</view>
+                        <view class="email">{{cardcontent.Email}}</view>
+                    </view>
+                    <view class="card-right">
+                        <image mode="widthFix" src="{{baseUrl}}{{cardcontent.PersonImg}}"></image>
+                    </view>
+                    <image class="look-img" src="{{baseUrl}}/images/wxapp/xiaosanjiao_76.png"></image>
+                </view>
+            </button>
+            <view class="information-bottom shares">
+                <button catchtap="shareHfive" class="making-call" formType="submit" hoverClass="none" type="default">名片海报</button>
+                <button class="address-book" formType="submit" hoverClass="none" openType="share" type="default">
+            发送名片
+          </button>
+            </view>
+        </form>
+    </view>
+    <view class="user-msg">
+        <form reportSubmit bindsubmit="from_send">
+            <view catchtap="toLeaveWrod" class="molal-top border1px">
+                <button class="nav-btn" formType="submit" hoverClass="none">
+                    <view class="top-left">
+                        <text class="iconfont icon-iconfont_contact"></text>
+                        <text class="title">用户留言</text>
+                    </view>
+                    <view class="top-right">
+                        <text class="look-more">查看全部</text>
+                        <text class="iconfont icon-xiangyou"></text>
+                    </view>
+                </button>
+            </view>
+            <view class="content-modal">
+                <button catchtap="goChatDialogue" class="user-btn user-circle" data-id="{{item.UserInfo.UserID}}" data-imgurl="{{item.UserInfo.HeadImgUrl}}" data-name="{{item.UserInfo.NickName}}" formType="submit" hoverClass="none" wx:if="{{index<6&&!msgBlank}}" wx:for="{{msgList}}" wx:key="index">
+                    <image mode="widthFix" src="{{item.UserInfo.HeadImgUrl}}"></image>
+                    <view class="count">{{item.IsReadCount<=99?item.IsReadCount:'...'}}</view>
+                    <text class="user-name">{{item.UserInfo.NickName}}</text>
+                </button>
+                <button catchtap="toLeaveWrod" class="more-list" formType="submit" hoverClass="none" wx:if="{{msgList.length>=6}}">
+                    <view class="dot"></view>
+                    <view class="dot"></view>
+                    <view class="dot"></view>
+                </button>
+                <view class="msgBlank" wx:if="{{msgBlank}}">暂无最新留言</view>
+            </view>
+        </form>
+    </view>
+    <view class="radar-fn">
+        <form reportSubmit bindsubmit="from_send">
+            <view class="molal-top border1px">
+                <button catchtap="toAIradar" class="nav-btn" data-currentTab="0" formType="submit" hoverClass="none">
+                    <view class="top-left">
+                        <text class="iconfont icon-iconset0397"></text>
+                        <text class="title">我的AI雷达</text>
+                    </view>
+                    <view class="top-right">
+                        <text class="iconfont icon-xiangyou"></text>
+                    </view>
+                </button>
+            </view>
+            <view class="content-modal">
+                <button catchtap="toAIradar" class="radarfn-btn" data-currentTab="{{item.type}}" formType="submit" hoverClass="none" wx:for="{{radarFn}}" wx:key="index">
+                    <image mode="widthFix" src="{{baseUrl}}{{item.img}}"></image>
+                    <view class="count" wx:if="{{item.count>0}}">{{item.count<=99?item.count:'...'}}</view>
+                    <view class="fn-name">{{item.name}}</view>
+                </button>
+            </view>
+        </form>
+    </view>
+    <view class="boss-radar" wx:if="{{cardcontent.IsBoss==1}}">
+        <form reportSubmit bindsubmit="from_send">
+            <view class="molal-top border1px">
+                <button catchtap="toBossList" class="nav-btn" formType="submit" hoverClass="none">
+                    <view class="top-left">
+                        <text class="iconfont icon-huiyuanguanli"></text>
+                        <text class="title">Boss雷达</text>
+                    </view>
+                    <view class="top-right">
+                        <text class="look-more">查看其它名片主情况</text>
+                        <text class="iconfont icon-xiangyou"></text>
+                    </view>
+                </button>
+            </view>
+            <view class="boss-content">
+                <button catchtap="toUserAi" class="boss-list nav-btn" data-cardid="{{item.businessCardID}}" formType="submit" hoverClass="none" wx:if="{{!rankingListBlank}}" wx:for="{{rankingList}}" wx:key="index">
+                    <view class="flexBox flexAlign flexJustifyBetween item-btn {{index!=rankingList.length-1?'border1px':''}}">
+                        <view class="boss-list-left">
+                            <view class="rankingNum">
+                                <image class="rankingImg" src="{{baseUrl}}/images/wxapp/paixingbang{{index+1}}.png"></image>
+                            </view>
+                            <image class="boss-img" src="{{baseUrl}}{{item.headImgUrl}}"></image>
+                            <text class="boss-name">{{item.userName}}</text>
+                        </view>
+                        <view class="boss-list-right">查看详细</view>
+                    </view>
+                </button>
+                <view class="listBlank flexBox flexDirectionColumn flexAlign" wx:if="{{rankingListBlank}}">
+                    <image class="blank-img" src="{{baseUrl}}/images/wxapp/radar_blank.png"></image>
+                    <view class="blank-text">暂无浏览记录</view>
+                </view>
+            </view>
+        </form>
+    </view>
+    <view class="material">
+        <form reportSubmit bindsubmit="from_send">
+            <view class="molal-top border1px">
+                <button catchtap="toMaterials" class="nav-btn" formType="submit" hoverClass="none">
+                    <view class="top-left">
+                        <text class="iconfont icon-sucai"></text>
+                        <text class="title">分享素材库</text>
+                    </view>
+                    <view class="top-right">
+                        <text class="look-more">共{{materialCount}}条素材</text>
+                        <text class="iconfont icon-xiangyou"></text>
+                    </view>
+                </button>
+            </view>
+            <view class="material-content">
+                <view class="mat-content flexBox flexDirectionRow {{index==0&&materialList.length>1?'border1px':''}}" wx:if="{{index<2&&!materialListBlank}}" wx:for="{{materialList}}" wx:key="{{item.MaterialID}}">
+                    <view>
+                        <image class="mat-content-img" src="{{avatarUrl}}"></image>
+                    </view>
+                    <view class="mat-contentRight">
+                        <view class="mat-content-top flexBox flexJustifyBetween flexAlign">
+                            <text class="mat-name">{{nickName}}</text>
+                            <text class="mat-label" wx:if="{{item.TagName}}">{{item.TagName}}</text>
+                        </view>
+                        <view class="mat-font">{{item.Descriptor}}</view>
+                        <view class="mat-imgLists flexBox" wx:if="{{item.MaterialContent.length!==0}}">
+                            <view class="mat-content-imglist flexBox flexAlign flexJustify {{item.MaterialContent.length==1?'oneImg':''}}" wx:for="{{item.MaterialContent}}" wx:for-item="itemImg" wx:key="index">
+                                <image bindtap="bindClickImg" data-imagearr="{{item.MaterialContent}}" data-index="{{index}}" mode="aspectFill" src="{{baseUrl}}{{itemImg}}"></image>
+                            </view>
+                        </view>
+                        <view class="mat-content-bottom flexBox flexJustifyBetween flexAlign {{item.MaterialContent.length!==0?'':'noItemImg'}}">
+                            <text class="mat-content-time">{{item.CrTime}}</text>
+                            <view class="flexBox flexDirectionRow">
+                                <view catchtap="copyText" class="mat-content-btn" data-descriptor="{{index}}">复制文案</view>
+                                <view catchtap="saveImg" class="mat-content-btn" data-saveindex="{{index}}" wx:if="{{canSave}}">保存图片</view>
+                                <button catchtap="openSet" class="mat-content-btn" openType="openSetting" wx:if="{{!canSave}}">保存图片</button>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="listBlank flexBox flexDirectionColumn flexAlign" wx:if="{{materialListBlank}}">
+                    <image class="blank-img" src="{{baseUrl}}/images/wxapp/material_blank.png"></image>
+                    <view class="blank-text">暂无素材</view>
+                </view>
+            </view>
+            <view class="material-more-btn" wx:if="{{!materialListBlank}}">
+                <button catchtap="toMaterials" class="nav-btn material-more" formType="submit" hoverClass="none">查看更多</button>
+            </view>
+        </form>
+    </view>
+    <view style="height: 20rpx;"></view>
+</view>
+<include src="/pages/template/getUserInfo.wxml"></include>
+<include src="/pages/common/phoneauthorization/index.wxml"></include>
+<include src="/pages/common/popout/index.wxml"></include>

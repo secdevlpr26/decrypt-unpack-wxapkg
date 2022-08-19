@@ -1,0 +1,24 @@
+<scroll-view class="container discovery withtab">
+    <view class="ctnt0">
+        <view bindtap="bindDetail" class="feed-item" data-eventid="{{item.event_id}}" wx:for="{{feed}}" wx:for-index="idx">
+            <view class="feed-content">
+                <view class="question">
+                    <a class="question-link">
+                        <text>{{item.event_describe}}</text>
+                    </a>
+                </view>
+                <view class="answer-body">
+                    <view>
+                        <text class="answer-txt">{{item.location}}</text>
+                    </view>
+                    <view class="answer-actions">
+                        <view class="like dot">
+                {{item.occur_time}}
+              </view>
+                        <view class="eventdetal">{{item.handle_state}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>

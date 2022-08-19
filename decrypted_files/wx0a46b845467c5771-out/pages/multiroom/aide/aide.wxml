@@ -1,0 +1,3 @@
+<view bindtap="go" class="list" data-index="{{item.userId}}" data-item="{{item}}" wx:for="{{adviserList}}" wx:key="index">
+    <text class="name">{{item.name}}</text>
+</view>

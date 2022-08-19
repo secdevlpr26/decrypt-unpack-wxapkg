@@ -1,0 +1,62 @@
+<template name="comment">
+    <view id="Empty" wx:if="Empty">
+        <view bindtap="Empty" id="Empty"></view>
+        <view id="Empty">
+            <view id="Empty">
+                <textarea autoHeight="Empty" bindinput="Empty" fixed="Empty" focus="Empty" maxlength="Empty" name="Empty" placeholder="Empty" showConfirmBar="Empty"></textarea>
+            </view>
+            <view id="Empty">
+                <view id="Empty">Empty</view>
+                <view id="Empty">
+                    <button bindtap="Empty" class="Empty" disabled="Empty">Empty</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="talk-list">
+    <view id="Empty">
+        <view class="Empty" wx:for="Empty" wx:key="index">
+            <view class="Empty">
+                <view bindtap="Empty" class="Empty" data-url="Empty">
+                    <image class="Empty" mode="Empty" src="Empty"></image>
+                </view>
+                <view bindtap="Empty" class="Empty" data-url="Empty">Empty</view>
+            </view>
+            <view class="Empty">
+                <view class="Empty">Empty</view>
+                <view bindtap="Empty" class="Empty" data-src="Empty" wx:if="Empty">
+                    <view class="Empty" wx:for="Empty" wx:for-item="url" wx:key="index">
+                        <image class="Empty" data-src="Empty" mode="Empty" src="Empty"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="Empty">
+                <view class="Empty" wx:if="Empty">
+                    <view bindtap="Empty" data-address="Empty" data-latitude="Empty" data-longitude="Empty" data-name="Empty">Empty</view>
+                </view>
+                <view class="Empty">
+                    <view class="Empty">Empty</view>
+                    <view bindtap="Empty" class="Empty" data-id="Empty" wx:if="Empty">Empty</view>
+                    <view class="Empty"></view>
+                    <view bindtap="Empty" class="Empty" data-id="Empty">
+                        <image src="Empty"></image>Empty</view>
+                    <view bindtap="Empty" class="Empty" data-id="Empty">
+                        <image src="Empty"></image>Empty</view>
+                </view>
+                <view class="Empty" wx:if="Empty">
+                    <view class="Empty">
+                        <view class="Empty" wx:for="Empty" wx:for-item="comment" wx:key="pinglun_id">
+                            <view bindtap="Empty" class="Empty" data-url="Empty">Empty</view>Empty</view>
+                    </view>
+                    <view class="Empty" wx:if="Empty">
+                        <view bindtap="Empty" data-index="Empty" wx:if="Empty">Empty</view>
+                        <view bindtap="Empty" data-index="Empty" wx:else>Empty</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<import src="/pages/template-cart/template-cart.wxml"></import>
+<wxs module="filter" src="../../filter/filter.wxs" />

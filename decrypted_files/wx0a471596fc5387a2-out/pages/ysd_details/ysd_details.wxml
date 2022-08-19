@@ -1,0 +1,365 @@
+<view>{{ls_tj}}{{ztbm}}</view>
+<import src="../template/template.wxml"></import>
+<view class="text_box first">
+    <text>单据编号:</text>
+    <text>{{order.ID}}</text>
+    <text class="right">{{order.YWRQ}}</text>
+</view>
+<view class="text_box last">
+    <text>申请部门:</text>
+    <text class="cl_3b40df">{{order.MC}}</text>
+    <text class="right">{{order.LRR}}-{{order.LRRMC}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='S'||order.FZ=='R'}}">
+    <text>调出仓库:</text>
+    <text class="cl_3b40df">{{order.CK1}}</text>
+    <text class="right">调入仓库{{order.CK2}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>供应商:</text>
+    <text class="cl_3b40df">{{order.GYS}}-{{order.GYSMC}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>合同名称:</text>
+    <text class="cl_3b40df">{{order.HTBH}}-{{order.HTMC}}</text>
+    <text class="right">合同金额：{{order.HTJE}}元</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>合同周期:</text>
+    <text class="cl_3b40df">{{order.KSRQ}}至{{order.JSRQ}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>承建单位:</text>
+    <text class="cl_3b40df">{{order.CJDW}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>开户行:</text>
+    <text class="cl_3b40df">{{order.KHH}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>帐号:</text>
+    <text class="cl_3b40df">{{order.ZH}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>税号:</text>
+    <text class="cl_3b40df">{{order.SH}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>合同条款:</text>
+    <text class="cl_3b40df">{{order.HTZY}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}">
+    <text>付款条款:</text>
+    <text class="cl_3b40df">{{order.FKZY}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}">
+    <text>项目名称:</text>
+    <text class="cl_3b40df">{{order.XMBH}}-{{order.XMMC}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}">
+    <text>合同名称:</text>
+    <text class="cl_3b40df">{{order.HTBH}}-{{order.HTMC}}</text>
+    <text class="right">合同金额：{{order.HTJE}}元</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}">
+    <text>承建单位:</text>
+    <text class="cl_3b40df">{{order.SSDW}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}">
+    <text>开户行:</text>
+    <text class="cl_3b40df">{{order.KHH}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}">
+    <text>帐号:</text>
+    <text class="cl_3b40df">{{order.ZH}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}">
+    <text>税号:</text>
+    <text class="cl_3b40df">{{order.SH}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}">
+    <text>累计次数:</text>
+    <text class="cl_3b40df">{{order.LJCS}}</text>
+    <text class="right">累计金额：{{order.LJJE}}元</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}">
+    <text>本次金额:</text>
+    <text class="right" style="color:red">{{order.SQJE}}元</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='O'||order.FZ=='N'}}">
+    <text>供应商:</text>
+    <text class="cl_3b40df">{{order.GYS}}-{{order.GYSMC}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='O'||order.FZ=='N'}}">
+    <text>开户行:</text>
+    <text class="cl_3b40df">{{order.KHH}}</text>
+</view>
+<view class="text_box last" wx:if="{{order.FZ=='O'||order.FZ=='N'}}">
+    <text>帐号:</text>
+    <text class="cl_3b40df">{{order.ZH}}</text>
+</view>
+<view class="text_box last">
+    <text>摘要:</text>
+    <text class="cl_3b40df">{{order.ZY}}</text>
+    <text class="right" style="color:red;">{{order.LCZT}}</text>
+</view>
+<view class="zhichi">
+  单据明细
+</view>
+<block wx:for="{{orderSubList}}" wx:key="{{item.id}}">
+    <template is="YSD" data="{{data:item}}" wx:if="{{order.FZ=='1'||order.FZ=='2'||order.FZ=='Z3'||order.FZ=='Z4'}}"></template>
+    <template is="FKD" data="{{data:item}}" wx:if="{{order.FZ=='Z23'||order.FZ=='Z24'}}"></template>
+    <template is="CGFKD" data="{{data:item}}" wx:if="{{order.FZ=='Z25'||order.FZ=='Z26'}}"></template>
+    <template is="JKD" data="{{data:item}}" wx:if="{{order.FZ=='3'||order.FZ=='4'}}"></template>
+    <template is="SGD" data="{{data:item}}" wx:if="{{order.FZ=='F'||order.FZ=='G'}}"></template>
+    <template is="XJD" data="{{data:item}}" wx:if="{{order.FZ=='H'||order.FZ=='I'}}"></template>
+    <template is="CKD" data="{{data:item}}" wx:if="{{order.FZ=='J'||order.FZ=='K'}}"></template>
+    <template is="SKD" data="{{data:item}}" wx:if="{{order.FZ=='Z39'||order.FZ=='Z40'}}"></template>
+    <template is="DBD" data="{{data:item}}" wx:if="{{order.FZ=='Z37'||order.FZ=='Z38'}}"></template>
+    <template is="CKDBD" data="{{data:item}}" wx:if="{{order.FZ=='S'||order.FZ=='R'}}"></template>
+    <template is="CGHTD" data="{{data:item}}" wx:if="{{order.FZ=='Z19'||order.FZ=='Z20'}}"></template>
+    <template is="XMSZD" data="{{data:item}}" wx:if="{{order.FZ=='Z1'||order.FZ=='Z2'}}"></template>
+    <template is="FPSPD" data="{{data:item}}" wx:if="{{order.FZ=='Z15'||order.FZ=='Z16'}}"></template>
+    <template is="CGJSD" data="{{data:item}}" wx:if="{{order.FZ=='O'||order.FZ=='N'}}"></template>
+</block>
+<view class="spxx">
+    <view class="spxx_box">
+        <text class="left">合计</text>
+        <text class="right" wx:if="{{order.FZ!='F'&&order.FZ!='G'}}">￥{{order.JE}}</text>
+        <text class="right" wx:if="{{order.FZ=='F'||order.FZ=='G'}}">{{order.JE}}</text>
+    </view>
+    <view class="spxx_box spxx_last" wx:if="{{order.ZBJ!=0}}">
+        <text class="left">准备金</text>
+        <text class="right">￥{{order.ZBJ}}</text>
+    </view>
+</view>
+<view class="addrb2" wx:if="{{jtList}}">
+    <button class="delete">
+    【交通明细】 </button>
+    <button bindtap="showFrom" class="delete" data-param="2" data-tp2="{{tp2}}">
+        <image src="{{tp2==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view class="{{tp2==0?'header_view_show':'header_view_hide'}}" wx:for="{{jtList}}" wx:key="{{item.id}}">
+    <view class="addr2">
+        <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+    </view>
+    <view class="addr2">
+        <picker bindchange="datePickerBindchange" data-index="{{index}}" end="2999-12-12" mode="date" start="1999-01-01" value="{{item.RQ}}">
+            <text>出发日期：</text>
+            <input bindinput="inputjtrq" data-index="{{index}}" disabled="true" name="rq" placeholder="出发日期" type="date" value="{{item.RQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr2">
+        <text>起点：</text>
+        <input disabled="true" name="ksdd" type="text" value="{{item.KSDD}}"></input>
+    </view>
+    <view class="addr2">
+        <text>终点：</text>
+        <input disabled="true" name="jsdd" type="text" value="{{item.JSDD}}"></input>
+    </view>
+    <view class="addr2 search">
+        <text>交通工具：</text>
+        <input disabled="true" name="sjmc" type="text" value="{{item.SJMC}}"></input>
+    </view>
+    <view class="addr2">
+        <text>金额：</text>
+        <input disabled="true" name="sjje" type="digit" value="{{item.SJJE}}"></input>
+    </view>
+    <view class="addr2">
+        <text>说明：</text>
+        <input disabled="true" name="bz" type="text" value="{{item.BZ}}"></input>
+    </view>
+</view>
+<view class="addrb4" wx:if="{{zsList}}">
+    <button class="delete" data-table="yssy_cc_zs">
+    【住宿明细】</button>
+    <button bindtap="showFrom" class="delete" data-param="4" data-tp4="{{tp4}}">
+        <image src="{{tp4==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view class="{{tp4==0?'header_view_show':'header_view_hide'}}" wx:for="{{zsList}}" wx:key="{{item.id}}">
+    <view class="addr4">
+        <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+    </view>
+    <view class="addr4">
+        <picker end="2999-12-12" mode="date" start="1999-01-01" value="{{item.KSRQ}}">
+            <text>入住日期：</text>
+            <input disabled="true" name="ksrq" type="date" value="{{item.KSRQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr4">
+        <picker end="2999-12-12" mode="date" start="1999-01-01" value="{{item.JSRQ}}">
+            <text>离店日期：</text>
+            <input disabled="true" name="jsrq" type="date" value="{{item.JSRQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr4 search" data-index="{{index}}">
+        <text>住宿城市：</text>
+        <input data-index="{{index}}" disabled="true" name="dd" type="text" value="{{item.DD}}"></input>
+    </view>
+    <view class="addr4">
+        <text>地区分类：</text>
+        <input data-index="{{index}}" disabled="true" name="ddsxmc" type="text" value="{{item.DDSXMC}}"></input>
+    </view>
+    <view class="addr4 search">
+        <text>报销级别：</text>
+        <input disabled="true" name="zysxmc" type="text" value="{{item.ZYSXMC}}"></input>
+    </view>
+    <view bindtap="bzje_ts" class="addr4">
+        <text>住宿标准：</text>
+        <input data-index="{{index}}" disabled="true" name="bzje" type="digit" value="{{item.BZJE}}"></input>
+    </view>
+    <view class="addr4">
+        <text>实际金额：</text>
+        <input bindinput="inputzssjje" data-index="{{index}}" disabled="true" name="sjje" placeholder="请输入实际金额" type="digit" value="{{item.SJJE}}"></input>
+    </view>
+    <view class="addr4">
+        <text>超额：</text>
+        <input disabled="true" name="ce" type="digit" value="{{item.CE}}"></input>
+    </view>
+    <view class="addr4">
+        <text>说明：</text>
+        <input name="bz" type="text" value="{{item.BZ}}"></input>
+    </view>
+</view>
+<view class="addrb1" wx:if="{{bzList}}">
+    <button class="delete" data-table="yssy_cc_bz">
+    【补贴明细】</button>
+    <button bindtap="showFrom" class="delete" data-param="1" data-tp1="{{tp1}}">
+        <image src="{{tp1==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view class="{{tp1==0?'header_view_show':'header_view_hide'}}" wx:for="{{bzList}}" wx:key="{{item.id}}">
+    <view class="addr1">
+        <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+    </view>
+    <view class="addr1">
+        <picker data-index="{{index}}" disabled="true" end="2999-12-12" mode="date" start="1999-01-01" value="{{item.KSRQ}}">
+            <text>出发日期：</text>
+            <input data-index="{{index}}" disabled="true" name="ksrq" type="date" value="{{item.KSRQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr1">
+        <picker data-index="{{index}}" end="23:59" mode="time" start="00:00" value="{{item.KSSJ}}">
+            <text>出发时间：</text>
+            <input data-index="{{index}}" disabled="true" name="kssj" type="time" value="{{item.KSSJ}}"></input>
+        </picker>
+    </view>
+    <view class="addr1">
+        <picker data-index="{{index}}" end="2999-12-12" mode="date" start="1999-01-01" value="{{item.JSRQ}}">
+            <text>返回日期：</text>
+            <input data-index="{{index}}" disabled="true" name="jsrq" type="date" value="{{item.JSRQ}}"></input>
+        </picker>
+    </view>
+    <view class="addr1">
+        <picker data-index="{{index}}" disabled="true" end="23:59" mode="time" start="00:01" value="{{item.JSSJ}}">
+            <text>返回时间：</text>
+            <input disabled="true" name="jssj" type="time" value="{{item.JSSJ}}"></input>
+        </picker>
+    </view>
+    <view class="addr1 search" data-index="{{index}}">
+        <text>城市：</text>
+        <input data-index="{{index}}" disabled="true" name="dd" placeholder="请选择出差的城市" type="text" value="{{item.DD}}"></input>
+    </view>
+    <view class="addr1">
+        <text>地区分类：</text>
+        <input data-index="{{index}}" disabled="true" name="ddsx" type="text" value="{{item.DDSX}}"></input>
+    </view>
+    <view class="addr1 search" data-index="{{index}}" data-table="CODE_BT_BZ" data-ztbm="{{ztbm}}" disabled="true">
+        <text>职员属性：</text>
+        <input data-index="{{index}}" disabled="true" name="zysxmc" type="text" value="{{item.ZYSXMC}}"></input>
+    </view>
+    <view bindtap="bzje_ts" class="addr1">
+        <text>补贴金额：</text>
+        <input disabled="true" name="bzje" type="digit" value="{{item.BZJE}}"></input>
+    </view>
+    <view class="addr1">
+        <text>额外补贴：</text>
+        <input disabled="true" name="ewje" type="digit" value="{{item.EWJE}}"></input>
+    </view>
+    <view class="addr1">
+        <text>说明：</text>
+        <input data-index="{{index}}" name="bz" type="text" value="{{item.BZ}}"></input>
+    </view>
+</view>
+<view class="addrb3" wx:if="{{qtList}}">
+    <button class="delete" data-table="yssy_cc_qt">
+    【其他费用】</button>
+    <button bindtap="showFrom" class="delete" data-param="3" data-tp3="{{tp3}}">
+        <image src="{{tp3==0?'../../images/up.png':'../../images/down.png'}}"></image>
+    </button>
+</view>
+<view class="{{tp3==0?'header_view_show':'header_view_hide'}}" wx:for="{{qtList}}" wx:key="{{item.id}}">
+    <view class="addr3">
+        <text>单号：{{item.ID}}   明细码：{{item.BH}}</text>
+    </view>
+    <view class="addr3">
+        <text>名称：</text>
+        <input disabled="true" name="mc" type="text" value="{{item.MC}}"></input>
+    </view>
+    <view class="addr3">
+        <text>金额：</text>
+        <input disabled="true" name="je" type="digit" value="{{item.JE}}"></input>
+    </view>
+    <view class="addr3">
+        <text>说明：</text>
+        <input disabled="true" name="bz" type="text" value="{{item.BZ}}"></input>
+    </view>
+    <view class="lb"></view>
+</view>
+<view class="zhichi" wx:if="{{orderzhList}}">
+  支付明细
+</view>
+<view wx:for="{{orderzhList}}" wx:key="{{item.id}}">
+    <view class="spxx_box spxx_last">
+        <text class="left" style="color:#0c0c0c;margin-left:10rpx;font-size:26rpx;" wx:if="{{item.SKR!=null}}">收款人：{{item.SKR}}</text>
+        <text class="right" style="color:#0c0c0c;margin-right:10rpx;font-size:26rpx;" wx:if="{{item.KHH!=null}}">{{item.KHH}}</text>
+    </view>
+    <view class="spxx_box spxx_last">
+        <text class="left" style="color:black;margin-left:10rpx;font-size:26rpx;" wx:if="{{item.ZH!=null}}"> {{item.ZH}}</text>
+        <text class="right">￥{{order.JE}}</text>
+    </view>
+    <view class="lb"></view>
+</view>
+<view class="zhichi" wx:if="{{orderLcList}}">
+  审批轨迹
+</view>
+<view wx:for="{{orderLcList}}" wx:key="{{item.id}}">
+    <view class="order_xx">
+        <text class="left" style="color:#0c0c0c;margin-left:10rpx;" wx:if="{{item.NR!=null}}">{{item.NR}}</text>
+    </view>
+    <view class="order_xx">
+        <text class="left" style="color:blue;margin-left:10rpx;" wx:if="{{item.ZT=='Y'}}"> {{item.MC}}-{{item.YGMC}}</text>
+        <text class="left" style="color:#999;margin-left:10rpx;" wx:if="{{item.ZT!='Y'}}"> {{item.MC}}-{{item.YGMC}}</text>
+        <text class="cl_df0c1d right" style="color:#999;margin-right:10rpx;" wx:if="{{item.RQ!=null}}">{{item.RQ}}</text>
+    </view>
+    <view class="lb"></view>
+</view>
+<view class="zhichi" wx:if="{{getOrderFj}}">
+  图片附件（单击放大/缩小、左右滑动浏览）
+</view>
+<view wx:for="{{getOrderFj}}" wx:key="{{item.id}}">
+    <image bindtap="imgYu" class="fj_img" data-index="index" data-list="{{getOrderFj.WEB}}/upload/Annex/{{getOrderFj.FILENAME}}" data-src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" mode="widthFix" src="{{item.WEB}}/upload/Annex/{{item.FILENAME}}" style="width:100%" wx:if="{{item.LX=='png'||item.LX=='jpg'||item.LX=='gif'||item.LX=='bmp'}}"></image>
+    <view class="lb"></view>
+</view>
+<view catchtap="downloadFile" class="spxx_box spxx_last" data-type="{{item.LX}}" data-url="{{hostUrl}}/upload/Annex/{{item.FILENAME}}" wx:if="{{item.LX!='jpg'&&item.LX!='jpeg'&item.LX!='gif'&&item.LX!='jbmp'}}" wx:for="{{getFjList}}" wx:key="{{item.id}}">
+    <text style="color:blue;font-size:30rpx;">附件:{{item.NAME}}</text>
+    <navigator catchtap="downloadFile" class="right" data-type="{{item.LX}}" data-url="{{hostUrl}}/upload/Annex/{{item.FILENAME}}" style="color:green;font-size:30rpx;">浏览</navigator>
+</view>
+<image mode="widthFix" src="{{hostUrl}}/images/bottom_over.gif" style="width:100%"></image>
+<view class="bottom" wx:if="{{order.LX==3||order.LX==1}}">
+    <button bindtap="sp_yes" data-id="{{order.ID}}" data-ztbm="{{order.ZTBM}}" wx:if="{{order.LX==1&&order.LCZT!='流程完成'&&order.LCZT!='未提交'}}">同意</button>
+    <button bindtap="showDialogBtn" data-id="{{order.ID}}" style="background: #999;" wx:if="{{order.LX==1&&order.LCZT!='流程完成'&&order.LCZT!='未提交'}}">不同意</button>
+</view>
+<view bindtap="hideModal" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">不同意</view>
+    <view class="modal-content">
+        <textarea bindblur="bindTextAreaBlur" class="modal-input" data-id="{{order.ID}}" data-ztbm="{{order.ZTBM}}" placeholder="请填写您不同意的原因" value="{{details}}"></textarea>
+    </view>
+    <view class="modal-footer">
+        <view bindtap="onCancel" class="btn-cancel" data-status="cancel">取消</view>
+        <view bindtap="onConfirm" class="btn-confirm" data-id="{{order.ID}}" data-status="confirm" data-ztbm="{{order.ZTBM}}">确定</view>
+    </view>
+</view>

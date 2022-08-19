@@ -1,0 +1,20 @@
+<view class="container">
+    <view class="addr-search-content">
+        <view class="addr-search">
+            <icon class="search-icon" size="18" type="search"></icon>
+            <input bindinput="searchAddr" class="input" focus="{{true}}" placeholder="请输入地址名称" value="{{value}}"></input>
+            <view bindtap="deleteSearch" class="delete-btn">
+                <icon class="search-icon" size="18" type="clear"></icon>
+            </view>
+        </view>
+    </view>
+    <view class="addr-search-list">
+        <view bindtap="selectAddr" class="addr-search-item" data-index="{{index}}" wx:for="{{addressList}}" wx:key="name">
+            <image class="addr-icon" src="/images/37@3x.png"></image>
+            <view class="addr-text">
+                <view class="addr-name">{{item.name}}</view>
+                <view class="addr-detail">{{item.address}}</view>
+            </view>
+        </view>
+    </view>
+</view>

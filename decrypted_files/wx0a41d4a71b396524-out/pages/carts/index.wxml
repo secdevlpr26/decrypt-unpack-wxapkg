@@ -1,0 +1,47 @@
+<view class="noData" wx:if="{{none}}">
+    <image src="../../images/no_cart.png"></image>
+    <view class="no-cart">购物车空空如也...</view>
+</view>
+<view class="container">
+    <view class="section section-good">
+        <checkbox-group bindchange="checkboxChange">
+            <view class="good" wx:for="{{cartItems}}" wx:for-item="good" wx:key="good.name">
+                <label class="checkbox">
+                    <checkbox checked="{{good.checked}}" hidden="hidden" value="{{good.id}}"></checkbox>
+                    <icon size="23" type="circle" wx:if="{{!good.checked}}"></icon>
+                    <icon color="#00ca9d" size="23" type="success" wx:if="{{good.checked}}"></icon>
+                </label>
+                <view class="bookinfo">
+                    <image binderror="imgError" class="cover" data-index="{{index}}" src="{{good.pic1=='no_cover'?noCover:imgRootPath+good.pic1}}"></image>
+                    <view class="content">
+                        <view class="text name">{{good.bookName}}</view>
+                        <view class="text author">{{good.author==null?'--':good.author}}</view>
+                        <view class="text price">¥{{good.price}}</view>
+                    </view>
+                    <image bindtap="delCartsItem" class="del" data-index="{{index}}" src="../../images/bookcase_icon.png"></image>
+                </view>
+            </view>
+        </checkbox-group>
+    </view>
+    <view class="footer">
+        <view class="weui-flex">
+            <view class="icon">
+                <checkbox bindtap="checkAll" checked="{{ckBool}}"></checkbox>
+                全选
+            </view>
+            <view style="flex:1;text-align:right">
+                合计:
+                <text class="totalnum">
+                    <text>{{!totalCount?'0.00':tools.getPrice(totalCount)}} 元</text>
+                </text>
+            </view>
+            <view class="app-borrow" wx:if="{{totalCount>0||submitStatus>0}}">
+                <button bindtap="toOrder">提交订单</button>
+            </view>
+            <view class="app-borrow" wx:else>
+                <button>提交订单</button>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="tools" src="../../utils/appUtils.wxs" />

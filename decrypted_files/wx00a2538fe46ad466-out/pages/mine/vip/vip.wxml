@@ -1,0 +1,16 @@
+<view class="Empty" wx:if="Empty">
+    <view bindtap="Empty" class="Empty" data-days="Empty" wx:for="Empty" wx:key="index">
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">
+                <view>Empty</view>
+            </view>
+        </view>
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">Empty</view>
+        </view>
+    </view>
+</view>
+<view class="Empty">Empty</view>
+<wxs module="filter" src="../../filter/filter.wxs" />

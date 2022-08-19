@@ -1,0 +1,10 @@
+<view class="bank-wrap">
+    <view class="bank-list">
+        <radio-group bindchange="radioChange">
+            <view class="bank-item" data-id="{{item.id}}" wx:for="{{bankList}}" wx:key="{{item.id}}">
+                <view>{{item.bankName}}</view>
+                <radio checked="{{item.id==currentId}}" value="{{item.id}}"></radio>
+            </view>
+        </radio-group>
+    </view>
+</view>

@@ -1,0 +1,4 @@
+<view class="rule-wrap">
+    <rich-text nodes="{{content}}"></rich-text>
+    <view class="rule-null" hidden="{{!ruleNull}}">暂无内容</view>
+</view>

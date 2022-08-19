@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "我的订单",
+    "usingComponents": {
+        "segmented-control": "/components/segmented-control",
+        "no-data": "/components/nodata",
+        "page-head": "/components/page-head",
+        "page-foot": "/components/page-foot"
+    }
+}

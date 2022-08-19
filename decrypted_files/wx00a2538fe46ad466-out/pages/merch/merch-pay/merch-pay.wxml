@@ -1,0 +1,43 @@
+<view class="Empty">
+    <view class="Empty">
+        <view class="Empty">Empty</view>
+        <view class="Empty">
+            <view class="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">Empty</view>
+            </view>
+            <view class="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">Empty</view>
+            </view>
+            <view class="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">Empty</view>
+            </view>
+            <view class="Empty">
+                <view class="Empty">Empty</view>
+                <view class="Empty">Empty</view>
+            </view>
+        </view>
+    </view>
+    <view class="Empty">
+        <view class="Empty">
+            <view class="Empty">Empty</view>
+            <view class="Empty">Empty</view>
+        </view>
+    </view>
+    <view class="Empty">
+        <view class="Empty">Empty</view>
+        <view class="Empty">
+            <view bindtap="Empty" class="Empty">
+                <view class="Empty">
+                    <image src="Empty"></image>
+                </view>
+                <view class="Empty">
+                    <view>Empty</view>
+                    <view style="Empty">Empty</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

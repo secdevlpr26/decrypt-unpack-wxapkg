@@ -1,0 +1,46 @@
+<view class="mpvue-picker _div">
+    <view bindtap="__e" catchtouchmove="true" class="{{['_div',showPicker?'pickerMask':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'maskClick',['$event'] ] ] ] ]}}"></view>
+    <view class="{{['mpvue-picker-content  _div',showPicker?'mpvue-picker-view-show':'']}}">
+        <view catchtouchmove="true" class="mpvue-picker__hd _div">
+            <view bindtap="__e" class="mpvue-picker__action _div" data-event-opts="{{[ [ 'tap',[ [ 'pickerCancel',['$event'] ] ] ] ]}}">取消</view>
+            <view bindtap="__e" class="mpvue-picker__action _div" data-event-opts="{{[ [ 'tap',[ [ 'pickerConfirm',['$event'] ] ] ] ]}}" style="{{'color:'+themeColor+';'}}">确定</view>
+        </view>
+        <picker-view bindchange="__e" class="mpvue-picker-view" data-event-opts="{{[ [ 'change',[ [ 'pickerChange',['$event'] ] ] ] ]}}" indicatorStyle="height: 40px;" value="{{pickerValue}}" wx:if="{{mode==='selector'&&pickerValueSingleArray.length>0}}">
+            <picker-view-column>
+                <view class="picker-item _div" wx:for="{{pickerValueSingleArray}}" wx:key="index">{{item.label}}</view>
+            </picker-view-column>
+        </picker-view>
+        <picker-view bindchange="__e" class="mpvue-picker-view" data-event-opts="{{[ [ 'change',[ [ 'pickerChange',['$event'] ] ] ] ]}}" indicatorStyle="height: 40px;" value="{{pickerValue}}" wx:if="{{mode==='timeSelector'}}">
+            <picker-view-column>
+                <view class="picker-item _div" wx:for="{{pickerValueHour}}" wx:key="index">{{item.label}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view class="picker-item _div" wx:for="{{pickerValueMinute}}" wx:key="index">{{item.label}}</view>
+            </picker-view-column>
+        </picker-view>
+        <picker-view bindchange="__e" class="mpvue-picker-view" data-event-opts="{{[ [ 'change',[ [ 'pickerChange',['$event'] ] ] ] ]}}" indicatorStyle="height: 40px;" value="{{pickerValue}}" wx:if="{{mode==='multiSelector'}}">
+            <picker-view-column wx:for="{{pickerValueMulArray.length}}" wx:for-item="n" wx:key="index">
+                <view class="picker-item _div" wx:for="{{pickerValueMulArray[n]}}" wx:for-index="index1" wx:key="index1">{{item.label}}</view>
+            </picker-view-column>
+        </picker-view>
+        <picker-view bindchange="__e" class="mpvue-picker-view" data-event-opts="{{[ [ 'change',[ [ 'pickerChangeMul',['$event'] ] ] ] ]}}" indicatorStyle="height: 40px;" value="{{pickerValue}}" wx:if="{{mode==='multiLinkageSelector'&&deepLength===2}}">
+            <picker-view-column>
+                <view class="picker-item _div" wx:for="{{pickerValueMulTwoOne}}" wx:key="index">{{item.label}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view class="picker-item _div" wx:for="{{pickerValueMulTwoTwo}}" wx:key="index">{{item.label}}</view>
+            </picker-view-column>
+        </picker-view>
+        <picker-view bindchange="__e" class="mpvue-picker-view" data-event-opts="{{[ [ 'change',[ [ 'pickerChangeMul',['$event'] ] ] ] ]}}" indicatorStyle="height: 40px;" value="{{pickerValue}}" wx:if="{{mode==='multiLinkageSelector'&&deepLength===3}}">
+            <picker-view-column>
+                <view class="picker-item _div" wx:for="{{pickerValueMulThreeOne}}" wx:key="index">{{item.label}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view class="picker-item _div" wx:for="{{pickerValueMulThreeTwo}}" wx:key="index">{{item.label}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view class="picker-item _div" wx:for="{{pickerValueMulThreeThree}}" wx:key="index">{{item.label}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+</view>

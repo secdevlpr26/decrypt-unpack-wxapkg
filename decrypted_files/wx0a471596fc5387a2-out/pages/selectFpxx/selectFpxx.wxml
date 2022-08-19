@@ -1,0 +1,31 @@
+<view>{{index}}</view>
+<view class="addrcon">
+    <view class="addrlist" wx:for="{{addressList}}" wx:key="{{item.XH}}">
+        <view class="addr">
+            <text>名称：{{item.GSNAME}}</text>
+        </view>
+        <view class="dianhua">
+            <text>税号：{{item.GSXH}}</text>
+        </view>
+        <view class="dianhua">单位地址：{{item.ADDRESS}}</view>
+        <view class="dianhua">电话号码：{{item.TELL}}</view>
+        <view class="dianhua">开户银行：{{item.BANK}}</view>
+        <view class="dianhua">银行帐号：{{item.ZH}}</view>
+        <view class="addrb">
+            <view class="moren">
+                <label>
+                    <radio bindtap="radio" checked="true" color="#e6442d" data-id="{{item.ID}}" wx:if="{{item.IS_DEFAULT==1}}"></radio>
+                    <radio bindtap="radio" color="#e6442d" data-id="{{item.ID}}" wx:else></radio>
+      设成默认</label>
+            </view>
+            <button bindtap="select" class="edit" data-id="{{item.XH}}">
+                <image src="{{hostUrl}}/images/455.png"></image>选择</button>
+            <button bindtap="edit" class="edit" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/bjico.png"></image>编辑</button>
+            <button bindtap="delete" class="delete" data-id="{{item.ID}}">
+                <image src="{{hostUrl}}/images/scico.png"></image>删除</button>
+        </view>
+    </view>
+</view>
+<view bindtap="addAddress" class="addbtn">新增支付帐户信息<image src="{{hostUrl}}/images/jiaico.png"></image>
+</view>

@@ -1,0 +1,16 @@
+<import src="/common/toast/toast.wxml"></import>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<view class="container">
+    <form bindsubmit="formSubmit">
+        <view class="content">
+            <view class="phone">
+                <input bindinput="validatePhone" maxlength="11" name="phone" placeholder="请输入手机号码" type="number"></input>
+            </view>
+            <view class="code">
+                <input bindinput="validateCode" maxlength="6" name="code" placeholder="请输入验证码" type="number"></input>
+                <view bindtap="sendCaptcha" class="code-tip {{disabledSend?'disabled':''}}">{{captchaLabel}}</view>
+            </view>
+        </view>
+        <button class="btn-dafault bind" formType="submit">绑定</button>
+    </form>
+</view>

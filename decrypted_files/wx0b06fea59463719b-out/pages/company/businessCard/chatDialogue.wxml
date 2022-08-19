@@ -1,0 +1,125 @@
+<view class="chat">
+    <view class="loging_div" style="top:{{loading_top}}rpx">
+        <image src="{{baseUrl}}/images/wxapp/loadMoreData.gif"></image>
+    </view>
+    <form bindsubmit="onChatSubmit" reportSubmit="true">
+        <scroll-view scrollY bindscrolltoupper="onDownMore" class="scrollView" scrollIntoView="{{scrollStatus}}" style="height: {{scrollHeight}}px">
+            <view class="chat-msg" id="id{{item.ID}}" wx:for="{{msgLists}}" wx:key="item.ID">
+                <view class="introduce" wx:if="{{item.Type=='default'}}">
+                    <view class="flexBox flexAlign flexJustify">
+                        <view class="introduce-time">{{item.pageTime}}</view>
+                    </view>
+                    <view class="chat-msg">
+                        <view class="flexBox {{defaultStatus?'msg-you':'msg-medefua'}}">
+                            <view class="msg-img">
+                                <image mode="aspectFill" src="{{OtherURL}}" wx:if="{{defaultStatus}}"></image>
+                                <image mode="aspectFill" src="{{avatarUrl}}" wx:if="{{!defaultStatus}}"></image>
+                            </view>
+                            <view class="msg-font introduce-content">
+                                <view class="msg-arrow"></view>
+                                <view class="introduce-message">你好，我是{{card_info.CompanyName}}的{{card_info.Position}}-{{card_info.UserName}},欢迎进入我的名片,有什么可以帮到你的吗？你可以在这里跟我实时沟通。</view>
+                                <view class="introduce-option">通过我的名片你还可以：</view>
+                                <view catchtap="initBusiness" class="introduce-business flexBox flexAlign">
+                                    <button class="saveFormID flexBox flexAlign" formType="submit">
+                                        <i class="introduceIcon iconfont icon-mingpianxitong"></i>
+                                        <text class="businessText">进入我的名片</text>
+                                        <view class="businessArrow">
+                                            <i class="arrow-right icon iconfont icon-iconfont_arrow-right"></i>
+                                        </view>
+                                    </button>
+                                </view>
+                                <view bindtap="goMyShop" class="introduce-business flexBox flexAlign">
+                                    <button class="saveFormID flexBox flexAlign" formType="submit">
+                                        <i class="introduceIcon shopIcon icon iconfont icon-enterprise"></i>
+                                        <text class="businessText">查看我的企业</text>
+                                        <view class="businessArrow">
+                                            <i class="arrow-right icon iconfont icon-iconfont_arrow-right"></i>
+                                        </view>
+                                    </button>
+                                </view>
+                                <view catchtap="goCardDetails" class="introduce-business flexBox flexAlign">
+                                    <button class="saveFormID flexBox flexAlign" formType="submit">
+                                        <i class="introduceIcon dynamicIcon iconfont icon-dongtai1"></i>
+                                        <text class="businessText">查看我的动态</text>
+                                        <view class="businessArrow">
+                                            <i class="arrow-right icon iconfont icon-iconfont_arrow-right"></i>
+                                        </view>
+                                    </button>
+                                </view>
+                                <view catchtap="Dialing" class="introduce-business flexBox flexAlign">
+                                    <button class="saveFormID flexBox flexAlign" formType="submit">
+                                        <text class="businessText businessTextLeft">拨打我的电话</text>
+                                        <view class="businessArrow">
+                                            <i class="icon iconfont icon-dianhua1 phoneIcon"></i>
+                                        </view>
+                                    </button>
+                                </view>
+                                <view catchtap="addWechat" class="introduce-business flexBox flexAlign">
+                                    <button class="saveFormID flexBox flexAlign" formType="submit">
+                                        <text class="businessText businessTextLeft">添加我的微信</text>
+                                        <view class="businessArrow">
+                                            <i class="icon iconfont icon-weixin WeChatIcon"></i>
+                                        </view>
+                                    </button>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="msg-nowTime" wx:if="{{item.TimeOut==1&&item.Type!=='default'}}">
+                    <view class="nowTime-font">{{item.pageTime}}</view>
+                </view>
+                <view class="msg-you flexBox" wx:if="{{item.FromUserID==OtherID&&item.Type!=='default'}}">
+                    <view class="msg-img">
+                        <image mode="aspectFill" src="{{OtherURL}}"></image>
+                    </view>
+                    <view class="msg-font msg-itemfont">{{item.Content}}
+            <view class="msg-arrow"></view>
+                    </view>
+                </view>
+                <view class="msg-me flexBox" wx:if="{{item.FromUserID==WebUserID&&item.Type!=='default'}}">
+                    <view class="msg-img">
+                        <image mode="aspectFill" src="{{avatarUrl}}"></image>
+                    </view>
+                    <view class="msg-font msg-itemfont">{{item.Content}}
+            <view class="msg-arrow"></view>
+                    </view>
+                    <view class="sendMsgLoading flexBox flexAlign">
+                        <image catchtap="resetSendMsg" class="sendMsgImg" data-sendmsg="{{item.Content}}" data-uniqueid="{{item.uniqueId?item.uniqueId:''}}" src="/images/chattanhao.png" wx:if="{{item.tanhaoStatus}}"></image>
+                        <image class="sendMsgImg scroll" src="/images/chatload.png" wx:if="{{item.loadingStatus}}"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="height30rpx"></view>
+            <view id="scrollBottom"></view>
+            <view id="scrollBottom1"></view>
+        </scroll-view>
+        <view class="addWechatModal" wx:if="{{modalStatus}}">
+            <view class="addWechatModal-box flexBox flexDirectionColumn flexJustify flexAlign" wx:if="{{BusinessWeChat!==''}}">
+                <view class="addWechatModal-font">
+                    <i class="icon iconfont icon-weixin WeChatIcon"></i>
+                    <text class="WeChatFont">{{BusinessWeChat}}</text>
+                </view>
+                <view bindtap="copyWeChat" class="addWechatModal-copy" wx:if="{{!copyStatus}}">复制</view>
+                <view class="addWechatModal-copy copyTo" wx:if="{{copyStatus}}">已复制</view>
+            </view>
+            <view class="addWechatModal-box flexBox flexDirectionColumn flexJustify flexAlign" wx:if="{{BusinessWeChat==''}}">
+                <view class="addWechatModal-font">
+                    <text class="WeChatFont">暂无微信号</text>
+                </view>
+            </view>
+            <view bindtap="hiddenModal" class="addWechatModal"></view>
+        </view>
+        <view class="chat-text" style="bottom:{{bottomRPX}}px;">
+            <view class="chatBottom flexBox flexAlign" wx:if="{{defaultStatus}}">
+                <view>我想</view>
+                <view catchtap="addWechat" class="chatBottom-font">加微信</view>
+                <view catchtap="Dialing" class="chatBottom-font">拨打电话</view>
+            </view>
+            <view class="flexBox flexAlign">
+                <input adjustPosition="{{!inputStatus}}" bindblur="onbindblur" bindfocus="onbindfocus" bindinput="getInputValue" class="text-input" cursorSpacing="{{inputStatus?60:6}}" value="{{inputValue}}"></input>
+                <button bindtap="sendMeesge" class="sendMsg {{inputValue==''?'sendMsgop6':'changeColor'}}" formType="submit">发送</button>
+            </view>
+        </view>
+    </form>
+</view>

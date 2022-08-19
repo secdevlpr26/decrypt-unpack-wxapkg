@@ -1,0 +1,140 @@
+<view wx:if="{{ydFlg==true}}">
+    <view class="wait-box">
+        <view class="wait-title">商家已接单</view>
+        <view class="wait-tt">
+            <view class="wait-text">距离预定过期时间还有</view>
+            <view class="wait-time">{{hour}}时{{minute}}分{{second}}秒</view>
+        </view>
+        <view class="wait-notice">注：商家将为您预留1小时订位,超时订单自动取消</view>
+    </view>
+    <view class="waitTel">商家电话：{{storeInfo.storeInfoTelephoneNum}}</view>
+    <view class="waitAddr">店铺地址：{{storeInfo.storeInfoAddress}}</view>
+</view>
+<view class="xzdz">
+    <view class="xzdzBox">
+        <view class="xzdzTitle">
+            <view class="xzdzC">订单详情
+        <image class="xzdz_img" src="../../../../images/orderDetails.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="order-detail-box">
+    <view class="order-detail-title">
+        <image class="order-detail-storelogo" src="{{storeInfo.storeInfoHeadImgUrl}}"></image>
+        <view class="order-detail-storename">{{storeInfo.storeInfoName}}</view>
+    </view>
+    <view wx:for="{{foodInfo.foodList}}" wx:for-item="food" wx:key="key">
+        <view class="row order-detail-content">
+            <view class="col-9">
+                <image class="order-detail-foodsrc" src="{{food.imgUrl}}"></image>
+                <view style="float:left;">
+                    <view class="order-detail-foodname" wx:if="{{food.sizeName==null||food.sizeName==''}}">{{food.foodName}}</view>
+                    <view class="order-detail-foodname" wx:else>{{food.foodName}}({{food.sizeName}})</view>
+                    <view class="order-detail-foodcount">×{{food.foodCount}}</view>
+                </view>
+            </view>
+            <view class="col-3 order-detail-price">￥{{food.realPrice==null?'':filters.toFix(food.realPrice)}}</view>
+        </view>
+    </view>
+    <view class="mj-detail">
+        <view class="float-right0">
+            <view class="mj-yyhs" wx:if="{{wmFlg==true}}"> 配送费
+        <em class="ky">￥{{filters.toFix(peisongfei==null?'0.00':peisongfei)}}
+        </em>
+            </view>
+            <view class="mj-yyhs" wx:if="{{wmFlg==true}}"> 餐盒费
+        <em class="ky">￥{{filters.toFix(canhefei)}}</em>
+            </view>
+        </view>
+    </view>
+    <view class="mj-box">
+        <view class="mj-zhuo0" wx:if="{{dcFlg==true||wmFlg==true}}">订单备注 ：{{orderDetail}}</view>
+        <view bindtap="selYouhui" class="selYouhui">选择优惠</view>
+        <view bindtap="qxYouhui" class="selYouhui" wx:if="{{qxYouhuiflag}}">取消优惠</view>
+        <view class="selectedYouhui">{{selectedCoupon}}</view>
+        <view class="clear"></view>
+    </view>
+    <view class="zhuoline">
+        <view class="mj-zhuo" wx:if="{{dcFlg==true}}">桌:{{deskNum}}</view>
+        <view class="hwz">
+            <em class="mj-yyh"> 已优惠 ￥{{filters.toFix(yhprice)}}</em>
+            <em class="mj-hj">合计</em>
+            <em class="mj-jm">￥{{filters.toFix(foodInfo.orderReceivablePrice*1+peisongfei*1+canhefei*1-yhprice*1)}}</em>
+        </view>
+    </view>
+</view>
+<view class="order-number" wx:if="{{wmFlg==true}}">
+    <view class="order-time" wx:if="{{wmFlg==true}}">配送地址 :
+    <em class="padleft20">{{orderAddr}}</em>
+    </view>
+    <view class="order-pay" wx:if="{{wmFlg==true}}">联系方式 :
+    <em class="padleft20">{{orderContactName}} {{orderContactTel}}</em>
+    </view>
+</view>
+<view wx:if="{{ydFlg==true}}">
+    <view class="waitInfo">预订信息</view>
+    <view class="destineInfo">
+        <view>预定日期：{{orderDate}}</view>
+        <view>预定时间：{{orderTime}}</view>
+        <view>选择桌型：{{orderTable}}</view>
+        <view>用餐人数：{{orderPersonNumber}}</view>
+        <text decode="{{true}}">联&nbsp;&nbsp;系&ensp;人：{{orderContractName}}</text>
+        <view>联系电话：{{orderContractTel}}</view>
+    </view>
+</view>
+<button bindtap="toPay2" class="evaluation">支 付 订 单</button>
+<button bindtap="resume" class="destineButton">取 消 订 单</button>
+<button bindtap="fanhui" class="destineButton">返 回 订 单 列 表</button>
+<view class="cover" style="display:{{displ}}">
+    <view bindtap="back" class="cover1"></view>
+    <view class="cover3s">
+        <button bindtap="selCoupon" class="evaluationn">优 惠 券</button>
+        <button bindtap="selMemberCard" class="evaluationn">会 员 卡</button>
+        <button bindtap="selForceCard" class="evaluationn">权 益 卡</button>
+    </view>
+</view>
+<view class="cover" style="display:{{displ2}}">
+    <view bindtap="back" class="cover1"></view>
+    <view class="cover3">
+        <view class="xz">选择支付方式</view>
+        <form bindsubmit="toPay" data-id="W" reportSubmit="true">
+            <button class="evaluation" formType="submit">微 信 支 付</button>
+        </form>
+        <form bindsubmit="toPay" data-id="B" reportSubmit="true">
+            <button class="evaluation" formType="submit">余 额 支 付</button>
+        </form>
+    </view>
+</view>
+<view class="pb-container-menc" wx:if="{{displa}}"></view>
+<view class="pb-container" wx:if="{{displa}}">
+    <view bindtap="closeTk" class="text-right100">X</view>
+    <component-timeLine bind:closeTk="closeTk" refundId="{{refundId}}" refundTitle="{{refundTitle}}"></component-timeLine>
+</view>
+<view class="cover" style="display:{{displays}}">
+    <view class="" style="display:{{displays}}"></view>
+    <view class="containers xiadan-box">
+        <view class="row2">
+            <text class="flex80 writedesk">请领会员卡后使用优惠券</text>
+        </view>
+        <view class="row2">
+            <text class="col-12 xiadan-box-descrip"></text>
+        </view>
+        <view class="row2 row-button1">
+            <button bindtap="quxiao" class="flex30 button-xiadan1">取 消</button>
+            <button bindgetphonenumber="getNumber" class="flex30 button-xiadan" openType="getPhoneNumber">领卡</button>
+        </view>
+    </view>
+</view>
+<component-alertview bind:chkOrder0="chkOrder0" carname="{{carname_0}}" displayy="{{displayy_0}}" titlename="{{titlename_0}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder_1" bind:chkOrder1="chkOrder_2" carname="{{carname_1}}" displayy="{{displayy_1}}" titlename="{{titlename_1}}"></component-alertview>
+<component-alertview carname="{{carname_2}}" displayy="{{displayy_2}}" titlename="{{titlename_2}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder0_3" carname="{{carname_3}}" displayy="{{displayy_3}}" titlename="{{titlename_3}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder0_4" bind:chkOrder1="chkOrder1_4" carname="{{carname_4}}" displayy="{{displayy_4}}" titlename="{{titlename_4}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder1_4" bind:chkOrder1="chkOrder1_4" carname="{{carname_5}}" displayy="{{displayy_5}}" titlename="{{titlename_5}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder0_6" bind:chkOrder1="chkOrder1_6" carname="{{carname_6}}" displayy="{{displayy_6}}" titlename="{{titlename_6}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder0_6" bind:chkOrder1="chkOrder1_7" carname="{{carname_7}}" displayy="{{displayy_7}}" titlename="{{titlename_7}}"></component-alertview>
+<component-alertview bind:chkOrder0="chkOrder0_8" carname="{{carname_8}}" displayy="{{displayy_8}}" titlename="{{titlename_8}}"></component-alertview>
+<component-alertview carname="{{carname_9}}" displayy="{{displayy_9}}" titlename="{{titlename_9}}"></component-alertview>
+<component-alertview cancel="{{cancel}}" carname="{{carname_0}}" display_alone1="{{display_alone1}}" titlename="{{titlename_0}}"></component-alertview>
+<wxs module="filters" src="../../../../addmul.wxs" />
